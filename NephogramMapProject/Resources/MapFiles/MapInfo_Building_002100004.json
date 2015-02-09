@@ -1,0 +1,42 @@
+{
+    "MapInfo": [
+                {
+                "mapID":"002100004F01",
+                "floorName":"F1",
+                "floorIndex":"1",
+                "size_x":"40",
+                "size_y":"24",
+                "initAngle":"10.0",
+                "xmax":"20",
+                "xmin":"-20",
+                "ymax":"12",
+                "ymin":"-12"
+                },
+                {
+                "mapID":"002100004F02",
+                "floorName":"F2",
+                "floorIndex":"2",
+                "size_x":"40",
+                "size_y":"24",
+                "initAngle":"10.0",
+                "xmax":"20",
+                "xmin":"-20",
+                "ymax":"12",
+                "ymin":"-12"
+                },
+                {
+                "mapID":"002100004F03",
+                "floorName":"F3",
+                "floorIndex":"3",
+                "size_x":"40",
+                "size_y":"24",
+                "initAngle":"10.0",
+                "xmax":"20",
+                "xmin":"-20",
+                "ymax":"12",
+                "ymin":"-12"
+                }
+                
+                ]
+
+}
