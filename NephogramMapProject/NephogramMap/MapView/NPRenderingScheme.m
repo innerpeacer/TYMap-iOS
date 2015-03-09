@@ -68,6 +68,16 @@
         _defaultFillSymbol.outline.width = lineWidth;
     }
     
+    // Default Highlight Fill Symbol
+    {
+        NSDictionary *defaultHighlightFillSymbolDict = [firstDefaultSymbolDict objectForKey:JSON_FIELD_SECOND_DEFAULT_HIGHLIGHT_SYMBOL];
+        UIColor *fillColor = [self parseColor:[defaultHighlightFillSymbolDict objectForKey:JSON_FIELD_LEAVE_FILL_COLOR]];
+        UIColor *outlineColor = [self parseColor:[defaultHighlightFillSymbolDict objectForKey:JSON_FIELD_LEAVE_OUTLINE_COLOR]];
+        float lineWidth = [[defaultHighlightFillSymbolDict objectForKey:JSON_FIELD_LEAVE_LINE_WIDTH] floatValue];
+        _defaultHighlightFillSymbol = [AGSSimpleFillSymbol simpleFillSymbolWithColor:fillColor outlineColor:outlineColor];
+        _defaultHighlightFillSymbol.outline.width = lineWidth;
+    }
+    
     // Fill Symbol
     {
         NSMutableDictionary *fillSymbolDict = [NSMutableDictionary dictionary];

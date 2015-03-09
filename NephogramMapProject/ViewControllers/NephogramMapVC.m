@@ -25,13 +25,13 @@
     
 }
 
-- (void)CAMapView:(NPMapView *)mapView didClickAtPoint:(CGPoint)screen mapPoint:(AGSPoint *)mappoint
+- (void)NPMapView:(NPMapView *)mapView didClickAtPoint:(CGPoint)screen mapPoint:(AGSPoint *)mappoint
 {
     NSLog(@"%f, %f", mappoint.x, mappoint.y);
     
 }
 
-- (void)CAMapView:(NPMapView *)mapView PoiSelected:(NSArray *)array
+- (void)NPMapView:(NPMapView *)mapView PoiSelected:(NSArray *)array
 {
     //    NSLog(@"PoiSelected: %@", array);
 }

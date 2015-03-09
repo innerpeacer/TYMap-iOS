@@ -59,7 +59,7 @@ MapSize SSMapSizeMake(double x, double y)
     return self;
 }
 
-+ (NSArray *)parseAllMapInfoForBuilding:(NSString *)buildingID
++ (NSArray *)parseAllMapInfoForBuilding:(NSString *)buildingID Path:(NSString *)path
 {
     NSMutableArray *toReturn = [[NSMutableArray alloc] init];
     
@@ -68,9 +68,9 @@ MapSize SSMapSizeMake(double x, double y)
     }
     
     NSError *error = nil;
-    NSString *fullPath = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%@_%@", FILE_MAPINFO, buildingID] ofType:@"json"];
-    if ([[NSFileManager defaultManager] fileExistsAtPath:fullPath]) {
-        NSData *data = [NSData dataWithContentsOfFile:fullPath];
+//    NSString *fullPath = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%@_%@", FILE_MAPINFO, buildingID] ofType:@"json"];
+    if ([[NSFileManager defaultManager] fileExistsAtPath:path]) {
+        NSData *data = [NSData dataWithContentsOfFile:path];
         NSDictionary *mapDict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:&error];
         
         NSArray *infoArray = [mapDict objectForKey:KEY_MAPINFOS];
@@ -98,7 +98,7 @@ MapSize SSMapSizeMake(double x, double y)
     return toReturn;
 }
 
-+ (NPMapInfo *)parseMapInfo:(NSString *)floor ForBuilding:(NSString *)buildingID
++ (NPMapInfo *)parseMapInfo:(NSString *)floor ForBuilding:(NSString *)buildingID Path:(NSString *)path
 {
     NPMapInfo *info = nil;
     
@@ -107,9 +107,9 @@ MapSize SSMapSizeMake(double x, double y)
     }
     
     NSError *error = nil;
-    NSString *fullPath = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%@_%@", FILE_MAPINFO, buildingID] ofType:@"json"];
-    if ([[NSFileManager defaultManager] fileExistsAtPath:fullPath]) {
-        NSData *data = [NSData dataWithContentsOfFile:fullPath];
+//    NSString *fullPath = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%@_%@", FILE_MAPINFO, buildingID] ofType:@"json"];
+    if ([[NSFileManager defaultManager] fileExistsAtPath:path]) {
+        NSData *data = [NSData dataWithContentsOfFile:path];
         NSDictionary *mapDict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:&error];
         
         NSArray *infoArray = [mapDict objectForKey:KEY_MAPINFOS];

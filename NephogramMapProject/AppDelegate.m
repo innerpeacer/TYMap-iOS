@@ -35,8 +35,10 @@
     }
     
     [NPUserDefaults setDefaultCity:@"0021"];
-    //    [CAUserDefaults setDefaultBuilding:@"002100004"];
-    [NPUserDefaults setDefaultBuilding:@"002199999"];
+    [NPUserDefaults setDefaultBuilding:@"002100001"];
+    [NPUserDefaults setDefaultBuilding:@"002100002"];
+//    [NPUserDefaults setDefaultBuilding:@"002100004"];
+//    [NPUserDefaults setDefaultBuilding:@"002199999"];
     
     
 }

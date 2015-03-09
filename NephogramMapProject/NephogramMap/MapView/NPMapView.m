@@ -36,14 +36,13 @@
 {
     NPRenderingScheme *renderingScheme;
     
-    
     NPFloorLayer *floorLayer;
     NPAssetLayer *assetLayer;
     NPFacilityLayer *facilityLayer;
     NPLabelLayer *labelLayer;
     NPRoomLayer *roomLayer;
     
-    //    CAMapInfo *currentMapInfo;
+    //    NPMapInfo *currentMapInfo;
 }
 
 @end
@@ -53,8 +52,13 @@
 
 - (void)setFloorWithInfo:(NPMapInfo *)info
 {
-    _currentMapInfo = info;
     
+    if ([info.mapID isEqualToString:_currentMapInfo.mapID]) {
+        return;
+    }
+    
+    _currentMapInfo = info;
+
     [floorLayer loadContentsWithInfo:info];
     [roomLayer loadContentsWithInfo:info];
     [assetLayer loadContentsWithInfo:info];
@@ -87,7 +91,8 @@
     
     roomLayer = [NPRoomLayer roomLayerWithRenderingScheme:renderingScheme SpatialReference:spatialReference];
     [self addMapLayer:roomLayer withName:LAYER_NAME_ROOM];
-    roomLayer.selectionSymbol = [AGSSimpleFillSymbol simpleFillSymbolWithColor:[UIColor cyanColor] outlineColor:[UIColor cyanColor]];
+//    roomLayer.selectionSymbol = [AGSSimpleFillSymbol simpleFillSymbolWithColor:[UIColor cyanColor] outlineColor:[UIColor cyanColor]];
+    roomLayer.selectionSymbol = renderingScheme.defaultHighlightFillSymbol;
     
     assetLayer = [NPAssetLayer assetLayerWithRenderingScheme:renderingScheme SpatialReference:spatialReference];
     [self addMapLayer:assetLayer withName:LAYER_NAME_ASSET];
@@ -115,14 +120,14 @@
     //    NSLog(@"didClickAtPoint");
     [self clearSelection];
     
-    if (self.mapDelegate && [self.mapDelegate respondsToSelector:@selector(CAMapView:didClickAtPoint:mapPoint:)]) {
-        [self.mapDelegate CAMapView:self didClickAtPoint:screen mapPoint:mappoint];
+    if (self.mapDelegate && [self.mapDelegate respondsToSelector:@selector(NPMapView:didClickAtPoint:mapPoint:)]) {
+        [self.mapDelegate NPMapView:self didClickAtPoint:screen mapPoint:mappoint];
     }
     
-    if (self.mapDelegate && [self.mapDelegate respondsToSelector:@selector(CAMapView:PoiSelected:)]) {
+    if (self.mapDelegate && [self.mapDelegate respondsToSelector:@selector(NPMapView:PoiSelected:)]) {
         NSArray *poiSelected = [self extractSelectedPoi:features];
         if (poiSelected.count > 0) {
-            [self.mapDelegate CAMapView:self PoiSelected:poiSelected];
+            [self.mapDelegate NPMapView:self PoiSelected:poiSelected];
         }
     }
     

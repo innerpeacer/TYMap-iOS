@@ -79,7 +79,7 @@ typedef struct mapextent {
  *
  *  @return 楼层地图信息
  */
-+ (NPMapInfo *)parseMapInfo:(NSString *)floor ForBuilding:(NSString *)buildingID;
++ (NPMapInfo *)parseMapInfo:(NSString *)floor ForBuilding:(NSString *)buildingID Path:(NSString *)path;
 
 
 /**
@@ -87,8 +87,8 @@ typedef struct mapextent {
  *
  *  @param buildingID 楼层所在建筑的ID
  *
- *  @return 所有楼层的地图信息数组:[CAMapInfo]
+ *  @return 所有楼层的地图信息数组:[NPMapInfo]
  */
-+ (NSArray *)parseAllMapInfoForBuilding:(NSString *)buildingID;
++ (NSArray *)parseAllMapInfoForBuilding:(NSString *)buildingID Path:(NSString *)path;
 
 @end

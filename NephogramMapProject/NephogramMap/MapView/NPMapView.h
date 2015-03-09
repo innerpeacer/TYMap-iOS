@@ -25,15 +25,15 @@
  *  @param screen   点击事件的屏幕坐标
  *  @param mappoint 点击事件的地图坐标
  */
-- (void)CAMapView:(NPMapView *)mapView didClickAtPoint:(CGPoint)screen mapPoint:(AGSPoint *)mappoint;
+- (void)NPMapView:(NPMapView *)mapView didClickAtPoint:(CGPoint)screen mapPoint:(AGSPoint *)mappoint;
 
 /**
  *  地图POI选中事件回调
  *
  *  @param mapView 地图视图
- *  @param array   选中的POI数组:[CAPoi]
+ *  @param array   选中的POI数组:[NPPoi]
  */
-- (void)CAMapView:(NPMapView *)mapView PoiSelected:(NSArray *)array;
+- (void)NPMapView:(NPMapView *)mapView PoiSelected:(NSArray *)array;
 
 @end
 
@@ -55,7 +55,7 @@
 /**
  *  当前建筑的当前楼层信息
  */
-@property (nonatomic, strong) NPMapInfo *currentMapInfo;
+@property (nonatomic, readonly) NPMapInfo *currentMapInfo;
 
 /**
  *  在POI被点选时是否高亮显示，默认为NO
@@ -73,7 +73,7 @@
 /**
  *  地图初始化方法
  *
- *  @param renderScheme 地图渲染方案
+ *  @param renderingScheme 地图渲染方案
  */
 - (void)initMapViewWithRenderScheme:(NPRenderingScheme *)renderingScheme;
 

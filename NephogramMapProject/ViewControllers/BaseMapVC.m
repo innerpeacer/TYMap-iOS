@@ -24,7 +24,9 @@
 {
     _currentBuildingID = [NPUserDefaults getDefaultBuilding];
     
-    _allMapInfos = [NPMapInfo parseAllMapInfoForBuilding:_currentBuildingID];
+#define FILE_MAPINFO @"MapInfo_Building"
+    NSString *fullPath = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%@_%@", FILE_MAPINFO, _currentBuildingID] ofType:@"json"];
+    _allMapInfos = [NPMapInfo parseAllMapInfoForBuilding:_currentBuildingID Path:fullPath];
     
     if (_allMapInfos.count == 1) {
         currentIndex = 0;
@@ -62,7 +64,12 @@
     }
     
     _floorSegment = [[UISegmentedControl alloc] initWithItems:floorStringArray];
-    _floorSegment.frame = CGRectMake(20.0, 80.0, 280.0, 30.0);
+    
+    double screenWidth = self.view.frame.size.width;
+    double xOffset = 20;
+    double yOffset = 80;
+    double height = 30;
+    _floorSegment.frame = CGRectMake(xOffset, yOffset, screenWidth - xOffset * 2, height);
     _floorSegment.tintColor = [UIColor blueColor];
     _floorSegment.selectedSegmentIndex = currentIndex;
     
@@ -102,13 +109,13 @@
     self.mapView = nil;
 }
 
-- (void)CAMapView:(NPMapView *)mapView didClickAtPoint:(CGPoint)screen mapPoint:(AGSPoint *)mappoint
+- (void)NPMapView:(NPMapView *)mapView didClickAtPoint:(CGPoint)screen mapPoint:(AGSPoint *)mappoint
 {
     //    NSLog(@"didClickAtPoint");
     
 }
 
-- (void)CAMapView:(NPMapView *)mapView PoiSelected:(NSArray *)array
+- (void)NPMapView:(NPMapView *)mapView PoiSelected:(NSArray *)array
 {
     
 }
