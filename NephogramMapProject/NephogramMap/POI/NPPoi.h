@@ -10,14 +10,14 @@
 #import <ArcGIS/ArcGIS.h>
 
 /**
- *  POI类型，当前按层来分类：房间层（ROOM）、资产层（ASSET）、公共设施层（FACILITY）
+ *  POI所在层，当前按层来分类：房间层（ROOM）、资产层（ASSET）、公共设施层（FACILITY）
  */
 typedef enum
 {
-    POI_ROOM,
-    POI_ASSET,
-    POI_FACILITY
-} POI_TYPE;
+    POI_ROOM = 1,
+    POI_ASSET = 2,
+    POI_FACILITY = 3
+} POI_LAYER;
 
 /**
  *  @brief POI类：用于表示POI相关数据，主要包含POI地理信息，及相应POI ID
@@ -60,15 +60,15 @@ typedef enum
 @property (nonatomic, readonly) int categoryID;
 
 /**
- *  POI类型
+ *  POI所在层
  */
-@property (nonatomic, readonly) POI_TYPE type;
+@property (nonatomic, readonly) POI_LAYER layer;
 
 
 /**
  *  @discussion 创建POI实例的静态方法
  *  @return POI实例
  */
-+ (NPPoi *)poiWithGeoID:(NSString *)gid PoiID:(NSString *)pid FloorID:(NSString *)fid  BuildingID:(NSString *)bid Name:(NSString *)pname Geometry:(AGSGeometry *)geometry CategoryID:(int)cid Type:(POI_TYPE)ptype;
++ (NPPoi *)poiWithGeoID:(NSString *)gid PoiID:(NSString *)pid FloorID:(NSString *)fid  BuildingID:(NSString *)bid Name:(NSString *)pname Geometry:(AGSGeometry *)geometry CategoryID:(int)cid Layer:(POI_LAYER)pLayer;
 
 @end

@@ -41,6 +41,11 @@
     NSLog(@"didClickAtPoint: %f, %f", mappoint.x, mappoint.y);
 }
 
+- (void)NPMapView:(NPMapView *)mapView didFinishLoadingFloor:(NPMapInfo *)mapInfo
+{
+    
+}
+
 - (void)calloutDidDismiss:(AGSCallout *)callout
 {
     //    NSLog(@"calloutDidDismiss");

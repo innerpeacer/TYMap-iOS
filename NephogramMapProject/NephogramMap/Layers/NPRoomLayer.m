@@ -7,12 +7,15 @@
 //
 
 #import "NPRoomLayer.h"
+#import "NPMapType.h"
 
 @interface NPRoomLayer()
 {
     AGSRenderer *roomRender;
     
     NPRenderingScheme *renderingScheme;
+    
+    NSMutableDictionary *roomDict;
 }
 
 @end
@@ -30,6 +33,7 @@
     if (self) {
         renderingScheme = aRenderingScheme;
         roomRender = [self createRoomRender];
+        roomDict = [[NSMutableDictionary alloc] init];
         self.renderer = roomRender;
     }
     return self;
@@ -60,8 +64,9 @@
 
 - (void)loadContentsWithInfo:(NPMapInfo *)info
 {
-    NSLog(@"addRoomContents");
+//    NSLog(@"addRoomContents");
     [self removeAllGraphics];
+    [roomDict removeAllObjects];
     
     NSError *error = nil;
     NSString *fullPath = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%@_ROOM",info.mapID] ofType:@"json"];
@@ -73,7 +78,22 @@
     AGSFeatureSet *set = [[AGSFeatureSet alloc] initWithJSON:dict];
     NSArray *allGraphics = set.features;
     
+    for (AGSGraphic *g in allGraphics) {
+        NSString *poiID = [g attributeForKey:GRAPHIC_ATTRIBUTE_POI_ID];
+        [roomDict setObject:g forKey:poiID];
+    }
+    
     [self addGraphics:allGraphics];
+}
+
+- (NPPoi *)getPoiWithPoiID:(NSString *)pid
+{
+    NPPoi *result = nil;
+    AGSGraphic *graphic = [roomDict objectForKey:pid];
+    if (graphic) {
+        result = [NPPoi poiWithGeoID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_GEO_ID] PoiID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_POI_ID] FloorID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_FLOOR_ID] BuildingID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_BUILDING_ID] Name:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_NAME] Geometry:graphic.geometry CategoryID:[[graphic attributeForKey:GRAPHIC_ATTRIBUTE_CATEGORY_ID] intValue] Layer:POI_ROOM];
+    }
+    return result;
 }
 
 @end

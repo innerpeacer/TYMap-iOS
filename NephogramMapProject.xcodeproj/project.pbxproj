@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		570923CE1AB01120009A3F04 /* NPPoiDBAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 570923CD1AB01120009A3F04 /* NPPoiDBAdapter.m */; };
 		570DB3E61A8903BF001D137E /* NPUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 570DB3E51A8903BF001D137E /* NPUserDefaults.m */; };
 		570DB3E91A8905E9001D137E /* BaseMapVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 570DB3E81A8905E9001D137E /* BaseMapVC.m */; };
 		570DB3EC1A890634001D137E /* MapTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 570DB3EB1A890634001D137E /* MapTableVC.m */; };
@@ -14,7 +15,15 @@
 		570DB3F21A890649001D137E /* MapRouteVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 570DB3F11A890649001D137E /* MapRouteVC.m */; };
 		570DB3F51A890653001D137E /* MapCalloutVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 570DB3F41A890653001D137E /* MapCalloutVC.m */; };
 		570DB3F81A890664001D137E /* CustomCalloutVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 570DB3F71A890664001D137E /* CustomCalloutVC.m */; };
-		57E4F2481AAD2CBD003B450B /* 002100002B01_ASSET.json in Resources */ = {isa = PBXBuildFile; fileRef = 57E4F22F1AAD2CBD003B450B /* 002100002B01_ASSET.json */; };
+		574443D01AAED31000E6232C /* CreatingPOIDBAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 574443CF1AAED31000E6232C /* CreatingPOIDBAdapter.m */; };
+		574443EE1AAED36300E6232C /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 574443E51AAED36300E6232C /* FMDatabase.m */; };
+		574443EF1AAED36300E6232C /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 574443E71AAED36300E6232C /* FMDatabaseAdditions.m */; };
+		574443F01AAED36300E6232C /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 574443E91AAED36300E6232C /* FMDatabasePool.m */; };
+		574443F11AAED36300E6232C /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 574443EB1AAED36300E6232C /* FMDatabaseQueue.m */; };
+		574443F21AAED36300E6232C /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 574443ED1AAED36300E6232C /* FMResultSet.m */; };
+		574443F41AAEDEB600E6232C /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 574443F31AAEDEB600E6232C /* libsqlite3.0.dylib */; };
+		574443F71AAEE1D500E6232C /* CreatePOIDatabaseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 574443F61AAEE1D500E6232C /* CreatePOIDatabaseVC.m */; };
+		574443FA1AAEE64600E6232C /* BaseLogVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 574443F91AAEE64600E6232C /* BaseLogVC.m */; };
 		57E4F2491AAD2CBD003B450B /* 002100002B01_FACILITY.json in Resources */ = {isa = PBXBuildFile; fileRef = 57E4F2301AAD2CBD003B450B /* 002100002B01_FACILITY.json */; };
 		57E4F24A1AAD2CBD003B450B /* 002100002B01_FLOOR.json in Resources */ = {isa = PBXBuildFile; fileRef = 57E4F2311AAD2CBD003B450B /* 002100002B01_FLOOR.json */; };
 		57E4F24B1AAD2CBD003B450B /* 002100002B01_LABEL.json in Resources */ = {isa = PBXBuildFile; fileRef = 57E4F2321AAD2CBD003B450B /* 002100002B01_LABEL.json */; };
@@ -64,7 +73,6 @@
 		57F06CC91A87BE0500B9511F /* 002100004F03_FACILITY.json in Resources */ = {isa = PBXBuildFile; fileRef = 57F06CA51A87BE0500B9511F /* 002100004F03_FACILITY.json */; };
 		57F06CCA1A87BE0500B9511F /* 002100004F03_FLOOR.json in Resources */ = {isa = PBXBuildFile; fileRef = 57F06CA61A87BE0500B9511F /* 002100004F03_FLOOR.json */; };
 		57F06CCB1A87BE0500B9511F /* 002100004F03_LABEL.json in Resources */ = {isa = PBXBuildFile; fileRef = 57F06CA71A87BE0500B9511F /* 002100004F03_LABEL.json */; };
-		57F06CCC1A87BE0500B9511F /* 002100004F03_ROOM.json in Resources */ = {isa = PBXBuildFile; fileRef = 57F06CA81A87BE0500B9511F /* 002100004F03_ROOM.json */; };
 		57F06CCD1A87BE0500B9511F /* 002199999F05_ASSET.json in Resources */ = {isa = PBXBuildFile; fileRef = 57F06CA91A87BE0500B9511F /* 002199999F05_ASSET.json */; };
 		57F06CCE1A87BE0500B9511F /* 002199999F05_FACILITY.json in Resources */ = {isa = PBXBuildFile; fileRef = 57F06CAA1A87BE0500B9511F /* 002199999F05_FACILITY.json */; };
 		57F06CCF1A87BE0500B9511F /* 002199999F05_FLOOR.json in Resources */ = {isa = PBXBuildFile; fileRef = 57F06CAB1A87BE0500B9511F /* 002199999F05_FLOOR.json */; };
@@ -96,6 +104,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		570923CC1AB01120009A3F04 /* NPPoiDBAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPPoiDBAdapter.h; sourceTree = "<group>"; };
+		570923CD1AB01120009A3F04 /* NPPoiDBAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPPoiDBAdapter.m; sourceTree = "<group>"; };
 		570DB3E41A8903BF001D137E /* NPUserDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPUserDefaults.h; sourceTree = "<group>"; };
 		570DB3E51A8903BF001D137E /* NPUserDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPUserDefaults.m; sourceTree = "<group>"; };
 		570DB3E71A8905E9001D137E /* BaseMapVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseMapVC.h; sourceTree = "<group>"; };
@@ -110,7 +120,24 @@
 		570DB3F41A890653001D137E /* MapCalloutVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapCalloutVC.m; sourceTree = "<group>"; };
 		570DB3F61A890664001D137E /* CustomCalloutVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCalloutVC.h; sourceTree = "<group>"; };
 		570DB3F71A890664001D137E /* CustomCalloutVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCalloutVC.m; sourceTree = "<group>"; };
-		57E4F22F1AAD2CBD003B450B /* 002100002B01_ASSET.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 002100002B01_ASSET.json; sourceTree = "<group>"; };
+		57422E211AB018CB009065FB /* NPMapType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NPMapType.h; sourceTree = "<group>"; };
+		574443CE1AAED31000E6232C /* CreatingPOIDBAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreatingPOIDBAdapter.h; sourceTree = "<group>"; };
+		574443CF1AAED31000E6232C /* CreatingPOIDBAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreatingPOIDBAdapter.m; sourceTree = "<group>"; };
+		574443E41AAED36300E6232C /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
+		574443E51AAED36300E6232C /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
+		574443E61AAED36300E6232C /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
+		574443E71AAED36300E6232C /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseAdditions.m; sourceTree = "<group>"; };
+		574443E81AAED36300E6232C /* FMDatabasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabasePool.h; sourceTree = "<group>"; };
+		574443E91AAED36300E6232C /* FMDatabasePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabasePool.m; sourceTree = "<group>"; };
+		574443EA1AAED36300E6232C /* FMDatabaseQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseQueue.h; sourceTree = "<group>"; };
+		574443EB1AAED36300E6232C /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseQueue.m; sourceTree = "<group>"; };
+		574443EC1AAED36300E6232C /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
+		574443ED1AAED36300E6232C /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
+		574443F31AAEDEB600E6232C /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
+		574443F51AAEE1D500E6232C /* CreatePOIDatabaseVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreatePOIDatabaseVC.h; sourceTree = "<group>"; };
+		574443F61AAEE1D500E6232C /* CreatePOIDatabaseVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreatePOIDatabaseVC.m; sourceTree = "<group>"; };
+		574443F81AAEE64600E6232C /* BaseLogVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseLogVC.h; sourceTree = "<group>"; };
+		574443F91AAEE64600E6232C /* BaseLogVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseLogVC.m; sourceTree = "<group>"; };
 		57E4F2301AAD2CBD003B450B /* 002100002B01_FACILITY.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 002100002B01_FACILITY.json; sourceTree = "<group>"; };
 		57E4F2311AAD2CBD003B450B /* 002100002B01_FLOOR.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 002100002B01_FLOOR.json; sourceTree = "<group>"; };
 		57E4F2321AAD2CBD003B450B /* 002100002B01_LABEL.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 002100002B01_LABEL.json; sourceTree = "<group>"; };
@@ -163,7 +190,6 @@
 		57F06CA51A87BE0500B9511F /* 002100004F03_FACILITY.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 002100004F03_FACILITY.json; sourceTree = "<group>"; };
 		57F06CA61A87BE0500B9511F /* 002100004F03_FLOOR.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 002100004F03_FLOOR.json; sourceTree = "<group>"; };
 		57F06CA71A87BE0500B9511F /* 002100004F03_LABEL.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 002100004F03_LABEL.json; sourceTree = "<group>"; };
-		57F06CA81A87BE0500B9511F /* 002100004F03_ROOM.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 002100004F03_ROOM.json; sourceTree = "<group>"; };
 		57F06CA91A87BE0500B9511F /* 002199999F05_ASSET.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 002199999F05_ASSET.json; sourceTree = "<group>"; };
 		57F06CAA1A87BE0500B9511F /* 002199999F05_FACILITY.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 002199999F05_FACILITY.json; sourceTree = "<group>"; };
 		57F06CAB1A87BE0500B9511F /* 002199999F05_FLOOR.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 002199999F05_FLOOR.json; sourceTree = "<group>"; };
@@ -213,12 +239,49 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				574443F41AAEDEB600E6232C /* libsqlite3.0.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		574443CD1AAED2CE00E6232C /* MapTools */ = {
+			isa = PBXGroup;
+			children = (
+				570923CC1AB01120009A3F04 /* NPPoiDBAdapter.h */,
+				570923CD1AB01120009A3F04 /* NPPoiDBAdapter.m */,
+				574443CE1AAED31000E6232C /* CreatingPOIDBAdapter.h */,
+				574443CF1AAED31000E6232C /* CreatingPOIDBAdapter.m */,
+			);
+			path = MapTools;
+			sourceTree = "<group>";
+		};
+		574443E21AAED36300E6232C /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				574443E31AAED36300E6232C /* FMDB */,
+			);
+			path = libs;
+			sourceTree = "<group>";
+		};
+		574443E31AAED36300E6232C /* FMDB */ = {
+			isa = PBXGroup;
+			children = (
+				574443E41AAED36300E6232C /* FMDatabase.h */,
+				574443E51AAED36300E6232C /* FMDatabase.m */,
+				574443E61AAED36300E6232C /* FMDatabaseAdditions.h */,
+				574443E71AAED36300E6232C /* FMDatabaseAdditions.m */,
+				574443E81AAED36300E6232C /* FMDatabasePool.h */,
+				574443E91AAED36300E6232C /* FMDatabasePool.m */,
+				574443EA1AAED36300E6232C /* FMDatabaseQueue.h */,
+				574443EB1AAED36300E6232C /* FMDatabaseQueue.m */,
+				574443EC1AAED36300E6232C /* FMResultSet.h */,
+				574443ED1AAED36300E6232C /* FMResultSet.m */,
+			);
+			path = FMDB;
+			sourceTree = "<group>";
+		};
 		57F06C141A87BC7500B9511F = {
 			isa = PBXGroup;
 			children = (
@@ -238,6 +301,7 @@
 		57F06C1F1A87BC7500B9511F /* NephogramMapProject */ = {
 			isa = PBXGroup;
 			children = (
+				574443CD1AAED2CE00E6232C /* MapTools */,
 				57F06C241A87BC7500B9511F /* AppDelegate.h */,
 				57F06C251A87BC7500B9511F /* AppDelegate.m */,
 				57F06CDC1A87BE4B00B9511F /* GlobalSettings */,
@@ -246,6 +310,7 @@
 				57F06C2A1A87BC7500B9511F /* Main.storyboard */,
 				57F06C2D1A87BC7500B9511F /* Images.xcassets */,
 				57F06C2F1A87BC7500B9511F /* LaunchScreen.xib */,
+				574443E21AAED36300E6232C /* libs */,
 				57F06C921A87BE0500B9511F /* Resources */,
 				57F06C201A87BC7500B9511F /* Supporting Files */,
 			);
@@ -255,6 +320,7 @@
 		57F06C201A87BC7500B9511F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				574443F31AAEDEB600E6232C /* libsqlite3.0.dylib */,
 				57F06C211A87BC7500B9511F /* Info.plist */,
 				57F06C221A87BC7500B9511F /* main.m */,
 			);
@@ -273,7 +339,6 @@
 		57F06C941A87BE0500B9511F /* MapFiles */ = {
 			isa = PBXGroup;
 			children = (
-				57E4F22F1AAD2CBD003B450B /* 002100002B01_ASSET.json */,
 				57E4F2301AAD2CBD003B450B /* 002100002B01_FACILITY.json */,
 				57E4F2311AAD2CBD003B450B /* 002100002B01_FLOOR.json */,
 				57E4F2321AAD2CBD003B450B /* 002100002B01_LABEL.json */,
@@ -317,7 +382,6 @@
 				57F06CA51A87BE0500B9511F /* 002100004F03_FACILITY.json */,
 				57F06CA61A87BE0500B9511F /* 002100004F03_FLOOR.json */,
 				57F06CA71A87BE0500B9511F /* 002100004F03_LABEL.json */,
-				57F06CA81A87BE0500B9511F /* 002100004F03_ROOM.json */,
 				57F06CA91A87BE0500B9511F /* 002199999F05_ASSET.json */,
 				57F06CAA1A87BE0500B9511F /* 002199999F05_FACILITY.json */,
 				57F06CAB1A87BE0500B9511F /* 002199999F05_FLOOR.json */,
@@ -386,6 +450,7 @@
 				57F06D021A87C1A900B9511F /* NPArcGISDrawer.m */,
 				57F06D041A87C1B700B9511F /* NPMapEnviroment.h */,
 				57F06D051A87C1B700B9511F /* NPMapEnviroment.m */,
+				57422E211AB018CB009065FB /* NPMapType.h */,
 			);
 			path = MapView;
 			sourceTree = "<group>";
@@ -413,6 +478,8 @@
 		57F06CE21A87BE4B00B9511F /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				574443F81AAEE64600E6232C /* BaseLogVC.h */,
+				574443F91AAEE64600E6232C /* BaseLogVC.m */,
 				57F06CE31A87BF1900B9511F /* BaseControllerTableVC.h */,
 				57F06CE41A87BF1900B9511F /* BaseControllerTableVC.m */,
 				570DB3E71A8905E9001D137E /* BaseMapVC.h */,
@@ -427,6 +494,8 @@
 				570DB3F41A890653001D137E /* MapCalloutVC.m */,
 				570DB3F61A890664001D137E /* CustomCalloutVC.h */,
 				570DB3F71A890664001D137E /* CustomCalloutVC.m */,
+				574443F51AAEE1D500E6232C /* CreatePOIDatabaseVC.h */,
+				574443F61AAEE1D500E6232C /* CreatePOIDatabaseVC.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -516,7 +585,6 @@
 				57E4F2591AAD2CBD003B450B /* 002100002F19_FLOOR.json in Resources */,
 				57E4F2511AAD2CBD003B450B /* 002100002F01_ROOM.json in Resources */,
 				57F06CC51A87BE0500B9511F /* 002100004F02_FLOOR.json in Resources */,
-				57E4F2481AAD2CBD003B450B /* 002100002B01_ASSET.json in Resources */,
 				57F06CCA1A87BE0500B9511F /* 002100004F03_FLOOR.json in Resources */,
 				57F06C311A87BC7500B9511F /* LaunchScreen.xib in Resources */,
 				57F06CD61A87BE0500B9511F /* icon_lift.png in Resources */,
@@ -539,7 +607,6 @@
 				57E4F25A1AAD2CBD003B450B /* 002100002F19_LABEL.json in Resources */,
 				57F06CC91A87BE0500B9511F /* 002100004F03_FACILITY.json in Resources */,
 				57F06CD91A87BE0500B9511F /* MapInfo_Building_002100004.json in Resources */,
-				57F06CCC1A87BE0500B9511F /* 002100004F03_ROOM.json in Resources */,
 				57F06CCD1A87BE0500B9511F /* 002199999F05_ASSET.json in Resources */,
 				57F06CB81A87BE0500B9511F /* ArcGIS.bundle in Resources */,
 				57F06CBA1A87BE0500B9511F /* 002100001F04_FACILITY.json in Resources */,
@@ -564,6 +631,7 @@
 				570DB3E91A8905E9001D137E /* BaseMapVC.m in Sources */,
 				57F06CF71A87C00500B9511F /* NPRoomLayer.m in Sources */,
 				57F06CEB1A87BFD700B9511F /* NPFacilityLayer.m in Sources */,
+				574443FA1AAEE64600E6232C /* BaseLogVC.m in Sources */,
 				57F06D031A87C1A900B9511F /* NPArcGISDrawer.m in Sources */,
 				57F06D0C1A87C1D500B9511F /* NPRouteManager.m in Sources */,
 				57F06CF11A87BFEF00B9511F /* NPLabelLayer.m in Sources */,
@@ -574,12 +642,20 @@
 				57F06CEE1A87BFE400B9511F /* NPFloorLayer.m in Sources */,
 				57F06D001A87C19F00B9511F /* NPMapView.m in Sources */,
 				57F06D091A87C1C800B9511F /* NPRouteLayer.m in Sources */,
+				574443F01AAED36300E6232C /* FMDatabasePool.m in Sources */,
+				574443F71AAEE1D500E6232C /* CreatePOIDatabaseVC.m in Sources */,
+				574443EE1AAED36300E6232C /* FMDatabase.m in Sources */,
+				574443D01AAED31000E6232C /* CreatingPOIDBAdapter.m in Sources */,
 				57F06CFA1A87C18D00B9511F /* NPRenderingScheme.m in Sources */,
+				574443F11AAED36300E6232C /* FMDatabaseQueue.m in Sources */,
+				574443F21AAED36300E6232C /* FMResultSet.m in Sources */,
 				570DB3EC1A890634001D137E /* MapTableVC.m in Sources */,
 				57F06CFD1A87C19600B9511F /* NPMapInfo.m in Sources */,
 				570DB3E61A8903BF001D137E /* NPUserDefaults.m in Sources */,
+				570923CE1AB01120009A3F04 /* NPPoiDBAdapter.m in Sources */,
 				57F06D061A87C1B700B9511F /* NPMapEnviroment.m in Sources */,
 				57F06CF41A87BFFA00B9511F /* NPAssetLayer.m in Sources */,
+				574443EF1AAED36300E6232C /* FMDatabaseAdditions.m in Sources */,
 				57F06C261A87BC7500B9511F /* AppDelegate.m in Sources */,
 				57F06C231A87BC7500B9511F /* main.m in Sources */,
 				57F06CE51A87BF1900B9511F /* BaseControllerTableVC.m in Sources */,

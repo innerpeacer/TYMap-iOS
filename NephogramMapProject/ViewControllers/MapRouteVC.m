@@ -110,6 +110,11 @@
     [hintLayer addGraphic:[AGSGraphic graphicWithGeometry:mappoint symbol:sms                                                attributes:nil]];
 }
 
+- (void)NPMapView:(NPMapView *)mapView didFinishLoadingFloor:(NPMapInfo *)mapInfo
+{
+    
+}
+
 - (IBAction)setStartPoint:(id)sender {
     startPoint = currentPoint;
     

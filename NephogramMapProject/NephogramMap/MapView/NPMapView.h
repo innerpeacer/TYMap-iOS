@@ -35,6 +35,15 @@
  */
 - (void)NPMapView:(NPMapView *)mapView PoiSelected:(NSArray *)array;
 
+
+/**
+ *  地图楼层加载完成回调
+ *
+ *  @param mapView 地图视图
+ *  @param mapInfo 加载楼层信息
+ */
+- (void)NPMapView:(NPMapView *)mapView didFinishLoadingFloor:(NPMapInfo *)mapInfo;
+
 @end
 
 /**
@@ -101,5 +110,21 @@
  */
 - (void)showFacilityOnCurrentWithCategory:(int)categoryID;
 
+/**
+ *  显示当前楼层的特定类型公共设施
+ *
+ *  @param categoryIDs 公共设施类型ID数组
+ */
+- (void)showFacilityOnCurrentWithCategorys:(NSArray *)categoryIDs;
+
+/**
+ *  获取当前楼层下特定子层特定poiID的信息
+ *
+ *  @param pid   poiID
+ *  @param layer 目标子层
+ *
+ *  @return poi信息
+ */
+- (NPPoi *)getPoiOnCurrentFloorWithPoiID:(NSString *)pid layer:(POI_LAYER)layer;
 @end
 

@@ -33,7 +33,23 @@
 
 - (void)NPMapView:(NPMapView *)mapView PoiSelected:(NSArray *)array
 {
-    //    NSLog(@"PoiSelected: %@", array);
+    NSLog(@"PoiSelected: %@", array);
+    
+    if (array.count > 0) {
+        NPPoi *poi = array[0];
+        
+        NSLog(@"%@", poi);
+        
+        NPPoi *apoi = [self.mapView getPoiOnCurrentFloorWithPoiID:poi.poiID layer:poi.layer];
+        NSLog(@"%@", apoi);
+    }
+    
 }
 
+- (void)NPMapView:(NPMapView *)mapView didFinishLoadingFloor:(NPMapInfo *)mapInfo
+{
+    
+}
+
+                   
 @end

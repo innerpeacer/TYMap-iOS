@@ -112,7 +112,6 @@
 - (void)NPMapView:(NPMapView *)mapView didClickAtPoint:(CGPoint)screen mapPoint:(AGSPoint *)mappoint
 {
     //    NSLog(@"didClickAtPoint");
-    
 }
 
 - (void)NPMapView:(NPMapView *)mapView PoiSelected:(NSArray *)array
@@ -120,9 +119,14 @@
     
 }
 
+- (void)NPMapView:(NPMapView *)mapView didFinishLoadingFloor:(NPMapInfo *)mapInfo
+{
+    NSLog(@"Floor %@ did Loaded", mapInfo.floorName);
+}
+
 - (void)respondToZooming:(NSNotification *)notification
 {
-    
+
 }
 
 @end

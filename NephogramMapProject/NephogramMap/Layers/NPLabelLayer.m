@@ -26,7 +26,7 @@
 
 - (void)loadContentsWithInfo:(NPMapInfo *)info;
 {
-    NSLog(@"addLabelContents");
+//    NSLog(@"addLabelContents");
     [self removeAllGraphics];
     
     NSError *error = nil;

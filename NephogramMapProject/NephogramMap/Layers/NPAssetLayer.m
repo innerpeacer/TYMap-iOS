@@ -58,7 +58,7 @@
 
 - (void)loadContentsWithInfo:(NPMapInfo *)info
 {
-    NSLog(@"addShopContents");
+//    NSLog(@"addShopContents");
     [self removeAllGraphics];
     
     NSError *error = nil;

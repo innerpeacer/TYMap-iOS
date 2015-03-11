@@ -25,6 +25,10 @@
     
     [self.objects addObject:@"地图Callout Demo"];
     [self.controllerDict setObject:@"mapCalloutController" forKey:@"地图Callout Demo"];
+    
+    [self.objects addObject:@"生成POI数据库"];
+    [self.controllerDict setObject:@"CreatePOIDatabaseVC" forKey:@"生成POI数据库"];
+    
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

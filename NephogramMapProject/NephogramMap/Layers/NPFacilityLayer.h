@@ -9,6 +9,7 @@
 #import <ArcGIS/ArcGIS.h>
 #import "NPMapInfo.h"
 #import "NPRenderingScheme.h"
+#import "NPPoi.h"
 
 @interface NPFacilityLayer : AGSGraphicsLayer
 
@@ -21,5 +22,9 @@
 - (void)showFacilityWithCategory:(int)categoryID;
 
 - (void)showAllFacilities;
+
+- (void)showFacilityOnCurrentWithCategorys:(NSArray *)categoryIDs;
+
+- (NPPoi *)getPoiWithPoiID:(NSString *)pid;
 
 @end

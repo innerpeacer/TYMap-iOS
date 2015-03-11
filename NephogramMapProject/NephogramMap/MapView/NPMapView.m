@@ -15,22 +15,12 @@
 #import "NPFloorLayer.h"
 #import "NPMapView.h"
 #import "NPMapInfo.h"
-
+#import "NPMapType.h"
 #import "NPMapEnviroment.h"
 
-#define LAYER_NAME_FLOOR @"FloorLayer"
-#define LAYER_NAME_ROOM @"RoomLayer"
-#define LAYER_NAME_ASSET @"AssetLayer"
-#define LAYER_NAME_FACILITY @"FacilityLayer"
-#define LAYER_NAME_LABEL @"LabelLayer"
 
-#define GRAPHIC_ATTRIBUTE_GEO_ID @"GEO_ID"
-#define GRAPHIC_ATTRIBUTE_POI_ID @"POI_ID"
-#define GRAPHIC_ATTRIBUTE_FLOOR_ID @"FLOOR_ID"
-#define GRAPHIC_ATTRIBUTE_BUILDING_ID @"BUILDING_ID"
-#define GRAPHIC_ATTRIBUTE_NAME @"NAME"
-#define GRAPHIC_ATTRIBUTE_CATEGORY_ID @"CATEGORY_ID"
-#define GRAPHIC_ATTRIBUTE_FLOOR @"FLOOR"
+
+
 
 @interface NPMapView() <AGSMapViewTouchDelegate>
 {
@@ -64,6 +54,10 @@
     [assetLayer loadContentsWithInfo:info];
     [facilityLayer loadContentsWithInfo:info];
     [labelLayer loadContentsWithInfo:info];
+    
+    if (self.mapDelegate && [self.mapDelegate respondsToSelector:@selector(NPMapView:didFinishLoadingFloor:)]) {
+        [self.mapDelegate NPMapView:self didFinishLoadingFloor:_currentMapInfo];
+    }
     
     AGSEnvelope *envelope = [AGSEnvelope envelopeWithXmin:_currentMapInfo.mapExtent.xmin ymin:_currentMapInfo.mapExtent.ymin xmax:_currentMapInfo.mapExtent.xmax ymax:_currentMapInfo.mapExtent.ymax spatialReference:[NPMapEnvironment defaultSpatialReference]];
     [self zoomToEnvelope:envelope animated:NO];
@@ -145,7 +139,7 @@
         for (int i = 0; i < array.count; ++i) {
             AGSGraphic *graphic = (AGSGraphic *)array[i];
             
-            NPPoi *poi = [NPPoi poiWithGeoID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_GEO_ID] PoiID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_POI_ID] FloorID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_FLOOR_ID] BuildingID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_BUILDING_ID] Name:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_NAME] Geometry:graphic.geometry CategoryID:[[graphic attributeForKey:GRAPHIC_ATTRIBUTE_CATEGORY_ID] intValue] Type:POI_FACILITY];
+            NPPoi *poi = [NPPoi poiWithGeoID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_GEO_ID] PoiID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_POI_ID] FloorID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_FLOOR_ID] BuildingID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_BUILDING_ID] Name:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_NAME] Geometry:graphic.geometry CategoryID:[[graphic attributeForKey:GRAPHIC_ATTRIBUTE_CATEGORY_ID] intValue] Layer:POI_FACILITY];
             [poiArray addObject:poi];
         }
     }
@@ -155,7 +149,7 @@
         for (int i = 0; i < array.count; ++i) {
             AGSGraphic *graphic = (AGSGraphic *)array[i];
             
-            NPPoi *poi = [NPPoi poiWithGeoID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_GEO_ID] PoiID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_POI_ID] FloorID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_FLOOR_ID] BuildingID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_BUILDING_ID] Name:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_NAME] Geometry:graphic.geometry CategoryID:[[graphic attributeForKey:GRAPHIC_ATTRIBUTE_CATEGORY_ID] intValue] Type:POI_ROOM];
+            NPPoi *poi = [NPPoi poiWithGeoID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_GEO_ID] PoiID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_POI_ID] FloorID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_FLOOR_ID] BuildingID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_BUILDING_ID] Name:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_NAME] Geometry:graphic.geometry CategoryID:[[graphic attributeForKey:GRAPHIC_ATTRIBUTE_CATEGORY_ID] intValue] Layer:POI_ROOM];
             [poiArray addObject:poi];
         }
     }
@@ -165,7 +159,7 @@
         for (int i = 0; i < array.count; ++i) {
             AGSGraphic *graphic = (AGSGraphic *)array[i];
             
-            NPPoi *poi = [NPPoi poiWithGeoID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_GEO_ID] PoiID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_POI_ID] FloorID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_FLOOR_ID] BuildingID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_BUILDING_ID] Name:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_NAME] Geometry:graphic.geometry CategoryID:[[graphic attributeForKey:GRAPHIC_ATTRIBUTE_CATEGORY_ID] intValue] Type:POI_ASSET];
+            NPPoi *poi = [NPPoi poiWithGeoID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_GEO_ID] PoiID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_POI_ID] FloorID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_FLOOR_ID] BuildingID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_BUILDING_ID] Name:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_NAME] Geometry:graphic.geometry CategoryID:[[graphic attributeForKey:GRAPHIC_ATTRIBUTE_CATEGORY_ID] intValue] Layer:POI_ASSET];
             [poiArray addObject:poi];
         }
     }
@@ -213,15 +207,39 @@
     [facilityLayer showFacilityWithCategory:categoryID];
 }
 
+- (void)showFacilityOnCurrentWithCategorys:(NSArray *)categoryIDs
+{
+    [facilityLayer showFacilityOnCurrentWithCategorys:categoryIDs];
+}
+
 - (NSArray *)getAllFacilityCategoryIDOnCurrentFloor
 {
     return [facilityLayer getAllFacilityCategoryIDOnCurrentFloor];
 }
 
+- (NPPoi *)getPoiOnCurrentFloorWithPoiID:(NSString *)pid layer:(POI_LAYER)layer
+{
+    NPPoi *result = nil;
+    switch (layer) {
+        case POI_ROOM:
+            result = [roomLayer getPoiWithPoiID:pid];
+            break;
+            
+        case POI_FACILITY:
+            result = [facilityLayer getPoiWithPoiID:pid];
+            break;
+            
+        default:
+            break;
+    }
+    return result;
+}
+
+
 #define DEFAULT_RESOLUTION_THRESHOLD 0.1
 - (void)respondToZooming:(NSNotification *)notification
 {
-    NSLog(@"respondToZooming: %f", self.resolution);
+//    NSLog(@"respondToZooming: %f", self.resolution);
     BOOL labelVisible = self.resolution < DEFAULT_RESOLUTION_THRESHOLD;
     [labelLayer setVisible:labelVisible];
 }

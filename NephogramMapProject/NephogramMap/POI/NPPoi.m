@@ -13,17 +13,16 @@
     
 }
 
-
 @end
 
 @implementation NPPoi
 
-+ (NPPoi *)poiWithGeoID:(NSString *)gid PoiID:(NSString *)pid FloorID:(NSString *)fid  BuildingID:(NSString *)bid Name:(NSString *)pname Geometry:(AGSGeometry *)geometry CategoryID:(int)cid Type:(POI_TYPE)ptype
++ (NPPoi *)poiWithGeoID:(NSString *)gid PoiID:(NSString *)pid FloorID:(NSString *)fid  BuildingID:(NSString *)bid Name:(NSString *)pname Geometry:(AGSGeometry *)geometry CategoryID:(int)cid Layer:(POI_LAYER)pLayer
 {
-    return [[NPPoi alloc] initWithGeoID:gid PoiID:pid FloorID:fid BuildingID:bid Name:pname Geometry:geometry CategoryID:cid Type:ptype];
+    return [[NPPoi alloc] initWithGeoID:gid PoiID:pid FloorID:fid BuildingID:bid Name:pname Geometry:geometry CategoryID:cid Layer:pLayer];
 }
 
-- (id)initWithGeoID:(NSString *)gid PoiID:(NSString *)pid FloorID:(NSString *)fid  BuildingID:(NSString *)bid Name:(NSString *)pname Geometry:(AGSGeometry *)geometry CategoryID:(int)cid Type:(POI_TYPE)ptype
+- (id)initWithGeoID:(NSString *)gid PoiID:(NSString *)pid FloorID:(NSString *)fid  BuildingID:(NSString *)bid Name:(NSString *)pname Geometry:(AGSGeometry *)geometry CategoryID:(int)cid Layer:(POI_LAYER)pLayer
 {
     self = [super init];
     if (self) {
@@ -34,14 +33,14 @@
         _name = pname;
         _geometry = geometry;
         _categoryID = cid;
-        _type = ptype;
+        _layer = pLayer;
     }
     return self;
 }
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"GeoID: %@, PoiID: %@, Name: %@", _geoID, _poiID, _name];
+    return [NSString stringWithFormat:@"GeoID: %@, PoiID: %@, Name: %@, Layer: %d", _geoID, _poiID, _name, _layer];
 }
 
 @end

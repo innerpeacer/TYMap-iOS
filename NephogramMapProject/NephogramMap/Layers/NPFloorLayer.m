@@ -36,7 +36,7 @@
 
 - (void)loadContentsWithInfo:(NPMapInfo *)info
 {
-    NSLog(@"addFloorContent");
+//    NSLog(@"addFloorContent");
     
     [self removeAllGraphics];
     
