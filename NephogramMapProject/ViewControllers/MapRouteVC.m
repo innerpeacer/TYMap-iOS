@@ -12,7 +12,10 @@
 #import "NPRouteLayer.h"
 #import "NPMapEnviroment.h"
 
-#define ROUTE_TASK_URL  @"http://192.168.16.14:6080/arcgis/rest/services/0021/00210001_NA/NAServer/Route"
+//#define ROUTE_TASK_URL  @"http://192.168.16.14:6080/arcgis/rest/services/0021/00210001_NA/NAServer/Route"
+#define ROUTE_TASK_URL  @"http://192.168.16.131:6080/arcgis/rest/services/JinZhong/JinZhong_NA_service/NAServer/Route"
+
+
 //#define ROUTE_TASK_URL  @"http://192.168.0.109:6080/arcgis/rest/services/Office/office_NA_service/NAServer/Route"
 
 @interface MapRouteVC() <NPRouteManagerDelegate>

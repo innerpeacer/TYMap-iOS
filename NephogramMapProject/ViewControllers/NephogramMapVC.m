@@ -21,33 +21,40 @@
 {
     [super viewDidLoad];
     
-    self.mapView.highlightPOIOnSelection = YES;
+//    self.mapView.highlightPOIOnSelection = YES;
+    
+    
     
 }
 
 - (void)NPMapView:(NPMapView *)mapView didClickAtPoint:(CGPoint)screen mapPoint:(AGSPoint *)mappoint
 {
-    NSLog(@"%f, %f", mappoint.x, mappoint.y);
-    
+//    NSLog(@"%f, %f", mappoint.x, mappoint.y);
+// 
+//    NSLog(@"%f", self.mapView.resolution);
+//    
+//    NPPoi *poi = [self.mapView extractRoomPoiOnCurrentFloorWithX:mappoint.x Y:mappoint.y];
+//    NSLog(@"%@", poi.poiID);
+//    [self.mapView highlightPoi:poi];
 }
 
 - (void)NPMapView:(NPMapView *)mapView PoiSelected:(NSArray *)array
 {
-    NSLog(@"PoiSelected: %@", array);
-    
-    if (array.count > 0) {
-        NPPoi *poi = array[0];
-        
-        NSLog(@"%@", poi);
-        
-        NPPoi *apoi = [self.mapView getPoiOnCurrentFloorWithPoiID:poi.poiID layer:poi.layer];
-        NSLog(@"%@", apoi);
-    }
-    
+//    NSLog(@"PoiSelected: %@", array);
+//    
+//    if (array.count > 0) {
+//        NPPoi *poi = array[0];
+//        
+//        NSLog(@"%@", poi);
+//        
+//        NPPoi *apoi = [self.mapView getPoiOnCurrentFloorWithPoiID:poi.poiID layer:poi.layer];
+//        NSLog(@"%@", apoi);
+//    }
 }
 
 - (void)NPMapView:(NPMapView *)mapView didFinishLoadingFloor:(NPMapInfo *)mapInfo
 {
+    NSLog(@"didFinishLoadingFloor");
     
 }
 

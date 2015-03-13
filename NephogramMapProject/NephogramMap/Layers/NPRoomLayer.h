@@ -17,5 +17,7 @@
 
 - (void)loadContentsWithInfo:(NPMapInfo *)info;
 - (NPPoi *)getPoiWithPoiID:(NSString *)pid;
+- (void)highlightPoi:(NSString *)poiID;
+- (NPPoi *)extractPoiOnCurrentFloorWithX:(double)x Y:(double)y;
 
 @end

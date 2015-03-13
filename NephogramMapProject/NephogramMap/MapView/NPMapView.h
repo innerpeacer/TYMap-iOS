@@ -126,5 +126,31 @@
  *  @return poi信息
  */
 - (NPPoi *)getPoiOnCurrentFloorWithPoiID:(NSString *)pid layer:(POI_LAYER)layer;
+
+/**
+ *  高亮显示POI
+ *
+ *  @param poi 目标poi
+ *  目标poi至少包含poiID和layer信息，当前支持ROOM和FACILITY高亮
+ */
+- (void)highlightPoi:(NPPoi *)poi;
+
+/**
+ *  高亮显示一组POI
+ *
+ *  @param poiArray 目标poi数组
+ */
+- (void)highlightPois:(NSArray *)poiArray;
+
+/**
+ *  根据坐标x和y提取当前楼层的ROOM POI
+ *
+ *  @param x 坐标x
+ *  @param y 坐标y
+ *
+ *  @return ROOM POI
+ */
+- (NPPoi *)extractRoomPoiOnCurrentFloorWithX:(double)x Y:(double)y;
+
 @end
 

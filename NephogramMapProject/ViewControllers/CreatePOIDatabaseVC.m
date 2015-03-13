@@ -82,6 +82,7 @@
         [self addToLog:[NSString stringWithFormat:@"Begin %@", info.mapID]];
         
         for (AGSGraphic *graphic in facilityArray) {
+            
             NSString *name = [graphic attributeForKey:@"NAME"];
             if (name != nil && [name isKindOfClass:[NSString class]]) {
                 
@@ -114,7 +115,7 @@
 - (NSArray *)loadRoomsWithInfo:(NPMapInfo *)info
 {
     NSError *error = nil;
-    NSString *fullPath = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%@_ASSET",info.mapID] ofType:@"json"];
+    NSString *fullPath = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%@_ROOM",info.mapID] ofType:@"json"];
     NSString *jsonString = [NSString stringWithContentsOfFile:fullPath encoding:NSUTF8StringEncoding error:&error];
     
     AGSSBJsonParser *parser = [[AGSSBJsonParser alloc] init];

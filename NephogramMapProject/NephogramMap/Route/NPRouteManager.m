@@ -77,6 +77,7 @@
 - (void)routeTask:(AGSRouteTask *)routeTask operation:(NSOperation *)op didSolveWithResult:(AGSRouteTaskResult *)routeTaskResult
 {
     NSLog(@"didSolveWithResult");
+    
     routeResult = [routeTaskResult.routeResults firstObject];
     //    NSLog(@"%d routes in result",(int)routeTaskResult.routeResults.count);
     
@@ -98,7 +99,7 @@
 
 - (void)routeTask:(AGSRouteTask *)routeTask operation:(NSOperation *)op didRetrieveDefaultRouteTaskParameters:(AGSRouteTaskParameters *)routeParams
 {
-    NSLog(@"didRetrieveDefaultRouteTaskParameters");
+    NSLog(@"didRetrieveDefaultRouteTaskParameters: %@", routeParams);
     routeTaskParams = routeParams;
 }
 

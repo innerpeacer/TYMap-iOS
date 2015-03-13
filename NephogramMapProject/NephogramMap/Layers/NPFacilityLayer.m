@@ -144,4 +144,10 @@
     return result;
 }
 
+- (void)highlightPoi:(NSString *)poiID
+{
+    AGSGraphic *graphic = [facilityDict objectForKey:poiID];
+    [self setSelected:YES forGraphic:graphic];
+}
+
 @end

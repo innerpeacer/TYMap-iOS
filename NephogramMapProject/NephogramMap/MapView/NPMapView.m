@@ -18,10 +18,6 @@
 #import "NPMapType.h"
 #import "NPMapEnviroment.h"
 
-
-
-
-
 @interface NPMapView() <AGSMapViewTouchDelegate>
 {
     NPRenderingScheme *renderingScheme;
@@ -48,19 +44,31 @@
     }
     
     _currentMapInfo = info;
-
+    
+    [floorLayer removeAllGraphics];
+    [roomLayer removeAllGraphics];
+    [assetLayer removeAllGraphics];
+    [facilityLayer removeAllGraphics];
+    [labelLayer removeAllGraphics];
+    
+    
     [floorLayer loadContentsWithInfo:info];
     [roomLayer loadContentsWithInfo:info];
     [assetLayer loadContentsWithInfo:info];
     [facilityLayer loadContentsWithInfo:info];
     [labelLayer loadContentsWithInfo:info];
     
+    
+    self.maxResolution = (_currentMapInfo.mapSize.x * 1.5 / (720/2.0));
+
+
+    AGSEnvelope *envelope = [AGSEnvelope envelopeWithXmin:_currentMapInfo.mapExtent.xmin ymin:_currentMapInfo.mapExtent.ymin xmax:_currentMapInfo.mapExtent.xmax ymax:_currentMapInfo.mapExtent.ymax spatialReference:[NPMapEnvironment defaultSpatialReference]];
+    [self zoomToEnvelope:envelope animated:NO];
+    
+    
     if (self.mapDelegate && [self.mapDelegate respondsToSelector:@selector(NPMapView:didFinishLoadingFloor:)]) {
         [self.mapDelegate NPMapView:self didFinishLoadingFloor:_currentMapInfo];
     }
-    
-    AGSEnvelope *envelope = [AGSEnvelope envelopeWithXmin:_currentMapInfo.mapExtent.xmin ymin:_currentMapInfo.mapExtent.ymin xmax:_currentMapInfo.mapExtent.xmax ymax:_currentMapInfo.mapExtent.ymax spatialReference:[NPMapEnvironment defaultSpatialReference]];
-    [self zoomToEnvelope:envelope animated:NO];
 }
 
 - (void)initMapViewWithRenderScheme:(NPRenderingScheme *)aRenderingScheme
@@ -70,12 +78,14 @@
     self.touchDelegate = self;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(respondToZooming:) name:@"AGSMapViewDidEndZoomingNotification" object:nil];
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(respondToPanning:) name:@"AGSMapViewDidEndPanningNotification" object:nil];
     
     [self setAllowRotationByPinching:YES];
     
     self.backgroundColor = [UIColor lightGrayColor];
     self.gridLineWidth = 0.0;
+    
+    self.minResolution = (7.2 / (720/2.0));
     
     AGSSpatialReference *spatialReference = [NPMapEnvironment defaultSpatialReference];
     
@@ -85,12 +95,10 @@
     
     roomLayer = [NPRoomLayer roomLayerWithRenderingScheme:renderingScheme SpatialReference:spatialReference];
     [self addMapLayer:roomLayer withName:LAYER_NAME_ROOM];
-//    roomLayer.selectionSymbol = [AGSSimpleFillSymbol simpleFillSymbolWithColor:[UIColor cyanColor] outlineColor:[UIColor cyanColor]];
     roomLayer.selectionSymbol = renderingScheme.defaultHighlightFillSymbol;
     
     assetLayer = [NPAssetLayer assetLayerWithRenderingScheme:renderingScheme SpatialReference:spatialReference];
     [self addMapLayer:assetLayer withName:LAYER_NAME_ASSET];
-    //    assetLayer.selectionSymbol = [AGSSimpleFillSymbol simpleFillSymbolWithColor:[UIColor cyanColor] outlineColor:[UIColor cyanColor]];
     
     facilityLayer = [NPFacilityLayer facilityLayerWithRenderingScheme:renderingScheme SpatialReference:spatialReference];
     [self addMapLayer:facilityLayer withName:LAYER_NAME_FACILITY];
@@ -235,6 +243,28 @@
     return result;
 }
 
+- (void)highlightPoi:(NPPoi *)poi
+{
+    switch (poi.layer) {
+        case POI_ROOM:
+            [roomLayer highlightPoi:poi.poiID];
+            break;
+            
+        case POI_FACILITY:
+            [facilityLayer highlightPoi:poi.poiID];
+            break;
+            
+        default:
+            break;
+    }
+}
+
+- (void)highlightPois:(NSArray *)poiArray
+{
+    for (NPPoi *poi in poiArray) {
+        [self highlightPoi:poi];
+    }
+}
 
 #define DEFAULT_RESOLUTION_THRESHOLD 0.1
 - (void)respondToZooming:(NSNotification *)notification
@@ -242,6 +272,30 @@
 //    NSLog(@"respondToZooming: %f", self.resolution);
     BOOL labelVisible = self.resolution < DEFAULT_RESOLUTION_THRESHOLD;
     [labelLayer setVisible:labelVisible];
+}
+
+- (void)respondToPanning:(NSNotification *)notification
+{
+//    NSLog(@"respondToPanning: %f, %f", self.mapAnchor.x, self.mapAnchor.y);
+    
+    AGSPoint *center = self.mapAnchor;
+    
+    double x = center.x;
+    double y = center.y;
+    
+    if (x <= _currentMapInfo.mapExtent.xmax && x >= _currentMapInfo.mapExtent.xmin && y <= _currentMapInfo.mapExtent.ymax && y >= _currentMapInfo.mapExtent.ymin) {
+        return;
+    }
+    
+    x = (x > _currentMapInfo.mapExtent.xmax) ? _currentMapInfo.mapExtent.xmax : ((x < _currentMapInfo.mapExtent.xmin) ? _currentMapInfo.mapExtent.xmin : x);
+    y = (y > _currentMapInfo.mapExtent.ymax) ? _currentMapInfo.mapExtent.ymax : ((y < _currentMapInfo.mapExtent.ymin) ? _currentMapInfo.mapExtent.ymin : y);
+    
+    [self centerAtPoint:[AGSPoint pointWithX:x y:y spatialReference:self.spatialReference] animated:YES];
+}
+
+- (NPPoi *)extractRoomPoiOnCurrentFloorWithX:(double)x Y:(double)y
+{
+    return [roomLayer extractPoiOnCurrentFloorWithX:x Y:y];
 }
 
 @end

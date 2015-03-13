@@ -27,4 +27,6 @@
 
 - (NPPoi *)getPoiWithPoiID:(NSString *)pid;
 
+- (void)highlightPoi:(NSString *)poiID;
+
 @end
