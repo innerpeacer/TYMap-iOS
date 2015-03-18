@@ -77,7 +77,7 @@
     
     AGSFeatureSet *set = [[AGSFeatureSet alloc] initWithJSON:dict];
     NSArray *allGraphics = set.features;
-    
+        
     for (AGSGraphic *g in allGraphics) {
         NSString *poiID = [g attributeForKey:GRAPHIC_ATTRIBUTE_POI_ID];
         [roomDict setObject:g forKey:poiID];

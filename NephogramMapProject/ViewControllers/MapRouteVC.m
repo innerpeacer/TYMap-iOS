@@ -11,10 +11,11 @@
 #import "NPRouteManager.h"
 #import "NPRouteLayer.h"
 #import "NPMapEnviroment.h"
+#import "NPRoutePointConverter.h"
 
-//#define ROUTE_TASK_URL  @"http://192.168.16.14:6080/arcgis/rest/services/0021/00210001_NA/NAServer/Route"
-#define ROUTE_TASK_URL  @"http://192.168.16.131:6080/arcgis/rest/services/JinZhong/JinZhong_NA_service/NAServer/Route"
-
+//#define ROUTE_TASK_URL  @"http://192.168.16.24:6080/arcgis/rest/services/0021/00210001_NA/NAServer/Route"
+//#define ROUTE_TASK_URL  @"http://192.168.1.14:6080/arcgis/rest/services/JinZhong/JinZhong_NA_service/NAServer/Route"
+#define ROUTE_TASK_URL  @"http://121.40.16.26:6080/arcgis/rest/services/002100002/NAServer/Route"
 
 //#define ROUTE_TASK_URL  @"http://192.168.0.109:6080/arcgis/rest/services/Office/office_NA_service/NAServer/Route"
 
@@ -23,10 +24,16 @@
     NPRouteManager *routeManager;
     
     AGSPoint *currentPoint;
-    AGSPoint *startPoint;
-    AGSPoint *endPoint;
+    NPLocalPoint *startLocalPoint;
+    NPLocalPoint *endLocalPoint;
     
     NPRouteLayer *routeLayer;
+    
+    BOOL isRouting;
+//    NSDictionary *routeGraphicDict;
+    NPRouteResult *routeResult;
+    
+    NPRoutePointConverter *routePointConverter;
     
     AGSGraphicsLayer *hintLayer;
     AGSGraphicsLayer *startLayer;
@@ -60,8 +67,13 @@
     
     AGSCredential *credential = [NPMapEnvironment defaultCredential];
     NSURL *routeTaskUrl = [NSURL URLWithString:ROUTE_TASK_URL];
-    routeManager = [NPRouteManager routeManagerWithURL:routeTaskUrl credential:credential];
+    routeManager = [NPRouteManager routeManagerWithURL:routeTaskUrl credential:credential MapInfos:self.allMapInfos];
     routeManager.delegate = self;
+    
+    NPMapInfo *info = [self.allMapInfos objectAtIndex:0];
+    MapSize offset = {200, 0};
+    routePointConverter = [[NPRoutePointConverter alloc] initWithBaseMapExtent:info.mapExtent Offset:offset];
+    
 }
 
 - (void)routeManager:(NPRouteManager *)routeManager didFailRetrieveDefaultRouteTaskParametersWithError:(NSError *)error
@@ -70,25 +82,70 @@
     
 }
 
-- (void)routeManager:(NPRouteManager *)routeManager didSolveRouteWithResult:(AGSGraphic *)routeResultGraphic
+- (void)routeManager:(NPRouteManager *)routeManager didSolveRouteWithResult:(NPRouteResult *)rs
 {
     NSLog(@"routeManager: didSolveRouteWithResult:");
     
-    [routeLayer removeAllGraphics];
     [hintLayer removeAllGraphics];
     
-    [routeLayer addGraphic:routeResultGraphic];
-    
-    
-    NSMutableArray *graphics = [routeLayer.graphics mutableCopy];
-    for (AGSGraphic *g in graphics) {
-        if ([g isKindOfClass:[AGSStopGraphic class]]) {
-            [routeLayer removeGraphic:g];
+    routeResult = rs;
+    [self showRouteResultOnCurrentFloor];
+}
+
+- (void)showRouteResultOnCurrentFloor
+{
+    [routeLayer removeAllGraphics];
+    if (routeResult) {
+        int floor = self.mapView.currentMapInfo.floorNumber;
+        
+        AGSPolyline *line = [routeResult getRouteOnFloor:floor];
+        if (line) {
+            [routeLayer addGraphic:[AGSGraphic graphicWithGeometry:line symbol:nil attributes:nil]];
+            
+            if ([routeResult isFirstFloor:floor] && [routeResult isLastFloor:floor]) {
+                NSLog(@"Same Floor");
+                return;
+            }
+            
+            if ([routeResult isFirstFloor:floor] && ![routeResult isLastFloor:floor]) {
+                AGSPoint *p = [routeResult getLastPointOnFloor:floor];
+                if (p) {
+                    [routeLayer addGraphic:[AGSGraphic graphicWithGeometry:p symbol:[AGSPictureMarkerSymbol pictureMarkerSymbolWithImageNamed:@"nav_exit"] attributes:nil]];
+                }
+                return;
+            }
+            
+            if (![routeResult isFirstFloor:floor] && [routeResult isLastFloor:floor]) {
+                AGSPoint *p = [routeResult getFirstPointOnFloor:floor];
+                if (p) {
+                    [routeLayer addGraphic:[AGSGraphic graphicWithGeometry:p symbol:[AGSPictureMarkerSymbol pictureMarkerSymbolWithImageNamed:@"nav_exit"] attributes:nil]];
+                }
+                return;
+            }
+            
+            if (![routeResult isFirstFloor:floor] && ![routeResult isLastFloor:floor]) {
+                AGSPoint *fp = [routeResult getFirstPointOnFloor:floor];
+                AGSPoint *lp = [routeResult getLastPointOnFloor:floor];
+                if (fp) {
+                    [routeLayer addGraphic:[AGSGraphic graphicWithGeometry:fp symbol:[AGSPictureMarkerSymbol pictureMarkerSymbolWithImageNamed:@"nav_exit"] attributes:nil]];
+                }
+                
+                if (lp) {
+                    [routeLayer addGraphic:[AGSGraphic graphicWithGeometry:lp symbol:[AGSPictureMarkerSymbol pictureMarkerSymbolWithImageNamed:@"nav_exit"] attributes:nil]];
+                }
+                return;
+            }
         }
+        
     }
-    
-    
-    
+}
+
+- (IBAction)floorChanged:(id)sender
+{
+    [super floorChanged:sender];
+    if (isRouting) {
+        [self showRouteResultOnCurrentFloor];
+    }
 }
 
 - (void)routeManager:(NPRouteManager *)routeManager didFailSolveRouteWithError:(NSError *)error
@@ -119,33 +176,40 @@
 }
 
 - (IBAction)setStartPoint:(id)sender {
-    startPoint = currentPoint;
+    startLocalPoint = [NPLocalPoint pointWithX:currentPoint.x Y:currentPoint.y Floor:self.mapView.currentMapInfo.floorNumber];
     
     [startLayer removeAllGraphics];
     
     AGSPictureMarkerSymbol *pmsStart = [AGSPictureMarkerSymbol pictureMarkerSymbolWithImageNamed:@"GreenPushpin"];
     pmsStart.offset = CGPointMake(9, 16);
-    [startLayer addGraphic:[AGSGraphic graphicWithGeometry:startPoint symbol:pmsStart attributes:nil]];
+    [startLayer addGraphic:[AGSGraphic graphicWithGeometry:currentPoint symbol:pmsStart attributes:nil]];
     
 }
 
 - (IBAction)setEndPoint:(id)sender {
-    endPoint = currentPoint;
+    endLocalPoint = [NPLocalPoint pointWithX:currentPoint.x Y:currentPoint.y Floor:self.mapView.currentMapInfo.floorNumber];
     
     [endLayer removeAllGraphics];
     
     AGSPictureMarkerSymbol *pmsEnd = [AGSPictureMarkerSymbol pictureMarkerSymbolWithImageNamed:@"RedPushpin"];
     pmsEnd.offset = CGPointMake(9, 16);
-    [endLayer addGraphic:[AGSGraphic graphicWithGeometry:endPoint symbol:pmsEnd attributes:nil]];
+    [endLayer addGraphic:[AGSGraphic graphicWithGeometry:currentPoint symbol:pmsEnd attributes:nil]];
 }
 
 - (IBAction)requtestRoute:(id)sender {
-    if (startPoint == nil || endPoint == nil) {
+    if (startLocalPoint == nil || endLocalPoint == nil) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"需要两个点请求路径！" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
         [alert show];
         return;
     }
-    [routeManager requestRouteWithStart:startPoint End:endPoint];
+    
+    AGSPoint *sp = [routePointConverter routePointFromLocalPoint:startLocalPoint];
+    AGSPoint *ep = [routePointConverter routePointFromLocalPoint:endLocalPoint];
+    
+    routeResult = nil;
+    isRouting = YES;
+    
+    [routeManager requestRouteWithStart:sp End:ep];
 }
 
 - (IBAction)reset:(id)sender {
@@ -154,9 +218,12 @@
     [startLayer removeAllGraphics];
     [endLayer removeAllGraphics];
     
-    startPoint = nil;
-    endPoint = nil;
+    startLocalPoint = nil;
+    endLocalPoint = nil;
     currentPoint = nil;
+    
+    isRouting = NO;
+    routeResult = nil;
 }
 
 @end

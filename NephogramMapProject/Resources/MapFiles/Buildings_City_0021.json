@@ -25,6 +25,14 @@
             "status":"0"
         },
         {
+            "id":"002188888",
+            "name":"Demo",
+            "longitude":"116.362551",
+            "latitude":"39.958951",
+            "address":"",
+            "status":"0"
+        },
+        {
             "id":"002199999",
             "name":"宿舍",
             "longitude":"116.362551",

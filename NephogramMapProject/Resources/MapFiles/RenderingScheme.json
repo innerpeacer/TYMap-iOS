@@ -28,23 +28,102 @@
         },
         "FillSymbol": [
                        {
-                       "colorID": 0,
-                       "fillColor": "#FFF5F3F0",
-                       "outlineColor": "#FF888888",
-                       "lineWidth": 1
+                       "colorID": 1,
+                       "fillColor": "#FFFAFCFC",
+                       "outlineColor": "#FFFAFCFC",
+                       "lineWidth": 2
                        },
                        {
-                       "colorID": 1,
-                       "fillColor": "#FFF5F3F0",
-                       "outlineColor": "#FF888888",
+                       "colorID": 2,
+                       "fillColor": "#FFFDE5BB",
+                       "outlineColor": "#FFECECEC",
                        "lineWidth": 1
                        },
                        {
                        "colorID": 3,
-                       "fillColor": "#FF68DC00",
-                       "outlineColor": "#FFFFFFFF",
+                       "fillColor": "#FFFDF4BB",
+                       "outlineColor": "#FFECECEC",
                        "lineWidth": 1
                        }
+                       ,
+                       {
+                       "colorID": 4,
+                       "fillColor": "#FFF5E3D8",
+                       "outlineColor": "#FFD7B09E",
+                       "lineWidth": 1
+                       }
+                       ,
+                       {
+                       "colorID": 5,
+                       "fillColor": "#FFF7D7C4",
+                       "outlineColor": "#FFF7D7C4",
+                       "lineWidth": 0.4
+                       }
+                       ,
+                       {
+                       "colorID": 6,
+                       "fillColor": "#FFFFF7D5",
+                       "outlineColor": "#FFECECEC",
+                       "lineWidth": 1
+                       }
+                       ,
+                       {
+                       "colorID": 7,
+                       "fillColor": "#FFECECEC",
+                       "outlineColor": "#FFECECEC",
+                       "lineWidth": 1
+                       }
+                       ,
+                       {
+                       "colorID": 8,
+                       "fillColor": "#FFAAE6FD",
+                       "outlineColor": "#FFFFFFFF",
+                       "lineWidth": 0
+                       }
+                       ,
+                       {
+                       "colorID": 9,
+                       "fillColor": "#FFFAFCFC",
+                       "outlineColor": "#FFFAFCFC",
+                       "lineWidth": 2
+                       }
+                       ,
+                       {
+                       "colorID": 10,
+                       "fillColor": "#FFFFEA86",
+                       "outlineColor": "#FFD5BF58",
+                       "lineWidth": 0.4
+                       }
+                       ,
+                       {
+                       "colorID": 11,
+                       "fillColor": "#FFABBEEA",
+                       "outlineColor": "#FF9EAAD7",
+                       "lineWidth": 0.4
+                       }
+                       ,
+                       {
+                       "colorID": 12,
+                       "fillColor": "#FFD4E0F2",
+                       "outlineColor": "#FF9EBBD7",
+                       "lineWidth": 0.4
+                       }
+                       ,
+                       {
+                       "colorID": 13,
+                       "fillColor": "#FFEFF2D4",
+                       "outlineColor": "#FFD7D79E",
+                       "lineWidth": 0.4
+                       }
+                       ,
+                       {
+                       "colorID": 14,
+                       "fillColor": "#FFE6E6E6",
+                       "outlineColor": "#FFCCCCCC",
+                       "lineWidth": 0.4
+                       }
+
+                       
                        ],
         "IconSymbol": [
                        {

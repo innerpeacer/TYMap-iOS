@@ -28,6 +28,8 @@
     NPLabelLayer *labelLayer;
     NPRoomLayer *roomLayer;
     
+    AGSEnvelope *initialEnvelope;
+    
     //    NPMapInfo *currentMapInfo;
 }
 
@@ -58,13 +60,16 @@
     [facilityLayer loadContentsWithInfo:info];
     [labelLayer loadContentsWithInfo:info];
     
-    
-    self.maxResolution = (_currentMapInfo.mapSize.x * 1.5 / (720/2.0));
 
-
-    AGSEnvelope *envelope = [AGSEnvelope envelopeWithXmin:_currentMapInfo.mapExtent.xmin ymin:_currentMapInfo.mapExtent.ymin xmax:_currentMapInfo.mapExtent.xmax ymax:_currentMapInfo.mapExtent.ymax spatialReference:[NPMapEnvironment defaultSpatialReference]];
-    [self zoomToEnvelope:envelope animated:NO];
-    
+    if (initialEnvelope == nil) {
+        initialEnvelope = [AGSEnvelope envelopeWithXmin:_currentMapInfo.mapExtent.xmin ymin:_currentMapInfo.mapExtent.ymin xmax:_currentMapInfo.mapExtent.xmax ymax:_currentMapInfo.mapExtent.ymax spatialReference:[NPMapEnvironment defaultSpatialReference]];
+        [self zoomToEnvelope:initialEnvelope animated:NO];
+        
+//        self.maxResolution = (_currentMapInfo.mapSize.x * 1.5 / (720/2.0));
+        double width = 0.06; // 6cm
+        self.minScale = _currentMapInfo.mapSize.x / width;
+        self.maxScale = 6 / width;
+    }
     
     if (self.mapDelegate && [self.mapDelegate respondsToSelector:@selector(NPMapView:didFinishLoadingFloor:)]) {
         [self.mapDelegate NPMapView:self didFinishLoadingFloor:_currentMapInfo];
@@ -85,7 +90,7 @@
     self.backgroundColor = [UIColor lightGrayColor];
     self.gridLineWidth = 0.0;
     
-    self.minResolution = (7.2 / (720/2.0));
+//    self.minResolution = (7.2 / (720/2.0));
     
     AGSSpatialReference *spatialReference = [NPMapEnvironment defaultSpatialReference];
     
@@ -138,6 +143,23 @@
     }
 }
 
+
+- (void)mapView:(AGSMapView *)mapView didMoveTapAndHoldAtPoint:(CGPoint)screen mapPoint:(AGSPoint *)mappoint features:(NSDictionary *)features
+{
+//    NSLog(@"%@",NSStringFromSelector(_cmd));
+}
+
+- (void)mapView:(AGSMapView *)mapView didEndTapAndHoldAtPoint:(CGPoint)screen mapPoint:(AGSPoint *)mappoint features:(NSDictionary *)features
+{
+//    NSLog(@"%@",NSStringFromSelector(_cmd));
+
+}
+
+- (void)mapView:(AGSMapView *)mapView didTapAndHoldAtPoint:(CGPoint)screen mapPoint:(AGSPoint *)mappoint features:(NSDictionary *)features
+{
+//    NSLog(@"%@",NSStringFromSelector(_cmd));
+
+}
 
 - (NSArray *)extractSelectedPoi:(NSDictionary *)features
 {
@@ -266,11 +288,16 @@
     }
 }
 
-#define DEFAULT_RESOLUTION_THRESHOLD 0.1
+//#define DEFAULT_RESOLUTION_THRESHOLD 0.1
+
+// 一般按5个字算，屏幕占距1cm，6m的房间内可以显示
+#define DEFAULT_SCALE_THRESHOLD 600
+
 - (void)respondToZooming:(NSNotification *)notification
 {
 //    NSLog(@"respondToZooming: %f", self.resolution);
-    BOOL labelVisible = self.resolution < DEFAULT_RESOLUTION_THRESHOLD;
+//    BOOL labelVisible = self.resolution < DEFAULT_RESOLUTION_THRESHOLD;
+    BOOL labelVisible = self.mapScale < DEFAULT_SCALE_THRESHOLD;
     [labelLayer setVisible:labelVisible];
 }
 

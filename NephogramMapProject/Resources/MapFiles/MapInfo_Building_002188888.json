@@ -1,0 +1,19 @@
+{
+    "MapInfo": [
+                {
+                "mapID":"002188888F01",
+                "floorName":"F1",
+                "floorIndex":"1",
+                "size_x":"6",
+                "size_y":"7",
+                "initAngle":"10.0",
+                "xmax":"5",
+                "xmin":"-1",
+                "ymax":"6",
+                "ymin":"-1"
+                }                
+
+                
+                ]
+
+}

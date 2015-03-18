@@ -7,13 +7,19 @@
 //
 
 #import "NPRouteManager.h"
+#import "NPRoutePointConverter.h"
 
 @interface NPRouteManager() <AGSRouteTaskDelegate>
 {
     AGSRouteTask *routeTask;
     AGSRouteTaskParameters *routeTaskParams;
-    AGSRouteResult *routeResult;
     AGSCredential *credential;
+
+    NSArray *allMapInfos;
+    
+    NPRoutePointConverter *routePointConverter;
+    
+//    NPRouteResult *
 }
 
 @end
@@ -21,16 +27,22 @@
 @implementation NPRouteManager
 
 
-+ (NPRouteManager *)routeManagerWithURL:(NSURL *)url credential:(AGSCredential *)credential
++ (NPRouteManager *)routeManagerWithURL:(NSURL *)url credential:(AGSCredential *)credential MapInfos:(NSArray *)mapInfoArray
 {
-    return [[NPRouteManager alloc] initRouteTaskWithURL:url credential:credential];
+    return [[NPRouteManager alloc] initRouteTaskWithURL:url credential:credential MapInfos:mapInfoArray];
 }
 
-- (id)initRouteTaskWithURL:(NSURL *)url credential:(AGSCredential *)cr
+- (id)initRouteTaskWithURL:(NSURL *)url credential:(AGSCredential *)cr  MapInfos:(NSArray *)mapInfoArray
 {
     self = [super init];
     if (self) {
         credential = cr;
+        allMapInfos = mapInfoArray;
+        
+        NPMapInfo *info = [allMapInfos objectAtIndex:0];
+        MapSize offset = {200, 0};
+        routePointConverter = [[NPRoutePointConverter alloc] initWithBaseMapExtent:info.mapExtent Offset:offset];
+        
         routeTask = [AGSRouteTask routeTaskWithURL:url credential:cr];
         routeTask.delegate = self;
         [routeTask retrieveDefaultRouteTaskParameters];
@@ -78,15 +90,73 @@
 {
     NSLog(@"didSolveWithResult");
     
-    routeResult = [routeTaskResult.routeResults firstObject];
-    //    NSLog(@"%d routes in result",(int)routeTaskResult.routeResults.count);
+    AGSRouteResult *routeResult = [routeTaskResult.routeResults firstObject];
     
     if (routeResult) {
-        //        NSLog(@"routeResult: %@", routeResult);
+        
+        NPRouteResult *result = [self processRouteResult:routeResult];
+        
+        if (result == nil) {
+            return;
+        }
+        
         if (self.delegate != nil || [self.delegate respondsToSelector:@selector(routeManager:didSolveRouteWithResult:)]) {
-            [self.delegate routeManager:self didSolveRouteWithResult:routeResult.routeGraphic];
+            [self.delegate routeManager:self didSolveRouteWithResult:result];
         }
     }
+}
+
+- (NPRouteResult *)processRouteResult:(AGSRouteResult *)rs
+{
+//    NSMutableDictionary *result = [NSMutableDictionary dictionary];
+    
+    NSMutableDictionary *pointDict = [[NSMutableDictionary alloc] init];
+    
+    NSMutableArray *floorArray = [[NSMutableArray alloc] init];
+    NSMutableDictionary *routeDict = [[NSMutableDictionary alloc] init];
+    
+    AGSPolyline *routeLine = (AGSPolyline *)rs.routeGraphic.geometry;
+    
+    int pathNum = (int)routeLine.numPaths;
+    if (pathNum > 0) {
+        
+        int num = (int)[routeLine numPointsInPath:0];
+        
+        for (int i = 0; i < num; ++i) {
+            AGSPoint *p = [routeLine pointOnPath:0 atIndex:i];
+            
+            NPLocalPoint *lp = [routePointConverter localPointFromRoutePoint:p];
+            BOOL isValid = [routePointConverter checkPointValid:lp];
+            if (isValid) {
+                if (![pointDict.allKeys containsObject:@(lp.floor)]) {
+                    [pointDict setObject:[NSMutableArray array] forKey:@(lp.floor)];
+                    [floorArray addObject:@(lp.floor)];
+                }
+                
+                NSMutableArray *array = [pointDict objectForKey:@(lp.floor)];
+                [array addObject:lp];
+            }
+        }
+    }
+    
+    for (NSNumber *f in floorArray) {
+        NSMutableArray *array = [pointDict objectForKey:f];
+        
+        AGSMutablePolyline *polyline = [[AGSMutablePolyline alloc] initWithSpatialReference:[NPMapEnvironment defaultSpatialReference]];
+        [polyline addPathToPolyline];
+        
+        for (NPLocalPoint *lp in array) {
+            [polyline addPointToPath:[AGSPoint pointWithX:lp.x y:lp.y spatialReference:[NPMapEnvironment defaultSpatialReference]]];
+        }
+        
+        [routeDict setObject:polyline forKey:f];
+    }
+    
+    if (routeDict.count < 1) {
+        return nil;
+    }
+    
+    return [NPRouteResult routeResultWithDict:routeDict FloorArray:floorArray];
 }
 
 - (void)routeTask:(AGSRouteTask *)routeTask operation:(NSOperation *)op didFailToRetrieveDefaultRouteTaskParametersWithError:(NSError *)error

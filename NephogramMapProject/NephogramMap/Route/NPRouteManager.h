@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <ArcGIS/ArcGIS.h>
 #import "NPMapEnviroment.h"
+#import "NPRouteResult.h"
 
 @class NPRouteManager;
 
@@ -31,7 +32,7 @@
  *  @param routeManager       路径管理实例
  *  @param routeResultGraphic 路径规划结果
  */
-- (void)routeManager:(NPRouteManager *)routeManager didSolveRouteWithResult:(AGSGraphic *)routeResultGraphic;
+- (void)routeManager:(NPRouteManager *)routeManager didSolveRouteWithResult:(NPRouteResult *)routeResult;
 
 /**
  *  路径规划失败回调方法
@@ -70,7 +71,7 @@
  *
  *  @return 路径管理类实例
  */
-+ (NPRouteManager *)routeManagerWithURL:(NSURL *)url credential:(AGSCredential *)credential;
++ (NPRouteManager *)routeManagerWithURL:(NSURL *)url credential:(AGSCredential *)credential MapInfos:(NSArray *)mapInfoArray;
 
 /**
  *  请求路径规划，在代理方法获取规划结果
