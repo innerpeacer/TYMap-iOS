@@ -15,6 +15,7 @@
 		570DB3F21A890649001D137E /* MapRouteVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 570DB3F11A890649001D137E /* MapRouteVC.m */; };
 		570DB3F51A890653001D137E /* MapCalloutVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 570DB3F41A890653001D137E /* MapCalloutVC.m */; };
 		570DB3F81A890664001D137E /* CustomCalloutVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 570DB3F71A890664001D137E /* CustomCalloutVC.m */; };
+		571310B31ABC217500E980F9 /* NephogramData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 571310B21ABC217500E980F9 /* NephogramData.framework */; };
 		57163EA51AB7CDF8002B40C6 /* 002100001_POI.db in Resources */ = {isa = PBXBuildFile; fileRef = 57163E621AB7CDF8002B40C6 /* 002100001_POI.db */; };
 		57163EA61AB7CDF8002B40C6 /* 002100001F04_ASSET.json in Resources */ = {isa = PBXBuildFile; fileRef = 57163E631AB7CDF8002B40C6 /* 002100001F04_ASSET.json */; };
 		57163EA71AB7CDF8002B40C6 /* 002100001F04_FACILITY.json in Resources */ = {isa = PBXBuildFile; fileRef = 57163E641AB7CDF8002B40C6 /* 002100001F04_FACILITY.json */; };
@@ -70,16 +71,12 @@
 		57163EDD1AB7CDF8002B40C6 /* 002199999F05_ROOM.json in Resources */ = {isa = PBXBuildFile; fileRef = 57163E9A1AB7CDF8002B40C6 /* 002199999F05_ROOM.json */; };
 		57163EDE1AB7CDF8002B40C6 /* Buildings_City_0021.json in Resources */ = {isa = PBXBuildFile; fileRef = 57163E9B1AB7CDF8002B40C6 /* Buildings_City_0021.json */; };
 		57163EDF1AB7CDF8002B40C6 /* Cities.json in Resources */ = {isa = PBXBuildFile; fileRef = 57163E9C1AB7CDF8002B40C6 /* Cities.json */; };
-		57163EE01AB7CDF8002B40C6 /* icon_exit.png in Resources */ = {isa = PBXBuildFile; fileRef = 57163E9D1AB7CDF8002B40C6 /* icon_exit.png */; };
-		57163EE11AB7CDF8002B40C6 /* icon_lift.png in Resources */ = {isa = PBXBuildFile; fileRef = 57163E9E1AB7CDF8002B40C6 /* icon_lift.png */; };
-		57163EE21AB7CDF8002B40C6 /* icon_stair.png in Resources */ = {isa = PBXBuildFile; fileRef = 57163E9F1AB7CDF8002B40C6 /* icon_stair.png */; };
 		57163EE31AB7CDF8002B40C6 /* MapInfo_Building_002100001.json in Resources */ = {isa = PBXBuildFile; fileRef = 57163EA01AB7CDF8002B40C6 /* MapInfo_Building_002100001.json */; };
 		57163EE41AB7CDF8002B40C6 /* MapInfo_Building_002100002.json in Resources */ = {isa = PBXBuildFile; fileRef = 57163EA11AB7CDF8002B40C6 /* MapInfo_Building_002100002.json */; };
 		57163EE51AB7CDF8002B40C6 /* MapInfo_Building_002100004.json in Resources */ = {isa = PBXBuildFile; fileRef = 57163EA21AB7CDF8002B40C6 /* MapInfo_Building_002100004.json */; };
 		57163EE61AB7CDF8002B40C6 /* MapInfo_Building_002199999.json in Resources */ = {isa = PBXBuildFile; fileRef = 57163EA31AB7CDF8002B40C6 /* MapInfo_Building_002199999.json */; };
 		57163EE71AB7CDF8002B40C6 /* RenderingScheme.json in Resources */ = {isa = PBXBuildFile; fileRef = 57163EA41AB7CDF8002B40C6 /* RenderingScheme.json */; };
 		571E58981AB921FC007B36DD /* NPRoutePointConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 571E58971AB921FC007B36DD /* NPRoutePointConverter.m */; };
-		571E589B1AB92499007B36DD /* NPLocalPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 571E589A1AB92499007B36DD /* NPLocalPoint.m */; };
 		571E58A21AB99101007B36DD /* 002188888F01_ASSET.json in Resources */ = {isa = PBXBuildFile; fileRef = 571E589C1AB99101007B36DD /* 002188888F01_ASSET.json */; };
 		571E58A31AB99101007B36DD /* 002188888F01_FACILITY.json in Resources */ = {isa = PBXBuildFile; fileRef = 571E589D1AB99101007B36DD /* 002188888F01_FACILITY.json */; };
 		571E58A41AB99101007B36DD /* 002188888F01_FLOOR.json in Resources */ = {isa = PBXBuildFile; fileRef = 571E589E1AB99101007B36DD /* 002188888F01_FLOOR.json */; };
@@ -137,6 +134,7 @@
 		570DB3F41A890653001D137E /* MapCalloutVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapCalloutVC.m; sourceTree = "<group>"; };
 		570DB3F61A890664001D137E /* CustomCalloutVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCalloutVC.h; sourceTree = "<group>"; };
 		570DB3F71A890664001D137E /* CustomCalloutVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCalloutVC.m; sourceTree = "<group>"; };
+		571310B21ABC217500E980F9 /* NephogramData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = NephogramData.framework; sourceTree = "<group>"; };
 		57163E621AB7CDF8002B40C6 /* 002100001_POI.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = 002100001_POI.db; sourceTree = "<group>"; };
 		57163E631AB7CDF8002B40C6 /* 002100001F04_ASSET.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 002100001F04_ASSET.json; sourceTree = "<group>"; };
 		57163E641AB7CDF8002B40C6 /* 002100001F04_FACILITY.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 002100001F04_FACILITY.json; sourceTree = "<group>"; };
@@ -192,9 +190,6 @@
 		57163E9A1AB7CDF8002B40C6 /* 002199999F05_ROOM.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 002199999F05_ROOM.json; sourceTree = "<group>"; };
 		57163E9B1AB7CDF8002B40C6 /* Buildings_City_0021.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Buildings_City_0021.json; sourceTree = "<group>"; };
 		57163E9C1AB7CDF8002B40C6 /* Cities.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Cities.json; sourceTree = "<group>"; };
-		57163E9D1AB7CDF8002B40C6 /* icon_exit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_exit.png; sourceTree = "<group>"; };
-		57163E9E1AB7CDF8002B40C6 /* icon_lift.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_lift.png; sourceTree = "<group>"; };
-		57163E9F1AB7CDF8002B40C6 /* icon_stair.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_stair.png; sourceTree = "<group>"; };
 		57163EA01AB7CDF8002B40C6 /* MapInfo_Building_002100001.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = MapInfo_Building_002100001.json; sourceTree = "<group>"; };
 		57163EA11AB7CDF8002B40C6 /* MapInfo_Building_002100002.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = MapInfo_Building_002100002.json; sourceTree = "<group>"; };
 		57163EA21AB7CDF8002B40C6 /* MapInfo_Building_002100004.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = MapInfo_Building_002100004.json; sourceTree = "<group>"; };
@@ -202,8 +197,6 @@
 		57163EA41AB7CDF8002B40C6 /* RenderingScheme.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = RenderingScheme.json; sourceTree = "<group>"; };
 		571E58961AB921FC007B36DD /* NPRoutePointConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPRoutePointConverter.h; sourceTree = "<group>"; };
 		571E58971AB921FC007B36DD /* NPRoutePointConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPRoutePointConverter.m; sourceTree = "<group>"; };
-		571E58991AB92499007B36DD /* NPLocalPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPLocalPoint.h; sourceTree = "<group>"; };
-		571E589A1AB92499007B36DD /* NPLocalPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPLocalPoint.m; sourceTree = "<group>"; };
 		571E589C1AB99101007B36DD /* 002188888F01_ASSET.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 002188888F01_ASSET.json; sourceTree = "<group>"; };
 		571E589D1AB99101007B36DD /* 002188888F01_FACILITY.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 002188888F01_FACILITY.json; sourceTree = "<group>"; };
 		571E589E1AB99101007B36DD /* 002188888F01_FLOOR.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 002188888F01_FLOOR.json; sourceTree = "<group>"; };
@@ -278,6 +271,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				571310B31ABC217500E980F9 /* NephogramData.framework in Frameworks */,
 				574443F41AAEDEB600E6232C /* libsqlite3.0.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -385,9 +379,6 @@
 				57163E9A1AB7CDF8002B40C6 /* 002199999F05_ROOM.json */,
 				57163E9B1AB7CDF8002B40C6 /* Buildings_City_0021.json */,
 				57163E9C1AB7CDF8002B40C6 /* Cities.json */,
-				57163E9D1AB7CDF8002B40C6 /* icon_exit.png */,
-				57163E9E1AB7CDF8002B40C6 /* icon_lift.png */,
-				57163E9F1AB7CDF8002B40C6 /* icon_stair.png */,
 				57163EA01AB7CDF8002B40C6 /* MapInfo_Building_002100001.json */,
 				57163EA11AB7CDF8002B40C6 /* MapInfo_Building_002100002.json */,
 				57163EA21AB7CDF8002B40C6 /* MapInfo_Building_002100004.json */,
@@ -416,8 +407,6 @@
 		57F06C1F1A87BC7500B9511F /* NephogramMapProject */ = {
 			isa = PBXGroup;
 			children = (
-				571E58991AB92499007B36DD /* NPLocalPoint.h */,
-				571E589A1AB92499007B36DD /* NPLocalPoint.m */,
 				574443CD1AAED2CE00E6232C /* MapTools */,
 				57F06C241A87BC7500B9511F /* AppDelegate.h */,
 				57F06C251A87BC7500B9511F /* AppDelegate.m */,
@@ -437,6 +426,7 @@
 		57F06C201A87BC7500B9511F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				571310B21ABC217500E980F9 /* NephogramData.framework */,
 				574443F31AAEDEB600E6232C /* libsqlite3.0.dylib */,
 				57F06C211A87BC7500B9511F /* Info.plist */,
 				57F06C221A87BC7500B9511F /* main.m */,
@@ -618,9 +608,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				57163EE11AB7CDF8002B40C6 /* icon_lift.png in Resources */,
 				57163EDA1AB7CDF8002B40C6 /* 002199999F05_FACILITY.json in Resources */,
-				57163EE01AB7CDF8002B40C6 /* icon_exit.png in Resources */,
 				57163EBF1AB7CDF8002B40C6 /* 002100002F19_LABEL.json in Resources */,
 				57163ED81AB7CDF8002B40C6 /* 002100004F03_ROOM.json in Resources */,
 				57163ECE1AB7CDF8002B40C6 /* 002100004F02_FACILITY.json in Resources */,
@@ -643,7 +631,6 @@
 				57163EBA1AB7CDF8002B40C6 /* 002100002F13_LABEL.json in Resources */,
 				571E58A31AB99101007B36DD /* 002188888F01_FACILITY.json in Resources */,
 				57F06C311A87BC7500B9511F /* LaunchScreen.xib in Resources */,
-				57163EE21AB7CDF8002B40C6 /* icon_stair.png in Resources */,
 				57163EC61AB7CDF8002B40C6 /* 002100004_POI.db in Resources */,
 				57163EDC1AB7CDF8002B40C6 /* 002199999F05_LABEL.json in Resources */,
 				571E58A41AB99101007B36DD /* 002188888F01_FLOOR.json in Resources */,
@@ -701,7 +688,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				571E589B1AB92499007B36DD /* NPLocalPoint.m in Sources */,
 				570DB3E91A8905E9001D137E /* BaseMapVC.m in Sources */,
 				57F06CF71A87C00500B9511F /* NPRoomLayer.m in Sources */,
 				573FD42D1AB0330C0083EAC0 /* NPCity.m in Sources */,
@@ -844,7 +830,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
-				FRAMEWORK_SEARCH_PATHS = "$(HOME)/Library/SDKs/ArcGIS/iOS/";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(HOME)/Library/SDKs/ArcGIS/iOS/",
+					"$(PROJECT_DIR)/NephogramMapProject",
+				);
 				INFOPLIST_FILE = NephogramMapProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -863,7 +852,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
-				FRAMEWORK_SEARCH_PATHS = "$(HOME)/Library/SDKs/ArcGIS/iOS/";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(HOME)/Library/SDKs/ArcGIS/iOS/",
+					"$(PROJECT_DIR)/NephogramMapProject",
+				);
 				INFOPLIST_FILE = NephogramMapProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (

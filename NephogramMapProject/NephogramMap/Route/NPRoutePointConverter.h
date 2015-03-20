@@ -7,7 +7,7 @@
 //
 
 #import <ArcGIS/ArcGIS.h>
-#import "NPLocalPoint.h"
+#import <NephogramData/NephogramData.h>
 #import "NPMapInfo.h"
 
 @interface NPRoutePointConverter : NSObject
@@ -17,6 +17,6 @@
 - (AGSPoint *)routePointFromLocalPoint:(NPLocalPoint *)localPoint;
 - (NPLocalPoint *)localPointFromRoutePoint:(AGSPoint *)routePoint;
 
-- (BOOL)checkPointValid:(NPLocalPoint *)point;
+- (BOOL)checkPointValidity:(NPLocalPoint *)point;
 
 @end

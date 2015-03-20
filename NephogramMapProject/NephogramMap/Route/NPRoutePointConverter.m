@@ -48,7 +48,7 @@
     return [NPLocalPoint pointWithX:originX Y:originY Floor:floor];
 }
 
-- (BOOL)checkPointValid:(NPLocalPoint *)point
+- (BOOL)checkPointValidity:(NPLocalPoint *)point
 {
     if (point.x >= baseExtent.xmin && point.x <= baseExtent.xmax &&  point.y >= baseExtent.ymin && point.y <= baseExtent.ymax){
         return YES;

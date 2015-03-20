@@ -54,7 +54,7 @@
     while ((key = [enumerator nextObject])) {
         NSString *icon = iconDict[key];
         AGSPictureMarkerSymbol *pms = [AGSPictureMarkerSymbol pictureMarkerSymbolWithImageNamed:icon];
-        pms.size = CGSizeMake(16, 16);
+        pms.size = CGSizeMake(18, 18);
         AGSUniqueValue *uv = [AGSUniqueValue uniqueValueWithValue:[NSString stringWithFormat:@"%@", key] symbol:pms];
         [facilityUVs addObject:uv];
     }

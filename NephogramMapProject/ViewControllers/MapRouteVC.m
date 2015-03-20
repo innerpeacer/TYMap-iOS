@@ -14,8 +14,15 @@
 #import "NPRoutePointConverter.h"
 
 //#define ROUTE_TASK_URL  @"http://192.168.16.24:6080/arcgis/rest/services/0021/00210001_NA/NAServer/Route"
-//#define ROUTE_TASK_URL  @"http://192.168.1.14:6080/arcgis/rest/services/JinZhong/JinZhong_NA_service/NAServer/Route"
+
+
+//#define ROUTE_TASK_URL  @"http://192.168.16.122:6080/arcgis/rest/services/002100001/NAServer/Route"
+//#define ROUTE_TASK_URL  @"http://192.168.16.122:6080/arcgis/rest/services/002100002/NAServer/Route"
+
+
+//#define ROUTE_TASK_URL  @"http://121.40.16.26:6080/arcgis/rest/services/002100001/NAServer/Route"
 #define ROUTE_TASK_URL  @"http://121.40.16.26:6080/arcgis/rest/services/002100002/NAServer/Route"
+
 
 //#define ROUTE_TASK_URL  @"http://192.168.0.109:6080/arcgis/rest/services/Office/office_NA_service/NAServer/Route"
 
@@ -30,10 +37,7 @@
     NPRouteLayer *routeLayer;
     
     BOOL isRouting;
-//    NSDictionary *routeGraphicDict;
     NPRouteResult *routeResult;
-    
-    NPRoutePointConverter *routePointConverter;
     
     AGSGraphicsLayer *hintLayer;
     AGSGraphicsLayer *startLayer;
@@ -69,11 +73,6 @@
     NSURL *routeTaskUrl = [NSURL URLWithString:ROUTE_TASK_URL];
     routeManager = [NPRouteManager routeManagerWithURL:routeTaskUrl credential:credential MapInfos:self.allMapInfos];
     routeManager.delegate = self;
-    
-    NPMapInfo *info = [self.allMapInfos objectAtIndex:0];
-    MapSize offset = {200, 0};
-    routePointConverter = [[NPRoutePointConverter alloc] initWithBaseMapExtent:info.mapExtent Offset:offset];
-    
 }
 
 - (void)routeManager:(NPRouteManager *)routeManager didFailRetrieveDefaultRouteTaskParametersWithError:(NSError *)error
@@ -180,8 +179,8 @@
     
     [startLayer removeAllGraphics];
     
-    AGSPictureMarkerSymbol *pmsStart = [AGSPictureMarkerSymbol pictureMarkerSymbolWithImageNamed:@"GreenPushpin"];
-    pmsStart.offset = CGPointMake(9, 16);
+    AGSPictureMarkerSymbol *pmsStart = [AGSPictureMarkerSymbol pictureMarkerSymbolWithImageNamed:@"start"];
+    pmsStart.offset = CGPointMake(0, 22);
     [startLayer addGraphic:[AGSGraphic graphicWithGeometry:currentPoint symbol:pmsStart attributes:nil]];
     
 }
@@ -191,8 +190,8 @@
     
     [endLayer removeAllGraphics];
     
-    AGSPictureMarkerSymbol *pmsEnd = [AGSPictureMarkerSymbol pictureMarkerSymbolWithImageNamed:@"RedPushpin"];
-    pmsEnd.offset = CGPointMake(9, 16);
+    AGSPictureMarkerSymbol *pmsEnd = [AGSPictureMarkerSymbol pictureMarkerSymbolWithImageNamed:@"end"];
+    pmsEnd.offset = CGPointMake(0, 22);
     [endLayer addGraphic:[AGSGraphic graphicWithGeometry:currentPoint symbol:pmsEnd attributes:nil]];
 }
 
@@ -203,13 +202,10 @@
         return;
     }
     
-    AGSPoint *sp = [routePointConverter routePointFromLocalPoint:startLocalPoint];
-    AGSPoint *ep = [routePointConverter routePointFromLocalPoint:endLocalPoint];
-    
     routeResult = nil;
     isRouting = YES;
     
-    [routeManager requestRouteWithStart:sp End:ep];
+    [routeManager requestRouteWithStart:startLocalPoint End:endLocalPoint];
 }
 
 - (IBAction)reset:(id)sender {

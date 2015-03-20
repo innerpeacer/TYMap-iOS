@@ -18,8 +18,6 @@
     NSArray *allMapInfos;
     
     NPRoutePointConverter *routePointConverter;
-    
-//    NPRouteResult *
 }
 
 @end
@@ -41,6 +39,7 @@
         
         NPMapInfo *info = [allMapInfos objectAtIndex:0];
         MapSize offset = {200, 0};
+
         routePointConverter = [[NPRoutePointConverter alloc] initWithBaseMapExtent:info.mapExtent Offset:offset];
         
         routeTask = [AGSRouteTask routeTaskWithURL:url credential:cr];
@@ -51,11 +50,15 @@
     return self;
 }
 
-- (void)requestRouteWithStart:(AGSPoint *)start End:(AGSPoint *)end
+- (void)requestRouteWithStart:(NPLocalPoint *)start End:(NPLocalPoint *)end
 {
     NSMutableArray *stops = [NSMutableArray array];
-    [stops addObject:[AGSGraphic graphicWithGeometry:start symbol:nil attributes:nil]];
-    [stops addObject:[AGSGraphic graphicWithGeometry:end symbol:nil attributes:nil]];
+    
+    _startPoint = [routePointConverter routePointFromLocalPoint:start];
+    _endPoint = [routePointConverter routePointFromLocalPoint:end];
+    
+    [stops addObject:[AGSGraphic graphicWithGeometry:_startPoint symbol:nil attributes:nil]];
+    [stops addObject:[AGSGraphic graphicWithGeometry:_endPoint symbol:nil attributes:nil]];
     
     [routeTaskParams setStopsWithFeatures:stops];
     
@@ -126,7 +129,7 @@
             AGSPoint *p = [routeLine pointOnPath:0 atIndex:i];
             
             NPLocalPoint *lp = [routePointConverter localPointFromRoutePoint:p];
-            BOOL isValid = [routePointConverter checkPointValid:lp];
+            BOOL isValid = [routePointConverter checkPointValidity:lp];
             if (isValid) {
                 if (![pointDict.allKeys containsObject:@(lp.floor)]) {
                     [pointDict setObject:[NSMutableArray array] forKey:@(lp.floor)];

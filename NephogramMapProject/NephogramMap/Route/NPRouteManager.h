@@ -10,6 +10,7 @@
 #import <ArcGIS/ArcGIS.h>
 #import "NPMapEnviroment.h"
 #import "NPRouteResult.h"
+#import <NephogramData/NephogramData.h>
 
 @class NPRouteManager;
 
@@ -51,12 +52,12 @@
 /**
  *  路径规划起点
  */
-@property (nonatomic, strong) AGSPoint *startPoint;
+@property (nonatomic, strong, readonly) AGSPoint *startPoint;
 
 /**
  *  路径规划终点
  */
-@property (nonatomic, strong) AGSPoint *endPoint;
+@property (nonatomic, strong, readonly) AGSPoint *endPoint;
 
 /**
  *  路径管理代理
@@ -79,7 +80,8 @@
  *  @param start 路径规划起点
  *  @param end   路径规划终点
  */
-- (void)requestRouteWithStart:(AGSPoint *)start End:(AGSPoint *)end;
+- (void)requestRouteWithStart:(NPLocalPoint *)start End:(NPLocalPoint *)end;
+
 
 @end
 
