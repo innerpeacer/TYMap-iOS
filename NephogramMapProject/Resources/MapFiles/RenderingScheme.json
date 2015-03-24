@@ -114,16 +114,13 @@
                        "fillColor": "#FFEFF2D4",
                        "outlineColor": "#FFD7D79E",
                        "lineWidth": 0.4
-                       }
-                       ,
+                       },
                        {
                        "colorID": 14,
                        "fillColor": "#FFE6E6E6",
                        "outlineColor": "#FFCCCCCC",
                        "lineWidth": 0.4
                        }
-
-                       
                        ],
         "IconSymbol": [
                        {
@@ -133,6 +130,14 @@
                        {
                        "colorID": 25136,
                        "icon": "icon_lift"
+                       },
+                       {
+                       "colorID": 25075,
+                       "icon": "icon_mens_room"
+                       },
+                       {
+                       "colorID": 25133,
+                       "icon": "icon_womens_room"
                        },
                        {
                        "colorID": 25000,

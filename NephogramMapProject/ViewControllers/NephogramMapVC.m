@@ -7,10 +7,12 @@
 //
 
 #import "NephogramMapVC.h"
+#import "NPAreaAnalysis.h"
+
 
 @interface NephogramMapVC()
 {
-
+    NPAreaAnalysis *areaAnalysis;
 }
 
 @end
@@ -23,7 +25,8 @@
     
 //    self.mapView.highlightPOIOnSelection = YES;
     
-    
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"AOI" ofType:@"json"];
+    areaAnalysis = [[NPAreaAnalysis alloc] initWithPath:path];
     
 }
 
@@ -36,6 +39,10 @@
 //    NPPoi *poi = [self.mapView extractRoomPoiOnCurrentFloorWithX:mappoint.x Y:mappoint.y];
 //    NSLog(@"%@", poi.poiID);
 //    [self.mapView highlightPoi:poi];
+    
+    NSArray *poiArray = [areaAnalysis extractAOIWithX:mappoint.x Y:mappoint.y];
+    NSLog(@"Count: %d", (int)poiArray.count);
+    NSLog(@"%@", poiArray);
 }
 
 - (void)NPMapView:(NPMapView *)mapView PoiSelected:(NSArray *)array

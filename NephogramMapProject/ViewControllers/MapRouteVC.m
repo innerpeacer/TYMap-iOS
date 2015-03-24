@@ -43,6 +43,10 @@
     AGSGraphicsLayer *startLayer;
     AGSGraphicsLayer *endLayer;
     
+    AGSPictureMarkerSymbol *startSymbol;
+    AGSPictureMarkerSymbol *endSymbol;
+    AGSPictureMarkerSymbol *switchSymbol;
+    
 }
 
 - (IBAction)setStartPoint:(id)sender;
@@ -56,6 +60,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self initSymbols];
     
     routeLayer = [NPRouteLayer routeLayerWithSpatialReference:[NPMapEnvironment defaultSpatialReference]];
     [self.mapView addMapLayer:routeLayer];
@@ -75,10 +81,20 @@
     routeManager.delegate = self;
 }
 
+- (void)initSymbols
+{
+    startSymbol = [AGSPictureMarkerSymbol pictureMarkerSymbolWithImageNamed:@"start"];
+    startSymbol.offset = CGPointMake(0, 22);
+    
+    endSymbol = [AGSPictureMarkerSymbol pictureMarkerSymbolWithImageNamed:@"end"];
+    endSymbol.offset = CGPointMake(0, 22);
+    
+    switchSymbol = [AGSPictureMarkerSymbol pictureMarkerSymbolWithImageNamed:@"nav_exit"];
+}
+
 - (void)routeManager:(NPRouteManager *)routeManager didFailRetrieveDefaultRouteTaskParametersWithError:(NSError *)error
 {
     NSLog(@"didFailToRetrieveDefaultRouteTaskParametersWithError:\n%@", error.localizedDescription);
-    
 }
 
 - (void)routeManager:(NPRouteManager *)routeManager didSolveRouteWithResult:(NPRouteResult *)rs
@@ -109,7 +125,7 @@
             if ([routeResult isFirstFloor:floor] && ![routeResult isLastFloor:floor]) {
                 AGSPoint *p = [routeResult getLastPointOnFloor:floor];
                 if (p) {
-                    [routeLayer addGraphic:[AGSGraphic graphicWithGeometry:p symbol:[AGSPictureMarkerSymbol pictureMarkerSymbolWithImageNamed:@"nav_exit"] attributes:nil]];
+                    [routeLayer addGraphic:[AGSGraphic graphicWithGeometry:p symbol:switchSymbol attributes:nil]];
                 }
                 return;
             }
@@ -117,7 +133,7 @@
             if (![routeResult isFirstFloor:floor] && [routeResult isLastFloor:floor]) {
                 AGSPoint *p = [routeResult getFirstPointOnFloor:floor];
                 if (p) {
-                    [routeLayer addGraphic:[AGSGraphic graphicWithGeometry:p symbol:[AGSPictureMarkerSymbol pictureMarkerSymbolWithImageNamed:@"nav_exit"] attributes:nil]];
+                    [routeLayer addGraphic:[AGSGraphic graphicWithGeometry:p symbol:switchSymbol attributes:nil]];
                 }
                 return;
             }
@@ -126,11 +142,11 @@
                 AGSPoint *fp = [routeResult getFirstPointOnFloor:floor];
                 AGSPoint *lp = [routeResult getLastPointOnFloor:floor];
                 if (fp) {
-                    [routeLayer addGraphic:[AGSGraphic graphicWithGeometry:fp symbol:[AGSPictureMarkerSymbol pictureMarkerSymbolWithImageNamed:@"nav_exit"] attributes:nil]];
+                    [routeLayer addGraphic:[AGSGraphic graphicWithGeometry:fp symbol:switchSymbol attributes:nil]];
                 }
                 
                 if (lp) {
-                    [routeLayer addGraphic:[AGSGraphic graphicWithGeometry:lp symbol:[AGSPictureMarkerSymbol pictureMarkerSymbolWithImageNamed:@"nav_exit"] attributes:nil]];
+                    [routeLayer addGraphic:[AGSGraphic graphicWithGeometry:lp symbol:switchSymbol attributes:nil]];
                 }
                 return;
             }
@@ -141,10 +157,29 @@
 
 - (IBAction)floorChanged:(id)sender
 {
+    [startLayer removeAllGraphics];
+    [endLayer removeAllGraphics];
+    [routeLayer removeAllGraphics];
+    
     [super floorChanged:sender];
+   
+}
+
+- (void)NPMapView:(NPMapView *)mapView didFinishLoadingFloor:(NPMapInfo *)mapInfo
+{
+    if (startLocalPoint && startLocalPoint.floor == mapInfo.floorNumber) {
+        [startLayer addGraphic:[AGSGraphic graphicWithGeometry:[AGSPoint pointWithX:startLocalPoint.x y:startLocalPoint.y spatialReference:self.mapView.spatialReference] symbol:startSymbol attributes:nil]];
+    }
+    
+    if (endLocalPoint && endLocalPoint.floor == mapInfo.floorNumber) {
+        [endLayer addGraphic:[AGSGraphic graphicWithGeometry:[AGSPoint pointWithX:endLocalPoint.x y:endLocalPoint.y spatialReference:self.mapView.spatialReference] symbol:startSymbol attributes:nil]];
+    }
+    
     if (isRouting) {
         [self showRouteResultOnCurrentFloor];
     }
+    
+    
 }
 
 - (void)routeManager:(NPRouteManager *)routeManager didFailSolveRouteWithError:(NSError *)error
@@ -169,30 +204,17 @@
     [hintLayer addGraphic:[AGSGraphic graphicWithGeometry:mappoint symbol:sms                                                attributes:nil]];
 }
 
-- (void)NPMapView:(NPMapView *)mapView didFinishLoadingFloor:(NPMapInfo *)mapInfo
-{
-    
-}
-
 - (IBAction)setStartPoint:(id)sender {
     startLocalPoint = [NPLocalPoint pointWithX:currentPoint.x Y:currentPoint.y Floor:self.mapView.currentMapInfo.floorNumber];
-    
     [startLayer removeAllGraphics];
-    
-    AGSPictureMarkerSymbol *pmsStart = [AGSPictureMarkerSymbol pictureMarkerSymbolWithImageNamed:@"start"];
-    pmsStart.offset = CGPointMake(0, 22);
-    [startLayer addGraphic:[AGSGraphic graphicWithGeometry:currentPoint symbol:pmsStart attributes:nil]];
+    [startLayer addGraphic:[AGSGraphic graphicWithGeometry:currentPoint symbol:startSymbol attributes:nil]];
     
 }
 
 - (IBAction)setEndPoint:(id)sender {
     endLocalPoint = [NPLocalPoint pointWithX:currentPoint.x Y:currentPoint.y Floor:self.mapView.currentMapInfo.floorNumber];
-    
     [endLayer removeAllGraphics];
-    
-    AGSPictureMarkerSymbol *pmsEnd = [AGSPictureMarkerSymbol pictureMarkerSymbolWithImageNamed:@"end"];
-    pmsEnd.offset = CGPointMake(0, 22);
-    [endLayer addGraphic:[AGSGraphic graphicWithGeometry:currentPoint symbol:pmsEnd attributes:nil]];
+    [endLayer addGraphic:[AGSGraphic graphicWithGeometry:currentPoint symbol:endSymbol attributes:nil]];
 }
 
 - (IBAction)requtestRoute:(id)sender {

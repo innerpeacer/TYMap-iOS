@@ -95,6 +95,8 @@
 		574443F41AAEDEB600E6232C /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 574443F31AAEDEB600E6232C /* libsqlite3.0.dylib */; };
 		574443F71AAEE1D500E6232C /* CreatePOIDatabaseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 574443F61AAEE1D500E6232C /* CreatePOIDatabaseVC.m */; };
 		574443FA1AAEE64600E6232C /* BaseLogVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 574443F91AAEE64600E6232C /* BaseLogVC.m */; };
+		57E2C9F41AC1175A00EBEF9B /* NPAreaAnalysis.m in Sources */ = {isa = PBXBuildFile; fileRef = 57E2C9F31AC1175A00EBEF9B /* NPAreaAnalysis.m */; };
+		57E2C9F61AC1177100EBEF9B /* AOI.json in Resources */ = {isa = PBXBuildFile; fileRef = 57E2C9F51AC1177100EBEF9B /* AOI.json */; };
 		57F06C231A87BC7500B9511F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F06C221A87BC7500B9511F /* main.m */; };
 		57F06C261A87BC7500B9511F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F06C251A87BC7500B9511F /* AppDelegate.m */; };
 		57F06C2C1A87BC7500B9511F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57F06C2A1A87BC7500B9511F /* Main.storyboard */; };
@@ -227,6 +229,9 @@
 		574443F61AAEE1D500E6232C /* CreatePOIDatabaseVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreatePOIDatabaseVC.m; sourceTree = "<group>"; };
 		574443F81AAEE64600E6232C /* BaseLogVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseLogVC.h; sourceTree = "<group>"; };
 		574443F91AAEE64600E6232C /* BaseLogVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseLogVC.m; sourceTree = "<group>"; };
+		57E2C9F21AC1175A00EBEF9B /* NPAreaAnalysis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPAreaAnalysis.h; sourceTree = "<group>"; };
+		57E2C9F31AC1175A00EBEF9B /* NPAreaAnalysis.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPAreaAnalysis.m; sourceTree = "<group>"; };
+		57E2C9F51AC1177100EBEF9B /* AOI.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = AOI.json; sourceTree = "<group>"; };
 		57F06C1D1A87BC7500B9511F /* NephogramMapProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NephogramMapProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		57F06C211A87BC7500B9511F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		57F06C221A87BC7500B9511F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -318,6 +323,7 @@
 		574C7D2D1AB0479900894DD2 /* MapFiles */ = {
 			isa = PBXGroup;
 			children = (
+				57E2C9F51AC1177100EBEF9B /* AOI.json */,
 				571E589C1AB99101007B36DD /* 002188888F01_ASSET.json */,
 				571E589D1AB99101007B36DD /* 002188888F01_FACILITY.json */,
 				571E589E1AB99101007B36DD /* 002188888F01_FLOOR.json */,
@@ -498,6 +504,8 @@
 				57F06D041A87C1B700B9511F /* NPMapEnviroment.h */,
 				57F06D051A87C1B700B9511F /* NPMapEnviroment.m */,
 				57422E211AB018CB009065FB /* NPMapType.h */,
+				57E2C9F21AC1175A00EBEF9B /* NPAreaAnalysis.h */,
+				57E2C9F31AC1175A00EBEF9B /* NPAreaAnalysis.m */,
 			);
 			path = MapView;
 			sourceTree = "<group>";
@@ -622,6 +630,7 @@
 				57163EB31AB7CDF8002B40C6 /* 002100002F01_FACILITY.json in Resources */,
 				57163EC31AB7CDF8002B40C6 /* 002100002F20_FLOOR.json in Resources */,
 				57F06C2C1A87BC7500B9511F /* Main.storyboard in Resources */,
+				57E2C9F61AC1177100EBEF9B /* AOI.json in Resources */,
 				57163EB01AB7CDF8002B40C6 /* 002100002B01_ROOM.json in Resources */,
 				57163EB91AB7CDF8002B40C6 /* 002100002F13_FLOOR.json in Resources */,
 				57163EDF1AB7CDF8002B40C6 /* Cities.json in Resources */,
@@ -723,6 +732,7 @@
 				57F06C261A87BC7500B9511F /* AppDelegate.m in Sources */,
 				57F06C231A87BC7500B9511F /* main.m in Sources */,
 				57F06CE51A87BF1900B9511F /* BaseControllerTableVC.m in Sources */,
+				57E2C9F41AC1175A00EBEF9B /* NPAreaAnalysis.m in Sources */,
 				570DB3EF1A890641001D137E /* NephogramMapVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
