@@ -115,6 +115,28 @@
     labelLayer.allowHitTest = NO;
 }
 
+- (AGSPoint *)getPointForScreenCenter
+{
+    return self.mapAnchor;
+}
+
+
+- (void)translateInScreenUnitByX:(double)x Y:(double)y animated:(BOOL)animated
+{
+    CGPoint centerScreen = [self toScreenPoint:self.mapAnchor];
+    CGPoint newCenterScreen = CGPointMake(centerScreen.x - x, centerScreen.y - y);
+    AGSPoint *newCenter = [self toMapPoint:newCenterScreen];
+    [self centerAtPoint:newCenter animated:animated];
+}
+
+- (void)translateInMapUnitByX:(double)x Y:(double)y animated:(BOOL)animated
+{
+    AGSPoint *center = self.mapAnchor;
+    AGSPoint *newCenter = [AGSPoint pointWithX:center.x - x y:center.y - y spatialReference:self.spatialReference];
+    [self centerAtPoint:newCenter animated:animated];
+}
+
+
 - (void)clearSelection
 {
     [roomLayer clearSelection];

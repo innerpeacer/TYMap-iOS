@@ -87,6 +87,31 @@
 - (void)initMapViewWithRenderScheme:(NPRenderingScheme *)renderingScheme;
 
 /**
+ *  获取屏幕中心点对应的地图坐标
+ *
+ *  @return 公共设施类型数组:[NSNumber]
+ */
+- (AGSPoint *)getPointForScreenCenter;
+
+/**
+ *  以屏幕坐标为单位平移x、y距离
+ *
+ *  @param x x平移距离
+ *  @param y y平移距离
+ *
+ */
+- (void)translateInScreenUnitByX:(double)x Y:(double) y animated:(BOOL)animated;
+
+/**
+ *  以地图坐标为单位平移x、y距离
+ *
+ *  @param x x平移距离
+ *  @param y y平移距离
+ *
+ */
+- (void)translateInMapUnitByX:(double)x Y:(double)y animated:(BOOL)animated;
+
+/**
  *  清除高亮显示的POI
  */
 - (void)clearSelection;
