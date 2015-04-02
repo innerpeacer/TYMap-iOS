@@ -10,20 +10,20 @@
 
 @implementation NPMapEnvironment
 
-+ (AGSSpatialReference *)defaultSpatialReference
++ (NPSpatialReference *)defaultSpatialReference
 {
-    static AGSSpatialReference *spatialReference;
+    static NPSpatialReference *spatialReference;
     if (spatialReference == nil) {
-        spatialReference = [AGSSpatialReference spatialReferenceWithWKID:3395];
+        spatialReference = [NPSpatialReference spatialReferenceWithWKID:3395];
     }
     return spatialReference;
 }
 
-+ (AGSCredential *)defaultCredential
++ (NPCredential *)defaultCredential
 {
-    static AGSCredential *credential;
+    static NPCredential *credential;
     if (credential == nil) {
-        credential = [[AGSCredential alloc] initWithUser:@"arcgis" password:@"666666"];
+        credential = [[NPCredential alloc] initWithUser:@"arcgis" password:@"666666"];
     }
     return credential;
 }

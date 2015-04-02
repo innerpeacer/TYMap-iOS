@@ -24,6 +24,7 @@
 #define LAYER_NAME_ASSET @"AssetLayer"
 #define LAYER_NAME_FACILITY @"FacilityLayer"
 #define LAYER_NAME_LABEL @"LabelLayer"
+#define LAYER_NAME_LOCATION @"LocationLayer"
 
 
 #endif

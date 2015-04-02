@@ -8,6 +8,9 @@
 
 #import <ArcGIS/ArcGIS.h>
 
+#import "NPSpatialReference.h"
+
+
 /**
  *  路径导航层，用于显示导航路径
  */
@@ -20,6 +23,6 @@
  *
  *  @return 路径导航层
  */
-+ (NPRouteLayer *)routeLayerWithSpatialReference:(AGSSpatialReference *)sr;
++ (NPRouteLayer *)routeLayerWithSpatialReference:(NPSpatialReference *)sr;
 
 @end

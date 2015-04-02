@@ -29,13 +29,13 @@
     return self;
 }
 
-- (AGSPoint *)routePointFromLocalPoint:(NPLocalPoint *)localPoint
+- (NPPoint *)routePointFromLocalPoint:(NPLocalPoint *)localPoint
 {
     double newX = localPoint.x + baseOffset.x * (localPoint.floor - 1);
-    return [AGSPoint pointWithX:newX y:localPoint.y spatialReference:[NPMapEnvironment defaultSpatialReference]];
+    return [NPPoint pointWithX:newX y:localPoint.y spatialReference:[NPMapEnvironment defaultSpatialReference]];
 }
 
-- (NPLocalPoint *)localPointFromRoutePoint:(AGSPoint *)routePoint
+- (NPLocalPoint *)localPointFromRoutePoint:(NPPoint *)routePoint
 {
     double xOffset = routePoint.x - baseExtent.xmin;
     

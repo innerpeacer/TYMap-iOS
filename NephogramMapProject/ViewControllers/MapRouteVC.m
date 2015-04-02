@@ -12,6 +12,13 @@
 #import "NPRouteLayer.h"
 #import "NPMapEnviroment.h"
 #import "NPRoutePointConverter.h"
+#import "NPGraphicsLayer.h"
+#import "NPPictureMarkerSymbol.h"
+#import "NPCredential.h"
+#import "NPGraphic.h"
+#import "NPSimpleMarkerSymbol.h"
+#import "NPPoint.h"
+
 
 //#define ROUTE_TASK_URL  @"http://192.168.16.24:6080/arcgis/rest/services/0021/00210001_NA/NAServer/Route"
 
@@ -30,7 +37,7 @@
 {
     NPRouteManager *routeManager;
     
-    AGSPoint *currentPoint;
+    NPPoint *currentPoint;
     NPLocalPoint *startLocalPoint;
     NPLocalPoint *endLocalPoint;
     
@@ -39,13 +46,13 @@
     BOOL isRouting;
     NPRouteResult *routeResult;
     
-    AGSGraphicsLayer *hintLayer;
-    AGSGraphicsLayer *startLayer;
-    AGSGraphicsLayer *endLayer;
+    NPGraphicsLayer *hintLayer;
+    NPGraphicsLayer *startLayer;
+    NPGraphicsLayer *endLayer;
     
-    AGSPictureMarkerSymbol *startSymbol;
-    AGSPictureMarkerSymbol *endSymbol;
-    AGSPictureMarkerSymbol *switchSymbol;
+    NPPictureMarkerSymbol *startSymbol;
+    NPPictureMarkerSymbol *endSymbol;
+    NPPictureMarkerSymbol *switchSymbol;
     
 }
 
@@ -66,16 +73,16 @@
     routeLayer = [NPRouteLayer routeLayerWithSpatialReference:[NPMapEnvironment defaultSpatialReference]];
     [self.mapView addMapLayer:routeLayer];
     
-    startLayer = [AGSGraphicsLayer graphicsLayer];
+    startLayer = [NPGraphicsLayer graphicsLayer];
     [self.mapView addMapLayer:startLayer];
     
-    endLayer = [AGSGraphicsLayer graphicsLayer];
+    endLayer = [NPGraphicsLayer graphicsLayer];
     [self.mapView addMapLayer:endLayer];
     
-    hintLayer = [AGSGraphicsLayer graphicsLayer];
+    hintLayer = [NPGraphicsLayer graphicsLayer];
     [self.mapView addMapLayer:hintLayer];
     
-    AGSCredential *credential = [NPMapEnvironment defaultCredential];
+    NPCredential *credential = [NPMapEnvironment defaultCredential];
     NSURL *routeTaskUrl = [NSURL URLWithString:ROUTE_TASK_URL];
     routeManager = [NPRouteManager routeManagerWithURL:routeTaskUrl credential:credential MapInfos:self.allMapInfos];
     routeManager.delegate = self;
@@ -83,13 +90,13 @@
 
 - (void)initSymbols
 {
-    startSymbol = [AGSPictureMarkerSymbol pictureMarkerSymbolWithImageNamed:@"start"];
+    startSymbol = [NPPictureMarkerSymbol pictureMarkerSymbolWithImageNamed:@"start"];
     startSymbol.offset = CGPointMake(0, 22);
     
-    endSymbol = [AGSPictureMarkerSymbol pictureMarkerSymbolWithImageNamed:@"end"];
+    endSymbol = [NPPictureMarkerSymbol pictureMarkerSymbolWithImageNamed:@"end"];
     endSymbol.offset = CGPointMake(0, 22);
     
-    switchSymbol = [AGSPictureMarkerSymbol pictureMarkerSymbolWithImageNamed:@"nav_exit"];
+    switchSymbol = [NPPictureMarkerSymbol pictureMarkerSymbolWithImageNamed:@"nav_exit"];
 }
 
 - (void)routeManager:(NPRouteManager *)routeManager didFailRetrieveDefaultRouteTaskParametersWithError:(NSError *)error
@@ -115,7 +122,7 @@
         
         AGSPolyline *line = [routeResult getRouteOnFloor:floor];
         if (line) {
-            [routeLayer addGraphic:[AGSGraphic graphicWithGeometry:line symbol:nil attributes:nil]];
+            [routeLayer addGraphic:[NPGraphic graphicWithGeometry:line symbol:nil attributes:nil]];
             
             if ([routeResult isFirstFloor:floor] && [routeResult isLastFloor:floor]) {
                 NSLog(@"Same Floor");
@@ -123,30 +130,30 @@
             }
             
             if ([routeResult isFirstFloor:floor] && ![routeResult isLastFloor:floor]) {
-                AGSPoint *p = [routeResult getLastPointOnFloor:floor];
+                NPPoint *p = [routeResult getLastPointOnFloor:floor];
                 if (p) {
-                    [routeLayer addGraphic:[AGSGraphic graphicWithGeometry:p symbol:switchSymbol attributes:nil]];
+                    [routeLayer addGraphic:[NPGraphic graphicWithGeometry:p symbol:switchSymbol attributes:nil]];
                 }
                 return;
             }
             
             if (![routeResult isFirstFloor:floor] && [routeResult isLastFloor:floor]) {
-                AGSPoint *p = [routeResult getFirstPointOnFloor:floor];
+                NPPoint *p = [routeResult getFirstPointOnFloor:floor];
                 if (p) {
-                    [routeLayer addGraphic:[AGSGraphic graphicWithGeometry:p symbol:switchSymbol attributes:nil]];
+                    [routeLayer addGraphic:[NPGraphic graphicWithGeometry:p symbol:switchSymbol attributes:nil]];
                 }
                 return;
             }
             
             if (![routeResult isFirstFloor:floor] && ![routeResult isLastFloor:floor]) {
-                AGSPoint *fp = [routeResult getFirstPointOnFloor:floor];
-                AGSPoint *lp = [routeResult getLastPointOnFloor:floor];
+                NPPoint *fp = [routeResult getFirstPointOnFloor:floor];
+                NPPoint *lp = [routeResult getLastPointOnFloor:floor];
                 if (fp) {
-                    [routeLayer addGraphic:[AGSGraphic graphicWithGeometry:fp symbol:switchSymbol attributes:nil]];
+                    [routeLayer addGraphic:[NPGraphic graphicWithGeometry:fp symbol:switchSymbol attributes:nil]];
                 }
                 
                 if (lp) {
-                    [routeLayer addGraphic:[AGSGraphic graphicWithGeometry:lp symbol:switchSymbol attributes:nil]];
+                    [routeLayer addGraphic:[NPGraphic graphicWithGeometry:lp symbol:switchSymbol attributes:nil]];
                 }
                 return;
             }
@@ -168,11 +175,11 @@
 - (void)NPMapView:(NPMapView *)mapView didFinishLoadingFloor:(NPMapInfo *)mapInfo
 {
     if (startLocalPoint && startLocalPoint.floor == mapInfo.floorNumber) {
-        [startLayer addGraphic:[AGSGraphic graphicWithGeometry:[AGSPoint pointWithX:startLocalPoint.x y:startLocalPoint.y spatialReference:self.mapView.spatialReference] symbol:startSymbol attributes:nil]];
+        [startLayer addGraphic:[NPGraphic graphicWithGeometry:[AGSPoint pointWithX:startLocalPoint.x y:startLocalPoint.y spatialReference:self.mapView.spatialReference] symbol:startSymbol attributes:nil]];
     }
     
     if (endLocalPoint && endLocalPoint.floor == mapInfo.floorNumber) {
-        [endLayer addGraphic:[AGSGraphic graphicWithGeometry:[AGSPoint pointWithX:endLocalPoint.x y:endLocalPoint.y spatialReference:self.mapView.spatialReference] symbol:startSymbol attributes:nil]];
+        [endLayer addGraphic:[NPGraphic graphicWithGeometry:[AGSPoint pointWithX:endLocalPoint.x y:endLocalPoint.y spatialReference:self.mapView.spatialReference] symbol:startSymbol attributes:nil]];
     }
     
     if (isRouting) {
@@ -191,13 +198,13 @@
 }
 
 
-- (void)NPMapView:(NPMapView *)mapView didClickAtPoint:(CGPoint)screen mapPoint:(AGSPoint *)mappoint
+- (void)NPMapView:(NPMapView *)mapView didClickAtPoint:(CGPoint)screen mapPoint:(NPPoint *)mappoint
 {
     NSLog(@"(%f, %f) in floor %d", mappoint.x, mappoint.y, self.currentMapInfo.floorNumber);
     
     currentPoint = mappoint;
     
-    AGSSimpleMarkerSymbol *sms = [AGSSimpleMarkerSymbol simpleMarkerSymbolWithColor:[UIColor greenColor]];
+    NPSimpleMarkerSymbol *sms = [NPSimpleMarkerSymbol simpleMarkerSymbolWithColor:[UIColor greenColor]];
     sms.size = CGSizeMake(5, 5);
     
     [hintLayer removeAllGraphics];

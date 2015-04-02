@@ -7,7 +7,8 @@
 //
 
 #import <ArcGIS/ArcGIS.h>
-
+#import "NPCredential.h"
+#import "NPSpatialReference.h"
 /**
  *  地图环境
  */
@@ -18,7 +19,7 @@
  *
  *  @return WKID:3395
  */
-+ (AGSSpatialReference *)defaultSpatialReference;
++ (NPSpatialReference *)defaultSpatialReference;
 
 
 /**
@@ -26,7 +27,7 @@
  *
  *  @return [user:password] --> ["arcgis":"666666"]
  */
-+ (AGSCredential *)defaultCredential;
++ (NPCredential *)defaultCredential;
 
 
 /**

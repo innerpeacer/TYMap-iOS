@@ -64,7 +64,7 @@
         UIColor *fillColor = [self parseColor:[defaultFillSymbolDict objectForKey:JSON_FIELD_LEAVE_FILL_COLOR]];
         UIColor *outlineColor = [self parseColor:[defaultFillSymbolDict objectForKey:JSON_FIELD_LEAVE_OUTLINE_COLOR]];
         float lineWidth = [[defaultFillSymbolDict objectForKey:JSON_FIELD_LEAVE_LINE_WIDTH] floatValue];
-        _defaultFillSymbol = [AGSSimpleFillSymbol simpleFillSymbolWithColor:fillColor outlineColor:outlineColor];
+        _defaultFillSymbol = (NPSimpleFillSymbol *)[NPSimpleFillSymbol simpleFillSymbolWithColor:fillColor outlineColor:outlineColor];
         _defaultFillSymbol.outline.width = lineWidth;
     }
     
@@ -74,7 +74,7 @@
         UIColor *fillColor = [self parseColor:[defaultHighlightFillSymbolDict objectForKey:JSON_FIELD_LEAVE_FILL_COLOR]];
         UIColor *outlineColor = [self parseColor:[defaultHighlightFillSymbolDict objectForKey:JSON_FIELD_LEAVE_OUTLINE_COLOR]];
         float lineWidth = [[defaultHighlightFillSymbolDict objectForKey:JSON_FIELD_LEAVE_LINE_WIDTH] floatValue];
-        _defaultHighlightFillSymbol = [AGSSimpleFillSymbol simpleFillSymbolWithColor:fillColor outlineColor:outlineColor];
+        _defaultHighlightFillSymbol = (NPSimpleFillSymbol *)[NPSimpleFillSymbol simpleFillSymbolWithColor:fillColor outlineColor:outlineColor];
         _defaultHighlightFillSymbol.outline.width = lineWidth;
     }
     
@@ -87,7 +87,7 @@
             UIColor *outlineColor = [self parseColor:[secondDict objectForKey:JSON_FIELD_LEAVE_OUTLINE_COLOR]];
             float lineWidth = [[secondDict objectForKey:JSON_FIELD_LEAVE_LINE_WIDTH] floatValue];
             
-            AGSSimpleFillSymbol *sfs = [AGSSimpleFillSymbol simpleFillSymbolWithColor:fillColor outlineColor:outlineColor];
+            NPSimpleFillSymbol *sfs = (NPSimpleFillSymbol *)[NPSimpleFillSymbol simpleFillSymbolWithColor:fillColor outlineColor:outlineColor];
             sfs.outline.width = lineWidth;
             [fillSymbolDict setObject:sfs forKey:colorID];
         }

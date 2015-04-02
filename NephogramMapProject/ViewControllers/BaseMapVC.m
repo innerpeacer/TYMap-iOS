@@ -91,9 +91,7 @@
 {
     NSString *buildingID = [NPUserDefaults getDefaultBuilding];
     self.mapView.buildingID = buildingID;
-    
-    self.mapView.layerDelegate = self;
-    
+        
     NSString *renderingFile = [[NSBundle mainBundle] pathForResource:@"RenderingScheme" ofType:@"json"];
     NPRenderingScheme *renderingScheme = [[NPRenderingScheme alloc] initWithPath:renderingFile];
     [self.mapView initMapViewWithRenderScheme:renderingScheme];
@@ -122,6 +120,11 @@
 - (void)NPMapView:(NPMapView *)mapView didFinishLoadingFloor:(NPMapInfo *)mapInfo
 {
     NSLog(@"Floor %@ did Loaded", mapInfo.floorName);
+}
+
+- (void)NPMapViewDidLoad:(NPMapView *)mapView
+{
+    NSLog(@"NPMapViewDidLoad:");
 }
 
 - (void)respondToZooming:(NSNotification *)notification

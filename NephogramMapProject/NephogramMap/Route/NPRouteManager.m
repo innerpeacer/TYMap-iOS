@@ -13,7 +13,7 @@
 {
     AGSRouteTask *routeTask;
     AGSRouteTaskParameters *routeTaskParams;
-    AGSCredential *credential;
+    NPCredential *credential;
 
     NSArray *allMapInfos;
     
@@ -25,12 +25,12 @@
 @implementation NPRouteManager
 
 
-+ (NPRouteManager *)routeManagerWithURL:(NSURL *)url credential:(AGSCredential *)credential MapInfos:(NSArray *)mapInfoArray
++ (NPRouteManager *)routeManagerWithURL:(NSURL *)url credential:(NPCredential *)credential MapInfos:(NSArray *)mapInfoArray
 {
     return [[NPRouteManager alloc] initRouteTaskWithURL:url credential:credential MapInfos:mapInfoArray];
 }
 
-- (id)initRouteTaskWithURL:(NSURL *)url credential:(AGSCredential *)cr  MapInfos:(NSArray *)mapInfoArray
+- (id)initRouteTaskWithURL:(NSURL *)url credential:(NPCredential *)cr  MapInfos:(NSArray *)mapInfoArray
 {
     self = [super init];
     if (self) {
@@ -126,7 +126,7 @@
         int num = (int)[routeLine numPointsInPath:0];
         
         for (int i = 0; i < num; ++i) {
-            AGSPoint *p = [routeLine pointOnPath:0 atIndex:i];
+            NPPoint *p = (NPPoint *)[routeLine pointOnPath:0 atIndex:i];
             
             NPLocalPoint *lp = [routePointConverter localPointFromRoutePoint:p];
             BOOL isValid = [routePointConverter checkPointValidity:lp];

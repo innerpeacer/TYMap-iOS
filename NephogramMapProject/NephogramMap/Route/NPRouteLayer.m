@@ -17,12 +17,12 @@
 
 @implementation NPRouteLayer
 
-+ (NPRouteLayer *)routeLayerWithSpatialReference:(AGSSpatialReference *)sr
++ (NPRouteLayer *)routeLayerWithSpatialReference:(NPSpatialReference *)sr
 {
     return [[NPRouteLayer alloc] initRouteLayerWithSpatialReference:sr];
 }
 
-- (id)initRouteLayerWithSpatialReference:(AGSSpatialReference *)sr
+- (id)initRouteLayerWithSpatialReference:(NPSpatialReference *)sr
 {
     self = [super initWithSpatialReference:sr];
     if (self) {

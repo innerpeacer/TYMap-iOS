@@ -33,30 +33,30 @@
     return self;
 }
 
-- (AGSPolyline *)getRouteOnFloor:(int)floorIndex
+- (NPPolyline *)getRouteOnFloor:(int)floorIndex
 {
     return [_routeGraphicDict objectForKey:@(floorIndex)];
 }
 
-- (AGSPoint *)getFirstPointOnFloor:(int)floorIndex
+- (NPPoint *)getFirstPointOnFloor:(int)floorIndex
 {
-    AGSPoint *result = nil;
+    NPPoint *result = nil;
     
-    AGSPolyline *line = [_routeGraphicDict objectForKey:@(floorIndex)];
+    NPPolyline *line = [_routeGraphicDict objectForKey:@(floorIndex)];
     if (line && line.numPaths && line.numPoints) {
-        result = [line pointOnPath:0 atIndex:0];
+        result = (NPPoint *) [line pointOnPath:0 atIndex:0];
     }
     return result;
 }
 
-- (AGSPoint *)getLastPointOnFloor:(int)floorIndex
+- (NPPoint *)getLastPointOnFloor:(int)floorIndex
 {
-    AGSPoint *result = nil;
+    NPPoint *result = nil;
     
-    AGSPolyline *line = [_routeGraphicDict objectForKey:@(floorIndex)];
+    NPPolyline *line = [_routeGraphicDict objectForKey:@(floorIndex)];
     if (line && line.numPaths && line.numPoints) {
         int num = (int)[line numPointsInPath:0];
-        result = [line pointOnPath:0 atIndex:num -1];
+        result = (NPPoint *)[line pointOnPath:0 atIndex:num -1];
     }
     return result;
 }

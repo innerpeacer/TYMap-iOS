@@ -10,6 +10,17 @@
 #import "NPMapInfo.h"
 #import "NPPoi.h"
 #import "NPRenderingScheme.h"
+#import "NPPoint.h"
+#import "NPCallout.h"
+#import "NPGraphic.h"
+#import "NPGraphicsLayer.h"
+#import "NPLocationDisplay.h"
+#import <NephogramData/NPLocalPoint.h>
+
+typedef enum {
+    Default = 0,
+    Following = 1
+} MapViewMode;
 
 @class NPMapView;
 
@@ -25,7 +36,7 @@
  *  @param screen   点击事件的屏幕坐标
  *  @param mappoint 点击事件的地图坐标
  */
-- (void)NPMapView:(NPMapView *)mapView didClickAtPoint:(CGPoint)screen mapPoint:(AGSPoint *)mappoint;
+- (void)NPMapView:(NPMapView *)mapView didClickAtPoint:(CGPoint)screen mapPoint:(NPPoint *)mappoint;
 
 /**
  *  地图POI选中事件回调
@@ -44,6 +55,17 @@
  */
 - (void)NPMapView:(NPMapView *)mapView didFinishLoadingFloor:(NPMapInfo *)mapInfo;
 
+
+@optional
+- (void)NPMapViewDidLoad:(NPMapView *)mapView;
+
+- (void)NPMapView:(NPMapView *)mapView calloutDidDismiss:(NPCallout *)callout;
+
+- (void)NPMapView:(NPMapView *)mapView calloutWillDismiss:(NPCallout *)callout;
+
+- (BOOL)NPMapView:(NPMapView *)mapView willShowForGraphic:(NPGraphic *)graphic layer:(NPGraphicsLayer *)layer mapPoint:(NPPoint *)mappoint;
+
+//- (BOOL)NPMapView:(NPMapView *)mapView callout:(NPCallout *)callout willShowForLocationDisplay:(NPLocationDisplay *)locationDisplay;
 @end
 
 /**
@@ -78,6 +100,9 @@
  */
 - (void)setFloorWithInfo:(NPMapInfo *)info;
 
+- (void)showLocation:(NPLocalPoint *)location;
+
+- (void)setMapMode:(MapViewMode)mode;
 
 /**
  *  地图初始化方法
@@ -91,7 +116,7 @@
  *
  *  @return 公共设施类型数组:[NSNumber]
  */
-- (AGSPoint *)getPointForScreenCenter;
+- (NPPoint *)getPointForScreenCenter;
 
 /**
  *  以屏幕坐标为单位平移x、y距离

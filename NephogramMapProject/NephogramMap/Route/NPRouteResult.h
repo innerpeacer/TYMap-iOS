@@ -8,7 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import "NPMapInfo.h"
-#import <ArcGIS/ArcGIS.h>
+#import "NPPolyline.h"
+#import "NPPoint.h"
 
 @interface NPRouteResult : NSObject
 
@@ -18,9 +19,9 @@
 @property (nonatomic, readonly) NSArray *routeFloorArray;
 
 
-- (AGSPolyline *)getRouteOnFloor:(int)floorIndex;
-- (AGSPoint *)getFirstPointOnFloor:(int)floorIndex;
-- (AGSPoint *)getLastPointOnFloor:(int)floorIndex;
+- (NPPolyline *)getRouteOnFloor:(int)floorIndex;
+- (NPPoint *)getFirstPointOnFloor:(int)floorIndex;
+- (NPPoint *)getLastPointOnFloor:(int)floorIndex;
 - (BOOL)isFirstFloor:(int)floorIndex;
 - (BOOL)isLastFloor:(int)floorIndex;
 - (NSNumber *)getPreviousFloor:(int)floorIndex;

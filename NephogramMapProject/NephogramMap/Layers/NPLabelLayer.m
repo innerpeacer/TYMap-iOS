@@ -17,9 +17,10 @@
 
 - (id)initLabelLayerWithSpatialReference:(AGSSpatialReference *)sr
 {
-    self = [super initWithSpatialReference:sr];
+//    self = [super initWithSpatialReference:sr];
+    self = [super initWithFullEnvelope:nil renderingMode:AGSGraphicsLayerRenderingModeDynamic];
     if (self) {
-        
+
     }
     return self;
 }
@@ -44,6 +45,7 @@
         
         if (name != nil && name != (id)[NSNull null]) {
             AGSTextSymbol *ts = [AGSTextSymbol textSymbolWithText:name color:[UIColor blackColor]];
+            ts.angleAlignment = AGSMarkerSymbolAngleAlignmentScreen;
             ts.fontSize = 10.0f;
             ts.fontFamily = @"Heiti SC";
             g.symbol = ts;

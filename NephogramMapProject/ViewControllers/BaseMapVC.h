@@ -7,10 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <ArcGIS/ArcGIS.h>
 #import "NPMapView.h"
 
-@interface BaseMapVC : UIViewController <AGSMapViewLayerDelegate, NPMapViewDelegate>
+@interface BaseMapVC : UIViewController <NPMapViewDelegate>
 
 @property (weak, nonatomic) IBOutlet NPMapView *mapView;
 @property (strong, nonatomic) NPMapInfo *currentMapInfo;

@@ -11,6 +11,7 @@
 #import "NPMapEnviroment.h"
 #import "NPRouteResult.h"
 #import <NephogramData/NephogramData.h>
+#import "NPPoint.h"
 
 @class NPRouteManager;
 
@@ -52,12 +53,12 @@
 /**
  *  路径规划起点
  */
-@property (nonatomic, strong, readonly) AGSPoint *startPoint;
+@property (nonatomic, strong, readonly) NPPoint *startPoint;
 
 /**
  *  路径规划终点
  */
-@property (nonatomic, strong, readonly) AGSPoint *endPoint;
+@property (nonatomic, strong, readonly) NPPoint *endPoint;
 
 /**
  *  路径管理代理
@@ -72,7 +73,7 @@
  *
  *  @return 路径管理类实例
  */
-+ (NPRouteManager *)routeManagerWithURL:(NSURL *)url credential:(AGSCredential *)credential MapInfos:(NSArray *)mapInfoArray;
++ (NPRouteManager *)routeManagerWithURL:(NSURL *)url credential:(NPCredential *)credential MapInfos:(NSArray *)mapInfoArray;
 
 /**
  *  请求路径规划，在代理方法获取规划结果
