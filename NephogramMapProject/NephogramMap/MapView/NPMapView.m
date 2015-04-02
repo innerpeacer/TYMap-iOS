@@ -33,7 +33,9 @@
     
     AGSEnvelope *initialEnvelope;
     
-    MapViewMode mapViewMode;
+    NPMapViewMode mapViewMode;
+    
+    double currentDeviceHeading;
 }
 
 @end
@@ -80,11 +82,6 @@
     }
 }
 
-- (void)setMapMode:(MapViewMode)mode
-{
-    mapViewMode = mode;
-}
-
 - (void)initMapViewWithRenderScheme:(NPRenderingScheme *)aRenderingScheme
 {
     renderingScheme = aRenderingScheme;
@@ -102,6 +99,8 @@
     self.gridLineWidth = 0.0;
     
 //    self.minResolution = (7.2 / (720/2.0));
+    
+    mapViewMode = NPMapViewModeDefault;
     
     AGSSpatialReference *spatialReference = [NPMapEnvironment defaultSpatialReference];
     
@@ -134,11 +133,57 @@
     return (NPPoint *)self.mapAnchor;
 }
 
+- (void)setMapMode:(NPMapViewMode)mode
+{
+    mapViewMode = mode;
+    switch (mapViewMode) {
+        case NPMapViewModeFollowing:
+            [self setAllowRotationByPinching:NO];
+            break;
+            
+        case NPMapViewModeDefault:
+            [self setAllowRotationByPinching:YES];
+            break;
+            
+        default:
+            break;
+    }
+}
+
+- (void)setLocationSymbol:(NPMarkerSymbol *)symbol
+{
+    [locationLayer setLocationSymbol:symbol];
+}
+
 - (void)showLocation:(NPLocalPoint *)location
 {
     [locationLayer removeAllGraphics];
     if (self.currentMapInfo.floorNumber == location.floor) {
-        [locationLayer addGraphic:[NPGraphic graphicWithGeometry:[NPPoint pointWithX:location.x y:location.y spatialReference:[NPMapEnvironment defaultSpatialReference]] symbol:nil attributes:nil]];
+        NPPoint *pos = [NPPoint pointWithX:location.x y:location.y spatialReference:[NPMapEnvironment defaultSpatialReference]];
+        [locationLayer showLocation:pos withDeviceHeading:currentDeviceHeading initAngle:self.currentMapInfo.initAngle mapViewMode:mapViewMode];
+    }
+}
+
+- (void)removeLocation
+{
+    [locationLayer removeLocation];
+}
+
+- (void)processDeviceRotation:(double)newHeading
+{
+    currentDeviceHeading = newHeading;
+    [locationLayer updateDeviceHeading:newHeading initAngle:self.currentMapInfo.initAngle mapViewMode:mapViewMode];
+    
+    switch (mapViewMode) {
+        case NPMapViewModeFollowing:
+            self.rotationAngle = self.currentMapInfo.initAngle + currentDeviceHeading;
+            break;
+            
+        case NPMapViewModeDefault:
+            break;
+            
+        default:
+            break;
     }
 }
 

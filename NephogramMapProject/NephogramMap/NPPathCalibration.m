@@ -31,6 +31,8 @@
     if (self) {
         width = DEFAULT_BUFFER_WIDTH;
         featureArray = [[NSMutableArray alloc] init];
+        unionPathLine = [[AGSPolyline alloc] init];
+        unionPathPolygon = [[AGSPolygon alloc] init];
         
         NSFileManager *fileManager = [NSFileManager defaultManager];
         NSString *path = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:PATH_CALIBRATION_SOURCE_PATH, floorID] ofType:@"json"];
@@ -39,11 +41,14 @@
             AGSSBJsonParser *parser = [[AGSSBJsonParser alloc] init];
             NSDictionary *dict = [parser objectWithString:jsonString];
             AGSFeatureSet *set = [[AGSFeatureSet alloc] initWithJSON:dict];
-            [featureArray addObjectsFromArray:set.features];
+//            [featureArray addObjectsFromArray:set.features];
+            for (AGSGraphic *graphic in set.features) {
+                [featureArray addObject:graphic.geometry];
+            }
+            
+            unionPathLine = [[AGSGeometryEngine defaultGeometryEngine] unionGeometries:featureArray];
+            unionPathPolygon = [[AGSGeometryEngine defaultGeometryEngine] bufferGeometry:unionPathLine byDistance:width];
         }
-        
-        unionPathLine = [[AGSGeometryEngine defaultGeometryEngine] unionGeometries:featureArray];
-        unionPathPolygon = [[AGSGeometryEngine defaultGeometryEngine] bufferGeometry:unionPathLine byDistance:width];
     }
     return self;
 }

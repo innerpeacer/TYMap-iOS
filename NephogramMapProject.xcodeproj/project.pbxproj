@@ -112,6 +112,8 @@
 		57AD3FA61ACCE4C80013B1E0 /* NPPolyline.m in Sources */ = {isa = PBXBuildFile; fileRef = 57AD3FA51ACCE4C80013B1E0 /* NPPolyline.m */; };
 		57AD403A1ACCFAC20013B1E0 /* NPCallout.m in Sources */ = {isa = PBXBuildFile; fileRef = 57AD40391ACCFAC20013B1E0 /* NPCallout.m */; };
 		57AD403D1ACCFC390013B1E0 /* NPLocationDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = 57AD403C1ACCFC390013B1E0 /* NPLocationDisplay.m */; };
+		57AD40531ACD239A0013B1E0 /* NPPolygon.m in Sources */ = {isa = PBXBuildFile; fileRef = 57AD40521ACD239A0013B1E0 /* NPPolygon.m */; };
+		57AD405C1ACD25340013B1E0 /* NPGeometryEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 57AD405B1ACD25340013B1E0 /* NPGeometryEngine.m */; };
 		57E2C9F41AC1175A00EBEF9B /* NPAreaAnalysis.m in Sources */ = {isa = PBXBuildFile; fileRef = 57E2C9F31AC1175A00EBEF9B /* NPAreaAnalysis.m */; };
 		57E2C9F61AC1177100EBEF9B /* AOI.json in Resources */ = {isa = PBXBuildFile; fileRef = 57E2C9F51AC1177100EBEF9B /* AOI.json */; };
 		57F06C231A87BC7500B9511F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F06C221A87BC7500B9511F /* main.m */; };
@@ -280,6 +282,10 @@
 		57AD40391ACCFAC20013B1E0 /* NPCallout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPCallout.m; sourceTree = "<group>"; };
 		57AD403B1ACCFC390013B1E0 /* NPLocationDisplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPLocationDisplay.h; sourceTree = "<group>"; };
 		57AD403C1ACCFC390013B1E0 /* NPLocationDisplay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPLocationDisplay.m; sourceTree = "<group>"; };
+		57AD40511ACD239A0013B1E0 /* NPPolygon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPPolygon.h; sourceTree = "<group>"; };
+		57AD40521ACD239A0013B1E0 /* NPPolygon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPPolygon.m; sourceTree = "<group>"; };
+		57AD405A1ACD25340013B1E0 /* NPGeometryEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPGeometryEngine.h; sourceTree = "<group>"; };
+		57AD405B1ACD25340013B1E0 /* NPGeometryEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPGeometryEngine.m; sourceTree = "<group>"; };
 		57E2C9F21AC1175A00EBEF9B /* NPAreaAnalysis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPAreaAnalysis.h; sourceTree = "<group>"; };
 		57E2C9F31AC1175A00EBEF9B /* NPAreaAnalysis.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPAreaAnalysis.m; sourceTree = "<group>"; };
 		57E2C9F51AC1177100EBEF9B /* AOI.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = AOI.json; sourceTree = "<group>"; };
@@ -478,6 +484,10 @@
 				57AD40391ACCFAC20013B1E0 /* NPCallout.m */,
 				57AD403B1ACCFC390013B1E0 /* NPLocationDisplay.h */,
 				57AD403C1ACCFC390013B1E0 /* NPLocationDisplay.m */,
+				57AD40511ACD239A0013B1E0 /* NPPolygon.h */,
+				57AD40521ACD239A0013B1E0 /* NPPolygon.m */,
+				57AD405A1ACD25340013B1E0 /* NPGeometryEngine.h */,
+				57AD405B1ACD25340013B1E0 /* NPGeometryEngine.m */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -790,6 +800,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57AD40531ACD239A0013B1E0 /* NPPolygon.m in Sources */,
 				57AD3F9A1ACCDEFF0013B1E0 /* NPSimpleLineSymbol.m in Sources */,
 				570DB3E91A8905E9001D137E /* BaseMapVC.m in Sources */,
 				57F06CF71A87C00500B9511F /* NPRoomLayer.m in Sources */,
@@ -810,6 +821,7 @@
 				57AD3F8B1ACCDCD30013B1E0 /* NPGraphic.m in Sources */,
 				570DB3F51A890653001D137E /* MapCalloutVC.m in Sources */,
 				571E58981AB921FC007B36DD /* NPRoutePointConverter.m in Sources */,
+				57AD405C1ACD25340013B1E0 /* NPGeometryEngine.m in Sources */,
 				57AD3F911ACCDD910013B1E0 /* NPPoint.m in Sources */,
 				57AD3F881ACCDC730013B1E0 /* NPSpatialReference.m in Sources */,
 				57AD3F971ACCDEEB0013B1E0 /* NPSimpleFillSymbol.m in Sources */,

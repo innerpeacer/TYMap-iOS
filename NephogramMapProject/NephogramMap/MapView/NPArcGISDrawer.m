@@ -27,6 +27,24 @@
     
 }
 
++ (void)drawPoint:(NPPoint *)p AtLayer:(NPGraphicsLayer *)layer WithBuffer1:(double)buffer1 Buffer2:(double)buffer2
+{
+    AGSGeometryEngine *engine = [AGSGeometryEngine defaultGeometryEngine];
+    
+    AGSPolygon *buf1 = [engine bufferGeometry:p byDistance:buffer1];
+    AGSSimpleFillSymbol *sfs1 = [AGSSimpleFillSymbol simpleFillSymbolWithColor:[UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:0.5] outlineColor:[UIColor blackColor]];
+    [layer addGraphic:[AGSGraphic graphicWithGeometry:buf1 symbol:sfs1 attributes:nil]];
+    
+    AGSPolygon *buf2 = [engine bufferGeometry:p byDistance:buffer2];
+    AGSSimpleFillSymbol *sfs2 = [AGSSimpleFillSymbol simpleFillSymbolWithColor:[UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:0.5] outlineColor:[UIColor blackColor]];
+    [layer addGraphic:[AGSGraphic graphicWithGeometry:buf2 symbol:sfs2 attributes:nil]];
+    
+    AGSSimpleMarkerSymbol *sms = [AGSSimpleMarkerSymbol simpleMarkerSymbolWithColor:[UIColor greenColor]];
+    sms.size = CGSizeMake(8, 8);
+    sms.style = AGSSimpleMarkerSymbolStyleCircle;
+    [layer addGraphic:[AGSGraphic graphicWithGeometry:p symbol:sms attributes:nil]];
+}
+
 + (void)drawLineFrom:(NPPoint *)start To:(NPPoint *)end AtLayer:(NPGraphicsLayer *)layer WithColor:(UIColor *)color Width:(CGFloat)width spatialReference:(NPSpatialReference *)spatialReference
 {
     AGSMutablePolyline *polyline = [[AGSMutablePolyline alloc] initWithSpatialReference:spatialReference];

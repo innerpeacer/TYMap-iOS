@@ -33,10 +33,33 @@
 
 - (void)setLocationSymbol:(NPMarkerSymbol *)symbol
 {
-    locationSymbol = symbol;
+    locationSymbol = [symbol copy];
     AGSSimpleRenderer *renderer = [AGSSimpleRenderer simpleRendererWithSymbol:locationSymbol];
     self.renderer = renderer;
+}
 
+//- (void)showLocation:(NPPoint *)location
+//{
+//    [self removeAllGraphics];
+//    [self addGraphic:[AGSGraphic graphicWithGeometry:location symbol:locationSymbol attributes:nil]];
+//}
+
+- (void)updateDeviceHeading:(double)deviceHeading initAngle:(double)initAngle mapViewMode:(NPMapViewMode)mode
+{
+    locationSymbol.angle = deviceHeading + initAngle;
+}
+
+- (void)showLocation:(NPPoint *)location withDeviceHeading:(double)deviceHeading initAngle:(double)initAngle mapViewMode:(NPMapViewMode)mode
+{
+    [self removeAllGraphics];
+
+    [self addGraphic:[AGSGraphic graphicWithGeometry:location symbol:locationSymbol attributes:nil]];
+
+}
+
+- (void)removeLocation
+{
+    [self removeAllGraphics];
 }
 
 @end

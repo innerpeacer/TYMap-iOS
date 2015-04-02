@@ -15,12 +15,13 @@
 #import "NPGraphic.h"
 #import "NPGraphicsLayer.h"
 #import "NPLocationDisplay.h"
+#import "NPMarkerSymbol.h"
 #import <NephogramData/NPLocalPoint.h>
 
 typedef enum {
-    Default = 0,
-    Following = 1
-} MapViewMode;
+    NPMapViewModeDefault = 0,
+    NPMapViewModeFollowing = 1
+} NPMapViewMode;
 
 @class NPMapView;
 
@@ -93,6 +94,7 @@ typedef enum {
  */
 @property (nonatomic, assign) BOOL highlightPOIOnSelection;
 
+
 /**
  *  切换楼层方法
  *
@@ -100,9 +102,15 @@ typedef enum {
  */
 - (void)setFloorWithInfo:(NPMapInfo *)info;
 
+- (void)setLocationSymbol:(NPMarkerSymbol *)symbol;
+
 - (void)showLocation:(NPLocalPoint *)location;
 
-- (void)setMapMode:(MapViewMode)mode;
+- (void)removeLocation;
+
+- (void)processDeviceRotation:(double)newHeading;
+
+- (void)setMapMode:(NPMapViewMode)mode;
 
 /**
  *  地图初始化方法
