@@ -128,6 +128,11 @@
     locationLayer.allowHitTest = NO;
 }
 
+/**
+ *  获取屏幕中心点对应的地图坐标
+ *
+ *  @return 公共设施类型数组:[NSNumber]
+ */
 - (NPPoint *)getPointForScreenCenter
 {
     return (NPPoint *)self.mapAnchor;
@@ -143,6 +148,7 @@
             
         case NPMapViewModeDefault:
             [self setAllowRotationByPinching:YES];
+            self.rotationAngle = 0.0;
             break;
             
         default:
@@ -187,6 +193,13 @@
     }
 }
 
+/**
+ *  以屏幕坐标为单位平移x、y距离
+ *
+ *  @param x x平移距离
+ *  @param y y平移距离
+ *
+ */
 - (void)translateInScreenUnitByX:(double)x Y:(double)y animated:(BOOL)animated
 {
     CGPoint centerScreen = [self toScreenPoint:self.mapAnchor];
@@ -195,6 +208,13 @@
     [self centerAtPoint:newCenter animated:animated];
 }
 
+/**
+ *  以地图坐标为单位平移x、y距离
+ *
+ *  @param x x平移距离
+ *  @param y y平移距离
+ *
+ */
 - (void)translateInMapUnitByX:(double)x Y:(double)y animated:(BOOL)animated
 {
     AGSPoint *center = self.mapAnchor;
@@ -202,6 +222,34 @@
     [self centerAtPoint:newCenter animated:animated];
 }
 
+- (void)restrictLocation:(NPPoint *)location toScreenRange:(CGRect)range
+{
+    CGPoint locationOnScreen = [self toScreenPoint:location];
+    if (CGRectContainsPoint(range, locationOnScreen)) {
+        return;
+    }
+    
+    double xOffset = 0;
+    double yOffset = 0;
+
+    if (locationOnScreen.x < range.origin.x) {
+        xOffset = range.origin.x - locationOnScreen.x;
+    }
+    
+    if (locationOnScreen.x > range.origin.x + range.size.width) {
+        xOffset = range.origin.x + range.size.width - locationOnScreen.x;
+    }
+    
+    if (locationOnScreen.y < range.origin.y) {
+        yOffset = range.origin.y - locationOnScreen.y;
+    }
+    
+    if (locationOnScreen.y > range.origin.y + range.size.height) {
+        yOffset = range.origin.y + range.size.height - locationOnScreen.y;
+    }
+
+    [self translateInScreenUnitByX:xOffset Y:yOffset animated:YES];
+}
 
 - (void)clearSelection
 {
