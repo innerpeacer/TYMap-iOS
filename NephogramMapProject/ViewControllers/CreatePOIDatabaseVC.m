@@ -114,9 +114,7 @@
             [db insertPOIWithGeoID:gid poiID:pid buildingID:bid floorID:fid name:name categoryID:cid labelX:@(pos.x) labelY:@(pos.y) color:color floorIndex:fIndex floorName:fName layer:layer];
         }
         [self addToLog:[NSString stringWithFormat:@"End %@: Insert %d Facility POI", info.mapID, (int)facilityArray.count]];
-
     }
-    
     [db close];
 }
 

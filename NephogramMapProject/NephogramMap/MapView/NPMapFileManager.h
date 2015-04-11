@@ -24,4 +24,6 @@
 + (NSString *)getFacilityLayerPath:(NPMapInfo *)info;
 + (NSString *)getLabelLayerPath:(NPMapInfo *)info;
 
++ (NSString *)getRenderingScheme:(NPBuilding *)building;
+
 @end

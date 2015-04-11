@@ -91,16 +91,10 @@
 
 - (void)initMap
 {
-    self.mapView.building = _currentBuilding;
-    
-    NSString *renderingFile = [[NSBundle mainBundle] pathForResource:@"RenderingScheme" ofType:@"json"];
-
-    NPRenderingScheme *renderingScheme = [[NPRenderingScheme alloc] initWithPath:renderingFile];
-    [self.mapView initMapViewWithRenderScheme:renderingScheme];
+    [self.mapView initMapViewWithBuilding:_currentBuilding];
     self.mapView.mapDelegate = self;
     
     [self.mapView setFloorWithInfo:_currentMapInfo];
-    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(respondToZooming:) name:@"AGSMapViewDidEndZoomingNotification" object:nil];
 }
 

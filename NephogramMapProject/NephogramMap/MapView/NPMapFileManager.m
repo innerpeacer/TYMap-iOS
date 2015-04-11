@@ -15,11 +15,15 @@
 
 #define FILE_MAPINFO @"MapInfo_Building_%@.json"
 
+#define FILE_RENDERING_SCHEME @"%@_RenderingScheme.json"
+#define FILE_DEFAULT_RENDERING_SCHEME @"RenderingScheme.json"
+
 #define FILE_LAYER_PATH_FLOOR @"%@_FLOOR.json"
 #define FILE_LAYER_PATH_ROOM @"%@_ROOM.json"
 #define FILE_LAYER_PATH_ASSET @"%@_ASSET.json"
 #define FILE_LAYER_PATH_FACILITY @"%@_FACILITY.json"
 #define FILE_LAYER_PATH_LABEL @"%@_LABEL.json"
+
 
 
 @implementation NPMapFileManager
@@ -93,6 +97,26 @@
     return [buildingDir stringByAppendingPathComponent:fileName];
 }
 
++ (NSString *)getRenderingScheme:(NPBuilding *)building
+{
+    NSString *mapRootDir = [NPMapEnvironment getRootDirectoryForMapFiles];
+    NSString *cityDir = [mapRootDir stringByAppendingPathComponent:building.cityID];
+    NSString *buildingDir = [cityDir stringByAppendingPathComponent:building.buildingID];
+    NSString *fileName = [NSString stringWithFormat:FILE_RENDERING_SCHEME, building.buildingID];
+    
+    NSString *renderingPath = [buildingDir stringByAppendingPathComponent:fileName];
+    
+    if ([[NSFileManager defaultManager] fileExistsAtPath:renderingPath isDirectory:nil]) {
+        return renderingPath;
+    } else {
+        return [NPMapFileManager getDefaultRenderingScheme];
+    }
+}
 
++ (NSString *)getDefaultRenderingScheme
+{
+    NSString *mapRootDir = [NPMapEnvironment getRootDirectoryForMapFiles];
+    return [mapRootDir stringByAppendingPathComponent:FILE_DEFAULT_RENDERING_SCHEME];
+}
 
 @end

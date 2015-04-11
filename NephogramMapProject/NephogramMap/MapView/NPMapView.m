@@ -18,7 +18,7 @@
 #import "NPMapType.h"
 #import "NPMapEnviroment.h"
 #import "NPLocationLayer.h"
-
+#import "NPMapFileManager.h"
 
 @interface NPMapView() <AGSMapViewTouchDelegate, AGSMapViewLayerDelegate, AGSCalloutDelegate>
 {
@@ -82,9 +82,13 @@
     }
 }
 
-- (void)initMapViewWithRenderScheme:(NPRenderingScheme *)aRenderingScheme
+//- (void)initMapViewWithRenderScheme:(NPRenderingScheme *)aRenderingScheme
+- (void)initMapViewWithBuilding:(NPBuilding *)b
 {
-    renderingScheme = aRenderingScheme;
+//    renderingScheme = aRenderingScheme;
+    _building = b;
+    NSString *renderingSchemePath = [NPMapFileManager getRenderingScheme:_building];
+    renderingScheme = [[NPRenderingScheme alloc] initWithPath:(NSString *)renderingSchemePath];
     
     self.touchDelegate = self;
     self.layerDelegate = self;

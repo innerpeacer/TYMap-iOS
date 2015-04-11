@@ -120,7 +120,8 @@ typedef enum {
  *
  *  @param renderingScheme 地图渲染方案
  */
-- (void)initMapViewWithRenderScheme:(NPRenderingScheme *)renderingScheme;
+//- (void)initMapViewWithRenderScheme:(NPRenderingScheme *)renderingScheme;
+- (void)initMapViewWithBuilding:(NPBuilding *)buidling;
 
 /**
  *  移动地图将特定坐标限定在特定屏幕范围内
