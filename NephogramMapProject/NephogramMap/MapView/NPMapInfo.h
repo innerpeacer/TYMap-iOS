@@ -31,6 +31,11 @@ typedef struct mapextent {
  */
 @interface NPMapInfo : NSObject
 
+@property (nonatomic, readonly) NSString *cityID;
+
+
+@property (nonatomic, readonly) NSString *buildingID;
+
 /**
  *  当前地图的唯一ID，当前与楼层的FloorID一致
  */

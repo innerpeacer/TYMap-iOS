@@ -1,0 +1,30 @@
+{
+	"Cities": [
+		
+        {
+            "id":"0021",
+            "name":"上海市",
+            "sname":"上海",
+            "longitude":"121.490774",
+            "latitude":"31.245087",
+            "status":"1"
+        },
+		{
+			"id":"0010",
+			"name":"北京市",
+			"sname":"北京",
+			"longitude":"116.407143",
+			"latitude":"39.915156",
+			"status":"0"
+               },
+        {
+            "id":"H852",
+            "name":"香港市",
+            "sname":"香港",
+            "longitude":"116.407143",
+            "latitude":"39.915156",
+            "status":"0"
+        }
+		
+	]
+}

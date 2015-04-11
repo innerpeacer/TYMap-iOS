@@ -13,6 +13,8 @@
 
 #define KEY_MAPINFOS @"MapInfo"
 
+#define KEY_MAPINFO_CITYID @"cityID"
+#define KEY_MAPINFO_BUILDINGID @"buildingID"
 #define KEY_MAPINFO_MAPID @"mapID"
 
 #define KEY_MAPINFO_FLOOR @"floorName"
@@ -43,10 +45,12 @@ MapSize SSMapSizeMake(double x, double y)
 
 @implementation NPMapInfo
 
-- (id)initWithMapID:(NSString *)mapID Extent:(MapExtent)e Size:(MapSize)s Floor:(NSString *)fs FloorIndex:(int)fi InitAngle:(double)initAngle
+- (id)initWithCityID:(NSString *)cityID BuildingID:(NSString *)buidlingID MapID:(NSString *)mapID Extent:(MapExtent)e Size:(MapSize)s Floor:(NSString *)fs FloorIndex:(int)fi InitAngle:(double)initAngle
 {
     self = [super init];
     if (self) {
+        _cityID = cityID;
+        _buildingID = buidlingID;
         _mapID = mapID;
         _mapExtent = e;
         _mapSize = s;
@@ -68,13 +72,14 @@ MapSize SSMapSizeMake(double x, double y)
     }
     
     NSError *error = nil;
-//    NSString *fullPath = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%@_%@", FILE_MAPINFO, buildingID] ofType:@"json"];
     if ([[NSFileManager defaultManager] fileExistsAtPath:path]) {
         NSData *data = [NSData dataWithContentsOfFile:path];
         NSDictionary *mapDict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:&error];
         
         NSArray *infoArray = [mapDict objectForKey:KEY_MAPINFOS];
         for (NSDictionary *infoDict in infoArray) {
+            NSString *cityID = [infoDict objectForKey:KEY_MAPINFO_CITYID];
+            NSString *buildingID = [infoDict objectForKey:KEY_MAPINFO_BUILDINGID];
             NSString *mapID = [infoDict objectForKey:KEY_MAPINFO_MAPID];
             NSString *floorStr = [infoDict objectForKey:KEY_MAPINFO_FLOOR];
             NSNumber *floorIndexStr = [infoDict objectForKey:KEY_MAPINFO_FLOOR_INDEX];
@@ -89,7 +94,7 @@ MapSize SSMapSizeMake(double x, double y)
             NSNumber *yminStr = [infoDict objectForKey:KEY_MAPINFO_YMIN];
             NSNumber *ymaxStr = [infoDict objectForKey:KEY_MAPINFO_YMAX];
             
-            NPMapInfo *info = [[NPMapInfo alloc] initWithMapID:mapID Extent:SSMapExtentMake(xminStr.doubleValue, yminStr.doubleValue, xmaxStr.doubleValue, ymaxStr.doubleValue) Size:SSMapSizeMake(sizexStr.doubleValue, sizeyStr.doubleValue) Floor:floorStr FloorIndex:floorIndexStr.intValue InitAngle:initStr.doubleValue];
+            NPMapInfo *info = [[NPMapInfo alloc] initWithCityID:cityID BuildingID:buildingID MapID:mapID Extent:SSMapExtentMake(xminStr.doubleValue, yminStr.doubleValue, xmaxStr.doubleValue, ymaxStr.doubleValue) Size:SSMapSizeMake(sizexStr.doubleValue, sizeyStr.doubleValue) Floor:floorStr FloorIndex:floorIndexStr.intValue InitAngle:initStr.doubleValue];
             
             [toReturn addObject:info];
         }
@@ -107,7 +112,6 @@ MapSize SSMapSizeMake(double x, double y)
     }
     
     NSError *error = nil;
-//    NSString *fullPath = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%@_%@", FILE_MAPINFO, buildingID] ofType:@"json"];
     if ([[NSFileManager defaultManager] fileExistsAtPath:path]) {
         NSData *data = [NSData dataWithContentsOfFile:path];
         NSDictionary *mapDict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:&error];
@@ -118,6 +122,8 @@ MapSize SSMapSizeMake(double x, double y)
             NSString *floorStr = [infoDict objectForKey:KEY_MAPINFO_FLOOR];
             
             if ([floorStr isEqualToString:floor]) {
+                NSString *cityID = [infoDict objectForKey:KEY_MAPINFO_CITYID];
+                NSString *buildingID = [infoDict objectForKey:KEY_MAPINFO_BUILDINGID];
                 NSString *mapID = [infoDict objectForKey:KEY_MAPINFO_MAPID];
                 NSNumber *floorIndexStr = [infoDict objectForKey:KEY_MAPINFO_FLOOR_INDEX];
                 
@@ -131,12 +137,11 @@ MapSize SSMapSizeMake(double x, double y)
                 NSNumber *yminStr = [infoDict objectForKey:KEY_MAPINFO_YMIN];
                 NSNumber *ymaxStr = [infoDict objectForKey:KEY_MAPINFO_YMAX];
                 
-                info = [[NPMapInfo alloc] initWithMapID:mapID Extent:SSMapExtentMake(xminStr.doubleValue, yminStr.doubleValue, xmaxStr.doubleValue, ymaxStr.doubleValue) Size:SSMapSizeMake(sizexStr.doubleValue, sizeyStr.doubleValue) Floor:floorStr FloorIndex:floorIndexStr.intValue InitAngle:initStr.doubleValue];
+                info = [[NPMapInfo alloc] initWithCityID:cityID BuildingID:buildingID MapID:mapID Extent:SSMapExtentMake(xminStr.doubleValue, yminStr.doubleValue, xmaxStr.doubleValue, ymaxStr.doubleValue) Size:SSMapSizeMake(sizexStr.doubleValue, sizeyStr.doubleValue) Floor:floorStr FloorIndex:floorIndexStr.intValue InitAngle:initStr.doubleValue];
                 break;
             }
         }
     }
-    
     return info;
 }
 

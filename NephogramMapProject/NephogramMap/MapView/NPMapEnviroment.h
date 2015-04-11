@@ -35,4 +35,8 @@
  */
 + (void)initMapEnvironment;
 
++ (void)setRootDirectoryForMapFiles:(NSString *)dir;
++ (NSString *)getRootDirectoryForMapFiles;
+
+
 @end

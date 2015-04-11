@@ -93,6 +93,8 @@
     self.mapView.buildingID = buildingID;
         
     NSString *renderingFile = [[NSBundle mainBundle] pathForResource:@"RenderingScheme" ofType:@"json"];
+//    NSString *renderingFile = [[NSBundle mainBundle] pathForResource:@"RenderingScheme_H85200001" ofType:@"json"];
+
     NPRenderingScheme *renderingScheme = [[NPRenderingScheme alloc] initWithPath:renderingFile];
     [self.mapView initMapViewWithRenderScheme:renderingScheme];
     self.mapView.mapDelegate = self;

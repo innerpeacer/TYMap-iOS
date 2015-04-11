@@ -84,6 +84,10 @@
     NSArray *allGraphics = set.features;
     
     for (AGSGraphic *graphic in allGraphics) {
+        id categoryIDObject = [graphic attributeForKey:@"COLOR"];
+        if ([categoryIDObject isKindOfClass:[NSNull class]]) {
+            continue;
+        }
         int categoryID = [[graphic attributeForKey:@"COLOR"] intValue];
         
         if (![groupedFacilityDict.allKeys containsObject:@(categoryID)]) {

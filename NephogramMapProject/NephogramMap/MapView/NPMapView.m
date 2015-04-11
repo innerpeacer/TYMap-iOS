@@ -471,7 +471,10 @@
 //#define DEFAULT_RESOLUTION_THRESHOLD 0.1
 
 // 一般按5个字算，屏幕占距1cm，6m的房间内可以显示
-#define DEFAULT_SCALE_THRESHOLD 600
+//#define DEFAULT_SCALE_THRESHOLD 600
+
+
+#define DEFAULT_SCALE_THRESHOLD 1000
 
 - (void)respondToZooming:(NSNotification *)notification
 {

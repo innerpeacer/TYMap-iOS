@@ -8,7 +8,26 @@
 
 #import "NPMapEnviroment.h"
 
+#define DEFAULT_MAP_ROOT @"Nephogram/Map"
+
 @implementation NPMapEnvironment
+
+static NSString *mapFileRootDirectory;
+
++ (NSString *)getRootDirectoryForMapFiles
+{
+    if (mapFileRootDirectory == nil) {
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *documentDirectory = [paths objectAtIndex:0];
+        mapFileRootDirectory = [documentDirectory stringByAppendingPathComponent:DEFAULT_MAP_ROOT];
+    }
+    return mapFileRootDirectory;
+}
+
++ (void)setRootDirectoryForMapFiles:(NSString *)dir
+{
+    mapFileRootDirectory = [NSString stringWithString:dir];
+}
 
 + (NPSpatialReference *)defaultSpatialReference
 {

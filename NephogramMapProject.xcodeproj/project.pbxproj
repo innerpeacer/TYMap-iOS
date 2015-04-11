@@ -16,73 +16,9 @@
 		570DB3F51A890653001D137E /* MapCalloutVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 570DB3F41A890653001D137E /* MapCalloutVC.m */; };
 		570DB3F81A890664001D137E /* CustomCalloutVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 570DB3F71A890664001D137E /* CustomCalloutVC.m */; };
 		571310B31ABC217500E980F9 /* NephogramData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 571310B21ABC217500E980F9 /* NephogramData.framework */; };
-		57163EA51AB7CDF8002B40C6 /* 002100001_POI.db in Resources */ = {isa = PBXBuildFile; fileRef = 57163E621AB7CDF8002B40C6 /* 002100001_POI.db */; };
-		57163EA61AB7CDF8002B40C6 /* 002100001F04_ASSET.json in Resources */ = {isa = PBXBuildFile; fileRef = 57163E631AB7CDF8002B40C6 /* 002100001F04_ASSET.json */; };
-		57163EA71AB7CDF8002B40C6 /* 002100001F04_FACILITY.json in Resources */ = {isa = PBXBuildFile; fileRef = 57163E641AB7CDF8002B40C6 /* 002100001F04_FACILITY.json */; };
-		57163EA81AB7CDF8002B40C6 /* 002100001F04_FLOOR.json in Resources */ = {isa = PBXBuildFile; fileRef = 57163E651AB7CDF8002B40C6 /* 002100001F04_FLOOR.json */; };
-		57163EA91AB7CDF8002B40C6 /* 002100001F04_LABEL.json in Resources */ = {isa = PBXBuildFile; fileRef = 57163E661AB7CDF8002B40C6 /* 002100001F04_LABEL.json */; };
-		57163EAA1AB7CDF8002B40C6 /* 002100001F04_ROOM.json in Resources */ = {isa = PBXBuildFile; fileRef = 57163E671AB7CDF8002B40C6 /* 002100001F04_ROOM.json */; };
-		57163EAB1AB7CDF8002B40C6 /* 002100002_POI.db in Resources */ = {isa = PBXBuildFile; fileRef = 57163E681AB7CDF8002B40C6 /* 002100002_POI.db */; };
-		57163EAC1AB7CDF8002B40C6 /* 002100002B01_ASSET.json in Resources */ = {isa = PBXBuildFile; fileRef = 57163E691AB7CDF8002B40C6 /* 002100002B01_ASSET.json */; };
-		57163EAD1AB7CDF8002B40C6 /* 002100002B01_FACILITY.json in Resources */ = {isa = PBXBuildFile; fileRef = 57163E6A1AB7CDF8002B40C6 /* 002100002B01_FACILITY.json */; };
-		57163EAE1AB7CDF8002B40C6 /* 002100002B01_FLOOR.json in Resources */ = {isa = PBXBuildFile; fileRef = 57163E6B1AB7CDF8002B40C6 /* 002100002B01_FLOOR.json */; };
-		57163EAF1AB7CDF8002B40C6 /* 002100002B01_LABEL.json in Resources */ = {isa = PBXBuildFile; fileRef = 57163E6C1AB7CDF8002B40C6 /* 002100002B01_LABEL.json */; };
-		57163EB01AB7CDF8002B40C6 /* 002100002B01_ROOM.json in Resources */ = {isa = PBXBuildFile; fileRef = 57163E6D1AB7CDF8002B40C6 /* 002100002B01_ROOM.json */; };
-		57163EB21AB7CDF8002B40C6 /* 002100002F01_ASSET.json in Resources */ = {isa = PBXBuildFile; fileRef = 57163E6F1AB7CDF8002B40C6 /* 002100002F01_ASSET.json */; };
-		57163EB31AB7CDF8002B40C6 /* 002100002F01_FACILITY.json in Resources */ = {isa = PBXBuildFile; fileRef = 57163E701AB7CDF8002B40C6 /* 002100002F01_FACILITY.json */; };
-		57163EB41AB7CDF8002B40C6 /* 002100002F01_FLOOR.json in Resources */ = {isa = PBXBuildFile; fileRef = 57163E711AB7CDF8002B40C6 /* 002100002F01_FLOOR.json */; };
-		57163EB51AB7CDF8002B40C6 /* 002100002F01_LABEL.json in Resources */ = {isa = PBXBuildFile; fileRef = 57163E721AB7CDF8002B40C6 /* 002100002F01_LABEL.json */; };
-		57163EB61AB7CDF8002B40C6 /* 002100002F01_ROOM.json in Resources */ = {isa = PBXBuildFile; fileRef = 57163E731AB7CDF8002B40C6 /* 002100002F01_ROOM.json */; };
-		57163EB71AB7CDF8002B40C6 /* 002100002F13_ASSET.json in Resources */ = {isa = PBXBuildFile; fileRef = 57163E741AB7CDF8002B40C6 /* 002100002F13_ASSET.json */; };
-		57163EB81AB7CDF8002B40C6 /* 002100002F13_FACILITY.json in Resources */ = {isa = PBXBuildFile; fileRef = 57163E751AB7CDF8002B40C6 /* 002100002F13_FACILITY.json */; };
-		57163EB91AB7CDF8002B40C6 /* 002100002F13_FLOOR.json in Resources */ = {isa = PBXBuildFile; fileRef = 57163E761AB7CDF8002B40C6 /* 002100002F13_FLOOR.json */; };
-		57163EBA1AB7CDF8002B40C6 /* 002100002F13_LABEL.json in Resources */ = {isa = PBXBuildFile; fileRef = 57163E771AB7CDF8002B40C6 /* 002100002F13_LABEL.json */; };
-		57163EBB1AB7CDF8002B40C6 /* 002100002F13_ROOM.json in Resources */ = {isa = PBXBuildFile; fileRef = 57163E781AB7CDF8002B40C6 /* 002100002F13_ROOM.json */; };
-		57163EBC1AB7CDF8002B40C6 /* 002100002F19_ASSET.json in Resources */ = {isa = PBXBuildFile; fileRef = 57163E791AB7CDF8002B40C6 /* 002100002F19_ASSET.json */; };
-		57163EBD1AB7CDF8002B40C6 /* 002100002F19_FACILITY.json in Resources */ = {isa = PBXBuildFile; fileRef = 57163E7A1AB7CDF8002B40C6 /* 002100002F19_FACILITY.json */; };
-		57163EBE1AB7CDF8002B40C6 /* 002100002F19_FLOOR.json in Resources */ = {isa = PBXBuildFile; fileRef = 57163E7B1AB7CDF8002B40C6 /* 002100002F19_FLOOR.json */; };
-		57163EBF1AB7CDF8002B40C6 /* 002100002F19_LABEL.json in Resources */ = {isa = PBXBuildFile; fileRef = 57163E7C1AB7CDF8002B40C6 /* 002100002F19_LABEL.json */; };
-		57163EC01AB7CDF8002B40C6 /* 002100002F19_ROOM.json in Resources */ = {isa = PBXBuildFile; fileRef = 57163E7D1AB7CDF8002B40C6 /* 002100002F19_ROOM.json */; };
-		57163EC11AB7CDF8002B40C6 /* 002100002F20_ASSET.json in Resources */ = {isa = PBXBuildFile; fileRef = 57163E7E1AB7CDF8002B40C6 /* 002100002F20_ASSET.json */; };
-		57163EC21AB7CDF8002B40C6 /* 002100002F20_FACILITY.json in Resources */ = {isa = PBXBuildFile; fileRef = 57163E7F1AB7CDF8002B40C6 /* 002100002F20_FACILITY.json */; };
-		57163EC31AB7CDF8002B40C6 /* 002100002F20_FLOOR.json in Resources */ = {isa = PBXBuildFile; fileRef = 57163E801AB7CDF8002B40C6 /* 002100002F20_FLOOR.json */; };
-		57163EC41AB7CDF8002B40C6 /* 002100002F20_LABEL.json in Resources */ = {isa = PBXBuildFile; fileRef = 57163E811AB7CDF8002B40C6 /* 002100002F20_LABEL.json */; };
-		57163EC51AB7CDF8002B40C6 /* 002100002F20_ROOM.json in Resources */ = {isa = PBXBuildFile; fileRef = 57163E821AB7CDF8002B40C6 /* 002100002F20_ROOM.json */; };
-		57163EC61AB7CDF8002B40C6 /* 002100004_POI.db in Resources */ = {isa = PBXBuildFile; fileRef = 57163E831AB7CDF8002B40C6 /* 002100004_POI.db */; };
-		57163EC71AB7CDF8002B40C6 /* 002100004F01_ASSET.json in Resources */ = {isa = PBXBuildFile; fileRef = 57163E841AB7CDF8002B40C6 /* 002100004F01_ASSET.json */; };
-		57163EC81AB7CDF8002B40C6 /* 002100004F01_FACILITY.json in Resources */ = {isa = PBXBuildFile; fileRef = 57163E851AB7CDF8002B40C6 /* 002100004F01_FACILITY.json */; };
-		57163EC91AB7CDF8002B40C6 /* 002100004F01_FLOOR.json in Resources */ = {isa = PBXBuildFile; fileRef = 57163E861AB7CDF8002B40C6 /* 002100004F01_FLOOR.json */; };
-		57163ECB1AB7CDF8002B40C6 /* 002100004F01_LABEL.json in Resources */ = {isa = PBXBuildFile; fileRef = 57163E881AB7CDF8002B40C6 /* 002100004F01_LABEL.json */; };
-		57163ECC1AB7CDF8002B40C6 /* 002100004F01_ROOM.json in Resources */ = {isa = PBXBuildFile; fileRef = 57163E891AB7CDF8002B40C6 /* 002100004F01_ROOM.json */; };
-		57163ECD1AB7CDF8002B40C6 /* 002100004F02_ASSET.json in Resources */ = {isa = PBXBuildFile; fileRef = 57163E8A1AB7CDF8002B40C6 /* 002100004F02_ASSET.json */; };
-		57163ECE1AB7CDF8002B40C6 /* 002100004F02_FACILITY.json in Resources */ = {isa = PBXBuildFile; fileRef = 57163E8B1AB7CDF8002B40C6 /* 002100004F02_FACILITY.json */; };
-		57163ECF1AB7CDF8002B40C6 /* 002100004F02_FLOOR.json in Resources */ = {isa = PBXBuildFile; fileRef = 57163E8C1AB7CDF8002B40C6 /* 002100004F02_FLOOR.json */; };
-		57163ED11AB7CDF8002B40C6 /* 002100004F02_LABEL.json in Resources */ = {isa = PBXBuildFile; fileRef = 57163E8E1AB7CDF8002B40C6 /* 002100004F02_LABEL.json */; };
-		57163ED21AB7CDF8002B40C6 /* 002100004F02_ROOM.json in Resources */ = {isa = PBXBuildFile; fileRef = 57163E8F1AB7CDF8002B40C6 /* 002100004F02_ROOM.json */; };
-		57163ED31AB7CDF8002B40C6 /* 002100004F03_ASSET.json in Resources */ = {isa = PBXBuildFile; fileRef = 57163E901AB7CDF8002B40C6 /* 002100004F03_ASSET.json */; };
-		57163ED41AB7CDF8002B40C6 /* 002100004F03_FACILITY.json in Resources */ = {isa = PBXBuildFile; fileRef = 57163E911AB7CDF8002B40C6 /* 002100004F03_FACILITY.json */; };
-		57163ED51AB7CDF8002B40C6 /* 002100004F03_FLOOR.json in Resources */ = {isa = PBXBuildFile; fileRef = 57163E921AB7CDF8002B40C6 /* 002100004F03_FLOOR.json */; };
-		57163ED71AB7CDF8002B40C6 /* 002100004F03_LABEL.json in Resources */ = {isa = PBXBuildFile; fileRef = 57163E941AB7CDF8002B40C6 /* 002100004F03_LABEL.json */; };
-		57163ED81AB7CDF8002B40C6 /* 002100004F03_ROOM.json in Resources */ = {isa = PBXBuildFile; fileRef = 57163E951AB7CDF8002B40C6 /* 002100004F03_ROOM.json */; };
-		57163ED91AB7CDF8002B40C6 /* 002199999F05_ASSET.json in Resources */ = {isa = PBXBuildFile; fileRef = 57163E961AB7CDF8002B40C6 /* 002199999F05_ASSET.json */; };
-		57163EDA1AB7CDF8002B40C6 /* 002199999F05_FACILITY.json in Resources */ = {isa = PBXBuildFile; fileRef = 57163E971AB7CDF8002B40C6 /* 002199999F05_FACILITY.json */; };
-		57163EDB1AB7CDF8002B40C6 /* 002199999F05_FLOOR.json in Resources */ = {isa = PBXBuildFile; fileRef = 57163E981AB7CDF8002B40C6 /* 002199999F05_FLOOR.json */; };
-		57163EDC1AB7CDF8002B40C6 /* 002199999F05_LABEL.json in Resources */ = {isa = PBXBuildFile; fileRef = 57163E991AB7CDF8002B40C6 /* 002199999F05_LABEL.json */; };
-		57163EDD1AB7CDF8002B40C6 /* 002199999F05_ROOM.json in Resources */ = {isa = PBXBuildFile; fileRef = 57163E9A1AB7CDF8002B40C6 /* 002199999F05_ROOM.json */; };
-		57163EDE1AB7CDF8002B40C6 /* Buildings_City_0021.json in Resources */ = {isa = PBXBuildFile; fileRef = 57163E9B1AB7CDF8002B40C6 /* Buildings_City_0021.json */; };
-		57163EDF1AB7CDF8002B40C6 /* Cities.json in Resources */ = {isa = PBXBuildFile; fileRef = 57163E9C1AB7CDF8002B40C6 /* Cities.json */; };
-		57163EE31AB7CDF8002B40C6 /* MapInfo_Building_002100001.json in Resources */ = {isa = PBXBuildFile; fileRef = 57163EA01AB7CDF8002B40C6 /* MapInfo_Building_002100001.json */; };
-		57163EE41AB7CDF8002B40C6 /* MapInfo_Building_002100002.json in Resources */ = {isa = PBXBuildFile; fileRef = 57163EA11AB7CDF8002B40C6 /* MapInfo_Building_002100002.json */; };
-		57163EE51AB7CDF8002B40C6 /* MapInfo_Building_002100004.json in Resources */ = {isa = PBXBuildFile; fileRef = 57163EA21AB7CDF8002B40C6 /* MapInfo_Building_002100004.json */; };
-		57163EE61AB7CDF8002B40C6 /* MapInfo_Building_002199999.json in Resources */ = {isa = PBXBuildFile; fileRef = 57163EA31AB7CDF8002B40C6 /* MapInfo_Building_002199999.json */; };
 		57163EE71AB7CDF8002B40C6 /* RenderingScheme.json in Resources */ = {isa = PBXBuildFile; fileRef = 57163EA41AB7CDF8002B40C6 /* RenderingScheme.json */; };
+		57193FF21AD6D97500631296 /* RenderingScheme_H85200001.json in Resources */ = {isa = PBXBuildFile; fileRef = 57193FEB1AD6D97500631296 /* RenderingScheme_H85200001.json */; };
 		571E58981AB921FC007B36DD /* NPRoutePointConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 571E58971AB921FC007B36DD /* NPRoutePointConverter.m */; };
-		571E58A21AB99101007B36DD /* 002188888F01_ASSET.json in Resources */ = {isa = PBXBuildFile; fileRef = 571E589C1AB99101007B36DD /* 002188888F01_ASSET.json */; };
-		571E58A31AB99101007B36DD /* 002188888F01_FACILITY.json in Resources */ = {isa = PBXBuildFile; fileRef = 571E589D1AB99101007B36DD /* 002188888F01_FACILITY.json */; };
-		571E58A41AB99101007B36DD /* 002188888F01_FLOOR.json in Resources */ = {isa = PBXBuildFile; fileRef = 571E589E1AB99101007B36DD /* 002188888F01_FLOOR.json */; };
-		571E58A51AB99101007B36DD /* 002188888F01_LABEL.json in Resources */ = {isa = PBXBuildFile; fileRef = 571E589F1AB99101007B36DD /* 002188888F01_LABEL.json */; };
-		571E58A61AB99101007B36DD /* 002188888F01_ROOM.json in Resources */ = {isa = PBXBuildFile; fileRef = 571E58A01AB99101007B36DD /* 002188888F01_ROOM.json */; };
-		571E58A71AB99101007B36DD /* MapInfo_Building_002188888.json in Resources */ = {isa = PBXBuildFile; fileRef = 571E58A11AB99101007B36DD /* MapInfo_Building_002188888.json */; };
 		571E58B61AB9D2F0007B36DD /* NPRouteResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 571E58B51AB9D2F0007B36DD /* NPRouteResult.m */; };
 		573FD42C1AB0330C0083EAC0 /* NPBuilding.m in Sources */ = {isa = PBXBuildFile; fileRef = 573FD4291AB0330C0083EAC0 /* NPBuilding.m */; };
 		573FD42D1AB0330C0083EAC0 /* NPCity.m in Sources */ = {isa = PBXBuildFile; fileRef = 573FD42B1AB0330C0083EAC0 /* NPCity.m */; };
@@ -95,6 +31,9 @@
 		574443F41AAEDEB600E6232C /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 574443F31AAEDEB600E6232C /* libsqlite3.0.dylib */; };
 		574443F71AAEE1D500E6232C /* CreatePOIDatabaseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 574443F61AAEE1D500E6232C /* CreatePOIDatabaseVC.m */; };
 		574443FA1AAEE64600E6232C /* BaseLogVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 574443F91AAEE64600E6232C /* BaseLogVC.m */; };
+		576094C11AD8E58700647DAE /* NephogramMapResource.zip in Resources */ = {isa = PBXBuildFile; fileRef = 576094C01AD8E58700647DAE /* NephogramMapResource.zip */; };
+		576094D41AD8E7DF00647DAE /* NephogramMapResource in Resources */ = {isa = PBXBuildFile; fileRef = 576094D31AD8E7DF00647DAE /* NephogramMapResource */; };
+		576094D71AD8FDFF00647DAE /* NPMapFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 576094D61AD8FDFF00647DAE /* NPMapFileManager.m */; };
 		57AD3F691ACBE0C30013B1E0 /* NPPathCalibration.m in Sources */ = {isa = PBXBuildFile; fileRef = 57AD3F681ACBE0C30013B1E0 /* NPPathCalibration.m */; };
 		57AD3F751ACCD6240013B1E0 /* NPLocationLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 57AD3F741ACCD6240013B1E0 /* NPLocationLayer.m */; };
 		57AD3F841ACCD9810013B1E0 /* NPCredential.m in Sources */ = {isa = PBXBuildFile; fileRef = 57AD3F811ACCD9810013B1E0 /* NPCredential.m */; };
@@ -115,7 +54,6 @@
 		57AD40531ACD239A0013B1E0 /* NPPolygon.m in Sources */ = {isa = PBXBuildFile; fileRef = 57AD40521ACD239A0013B1E0 /* NPPolygon.m */; };
 		57AD405C1ACD25340013B1E0 /* NPGeometryEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 57AD405B1ACD25340013B1E0 /* NPGeometryEngine.m */; };
 		57E2C9F41AC1175A00EBEF9B /* NPAreaAnalysis.m in Sources */ = {isa = PBXBuildFile; fileRef = 57E2C9F31AC1175A00EBEF9B /* NPAreaAnalysis.m */; };
-		57E2C9F61AC1177100EBEF9B /* AOI.json in Resources */ = {isa = PBXBuildFile; fileRef = 57E2C9F51AC1177100EBEF9B /* AOI.json */; };
 		57F06C231A87BC7500B9511F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F06C221A87BC7500B9511F /* main.m */; };
 		57F06C261A87BC7500B9511F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F06C251A87BC7500B9511F /* AppDelegate.m */; };
 		57F06C2C1A87BC7500B9511F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57F06C2A1A87BC7500B9511F /* Main.storyboard */; };
@@ -156,74 +94,10 @@
 		570DB3F61A890664001D137E /* CustomCalloutVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCalloutVC.h; sourceTree = "<group>"; };
 		570DB3F71A890664001D137E /* CustomCalloutVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCalloutVC.m; sourceTree = "<group>"; };
 		571310B21ABC217500E980F9 /* NephogramData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = NephogramData.framework; sourceTree = "<group>"; };
-		57163E621AB7CDF8002B40C6 /* 002100001_POI.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = 002100001_POI.db; sourceTree = "<group>"; };
-		57163E631AB7CDF8002B40C6 /* 002100001F04_ASSET.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 002100001F04_ASSET.json; sourceTree = "<group>"; };
-		57163E641AB7CDF8002B40C6 /* 002100001F04_FACILITY.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 002100001F04_FACILITY.json; sourceTree = "<group>"; };
-		57163E651AB7CDF8002B40C6 /* 002100001F04_FLOOR.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 002100001F04_FLOOR.json; sourceTree = "<group>"; };
-		57163E661AB7CDF8002B40C6 /* 002100001F04_LABEL.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 002100001F04_LABEL.json; sourceTree = "<group>"; };
-		57163E671AB7CDF8002B40C6 /* 002100001F04_ROOM.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 002100001F04_ROOM.json; sourceTree = "<group>"; };
-		57163E681AB7CDF8002B40C6 /* 002100002_POI.db */ = {isa = PBXFileReference; lastKnownFileType = text; path = 002100002_POI.db; sourceTree = "<group>"; };
-		57163E691AB7CDF8002B40C6 /* 002100002B01_ASSET.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 002100002B01_ASSET.json; sourceTree = "<group>"; };
-		57163E6A1AB7CDF8002B40C6 /* 002100002B01_FACILITY.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 002100002B01_FACILITY.json; sourceTree = "<group>"; };
-		57163E6B1AB7CDF8002B40C6 /* 002100002B01_FLOOR.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 002100002B01_FLOOR.json; sourceTree = "<group>"; };
-		57163E6C1AB7CDF8002B40C6 /* 002100002B01_LABEL.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 002100002B01_LABEL.json; sourceTree = "<group>"; };
-		57163E6D1AB7CDF8002B40C6 /* 002100002B01_ROOM.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 002100002B01_ROOM.json; sourceTree = "<group>"; };
-		57163E6F1AB7CDF8002B40C6 /* 002100002F01_ASSET.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 002100002F01_ASSET.json; sourceTree = "<group>"; };
-		57163E701AB7CDF8002B40C6 /* 002100002F01_FACILITY.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 002100002F01_FACILITY.json; sourceTree = "<group>"; };
-		57163E711AB7CDF8002B40C6 /* 002100002F01_FLOOR.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 002100002F01_FLOOR.json; sourceTree = "<group>"; };
-		57163E721AB7CDF8002B40C6 /* 002100002F01_LABEL.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 002100002F01_LABEL.json; sourceTree = "<group>"; };
-		57163E731AB7CDF8002B40C6 /* 002100002F01_ROOM.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 002100002F01_ROOM.json; sourceTree = "<group>"; };
-		57163E741AB7CDF8002B40C6 /* 002100002F13_ASSET.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 002100002F13_ASSET.json; sourceTree = "<group>"; };
-		57163E751AB7CDF8002B40C6 /* 002100002F13_FACILITY.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 002100002F13_FACILITY.json; sourceTree = "<group>"; };
-		57163E761AB7CDF8002B40C6 /* 002100002F13_FLOOR.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 002100002F13_FLOOR.json; sourceTree = "<group>"; };
-		57163E771AB7CDF8002B40C6 /* 002100002F13_LABEL.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 002100002F13_LABEL.json; sourceTree = "<group>"; };
-		57163E781AB7CDF8002B40C6 /* 002100002F13_ROOM.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 002100002F13_ROOM.json; sourceTree = "<group>"; };
-		57163E791AB7CDF8002B40C6 /* 002100002F19_ASSET.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 002100002F19_ASSET.json; sourceTree = "<group>"; };
-		57163E7A1AB7CDF8002B40C6 /* 002100002F19_FACILITY.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 002100002F19_FACILITY.json; sourceTree = "<group>"; };
-		57163E7B1AB7CDF8002B40C6 /* 002100002F19_FLOOR.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 002100002F19_FLOOR.json; sourceTree = "<group>"; };
-		57163E7C1AB7CDF8002B40C6 /* 002100002F19_LABEL.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 002100002F19_LABEL.json; sourceTree = "<group>"; };
-		57163E7D1AB7CDF8002B40C6 /* 002100002F19_ROOM.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 002100002F19_ROOM.json; sourceTree = "<group>"; };
-		57163E7E1AB7CDF8002B40C6 /* 002100002F20_ASSET.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 002100002F20_ASSET.json; sourceTree = "<group>"; };
-		57163E7F1AB7CDF8002B40C6 /* 002100002F20_FACILITY.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 002100002F20_FACILITY.json; sourceTree = "<group>"; };
-		57163E801AB7CDF8002B40C6 /* 002100002F20_FLOOR.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 002100002F20_FLOOR.json; sourceTree = "<group>"; };
-		57163E811AB7CDF8002B40C6 /* 002100002F20_LABEL.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 002100002F20_LABEL.json; sourceTree = "<group>"; };
-		57163E821AB7CDF8002B40C6 /* 002100002F20_ROOM.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 002100002F20_ROOM.json; sourceTree = "<group>"; };
-		57163E831AB7CDF8002B40C6 /* 002100004_POI.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = 002100004_POI.db; sourceTree = "<group>"; };
-		57163E841AB7CDF8002B40C6 /* 002100004F01_ASSET.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 002100004F01_ASSET.json; sourceTree = "<group>"; };
-		57163E851AB7CDF8002B40C6 /* 002100004F01_FACILITY.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 002100004F01_FACILITY.json; sourceTree = "<group>"; };
-		57163E861AB7CDF8002B40C6 /* 002100004F01_FLOOR.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 002100004F01_FLOOR.json; sourceTree = "<group>"; };
-		57163E881AB7CDF8002B40C6 /* 002100004F01_LABEL.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 002100004F01_LABEL.json; sourceTree = "<group>"; };
-		57163E891AB7CDF8002B40C6 /* 002100004F01_ROOM.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 002100004F01_ROOM.json; sourceTree = "<group>"; };
-		57163E8A1AB7CDF8002B40C6 /* 002100004F02_ASSET.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 002100004F02_ASSET.json; sourceTree = "<group>"; };
-		57163E8B1AB7CDF8002B40C6 /* 002100004F02_FACILITY.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 002100004F02_FACILITY.json; sourceTree = "<group>"; };
-		57163E8C1AB7CDF8002B40C6 /* 002100004F02_FLOOR.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 002100004F02_FLOOR.json; sourceTree = "<group>"; };
-		57163E8E1AB7CDF8002B40C6 /* 002100004F02_LABEL.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 002100004F02_LABEL.json; sourceTree = "<group>"; };
-		57163E8F1AB7CDF8002B40C6 /* 002100004F02_ROOM.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 002100004F02_ROOM.json; sourceTree = "<group>"; };
-		57163E901AB7CDF8002B40C6 /* 002100004F03_ASSET.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 002100004F03_ASSET.json; sourceTree = "<group>"; };
-		57163E911AB7CDF8002B40C6 /* 002100004F03_FACILITY.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 002100004F03_FACILITY.json; sourceTree = "<group>"; };
-		57163E921AB7CDF8002B40C6 /* 002100004F03_FLOOR.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 002100004F03_FLOOR.json; sourceTree = "<group>"; };
-		57163E941AB7CDF8002B40C6 /* 002100004F03_LABEL.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 002100004F03_LABEL.json; sourceTree = "<group>"; };
-		57163E951AB7CDF8002B40C6 /* 002100004F03_ROOM.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 002100004F03_ROOM.json; sourceTree = "<group>"; };
-		57163E961AB7CDF8002B40C6 /* 002199999F05_ASSET.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 002199999F05_ASSET.json; sourceTree = "<group>"; };
-		57163E971AB7CDF8002B40C6 /* 002199999F05_FACILITY.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 002199999F05_FACILITY.json; sourceTree = "<group>"; };
-		57163E981AB7CDF8002B40C6 /* 002199999F05_FLOOR.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 002199999F05_FLOOR.json; sourceTree = "<group>"; };
-		57163E991AB7CDF8002B40C6 /* 002199999F05_LABEL.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 002199999F05_LABEL.json; sourceTree = "<group>"; };
-		57163E9A1AB7CDF8002B40C6 /* 002199999F05_ROOM.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 002199999F05_ROOM.json; sourceTree = "<group>"; };
-		57163E9B1AB7CDF8002B40C6 /* Buildings_City_0021.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Buildings_City_0021.json; sourceTree = "<group>"; };
-		57163E9C1AB7CDF8002B40C6 /* Cities.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Cities.json; sourceTree = "<group>"; };
-		57163EA01AB7CDF8002B40C6 /* MapInfo_Building_002100001.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = MapInfo_Building_002100001.json; sourceTree = "<group>"; };
-		57163EA11AB7CDF8002B40C6 /* MapInfo_Building_002100002.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = MapInfo_Building_002100002.json; sourceTree = "<group>"; };
-		57163EA21AB7CDF8002B40C6 /* MapInfo_Building_002100004.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = MapInfo_Building_002100004.json; sourceTree = "<group>"; };
-		57163EA31AB7CDF8002B40C6 /* MapInfo_Building_002199999.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = MapInfo_Building_002199999.json; sourceTree = "<group>"; };
 		57163EA41AB7CDF8002B40C6 /* RenderingScheme.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = RenderingScheme.json; sourceTree = "<group>"; };
+		57193FEB1AD6D97500631296 /* RenderingScheme_H85200001.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = RenderingScheme_H85200001.json; sourceTree = "<group>"; };
 		571E58961AB921FC007B36DD /* NPRoutePointConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPRoutePointConverter.h; sourceTree = "<group>"; };
 		571E58971AB921FC007B36DD /* NPRoutePointConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPRoutePointConverter.m; sourceTree = "<group>"; };
-		571E589C1AB99101007B36DD /* 002188888F01_ASSET.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 002188888F01_ASSET.json; sourceTree = "<group>"; };
-		571E589D1AB99101007B36DD /* 002188888F01_FACILITY.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 002188888F01_FACILITY.json; sourceTree = "<group>"; };
-		571E589E1AB99101007B36DD /* 002188888F01_FLOOR.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 002188888F01_FLOOR.json; sourceTree = "<group>"; };
-		571E589F1AB99101007B36DD /* 002188888F01_LABEL.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 002188888F01_LABEL.json; sourceTree = "<group>"; };
-		571E58A01AB99101007B36DD /* 002188888F01_ROOM.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 002188888F01_ROOM.json; sourceTree = "<group>"; };
-		571E58A11AB99101007B36DD /* MapInfo_Building_002188888.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = MapInfo_Building_002188888.json; sourceTree = "<group>"; };
 		571E58B41AB9D2F0007B36DD /* NPRouteResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPRouteResult.h; sourceTree = "<group>"; };
 		571E58B51AB9D2F0007B36DD /* NPRouteResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPRouteResult.m; sourceTree = "<group>"; };
 		573FD4281AB0330C0083EAC0 /* NPBuilding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPBuilding.h; sourceTree = "<group>"; };
@@ -248,6 +122,10 @@
 		574443F61AAEE1D500E6232C /* CreatePOIDatabaseVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreatePOIDatabaseVC.m; sourceTree = "<group>"; };
 		574443F81AAEE64600E6232C /* BaseLogVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseLogVC.h; sourceTree = "<group>"; };
 		574443F91AAEE64600E6232C /* BaseLogVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseLogVC.m; sourceTree = "<group>"; };
+		576094C01AD8E58700647DAE /* NephogramMapResource.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = NephogramMapResource.zip; sourceTree = "<group>"; };
+		576094D31AD8E7DF00647DAE /* NephogramMapResource */ = {isa = PBXFileReference; lastKnownFileType = folder; path = NephogramMapResource; sourceTree = "<group>"; };
+		576094D51AD8FDFF00647DAE /* NPMapFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPMapFileManager.h; sourceTree = "<group>"; };
+		576094D61AD8FDFF00647DAE /* NPMapFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPMapFileManager.m; sourceTree = "<group>"; };
 		57AD3F671ACBE0C30013B1E0 /* NPPathCalibration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPPathCalibration.h; path = NephogramMap/NPPathCalibration.h; sourceTree = "<group>"; };
 		57AD3F681ACBE0C30013B1E0 /* NPPathCalibration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NPPathCalibration.m; path = NephogramMap/NPPathCalibration.m; sourceTree = "<group>"; };
 		57AD3F731ACCD6240013B1E0 /* NPLocationLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPLocationLayer.h; sourceTree = "<group>"; };
@@ -288,7 +166,6 @@
 		57AD405B1ACD25340013B1E0 /* NPGeometryEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPGeometryEngine.m; sourceTree = "<group>"; };
 		57E2C9F21AC1175A00EBEF9B /* NPAreaAnalysis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPAreaAnalysis.h; sourceTree = "<group>"; };
 		57E2C9F31AC1175A00EBEF9B /* NPAreaAnalysis.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPAreaAnalysis.m; sourceTree = "<group>"; };
-		57E2C9F51AC1177100EBEF9B /* AOI.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = AOI.json; sourceTree = "<group>"; };
 		57F06C1D1A87BC7500B9511F /* NephogramMapProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NephogramMapProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		57F06C211A87BC7500B9511F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		57F06C221A87BC7500B9511F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -380,72 +257,7 @@
 		574C7D2D1AB0479900894DD2 /* MapFiles */ = {
 			isa = PBXGroup;
 			children = (
-				57E2C9F51AC1177100EBEF9B /* AOI.json */,
-				571E589C1AB99101007B36DD /* 002188888F01_ASSET.json */,
-				571E589D1AB99101007B36DD /* 002188888F01_FACILITY.json */,
-				571E589E1AB99101007B36DD /* 002188888F01_FLOOR.json */,
-				571E589F1AB99101007B36DD /* 002188888F01_LABEL.json */,
-				571E58A01AB99101007B36DD /* 002188888F01_ROOM.json */,
-				571E58A11AB99101007B36DD /* MapInfo_Building_002188888.json */,
-				57163E621AB7CDF8002B40C6 /* 002100001_POI.db */,
-				57163E631AB7CDF8002B40C6 /* 002100001F04_ASSET.json */,
-				57163E641AB7CDF8002B40C6 /* 002100001F04_FACILITY.json */,
-				57163E651AB7CDF8002B40C6 /* 002100001F04_FLOOR.json */,
-				57163E661AB7CDF8002B40C6 /* 002100001F04_LABEL.json */,
-				57163E671AB7CDF8002B40C6 /* 002100001F04_ROOM.json */,
-				57163E681AB7CDF8002B40C6 /* 002100002_POI.db */,
-				57163E691AB7CDF8002B40C6 /* 002100002B01_ASSET.json */,
-				57163E6A1AB7CDF8002B40C6 /* 002100002B01_FACILITY.json */,
-				57163E6B1AB7CDF8002B40C6 /* 002100002B01_FLOOR.json */,
-				57163E6C1AB7CDF8002B40C6 /* 002100002B01_LABEL.json */,
-				57163E6D1AB7CDF8002B40C6 /* 002100002B01_ROOM.json */,
-				57163E6F1AB7CDF8002B40C6 /* 002100002F01_ASSET.json */,
-				57163E701AB7CDF8002B40C6 /* 002100002F01_FACILITY.json */,
-				57163E711AB7CDF8002B40C6 /* 002100002F01_FLOOR.json */,
-				57163E721AB7CDF8002B40C6 /* 002100002F01_LABEL.json */,
-				57163E731AB7CDF8002B40C6 /* 002100002F01_ROOM.json */,
-				57163E741AB7CDF8002B40C6 /* 002100002F13_ASSET.json */,
-				57163E751AB7CDF8002B40C6 /* 002100002F13_FACILITY.json */,
-				57163E761AB7CDF8002B40C6 /* 002100002F13_FLOOR.json */,
-				57163E771AB7CDF8002B40C6 /* 002100002F13_LABEL.json */,
-				57163E781AB7CDF8002B40C6 /* 002100002F13_ROOM.json */,
-				57163E791AB7CDF8002B40C6 /* 002100002F19_ASSET.json */,
-				57163E7A1AB7CDF8002B40C6 /* 002100002F19_FACILITY.json */,
-				57163E7B1AB7CDF8002B40C6 /* 002100002F19_FLOOR.json */,
-				57163E7C1AB7CDF8002B40C6 /* 002100002F19_LABEL.json */,
-				57163E7D1AB7CDF8002B40C6 /* 002100002F19_ROOM.json */,
-				57163E7E1AB7CDF8002B40C6 /* 002100002F20_ASSET.json */,
-				57163E7F1AB7CDF8002B40C6 /* 002100002F20_FACILITY.json */,
-				57163E801AB7CDF8002B40C6 /* 002100002F20_FLOOR.json */,
-				57163E811AB7CDF8002B40C6 /* 002100002F20_LABEL.json */,
-				57163E821AB7CDF8002B40C6 /* 002100002F20_ROOM.json */,
-				57163E831AB7CDF8002B40C6 /* 002100004_POI.db */,
-				57163E841AB7CDF8002B40C6 /* 002100004F01_ASSET.json */,
-				57163E851AB7CDF8002B40C6 /* 002100004F01_FACILITY.json */,
-				57163E861AB7CDF8002B40C6 /* 002100004F01_FLOOR.json */,
-				57163E881AB7CDF8002B40C6 /* 002100004F01_LABEL.json */,
-				57163E891AB7CDF8002B40C6 /* 002100004F01_ROOM.json */,
-				57163E8A1AB7CDF8002B40C6 /* 002100004F02_ASSET.json */,
-				57163E8B1AB7CDF8002B40C6 /* 002100004F02_FACILITY.json */,
-				57163E8C1AB7CDF8002B40C6 /* 002100004F02_FLOOR.json */,
-				57163E8E1AB7CDF8002B40C6 /* 002100004F02_LABEL.json */,
-				57163E8F1AB7CDF8002B40C6 /* 002100004F02_ROOM.json */,
-				57163E901AB7CDF8002B40C6 /* 002100004F03_ASSET.json */,
-				57163E911AB7CDF8002B40C6 /* 002100004F03_FACILITY.json */,
-				57163E921AB7CDF8002B40C6 /* 002100004F03_FLOOR.json */,
-				57163E941AB7CDF8002B40C6 /* 002100004F03_LABEL.json */,
-				57163E951AB7CDF8002B40C6 /* 002100004F03_ROOM.json */,
-				57163E961AB7CDF8002B40C6 /* 002199999F05_ASSET.json */,
-				57163E971AB7CDF8002B40C6 /* 002199999F05_FACILITY.json */,
-				57163E981AB7CDF8002B40C6 /* 002199999F05_FLOOR.json */,
-				57163E991AB7CDF8002B40C6 /* 002199999F05_LABEL.json */,
-				57163E9A1AB7CDF8002B40C6 /* 002199999F05_ROOM.json */,
-				57163E9B1AB7CDF8002B40C6 /* Buildings_City_0021.json */,
-				57163E9C1AB7CDF8002B40C6 /* Cities.json */,
-				57163EA01AB7CDF8002B40C6 /* MapInfo_Building_002100001.json */,
-				57163EA11AB7CDF8002B40C6 /* MapInfo_Building_002100002.json */,
-				57163EA21AB7CDF8002B40C6 /* MapInfo_Building_002100004.json */,
-				57163EA31AB7CDF8002B40C6 /* MapInfo_Building_002199999.json */,
+				57193FEB1AD6D97500631296 /* RenderingScheme_H85200001.json */,
 				57163EA41AB7CDF8002B40C6 /* RenderingScheme.json */,
 			);
 			path = MapFiles;
@@ -543,6 +355,8 @@
 		57F06C921A87BE0500B9511F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				576094D31AD8E7DF00647DAE /* NephogramMapResource */,
+				576094C01AD8E58700647DAE /* NephogramMapResource.zip */,
 				574C7D2D1AB0479900894DD2 /* MapFiles */,
 				57F06C931A87BE0500B9511F /* ArcGIS.bundle */,
 			);
@@ -609,6 +423,8 @@
 				57422E211AB018CB009065FB /* NPMapType.h */,
 				57E2C9F21AC1175A00EBEF9B /* NPAreaAnalysis.h */,
 				57E2C9F31AC1175A00EBEF9B /* NPAreaAnalysis.m */,
+				576094D51AD8FDFF00647DAE /* NPMapFileManager.h */,
+				576094D61AD8FDFF00647DAE /* NPMapFileManager.m */,
 			);
 			path = MapView;
 			sourceTree = "<group>";
@@ -719,77 +535,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				57163EDA1AB7CDF8002B40C6 /* 002199999F05_FACILITY.json in Resources */,
-				57163EBF1AB7CDF8002B40C6 /* 002100002F19_LABEL.json in Resources */,
-				57163ED81AB7CDF8002B40C6 /* 002100004F03_ROOM.json in Resources */,
-				57163ECE1AB7CDF8002B40C6 /* 002100004F02_FACILITY.json in Resources */,
-				57163EDE1AB7CDF8002B40C6 /* Buildings_City_0021.json in Resources */,
-				57163ED21AB7CDF8002B40C6 /* 002100004F02_ROOM.json in Resources */,
-				57163EB21AB7CDF8002B40C6 /* 002100002F01_ASSET.json in Resources */,
-				57163EE41AB7CDF8002B40C6 /* MapInfo_Building_002100002.json in Resources */,
-				57163EE61AB7CDF8002B40C6 /* MapInfo_Building_002199999.json in Resources */,
-				57163EBB1AB7CDF8002B40C6 /* 002100002F13_ROOM.json in Resources */,
-				57163ECD1AB7CDF8002B40C6 /* 002100004F02_ASSET.json in Resources */,
-				57163EB31AB7CDF8002B40C6 /* 002100002F01_FACILITY.json in Resources */,
-				57163EC31AB7CDF8002B40C6 /* 002100002F20_FLOOR.json in Resources */,
 				57F06C2C1A87BC7500B9511F /* Main.storyboard in Resources */,
-				57E2C9F61AC1177100EBEF9B /* AOI.json in Resources */,
-				57163EB01AB7CDF8002B40C6 /* 002100002B01_ROOM.json in Resources */,
-				57163EB91AB7CDF8002B40C6 /* 002100002F13_FLOOR.json in Resources */,
-				57163EDF1AB7CDF8002B40C6 /* Cities.json in Resources */,
-				57163EB61AB7CDF8002B40C6 /* 002100002F01_ROOM.json in Resources */,
-				57163EB81AB7CDF8002B40C6 /* 002100002F13_FACILITY.json in Resources */,
-				57163EC91AB7CDF8002B40C6 /* 002100004F01_FLOOR.json in Resources */,
-				57163EBA1AB7CDF8002B40C6 /* 002100002F13_LABEL.json in Resources */,
-				571E58A31AB99101007B36DD /* 002188888F01_FACILITY.json in Resources */,
 				57F06C311A87BC7500B9511F /* LaunchScreen.xib in Resources */,
-				57163EC61AB7CDF8002B40C6 /* 002100004_POI.db in Resources */,
-				57163EDC1AB7CDF8002B40C6 /* 002199999F05_LABEL.json in Resources */,
-				571E58A41AB99101007B36DD /* 002188888F01_FLOOR.json in Resources */,
-				57163EDD1AB7CDF8002B40C6 /* 002199999F05_ROOM.json in Resources */,
-				57163EAC1AB7CDF8002B40C6 /* 002100002B01_ASSET.json in Resources */,
-				57163ED51AB7CDF8002B40C6 /* 002100004F03_FLOOR.json in Resources */,
-				57163EA51AB7CDF8002B40C6 /* 002100001_POI.db in Resources */,
-				57163ED71AB7CDF8002B40C6 /* 002100004F03_LABEL.json in Resources */,
 				57F06CB81A87BE0500B9511F /* ArcGIS.bundle in Resources */,
-				57163EC41AB7CDF8002B40C6 /* 002100002F20_LABEL.json in Resources */,
-				571E58A61AB99101007B36DD /* 002188888F01_ROOM.json in Resources */,
-				57163EB41AB7CDF8002B40C6 /* 002100002F01_FLOOR.json in Resources */,
-				57163ED11AB7CDF8002B40C6 /* 002100004F02_LABEL.json in Resources */,
-				57163EB71AB7CDF8002B40C6 /* 002100002F13_ASSET.json in Resources */,
-				57163ECF1AB7CDF8002B40C6 /* 002100004F02_FLOOR.json in Resources */,
-				57163EAB1AB7CDF8002B40C6 /* 002100002_POI.db in Resources */,
-				57163EA71AB7CDF8002B40C6 /* 002100001F04_FACILITY.json in Resources */,
-				57163EE31AB7CDF8002B40C6 /* MapInfo_Building_002100001.json in Resources */,
-				57163EBE1AB7CDF8002B40C6 /* 002100002F19_FLOOR.json in Resources */,
-				57163EC11AB7CDF8002B40C6 /* 002100002F20_ASSET.json in Resources */,
-				57163ED31AB7CDF8002B40C6 /* 002100004F03_ASSET.json in Resources */,
-				57163EC71AB7CDF8002B40C6 /* 002100004F01_ASSET.json in Resources */,
-				57163EAF1AB7CDF8002B40C6 /* 002100002B01_LABEL.json in Resources */,
-				57163ED41AB7CDF8002B40C6 /* 002100004F03_FACILITY.json in Resources */,
-				57163ECB1AB7CDF8002B40C6 /* 002100004F01_LABEL.json in Resources */,
-				57163ECC1AB7CDF8002B40C6 /* 002100004F01_ROOM.json in Resources */,
-				57163EDB1AB7CDF8002B40C6 /* 002199999F05_FLOOR.json in Resources */,
-				57163EA61AB7CDF8002B40C6 /* 002100001F04_ASSET.json in Resources */,
-				57163EA91AB7CDF8002B40C6 /* 002100001F04_LABEL.json in Resources */,
-				57163EA81AB7CDF8002B40C6 /* 002100001F04_FLOOR.json in Resources */,
-				57163EE51AB7CDF8002B40C6 /* MapInfo_Building_002100004.json in Resources */,
-				57163EAE1AB7CDF8002B40C6 /* 002100002B01_FLOOR.json in Resources */,
-				57163EBC1AB7CDF8002B40C6 /* 002100002F19_ASSET.json in Resources */,
-				571E58A21AB99101007B36DD /* 002188888F01_ASSET.json in Resources */,
-				571E58A51AB99101007B36DD /* 002188888F01_LABEL.json in Resources */,
-				57163EC21AB7CDF8002B40C6 /* 002100002F20_FACILITY.json in Resources */,
-				57163EAA1AB7CDF8002B40C6 /* 002100001F04_ROOM.json in Resources */,
+				576094D41AD8E7DF00647DAE /* NephogramMapResource in Resources */,
+				57193FF21AD6D97500631296 /* RenderingScheme_H85200001.json in Resources */,
 				57F06C2E1A87BC7500B9511F /* Images.xcassets in Resources */,
-				57163ED91AB7CDF8002B40C6 /* 002199999F05_ASSET.json in Resources */,
-				57163EB51AB7CDF8002B40C6 /* 002100002F01_LABEL.json in Resources */,
-				57163EBD1AB7CDF8002B40C6 /* 002100002F19_FACILITY.json in Resources */,
-				57163EC81AB7CDF8002B40C6 /* 002100004F01_FACILITY.json in Resources */,
-				57163EC51AB7CDF8002B40C6 /* 002100002F20_ROOM.json in Resources */,
-				57163EAD1AB7CDF8002B40C6 /* 002100002B01_FACILITY.json in Resources */,
 				57163EE71AB7CDF8002B40C6 /* RenderingScheme.json in Resources */,
-				57163EC01AB7CDF8002B40C6 /* 002100002F19_ROOM.json in Resources */,
-				571E58A71AB99101007B36DD /* MapInfo_Building_002188888.json in Resources */,
+				576094C11AD8E58700647DAE /* NephogramMapResource.zip in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -827,6 +580,7 @@
 				57AD3F971ACCDEEB0013B1E0 /* NPSimpleFillSymbol.m in Sources */,
 				57AD3F851ACCD9810013B1E0 /* NPGraphicsLayer.m in Sources */,
 				57AD3F751ACCD6240013B1E0 /* NPLocationLayer.m in Sources */,
+				576094D71AD8FDFF00647DAE /* NPMapFileManager.m in Sources */,
 				57F06CEE1A87BFE400B9511F /* NPFloorLayer.m in Sources */,
 				57F06D001A87C19F00B9511F /* NPMapView.m in Sources */,
 				57F06D091A87C1C800B9511F /* NPRouteLayer.m in Sources */,

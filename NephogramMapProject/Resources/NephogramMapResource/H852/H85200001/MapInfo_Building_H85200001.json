@@ -1,0 +1,21 @@
+{
+    "MapInfo": [
+
+
+               {
+                "cityID":"H852",
+                "buildingID":"H85200001",
+                "mapID":"H85200001F06",
+                "floorName":"F6",
+                "floorIndex":"6",
+                "size_x":"2354.796",
+                "size_y":"1541.201",
+                "initAngle":"10.0",
+                "xmax":"2559.712",
+                "xmin":"204.916",
+                "ymax":"-275.992",
+                "ymin":"-1817.193"
+                }
+                ]
+
+}

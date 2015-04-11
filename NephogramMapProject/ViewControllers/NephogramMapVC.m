@@ -38,13 +38,13 @@
     NSLog(@"Map Center: %f, %f", self.mapView.mapAnchor.x, self.mapView.mapAnchor.y);
     
 //    [self.mapView translateInMapUnitByX:5 Y:5 animated:YES];
-    [self.mapView translateInScreenUnitByX:50 Y:50 animated:YES];
+//    [self.mapView translateInScreenUnitByX:50 Y:50 animated:YES];
     
 }
 
 - (void)NPMapView:(NPMapView *)mapView PoiSelected:(NSArray *)array
 {
-
+    NSLog(@"PoiSelected: %@", array);
 }
 
 - (void)NPMapView:(NPMapView *)mapView didFinishLoadingFloor:(NPMapInfo *)mapInfo

@@ -2,6 +2,7 @@
 
 #define FILE_BUILDINGS @"Buildings_City"
 #define KEY_BUILDINGS @"Buildings"
+#define KEY_BUILDING_CITY_ID @"cityID"
 #define KEY_BUILDING_ID @"id"
 #define KEY_BUILDING_NAME @"name"
 #define KEY_BUILDING_LONGITUDE @"longitude"
@@ -11,10 +12,11 @@
 
 @implementation NPBuilding
 
-- (id)initWithBuildingID:(NSString *)buildingID Name:(NSString *)name Lon:(double)lon Lat:(double)lat Address:(NSString *)address
+- (id)initWithCityID:(NSString *)cityID BuildingID:(NSString *)buildingID Name:(NSString *)name Lon:(double)lon Lat:(double)lat Address:(NSString *)address
 {
     self = [super init];
     if (self) {
+        _cityID = cityID;
         _buildingID = buildingID;
         _name = name;
         _longitude = lon;
@@ -48,7 +50,7 @@
             NSString *address = [dict objectForKey:KEY_BUILDING_ADDRESS];
             NSNumber *staNumber = [dict objectForKey:KEY_BUILDING_STATUS];
 
-            building = [[NPBuilding alloc] initWithBuildingID:mid Name:name Lon:lonNumber.doubleValue Lat:latNumber.doubleValue Address:address];
+            building = [[NPBuilding alloc] initWithCityID:cityID BuildingID:mid Name:name Lon:lonNumber.doubleValue Lat:latNumber.doubleValue Address:address];
             building.status = staNumber.intValue;
             break;
         }
@@ -81,7 +83,7 @@
             NSString *address = [dict objectForKey:KEY_BUILDING_ADDRESS];
             NSNumber *staNumber = [dict objectForKey:KEY_BUILDING_STATUS];
             
-            NPBuilding *building = [[NPBuilding alloc] initWithBuildingID:mid Name:name Lon:lonNumber.doubleValue Lat:latNumber.doubleValue Address:address];
+            NPBuilding *building = [[NPBuilding alloc] initWithCityID:cityID BuildingID:mid Name:name Lon:lonNumber.doubleValue Lat:latNumber.doubleValue Address:address];
             building.status = staNumber.intValue;
             
             [toReturn addObject:building];
@@ -93,8 +95,6 @@
 - (NSString *)description
 {
     return [NSString stringWithFormat:@"%@: %@", _name, _buildingID];
-//    return [NSString stringWithFormat:@"%@: %@, %@, %f, %f, %d", _name, _buildingID, _address, _longitude, _latitude, _status];
-    
 }
 
 @end

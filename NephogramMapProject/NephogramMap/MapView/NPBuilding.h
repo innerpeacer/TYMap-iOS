@@ -5,6 +5,8 @@
  */
 @interface NPBuilding : NSObject
 
+@property (nonatomic, strong) NSString *cityID;
+
 /**
  * 建筑ID
  */
