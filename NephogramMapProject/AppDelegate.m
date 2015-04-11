@@ -14,7 +14,7 @@
 
 @implementation AppDelegate
 
-#define DEFAULT_MAP_ROOT @"Nephogram/Map"
+#define DEFAULT_MAP_ROOT @"Map"
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -43,8 +43,8 @@
         [NPUserDefaults setDefaultBuilding:@"00210003"];
     }
     
-//    [NPUserDefaults setDefaultCity:@"0021"];
-    [NPUserDefaults setDefaultCity:@"H852"];
+    [NPUserDefaults setDefaultCity:@"0021"];
+//    [NPUserDefaults setDefaultCity:@"H852"];
 
     [NPUserDefaults setDefaultBuilding:@"002100001"];
     [NPUserDefaults setDefaultBuilding:@"002100002"];

@@ -8,6 +8,7 @@
 
 #import "NPRoomLayer.h"
 #import "NPMapType.h"
+#import "NPMapFileManager.h"
 
 @interface NPRoomLayer()
 {
@@ -69,7 +70,7 @@
     [roomDict removeAllObjects];
     
     NSError *error = nil;
-    NSString *fullPath = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%@_ROOM",info.mapID] ofType:@"json"];
+    NSString *fullPath = [NPMapFileManager getRoomLayerPath:info];
     NSString *jsonString = [NSString stringWithContentsOfFile:fullPath encoding:NSUTF8StringEncoding error:&error];
     
     AGSSBJsonParser *parser = [[AGSSBJsonParser alloc] init];

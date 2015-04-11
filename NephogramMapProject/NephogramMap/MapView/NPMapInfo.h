@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "NPBuilding.h"
 
 /**
  *  地图尺寸,对应地图所示区域实际大小
@@ -76,24 +77,9 @@ typedef struct mapextent {
  */
 @property (readonly) double initAngle;
 
-/**
- *  解析某楼层地图信息的静态方法
- *
- *  @param floor      楼层名称，如F1
- *  @param buildingID 楼层所在建筑的ID
- *
- *  @return 楼层地图信息
- */
-+ (NPMapInfo *)parseMapInfo:(NSString *)floor ForBuilding:(NSString *)buildingID Path:(NSString *)path;
++ (NPMapInfo *)parseMapInfo:(NSString *)floor ForBuilding:(NPBuilding *)building;
 
++ (NSArray *)parseAllMapInfo:(NPBuilding *)building;
 
-/**
- *  解析某建筑所有楼层的地图信息
- *
- *  @param buildingID 楼层所在建筑的ID
- *
- *  @return 所有楼层的地图信息数组:[NPMapInfo]
- */
-+ (NSArray *)parseAllMapInfoForBuilding:(NSString *)buildingID Path:(NSString *)path;
 
 @end

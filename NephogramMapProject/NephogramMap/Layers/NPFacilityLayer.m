@@ -8,6 +8,7 @@
 
 #import "NPFacilityLayer.h"
 #import "NPMapType.h"
+#import "NPMapFileManager.h"
 
 @interface NPFacilityLayer()
 {
@@ -74,7 +75,7 @@
     [facilityDict removeAllObjects];
     
     NSError *error = nil;
-    NSString *fullPath = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%@_FACILITY",info.mapID] ofType:@"json"];
+    NSString *fullPath = [NPMapFileManager getFacilityLayerPath:info];
     NSString *jsonString = [NSString stringWithContentsOfFile:fullPath encoding:NSUTF8StringEncoding error:&error];
     
     AGSSBJsonParser *parser = [[AGSSBJsonParser alloc] init];

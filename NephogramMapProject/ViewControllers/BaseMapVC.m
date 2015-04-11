@@ -22,11 +22,13 @@
 
 - (void)viewDidLoad
 {
-    _currentBuildingID = [NPUserDefaults getDefaultBuilding];
+    NSString *currentCityID = [NPUserDefaults getDefaultCity];
+    _currentCity = [NPCity parseCity:currentCityID];
     
-#define FILE_MAPINFO @"MapInfo_Building"
-    NSString *fullPath = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%@_%@", FILE_MAPINFO, _currentBuildingID] ofType:@"json"];
-    _allMapInfos = [NPMapInfo parseAllMapInfoForBuilding:_currentBuildingID Path:fullPath];
+    NSString *currentBuildingID = [NPUserDefaults getDefaultBuilding];
+    _currentBuilding = [NPBuilding parseBuilding:currentBuildingID InCity:_currentCity];
+
+    _allMapInfos = [NPMapInfo parseAllMapInfo:_currentBuilding];
     
     if (_allMapInfos.count == 1) {
         currentIndex = 0;
@@ -89,11 +91,9 @@
 
 - (void)initMap
 {
-    NSString *buildingID = [NPUserDefaults getDefaultBuilding];
-    self.mapView.buildingID = buildingID;
-        
+    self.mapView.building = _currentBuilding;
+    
     NSString *renderingFile = [[NSBundle mainBundle] pathForResource:@"RenderingScheme" ofType:@"json"];
-//    NSString *renderingFile = [[NSBundle mainBundle] pathForResource:@"RenderingScheme_H85200001" ofType:@"json"];
 
     NPRenderingScheme *renderingScheme = [[NPRenderingScheme alloc] initWithPath:renderingFile];
     [self.mapView initMapViewWithRenderScheme:renderingScheme];

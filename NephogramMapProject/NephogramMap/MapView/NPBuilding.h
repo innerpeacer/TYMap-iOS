@@ -1,4 +1,5 @@
 #import <Foundation/Foundation.h>
+#import "NPCity.h"
 
 /**
  * 建筑类
@@ -38,23 +39,7 @@
 @property (assign) int status;
 
 
-/**
- *  解析所有建筑信息列表
- *
- *  @param cityID 城市ID
- *
- *  @return 建筑类数组
- */
-+ (NSArray *)parseAllBuildingsInCity:(NSString *)cityID;
-
-/**
- *  按ID解析特定建筑信息
- *
- *  @param buildingID 建筑ID
- *  @param cityID     城市ID
- *
- *  @return 建筑类
- */
-+ (NPBuilding *)parseBuilding:(NSString *)buildingID InCity:(NSString *)cityID;
++ (NSArray *)parseAllBuildings:(NPCity *)city;
++ (NPBuilding *)parseBuilding:(NSString *)buildingID InCity:(NPCity *)city;
 
 @end

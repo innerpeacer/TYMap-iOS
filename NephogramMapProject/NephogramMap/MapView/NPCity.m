@@ -1,6 +1,6 @@
 #import "NPCity.h"
+#import "NPMapFileManager.h"
 
-#define FILE_CITIES @"Cities"
 #define KEY_CITIES @"Cities"
 #define KEY_CITY_ID @"id"
 #define KEY_CITY_NAME @"name"
@@ -29,7 +29,7 @@
     NSMutableArray *toReturn = [[NSMutableArray alloc] init];
 
     NSError *error = nil;
-    NSString *fullPath = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:FILE_CITIES] ofType:@"json"];
+    NSString *fullPath = [NPMapFileManager getCityJsonPath];
     NSData *data = [NSData dataWithContentsOfFile:fullPath];
     NSDictionary *cityDict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:&error];
     
@@ -58,7 +58,7 @@
     }
     
     NSError *error = nil;
-    NSString *fullPath = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:FILE_CITIES] ofType:@"json"];
+    NSString *fullPath = [NPMapFileManager getCityJsonPath];
     NSData *data = [NSData dataWithContentsOfFile:fullPath];
     NSDictionary *cityDict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:&error];
     
@@ -75,7 +75,6 @@
             
             city = [[NPCity alloc] initWithCityID:cid Name:name SName:sname Lon:lonNumber.doubleValue Lat:latNumber.doubleValue];
             city.status = staNumber.intValue;
-            
             break;
         }
     }
@@ -86,7 +85,6 @@
 - (NSString *)description
 {
     return [NSString stringWithFormat:@"%@: %@", _name, _cityID];
-//    return [NSString stringWithFormat:@"%@: %@, %@, %f, %f, %d", _name, _cityID, _sname, _longitude, _latitude, _status];
 
 }
 

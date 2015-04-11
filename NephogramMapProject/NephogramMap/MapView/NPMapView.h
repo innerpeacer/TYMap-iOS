@@ -18,6 +18,8 @@
 #import "NPMarkerSymbol.h"
 #import <NephogramData/NPLocalPoint.h>
 
+#import "NPBuilding.h"
+
 typedef enum {
     NPMapViewModeDefault = 0,
     NPMapViewModeFollowing = 1
@@ -82,7 +84,8 @@ typedef enum {
 /**
  *  当前显示的建筑ID
  */
-@property (nonatomic, strong) NSString *buildingID;
+//@property (nonatomic, strong) NSString *buildingID;
+@property (nonatomic, strong) NPBuilding *building;
 
 /**
  *  当前建筑的当前楼层信息

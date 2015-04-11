@@ -7,6 +7,7 @@
 //
 
 #import "NPFloorLayer.h"
+#import "NPMapFileManager.h"
 
 @interface NPFloorLayer()
 {
@@ -41,7 +42,7 @@
     [self removeAllGraphics];
     
     NSError *error = nil;
-    NSString *fullPath = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%@_FLOOR", info.mapID] ofType:@"json"];
+    NSString *fullPath = [NPMapFileManager getFloorLayerPath:info];
     NSString *jsonString = [NSString stringWithContentsOfFile:fullPath encoding:NSUTF8StringEncoding error:&error];
     
     AGSSBJsonParser *parser = [[AGSSBJsonParser alloc] init];

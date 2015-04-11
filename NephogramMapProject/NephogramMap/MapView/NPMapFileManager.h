@@ -7,9 +7,21 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "NPMapInfo.h"
 
 @interface NPMapFileManager : NSObject
 
-//+ (NSString *)
++ (NSString *)getCityJsonPath;
+
++ (NSString *)getBuildingJsonPath:(NSString *)cityID;
+
++ (NSString *)getMapInfoJsonPath:(NSString *)cityID buildingID:(NSString *)buildingID;
+
+
++ (NSString *)getFloorLayerPath:(NPMapInfo *)info;
++ (NSString *)getRoomLayerPath:(NPMapInfo *)info;
++ (NSString *)getAssetLayerPath:(NPMapInfo *)info;
++ (NSString *)getFacilityLayerPath:(NPMapInfo *)info;
++ (NSString *)getLabelLayerPath:(NPMapInfo *)info;
 
 @end

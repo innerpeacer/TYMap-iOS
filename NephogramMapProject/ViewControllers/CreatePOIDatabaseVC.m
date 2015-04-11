@@ -12,10 +12,13 @@
 #import "NPMapInfo.h"
 #import <ArcGIS/ArcGIS.h>
 #import "NPPoi.h"
+#import "NPBuilding.h"
+#import "NPMapFileManager.h"
 
 @interface CreatePOIDatabaseVC()
 {
-    NSString *currentBuildingID;
+    NPCity *currentCity;
+    NPBuilding *currentBuilding;
     
     NSArray *allMapInfos;
     
@@ -31,19 +34,24 @@
 {
     [super viewDidLoad];
     
-    currentBuildingID = [NPUserDefaults getDefaultBuilding];
-    self.title = currentBuildingID;
+    NSString *cityID = [NPUserDefaults getDefaultCity];
+    currentCity = [NPCity parseCity:cityID];
+    
+    NSString *buildingID = [NPUserDefaults getDefaultBuilding];
+    currentBuilding = [NPBuilding parseBuilding:buildingID InCity:currentCity];
 
-    NSString *fullPath = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"MapInfo_Building_%@", currentBuildingID] ofType:@"json"];
-    allMapInfos = [NPMapInfo parseAllMapInfoForBuilding:currentBuildingID Path:fullPath];
+    self.title = currentBuilding.buildingID;
+
+    
+    allMapInfos = [NPMapInfo parseAllMapInfo:currentBuilding];
     
     engine = [AGSGeometryEngine defaultGeometryEngine];
     
-//    NSLog(@"%@", allMapInfos);
+    NSLog(@"%@", allMapInfos);
 }
 
 - (IBAction)createPOIDatabase:(id)sender {
-    CreatingPOIDBAdapter *db = [CreatingPOIDBAdapter sharedDBAdapter:currentBuildingID];
+    CreatingPOIDBAdapter *db = [CreatingPOIDBAdapter sharedDBAdapter:currentBuilding.buildingID];
     [db open];
     
     [db erasePOITable];
@@ -115,7 +123,7 @@
 - (NSArray *)loadRoomsWithInfo:(NPMapInfo *)info
 {
     NSError *error = nil;
-    NSString *fullPath = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%@_ROOM",info.mapID] ofType:@"json"];
+    NSString *fullPath = [NPMapFileManager getRoomLayerPath:info];
     NSString *jsonString = [NSString stringWithContentsOfFile:fullPath encoding:NSUTF8StringEncoding error:&error];
     
     AGSSBJsonParser *parser = [[AGSSBJsonParser alloc] init];
@@ -128,7 +136,7 @@
 - (NSArray *)loadFacilitiesWithInfo:(NPMapInfo *)info
 {
     NSError *error = nil;
-    NSString *fullPath = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%@_FACILITY",info.mapID] ofType:@"json"];
+    NSString *fullPath = [NPMapFileManager getFacilityLayerPath:info];
     NSString *jsonString = [NSString stringWithContentsOfFile:fullPath encoding:NSUTF8StringEncoding error:&error];
     
     AGSSBJsonParser *parser = [[AGSSBJsonParser alloc] init];

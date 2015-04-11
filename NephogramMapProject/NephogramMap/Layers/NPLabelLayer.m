@@ -7,6 +7,7 @@
 //
 
 #import "NPLabelLayer.h"
+#import "NPMapFileManager.h"
 
 @implementation NPLabelLayer
 
@@ -31,7 +32,7 @@
     [self removeAllGraphics];
     
     NSError *error = nil;
-    NSString *fullPath = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%@_LABEL", info.mapID] ofType:@"json"];
+    NSString *fullPath = [NPMapFileManager getLabelLayerPath:info];
     NSString *jsonString = [NSString stringWithContentsOfFile:fullPath encoding:NSUTF8StringEncoding error:&error];
     
     AGSSBJsonParser *parser = [[AGSSBJsonParser alloc] init];

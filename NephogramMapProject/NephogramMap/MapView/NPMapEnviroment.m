@@ -8,7 +8,7 @@
 
 #import "NPMapEnviroment.h"
 
-#define DEFAULT_MAP_ROOT @"Nephogram/Map"
+#define DEFAULT_MAP_ROOT @"Map"
 
 @implementation NPMapEnvironment
 

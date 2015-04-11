@@ -7,6 +7,7 @@
 //
 
 #import "NPAssetLayer.h"
+#import "NPMapFileManager.h"
 
 @interface NPAssetLayer()
 {
@@ -62,7 +63,7 @@
     [self removeAllGraphics];
     
     NSError *error = nil;
-    NSString *fullPath = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%@_ASSET",info.mapID] ofType:@"json"];
+    NSString *fullPath = [NPMapFileManager getAssetLayerPath:info];
     NSString *jsonString = [NSString stringWithContentsOfFile:fullPath encoding:NSUTF8StringEncoding error:&error];
     
     AGSSBJsonParser *parser = [[AGSSBJsonParser alloc] init];
