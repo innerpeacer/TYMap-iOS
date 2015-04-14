@@ -31,7 +31,8 @@
 
 - (id)initFacilityLayerWithRenderingScheme:(NPRenderingScheme *)aRenderingScheme SpatialReference:(AGSSpatialReference *)sr
 {
-    self = [super initWithSpatialReference:sr];
+//    self = [super initWithSpatialReference:sr];
+    self = [super initWithFullEnvelope:nil renderingMode:AGSGraphicsLayerRenderingModeDynamic];
     if (self) {
         renderingScheme = aRenderingScheme;
         facilityRender = [self createFacilityRenderer];

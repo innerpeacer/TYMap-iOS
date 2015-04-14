@@ -8,14 +8,16 @@
 
 #import <ArcGIS/ArcGIS.h>
 #import "NPMapInfo.h"
-#import "NPLabelLayer.h"
+#import "NPTextLabelLayer.h"
 #import "NPFacilityLayer.h"
+
+@class NPMapView;
 
 @interface NPLabelGroupLayer : NSObject
 
+@property (nonatomic, weak) NPMapView *mapView;
 
-
-@property (nonatomic, strong) NPLabelLayer *labelLayer;
+@property (nonatomic, strong) NPTextLabelLayer *labelLayer;
 @property (nonatomic, strong) NPFacilityLayer *facilityLayer;
 
 + (NPLabelGroupLayer *)labelGroupLayerWithRenderingScheme:(NPRenderingScheme *)aRenderingScheme SpatialReference:(AGSSpatialReference *)sr;
@@ -37,5 +39,7 @@
 - (void)highlightFacilityPoi:(NSString *)poiID;
 
 - (void)setFacilitySelected:(BOOL)selected forGraphic:(AGSGraphic *)graphic;
+
+- (void)updateTextLabels;
 
 @end

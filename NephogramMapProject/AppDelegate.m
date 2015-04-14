@@ -28,6 +28,17 @@
     
     [self setDefaultPlaceIfNeeded];
     
+//    UIFont *font = [UIFont fontWithName:@"Heiti SC" size:10.0];
+//    
+//    NSString *str;
+//    str = @"123";
+//    NSLog(@"%@: %@", str, NSStringFromCGSize([str sizeWithAttributes:@{NSFontAttributeName : font}]));
+//    
+//    str = @"ABCD";
+//    NSLog(@"%@: %@", str, NSStringFromCGSize([str sizeWithAttributes:@{NSFontAttributeName : font}]));
+//    
+//    str = @"你好";
+//    NSLog(@"%@: %@", str, NSStringFromCGSize([str sizeWithAttributes:@{NSFontAttributeName : font}]));
     return YES;
 }
 
@@ -43,8 +54,6 @@
     
     [NPUserDefaults setDefaultCity:@"H852"];
     [NPUserDefaults setDefaultBuilding:@"H85200001"];
-
-
     
 }
 

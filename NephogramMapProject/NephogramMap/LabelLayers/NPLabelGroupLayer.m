@@ -26,8 +26,9 @@
 {
     self = [super init];
     if (self) {
-        _labelLayer = [NPLabelLayer labelLayerWithSpatialReference:sr];
+        _labelLayer = [NPTextLabelLayer textLabelLayerWithSpatialReference:sr];
         _labelLayer.allowHitTest = NO;
+        _labelLayer.groupLayer = self;
         
         _facilityLayer = [NPFacilityLayer facilityLayerWithRenderingScheme:aRenderingScheme SpatialReference:sr];
         _facilityLayer.selectionColor = [UIColor cyanColor];
@@ -82,6 +83,11 @@
 - (void)setFacilitySelected:(BOOL)selected forGraphic:(AGSGraphic *)graphic
 {
     [_facilityLayer setSelected:selected forGraphic:graphic];
+}
+
+- (void)updateTextLabels
+{
+    [_labelLayer updateLabels];
 }
 
 @end

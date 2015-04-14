@@ -67,6 +67,7 @@
     }
     
     if (self.mapDelegate && [self.mapDelegate respondsToSelector:@selector(NPMapView:didFinishLoadingFloor:)]) {
+        [labelGroupLayer updateTextLabels];
         [self.mapDelegate NPMapView:self didFinishLoadingFloor:_currentMapInfo];
     }
 }
@@ -99,6 +100,7 @@
     [self addMapLayer:structureGroupLayer.asserLayer withName:LAYER_NAME_ASSET];
     
     labelGroupLayer = [NPLabelGroupLayer labelGroupLayerWithRenderingScheme:renderingScheme SpatialReference:spatialReference];
+    labelGroupLayer.mapView = self;
     [self addMapLayer:labelGroupLayer.facilityLayer withName:LAYER_NAME_FACILITY];
     [self addMapLayer:labelGroupLayer.labelLayer withName:LAYER_NAME_LABEL];
     
@@ -458,9 +460,9 @@
 - (void)respondToZooming:(NSNotification *)notification
 {
 //    NSLog(@"respondToZooming: %f", self.resolution);
-//    BOOL labelVisible = self.resolution < DEFAULT_RESOLUTION_THRESHOLD;
-    BOOL labelVisible = self.mapScale < DEFAULT_SCALE_THRESHOLD;
-    [labelGroupLayer.labelLayer setVisible:labelVisible];
+//    BOOL labelVisible = self.mapScale < DEFAULT_SCALE_THRESHOLD;
+//    [labelGroupLayer.labelLayer setVisible:labelVisible];
+    [labelGroupLayer updateTextLabels];
 }
 
 - (void)respondToPanning:(NSNotification *)notification
