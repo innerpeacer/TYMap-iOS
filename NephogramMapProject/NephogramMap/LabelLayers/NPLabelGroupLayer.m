@@ -38,9 +38,9 @@
 - (void)loadContentsWithInfo:(NPMapInfo *)info
 {
     [_labelLayer removeAllGraphics];
-    [_labelLayer loadContentsWithInfo:info];
-    
     [_facilityLayer removeAllGraphics];
+
+    [_labelLayer loadContentsWithInfo:info];
     [_facilityLayer loadContentsWithInfo:info];
 }
 
@@ -69,17 +69,17 @@
     [_facilityLayer showFacilityOnCurrentWithCategorys:categoryIDs];
 }
 
-- (NPPoi *)getPoiWithPoiID:(NSString *)pid
+- (NPPoi *)getFacilityPoiWithPoiID:(NSString *)pid
 {
     return [_facilityLayer getPoiWithPoiID:pid];
 }
 
-- (void)highlightPoi:(NSString *)poiID
+- (void)highlightFacilityPoi:(NSString *)poiID
 {
     [_facilityLayer highlightPoi:poiID];
 }
 
-- (void)setSelected:(BOOL)selected forGraphic:(AGSGraphic *)graphic
+- (void)setFacilitySelected:(BOOL)selected forGraphic:(AGSGraphic *)graphic
 {
     [_facilityLayer setSelected:selected forGraphic:graphic];
 }

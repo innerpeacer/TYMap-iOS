@@ -11,7 +11,7 @@
 #import "NPLabelLayer.h"
 #import "NPFacilityLayer.h"
 
-@interface NPLabelGroupLayer : AGSGroupLayer
+@interface NPLabelGroupLayer : NSObject
 
 
 
@@ -32,10 +32,10 @@
 
 - (void)showFacilityOnCurrentWithCategorys:(NSArray *)categoryIDs;
 
-- (NPPoi *)getPoiWithPoiID:(NSString *)pid;
+- (NPPoi *)getFacilityPoiWithPoiID:(NSString *)pid;
 
-- (void)highlightPoi:(NSString *)poiID;
+- (void)highlightFacilityPoi:(NSString *)poiID;
 
-- (void)setSelected:(BOOL)selected forGraphic:(AGSGraphic *)graphic;
+- (void)setFacilitySelected:(BOOL)selected forGraphic:(AGSGraphic *)graphic;
 
 @end

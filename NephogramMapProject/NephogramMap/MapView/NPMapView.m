@@ -8,31 +8,29 @@
 
 #import "NPMapView.h"
 
-#import "NPAssetLayer.h"
-#import "NPRoomLayer.h"
-#import "NPFloorLayer.h"
+//#import "NPAssetLayer.h"
+//#import "NPRoomLayer.h"
+//#import "NPFloorLayer.h"
 #import "NPMapView.h"
 #import "NPMapInfo.h"
 #import "NPMapType.h"
 #import "NPMapEnviroment.h"
 #import "NPLocationLayer.h"
 #import "NPMapFileManager.h"
+
+#import "NPStructureGroupLayer.h"
 #import "NPLabelGroupLayer.h"
 
 @interface NPMapView() <AGSMapViewTouchDelegate, AGSMapViewLayerDelegate, AGSCalloutDelegate>
 {
     NPRenderingScheme *renderingScheme;
     
-    NPFloorLayer *floorLayer;
-    NPAssetLayer *assetLayer;
-    
+    NPStructureGroupLayer *structureGroupLayer;
     NPLabelGroupLayer *labelGroupLayer;
     
-    NPRoomLayer *roomLayer;
     NPLocationLayer *locationLayer;
     
     AGSEnvelope *initialEnvelope;
-    
     NPMapViewMode mapViewMode;
     
     double currentDeviceHeading;
@@ -52,15 +50,10 @@
     
     _currentMapInfo = info;
     
-    [floorLayer removeAllGraphics];
-    [roomLayer removeAllGraphics];
-    [assetLayer removeAllGraphics];
+
     [locationLayer removeAllGraphics];
     
-    
-    [floorLayer loadContentsWithInfo:info];
-    [roomLayer loadContentsWithInfo:info];
-    [assetLayer loadContentsWithInfo:info];
+    [structureGroupLayer loadContentsWithInfo:info];
     [labelGroupLayer loadContentsWithInfo:info];
     
 
@@ -100,16 +93,10 @@
     
     AGSSpatialReference *spatialReference = [NPMapEnvironment defaultSpatialReference];
     
-    floorLayer = [NPFloorLayer floorLayerWithRenderingScheme:renderingScheme SpatialReference:spatialReference];
-    [self addMapLayer:floorLayer withName:LAYER_NAME_FLOOR];
-    floorLayer.allowHitTest = NO;
-    
-    roomLayer = [NPRoomLayer roomLayerWithRenderingScheme:renderingScheme SpatialReference:spatialReference];
-    [self addMapLayer:roomLayer withName:LAYER_NAME_ROOM];
-    roomLayer.selectionSymbol = renderingScheme.defaultHighlightFillSymbol;
-    
-    assetLayer = [NPAssetLayer assetLayerWithRenderingScheme:renderingScheme SpatialReference:spatialReference];
-    [self addMapLayer:assetLayer withName:LAYER_NAME_ASSET];
+    structureGroupLayer = [NPStructureGroupLayer structureLayerWithRenderingScheme:renderingScheme SpatialReference:spatialReference];
+    [self addMapLayer:structureGroupLayer.floorLayer withName:LAYER_NAME_FLOOR];
+    [self addMapLayer:structureGroupLayer.roomLayer withName:LAYER_NAME_ROOM];
+    [self addMapLayer:structureGroupLayer.asserLayer withName:LAYER_NAME_ASSET];
     
     labelGroupLayer = [NPLabelGroupLayer labelGroupLayerWithRenderingScheme:renderingScheme SpatialReference:spatialReference];
     [self addMapLayer:labelGroupLayer.facilityLayer withName:LAYER_NAME_FACILITY];
@@ -245,8 +232,7 @@
 
 - (void)clearSelection
 {
-    [roomLayer clearSelection];
-    //    [assetLayer clearSelection];
+    [structureGroupLayer clearSelection];
     [labelGroupLayer clearSelection];
 }
 
@@ -374,8 +360,7 @@
         NSArray *array = [features objectForKey:LAYER_NAME_FACILITY];
         if (array != nil && array.count > 0) {
             AGSGraphic *graphic = (AGSGraphic *)array[0];
-//            [facilityLayer setSelected:YES forGraphic:graphic];
-            [labelGroupLayer setSelected:YES forGraphic:graphic];
+            [labelGroupLayer setFacilitySelected:YES forGraphic:graphic];
             
         }
         return;
@@ -394,7 +379,7 @@
         NSArray *array = [features objectForKey:LAYER_NAME_ROOM];
         if (array != nil && array.count > 0) {
             AGSGraphic *graphic = (AGSGraphic *)array[0];
-            [roomLayer setSelected:YES forGraphic:graphic];
+            [structureGroupLayer setRoomSelected:YES forGraphic:graphic];
         }
         return;
     }
@@ -426,11 +411,11 @@
     NPPoi *result = nil;
     switch (layer) {
         case POI_ROOM:
-            result = [roomLayer getPoiWithPoiID:pid];
+            result = [structureGroupLayer getRoomPoiWithPoiID:pid];
             break;
             
         case POI_FACILITY:
-            result = [labelGroupLayer getPoiWithPoiID:pid];
+            result = [labelGroupLayer getFacilityPoiWithPoiID:pid];
             break;
             
         default:
@@ -443,11 +428,11 @@
 {
     switch (poi.layer) {
         case POI_ROOM:
-            [roomLayer highlightPoi:poi.poiID];
+            [structureGroupLayer highlightRoomPoi:poi.poiID];
             break;
             
         case POI_FACILITY:
-            [labelGroupLayer highlightPoi:poi.poiID];
+            [labelGroupLayer highlightFacilityPoi:poi.poiID];
             break;
             
         default:
@@ -499,7 +484,7 @@
 
 - (NPPoi *)extractRoomPoiOnCurrentFloorWithX:(double)x Y:(double)y
 {
-    return [roomLayer extractPoiOnCurrentFloorWithX:x Y:y];
+    return [structureGroupLayer extractRoomPoiOnCurrentFloorWithX:x Y:y];
 }
 
 @end
