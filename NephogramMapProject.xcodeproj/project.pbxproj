@@ -51,6 +51,11 @@
 		57D66A171ADB995E00DF653B /* NPCity.m in Sources */ = {isa = PBXBuildFile; fileRef = 57D66A151ADB995E00DF653B /* NPCity.m */; };
 		57DDF2011AD96DE50054A1C1 /* NephogramMapResource in Resources */ = {isa = PBXBuildFile; fileRef = 57DDF2001AD96DE50054A1C1 /* NephogramMapResource */; };
 		57E2C9F41AC1175A00EBEF9B /* NPAreaAnalysis.m in Sources */ = {isa = PBXBuildFile; fileRef = 57E2C9F31AC1175A00EBEF9B /* NPAreaAnalysis.m */; };
+		57E6CF521ADCB58300D4C8C7 /* NPFacilityLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 57E6CF4F1ADCB58300D4C8C7 /* NPFacilityLabel.m */; };
+		57E6CF531ADCB58300D4C8C7 /* NPLabelBorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 57E6CF511ADCB58300D4C8C7 /* NPLabelBorder.m */; };
+		57E6CF561ADCB61600D4C8C7 /* NPLabelGroupLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 57E6CF551ADCB61600D4C8C7 /* NPLabelGroupLayer.m */; };
+		57E6CF5B1ADCBA8500D4C8C7 /* NPFacilityLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 57E6CF581ADCBA8500D4C8C7 /* NPFacilityLayer.m */; };
+		57E6CF5C1ADCBA8500D4C8C7 /* NPLabelLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 57E6CF5A1ADCBA8500D4C8C7 /* NPLabelLayer.m */; };
 		57F06C231A87BC7500B9511F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F06C221A87BC7500B9511F /* main.m */; };
 		57F06C261A87BC7500B9511F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F06C251A87BC7500B9511F /* AppDelegate.m */; };
 		57F06C2C1A87BC7500B9511F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57F06C2A1A87BC7500B9511F /* Main.storyboard */; };
@@ -59,9 +64,7 @@
 		57F06CB81A87BE0500B9511F /* ArcGIS.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 57F06C931A87BE0500B9511F /* ArcGIS.bundle */; };
 		57F06CE51A87BF1900B9511F /* BaseControllerTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F06CE41A87BF1900B9511F /* BaseControllerTableVC.m */; };
 		57F06CE81A87BF8D00B9511F /* NPPoi.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F06CE71A87BF8D00B9511F /* NPPoi.m */; };
-		57F06CEB1A87BFD700B9511F /* NPFacilityLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F06CEA1A87BFD700B9511F /* NPFacilityLayer.m */; };
 		57F06CEE1A87BFE400B9511F /* NPFloorLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F06CED1A87BFE400B9511F /* NPFloorLayer.m */; };
-		57F06CF11A87BFEF00B9511F /* NPLabelLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F06CF01A87BFEF00B9511F /* NPLabelLayer.m */; };
 		57F06CF41A87BFFA00B9511F /* NPAssetLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F06CF31A87BFFA00B9511F /* NPAssetLayer.m */; };
 		57F06CF71A87C00500B9511F /* NPRoomLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F06CF61A87C00500B9511F /* NPRoomLayer.m */; };
 		57F06CFA1A87C18D00B9511F /* NPRenderingScheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F06CF91A87C18D00B9511F /* NPRenderingScheme.m */; };
@@ -160,6 +163,16 @@
 		57DDF2001AD96DE50054A1C1 /* NephogramMapResource */ = {isa = PBXFileReference; lastKnownFileType = folder; path = NephogramMapResource; sourceTree = "<group>"; };
 		57E2C9F21AC1175A00EBEF9B /* NPAreaAnalysis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPAreaAnalysis.h; sourceTree = "<group>"; };
 		57E2C9F31AC1175A00EBEF9B /* NPAreaAnalysis.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPAreaAnalysis.m; sourceTree = "<group>"; };
+		57E6CF4E1ADCB58300D4C8C7 /* NPFacilityLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPFacilityLabel.h; sourceTree = "<group>"; };
+		57E6CF4F1ADCB58300D4C8C7 /* NPFacilityLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPFacilityLabel.m; sourceTree = "<group>"; };
+		57E6CF501ADCB58300D4C8C7 /* NPLabelBorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPLabelBorder.h; sourceTree = "<group>"; };
+		57E6CF511ADCB58300D4C8C7 /* NPLabelBorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPLabelBorder.m; sourceTree = "<group>"; };
+		57E6CF541ADCB61600D4C8C7 /* NPLabelGroupLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPLabelGroupLayer.h; sourceTree = "<group>"; };
+		57E6CF551ADCB61600D4C8C7 /* NPLabelGroupLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPLabelGroupLayer.m; sourceTree = "<group>"; };
+		57E6CF571ADCBA8500D4C8C7 /* NPFacilityLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPFacilityLayer.h; sourceTree = "<group>"; };
+		57E6CF581ADCBA8500D4C8C7 /* NPFacilityLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPFacilityLayer.m; sourceTree = "<group>"; };
+		57E6CF591ADCBA8500D4C8C7 /* NPLabelLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPLabelLayer.h; sourceTree = "<group>"; };
+		57E6CF5A1ADCBA8500D4C8C7 /* NPLabelLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPLabelLayer.m; sourceTree = "<group>"; };
 		57F06C1D1A87BC7500B9511F /* NephogramMapProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NephogramMapProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		57F06C211A87BC7500B9511F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		57F06C221A87BC7500B9511F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -173,12 +186,8 @@
 		57F06CE41A87BF1900B9511F /* BaseControllerTableVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseControllerTableVC.m; sourceTree = "<group>"; };
 		57F06CE61A87BF8D00B9511F /* NPPoi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPPoi.h; sourceTree = "<group>"; };
 		57F06CE71A87BF8D00B9511F /* NPPoi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPPoi.m; sourceTree = "<group>"; };
-		57F06CE91A87BFD700B9511F /* NPFacilityLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPFacilityLayer.h; sourceTree = "<group>"; };
-		57F06CEA1A87BFD700B9511F /* NPFacilityLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPFacilityLayer.m; sourceTree = "<group>"; };
 		57F06CEC1A87BFE400B9511F /* NPFloorLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPFloorLayer.h; sourceTree = "<group>"; };
 		57F06CED1A87BFE400B9511F /* NPFloorLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPFloorLayer.m; sourceTree = "<group>"; };
-		57F06CEF1A87BFEF00B9511F /* NPLabelLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPLabelLayer.h; sourceTree = "<group>"; };
-		57F06CF01A87BFEF00B9511F /* NPLabelLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPLabelLayer.m; sourceTree = "<group>"; };
 		57F06CF21A87BFFA00B9511F /* NPAssetLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPAssetLayer.h; sourceTree = "<group>"; };
 		57F06CF31A87BFFA00B9511F /* NPAssetLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPAssetLayer.m; sourceTree = "<group>"; };
 		57F06CF51A87C00500B9511F /* NPRoomLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPRoomLayer.h; sourceTree = "<group>"; };
@@ -289,6 +298,23 @@
 			path = Entity;
 			sourceTree = "<group>";
 		};
+		57E6CF4D1ADCB58300D4C8C7 /* Label */ = {
+			isa = PBXGroup;
+			children = (
+				57E6CF571ADCBA8500D4C8C7 /* NPFacilityLayer.h */,
+				57E6CF581ADCBA8500D4C8C7 /* NPFacilityLayer.m */,
+				57E6CF591ADCBA8500D4C8C7 /* NPLabelLayer.h */,
+				57E6CF5A1ADCBA8500D4C8C7 /* NPLabelLayer.m */,
+				57E6CF541ADCB61600D4C8C7 /* NPLabelGroupLayer.h */,
+				57E6CF551ADCB61600D4C8C7 /* NPLabelGroupLayer.m */,
+				57E6CF4E1ADCB58300D4C8C7 /* NPFacilityLabel.h */,
+				57E6CF4F1ADCB58300D4C8C7 /* NPFacilityLabel.m */,
+				57E6CF501ADCB58300D4C8C7 /* NPLabelBorder.h */,
+				57E6CF511ADCB58300D4C8C7 /* NPLabelBorder.m */,
+			);
+			path = Label;
+			sourceTree = "<group>";
+		};
 		57F06C141A87BC7500B9511F = {
 			isa = PBXGroup;
 			children = (
@@ -358,6 +384,7 @@
 		57F06CDD1A87BE4B00B9511F /* NephogramMap */ = {
 			isa = PBXGroup;
 			children = (
+				57E6CF4D1ADCB58300D4C8C7 /* Label */,
 				57AD3F7F1ACCD9810013B1E0 /* Entity */,
 				57F06CDE1A87BE4B00B9511F /* Layers */,
 				57F06CDF1A87BE4B00B9511F /* MapView */,
@@ -370,12 +397,8 @@
 		57F06CDE1A87BE4B00B9511F /* Layers */ = {
 			isa = PBXGroup;
 			children = (
-				57F06CE91A87BFD700B9511F /* NPFacilityLayer.h */,
-				57F06CEA1A87BFD700B9511F /* NPFacilityLayer.m */,
 				57F06CEC1A87BFE400B9511F /* NPFloorLayer.h */,
 				57F06CED1A87BFE400B9511F /* NPFloorLayer.m */,
-				57F06CEF1A87BFEF00B9511F /* NPLabelLayer.h */,
-				57F06CF01A87BFEF00B9511F /* NPLabelLayer.m */,
 				57F06CF21A87BFFA00B9511F /* NPAssetLayer.h */,
 				57F06CF31A87BFFA00B9511F /* NPAssetLayer.m */,
 				57F06CF51A87C00500B9511F /* NPRoomLayer.h */,
@@ -537,12 +560,10 @@
 				57AD3F9A1ACCDEFF0013B1E0 /* NPSimpleLineSymbol.m in Sources */,
 				570DB3E91A8905E9001D137E /* BaseMapVC.m in Sources */,
 				57F06CF71A87C00500B9511F /* NPRoomLayer.m in Sources */,
-				57F06CEB1A87BFD700B9511F /* NPFacilityLayer.m in Sources */,
 				574443FA1AAEE64600E6232C /* BaseLogVC.m in Sources */,
 				57F06D031A87C1A900B9511F /* NPArcGISDrawer.m in Sources */,
 				57F06D0C1A87C1D500B9511F /* NPRouteManager.m in Sources */,
 				57AD403A1ACCFAC20013B1E0 /* NPCallout.m in Sources */,
-				57F06CF11A87BFEF00B9511F /* NPLabelLayer.m in Sources */,
 				570DB3F21A890649001D137E /* MapRouteVC.m in Sources */,
 				57AD3F8E1ACCDD290013B1E0 /* NPSimpleMarkerSymbol.m in Sources */,
 				57D66A171ADB995E00DF653B /* NPCity.m in Sources */,
@@ -573,20 +594,25 @@
 				574443F11AAED36300E6232C /* FMDatabaseQueue.m in Sources */,
 				574443F21AAED36300E6232C /* FMResultSet.m in Sources */,
 				570DB3EC1A890634001D137E /* MapTableVC.m in Sources */,
+				57E6CF521ADCB58300D4C8C7 /* NPFacilityLabel.m in Sources */,
 				57F06CFD1A87C19600B9511F /* NPMapInfo.m in Sources */,
 				570DB3E61A8903BF001D137E /* NPUserDefaults.m in Sources */,
 				570923CE1AB01120009A3F04 /* NPPoiDBAdapter.m in Sources */,
 				57F06D061A87C1B700B9511F /* NPMapEnviroment.m in Sources */,
 				57F06CF41A87BFFA00B9511F /* NPAssetLayer.m in Sources */,
+				57E6CF561ADCB61600D4C8C7 /* NPLabelGroupLayer.m in Sources */,
 				574443EF1AAED36300E6232C /* FMDatabaseAdditions.m in Sources */,
 				57AD3F841ACCD9810013B1E0 /* NPCredential.m in Sources */,
 				57F06C261A87BC7500B9511F /* AppDelegate.m in Sources */,
+				57E6CF531ADCB58300D4C8C7 /* NPLabelBorder.m in Sources */,
+				57E6CF5B1ADCBA8500D4C8C7 /* NPFacilityLayer.m in Sources */,
 				57AD3F941ACCDE710013B1E0 /* NPMarkerSymbol.m in Sources */,
 				57AD3F691ACBE0C30013B1E0 /* NPPathCalibration.m in Sources */,
 				57F06C231A87BC7500B9511F /* main.m in Sources */,
 				57F06CE51A87BF1900B9511F /* BaseControllerTableVC.m in Sources */,
 				57AD403D1ACCFC390013B1E0 /* NPLocationDisplay.m in Sources */,
 				57E2C9F41AC1175A00EBEF9B /* NPAreaAnalysis.m in Sources */,
+				57E6CF5C1ADCBA8500D4C8C7 /* NPLabelLayer.m in Sources */,
 				57AD3FA61ACCE4C80013B1E0 /* NPPolyline.m in Sources */,
 				570DB3EF1A890641001D137E /* NephogramMapVC.m in Sources */,
 				57AD3F9D1ACCE0B30013B1E0 /* NPEnvelope.m in Sources */,

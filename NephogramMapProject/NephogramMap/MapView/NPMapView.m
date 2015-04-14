@@ -9,8 +9,6 @@
 #import "NPMapView.h"
 
 #import "NPAssetLayer.h"
-#import "NPFacilityLayer.h"
-#import "NPLabelLayer.h"
 #import "NPRoomLayer.h"
 #import "NPFloorLayer.h"
 #import "NPMapView.h"
@@ -19,6 +17,7 @@
 #import "NPMapEnviroment.h"
 #import "NPLocationLayer.h"
 #import "NPMapFileManager.h"
+#import "NPLabelGroupLayer.h"
 
 @interface NPMapView() <AGSMapViewTouchDelegate, AGSMapViewLayerDelegate, AGSCalloutDelegate>
 {
@@ -26,8 +25,9 @@
     
     NPFloorLayer *floorLayer;
     NPAssetLayer *assetLayer;
-    NPFacilityLayer *facilityLayer;
-    NPLabelLayer *labelLayer;
+    
+    NPLabelGroupLayer *labelGroupLayer;
+    
     NPRoomLayer *roomLayer;
     NPLocationLayer *locationLayer;
     
@@ -55,16 +55,13 @@
     [floorLayer removeAllGraphics];
     [roomLayer removeAllGraphics];
     [assetLayer removeAllGraphics];
-    [facilityLayer removeAllGraphics];
-    [labelLayer removeAllGraphics];
     [locationLayer removeAllGraphics];
     
     
     [floorLayer loadContentsWithInfo:info];
     [roomLayer loadContentsWithInfo:info];
     [assetLayer loadContentsWithInfo:info];
-    [facilityLayer loadContentsWithInfo:info];
-    [labelLayer loadContentsWithInfo:info];
+    [labelGroupLayer loadContentsWithInfo:info];
     
 
     if (initialEnvelope == nil) {
@@ -114,13 +111,9 @@
     assetLayer = [NPAssetLayer assetLayerWithRenderingScheme:renderingScheme SpatialReference:spatialReference];
     [self addMapLayer:assetLayer withName:LAYER_NAME_ASSET];
     
-    facilityLayer = [NPFacilityLayer facilityLayerWithRenderingScheme:renderingScheme SpatialReference:spatialReference];
-    [self addMapLayer:facilityLayer withName:LAYER_NAME_FACILITY];
-    facilityLayer.selectionColor = [UIColor cyanColor];
-    
-    labelLayer = [NPLabelLayer labelLayerWithSpatialReference:spatialReference];
-    [self addMapLayer:labelLayer withName:LAYER_NAME_LABEL];
-    labelLayer.allowHitTest = NO;
+    labelGroupLayer = [NPLabelGroupLayer labelGroupLayerWithRenderingScheme:renderingScheme SpatialReference:spatialReference];
+    [self addMapLayer:labelGroupLayer.facilityLayer withName:LAYER_NAME_FACILITY];
+    [self addMapLayer:labelGroupLayer.labelLayer withName:LAYER_NAME_LABEL];
     
     locationLayer = [[NPLocationLayer alloc] initWithSpatialReference:spatialReference];
     [self addMapLayer:locationLayer withName:LAYER_NAME_LOCATION];
@@ -254,7 +247,7 @@
 {
     [roomLayer clearSelection];
     //    [assetLayer clearSelection];
-    [facilityLayer clearSelection];
+    [labelGroupLayer clearSelection];
 }
 
 - (void)mapView:(AGSMapView *)mapView didClickAtPoint:(CGPoint)screen mapPoint:(AGSPoint *)mappoint features:(NSDictionary *)features
@@ -381,7 +374,9 @@
         NSArray *array = [features objectForKey:LAYER_NAME_FACILITY];
         if (array != nil && array.count > 0) {
             AGSGraphic *graphic = (AGSGraphic *)array[0];
-            [facilityLayer setSelected:YES forGraphic:graphic];
+//            [facilityLayer setSelected:YES forGraphic:graphic];
+            [labelGroupLayer setSelected:YES forGraphic:graphic];
+            
         }
         return;
     }
@@ -408,22 +403,22 @@
 
 - (void)showAllFacilitiesOnCurrentFloor
 {
-    [facilityLayer showAllFacilities];
+    [labelGroupLayer showAllFacilities];
 }
 
 - (void)showFacilityOnCurrentWithCategory:(int)categoryID
 {
-    [facilityLayer showFacilityWithCategory:categoryID];
+    [labelGroupLayer showFacilityWithCategory:categoryID];
 }
 
 - (void)showFacilityOnCurrentWithCategorys:(NSArray *)categoryIDs
 {
-    [facilityLayer showFacilityOnCurrentWithCategorys:categoryIDs];
+    [labelGroupLayer showFacilityOnCurrentWithCategorys:categoryIDs];
 }
 
 - (NSArray *)getAllFacilityCategoryIDOnCurrentFloor
 {
-    return [facilityLayer getAllFacilityCategoryIDOnCurrentFloor];
+    return [labelGroupLayer getAllFacilityCategoryIDOnCurrentFloor];
 }
 
 - (NPPoi *)getPoiOnCurrentFloorWithPoiID:(NSString *)pid layer:(POI_LAYER)layer
@@ -435,7 +430,7 @@
             break;
             
         case POI_FACILITY:
-            result = [facilityLayer getPoiWithPoiID:pid];
+            result = [labelGroupLayer getPoiWithPoiID:pid];
             break;
             
         default:
@@ -452,7 +447,7 @@
             break;
             
         case POI_FACILITY:
-            [facilityLayer highlightPoi:poi.poiID];
+            [labelGroupLayer highlightPoi:poi.poiID];
             break;
             
         default:
@@ -480,7 +475,7 @@
 //    NSLog(@"respondToZooming: %f", self.resolution);
 //    BOOL labelVisible = self.resolution < DEFAULT_RESOLUTION_THRESHOLD;
     BOOL labelVisible = self.mapScale < DEFAULT_SCALE_THRESHOLD;
-    [labelLayer setVisible:labelVisible];
+    [labelGroupLayer.labelLayer setVisible:labelVisible];
 }
 
 - (void)respondToPanning:(NSNotification *)notification
