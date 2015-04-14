@@ -33,26 +33,18 @@
 
 - (void)setDefaultPlaceIfNeeded
 {
-    NSString *defaultCityID = [NPUserDefaults getDefaultCity];
-    if (defaultCityID == nil) {
-        [NPUserDefaults setDefaultCity:@"0021"];
-    }
-    
-    NSString *defaultBuildingID = [NPUserDefaults getDefaultBuilding];
-    if (defaultBuildingID == nil) {
-        [NPUserDefaults setDefaultBuilding:@"00210003"];
-    }
-    
-    [NPUserDefaults setDefaultCity:@"0021"];
-//    [NPUserDefaults setDefaultCity:@"H852"];
-
-    [NPUserDefaults setDefaultBuilding:@"002100001"];
-    [NPUserDefaults setDefaultBuilding:@"002100002"];
-//    [NPUserDefaults setDefaultBuilding:@"H85200001"];
-
+//    [NPUserDefaults setDefaultCity:@"0021"];
+//
+//    [NPUserDefaults setDefaultBuilding:@"002100001"];
+//    [NPUserDefaults setDefaultBuilding:@"002100002"];
 //    [NPUserDefaults setDefaultBuilding:@"002100004"];
 //    [NPUserDefaults setDefaultBuilding:@"002188888"];
 //    [NPUserDefaults setDefaultBuilding:@"002199999"];
+    
+    [NPUserDefaults setDefaultCity:@"H852"];
+    [NPUserDefaults setDefaultBuilding:@"H85200001"];
+
+
     
 }
 

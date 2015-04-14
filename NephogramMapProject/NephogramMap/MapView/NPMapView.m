@@ -71,7 +71,6 @@
         initialEnvelope = [AGSEnvelope envelopeWithXmin:_currentMapInfo.mapExtent.xmin ymin:_currentMapInfo.mapExtent.ymin xmax:_currentMapInfo.mapExtent.xmax ymax:_currentMapInfo.mapExtent.ymax spatialReference:[NPMapEnvironment defaultSpatialReference]];
         [self zoomToEnvelope:initialEnvelope animated:NO];
         
-//        self.maxResolution = (_currentMapInfo.mapSize.x * 1.5 / (720/2.0));
         double width = 0.06; // 6cm
         self.minScale = _currentMapInfo.mapSize.x / width;
         self.maxScale = 6 / width;
@@ -82,10 +81,8 @@
     }
 }
 
-//- (void)initMapViewWithRenderScheme:(NPRenderingScheme *)aRenderingScheme
 - (void)initMapViewWithBuilding:(NPBuilding *)b
 {
-//    renderingScheme = aRenderingScheme;
     _building = b;
     NSString *renderingSchemePath = [NPMapFileManager getRenderingScheme:_building];
     renderingScheme = [[NPRenderingScheme alloc] initWithPath:(NSString *)renderingSchemePath];
@@ -101,9 +98,7 @@
     
     self.backgroundColor = [UIColor lightGrayColor];
     self.gridLineWidth = 0.0;
-    
-//    self.minResolution = (7.2 / (720/2.0));
-    
+        
     mapViewMode = NPMapViewModeDefault;
     
     AGSSpatialReference *spatialReference = [NPMapEnvironment defaultSpatialReference];

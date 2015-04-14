@@ -5,7 +5,7 @@
 //  Created by innerpeacer on 15/2/9.
 //  Copyright (c) 2015年 innerpeacer. All rights reserved.
 //
-
+ 
 #import "NPUserDefaults.h"
 
 #define KEY_BUILDING_ID @"buildingID"
@@ -25,18 +25,32 @@
     [defaults setObject:buildingID forKey:KEY_BUILDING_ID];
 }
 
-+ (NSString *)getDefaultBuilding
++ (NPBuilding *)getDefaultBuilding
 {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *buildingID = [defaults objectForKey:KEY_BUILDING_ID];
-    return buildingID;
-}
-
-+ (NSString *)getDefaultCity
-{
+    NPBuilding *building = nil;
+    
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *cityID = [defaults objectForKey:KEY_CITY_ID];
-    return cityID;
+    NSString *buildingID = [defaults objectForKey:KEY_BUILDING_ID];
+    
+    if (cityID && buildingID) {
+        NPCity *city = [NPCity parseCity:cityID];
+        building = [NPBuilding parseBuilding:buildingID InCity:city];
+    }
+    return building;
 }
+
++ (NPCity *)getDefaultCity
+{
+    NPCity *city = nil;
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *cityID = [defaults objectForKey:KEY_CITY_ID];
+    if (cityID) {
+        city = [NPCity parseCity:cityID];
+    }
+    return city;
+}
+
 
 @end

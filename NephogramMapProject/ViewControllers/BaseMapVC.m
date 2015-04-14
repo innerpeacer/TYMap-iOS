@@ -22,11 +22,8 @@
 
 - (void)viewDidLoad
 {
-    NSString *currentCityID = [NPUserDefaults getDefaultCity];
-    _currentCity = [NPCity parseCity:currentCityID];
-    
-    NSString *currentBuildingID = [NPUserDefaults getDefaultBuilding];
-    _currentBuilding = [NPBuilding parseBuilding:currentBuildingID InCity:_currentCity];
+    _currentCity = [NPUserDefaults getDefaultCity];
+    _currentBuilding = [NPUserDefaults getDefaultBuilding];
 
     _allMapInfos = [NPMapInfo parseAllMapInfo:_currentBuilding];
     

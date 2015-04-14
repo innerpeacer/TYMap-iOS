@@ -26,4 +26,6 @@
 
 + (NSString *)getRenderingScheme:(NPBuilding *)building;
 
++ (NSString *)getPOIDBPath:(NPBuilding *)building;
+
 @end

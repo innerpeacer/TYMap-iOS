@@ -59,47 +59,6 @@
     return building;
 }
 
-///**
-// *  按ID解析特定建筑信息
-// *
-// *  @param buildingID 建筑ID
-// *  @param cityID     城市ID
-// *
-// *  @return 建筑类
-// */
-//+ (NPBuilding *)parseBuilding:(NSString *)buildingID InCity:(NSString *)cityID
-//{
-//    NPBuilding *building = nil;
-//    
-//    if (cityID == nil || buildingID == nil) {
-//        return building;
-//    }
-//    
-//    NSError *error = nil;
-//    NSString *fullPath = [NPMapFileManager getBuildingJsonPath:cityID];
-//    NSData *data = [NSData dataWithContentsOfFile:fullPath];
-//    NSDictionary *buildingDict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:&error];
-//    
-//    NSArray *buildingArray = [buildingDict objectForKey:KEY_BUILDINGS];
-//    for (NSDictionary *dict  in buildingArray) {
-//        NSString *mid = [dict objectForKey:KEY_BUILDING_ID];
-//        
-//        if ([mid isEqualToString:buildingID]) {
-//            NSString *name = [dict objectForKey:KEY_BUILDING_NAME];
-//            NSNumber *lonNumber = [dict objectForKey:KEY_BUILDING_LONGITUDE];
-//            NSNumber *latNumber = [dict objectForKey:KEY_BUILDING_LATITUDE];
-//            NSString *address = [dict objectForKey:KEY_BUILDING_ADDRESS];
-//            NSNumber *staNumber = [dict objectForKey:KEY_BUILDING_STATUS];
-//
-//            building = [[NPBuilding alloc] initWithCityID:cityID BuildingID:mid Name:name Lon:lonNumber.doubleValue Lat:latNumber.doubleValue Address:address];
-//            building.status = staNumber.intValue;
-//            break;
-//        }
-//    }
-//    
-//    return building;
-//}
-
 + (NSArray *)parseAllBuildings:(NPCity *)city
 {
     NSMutableArray *toReturn = [[NSMutableArray alloc] init];
@@ -133,48 +92,6 @@
     }
     return toReturn;
 }
-
-
-///**
-// *  解析所有建筑信息列表
-// *
-// *  @param cityID 城市ID
-// *
-// *  @return 建筑类数组
-// */
-//+ (NSArray *)parseAllBuildingsInCity:(NSString *)cityID
-//{
-//    NSMutableArray *toReturn = [[NSMutableArray alloc] init];
-//    
-//    if (cityID == nil) {
-//        return toReturn;
-//    }
-//    
-//    NSError *error = nil;
-//    NSString *fullPath = [NPMapFileManager getBuildingJsonPath:cityID];
-//
-//    
-//    if ([[NSFileManager defaultManager] fileExistsAtPath:fullPath]) {
-//        NSData *data = [NSData dataWithContentsOfFile:fullPath];
-//        NSDictionary *buildingDict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:&error];
-//        
-//        NSArray *buildingArray = [buildingDict objectForKey:KEY_BUILDINGS];
-//        for (NSDictionary *dict  in buildingArray) {
-//            NSString *mid = [dict objectForKey:KEY_BUILDING_ID];
-//            NSString *name = [dict objectForKey:KEY_BUILDING_NAME];
-//            NSNumber *lonNumber = [dict objectForKey:KEY_BUILDING_LONGITUDE];
-//            NSNumber *latNumber = [dict objectForKey:KEY_BUILDING_LATITUDE];
-//            NSString *address = [dict objectForKey:KEY_BUILDING_ADDRESS];
-//            NSNumber *staNumber = [dict objectForKey:KEY_BUILDING_STATUS];
-//            
-//            NPBuilding *building = [[NPBuilding alloc] initWithCityID:cityID BuildingID:mid Name:name Lon:lonNumber.doubleValue Lat:latNumber.doubleValue Address:address];
-//            building.status = staNumber.intValue;
-//            
-//            [toReturn addObject:building];
-//        }
-//    }
-//    return toReturn;
-//}
 
 - (NSString *)description
 {

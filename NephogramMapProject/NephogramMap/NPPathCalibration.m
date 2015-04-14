@@ -41,7 +41,6 @@
             AGSSBJsonParser *parser = [[AGSSBJsonParser alloc] init];
             NSDictionary *dict = [parser objectWithString:jsonString];
             AGSFeatureSet *set = [[AGSFeatureSet alloc] initWithJSON:dict];
-//            [featureArray addObjectsFromArray:set.features];
             for (AGSGraphic *graphic in set.features) {
                 [featureArray addObject:graphic.geometry];
             }

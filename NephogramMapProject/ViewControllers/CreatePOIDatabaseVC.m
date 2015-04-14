@@ -34,11 +34,8 @@
 {
     [super viewDidLoad];
     
-    NSString *cityID = [NPUserDefaults getDefaultCity];
-    currentCity = [NPCity parseCity:cityID];
-    
-    NSString *buildingID = [NPUserDefaults getDefaultBuilding];
-    currentBuilding = [NPBuilding parseBuilding:buildingID InCity:currentCity];
+    currentCity = [NPUserDefaults getDefaultCity];
+    currentBuilding = [NPUserDefaults getDefaultBuilding];
 
     self.title = currentBuilding.buildingID;
 

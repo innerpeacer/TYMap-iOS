@@ -7,13 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "NPBuilding.h"
+#import "NPCity.h"
 
 @interface NPUserDefaults : NSObject
 
 + (void)setDefaultBuilding:(NSString *)buildingID;
 + (void)setDefaultCity:(NSString *)cityID;
 
-+ (NSString *)getDefaultBuilding;
-+ (NSString *)getDefaultCity;
++ (NPBuilding *)getDefaultBuilding;
++ (NPCity *)getDefaultCity;
 
 @end

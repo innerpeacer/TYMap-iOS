@@ -120,7 +120,6 @@ typedef enum {
  *
  *  @param renderingScheme 地图渲染方案
  */
-//- (void)initMapViewWithRenderScheme:(NPRenderingScheme *)renderingScheme;
 - (void)initMapViewWithBuilding:(NPBuilding *)buidling;
 
 /**
