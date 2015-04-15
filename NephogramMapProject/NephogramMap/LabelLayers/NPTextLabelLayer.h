@@ -8,7 +8,6 @@
 
 #import <ArcGIS/ArcGIS.h>
 #import "NPMapInfo.h"
-//#import "NPLabelGroupLayer.h"
 
 @class NPLabelGroupLayer;
 
@@ -20,6 +19,6 @@
 
 - (void)loadContentsWithInfo:(NPMapInfo *)info;
 
-- (void)updateLabels;
+- (void)updateLabels:(NSMutableArray *)array;
 
 @end

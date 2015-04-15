@@ -20,6 +20,8 @@
 @property (nonatomic, strong) AGSGraphic *textGraphic;
 @property (nonatomic, strong) AGSTextSymbol *textSymbol;
 
+@property (nonatomic, assign) BOOL isHidden;
+
 - (id)initWithName:(NSString *)name Position:(NPPoint *)pos;
 
 @end

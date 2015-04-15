@@ -10,7 +10,7 @@
 
 @interface NPLabelGroupLayer()
 {
-
+    NSMutableArray *visiableBorders;
 }
 
 @end
@@ -26,6 +26,8 @@
 {
     self = [super init];
     if (self) {
+        visiableBorders = [[NSMutableArray alloc] init];
+        
         _labelLayer = [NPTextLabelLayer textLabelLayerWithSpatialReference:sr];
         _labelLayer.allowHitTest = NO;
         _labelLayer.groupLayer = self;
@@ -48,7 +50,6 @@
 
 - (void)clearSelection
 {
-//    [_facilityLayer clearSelection];
     [_facilityLayer showAllFacilities];
 }
 
@@ -87,14 +88,12 @@
     [_facilityLayer setSelected:selected forGraphic:graphic];
 }
 
-- (void)updateTextLabels
+- (void)updateLabels
 {
-    [_labelLayer updateLabels];
-}
-
-- (void)updateFacilityLabels
-{
-    [_facilityLayer updateLabels];
+    [visiableBorders removeAllObjects];
+    
+    [_facilityLayer updateLabels:visiableBorders];
+    [_labelLayer updateLabels:visiableBorders];
 }
 
 @end

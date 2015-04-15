@@ -40,7 +40,6 @@
 
 - (void)setFacilitySelected:(BOOL)selected forGraphic:(AGSGraphic *)graphic;
 
-- (void)updateTextLabels;
-- (void)updateFacilityLabels;
+- (void)updateLabels;
 
 @end

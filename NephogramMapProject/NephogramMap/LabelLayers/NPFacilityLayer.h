@@ -34,6 +34,6 @@
 
 - (void)highlightPoi:(NSString *)poiID;
 
-- (void)updateLabels;
+- (void)updateLabels:(NSMutableArray *)array;
 
 @end

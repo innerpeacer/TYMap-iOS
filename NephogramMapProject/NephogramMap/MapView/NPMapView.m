@@ -67,8 +67,9 @@
     }
     
     if (self.mapDelegate && [self.mapDelegate respondsToSelector:@selector(NPMapView:didFinishLoadingFloor:)]) {
-        [labelGroupLayer updateTextLabels];
-        [labelGroupLayer updateFacilityLabels];
+//        [labelGroupLayer updateTextLabels];
+//        [labelGroupLayer updateFacilityLabels];
+        [labelGroupLayer updateLabels];
         [self.mapDelegate NPMapView:self didFinishLoadingFloor:_currentMapInfo];
     }
 }
@@ -463,8 +464,9 @@
 //    NSLog(@"respondToZooming: %f", self.resolution);
 //    BOOL labelVisible = self.mapScale < DEFAULT_SCALE_THRESHOLD;
 //    [labelGroupLayer.labelLayer setVisible:labelVisible];
-    [labelGroupLayer updateTextLabels];
-    [labelGroupLayer updateFacilityLabels];
+//    [labelGroupLayer updateTextLabels];
+//    [labelGroupLayer updateFacilityLabels];
+    [labelGroupLayer updateLabels];
 }
 
 - (void)respondToPanning:(NSNotification *)notification

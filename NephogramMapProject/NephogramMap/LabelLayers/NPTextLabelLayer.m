@@ -17,8 +17,6 @@
 @interface NPTextLabelLayer()
 {
     NSMutableArray *allTextLabels;
-    
-    NSMutableArray *visiableBorders;
 }
 @end
 
@@ -34,22 +32,24 @@
     self = [super initWithFullEnvelope:nil renderingMode:AGSGraphicsLayerRenderingModeDynamic];
     if (self) {
         allTextLabels = [[NSMutableArray alloc] init];
-        visiableBorders = [[NSMutableArray alloc] init];
     }
     return self;
 }
 
-- (void)updateLabels
+- (void)updateLabels:(NSMutableArray *)array
 {
-//    NSLog(@"NPTextLabelLayer updateLabels");
-    
-    [visiableBorders removeAllObjects];
+    [self updateLabelBorders:array];
+    [self updateLabelState];
+}
+
+- (void)updateLabelBorders:(NSMutableArray *)array
+{
     for (NPTextLabel *tl in allTextLabels) {
         CGPoint screenPoint = [self.groupLayer.mapView toScreenPoint:tl.position];
         NPLabelBorder *border = [NPLabelBorderCalculator getTextLabelBorder:tl Point:screenPoint];
         
         BOOL isOverlapping = NO;
-        for (NPLabelBorder *visiableBorder in visiableBorders) {
+        for (NPLabelBorder *visiableBorder in array) {
             if ([NPLabelBorder CheckIntersect:border WithBorder:visiableBorder]) {
                 isOverlapping = YES;
                 break;
@@ -57,12 +57,23 @@
         }
         
         if (isOverlapping) {
+            tl.isHidden = YES;
+        } else {
+            tl.isHidden = NO;
+            [array addObject:border];
+        }
+        
+    }
+}
+
+- (void)updateLabelState
+{
+    for (NPTextLabel *tl in allTextLabels) {
+        if (tl.isHidden) {
             tl.textGraphic.symbol = nil;
         } else {
             tl.textGraphic.symbol = tl.textSymbol;
-            [visiableBorders addObject:border];
         }
-        
     }
 }
 
@@ -91,8 +102,6 @@
             double x = ((AGSPoint *)graphic.geometry).x;
             double y = ((AGSPoint *)graphic.geometry).y;
             NPPoint *position = (NPPoint *)[AGSPoint pointWithX:x y:y spatialReference:sr];
-            
-//            NPTextLabel *textLabel = [[NPTextLabel alloc] initWithGeoID:gid PoiID:pid Name:name Position:position switchignWidth:width];
             NPTextLabel *textLabel = [[NPTextLabel alloc] initWithName:name Position:position];
 
             

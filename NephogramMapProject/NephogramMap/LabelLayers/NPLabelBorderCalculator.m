@@ -40,7 +40,8 @@
     double textHeight = textLabel.textSize.height;
     
     double left = screenPoint.x - textWidth * 0.5 * scale;
-    double right = screenPoint.x + (textWidth + TEXT_OFFSET_X) * scale;
+//    double right = screenPoint.x + (textWidth + TEXT_OFFSET_X) * scale;
+    double right = screenPoint.x + textWidth * 0.5 * scale;
     double top = screenPoint.y - textHeight * 0.5 * scale;
     double bottom = screenPoint.y + textHeight * 0.5 * scale;
     

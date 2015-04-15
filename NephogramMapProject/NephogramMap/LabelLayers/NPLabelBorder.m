@@ -8,8 +8,8 @@
 
 #import "NPLabelBorder.h"
 
-#define PROTECT_INTERVAL_X 5
-#define PROTECT_INTERVAL_Y 5
+#define PROTECT_INTERVAL_X 2
+#define PROTECT_INTERVAL_Y 2
 
 @interface NPLabelBorder()
 {
@@ -44,22 +44,7 @@
 + (BOOL)CheckIntersect:(NPLabelBorder *)border1 WithBorder:(NPLabelBorder *)border2
 {
 //    return CGRectIntersectsRect(border1.border, border2.border);
-//    public static boolean CheckIntersect(PMLabelBorder border1,
-//                                         PMLabelBorder border2) {
-//        if (border1.getRight() - border2.getLeft() < Horizontal_Border_Buffer)
-//            return false;
-//        
-//        if (border2.getRight() - border1.getLeft() < Horizontal_Border_Buffer)
-//            return false;
-//        
-//        if (border1.getBottom() - border2.getTop() < Vertical_Border_Buffer)
-//            return false;
-//        
-//        if (border2.getBottom() - border1.getTop() < Vertical_Border_Buffer)
-//            return false;
-//        
-//        return true;
-//    }
+
     CGRect bufferRect = CGRectMake(border1.border.origin.x - PROTECT_INTERVAL_X, border1.border.origin.y - PROTECT_INTERVAL_Y, border1.border.size.width + PROTECT_INTERVAL_X * 2, border1.border.size.height + PROTECT_INTERVAL_X * 2);
     return CGRectIntersectsRect(bufferRect, border2.border);
 

@@ -23,8 +23,6 @@
     NSMutableDictionary *groupedFacilityLabelDict;
     NSMutableDictionary *facilityLabelDict;
     
-    NSMutableArray *visiableBorders;
-    
     NPRenderingScheme *renderingScheme;
 }
 
@@ -46,8 +44,6 @@
         allFacilitySymbols = [[NSMutableDictionary alloc] init];
         allHighlightFacilitySymbols = [[NSMutableDictionary alloc] init];
         [self getFacilitySymbols];
-        
-        visiableBorders = [[NSMutableArray alloc] init];
         
         groupedFacilityLabelDict = [[NSMutableDictionary alloc] init];
         facilityLabelDict = [[NSMutableDictionary alloc] init];
@@ -77,22 +73,20 @@
 
 }
 
-- (void)updateLabels
+- (void)updateLabels:(NSMutableArray *)array
 {
-    [self updateLabelBorders];
+    [self updateLabelBorders:array];
     [self updateLabelState];
 }
 
-- (void)updateLabelBorders
+- (void)updateLabelBorders:(NSMutableArray *)array
 {
-    [visiableBorders removeAllObjects];
     for (NPFacilityLabel *fl in facilityLabelDict.allValues) {
         CGPoint screenPoint = [self.groupLayer.mapView toScreenPoint:fl.position];
         NPLabelBorder *border = [NPLabelBorderCalculator getFacilityLabelBorder:screenPoint];
-        //        fl.facilityGraphic.symbol = fl.highlightedFacilitySymbol;
         
         BOOL isOverlapping = NO;
-        for (NPLabelBorder *visiableBorder in visiableBorders) {
+        for (NPLabelBorder *visiableBorder in array) {
             if ([NPLabelBorder CheckIntersect:border WithBorder:visiableBorder]) {
                 isOverlapping = YES;
                 break;
@@ -103,7 +97,7 @@
             fl.isHidden = YES;
         } else {
             fl.isHidden = NO;
-            [visiableBorders addObject:border];
+            [array addObject:border];
         }
     }
 }
@@ -245,8 +239,6 @@
     fl.currentSymbol = fl.highlightedFacilitySymbol;
     
     [self updateLabelState];
-//    [self setSelected:YES forGraphic:fl.facilityGraphic];
-    
 }
 
 @end
