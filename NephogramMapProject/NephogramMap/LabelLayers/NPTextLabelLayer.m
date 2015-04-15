@@ -41,7 +41,7 @@
 
 - (void)updateLabels
 {
-    NSLog(@"NPTextLabelLayer updateLabels");
+//    NSLog(@"NPTextLabelLayer updateLabels");
     
     [visiableBorders removeAllObjects];
     for (NPTextLabel *tl in allTextLabels) {
@@ -92,17 +92,9 @@
             double y = ((AGSPoint *)graphic.geometry).y;
             NPPoint *position = (NPPoint *)[AGSPoint pointWithX:x y:y spatialReference:sr];
             
-            
-            NSString *gid = [graphic attributeForKey:GRAPHIC_ATTRIBUTE_GEO_ID];
-            NSString *pid = [graphic attributeForKey:GRAPHIC_ATTRIBUTE_POI_ID];
+//            NPTextLabel *textLabel = [[NPTextLabel alloc] initWithGeoID:gid PoiID:pid Name:name Position:position switchignWidth:width];
+            NPTextLabel *textLabel = [[NPTextLabel alloc] initWithName:name Position:position];
 
-            double width = 0;
-            id widthObject = [graphic attributeForKey:@"LENGTH"];
-            if (![widthObject isKindOfClass:[NSNull class]]) {
-                width = [widthObject doubleValue];
-            }
-            
-            NPTextLabel *textLabel = [[NPTextLabel alloc] initWithGeoID:gid PoiID:pid Name:name Position:position switchignWidth:width];
             
             AGSTextSymbol *ts = [AGSTextSymbol textSymbolWithText:name color:[UIColor blackColor]];
             ts.angleAlignment = AGSMarkerSymbolAngleAlignmentScreen;
@@ -112,10 +104,9 @@
             ts.fontFamily = @"Heiti SC";
             textLabel.textSymbol = ts;
             
-            textLabel.textGraphic = [AGSGraphic graphicWithGeometry:position symbol:nil attributes:nil];
+            textLabel.textGraphic = graphic;
             [self addGraphic:textLabel.textGraphic];
             [allTextLabels addObject:textLabel];
-            
         }
     }
     

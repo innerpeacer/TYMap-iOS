@@ -68,6 +68,7 @@
     
     if (self.mapDelegate && [self.mapDelegate respondsToSelector:@selector(NPMapView:didFinishLoadingFloor:)]) {
         [labelGroupLayer updateTextLabels];
+        [labelGroupLayer updateFacilityLabels];
         [self.mapDelegate NPMapView:self didFinishLoadingFloor:_currentMapInfo];
     }
 }
@@ -463,6 +464,7 @@
 //    BOOL labelVisible = self.mapScale < DEFAULT_SCALE_THRESHOLD;
 //    [labelGroupLayer.labelLayer setVisible:labelVisible];
     [labelGroupLayer updateTextLabels];
+    [labelGroupLayer updateFacilityLabels];
 }
 
 - (void)respondToPanning:(NSNotification *)notification

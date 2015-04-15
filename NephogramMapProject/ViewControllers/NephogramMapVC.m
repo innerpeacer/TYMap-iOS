@@ -28,18 +28,12 @@
     
 }
 
+int count = 0;
+int tIndex = 0;
+
 - (void)NPMapView:(NPMapView *)mapView didClickAtPoint:(CGPoint)screen mapPoint:(AGSPoint *)mappoint
 {
-//    NSArray *poiArray = [areaAnalysis extractAOIWithX:mappoint.x Y:mappoint.y];
-//    NSLog(@"Count: %d", (int)poiArray.count);
-//    NSLog(@"%@", poiArray);
-    
     NSLog(@"didClickAtPoint: %f, %f", mappoint.x, mappoint.y);
-    NSLog(@"Map Center: %f, %f", self.mapView.mapAnchor.x, self.mapView.mapAnchor.y);
-    
-//    [self.mapView translateInMapUnitByX:5 Y:5 animated:YES];
-//    [self.mapView translateInScreenUnitByX:50 Y:50 animated:YES];
-    
 }
 
 - (void)NPMapView:(NPMapView *)mapView PoiSelected:(NSArray *)array

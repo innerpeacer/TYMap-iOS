@@ -23,7 +23,7 @@
     
     double halfSize = (FACILITY_LOGO_SIZE * 0.5) * scale;
     
-    double xmin = screenPoint.x + halfSize;
+    double xmin = screenPoint.x - halfSize;
     double ymin = screenPoint.y - halfSize;
     
     double width = halfSize * 2;

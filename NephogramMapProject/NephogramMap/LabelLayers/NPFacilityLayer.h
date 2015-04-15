@@ -11,7 +11,12 @@
 #import "NPRenderingScheme.h"
 #import "NPPoi.h"
 
+
+@class NPLabelGroupLayer;
+
 @interface NPFacilityLayer : AGSGraphicsLayer
+
+@property (nonatomic, weak) NPLabelGroupLayer *groupLayer;
 
 + (NPFacilityLayer *)facilityLayerWithRenderingScheme:(NPRenderingScheme *)aRenderingScheme SpatialReference:(AGSSpatialReference *)sr;
 
@@ -28,5 +33,7 @@
 - (NPPoi *)getPoiWithPoiID:(NSString *)pid;
 
 - (void)highlightPoi:(NSString *)poiID;
+
+- (void)updateLabels;
 
 @end

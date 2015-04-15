@@ -32,6 +32,7 @@
         
         _facilityLayer = [NPFacilityLayer facilityLayerWithRenderingScheme:aRenderingScheme SpatialReference:sr];
         _facilityLayer.selectionColor = [UIColor cyanColor];
+        _facilityLayer.groupLayer = self;
     }
     return self;
 }
@@ -47,7 +48,8 @@
 
 - (void)clearSelection
 {
-    [_facilityLayer clearSelection];
+//    [_facilityLayer clearSelection];
+    [_facilityLayer showAllFacilities];
 }
 
 - (NSArray *)getAllFacilityCategoryIDOnCurrentFloor
@@ -88,6 +90,11 @@
 - (void)updateTextLabels
 {
     [_labelLayer updateLabels];
+}
+
+- (void)updateFacilityLabels
+{
+    [_facilityLayer updateLabels];
 }
 
 @end

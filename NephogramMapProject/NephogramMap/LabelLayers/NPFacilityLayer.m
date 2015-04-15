@@ -9,15 +9,23 @@
 #import "NPFacilityLayer.h"
 #import "NPMapType.h"
 #import "NPMapFileManager.h"
+#import "NPFacilityLabel.h"
+#import "NPMapView.h"
+#import "NPLabelGroupLayer.h"
+#import "NPLabelBorder.h"
+#import "NPLabelBorderCalculator.h"
 
 @interface NPFacilityLayer()
 {
-    NSMutableDictionary *groupedFacilityDict;
-    NSMutableDictionary *facilityDict;
+    NSMutableDictionary *allFacilitySymbols;
+    NSMutableDictionary *allHighlightFacilitySymbols;
+    
+    NSMutableDictionary *groupedFacilityLabelDict;
+    NSMutableDictionary *facilityLabelDict;
+    
+    NSMutableArray *visiableBorders;
     
     NPRenderingScheme *renderingScheme;
-    
-    AGSRenderer *facilityRender;
 }
 
 @end
@@ -31,49 +39,93 @@
 
 - (id)initFacilityLayerWithRenderingScheme:(NPRenderingScheme *)aRenderingScheme SpatialReference:(AGSSpatialReference *)sr
 {
-//    self = [super initWithSpatialReference:sr];
     self = [super initWithFullEnvelope:nil renderingMode:AGSGraphicsLayerRenderingModeDynamic];
     if (self) {
         renderingScheme = aRenderingScheme;
-        facilityRender = [self createFacilityRenderer];
-        self.renderer = facilityRender;
-        groupedFacilityDict = [[NSMutableDictionary alloc] init];
-        facilityDict = [[NSMutableDictionary alloc] init];
+        
+        allFacilitySymbols = [[NSMutableDictionary alloc] init];
+        allHighlightFacilitySymbols = [[NSMutableDictionary alloc] init];
+        [self getFacilitySymbols];
+        
+        visiableBorders = [[NSMutableArray alloc] init];
+        
+        groupedFacilityLabelDict = [[NSMutableDictionary alloc] init];
+        facilityLabelDict = [[NSMutableDictionary alloc] init];
     }
     return self;
 }
 
-- (AGSRenderer *)createFacilityRenderer
+- (void)getFacilitySymbols
 {
-    AGSUniqueValueRenderer *render = [[AGSUniqueValueRenderer alloc] init];
-    NSMutableArray *facilityUVs = [[NSMutableArray alloc] init];
-    
     NSDictionary *iconDict = renderingScheme.iconSymbolDictionary;
-    
     NSEnumerator *enumerator = [iconDict keyEnumerator];
-    
+
     id key;
     while ((key = [enumerator nextObject])) {
         NSString *icon = iconDict[key];
-        AGSPictureMarkerSymbol *pms = [AGSPictureMarkerSymbol pictureMarkerSymbolWithImageNamed:icon];
-        pms.size = CGSizeMake(20, 20);
-        AGSUniqueValue *uv = [AGSUniqueValue uniqueValueWithValue:[NSString stringWithFormat:@"%@", key] symbol:pms];
-        [facilityUVs addObject:uv];
+        
+        NSString *noramlIcon = [NSString stringWithFormat:@"%@_normal", icon];
+        AGSPictureMarkerSymbol *normalPms = [AGSPictureMarkerSymbol pictureMarkerSymbolWithImageNamed:noramlIcon];
+        normalPms.size = CGSizeMake(26, 26);
+        [allFacilitySymbols setObject:normalPms forKey:key];
+        
+        NSString *highlightedIcon = [NSString stringWithFormat:@"%@_highlighted", icon];
+        AGSPictureMarkerSymbol *highlightedPms = [AGSPictureMarkerSymbol pictureMarkerSymbolWithImageNamed:highlightedIcon];
+        highlightedPms.size = CGSizeMake(26, 26);
+        [allHighlightFacilitySymbols setObject:highlightedPms forKey:key];
     }
-    
-    render.uniqueValues = facilityUVs;
-    render.fields = @[@"COLOR"];
-    
-    return render;
+
+}
+
+- (void)updateLabels
+{
+    [self updateLabelBorders];
+    [self updateLabelState];
+}
+
+- (void)updateLabelBorders
+{
+    [visiableBorders removeAllObjects];
+    for (NPFacilityLabel *fl in facilityLabelDict.allValues) {
+        CGPoint screenPoint = [self.groupLayer.mapView toScreenPoint:fl.position];
+        NPLabelBorder *border = [NPLabelBorderCalculator getFacilityLabelBorder:screenPoint];
+        //        fl.facilityGraphic.symbol = fl.highlightedFacilitySymbol;
+        
+        BOOL isOverlapping = NO;
+        for (NPLabelBorder *visiableBorder in visiableBorders) {
+            if ([NPLabelBorder CheckIntersect:border WithBorder:visiableBorder]) {
+                isOverlapping = YES;
+                break;
+            }
+        }
+        
+        if (isOverlapping) {
+            fl.isHidden = YES;
+        } else {
+            fl.isHidden = NO;
+            [visiableBorders addObject:border];
+        }
+    }
+}
+
+- (void)updateLabelState
+{
+    for (NPFacilityLabel *fl in facilityLabelDict.allValues) {
+        if (fl.isHidden) {
+            fl.facilityGraphic.symbol = nil;
+        } else {
+            fl.facilityGraphic.symbol = fl.currentSymbol;
+        }
+    }
 }
 
 - (void)loadContentsWithInfo:(NPMapInfo *)info;
 {
 //    NSLog(@"addFacilityContents");
-    
     [self removeAllGraphics];
-    [groupedFacilityDict removeAllObjects];
-    [facilityDict removeAllObjects];
+    
+    [groupedFacilityLabelDict removeAllObjects];
+    [facilityLabelDict removeAllObjects];
     
     NSError *error = nil;
     NSString *fullPath = [NPMapFileManager getFacilityLayerPath:info];
@@ -91,17 +143,25 @@
             continue;
         }
         int categoryID = [[graphic attributeForKey:@"COLOR"] intValue];
+        NPPoint *pos = (NPPoint *)graphic.geometry;
         
-        if (![groupedFacilityDict.allKeys containsObject:@(categoryID)]) {
+        if (![groupedFacilityLabelDict.allKeys containsObject:@(categoryID)]) {
             NSMutableArray *array = [NSMutableArray array];
-            [groupedFacilityDict setObject:array forKey:@(categoryID)];
+            [groupedFacilityLabelDict setObject:array forKey:@(categoryID)];
         }
         
-        NSMutableArray *array = groupedFacilityDict[@(categoryID)];
-        [array addObject:graphic];
+        NPFacilityLabel *fLabel = [[NPFacilityLabel alloc] initWithCategoryID:categoryID Position:pos];
+        fLabel.facilityGraphic = graphic;
+        fLabel.normalFacilitySymbol = [allFacilitySymbols objectForKey:@(categoryID)];
+        fLabel.highlightedFacilitySymbol = [allHighlightFacilitySymbols objectForKey:@(categoryID)];
+        [fLabel setHighlighted:NO];
+        
+        
+        NSMutableArray *array = groupedFacilityLabelDict[@(categoryID)];
+        [array addObject:fLabel];
         
         NSString *poiID = [graphic attributeForKey:GRAPHIC_ATTRIBUTE_POI_ID];
-        [facilityDict setObject:graphic forKey:poiID];
+        [facilityLabelDict setObject:fLabel forKey:poiID];
     }
     
     [self addGraphics:allGraphics];
@@ -109,41 +169,70 @@
 
 - (void)showFacilityWithCategory:(int)categoryID
 {
-    [self removeAllGraphics];
-    NSArray *array = groupedFacilityDict[@(categoryID)];
-    if (array) {
-        [self addGraphics:array];
+    NSEnumerator *enumerator = [groupedFacilityLabelDict keyEnumerator];
+    
+    id key;
+    while ((key = [enumerator nextObject])) {
+        NSArray *array = groupedFacilityLabelDict[key];
+        if ([key intValue] == categoryID) {
+            for (NPFacilityLabel *fl in array) {
+                fl.currentSymbol = fl.highlightedFacilitySymbol;
+            }
+        } else {
+            for (NPFacilityLabel *fl in array) {
+                fl.currentSymbol = fl.normalFacilitySymbol;
+            }
+        }
     }
+    
+    [self updateLabelState];
 }
 
 - (void)showAllFacilities
 {
-    [self removeAllGraphics];
-    for (NSArray *array in groupedFacilityDict.allValues) {
-        [self addGraphics:array];
+    for (NSArray *array in groupedFacilityLabelDict.allValues) {
+        for (NPFacilityLabel *fl in array) {
+            fl.currentSymbol = fl.normalFacilitySymbol;
+        }
     }
+    
+    [self updateLabelState];
 }
 
 - (void)showFacilityOnCurrentWithCategorys:(NSArray *)categoryIDs
 {
-    [self removeAllGraphics];
-    for (NSNumber *categoryID in categoryIDs) {
-        NSArray *array = groupedFacilityDict[categoryID];
-        if (array) {
-            [self addGraphics:array];
+    NSEnumerator *enumerator = [groupedFacilityLabelDict keyEnumerator];
+    
+    id key;
+    while ((key = [enumerator nextObject])) {
+        NSArray *array = groupedFacilityLabelDict[key];
+        
+        if ([categoryIDs containsObject:key]) {
+            for (NPFacilityLabel *fl in array) {
+                fl.currentSymbol = fl.highlightedFacilitySymbol;
+            }
+        } else {
+            for (NPFacilityLabel *fl in array) {
+                fl.currentSymbol = fl.normalFacilitySymbol;
+            }
         }
     }
+    
+    [self updateLabelState];
 }
 
 - (NSArray *)getAllFacilityCategoryIDOnCurrentFloor
 {
-    return [groupedFacilityDict allKeys];
+    return [groupedFacilityLabelDict allKeys];
+
 }
 
 - (NPPoi *)getPoiWithPoiID:(NSString *)pid
 {
     NPPoi *result = nil;
-    AGSGraphic *graphic = [facilityDict objectForKey:pid];
+    NPFacilityLabel *fl = [facilityLabelDict objectForKey:pid];
+    AGSGraphic *graphic = fl.facilityGraphic;
+
     if (graphic) {
         result = [NPPoi poiWithGeoID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_GEO_ID] PoiID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_POI_ID] FloorID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_FLOOR_ID] BuildingID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_BUILDING_ID] Name:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_NAME] Geometry:(NPGeometry *)graphic.geometry CategoryID:[[graphic attributeForKey:GRAPHIC_ATTRIBUTE_CATEGORY_ID] intValue] Layer:POI_FACILITY];
     }
@@ -152,8 +241,12 @@
 
 - (void)highlightPoi:(NSString *)poiID
 {
-    AGSGraphic *graphic = [facilityDict objectForKey:poiID];
-    [self setSelected:YES forGraphic:graphic];
+    NPFacilityLabel *fl = [facilityLabelDict objectForKey:poiID];
+    fl.currentSymbol = fl.highlightedFacilitySymbol;
+    
+    [self updateLabelState];
+//    [self setSelected:YES forGraphic:fl.facilityGraphic];
+    
 }
 
 @end
