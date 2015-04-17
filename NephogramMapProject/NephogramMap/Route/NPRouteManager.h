@@ -43,6 +43,9 @@
  *  @param error        错误信息
  */
 - (void)routeManager:(NPRouteManager *)routeManager didFailSolveRouteWithError:(NSError *)error;
+
+- (void)routeManagerDidRetrieveDefaultRouteTaskParameters:(NPRouteManager *)routeManager;
+
 @end
 
 /**
