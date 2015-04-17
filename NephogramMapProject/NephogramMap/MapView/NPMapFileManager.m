@@ -19,7 +19,7 @@
 #define FILE_DEFAULT_RENDERING_SCHEME @"RenderingScheme.json"
 
 #define FILE_POI_DB @"%@_POI.db"
-
+#define FILE_PRIMITIVE_DB @"%@_Primitive.db"
 #define FILE_LAYER_PATH_FLOOR @"%@_FLOOR.json"
 #define FILE_LAYER_PATH_ROOM @"%@_ROOM.json"
 #define FILE_LAYER_PATH_ASSET @"%@_ASSET.json"
@@ -131,5 +131,14 @@
     return [buildingDir stringByAppendingPathComponent:fileName];
 }
 
++ (NSString *)getPrimitiveDBPath:(NPBuilding *)building
+{
+    NSString *mapRootDir = [NPMapEnvironment getRootDirectoryForMapFiles];
+    NSString *cityDir = [mapRootDir stringByAppendingPathComponent:building.cityID];
+    NSString *buildingDir = [cityDir stringByAppendingPathComponent:building.buildingID];
+    NSString *fileName = [NSString stringWithFormat:FILE_PRIMITIVE_DB, building.buildingID];
+    
+    return [buildingDir stringByAppendingPathComponent:fileName];
+}
 
 @end

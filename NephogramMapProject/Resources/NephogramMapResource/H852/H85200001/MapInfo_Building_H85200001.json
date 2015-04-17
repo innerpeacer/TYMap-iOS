@@ -1,16 +1,29 @@
 {
     "MapInfo": [
-
-
-               {
+                {
+                "cityID":"H852",
+                "buildingID":"H85200001",
+                "mapID":"H85200001F01",
+                "floorName":"F1",
+                "floorIndex":"1",
+                "size_x":"1416.518",
+                "size_y":"83.873",
+                "initAngle":"10.0",
+                "xmax":"2080.117",
+                "xmin":"663.599",
+                "ymax":"585.152",
+                "ymin":"501.279"
+                },
+                
+                {
                 "cityID":"H852",
                 "buildingID":"H85200001",
                 "mapID":"H85200001F04",
-                "floorName":"F4",
+                "floorName":"F4 出发层",
                 "floorIndex":"4",
                 "size_x":"1214.44",
                 "size_y":"836.085",
-                "initAngle":"10.0",
+                "initAngle":"15.0",
                 "xmax":"1891.398",
                 "xmin":"676.958",
                 "ymax":"963.575",
@@ -20,11 +33,11 @@
                 "cityID":"H852",
                 "buildingID":"H85200001",
                 "mapID":"H85200001F05",
-                "floorName":"F5",
+                "floorName":"F5 到达层",
                 "floorIndex":"5",
                 "size_x":"1429.185",
                 "size_y":"836.085",
-                "initAngle":"10.0",
+                "initAngle":"15.0",
                 "xmax":"2106.143",
                 "xmin":"676.958",
                 "ymax":"963.575",
@@ -34,11 +47,11 @@
                 "cityID":"H852",
                 "buildingID":"H85200001",
                 "mapID":"H85200001F06",
-                "floorName":"F6",
+                "floorName":"F6 出发层",
                 "floorIndex":"6",
                 "size_x":"1214.44",
                 "size_y":"836.085",
-                "initAngle":"10.0",
+                "initAngle":"15.0",
                 "xmax":"1891.398",
                 "xmin":"676.958",
                 "ymax":"963.575",
@@ -48,11 +61,11 @@
                 "cityID":"H852",
                 "buildingID":"H85200001",
                 "mapID":"H85200001F07",
-                "floorName":"F7",
+                "floorName":"F7 出发层",
                 "floorIndex":"7",
                 "size_x":"1429.185",
                 "size_y":"836.085",
-                "initAngle":"10.0",
+                "initAngle":"15.0",
                 "xmax":"2106.143",
                 "xmin":"676.958",
                 "ymax":"963.575",
@@ -62,11 +75,11 @@
                 "cityID":"H852",
                 "buildingID":"H85200001",
                 "mapID":"H85200001F08",
-                "floorName":"F8",
+                "floorName":"F8 夹层",
                 "floorIndex":"8",
                 "size_x":"62.972",
                 "size_y":"178.859",
-                "initAngle":"10.0",
+                "initAngle":"15.0",
                 "xmax":"1875.434",
                 "xmin":"1812.463",
                 "ymax":"630.359",
@@ -74,5 +87,5 @@
                 }
                 
                 ]
-
+    
 }

@@ -19,7 +19,6 @@
 @property (strong, nonatomic) NPBuilding *currentBuilding;
 
 @property (strong, nonatomic) NSArray *allMapInfos;
-
 @property (strong, nonatomic) UISegmentedControl *floorSegment;
 
 - (IBAction)floorChanged:(id)sender;

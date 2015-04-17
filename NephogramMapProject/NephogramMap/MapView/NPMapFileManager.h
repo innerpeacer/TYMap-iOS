@@ -28,4 +28,5 @@
 
 + (NSString *)getPOIDBPath:(NPBuilding *)building;
 
++ (NSString *)getPrimitiveDBPath:(NPBuilding *)building;
 @end

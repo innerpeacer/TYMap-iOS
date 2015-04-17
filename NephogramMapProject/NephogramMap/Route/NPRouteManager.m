@@ -37,10 +37,12 @@
         credential = cr;
         allMapInfos = mapInfoArray;
         
-        NPMapInfo *info = [allMapInfos objectAtIndex:0];
-        MapSize offset = {200, 0};
+//        NPMapInfo *info = [allMapInfos objectAtIndex:0];
+        MapSize offset = {2000, 0};
+        MapExtent extent = {663.599, 127.490, 2106.143, 963.575};
 
-        routePointConverter = [[NPRoutePointConverter alloc] initWithBaseMapExtent:info.mapExtent Offset:offset];
+//        routePointConverter = [[NPRoutePointConverter alloc] initWithBaseMapExtent:info.mapExtent Offset:offset];
+        routePointConverter = [[NPRoutePointConverter alloc] initWithBaseMapExtent:extent Offset:offset];
         
         routeTask = [AGSRouteTask routeTaskWithURL:url credential:cr];
         routeTask.delegate = self;
@@ -56,6 +58,10 @@
     
     _startPoint = [routePointConverter routePointFromLocalPoint:start];
     _endPoint = [routePointConverter routePointFromLocalPoint:end];
+    
+    NSLog(@"_startPoint: %@", _startPoint);
+    NSLog(@"_endPoint: %@", _endPoint);
+
     
     [stops addObject:[AGSGraphic graphicWithGeometry:_startPoint symbol:nil attributes:nil]];
     [stops addObject:[AGSGraphic graphicWithGeometry:_endPoint symbol:nil attributes:nil]];

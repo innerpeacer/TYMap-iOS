@@ -43,10 +43,10 @@
 
 + (BOOL)CheckIntersect:(NPLabelBorder *)border1 WithBorder:(NPLabelBorder *)border2
 {
-//    return CGRectIntersectsRect(border1.border, border2.border);
+    return CGRectIntersectsRect(border1.border, border2.border);
 
-    CGRect bufferRect = CGRectMake(border1.border.origin.x - PROTECT_INTERVAL_X, border1.border.origin.y - PROTECT_INTERVAL_Y, border1.border.size.width + PROTECT_INTERVAL_X * 2, border1.border.size.height + PROTECT_INTERVAL_X * 2);
-    return CGRectIntersectsRect(bufferRect, border2.border);
+//    CGRect bufferRect = CGRectMake(border1.border.origin.x - PROTECT_INTERVAL_X, border1.border.origin.y - PROTECT_INTERVAL_Y, border1.border.size.width + PROTECT_INTERVAL_X * 2, border1.border.size.height + PROTECT_INTERVAL_X * 2);
+//    return CGRectIntersectsRect(bufferRect, border2.border);
 
 }
 

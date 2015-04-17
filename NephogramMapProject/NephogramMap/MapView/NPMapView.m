@@ -34,6 +34,8 @@
     NPMapViewMode mapViewMode;
     
     double currentDeviceHeading;
+
+    double lastRotationAngle;
 }
 
 @end
@@ -67,8 +69,6 @@
     }
     
     if (self.mapDelegate && [self.mapDelegate respondsToSelector:@selector(NPMapView:didFinishLoadingFloor:)]) {
-//        [labelGroupLayer updateTextLabels];
-//        [labelGroupLayer updateFacilityLabels];
         [labelGroupLayer updateLabels];
         [self.mapDelegate NPMapView:self didFinishLoadingFloor:_currentMapInfo];
     }
@@ -173,6 +173,11 @@
             
         default:
             break;
+    }
+    
+    if (fabs(lastRotationAngle - self.rotationAngle) > 10) {
+        [labelGroupLayer updateLabels];
+        lastRotationAngle = self.rotationAngle;
     }
 }
 
@@ -360,15 +365,15 @@
 
 - (void)highlightPoiFeature:(NSDictionary *)features
 {
-    if ([features.allKeys containsObject:LAYER_NAME_FACILITY]) {
-        NSArray *array = [features objectForKey:LAYER_NAME_FACILITY];
-        if (array != nil && array.count > 0) {
-            AGSGraphic *graphic = (AGSGraphic *)array[0];
-            [labelGroupLayer setFacilitySelected:YES forGraphic:graphic];
-            
-        }
-        return;
-    }
+//    if ([features.allKeys containsObject:LAYER_NAME_FACILITY]) {
+//        NSArray *array = [features objectForKey:LAYER_NAME_FACILITY];
+//        if (array != nil && array.count > 0) {
+//            AGSGraphic *graphic = (AGSGraphic *)array[0];
+//            [labelGroupLayer setFacilitySelected:YES forGraphic:graphic];
+//            
+//        }
+//        return;
+//    }
     
     //    if ([features.allKeys containsObject:LAYER_NAME_ASSET]) {
     //        NSArray *array = [features objectForKey:LAYER_NAME_ASSET];

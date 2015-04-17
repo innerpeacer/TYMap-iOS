@@ -50,6 +50,7 @@
 
 - (void)clearSelection
 {
+    [_facilityLayer clearSelection];
     [_facilityLayer showAllFacilities];
 }
 

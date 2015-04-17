@@ -33,9 +33,9 @@
 
 - (void)setDefaultPlaceIfNeeded
 {
-//    [NPUserDefaults setDefaultCity:@"0021"];
+    [NPUserDefaults setDefaultCity:@"0021"];
 //
-//    [NPUserDefaults setDefaultBuilding:@"002100001"];
+    [NPUserDefaults setDefaultBuilding:@"002100001"];
 //    [NPUserDefaults setDefaultBuilding:@"002100002"];
 //    [NPUserDefaults setDefaultBuilding:@"002100004"];
 //    [NPUserDefaults setDefaultBuilding:@"002188888"];
