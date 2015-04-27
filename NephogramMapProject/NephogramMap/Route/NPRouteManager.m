@@ -37,11 +37,13 @@
         credential = cr;
         allMapInfos = mapInfoArray;
         
+        // For HongKong Airport
 //        MapSize offset = {2000, 0};
 //        MapExtent extent = {663.599, 127.490, 2106.143, 963.575};
 //        routePointConverter = [[NPRoutePointConverter alloc] initWithBaseMapExtent:extent Offset:offset];
 
         
+        // For Default
         MapSize offset = {200, 0};
         NPMapInfo *info = [allMapInfos objectAtIndex:0];
         routePointConverter = [[NPRoutePointConverter alloc] initWithBaseMapExtent:info.mapExtent Offset:offset];
