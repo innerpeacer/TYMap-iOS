@@ -8,7 +8,6 @@
 
 #import "NPMapView.h"
 
-#import "NPMapView.h"
 #import "NPMapInfo.h"
 #import "NPMapType.h"
 #import "NPMapEnviroment.h"
@@ -17,6 +16,7 @@
 
 #import "NPStructureGroupLayer.h"
 #import "NPLabelGroupLayer.h"
+#import "NPRouteLayer.h"
 
 @interface NPMapView() <AGSMapViewTouchDelegate, AGSMapViewLayerDelegate, AGSCalloutDelegate>
 {
@@ -26,12 +26,12 @@
     NPLabelGroupLayer *labelGroupLayer;
     
     NPLocationLayer *locationLayer;
+    NPRouteLayer *routeLayer;
     
     AGSEnvelope *initialEnvelope;
     NPMapViewMode mapViewMode;
     
     double currentDeviceHeading;
-
     double lastRotationAngle;
 }
 
@@ -48,9 +48,9 @@
     }
     
     _currentMapInfo = info;
-    
 
     [locationLayer removeAllGraphics];
+    [routeLayer removeAllGraphics];
     
     [structureGroupLayer loadContentsWithInfo:info];
     [labelGroupLayer loadContentsWithInfo:info];
@@ -98,11 +98,16 @@
     [self addMapLayer:structureGroupLayer.roomLayer withName:LAYER_NAME_ROOM];
     [self addMapLayer:structureGroupLayer.asserLayer withName:LAYER_NAME_ASSET];
     
+    
     labelGroupLayer = [NPLabelGroupLayer labelGroupLayerWithRenderingScheme:renderingScheme SpatialReference:spatialReference];
     labelGroupLayer.mapView = self;
     [self addMapLayer:labelGroupLayer.facilityLayer withName:LAYER_NAME_FACILITY];
     [self addMapLayer:labelGroupLayer.labelLayer withName:LAYER_NAME_LABEL];
     
+    routeLayer = [NPRouteLayer routeLayerWithSpatialReference:[NPMapEnvironment defaultSpatialReference]];
+    routeLayer.mapView = self;
+    [self addMapLayer:routeLayer];
+
     locationLayer = [[NPLocationLayer alloc] initWithSpatialReference:spatialReference];
     [self addMapLayer:locationLayer withName:LAYER_NAME_LOCATION];
     locationLayer.allowHitTest = NO;
@@ -134,6 +139,61 @@
         default:
             break;
     }
+}
+
+- (void)setRouteStartSymbol:(NPPictureMarkerSymbol *)symbol
+{
+    routeLayer.startSymbol = symbol;
+}
+
+- (void)setRouteEndSymbol:(NPPictureMarkerSymbol *)symbol
+{
+    routeLayer.endSymbol = symbol;
+}
+
+- (void)setRouteSwitchSymbol:(NPPictureMarkerSymbol *)symbol
+{
+    routeLayer.switchSymbol = symbol;
+}
+
+- (void)setRouteResult:(NPRouteResult *)result
+{
+    routeLayer.routeResult = result;
+}
+
+- (void)setRouteStart:(NPLocalPoint *)start
+{
+    routeLayer.startPoint = start;
+}
+
+- (void)setRouteEnd:(NPLocalPoint *)end
+{
+    routeLayer.endPoint = end;
+}
+
+- (void)resetRouteLayer
+{
+    [routeLayer reset];
+}
+
+- (void)clearRouteLayer
+{
+    [routeLayer removeAllGraphics];
+}
+
+- (void)showRouteStartSymbolOnCurrentFloor:(NPLocalPoint *)sp
+{
+    [routeLayer showStartSymbol:sp];
+}
+
+- (void)showRouteEndSymbolOnCurrentFloor:(NPLocalPoint *)ep
+{
+    [routeLayer showEndSymbol:ep];
+}
+
+- (void)showRouteSwitchSymbolOnCurrentFloor:(NPLocalPoint *)sp
+{
+    [routeLayer showSwitchSymbol:sp];
 }
 
 - (void)setLocationSymbol:(NPMarkerSymbol *)symbol
@@ -392,6 +452,13 @@
     
 }
 
+- (void)showRouteResultOnCurrentFloor
+{
+    [routeLayer showRouteResultFloor:self.currentMapInfo.floorNumber];
+    [routeLayer showStartSymbol:routeLayer.startPoint];
+    [routeLayer showEndSymbol:routeLayer.endPoint];
+}
+
 - (void)showAllFacilitiesOnCurrentFloor
 {
     [labelGroupLayer showAllFacilities];
@@ -463,11 +530,6 @@
 
 - (void)respondToZooming:(NSNotification *)notification
 {
-//    NSLog(@"respondToZooming: %f", self.resolution);
-//    BOOL labelVisible = self.mapScale < DEFAULT_SCALE_THRESHOLD;
-//    [labelGroupLayer.labelLayer setVisible:labelVisible];
-//    [labelGroupLayer updateTextLabels];
-//    [labelGroupLayer updateFacilityLabels];
     [labelGroupLayer updateLabels];
 }
 

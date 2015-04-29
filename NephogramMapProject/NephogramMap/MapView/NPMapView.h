@@ -16,7 +16,10 @@
 #import "NPGraphicsLayer.h"
 #import "NPLocationDisplay.h"
 #import "NPMarkerSymbol.h"
-#import <NephogramData/NPLocalPoint.h>
+#import "NPPictureMarkerSymbol.h"
+#import "NPRouteResult.h"
+
+#import <NephogramData/NephogramData.h>
 
 #import "NPBuilding.h"
 
@@ -113,6 +116,23 @@ typedef enum {
 - (void)processDeviceRotation:(double)newHeading;
 
 - (void)setMapMode:(NPMapViewMode)mode;
+
+- (void)setRouteStartSymbol:(NPPictureMarkerSymbol *)symbol;
+- (void)setRouteEndSymbol:(NPPictureMarkerSymbol *)symbol;
+- (void)setRouteSwitchSymbol:(NPPictureMarkerSymbol *)symbol;
+
+- (void)setRouteResult:(NPRouteResult *)result;
+- (void)setRouteStart:(NPLocalPoint *)start;
+- (void)setRouteEnd:(NPLocalPoint *)end;
+
+- (void)resetRouteLayer;
+- (void)clearRouteLayer;
+
+- (void)showRouteStartSymbolOnCurrentFloor:(NPLocalPoint *)sp;
+- (void)showRouteEndSymbolOnCurrentFloor:(NPLocalPoint *)ep;
+- (void)showRouteSwitchSymbolOnCurrentFloor:(NPLocalPoint *)sp;
+
+- (void)showRouteResultOnCurrentFloor;
 
 /**
  *  地图初始化方法

@@ -27,14 +27,10 @@
     NPLocalPoint *startLocalPoint;
     NPLocalPoint *endLocalPoint;
     
-    NPRouteLayer *routeLayer;
-    
     BOOL isRouting;
     NPRouteResult *routeResult;
     
     NPGraphicsLayer *hintLayer;
-    NPGraphicsLayer *startLayer;
-    NPGraphicsLayer *endLayer;
     
     NPPictureMarkerSymbol *startSymbol;
     NPPictureMarkerSymbol *endSymbol;
@@ -57,21 +53,10 @@
     
     [self initSymbols];
     
-    routeLayer = [NPRouteLayer routeLayerWithSpatialReference:[NPMapEnvironment defaultSpatialReference]];
-    [self.mapView addMapLayer:routeLayer];
-    
-    startLayer = [NPGraphicsLayer graphicsLayer];
-    [self.mapView addMapLayer:startLayer];
-    
-    endLayer = [NPGraphicsLayer graphicsLayer];
-    [self.mapView addMapLayer:endLayer];
-    
     hintLayer = [NPGraphicsLayer graphicsLayer];
     [self.mapView addMapLayer:hintLayer];
     
-    NPCredential *credential = [NPMapEnvironment defaultCredential];
-    
-    routeManager = [NPRouteManager routeManagerWithBuilding:self.currentBuilding credential:credential MapInfos:self.allMapInfos];
+    routeManager = [NPRouteManager routeManagerWithBuilding:self.currentBuilding credential:[NPMapEnvironment defaultCredential] MapInfos:self.allMapInfos];
     routeManager.delegate = self;
 }
 
@@ -84,6 +69,10 @@
     endSymbol.offset = CGPointMake(0, 22);
     
     switchSymbol = [NPPictureMarkerSymbol pictureMarkerSymbolWithImageNamed:@"nav_exit"];
+    
+    [self.mapView setRouteStartSymbol:startSymbol];
+    [self.mapView setRouteEndSymbol:endSymbol];
+    [self.mapView setRouteSwitchSymbol:switchSymbol];
 }
 
 - (void)routeManagerDidRetrieveDefaultRouteTaskParameters:(NPRouteManager *)routeManager
@@ -103,82 +92,17 @@
     [hintLayer removeAllGraphics];
     
     routeResult = rs;
-    [self showRouteResultOnCurrentFloor];
-}
-
-- (void)showRouteResultOnCurrentFloor
-{
-    [routeLayer removeAllGraphics];
-    if (routeResult) {
-        int floor = self.mapView.currentMapInfo.floorNumber;
-        
-        AGSPolyline *line = [routeResult getRouteOnFloor:floor];
-        if (line) {
-            [routeLayer addGraphic:[NPGraphic graphicWithGeometry:line symbol:nil attributes:nil]];
-            
-            if ([routeResult isFirstFloor:floor] && [routeResult isLastFloor:floor]) {
-                NSLog(@"Same Floor");
-                return;
-            }
-            
-            if ([routeResult isFirstFloor:floor] && ![routeResult isLastFloor:floor]) {
-                NPPoint *p = [routeResult getLastPointOnFloor:floor];
-                if (p) {
-                    [routeLayer addGraphic:[NPGraphic graphicWithGeometry:p symbol:switchSymbol attributes:nil]];
-                }
-                return;
-            }
-            
-            if (![routeResult isFirstFloor:floor] && [routeResult isLastFloor:floor]) {
-                NPPoint *p = [routeResult getFirstPointOnFloor:floor];
-                if (p) {
-                    [routeLayer addGraphic:[NPGraphic graphicWithGeometry:p symbol:switchSymbol attributes:nil]];
-                }
-                return;
-            }
-            
-            if (![routeResult isFirstFloor:floor] && ![routeResult isLastFloor:floor]) {
-                NPPoint *fp = [routeResult getFirstPointOnFloor:floor];
-                NPPoint *lp = [routeResult getLastPointOnFloor:floor];
-                if (fp) {
-                    [routeLayer addGraphic:[NPGraphic graphicWithGeometry:fp symbol:switchSymbol attributes:nil]];
-                }
-                
-                if (lp) {
-                    [routeLayer addGraphic:[NPGraphic graphicWithGeometry:lp symbol:switchSymbol attributes:nil]];
-                }
-                return;
-            }
-        }
-        
-    }
-}
-
-- (IBAction)floorChanged:(id)sender
-{
-    [startLayer removeAllGraphics];
-    [endLayer removeAllGraphics];
-    [routeLayer removeAllGraphics];
-    
-    [super floorChanged:sender];
-   
+    [self.mapView setRouteResult:rs];
+    [self.mapView setRouteStart:startLocalPoint];
+    [self.mapView setRouteEnd:endLocalPoint];
+    [self.mapView showRouteResultOnCurrentFloor];
 }
 
 - (void)NPMapView:(NPMapView *)mapView didFinishLoadingFloor:(NPMapInfo *)mapInfo
 {
-    if (startLocalPoint && startLocalPoint.floor == mapInfo.floorNumber) {
-        [startLayer addGraphic:[NPGraphic graphicWithGeometry:[AGSPoint pointWithX:startLocalPoint.x y:startLocalPoint.y spatialReference:self.mapView.spatialReference] symbol:startSymbol attributes:nil]];
-    }
-    
-    if (endLocalPoint && endLocalPoint.floor == mapInfo.floorNumber) {
-        [endLayer addGraphic:[NPGraphic graphicWithGeometry:[AGSPoint pointWithX:endLocalPoint.x y:endLocalPoint.y spatialReference:self.mapView.spatialReference] symbol:startSymbol attributes:nil]];
-    }
-    
     if (isRouting) {
-        [self showRouteResultOnCurrentFloor];
+        [self.mapView showRouteResultOnCurrentFloor];
     }
-    
-    
 }
 
 - (void)routeManager:(NPRouteManager *)routeManager didFailSolveRouteWithError:(NSError *)error
@@ -205,15 +129,13 @@
 
 - (IBAction)setStartPoint:(id)sender {
     startLocalPoint = [NPLocalPoint pointWithX:currentPoint.x Y:currentPoint.y Floor:self.mapView.currentMapInfo.floorNumber];
-    [startLayer removeAllGraphics];
-    [startLayer addGraphic:[AGSGraphic graphicWithGeometry:currentPoint symbol:startSymbol attributes:nil]];
+    [self.mapView showRouteStartSymbolOnCurrentFloor:startLocalPoint];
     
 }
 
 - (IBAction)setEndPoint:(id)sender {
     endLocalPoint = [NPLocalPoint pointWithX:currentPoint.x Y:currentPoint.y Floor:self.mapView.currentMapInfo.floorNumber];
-    [endLayer removeAllGraphics];
-    [endLayer addGraphic:[AGSGraphic graphicWithGeometry:currentPoint symbol:endSymbol attributes:nil]];
+    [self.mapView showRouteEndSymbolOnCurrentFloor:endLocalPoint];
 }
 
 - (IBAction)requtestRoute:(id)sender {
@@ -231,9 +153,8 @@
 
 - (IBAction)reset:(id)sender {
     [hintLayer removeAllGraphics];
-    [routeLayer removeAllGraphics];
-    [startLayer removeAllGraphics];
-    [endLayer removeAllGraphics];
+    
+    [self.mapView resetRouteLayer];
     
     startLocalPoint = nil;
     endLocalPoint = nil;

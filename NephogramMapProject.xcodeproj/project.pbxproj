@@ -46,6 +46,7 @@
 		57AD403D1ACCFC390013B1E0 /* NPLocationDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = 57AD403C1ACCFC390013B1E0 /* NPLocationDisplay.m */; };
 		57AD40531ACD239A0013B1E0 /* NPPolygon.m in Sources */ = {isa = PBXBuildFile; fileRef = 57AD40521ACD239A0013B1E0 /* NPPolygon.m */; };
 		57AD405C1ACD25340013B1E0 /* NPGeometryEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 57AD405B1ACD25340013B1E0 /* NPGeometryEngine.m */; };
+		57B798CA1AF07B5400B1ACC1 /* NPRouteLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 57B798C91AF07B5400B1ACC1 /* NPRouteLayer.m */; };
 		57D66A161ADB995E00DF653B /* NPBuilding.m in Sources */ = {isa = PBXBuildFile; fileRef = 57D66A131ADB995E00DF653B /* NPBuilding.m */; };
 		57D66A171ADB995E00DF653B /* NPCity.m in Sources */ = {isa = PBXBuildFile; fileRef = 57D66A151ADB995E00DF653B /* NPCity.m */; };
 		57DDF2011AD96DE50054A1C1 /* NephogramMapResource in Resources */ = {isa = PBXBuildFile; fileRef = 57DDF2001AD96DE50054A1C1 /* NephogramMapResource */; };
@@ -75,7 +76,6 @@
 		57F06D001A87C19F00B9511F /* NPMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F06CFF1A87C19F00B9511F /* NPMapView.m */; };
 		57F06D031A87C1A900B9511F /* NPArcGISDrawer.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F06D021A87C1A900B9511F /* NPArcGISDrawer.m */; };
 		57F06D061A87C1B700B9511F /* NPMapEnviroment.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F06D051A87C1B700B9511F /* NPMapEnviroment.m */; };
-		57F06D091A87C1C800B9511F /* NPRouteLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F06D081A87C1C800B9511F /* NPRouteLayer.m */; };
 		57F06D0C1A87C1D500B9511F /* NPRouteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F06D0B1A87C1D500B9511F /* NPRouteManager.m */; };
 /* End PBXBuildFile section */
 
@@ -157,6 +157,8 @@
 		57AD40521ACD239A0013B1E0 /* NPPolygon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPPolygon.m; sourceTree = "<group>"; };
 		57AD405A1ACD25340013B1E0 /* NPGeometryEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPGeometryEngine.h; sourceTree = "<group>"; };
 		57AD405B1ACD25340013B1E0 /* NPGeometryEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPGeometryEngine.m; sourceTree = "<group>"; };
+		57B798C81AF07B5400B1ACC1 /* NPRouteLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPRouteLayer.h; sourceTree = "<group>"; };
+		57B798C91AF07B5400B1ACC1 /* NPRouteLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPRouteLayer.m; sourceTree = "<group>"; };
 		57D66A121ADB995E00DF653B /* NPBuilding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPBuilding.h; sourceTree = "<group>"; };
 		57D66A131ADB995E00DF653B /* NPBuilding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPBuilding.m; sourceTree = "<group>"; };
 		57D66A141ADB995E00DF653B /* NPCity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPCity.h; sourceTree = "<group>"; };
@@ -211,8 +213,6 @@
 		57F06D021A87C1A900B9511F /* NPArcGISDrawer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPArcGISDrawer.m; sourceTree = "<group>"; };
 		57F06D041A87C1B700B9511F /* NPMapEnviroment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPMapEnviroment.h; sourceTree = "<group>"; };
 		57F06D051A87C1B700B9511F /* NPMapEnviroment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPMapEnviroment.m; sourceTree = "<group>"; };
-		57F06D071A87C1C800B9511F /* NPRouteLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPRouteLayer.h; sourceTree = "<group>"; };
-		57F06D081A87C1C800B9511F /* NPRouteLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPRouteLayer.m; sourceTree = "<group>"; };
 		57F06D0A1A87C1D500B9511F /* NPRouteManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPRouteManager.h; sourceTree = "<group>"; };
 		57F06D0B1A87C1D500B9511F /* NPRouteManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPRouteManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -346,6 +346,8 @@
 		57E6CF781ADCBF3800D4C8C7 /* FunctionLayers */ = {
 			isa = PBXGroup;
 			children = (
+				57B798C81AF07B5400B1ACC1 /* NPRouteLayer.h */,
+				57B798C91AF07B5400B1ACC1 /* NPRouteLayer.m */,
 				57E6CF791ADCBF3800D4C8C7 /* NPLocationLayer.h */,
 				57E6CF7A1ADCBF3800D4C8C7 /* NPLocationLayer.m */,
 			);
@@ -470,8 +472,6 @@
 		57F06CE11A87BE4B00B9511F /* Route */ = {
 			isa = PBXGroup;
 			children = (
-				57F06D071A87C1C800B9511F /* NPRouteLayer.h */,
-				57F06D081A87C1C800B9511F /* NPRouteLayer.m */,
 				57F06D0A1A87C1D500B9511F /* NPRouteManager.h */,
 				57F06D0B1A87C1D500B9511F /* NPRouteManager.m */,
 				571E58961AB921FC007B36DD /* NPRoutePointConverter.h */,
@@ -598,6 +598,7 @@
 				57E6CF681ADCBEA900D4C8C7 /* NPFacilityLabel.m in Sources */,
 				57AD3F8B1ACCDCD30013B1E0 /* NPGraphic.m in Sources */,
 				570DB3F51A890653001D137E /* MapCalloutVC.m in Sources */,
+				57B798CA1AF07B5400B1ACC1 /* NPRouteLayer.m in Sources */,
 				571E58981AB921FC007B36DD /* NPRoutePointConverter.m in Sources */,
 				57E6CF691ADCBEA900D4C8C7 /* NPFacilityLayer.m in Sources */,
 				57AD405C1ACD25340013B1E0 /* NPGeometryEngine.m in Sources */,
@@ -609,7 +610,6 @@
 				57AD3F851ACCD9810013B1E0 /* NPGraphicsLayer.m in Sources */,
 				576094D71AD8FDFF00647DAE /* NPMapFileManager.m in Sources */,
 				57F06D001A87C19F00B9511F /* NPMapView.m in Sources */,
-				57F06D091A87C1C800B9511F /* NPRouteLayer.m in Sources */,
 				574443F01AAED36300E6232C /* FMDatabasePool.m in Sources */,
 				57E6CF7E1ADCBF9500D4C8C7 /* NPStructureGroupLayer.m in Sources */,
 				574443F71AAEE1D500E6232C /* CreatePOIDatabaseVC.m in Sources */,
