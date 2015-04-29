@@ -84,7 +84,6 @@ typedef enum {
 /**
  *  当前显示的建筑ID
  */
-//@property (nonatomic, strong) NSString *buildingID;
 @property (nonatomic, strong) NPBuilding *building;
 
 /**

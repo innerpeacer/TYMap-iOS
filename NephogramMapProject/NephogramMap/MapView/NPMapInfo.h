@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "NPBuilding.h"
+
+@class NPBuilding;
 
 /**
  *  地图尺寸,对应地图所示区域实际大小
@@ -33,7 +34,6 @@ typedef struct mapextent {
 @interface NPMapInfo : NSObject
 
 @property (nonatomic, readonly) NSString *cityID;
-
 
 @property (nonatomic, readonly) NSString *buildingID;
 
@@ -72,10 +72,6 @@ typedef struct mapextent {
  */
 @property (readonly) double scaley;
 
-/**
- *  地图初始偏转角度
- */
-@property (readonly) double initAngle;
 
 + (NPMapInfo *)parseMapInfo:(NSString *)floor ForBuilding:(NPBuilding *)building;
 

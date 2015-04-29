@@ -8,11 +8,16 @@
 #define KEY_BUILDING_LONGITUDE @"longitude"
 #define KEY_BUILDING_LATITUDE @"latitude"
 #define KEY_BUILDING_ADDRESS @"address"
+#define KEY_BUILDING_INIT_ANGLE @"initAngle"
+#define KEY_BUILDING_ROUTE_URL @"routeURL"
+#define KEY_BUILDING_OFFSET_X @"offsetX"
+#define KEY_BUILDING_OFFSET_Y @"offsetY"
+
 #define KEY_BUILDING_STATUS @"status"
 
 @implementation NPBuilding
 
-- (id)initWithCityID:(NSString *)cityID BuildingID:(NSString *)buildingID Name:(NSString *)name Lon:(double)lon Lat:(double)lat Address:(NSString *)address
+- (id)initWithCityID:(NSString *)cityID BuildingID:(NSString *)buildingID Name:(NSString *)name Lon:(double)lon Lat:(double)lat Address:(NSString *)address InitAngle:(double)initAngle RouteURL:(NSString *)url Offset:(MapSize)offset
 {
     self = [super init];
     if (self) {
@@ -22,6 +27,9 @@
         _longitude = lon;
         _latitude = lat;
         _address = address;
+        _initAngle = initAngle;
+        _routeURL = url;
+        _offset = offset;
     }
     return self;
 }
@@ -48,9 +56,18 @@
             NSNumber *lonNumber = [dict objectForKey:KEY_BUILDING_LONGITUDE];
             NSNumber *latNumber = [dict objectForKey:KEY_BUILDING_LATITUDE];
             NSString *address = [dict objectForKey:KEY_BUILDING_ADDRESS];
+            
+            NSNumber *initStr = [dict objectForKey:KEY_BUILDING_INIT_ANGLE];
+            NSString *url = [dict objectForKey:KEY_BUILDING_ROUTE_URL];
+            
+            NSNumber *offsetX = [dict objectForKey:KEY_BUILDING_OFFSET_X];
+            NSNumber *offsetY = [dict objectForKey:KEY_BUILDING_OFFSET_Y];
+            MapSize offset = { offsetX.doubleValue, offsetY.doubleValue };
+            
             NSNumber *staNumber = [dict objectForKey:KEY_BUILDING_STATUS];
             
-            building = [[NPBuilding alloc] initWithCityID:city.cityID BuildingID:mid Name:name Lon:lonNumber.doubleValue Lat:latNumber.doubleValue Address:address];
+            
+            building = [[NPBuilding alloc] initWithCityID:city.cityID BuildingID:mid Name:name Lon:lonNumber.doubleValue Lat:latNumber.doubleValue Address:address InitAngle:initStr.doubleValue RouteURL:url Offset:offset];
             building.status = staNumber.intValue;
             break;
         }
@@ -82,9 +99,19 @@
             NSNumber *lonNumber = [dict objectForKey:KEY_BUILDING_LONGITUDE];
             NSNumber *latNumber = [dict objectForKey:KEY_BUILDING_LATITUDE];
             NSString *address = [dict objectForKey:KEY_BUILDING_ADDRESS];
+            
+            NSNumber *initStr = [dict objectForKey:KEY_BUILDING_INIT_ANGLE];
+            
+            NSString *url = [dict objectForKey:KEY_BUILDING_ROUTE_URL];
+            
+            NSNumber *offsetX = [dict objectForKey:KEY_BUILDING_OFFSET_X];
+            NSNumber *offsetY = [dict objectForKey:KEY_BUILDING_OFFSET_Y];
+            MapSize offset = { offsetX.doubleValue, offsetY.doubleValue };
+            
+
             NSNumber *staNumber = [dict objectForKey:KEY_BUILDING_STATUS];
             
-            NPBuilding *building = [[NPBuilding alloc] initWithCityID:city.cityID BuildingID:mid Name:name Lon:lonNumber.doubleValue Lat:latNumber.doubleValue Address:address];
+            NPBuilding *building = [[NPBuilding alloc] initWithCityID:city.cityID BuildingID:mid Name:name Lon:lonNumber.doubleValue Lat:latNumber.doubleValue Address:address InitAngle:initStr.doubleValue RouteURL:url Offset:offset];
             building.status = staNumber.intValue;
             
             [toReturn addObject:building];

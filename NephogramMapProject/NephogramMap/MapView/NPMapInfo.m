@@ -8,7 +8,7 @@
 
 #import "NPMapInfo.h"
 #import "NPMapFileManager.h"
-
+#import "NPBuilding.h"
 
 #define KEY_MAPINFOS @"MapInfo"
 
@@ -23,20 +23,18 @@
 #define KEY_MAPINFO_SIZEX @"size_x"
 #define KEY_MAPINFO_SIZEY @"size_y"
 
-#define KEY_MAPINFO_INIT_ANGLE @"initAngle"
-
 #define KEY_MAPINFO_XMIN @"xmin"
 #define KEY_MAPINFO_XMAX @"xmax"
 #define KEY_MAPINFO_YMIN @"ymin"
 #define KEY_MAPINFO_YMAX @"ymax"
 
-MapExtent SSMapExtentMake(double xmin, double ymin, double xmax, double ymax)
+MapExtent NPMapExtentMake(double xmin, double ymin, double xmax, double ymax)
 {
     MapExtent extent  = {xmin, ymin, xmax, ymax};
     return extent;
 }
 
-MapSize SSMapSizeMake(double x, double y)
+MapSize NPMapSizeMake(double x, double y)
 {
     MapSize size = { x, y };
     return size;
@@ -44,7 +42,7 @@ MapSize SSMapSizeMake(double x, double y)
 
 @implementation NPMapInfo
 
-- (id)initWithCityID:(NSString *)cityID BuildingID:(NSString *)buidlingID MapID:(NSString *)mapID Extent:(MapExtent)e Size:(MapSize)s Floor:(NSString *)fs FloorIndex:(int)fi InitAngle:(double)initAngle
+- (id)initWithCityID:(NSString *)cityID BuildingID:(NSString *)buidlingID MapID:(NSString *)mapID Extent:(MapExtent)e Size:(MapSize)s Floor:(NSString *)fs FloorIndex:(int)fi
 {
     self = [super init];
     if (self) {
@@ -55,7 +53,6 @@ MapSize SSMapSizeMake(double x, double y)
         _mapSize = s;
         _floorName = fs;
         _floorNumber = fi;
-        _initAngle = initAngle;
         _scalex = _mapSize.x / (_mapExtent.xmax - _mapExtent.xmin);
         _scaley = _mapSize.y / (_mapExtent.ymax - _mapExtent.ymin);
     }
@@ -90,14 +87,12 @@ MapSize SSMapSizeMake(double x, double y)
                 NSNumber *sizexStr = [infoDict objectForKey:KEY_MAPINFO_SIZEX];
                 NSNumber *sizeyStr = [infoDict objectForKey:KEY_MAPINFO_SIZEY];
                 
-                NSNumber *initStr = [infoDict objectForKey:KEY_MAPINFO_INIT_ANGLE];
-                
                 NSNumber *xminStr = [infoDict objectForKey:KEY_MAPINFO_XMIN];
                 NSNumber *xmaxStr = [infoDict objectForKey:KEY_MAPINFO_XMAX];
                 NSNumber *yminStr = [infoDict objectForKey:KEY_MAPINFO_YMIN];
                 NSNumber *ymaxStr = [infoDict objectForKey:KEY_MAPINFO_YMAX];
                 
-                info = [[NPMapInfo alloc] initWithCityID:cityID BuildingID:buildingID MapID:mapID Extent:SSMapExtentMake(xminStr.doubleValue, yminStr.doubleValue, xmaxStr.doubleValue, ymaxStr.doubleValue) Size:SSMapSizeMake(sizexStr.doubleValue, sizeyStr.doubleValue) Floor:floorStr FloorIndex:floorIndexStr.intValue InitAngle:initStr.doubleValue];
+                info = [[NPMapInfo alloc] initWithCityID:cityID BuildingID:buildingID MapID:mapID Extent:NPMapExtentMake(xminStr.doubleValue, yminStr.doubleValue, xmaxStr.doubleValue, ymaxStr.doubleValue) Size:NPMapSizeMake(sizexStr.doubleValue, sizeyStr.doubleValue) Floor:floorStr FloorIndex:floorIndexStr.intValue];
                 break;
             }
         }
@@ -131,14 +126,12 @@ MapSize SSMapSizeMake(double x, double y)
             NSNumber *sizexStr = [infoDict objectForKey:KEY_MAPINFO_SIZEX];
             NSNumber *sizeyStr = [infoDict objectForKey:KEY_MAPINFO_SIZEY];
             
-            NSNumber *initStr = [infoDict objectForKey:KEY_MAPINFO_INIT_ANGLE];
-            
             NSNumber *xminStr = [infoDict objectForKey:KEY_MAPINFO_XMIN];
             NSNumber *xmaxStr = [infoDict objectForKey:KEY_MAPINFO_XMAX];
             NSNumber *yminStr = [infoDict objectForKey:KEY_MAPINFO_YMIN];
             NSNumber *ymaxStr = [infoDict objectForKey:KEY_MAPINFO_YMAX];
             
-            NPMapInfo *info = [[NPMapInfo alloc] initWithCityID:cityID BuildingID:buildingID MapID:mapID Extent:SSMapExtentMake(xminStr.doubleValue, yminStr.doubleValue, xmaxStr.doubleValue, ymaxStr.doubleValue) Size:SSMapSizeMake(sizexStr.doubleValue, sizeyStr.doubleValue) Floor:floorStr FloorIndex:floorIndexStr.intValue InitAngle:initStr.doubleValue];
+            NPMapInfo *info = [[NPMapInfo alloc] initWithCityID:cityID BuildingID:buildingID MapID:mapID Extent:NPMapExtentMake(xminStr.doubleValue, yminStr.doubleValue, xmaxStr.doubleValue, ymaxStr.doubleValue) Size:NPMapSizeMake(sizexStr.doubleValue, sizeyStr.doubleValue) Floor:floorStr FloorIndex:floorIndexStr.intValue];
             
             [toReturn addObject:info];
         }

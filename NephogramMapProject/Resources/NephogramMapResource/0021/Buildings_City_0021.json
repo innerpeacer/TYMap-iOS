@@ -7,6 +7,10 @@
 			"longitude":"116.362551",
 			"latitude":"39.958951", 
 			"address":"沪汰路",
+            "initAngle":"-70.0",
+            "routeURL":"http://121.40.16.26:6080/arcgis/rest/services/002100001/NAServer/Route",
+            "offsetX":"200",
+            "offsetY":"0",
 			"status":"0"
 		},
         {
@@ -16,6 +20,10 @@
             "longitude":"116.362551",
             "latitude":"39.958951",
             "address":"淮海中路",
+            "initAngle":"70.0",
+            "routeURL":"http://121.40.16.26:6080/arcgis/rest/services/002100002/NAServer/Route",
+            "offsetX":"200",
+            "offsetY":"0",
             "status":"0"
         },
         {
@@ -25,6 +33,10 @@
             "longitude":"116.362551",
             "latitude":"39.958951",
             "address":"蒙自路",
+            "initAngle":"0.0",
+            "routeURL":"http://121.40.16.26:6080/arcgis/rest/services/002100004/NAServer/Route",
+            "offsetX":"200",
+            "offsetY":"0",
             "status":"0"
         },
         {
@@ -34,6 +46,10 @@
             "longitude":"116.362551",
             "latitude":"39.958951",
             "address":"",
+            "initAngle":"0.0",
+            "routeURL":"",
+            "offsetX":"0",
+            "offsetY":"0",
             "status":"0"
         },
         {
@@ -43,6 +59,10 @@
             "longitude":"116.362551",
             "latitude":"39.958951",
             "address":"成山路",
+            "initAngle":"180.0",
+            "routeURL":"",
+            "offsetX":"0",
+            "offsetY":"0",
             "status":"0"
         }
 	]

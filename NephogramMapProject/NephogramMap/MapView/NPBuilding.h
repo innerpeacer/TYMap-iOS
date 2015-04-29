@@ -1,5 +1,6 @@
 #import <Foundation/Foundation.h>
 #import "NPCity.h"
+#import "NPMapInfo.h"
 
 /**
  * 建筑类
@@ -32,6 +33,19 @@
  * 建筑纬度
  */
 @property (readonly) double latitude;
+
+/**
+ *  地图初始偏转角度
+ */
+@property (readonly) double initAngle;
+
+
+/**
+ *  导航服务地址
+ */
+@property (nonatomic, strong) NSString *routeURL;
+
+@property (readonly) MapSize offset;
 
 /**
  * 建筑状态

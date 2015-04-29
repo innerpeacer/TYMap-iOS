@@ -8,9 +8,6 @@
 
 #import "NPMapView.h"
 
-//#import "NPAssetLayer.h"
-//#import "NPRoomLayer.h"
-//#import "NPFloorLayer.h"
 #import "NPMapView.h"
 #import "NPMapInfo.h"
 #import "NPMapType.h"
@@ -149,7 +146,7 @@
     [locationLayer removeAllGraphics];
     if (self.currentMapInfo.floorNumber == location.floor) {
         NPPoint *pos = [NPPoint pointWithX:location.x y:location.y spatialReference:[NPMapEnvironment defaultSpatialReference]];
-        [locationLayer showLocation:pos withDeviceHeading:currentDeviceHeading initAngle:self.currentMapInfo.initAngle mapViewMode:mapViewMode];
+        [locationLayer showLocation:pos withDeviceHeading:currentDeviceHeading initAngle:self.building.initAngle mapViewMode:mapViewMode];
     }
 }
 
@@ -161,11 +158,11 @@
 - (void)processDeviceRotation:(double)newHeading
 {
     currentDeviceHeading = newHeading;
-    [locationLayer updateDeviceHeading:newHeading initAngle:self.currentMapInfo.initAngle mapViewMode:mapViewMode];
+    [locationLayer updateDeviceHeading:newHeading initAngle:self.building.initAngle mapViewMode:mapViewMode];
     
     switch (mapViewMode) {
         case NPMapViewModeFollowing:
-            self.rotationAngle = self.currentMapInfo.initAngle + currentDeviceHeading;
+            self.rotationAngle = self.building.initAngle + currentDeviceHeading;
             break;
             
         case NPMapViewModeDefault:

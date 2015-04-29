@@ -8,6 +8,7 @@
 
 #import "NPRouteManager.h"
 #import "NPRoutePointConverter.h"
+#import "NPBuilding.h"
 
 @interface NPRouteManager() <AGSRouteTaskDelegate>
 {
@@ -25,12 +26,12 @@
 @implementation NPRouteManager
 
 
-+ (NPRouteManager *)routeManagerWithURL:(NSURL *)url credential:(NPCredential *)credential MapInfos:(NSArray *)mapInfoArray
++ (NPRouteManager *)routeManagerWithBuilding:(NPBuilding *)building credential:(NPCredential *)credential MapInfos:(NSArray *)mapInfoArray
 {
-    return [[NPRouteManager alloc] initRouteTaskWithURL:url credential:credential MapInfos:mapInfoArray];
+    return [[NPRouteManager alloc] initRouteTaskWithBuilding:building credential:credential MapInfos:mapInfoArray];
 }
 
-- (id)initRouteTaskWithURL:(NSURL *)url credential:(NPCredential *)cr  MapInfos:(NSArray *)mapInfoArray
+- (id)initRouteTaskWithBuilding:(NPBuilding *)building credential:(NPCredential *)cr  MapInfos:(NSArray *)mapInfoArray
 {
     self = [super init];
     if (self) {
@@ -44,11 +45,10 @@
 
         
         // For Default
-        MapSize offset = {200, 0};
         NPMapInfo *info = [allMapInfos objectAtIndex:0];
-        routePointConverter = [[NPRoutePointConverter alloc] initWithBaseMapExtent:info.mapExtent Offset:offset];
+        routePointConverter = [[NPRoutePointConverter alloc] initWithBaseMapExtent:info.mapExtent Offset:building.offset];
         
-        
+        NSURL *url = [NSURL URLWithString:building.routeURL];
         routeTask = [AGSRouteTask routeTaskWithURL:url credential:cr];
         routeTask.delegate = self;
         [routeTask retrieveDefaultRouteTaskParameters];

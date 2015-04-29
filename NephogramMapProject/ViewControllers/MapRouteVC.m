@@ -19,19 +19,6 @@
 #import "NPSimpleMarkerSymbol.h"
 #import "NPPoint.h"
 
-//#define ROUTE_TASK_URL  @"http://192.168.16.24:6080/arcgis/rest/services/0021/00210001_NA/NAServer/Route"
-//#define ROUTE_TASK_URL  @"http://192.168.16.122:6080/arcgis/rest/services/002100001/NAServer/Route"
-//#define ROUTE_TASK_URL  @"http://192.168.16.122:6080/arcgis/rest/services/002100002/NAServer/Route"
-
-//#define ROUTE_TASK_URL  @"http://121.40.16.26:6080/arcgis/rest/services/H85200001/NAServer/Route"
-//#define ROUTE_TASK_URL  @"http://121.40.16.26:6080/arcgis/rest/services/HK_TEST/NAServer/Route"
-//#define ROUTE_TASK_URL  @"http://121.40.16.26:6080/arcgis/rest/services/002100001/NAServer/Route"
-//#define ROUTE_TASK_URL  @"http://121.40.16.26:6080/arcgis/rest/services/002100002/NAServer/Route"
-#define ROUTE_TASK_URL  @"http://121.40.16.26:6080/arcgis/rest/services/002100004/NAServer/Route"
-
-//#define ROUTE_TASK_URL  @"http://121.40.16.26:6080/arcgis/rest/services/11/NAServer/Route"
-//#define ROUTE_TASK_URL  @"http://192.168.0.109:6080/arcgis/rest/services/Office/office_NA_service/NAServer/Route"
-
 @interface MapRouteVC() <NPRouteManagerDelegate>
 {
     NPRouteManager *routeManager;
@@ -83,9 +70,8 @@
     [self.mapView addMapLayer:hintLayer];
     
     NPCredential *credential = [NPMapEnvironment defaultCredential];
-    NSURL *routeTaskUrl = [NSURL URLWithString:ROUTE_TASK_URL];
     
-    routeManager = [NPRouteManager routeManagerWithURL:routeTaskUrl credential:credential MapInfos:self.allMapInfos];
+    routeManager = [NPRouteManager routeManagerWithBuilding:self.currentBuilding credential:credential MapInfos:self.allMapInfos];
     routeManager.delegate = self;
 }
 

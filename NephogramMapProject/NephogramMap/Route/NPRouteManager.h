@@ -76,7 +76,7 @@
  *
  *  @return 路径管理类实例
  */
-+ (NPRouteManager *)routeManagerWithURL:(NSURL *)url credential:(NPCredential *)credential MapInfos:(NSArray *)mapInfoArray;
++ (NPRouteManager *)routeManagerWithBuilding:(NPBuilding *)building credential:(NPCredential *)credential MapInfos:(NSArray *)mapInfoArray;
 
 /**
  *  请求路径规划，在代理方法获取规划结果
