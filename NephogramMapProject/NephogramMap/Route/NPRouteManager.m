@@ -64,8 +64,8 @@
     _startPoint = [routePointConverter routePointFromLocalPoint:start];
     _endPoint = [routePointConverter routePointFromLocalPoint:end];
     
-    NSLog(@"_startPoint: %@", _startPoint);
-    NSLog(@"_endPoint: %@", _endPoint);
+//    NSLog(@"_startPoint: %@", _startPoint);
+//    NSLog(@"_endPoint: %@", _endPoint);
 
     
     [stops addObject:[AGSGraphic graphicWithGeometry:_startPoint symbol:nil attributes:nil]];
@@ -93,7 +93,7 @@
 
 - (void)routeTask:(AGSRouteTask *)routeTask operation:(NSOperation *)op didFailSolveWithError:(NSError *)error
 {
-    NSLog(@"didFailSolveWithError:\n%@", error.localizedDescription);
+//    NSLog(@"didFailSolveWithError:\n%@", error.localizedDescription);
     
     if (self.delegate != nil && [self.delegate respondsToSelector:@selector(routeManager:didFailSolveRouteWithError:)]) {
         [self.delegate routeManager:self didFailSolveRouteWithError:error];
@@ -102,7 +102,7 @@
 
 - (void)routeTask:(AGSRouteTask *)routeTask operation:(NSOperation *)op didSolveWithResult:(AGSRouteTaskResult *)routeTaskResult
 {
-    NSLog(@"didSolveWithResult");
+//    NSLog(@"didSolveWithResult");
     
     AGSRouteResult *routeResult = [routeTaskResult.routeResults firstObject];
     
@@ -175,7 +175,7 @@
 
 - (void)routeTask:(AGSRouteTask *)routeTask operation:(NSOperation *)op didFailToRetrieveDefaultRouteTaskParametersWithError:(NSError *)error
 {
-    NSLog(@"didFailToRetrieveDefaultRouteTaskParametersWithError:\n%@", error.localizedDescription);
+//    NSLog(@"didFailToRetrieveDefaultRouteTaskParametersWithError:\n%@", error.localizedDescription);
     if (self.delegate != nil && [self.delegate respondsToSelector:@selector(routeManager:didFailRetrieveDefaultRouteTaskParametersWithError:)]) {
         [self.delegate routeManager:self didFailRetrieveDefaultRouteTaskParametersWithError:error];
     }
@@ -183,7 +183,7 @@
 
 - (void)routeTask:(AGSRouteTask *)routeTask operation:(NSOperation *)op didRetrieveDefaultRouteTaskParameters:(AGSRouteTaskParameters *)routeParams
 {
-    NSLog(@"didRetrieveDefaultRouteTaskParameters: %@", routeParams);
+//    NSLog(@"didRetrieveDefaultRouteTaskParameters: %@", routeParams);
     routeTaskParams = routeParams;
     
     if (self.delegate != nil && [self.delegate respondsToSelector:@selector(routeManagerDidRetrieveDefaultRouteTaskParameters:)]) {

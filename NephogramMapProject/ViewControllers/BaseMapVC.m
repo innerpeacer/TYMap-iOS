@@ -42,7 +42,7 @@
         
         for (int i = 0; i < _allMapInfos.count; ++i) {
             NPMapInfo *info = [_allMapInfos objectAtIndex:i];
-            if ([info.floorName isEqualToString:@"F1"]) {
+            if (info.floorNumber == 7) {
                 currentIndex = i;
                 _currentMapInfo = info;
                 break;
@@ -117,7 +117,7 @@
 
 - (void)NPMapViewDidLoad:(NPMapView *)mapView
 {
-    NSLog(@"NPMapViewDidLoad:");
+//    NSLog(@"NPMapViewDidLoad:");
 }
 
 - (void)respondToZooming:(NSNotification *)notification

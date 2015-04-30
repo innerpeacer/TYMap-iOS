@@ -47,6 +47,7 @@
 		57AD40531ACD239A0013B1E0 /* NPPolygon.m in Sources */ = {isa = PBXBuildFile; fileRef = 57AD40521ACD239A0013B1E0 /* NPPolygon.m */; };
 		57AD405C1ACD25340013B1E0 /* NPGeometryEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 57AD405B1ACD25340013B1E0 /* NPGeometryEngine.m */; };
 		57B798CA1AF07B5400B1ACC1 /* NPRouteLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 57B798C91AF07B5400B1ACC1 /* NPRouteLayer.m */; };
+		57B798CF1AF0DCA900B1ACC1 /* Vector2.m in Sources */ = {isa = PBXBuildFile; fileRef = 57B798CE1AF0DCA900B1ACC1 /* Vector2.m */; };
 		57D66A161ADB995E00DF653B /* NPBuilding.m in Sources */ = {isa = PBXBuildFile; fileRef = 57D66A131ADB995E00DF653B /* NPBuilding.m */; };
 		57D66A171ADB995E00DF653B /* NPCity.m in Sources */ = {isa = PBXBuildFile; fileRef = 57D66A151ADB995E00DF653B /* NPCity.m */; };
 		57DDF2011AD96DE50054A1C1 /* NephogramMapResource in Resources */ = {isa = PBXBuildFile; fileRef = 57DDF2001AD96DE50054A1C1 /* NephogramMapResource */; };
@@ -159,6 +160,8 @@
 		57AD405B1ACD25340013B1E0 /* NPGeometryEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPGeometryEngine.m; sourceTree = "<group>"; };
 		57B798C81AF07B5400B1ACC1 /* NPRouteLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPRouteLayer.h; sourceTree = "<group>"; };
 		57B798C91AF07B5400B1ACC1 /* NPRouteLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPRouteLayer.m; sourceTree = "<group>"; };
+		57B798CD1AF0DCA900B1ACC1 /* Vector2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vector2.h; sourceTree = "<group>"; };
+		57B798CE1AF0DCA900B1ACC1 /* Vector2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Vector2.m; sourceTree = "<group>"; };
 		57D66A121ADB995E00DF653B /* NPBuilding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPBuilding.h; sourceTree = "<group>"; };
 		57D66A131ADB995E00DF653B /* NPBuilding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPBuilding.m; sourceTree = "<group>"; };
 		57D66A141ADB995E00DF653B /* NPCity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPCity.h; sourceTree = "<group>"; };
@@ -346,6 +349,8 @@
 		57E6CF781ADCBF3800D4C8C7 /* FunctionLayers */ = {
 			isa = PBXGroup;
 			children = (
+				57B798CD1AF0DCA900B1ACC1 /* Vector2.h */,
+				57B798CE1AF0DCA900B1ACC1 /* Vector2.m */,
 				57B798C81AF07B5400B1ACC1 /* NPRouteLayer.h */,
 				57B798C91AF07B5400B1ACC1 /* NPRouteLayer.m */,
 				57E6CF791ADCBF3800D4C8C7 /* NPLocationLayer.h */,
@@ -620,6 +625,7 @@
 				57D66A161ADB995E00DF653B /* NPBuilding.m in Sources */,
 				57E6CF751ADCBEDF00D4C8C7 /* NPFloorLayer.m in Sources */,
 				574443F11AAED36300E6232C /* FMDatabaseQueue.m in Sources */,
+				57B798CF1AF0DCA900B1ACC1 /* Vector2.m in Sources */,
 				574443F21AAED36300E6232C /* FMResultSet.m in Sources */,
 				57E6CF871ADCDFD300D4C8C7 /* NPTextLabel.m in Sources */,
 				570DB3EC1A890634001D137E /* MapTableVC.m in Sources */,

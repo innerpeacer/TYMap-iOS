@@ -35,6 +35,9 @@ typedef enum {
  */
 @protocol NPMapViewDelegate <NSObject>
 
+
+@optional
+
 /**
  *  地图点选事件回调方法
  *
@@ -61,8 +64,8 @@ typedef enum {
  */
 - (void)NPMapView:(NPMapView *)mapView didFinishLoadingFloor:(NPMapInfo *)mapInfo;
 
+- (void)NPMapViewDidZoomed:(NPMapView *)mapView;
 
-@optional
 - (void)NPMapViewDidLoad:(NPMapView *)mapView;
 
 - (void)NPMapView:(NPMapView *)mapView calloutDidDismiss:(NPCallout *)callout;

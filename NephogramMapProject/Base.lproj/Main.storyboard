@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="5pT-8B-Y0o">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="5pT-8B-Y0o">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -51,10 +51,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="VH6-hf-vC1" firstAttribute="leading" secondItem="yIT-If-M4b" secondAttribute="leadingMargin" constant="-16" id="7up-vg-O17"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="VH6-hf-vC1" secondAttribute="trailing" constant="-16" id="Qci-0g-BsB"/>
-                            <constraint firstItem="VH6-hf-vC1" firstAttribute="top" secondItem="yIT-If-M4b" secondAttribute="topMargin" id="ZFh-rd-eYr"/>
-                            <constraint firstItem="Qs8-OS-pIf" firstAttribute="top" secondItem="VH6-hf-vC1" secondAttribute="bottom" id="aGZ-KP-PU6"/>
+                            <constraint firstAttribute="trailing" secondItem="VH6-hf-vC1" secondAttribute="trailing" id="LMF-4C-RZU"/>
+                            <constraint firstItem="VH6-hf-vC1" firstAttribute="top" secondItem="yIT-If-M4b" secondAttribute="top" id="MzC-i5-Z4x"/>
+                            <constraint firstItem="Qs8-OS-pIf" firstAttribute="top" secondItem="VH6-hf-vC1" secondAttribute="bottom" id="QQx-yw-zH3"/>
+                            <constraint firstItem="VH6-hf-vC1" firstAttribute="leading" secondItem="yIT-If-M4b" secondAttribute="leading" id="TXJ-Te-pjs"/>
                         </constraints>
                     </view>
                     <connections>
@@ -197,10 +197,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="msm-Fs-4Jv" firstAttribute="leading" secondItem="SAK-aC-GY2" secondAttribute="leadingMargin" constant="-16" id="040-4f-xDT"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="msm-Fs-4Jv" secondAttribute="trailing" constant="-16" id="s4Q-dg-FUb"/>
-                            <constraint firstItem="msm-Fs-4Jv" firstAttribute="top" secondItem="SAK-aC-GY2" secondAttribute="topMargin" id="v0b-LA-3ly"/>
-                            <constraint firstItem="jmM-la-eUO" firstAttribute="top" secondItem="msm-Fs-4Jv" secondAttribute="bottom" id="vv4-nl-ELo"/>
+                            <constraint firstItem="msm-Fs-4Jv" firstAttribute="leading" secondItem="SAK-aC-GY2" secondAttribute="leading" id="Dfw-ce-Ok5"/>
+                            <constraint firstItem="msm-Fs-4Jv" firstAttribute="top" secondItem="SAK-aC-GY2" secondAttribute="top" id="Qrc-OX-KNk"/>
+                            <constraint firstAttribute="trailing" secondItem="msm-Fs-4Jv" secondAttribute="trailing" id="WBm-8m-U42"/>
+                            <constraint firstItem="jmM-la-eUO" firstAttribute="top" secondItem="msm-Fs-4Jv" secondAttribute="bottom" id="Xgm-b0-GWR"/>
                         </constraints>
                     </view>
                     <connections>
@@ -230,10 +230,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="2y7-Ss-eKW" secondAttribute="trailing" constant="-16" id="Z99-8d-l3m"/>
-                            <constraint firstItem="MZn-TM-Jsh" firstAttribute="top" secondItem="2y7-Ss-eKW" secondAttribute="bottom" id="hnd-3F-coZ"/>
-                            <constraint firstItem="2y7-Ss-eKW" firstAttribute="leading" secondItem="Ojv-bI-qhW" secondAttribute="leadingMargin" constant="-16" id="qoU-bK-Ts4"/>
-                            <constraint firstItem="2y7-Ss-eKW" firstAttribute="top" secondItem="Ojv-bI-qhW" secondAttribute="topMargin" id="vdj-XV-P5m"/>
+                            <constraint firstItem="2y7-Ss-eKW" firstAttribute="top" secondItem="Ojv-bI-qhW" secondAttribute="top" id="1T8-KS-HiO"/>
+                            <constraint firstItem="MZn-TM-Jsh" firstAttribute="top" secondItem="2y7-Ss-eKW" secondAttribute="bottom" id="4e1-H0-xoi"/>
+                            <constraint firstAttribute="trailing" secondItem="2y7-Ss-eKW" secondAttribute="trailing" id="NsX-yn-K0n"/>
+                            <constraint firstItem="2y7-Ss-eKW" firstAttribute="leading" secondItem="Ojv-bI-qhW" secondAttribute="leading" id="oeU-mW-tf4"/>
                         </constraints>
                     </view>
                     <connections>

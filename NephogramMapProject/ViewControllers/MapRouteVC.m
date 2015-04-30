@@ -77,17 +77,17 @@
 
 - (void)routeManagerDidRetrieveDefaultRouteTaskParameters:(NPRouteManager *)routeManager
 {
-    NSLog(@"routeManagerDidRetrieveDefaultRouteTaskParameters");
+//    NSLog(@"routeManagerDidRetrieveDefaultRouteTaskParameters");
 }
 
 - (void)routeManager:(NPRouteManager *)routeManager didFailRetrieveDefaultRouteTaskParametersWithError:(NSError *)error
 {
-    NSLog(@"didFailToRetrieveDefaultRouteTaskParametersWithError:\n%@", error.localizedDescription);
+//    NSLog(@"didFailToRetrieveDefaultRouteTaskParametersWithError:\n%@", error.localizedDescription);
 }
 
 - (void)routeManager:(NPRouteManager *)routeManager didSolveRouteWithResult:(NPRouteResult *)rs
 {
-    NSLog(@"routeManager: didSolveRouteWithResult:");
+//    NSLog(@"routeManager: didSolveRouteWithResult:");
     
     [hintLayer removeAllGraphics];
     
@@ -105,6 +105,13 @@
     }
 }
 
+- (void)NPMapViewDidZoomed:(NPMapView *)mapView
+{
+    if (isRouting) {
+        [self.mapView showRouteResultOnCurrentFloor];
+    }
+}
+
 - (void)routeManager:(NPRouteManager *)routeManager didFailSolveRouteWithError:(NSError *)error
 {
     NSLog(@"routeManager:routeManager didFailSolveRouteWithError:");
@@ -116,8 +123,8 @@
 
 - (void)NPMapView:(NPMapView *)mapView didClickAtPoint:(CGPoint)screen mapPoint:(NPPoint *)mappoint
 {
-    NSLog(@"(%f, %f) in floor %d", mappoint.x, mappoint.y, self.currentMapInfo.floorNumber);
-    
+//    NSLog(@"(%f, %f) in floor %d", mappoint.x, mappoint.y, self.currentMapInfo.floorNumber);
+//    NSLog(@"Map Scale: %f", self.mapView.mapScale);
     currentPoint = mappoint;
     
     NPSimpleMarkerSymbol *sms = [NPSimpleMarkerSymbol simpleMarkerSymbolWithColor:[UIColor greenColor]];

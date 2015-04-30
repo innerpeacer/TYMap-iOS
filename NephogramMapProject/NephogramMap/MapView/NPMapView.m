@@ -531,6 +531,10 @@
 - (void)respondToZooming:(NSNotification *)notification
 {
     [labelGroupLayer updateLabels];
+    
+    if (self.mapDelegate && [self.mapDelegate respondsToSelector:@selector(NPMapViewDidZoomed:)]) {
+        [self.mapDelegate NPMapViewDidZoomed:self];
+    }
 }
 
 - (void)respondToPanning:(NSNotification *)notification

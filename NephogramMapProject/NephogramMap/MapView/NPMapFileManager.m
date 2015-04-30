@@ -26,7 +26,8 @@
 #define FILE_LAYER_PATH_FACILITY @"%@_FACILITY.json"
 #define FILE_LAYER_PATH_LABEL @"%@_LABEL.json"
 
-
+#import "NPBuilding.h"
+#import "NPCity.h"
 
 @implementation NPMapFileManager
 
