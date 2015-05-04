@@ -23,6 +23,9 @@
     NSLog(@"%@", documentDirectory);
     
     [NPMapEnvironment initMapEnvironment];
+    
+    [NPMapEnvironment setMapLanguage:NPTraditionalChinese];
+    
     [NPMapEnvironment setRootDirectoryForMapFiles:[documentDirectory stringByAppendingPathComponent:DEFAULT_MAP_ROOT]];
     [self copyMapFilesIfNeeded];
     
@@ -40,8 +43,8 @@
 //    [NPUserDefaults setDefaultBuilding:@"002188888"];
 //    [NPUserDefaults setDefaultBuilding:@"002199999"];
 //    
-//    [NPUserDefaults setDefaultCity:@"H852"];
-//    [NPUserDefaults setDefaultBuilding:@"H85200001"];
+    [NPUserDefaults setDefaultCity:@"H852"];
+    [NPUserDefaults setDefaultBuilding:@"H85200001"];
     
 }
 

@@ -77,6 +77,33 @@
     }
 }
 
+#define NAME_FIELD_TRADITIONAL_CHINESE @"NAME_TC"
+#define NAME_FIELD_SIMPLIFIED_CHINESE @"NAME"
+#define NAME_FIELD_ENGLISH @"NAME_EN"
+
+- (NSString *)getNameFieldForLanguage:(NPMapLanguage)l
+{
+    NSString *result = nil;
+    switch (l) {
+        case NPSimplifiedChinese:
+        result = NAME_FIELD_SIMPLIFIED_CHINESE;
+        break;
+        
+        case NPTraditionalChinese:
+        result = NAME_FIELD_TRADITIONAL_CHINESE;
+        break;
+        
+        case NPEnglish:
+        result = NAME_FIELD_ENGLISH;
+        break;
+        
+        default:
+        result = NAME_FIELD_SIMPLIFIED_CHINESE;
+        break;
+    }
+    return result;
+}
+
 - (void)loadContentsWithInfo:(NPMapInfo *)info;
 {
     [self removeAllGraphics];
@@ -94,9 +121,11 @@
     NSArray *allGraphics = set.features;
     
     NPSpatialReference *sr = [NPMapEnvironment defaultSpatialReference];
+    NPMapLanguage language = [NPMapEnvironment getMapLanguage];
     
     for (AGSGraphic *graphic in allGraphics) {
-        NSString *name = [graphic attributeForKey:@"NAME"];
+        NSString *field = [self getNameFieldForLanguage:language];
+        NSString *name = [graphic attributeForKey:field];
         
         if (name != nil && name != (id)[NSNull null]) {
             double x = ((AGSPoint *)graphic.geometry).x;

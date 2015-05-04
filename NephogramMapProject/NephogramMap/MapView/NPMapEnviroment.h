@@ -9,6 +9,13 @@
 #import <ArcGIS/ArcGIS.h>
 #import "NPCredential.h"
 #import "NPSpatialReference.h"
+
+typedef enum {
+    NPSimplifiedChinese, NPTraditionalChinese, NPEnglish
+} NPMapLanguage;
+
+
+
 /**
  *  地图环境
  */
@@ -38,5 +45,8 @@
 + (void)setRootDirectoryForMapFiles:(NSString *)dir;
 + (NSString *)getRootDirectoryForMapFiles;
 
+
++ (void)setMapLanguage:(NPMapLanguage)language;
++ (NPMapLanguage)getMapLanguage;
 
 @end

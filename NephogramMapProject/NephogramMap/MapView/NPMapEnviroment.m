@@ -57,4 +57,15 @@ static NSString *mapFileRootDirectory;
     }
 }
 
+static NPMapLanguage mapLanguage = NPSimplifiedChinese;
++ (void)setMapLanguage:(NPMapLanguage)language
+{
+    mapLanguage = language;
+}
+
++ (NPMapLanguage)getMapLanguage
+{
+    return mapLanguage;
+}
+
 @end
