@@ -127,11 +127,27 @@
 //    NSLog(@"Map Scale: %f", self.mapView.mapScale);
     currentPoint = mappoint;
     
+    NPLocalPoint *localPoint = [NPLocalPoint pointWithX:mappoint.x Y:mappoint.y Floor:self.mapView.currentMapInfo.floorNumber];
+    
     NPSimpleMarkerSymbol *sms = [NPSimpleMarkerSymbol simpleMarkerSymbolWithColor:[UIColor greenColor]];
     sms.size = CGSizeMake(5, 5);
     
     [hintLayer removeAllGraphics];
-    [hintLayer addGraphic:[AGSGraphic graphicWithGeometry:mappoint symbol:sms                                                attributes:nil]];
+    [hintLayer addGraphic:[AGSGraphic graphicWithGeometry:mappoint symbol:sms attributes:nil]];
+    
+    if (routeResult) {
+        
+        BOOL isDeviating = [routeResult isDeviatingFromRoute:localPoint WithThrehold:2.0];
+        
+        if (isDeviating) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"错误" message:@"已经偏离导航线，重新规划！" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [alert show];
+            [routeManager requestRouteWithStart:localPoint End:endLocalPoint];
+        } else {
+            [self.mapView showRemainingRouteResultOnCurrentFloor:localPoint];
+        }
+
+    }
 }
 
 - (IBAction)setStartPoint:(id)sender {

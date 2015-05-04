@@ -10,7 +10,7 @@
 #import "NPMapInfo.h"
 #import "NPPolyline.h"
 #import "NPPoint.h"
-
+#import <NephogramData/NephogramData.h>
 @interface NPRouteResult : NSObject
 
 + (NPRouteResult *)routeResultWithDict:(NSDictionary *)dict FloorArray:(NSArray *)array;
@@ -26,4 +26,7 @@
 - (BOOL)isLastFloor:(int)floorIndex;
 - (NSNumber *)getPreviousFloor:(int)floorIndex;
 - (NSNumber *)getNextFloor:(int)floorIndex;
+
+- (BOOL)isDeviatingFromRoute:(NPLocalPoint *)point WithThrehold:(double)distance;
+
 @end

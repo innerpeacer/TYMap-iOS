@@ -38,7 +38,7 @@
     return self;
 }
 
-#define ARROW_INTERVAL 0.003
+#define ARROW_INTERVAL 0.005
 - (void)showRouteArrow:(AGSPolyline *)line
 {
     double interval = ARROW_INTERVAL * self.mapView.mapScale;
@@ -102,6 +102,8 @@
         AGSPoint *point = [self getPointFrom:currentStart To:currentEnd withSegmentLength:currentSegmentLength withOffset: (i) * interval - currentAccumulativeLength];
         
         NPPictureMarkerSymbol *pms = [NPPictureMarkerSymbol pictureMarkerSymbolWithImageNamed:@"routeArrow"];
+//        NPPictureMarkerSymbol *pms = [NPPictureMarkerSymbol pictureMarkerSymbolWithImageNamed:@"trace"];
+
         pms.angle = currentAngle;
         [self addGraphic:[AGSGraphic graphicWithGeometry:point symbol:pms attributes:nil]];
         
@@ -126,19 +128,33 @@
     return [AGSPoint pointWithX:x y:y spatialReference:[NPMapEnvironment defaultSpatialReference]];
 }
 
-- (void)showRouteResultFloor:(int)floor
+- (void)showRouteResultOnFloor:(int)floor
 {
     [self removeAllGraphics];
+    
+    [self showLineForRouteResultOnFloor:floor];
+    [self showSymbolForRouteResultOnFloor:floor];
+    [self showStartSymbol:self.startPoint];
+    [self showEndSymbol:self.endPoint];
+}
+
+- (void)showRemaingRouteResultOnFloor:(int)floor WithLocation:(NPLocalPoint *)location
+{
+    [self removeAllGraphics];
+    
+    [self showRemainingLineForRouteResultOnFloor:floor WithLocation:location];
+    [self showSymbolForRouteResultOnFloor:floor];
+    [self showStartSymbol:self.startPoint];
+    [self showEndSymbol:self.endPoint];
+}
+
+- (void)showSymbolForRouteResultOnFloor:(int)floor
+{
     if (_routeResult) {
-        
         AGSPolyline *line = [_routeResult getRouteOnFloor:floor];
         if (line) {
-            [self addGraphic:[NPGraphic graphicWithGeometry:line symbol:nil attributes:nil]];
-            [self showRouteArrow:line];
-            
-            
             if ([_routeResult isFirstFloor:floor] && [_routeResult isLastFloor:floor]) {
-                NSLog(@"Same Floor");
+//                NSLog(@"Same Floor");
                 return;
             }
             
@@ -174,6 +190,60 @@
     }
 }
 
+- (void)showLineForRouteResultOnFloor:(int)floor
+{
+    if (_routeResult) {
+        AGSPolyline *line = [_routeResult getRouteOnFloor:floor];
+        if (line) {
+            [self addGraphic:[NPGraphic graphicWithGeometry:line symbol:nil attributes:nil]];
+            [self showRouteArrow:line];
+        }
+    }
+}
+
+- (void)showRemainingLineForRouteResultOnFloor:(int)floor WithLocation:(NPLocalPoint *)location
+{
+    if (_routeResult) {
+        AGSPolyline *line = [_routeResult getRouteOnFloor:floor];
+        if (line) {
+            AGSPoint *pos = [AGSPoint pointWithX:location.x y:location.y spatialReference:[NPMapEnvironment defaultSpatialReference]];
+            AGSPolyline *remainingLine = [self getRemainingLine:line WithPoint:pos];
+            if (remainingLine) {
+                [self addGraphic:[NPGraphic graphicWithGeometry:remainingLine symbol:nil attributes:nil]];
+                [self showRouteArrow:remainingLine];
+            }
+        }
+        
+    }
+}
+
+- (AGSPolyline *)getRemainingLine:(AGSPolyline *)originalLine WithPoint:(AGSPoint *)point
+{
+    AGSPolyline *result = nil;
+    
+    AGSPoint *lastPoint = [originalLine pointOnPath:0 atIndex:originalLine.numPoints-1];
+    
+    AGSGeometryEngine *engine = [AGSGeometryEngine defaultGeometryEngine];
+    AGSProximityResult *proximitResult = [engine nearestCoordinateInGeometry:originalLine toPoint:point];
+    AGSPoint *cutPoint = proximitResult.point;
+    
+    AGSMutablePolyline *cutLine = [[AGSMutablePolyline alloc] init];
+    [cutLine addPathToPolyline];
+    [cutLine addPointToPath:point];
+    [cutLine addPointToPath:cutPoint];
+    
+    NSArray *cuttedLineArray = [engine cutGeometry:originalLine withCutter:cutLine];
+//    NSLog(@"%d segments", (int)cuttedLineArray.count);
+    
+    for (AGSPolyline *line in cuttedLineArray) {
+        BOOL isLastHalf = [engine geometry:line touchesGeometry:lastPoint];
+        if (isLastHalf) {
+            result = line;
+        }
+    }
+    return result;
+}
+
 - (void)reset
 {
     _routeResult = nil;
@@ -181,7 +251,7 @@
 }
 
 - (AGSSymbol *)createRouteSymbol
-{    
+{
     AGSCompositeSymbol *cs = [AGSCompositeSymbol compositeSymbol];
     
 //    AGSSimpleLineSymbol *sls1 = [AGSSimpleLineSymbol simpleLineSymbol];

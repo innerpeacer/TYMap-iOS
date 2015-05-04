@@ -7,7 +7,7 @@
 //
 
 #import "NPRouteResult.h"
-
+#import "NPMapEnviroment.h"
 @interface NPRouteResult()
 {
     
@@ -87,6 +87,27 @@
         return nil;
     }
     return [_routeFloorArray objectAtIndex:index+1];
+}
+
+- (BOOL)isDeviatingFromRoute:(NPLocalPoint *)point WithThrehold:(double)distance
+{
+    BOOL isDeviating = YES;
+    
+    int floor = point.floor;
+    AGSPoint *pos = [AGSPoint pointWithX:point.x y:point.y spatialReference:[NPMapEnvironment defaultSpatialReference]];
+    
+    NPPolyline *line = [_routeGraphicDict objectForKey:@(floor)];
+    if (line) {
+        AGSProximityResult *pr = [[AGSGeometryEngine defaultGeometryEngine] nearestCoordinateInGeometry:line toPoint:pos];
+        AGSPoint *nearestedPoint = pr.point;
+        
+        double nearestedDistance = [[AGSGeometryEngine defaultGeometryEngine] distanceFromGeometry:pos toGeometry:nearestedPoint];
+        if (nearestedDistance <= distance) {
+            isDeviating = NO;
+        }
+    }
+    
+    return isDeviating;
 }
 
 @end

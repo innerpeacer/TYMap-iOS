@@ -136,7 +136,7 @@ typedef enum {
 - (void)showRouteSwitchSymbolOnCurrentFloor:(NPLocalPoint *)sp;
 
 - (void)showRouteResultOnCurrentFloor;
-
+- (void)showRemainingRouteResultOnCurrentFloor:(NPLocalPoint *)lp;
 /**
  *  地图初始化方法
  *

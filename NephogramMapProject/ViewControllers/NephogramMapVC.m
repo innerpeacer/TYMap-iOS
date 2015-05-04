@@ -37,7 +37,6 @@ int tIndex = 0;
     
 //    NPPoi *poi = [self.mapView extractRoomPoiOnCurrentFloorWithX:mappoint.x Y:mappoint.y];
     NPPoi *poi = [self.mapView extractRoomPoiOnCurrentFloorWithX:-16368300.428107699 Y:409.32691143034884];
-
     NSLog(@"%@", poi);
 }
 

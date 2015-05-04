@@ -40,7 +40,8 @@
  */
 + (NPRouteLayer *)routeLayerWithSpatialReference:(NPSpatialReference *)sr;
 
-- (void)showRouteResultFloor:(int)floor;
+- (void)showRouteResultOnFloor:(int)floor;
+- (void)showRemaingRouteResultOnFloor:(int)floor WithLocation:(NPLocalPoint *)location;
 
 - (void)reset;
 

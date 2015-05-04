@@ -454,9 +454,14 @@
 
 - (void)showRouteResultOnCurrentFloor
 {
-    [routeLayer showRouteResultFloor:self.currentMapInfo.floorNumber];
-    [routeLayer showStartSymbol:routeLayer.startPoint];
-    [routeLayer showEndSymbol:routeLayer.endPoint];
+    [routeLayer showRouteResultOnFloor:self.currentMapInfo.floorNumber];
+//    [routeLayer showStartSymbol:routeLayer.startPoint];
+//    [routeLayer showEndSymbol:routeLayer.endPoint];
+}
+
+- (void)showRemainingRouteResultOnCurrentFloor:(NPLocalPoint *)lp
+{
+    [routeLayer showRemaingRouteResultOnFloor:self.currentMapInfo.floorNumber WithLocation:lp];
 }
 
 - (void)showAllFacilitiesOnCurrentFloor
