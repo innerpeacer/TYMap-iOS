@@ -20,4 +20,8 @@
 - (void)highlightPoi:(NSString *)poiID;
 - (NPPoi *)extractPoiOnCurrentFloorWithX:(double)x Y:(double)y;
 
+- (BOOL)updateRoomPOI:(NSString *)pid WithName:(NSString *)name;
+
+- (AGSFeatureSet *)getFeatureSet;
+
 @end

@@ -19,6 +19,11 @@
 
 - (void)loadContentsWithInfo:(NPMapInfo *)info;
 
-- (void)updateLabels:(NSMutableArray *)array;
+- (void)displayLabels:(NSMutableArray *)array;
+
+- (BOOL)updateRoomLabel:(NSString *)pid WithName:(NSString *)name;
+
+- (AGSFeatureSet *)getFeatureSet;
 
 @end
+

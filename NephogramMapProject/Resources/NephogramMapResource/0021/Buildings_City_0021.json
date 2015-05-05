@@ -8,7 +8,7 @@
 			"latitude":"39.958951", 
 			"address":"沪汰路",
             "initAngle":"-70.0",
-            "routeURL":"http://121.40.16.26:6080/arcgis/rest/services/002100001/NAServer/Route",
+            "routeURL":"http://121.40.16.26:6080/arcgis/rest/services/002100000/NAServer/Route",
             "offsetX":"200",
             "offsetY":"0",
 			"status":"0"

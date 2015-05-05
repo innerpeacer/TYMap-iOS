@@ -33,11 +33,15 @@ int tIndex = 0;
 
 - (void)NPMapView:(NPMapView *)mapView didClickAtPoint:(CGPoint)screen mapPoint:(AGSPoint *)mappoint
 {
-    NSLog(@"didClickAtPoint: %f, %f", mappoint.x, mappoint.y);
+//    NSLog(@"didClickAtPoint: %f, %f", mappoint.x, mappoint.y);
     
-//    NPPoi *poi = [self.mapView extractRoomPoiOnCurrentFloorWithX:mappoint.x Y:mappoint.y];
-    NPPoi *poi = [self.mapView extractRoomPoiOnCurrentFloorWithX:-16368300.428107699 Y:409.32691143034884];
+    NPPoi *poi = [self.mapView extractRoomPoiOnCurrentFloorWithX:mappoint.x Y:mappoint.y];
     NSLog(@"%@", poi);
+    
+    [self.mapView updateRoomPOI:poi.poiID WithName:@"Test"];
+    
+    [self.mapView updateMapFiles];
+    [self.mapView reloadMapView];
 }
 
 - (void)NPMapView:(NPMapView *)mapView PoiSelected:(NSArray *)array

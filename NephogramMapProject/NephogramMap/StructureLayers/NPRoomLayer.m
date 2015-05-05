@@ -118,5 +118,25 @@
     return poi;
 }
 
+- (BOOL)updateRoomPOI:(NSString *)pid WithName:(NSString *)name
+{
+    NSArray *graphicArray = self.graphics;
+    for (AGSGraphic *g in graphicArray) {
+        NSString *poiID = [g attributeForKey:GRAPHIC_ATTRIBUTE_POI_ID];
+        if ([poiID isEqualToString:pid]) {
+            [g setAttribute:name forKey:GRAPHIC_ATTRIBUTE_NAME];
+            return YES;
+        }
+    }
+    return NO;
+}
+
+- (AGSFeatureSet *)getFeatureSet
+{
+    NSArray *graphicArray = self.graphics;
+    AGSFeatureSet *set = [AGSFeatureSet featureSetWithFeatures:graphicArray];
+    return set;
+}
+
 @end
 

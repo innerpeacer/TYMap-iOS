@@ -40,6 +40,19 @@
 
 @implementation NPMapView
 
+- (void)reloadMapView
+{
+    if (self.currentMapInfo) {
+        [structureGroupLayer loadContentsWithInfo:self.currentMapInfo];
+        [labelGroupLayer loadContentsWithInfo:self.currentMapInfo];
+
+        if (self.mapDelegate && [self.mapDelegate respondsToSelector:@selector(NPMapView:didFinishLoadingFloor:)]) {
+            [labelGroupLayer updateLabels];
+            [self.mapDelegate NPMapView:self didFinishLoadingFloor:_currentMapInfo];
+        }
+    }
+}
+
 - (void)setFloorWithInfo:(NPMapInfo *)info
 {
     
@@ -564,6 +577,23 @@
 - (NPPoi *)extractRoomPoiOnCurrentFloorWithX:(double)x Y:(double)y
 {
     return [structureGroupLayer extractRoomPoiOnCurrentFloorWithX:x Y:y];
+}
+
+- (BOOL)updateRoomPOI:(NSString *)pid WithName:(NSString *)name
+{
+//    return [structureGroupLayer updateRoomPOI:pid WithName:name];
+    return [labelGroupLayer updateRoomLabel:pid WithName:name];
+}
+
+- (void)updateMapFiles
+{
+    NSString *filePath = [NPMapFileManager getLabelLayerPath:self.currentMapInfo];
+    AGSFeatureSet *set = [labelGroupLayer getTextFeatureSet];
+    
+    NSDictionary *jsonDict = [set encodeToJSON];
+    NSData *data = [NSJSONSerialization dataWithJSONObject:jsonDict options:NSJSONWritingPrettyPrinted error:nil];
+    
+    [data writeToFile:filePath atomically:YES];
 }
 
 @end

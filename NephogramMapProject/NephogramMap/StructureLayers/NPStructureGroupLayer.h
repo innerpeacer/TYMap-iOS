@@ -30,4 +30,9 @@
 
 - (void)setRoomSelected:(BOOL)selected forGraphic:(AGSGraphic *)graphic;
 
+
+- (BOOL)updateRoomPOI:(NSString *)pid WithName:(NSString *)name;
+
+- (AGSFeatureSet *)getRoomFeatureSet;
+
 @end

@@ -69,4 +69,14 @@
     [_roomLayer setSelected:selected forGraphic:graphic];
 }
 
+- (BOOL)updateRoomPOI:(NSString *)pid WithName:(NSString *)name
+{
+    return [_roomLayer updateRoomPOI:pid WithName:name];
+}
+
+- (AGSFeatureSet *)getRoomFeatureSet
+{
+    return [_roomLayer getFeatureSet];
+}
+
 @end

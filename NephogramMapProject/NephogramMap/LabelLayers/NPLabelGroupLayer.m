@@ -94,7 +94,17 @@
     [visiableBorders removeAllObjects];
     
     [_facilityLayer updateLabels:visiableBorders];
-    [_labelLayer updateLabels:visiableBorders];
+    [_labelLayer displayLabels:visiableBorders];
+}
+
+- (BOOL)updateRoomLabel:(NSString *)pid WithName:(NSString *)name
+{
+    return [_labelLayer updateRoomLabel:pid WithName:name];
+}
+
+- (AGSFeatureSet *)getTextFeatureSet
+{
+    return [_labelLayer getFeatureSet];
 }
 
 @end

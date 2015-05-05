@@ -103,6 +103,8 @@
 - (void)NPMapView:(NPMapView *)mapView didClickAtPoint:(CGPoint)screen mapPoint:(AGSPoint *)mappoint
 {
     //    NSLog(@"didClickAtPoint");
+    
+    
 }
 
 - (void)NPMapView:(NPMapView *)mapView PoiSelected:(NSArray *)array

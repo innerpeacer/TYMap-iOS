@@ -103,6 +103,8 @@ typedef enum {
 @property (nonatomic, assign) BOOL highlightPOIOnSelection;
 
 
+- (void)reloadMapView;
+
 /**
  *  切换楼层方法
  *
@@ -218,6 +220,11 @@ typedef enum {
  *  @return ROOM POI
  */
 - (NPPoi *)extractRoomPoiOnCurrentFloorWithX:(double)x Y:(double)y;
+
+
+- (BOOL)updateRoomPOI:(NSString *)pid WithName:(NSString *)name;
+
+- (void)updateMapFiles;
 
 @end
 

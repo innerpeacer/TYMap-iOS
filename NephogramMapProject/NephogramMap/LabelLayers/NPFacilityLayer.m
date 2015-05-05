@@ -70,7 +70,7 @@
         highlightedPms.size = CGSizeMake(26, 26);
         [allHighlightFacilitySymbols setObject:highlightedPms forKey:key];
     }
-
+    
 }
 
 - (void)updateLabels:(NSMutableArray *)array

@@ -50,10 +50,10 @@
         return;
     }
     
-    NSLog(@"Interval: %f", interval);
-    NSLog(@"Total Length: %f", totalLength);
-    NSLog(@"Points: %d, Segments: %d", (int)line.numPoints, numSegments);
-    NSLog(@"Route Point: %d", (int)numRoutePoints);
+//    NSLog(@"Interval: %f", interval);
+//    NSLog(@"Total Length: %f", totalLength);
+//    NSLog(@"Points: %d, Segments: %d", (int)line.numPoints, numSegments);
+//    NSLog(@"Route Point: %d", (int)numRoutePoints);
     
     AGSPoint *currentStart = nil;
     AGSPoint *currentEnd = nil;
@@ -83,7 +83,7 @@
         [routePointSegmentArray addObject:@(currentSegmentIndex-1)];
     }
     
-    NSLog(@"%@", routePointSegmentArray);
+//    NSLog(@"%@", routePointSegmentArray);
     
     for (int i = 1; i < numRoutePoints; ++i) {
         int currentSegment = [[routePointSegmentArray objectAtIndex:i] intValue];
@@ -107,11 +107,11 @@
         pms.angle = currentAngle;
         [self addGraphic:[AGSGraphic graphicWithGeometry:point symbol:pms attributes:nil]];
         
-        NSLog(@"CurrentSegment: %d", currentSegment);
-        NSLog(@"CurrentAccumulativeLength: %f", currentAccumulativeLength);
-        NSLog(@"SegementLength: %f", interval);
-        NSLog(@"Offset: %f", (i) * interval - currentAccumulativeLength);
-        NSLog(@"%@", point);
+//        NSLog(@"CurrentSegment: %d", currentSegment);
+//        NSLog(@"CurrentAccumulativeLength: %f", currentAccumulativeLength);
+//        NSLog(@"SegementLength: %f", interval);
+//        NSLog(@"Offset: %f", (i) * interval - currentAccumulativeLength);
+//        NSLog(@"%@", point);
         
     }
 }
@@ -120,7 +120,7 @@
 {
     double scale = offset / length;
     
-    NSLog(@"scale: %f", scale);
+//    NSLog(@"scale: %f", scale);
     
     double x = start.x * (1 - scale) + end.x * scale;
     double y = start.y * (1 - scale) + end.y * scale;

@@ -42,4 +42,8 @@
 
 - (void)updateLabels;
 
+- (BOOL)updateRoomLabel:(NSString *)pid WithName:(NSString *)name;
+
+- (AGSFeatureSet *)getTextFeatureSet;
+
 @end
