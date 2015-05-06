@@ -18,6 +18,7 @@
 #import "NPMarkerSymbol.h"
 #import "NPPictureMarkerSymbol.h"
 #import "NPRouteResult.h"
+#import "NPDirectionalHint.h"
 
 #import <NephogramData/NephogramData.h>
 
@@ -139,6 +140,9 @@ typedef enum {
 
 - (void)showRouteResultOnCurrentFloor;
 - (void)showRemainingRouteResultOnCurrentFloor:(NPLocalPoint *)lp;
+
+- (void)showRouteHintForDirectionString:(NPDirectionalHint *)ds Centered:(BOOL)isCentered;
+
 /**
  *  地图初始化方法
  *

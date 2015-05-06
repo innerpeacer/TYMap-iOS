@@ -38,123 +38,34 @@
     return self;
 }
 
-#define ARROW_INTERVAL 0.005
-- (void)showRouteArrow:(AGSPolyline *)line
-{
-    double interval = ARROW_INTERVAL * self.mapView.mapScale;
-    double totalLength = [[AGSGeometryEngine defaultGeometryEngine] lengthOfGeometry:line];
-    int numSegments = (int)line.numPoints - 1;
-    int numRoutePoints = (int)(totalLength / interval);
-
-    if (numRoutePoints < 1) {
-        return;
-    }
-    
-//    NSLog(@"Interval: %f", interval);
-//    NSLog(@"Total Length: %f", totalLength);
-//    NSLog(@"Points: %d, Segments: %d", (int)line.numPoints, numSegments);
-//    NSLog(@"Route Point: %d", (int)numRoutePoints);
-    
-    AGSPoint *currentStart = nil;
-    AGSPoint *currentEnd = nil;
-    
-    double accumulativeLength = 0;
-    NSMutableArray *accumulativeLengthArray =  [[NSMutableArray alloc] init];
-    [accumulativeLengthArray addObject:@0];
-    for (int i = 0; i < numSegments; ++i) {
-        currentStart = [line pointOnPath:0 atIndex:i];
-        currentEnd = [line pointOnPath:0 atIndex:i+1];
-        double currentLength = [[AGSGeometryEngine defaultGeometryEngine] distanceFromGeometry:currentStart toGeometry:currentEnd];
-        accumulativeLength += currentLength;
-        [accumulativeLengthArray addObject:@(accumulativeLength)];
-    }
-    
-    int currentSegmentIndex = 0;
-    NSMutableArray *routePointSegmentArray = [[NSMutableArray alloc] init];
-    [routePointSegmentArray addObject:@(0)];
-    for (int i = 1; i < numRoutePoints; ++i) {
-        double offset = interval * i;
-        double currentAccumulativeLength = [accumulativeLengthArray[currentSegmentIndex] doubleValue];
-        while (currentAccumulativeLength < offset) {
-            currentSegmentIndex++;
-            currentAccumulativeLength = [accumulativeLengthArray[currentSegmentIndex] doubleValue];
-        }
-        
-        [routePointSegmentArray addObject:@(currentSegmentIndex-1)];
-    }
-    
-//    NSLog(@"%@", routePointSegmentArray);
-    
-    for (int i = 1; i < numRoutePoints; ++i) {
-        int currentSegment = [[routePointSegmentArray objectAtIndex:i] intValue];
-
-        currentStart = [line pointOnPath:0 atIndex:currentSegment];
-        currentEnd = [line pointOnPath:0 atIndex:currentSegment+1];
-        
-        double currentSegmentLength = [[AGSGeometryEngine defaultGeometryEngine] distanceFromGeometry:currentStart toGeometry:currentEnd];
-        double currentAccumulativeLength = [[accumulativeLengthArray objectAtIndex:currentSegment] doubleValue];
-        
-        Vector2 *v = [[Vector2 alloc] init];
-        v.x = currentEnd.x - currentStart.x;
-        v.y = currentEnd.y - currentStart.y;
-        double currentAngle = [v getAngle];
-
-        AGSPoint *point = [self getPointFrom:currentStart To:currentEnd withSegmentLength:currentSegmentLength withOffset: (i) * interval - currentAccumulativeLength];
-        
-        NPPictureMarkerSymbol *pms = [NPPictureMarkerSymbol pictureMarkerSymbolWithImageNamed:@"routeArrow"];
-//        NPPictureMarkerSymbol *pms = [NPPictureMarkerSymbol pictureMarkerSymbolWithImageNamed:@"trace"];
-
-        pms.angle = currentAngle;
-        [self addGraphic:[AGSGraphic graphicWithGeometry:point symbol:pms attributes:nil]];
-        
-//        NSLog(@"CurrentSegment: %d", currentSegment);
-//        NSLog(@"CurrentAccumulativeLength: %f", currentAccumulativeLength);
-//        NSLog(@"SegementLength: %f", interval);
-//        NSLog(@"Offset: %f", (i) * interval - currentAccumulativeLength);
-//        NSLog(@"%@", point);
-        
-    }
-}
-
-- (AGSPoint *)getPointFrom:(AGSPoint *)start To:(AGSPoint *)end withSegmentLength:(double)length withOffset:(double)offset
-{
-    double scale = offset / length;
-    
-//    NSLog(@"scale: %f", scale);
-    
-    double x = start.x * (1 - scale) + end.x * scale;
-    double y = start.y * (1 - scale) + end.y * scale;
-    
-    return [AGSPoint pointWithX:x y:y spatialReference:[NPMapEnvironment defaultSpatialReference]];
-}
-
-- (void)showRouteResultOnFloor:(int)floor
+- (AGSPolyline *)showRouteResultOnFloor:(int)floor
 {
     [self removeAllGraphics];
     
-    [self showLineForRouteResultOnFloor:floor];
-    [self showSymbolForRouteResultOnFloor:floor];
+    [self showSwitchSymbolForRouteResultOnFloor:floor];
     [self showStartSymbol:self.startPoint];
     [self showEndSymbol:self.endPoint];
+    
+    return [self showLineForRouteResultOnFloor:floor];
 }
 
-- (void)showRemaingRouteResultOnFloor:(int)floor WithLocation:(NPLocalPoint *)location
+- (AGSPolyline *)showRemaingRouteResultOnFloor:(int)floor WithLocation:(NPLocalPoint *)location
 {
     [self removeAllGraphics];
     
-    [self showRemainingLineForRouteResultOnFloor:floor WithLocation:location];
-    [self showSymbolForRouteResultOnFloor:floor];
+    [self showSwitchSymbolForRouteResultOnFloor:floor];
     [self showStartSymbol:self.startPoint];
     [self showEndSymbol:self.endPoint];
+    
+    return [self showRemainingLineForRouteResultOnFloor:floor WithLocation:location];
 }
 
-- (void)showSymbolForRouteResultOnFloor:(int)floor
+- (void)showSwitchSymbolForRouteResultOnFloor:(int)floor
 {
     if (_routeResult) {
         AGSPolyline *line = [_routeResult getRouteOnFloor:floor];
         if (line) {
             if ([_routeResult isFirstFloor:floor] && [_routeResult isLastFloor:floor]) {
-//                NSLog(@"Same Floor");
                 return;
             }
             
@@ -190,18 +101,21 @@
     }
 }
 
-- (void)showLineForRouteResultOnFloor:(int)floor
+- (AGSPolyline *)showLineForRouteResultOnFloor:(int)floor
 {
     if (_routeResult) {
         AGSPolyline *line = [_routeResult getRouteOnFloor:floor];
         if (line) {
             [self addGraphic:[NPGraphic graphicWithGeometry:line symbol:nil attributes:nil]];
-            [self showRouteArrow:line];
+//            [self showRouteArrow:line];
+            return line;
         }
     }
+    
+    return nil;
 }
 
-- (void)showRemainingLineForRouteResultOnFloor:(int)floor WithLocation:(NPLocalPoint *)location
+- (AGSPolyline *)showRemainingLineForRouteResultOnFloor:(int)floor WithLocation:(NPLocalPoint *)location
 {
     if (_routeResult) {
         AGSPolyline *line = [_routeResult getRouteOnFloor:floor];
@@ -210,11 +124,13 @@
             AGSPolyline *remainingLine = [self getRemainingLine:line WithPoint:pos];
             if (remainingLine) {
                 [self addGraphic:[NPGraphic graphicWithGeometry:remainingLine symbol:nil attributes:nil]];
-                [self showRouteArrow:remainingLine];
+//                [self showRouteArrow:remainingLine];
+                return remainingLine;
             }
         }
-        
     }
+    
+    return nil;
 }
 
 - (AGSPolyline *)getRemainingLine:(AGSPolyline *)originalLine WithPoint:(AGSPoint *)point
@@ -233,7 +149,6 @@
     [cutLine addPointToPath:cutPoint];
     
     NSArray *cuttedLineArray = [engine cutGeometry:originalLine withCutter:cutLine];
-//    NSLog(@"%d segments", (int)cuttedLineArray.count);
     
     for (AGSPolyline *line in cuttedLineArray) {
         BOOL isLastHalf = [engine geometry:line touchesGeometry:lastPoint];

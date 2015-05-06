@@ -40,11 +40,13 @@
  */
 + (NPRouteLayer *)routeLayerWithSpatialReference:(NPSpatialReference *)sr;
 
-- (void)showRouteResultOnFloor:(int)floor;
-- (void)showRemaingRouteResultOnFloor:(int)floor WithLocation:(NPLocalPoint *)location;
+- (AGSPolyline *)showRouteResultOnFloor:(int)floor;
+- (AGSPolyline *)showRemaingRouteResultOnFloor:(int)floor WithLocation:(NPLocalPoint *)location;
+
+- (AGSPolyline *)getRemainingLine:(AGSPolyline *)originalLine WithPoint:(AGSPoint *)point;
+
 
 - (void)reset;
-
 
 - (void)showStartSymbol:(NPLocalPoint *)sp;
 - (void)showEndSymbol:(NPLocalPoint *)ep;

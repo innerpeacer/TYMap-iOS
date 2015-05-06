@@ -17,6 +17,8 @@
 #import "NPStructureGroupLayer.h"
 #import "NPLabelGroupLayer.h"
 #import "NPRouteLayer.h"
+#import "NPRouteArrowLayer.h"
+#import "NPRouteHintLayer.h"
 
 @interface NPMapView() <AGSMapViewTouchDelegate, AGSMapViewLayerDelegate, AGSCalloutDelegate>
 {
@@ -27,6 +29,8 @@
     
     NPLocationLayer *locationLayer;
     NPRouteLayer *routeLayer;
+    NPRouteArrowLayer *routeArrowLayer;
+    NPRouteHintLayer *routeHintLayer;
     
     AGSEnvelope *initialEnvelope;
     NPMapViewMode mapViewMode;
@@ -64,6 +68,8 @@
 
     [locationLayer removeAllGraphics];
     [routeLayer removeAllGraphics];
+    [routeHintLayer removeAllGraphics];
+    [routeArrowLayer removeAllGraphics];
     
     [structureGroupLayer loadContentsWithInfo:info];
     [labelGroupLayer loadContentsWithInfo:info];
@@ -120,6 +126,12 @@
     routeLayer = [NPRouteLayer routeLayerWithSpatialReference:[NPMapEnvironment defaultSpatialReference]];
     routeLayer.mapView = self;
     [self addMapLayer:routeLayer];
+    
+    routeHintLayer = [NPRouteHintLayer routeHintLayerWithSpatialReference:[NPMapEnvironment defaultSpatialReference]];
+    [self addMapLayer:routeHintLayer];
+    
+    routeArrowLayer = [NPRouteArrowLayer routeArrowLayerWithSpatialReference:[NPMapEnvironment defaultSpatialReference]];
+    [self addMapLayer:routeArrowLayer];
 
     locationLayer = [[NPLocationLayer alloc] initWithSpatialReference:spatialReference];
     [self addMapLayer:locationLayer withName:LAYER_NAME_LOCATION];
@@ -187,11 +199,15 @@
 - (void)resetRouteLayer
 {
     [routeLayer reset];
+    [routeHintLayer removeAllGraphics];
+    [routeArrowLayer removeAllGraphics];
 }
 
 - (void)clearRouteLayer
 {
     [routeLayer removeAllGraphics];
+    [routeHintLayer removeAllGraphics];
+    [routeArrowLayer removeAllGraphics];
 }
 
 - (void)showRouteStartSymbolOnCurrentFloor:(NPLocalPoint *)sp
@@ -467,14 +483,33 @@
 
 - (void)showRouteResultOnCurrentFloor
 {
-    [routeLayer showRouteResultOnFloor:self.currentMapInfo.floorNumber];
-//    [routeLayer showStartSymbol:routeLayer.startPoint];
-//    [routeLayer showEndSymbol:routeLayer.endPoint];
+    AGSPolyline *lineToShow = [routeLayer showRouteResultOnFloor:self.currentMapInfo.floorNumber];
+    if (lineToShow) {
+        [routeArrowLayer showRouteArrow:lineToShow];
+    }
 }
 
 - (void)showRemainingRouteResultOnCurrentFloor:(NPLocalPoint *)lp
 {
-    [routeLayer showRemaingRouteResultOnFloor:self.currentMapInfo.floorNumber WithLocation:lp];
+    AGSPolyline *lineToShow = [routeLayer showRemaingRouteResultOnFloor:self.currentMapInfo.floorNumber WithLocation:lp];
+    if (lineToShow) {
+        [routeArrowLayer showRouteArrow:lineToShow];
+    }
+}
+
+- (void)showRouteHintForDirectionString:(NPDirectionalHint *)ds Centered:(BOOL)isCentered
+{
+    NPRouteResult *routeResult = routeLayer.routeResult;
+    if (routeResult) {
+        AGSPolyline *currentLine = [routeResult getRouteOnFloor:self.currentMapInfo.floorNumber];
+        AGSPolyline *subLine = [NPRouteResult getSubPolyline:currentLine WithStart:ds.startPoint End:ds.endPoint];
+        [routeHintLayer showRouteHint:subLine];
+        
+        if (isCentered) {
+            AGSPoint *center = [AGSPoint pointWithX:(ds.startPoint.x + ds.endPoint.x)*0.5 y:(ds.startPoint.y + ds.endPoint.y)*0.5 spatialReference:[NPMapEnvironment defaultSpatialReference]];
+            [self centerAtPoint:center animated:YES];
+        }
+    }
 }
 
 - (void)showAllFacilitiesOnCurrentFloor

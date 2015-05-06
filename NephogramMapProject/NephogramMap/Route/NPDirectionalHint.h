@@ -23,19 +23,21 @@ typedef enum {
     NPBackward
 } NPRelativeDirection;
 
-@interface NPDirectionalString : NSObject
+@interface NPDirectionalHint : NSObject
 
 - (id)initWithStartPoint:(AGSPoint *)start EndPoint:(AGSPoint *)end PreviousAngle:(double)angle;
 
 @property (nonatomic, strong, readonly) AGSPoint *startPoint;
 @property (nonatomic, strong, readonly) AGSPoint *endPoint;
 
+@property (nonatomic, readonly) NPRelativeDirection relativeDirection;
+
 @property (nonatomic, readonly) double previousAngle;
 @property (nonatomic, readonly) double currentAngle;
-
 @property (nonatomic, readonly) double length;
 
 @property (nonatomic, strong) NPLandmark *landMark;
+
 
 - (NSString *)getDirectionString;
 

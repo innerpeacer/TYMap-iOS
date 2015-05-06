@@ -18,7 +18,7 @@
 #import "NPGraphic.h"
 #import "NPSimpleMarkerSymbol.h"
 #import "NPPoint.h"
-#import "NPDirectionalString.h"
+#import "NPDirectionalHint.h"
 
 @interface MapRouteVC() <NPRouteManagerDelegate>
 {
@@ -102,16 +102,17 @@
     [self.mapView showRouteResultOnCurrentFloor];
     
     routeGuides = [routeResult getRouteDirectionStringOnFloor:self.currentMapInfo];
-    for (NPDirectionalString *ds in routeGuides) {
+    for (NPDirectionalHint *ds in routeGuides) {
         NSLog(@"%@", [ds getDirectionString]);
     }
 }
 
 - (void)NPMapView:(NPMapView *)mapView didFinishLoadingFloor:(NPMapInfo *)mapInfo
 {
+    self.routeHintLabel.text = @"";
+    
     if (isRouting) {
         [self.mapView showRouteResultOnCurrentFloor];
-        
         routeGuides = [routeResult getRouteDirectionStringOnFloor:self.currentMapInfo];
     }
 }
@@ -140,7 +141,7 @@ int testIndex = 0;
 //    NSLog(@"Map Scale: %f", self.mapView.mapScale);
     currentPoint = mappoint;
     
-    NPLocalPoint *localPoint = [NPLocalPoint pointWithX:mappoint.x Y:mappoint.y Floor:self.mapView.currentMapInfo.floorNumber];
+//    NPLocalPoint *localPoint = [NPLocalPoint pointWithX:mappoint.x Y:mappoint.y Floor:self.mapView.currentMapInfo.floorNumber];
     
     NPSimpleMarkerSymbol *sms = [NPSimpleMarkerSymbol simpleMarkerSymbolWithColor:[UIColor greenColor]];
     sms.size = CGSizeMake(5, 5);
@@ -155,19 +156,10 @@ int testIndex = 0;
                 testIndex = 0;
             }
             
-            AGSPolyline *currentLine = [routeResult getRouteOnFloor:self.mapView.currentMapInfo.floorNumber];
-            NPDirectionalString *ds = routeGuides[testIndex++];
-            AGSPolyline *subLine = [NPRouteResult getSubPolyline:currentLine WithStart:ds.startPoint End:ds.endPoint];
+            NPDirectionalHint *ds = routeGuides[testIndex++];
+            [self.mapView showRouteHintForDirectionString:ds Centered:YES];
             
-            AGSSimpleLineSymbol *sls = [AGSSimpleLineSymbol simpleLineSymbolWithColor:[UIColor greenColor] width:2.0];
-            [hintLayer addGraphic:[AGSGraphic graphicWithGeometry:subLine symbol:sls attributes:nil]];
-
             self.routeHintLabel.text = [ds getDirectionString];
-            
-            AGSPoint *center = [AGSPoint pointWithX:(ds.startPoint.x + ds.endPoint.x)*0.5 y:(ds.startPoint.y + ds.endPoint.y)*0.5 spatialReference:[NPMapEnvironment defaultSpatialReference]];
-            [self.mapView centerAtPoint:center animated:YES];
-//            [self.mapView zoomToGeometry:subLine withPadding:300 animated:YES];
-            
         }
         
 //        BOOL isDeviating = [routeResult isDeviatingFromRoute:localPoint WithThrehold:2.0];

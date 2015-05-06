@@ -6,7 +6,7 @@
 //  Copyright (c) 2015年 innerpeacer. All rights reserved.
 //
 
-#import "NPDirectionalString.h"
+#import "NPDirectionalHint.h"
 #import "Vector2.h"
 
 #define DIRECTIONAL_STRING_STRAIGHT @"直行"
@@ -19,7 +19,7 @@
 #define DIRECTIONAL_STRING_RIGHT_BACKWARD @"向右后方行进"
 #define DIRECTIONAL_STRING_LEFT_BACKWARD @"向左后方行进"
 
-@interface NPDirectionalString()
+@interface NPDirectionalHint()
 {
     Vector2 *vector;
 }
@@ -27,7 +27,7 @@
 @end
 
 
-@implementation NPDirectionalString
+@implementation NPDirectionalHint
 
 - (id)initWithStartPoint:(AGSPoint *)start EndPoint:(AGSPoint *)end PreviousAngle:(double)angle
 {
@@ -43,20 +43,20 @@
         
         _currentAngle = [vector getAngle];
         _previousAngle = angle;
+        
+        _relativeDirection = [self calculateRelativeDirection:_currentAngle previousAngle:_previousAngle];
     }
     return self;
 }
 
 - (NSString *)getDirectionString
 {
-    NPRelativeDirection direction = [self calculateRelativeDirection:_currentAngle previousAngle:_previousAngle];
-    
     NSMutableString *result = [NSMutableString string];
     if (_landMark) {
         [result appendFormat:@"在 %@ 附近",_landMark.name];
     }
     
-    [result appendFormat:@"%@ %.0fm", [self getDirection:direction], _length];
+    [result appendFormat:@"%@ %.0fm", [self getDirection:_relativeDirection], _length];
     return result;
 }
 

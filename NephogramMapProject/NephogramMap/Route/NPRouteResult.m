@@ -9,7 +9,7 @@
 #import "NPRouteResult.h"
 #import "NPMapEnviroment.h"
 #import "Vector2.h"
-#import "NPDirectionalString.h"
+#import "NPDirectionalHint.h"
 #import "NPLandmarkManager.h"
 
 @interface NPRouteResult()
@@ -184,7 +184,7 @@
             NPLandmark *landmark = [landmarkManager searchLandmark:lp Tolerance:10];
             
             
-            NPDirectionalString *ds = [[NPDirectionalString alloc] initWithStartPoint:p0 EndPoint:p1 PreviousAngle:currentAngle];
+            NPDirectionalHint *ds = [[NPDirectionalHint alloc] initWithStartPoint:p0 EndPoint:p1 PreviousAngle:currentAngle];
             currentAngle = ds.currentAngle;
             
             if (landmark) {
