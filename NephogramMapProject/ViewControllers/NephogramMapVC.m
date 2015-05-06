@@ -38,9 +38,9 @@ int tIndex = 0;
     NPPoi *poi = [self.mapView extractRoomPoiOnCurrentFloorWithX:mappoint.x Y:mappoint.y];
     NSLog(@"%@", poi);
     
-//    [self.mapView updateRoomPOI:poi.poiID WithName:@"Test"];
-//    [self.mapView updateMapFiles];
-//    [self.mapView reloadMapView];
+    [self.mapView updateRoomPOI:poi.poiID WithName:@"Test"];
+    [self.mapView updateMapFiles];
+    [self.mapView reloadMapView];
 }
 
 - (void)NPMapView:(NPMapView *)mapView PoiSelected:(NSArray *)array

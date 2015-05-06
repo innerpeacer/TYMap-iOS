@@ -24,7 +24,7 @@
     
     [NPMapEnvironment initMapEnvironment];
     
-//    [NPMapEnvironment setMapLanguage:NPTraditionalChinese];
+    [NPMapEnvironment setMapLanguage:NPTraditionalChinese];
     
     [NPMapEnvironment setRootDirectoryForMapFiles:[documentDirectory stringByAppendingPathComponent:DEFAULT_MAP_ROOT]];
     [self copyMapFilesIfNeeded];

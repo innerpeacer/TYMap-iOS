@@ -153,10 +153,14 @@
 - (BOOL)updateRoomLabel:(NSString *)pid WithName:(NSString *)name
 {
     NSArray *graphicArray = self.graphics;
+    
+    NPMapLanguage language = [NPMapEnvironment getMapLanguage];
+    NSString *field = [self getNameFieldForLanguage:language];
+
     for (AGSGraphic *g in graphicArray) {
         NSString *poiID = [g attributeForKey:GRAPHIC_ATTRIBUTE_POI_ID];
         if ([poiID isEqualToString:pid]) {
-            [g setAttribute:name forKey:GRAPHIC_ATTRIBUTE_NAME];
+            [g setAttribute:name forKey:field];
             return YES;
         }
     }

@@ -42,22 +42,25 @@
 {
     [self removeAllGraphics];
     
+    AGSPolyline *lineToReturn = [self showLineForRouteResultOnFloor:floor];
     [self showSwitchSymbolForRouteResultOnFloor:floor];
     [self showStartSymbol:self.startPoint];
     [self showEndSymbol:self.endPoint];
     
-    return [self showLineForRouteResultOnFloor:floor];
+    return lineToReturn;
 }
 
 - (AGSPolyline *)showRemaingRouteResultOnFloor:(int)floor WithLocation:(NPLocalPoint *)location
 {
     [self removeAllGraphics];
     
+    AGSPolyline *lineToReturn = [self showRemainingLineForRouteResultOnFloor:floor WithLocation:location];
+    
     [self showSwitchSymbolForRouteResultOnFloor:floor];
     [self showStartSymbol:self.startPoint];
     [self showEndSymbol:self.endPoint];
     
-    return [self showRemainingLineForRouteResultOnFloor:floor WithLocation:location];
+    return lineToReturn;
 }
 
 - (void)showSwitchSymbolForRouteResultOnFloor:(int)floor

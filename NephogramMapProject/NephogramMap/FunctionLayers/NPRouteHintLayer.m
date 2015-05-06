@@ -8,6 +8,7 @@
 
 #import "NPRouteHintLayer.h"
 #import "NPMapEnviroment.h"
+#import "Vector2.h"
 
 @interface NPRouteHintLayer()
 {
@@ -37,6 +38,21 @@
 {
     [self removeAllGraphics];
     [self addGraphic:[AGSGraphic graphicWithGeometry:line symbol:nil attributes:nil]];
+    
+    AGSPictureMarkerSymbol *pms = [AGSPictureMarkerSymbol pictureMarkerSymbolWithImageNamed:@"routeHintArrow"];
+    
+    AGSPoint *start = [line pointOnPath:0 atIndex:0];
+    AGSPoint *end = [line pointOnPath:0 atIndex:line.numPoints - 1];
+    
+    Vector2 *v = [[Vector2 alloc] init];
+    v.x = end.x - start.x;
+    v.y = end.y - start.y;
+    
+    pms.angle = [v getAngle];
+    
+    [self addGraphic:[AGSGraphic graphicWithGeometry:[line pointOnPath:0 atIndex:0] symbol:pms attributes:nil]];
+    [self addGraphic:[AGSGraphic graphicWithGeometry:[line pointOnPath:0 atIndex:line.numPoints - 1] symbol:pms attributes:nil]];
+
 }
 
 - (AGSSymbol *)createRouteHintSymbol
