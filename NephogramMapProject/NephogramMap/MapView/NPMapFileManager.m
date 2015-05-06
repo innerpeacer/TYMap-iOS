@@ -25,6 +25,7 @@
 #define FILE_LAYER_PATH_ASSET @"%@_ASSET.json"
 #define FILE_LAYER_PATH_FACILITY @"%@_FACILITY.json"
 #define FILE_LAYER_PATH_LABEL @"%@_LABEL.json"
+#define FILE_LAYER_PATH_LANDMARK @"%@_LANDMARK.json"
 
 #import "NPBuilding.h"
 #import "NPCity.h"
@@ -97,6 +98,15 @@
     NSString *cityDir = [mapRootDir stringByAppendingPathComponent:info.cityID];
     NSString *buildingDir = [cityDir stringByAppendingPathComponent:info.buildingID];
     NSString *fileName = [NSString stringWithFormat:FILE_LAYER_PATH_LABEL, info.mapID];
+    return [buildingDir stringByAppendingPathComponent:fileName];
+}
+
++ (NSString *)getLandMarkJsonPath:(NPMapInfo *)info
+{
+    NSString *mapRootDir = [NPMapEnvironment getRootDirectoryForMapFiles];
+    NSString *cityDir = [mapRootDir stringByAppendingPathComponent:info.cityID];
+    NSString *buildingDir = [cityDir stringByAppendingPathComponent:info.buildingID];
+    NSString *fileName = [NSString stringWithFormat:FILE_LAYER_PATH_LANDMARK, info.mapID];
     return [buildingDir stringByAppendingPathComponent:fileName];
 }
 

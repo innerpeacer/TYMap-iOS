@@ -23,10 +23,13 @@
 + (NSString *)getAssetLayerPath:(NPMapInfo *)info;
 + (NSString *)getFacilityLayerPath:(NPMapInfo *)info;
 + (NSString *)getLabelLayerPath:(NPMapInfo *)info;
++ (NSString *)getLandMarkJsonPath:(NPMapInfo *)info;
 
 + (NSString *)getRenderingScheme:(NPBuilding *)building;
 
 + (NSString *)getPOIDBPath:(NPBuilding *)building;
 
 + (NSString *)getPrimitiveDBPath:(NPBuilding *)building;
+
+
 @end

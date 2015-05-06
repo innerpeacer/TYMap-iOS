@@ -8,6 +8,10 @@
 
 #import "NPRouteResult.h"
 #import "NPMapEnviroment.h"
+#import "Vector2.h"
+#import "NPDirectionalString.h"
+#import "NPLandmarkManager.h"
+
 @interface NPRouteResult()
 {
     
@@ -108,6 +112,125 @@
     }
     
     return isDeviating;
+}
+
+- (AGSPolyline *)processPolyline:(AGSPolyline *)polyline
+{
+    if (polyline.numPoints <= 2) {
+        return polyline;
+    }
+    
+    AGSMutablePolyline *result = [[AGSMutablePolyline alloc] init];
+    [result addPathToPolyline];
+    
+    double currentAngle = 10000;
+    
+    int numPoints = (int)polyline.numPoints;
+    
+    for (int i = 0; i < numPoints - 1; ++i) {
+        AGSPoint *p0 = [polyline pointOnPath:0 atIndex:i];
+        AGSPoint *p1 = [polyline pointOnPath:0 atIndex:i+1];
+        
+        
+#define DISTANCE_THREHOLD 5.0
+#define ANGLE_THREHOLD 10.0
+        
+        double distance = [[AGSGeometryEngine defaultGeometryEngine] distanceFromGeometry:p0 toGeometry:p1];
+        if (distance < DISTANCE_THREHOLD) {
+            continue;
+        }
+        
+        Vector2 *v = [[Vector2 alloc] init];
+        v.x = p1.x - p0.x;
+        v.y = p1.y - p0.y;
+        double angle = [v getAngle];
+
+//        if (currentAngle != angle) {
+        if (ABS(currentAngle - angle) > ANGLE_THREHOLD) {
+            [result addPointToPath:p0];
+            currentAngle = angle;
+        }
+    }
+
+    [result addPointToPath:[polyline pointOnPath:0 atIndex:numPoints - 1]];
+    
+    return result;
+}
+
+- (NSArray *)getRouteDirectionStringOnFloor:(NPMapInfo *)info
+{
+    NSMutableArray *result = [[NSMutableArray alloc] init];
+    
+    NPLandmarkManager *landmarkManager = [NPLandmarkManager sharedManager];
+    [landmarkManager loadLandmark:info];
+    
+//    NSLog(@"processRouteForDirectionStringOnFloor: %d", floorIndex);
+    NPPolyline *originalLine = [_routeGraphicDict objectForKey:@(info.floorNumber)];
+    AGSPolyline *line = [self processPolyline:originalLine];
+    
+    double currentAngle = INITIAL_EMPTY_ANGLE;
+    
+    if (line) {
+        
+        int numPoints = (int)line.numPoints;
+        NSLog(@"numPoints: %d", numPoints);
+        
+        for (int i = 0; i < numPoints - 1; ++i) {
+            AGSPoint *p0 = [line pointOnPath:0 atIndex:i];
+            AGSPoint *p1 = [line pointOnPath:0 atIndex:i+1];
+            
+            NPLocalPoint *lp = [NPLocalPoint pointWithX:p0.x Y:p0.y Floor:info.floorNumber];
+            
+            NPLandmark *landmark = [landmarkManager searchLandmark:lp Tolerance:10];
+            
+            
+            NPDirectionalString *ds = [[NPDirectionalString alloc] initWithStartPoint:p0 EndPoint:p1 PreviousAngle:currentAngle];
+            currentAngle = ds.currentAngle;
+            
+            if (landmark) {
+                ds.landMark = landmark;
+            }
+            
+            [result addObject:ds];
+//            NSLog(@"%@", [ds getDirectionString]);
+        }
+    }
+    
+    return result;
+}
+
+
++ (AGSPolyline *)getSubPolyline:(AGSPolyline *)originalLine WithStart:(AGSPoint *)start End:(AGSPoint *)end
+{
+    int startIndex = -1;
+    int endIndex = -1;
+    int numPoints = (int)originalLine.numPoints;
+    for (int i = 0; i < numPoints; ++i) {
+        AGSPoint *p = [originalLine pointOnPath:0 atIndex:i];
+        
+        if (start.x == p.x && start.y == p.y) {
+            startIndex = i;
+        }
+        
+        if (end.x == p.x && end.y == p.y) {
+            endIndex = i;
+            break;
+        }
+    }
+    
+    if (startIndex == -1 || endIndex == -1) {
+        return nil;
+    }
+    
+    AGSMutablePolyline *result = [[AGSMutablePolyline alloc] init];
+    [result addPathToPolyline];
+    
+    for (int i = startIndex; i <= endIndex; ++i) {
+        AGSPoint *p = [originalLine pointOnPath:0 atIndex:i];
+        [result addPointToPath:p];
+    }
+    
+    return result;
 }
 
 @end

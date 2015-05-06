@@ -18,6 +18,7 @@
 #import "NPGraphic.h"
 #import "NPSimpleMarkerSymbol.h"
 #import "NPPoint.h"
+#import "NPDirectionalString.h"
 
 @interface MapRouteVC() <NPRouteManagerDelegate>
 {
@@ -29,6 +30,8 @@
     
     BOOL isRouting;
     NPRouteResult *routeResult;
+    
+    NSArray *routeGuides;
     
     NPGraphicsLayer *hintLayer;
     
@@ -43,6 +46,7 @@
 - (IBAction)requtestRoute:(id)sender;
 - (IBAction)reset:(id)sender;
 
+@property (weak, nonatomic) IBOutlet UILabel *routeHintLabel;
 @end
 
 @implementation MapRouteVC
@@ -96,12 +100,19 @@
     [self.mapView setRouteStart:startLocalPoint];
     [self.mapView setRouteEnd:endLocalPoint];
     [self.mapView showRouteResultOnCurrentFloor];
+    
+    routeGuides = [routeResult getRouteDirectionStringOnFloor:self.currentMapInfo];
+    for (NPDirectionalString *ds in routeGuides) {
+        NSLog(@"%@", [ds getDirectionString]);
+    }
 }
 
 - (void)NPMapView:(NPMapView *)mapView didFinishLoadingFloor:(NPMapInfo *)mapInfo
 {
     if (isRouting) {
         [self.mapView showRouteResultOnCurrentFloor];
+        
+        routeGuides = [routeResult getRouteDirectionStringOnFloor:self.currentMapInfo];
     }
 }
 
@@ -121,6 +132,8 @@
 }
 
 
+int testIndex = 0;
+
 - (void)NPMapView:(NPMapView *)mapView didClickAtPoint:(CGPoint)screen mapPoint:(NPPoint *)mappoint
 {
 //    NSLog(@"(%f, %f) in floor %d", mappoint.x, mappoint.y, self.currentMapInfo.floorNumber);
@@ -137,15 +150,35 @@
     
     if (routeResult) {
         
-        BOOL isDeviating = [routeResult isDeviatingFromRoute:localPoint WithThrehold:2.0];
-        
-        if (isDeviating) {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"错误" message:@"已经偏离导航线，重新规划！" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-            [alert show];
-            [routeManager requestRouteWithStart:localPoint End:endLocalPoint];
-        } else {
-            [self.mapView showRemainingRouteResultOnCurrentFloor:localPoint];
+        if (routeGuides && routeGuides.count > 0) {
+            if (testIndex >= routeGuides.count) {
+                testIndex = 0;
+            }
+            
+            AGSPolyline *currentLine = [routeResult getRouteOnFloor:self.mapView.currentMapInfo.floorNumber];
+            NPDirectionalString *ds = routeGuides[testIndex++];
+            AGSPolyline *subLine = [NPRouteResult getSubPolyline:currentLine WithStart:ds.startPoint End:ds.endPoint];
+            
+            AGSSimpleLineSymbol *sls = [AGSSimpleLineSymbol simpleLineSymbolWithColor:[UIColor greenColor] width:2.0];
+            [hintLayer addGraphic:[AGSGraphic graphicWithGeometry:subLine symbol:sls attributes:nil]];
+
+            self.routeHintLabel.text = [ds getDirectionString];
+            
+            AGSPoint *center = [AGSPoint pointWithX:(ds.startPoint.x + ds.endPoint.x)*0.5 y:(ds.startPoint.y + ds.endPoint.y)*0.5 spatialReference:[NPMapEnvironment defaultSpatialReference]];
+            [self.mapView centerAtPoint:center animated:YES];
+//            [self.mapView zoomToGeometry:subLine withPadding:300 animated:YES];
+            
         }
+        
+//        BOOL isDeviating = [routeResult isDeviatingFromRoute:localPoint WithThrehold:2.0];
+//        
+//        if (isDeviating) {
+//            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"错误" message:@"已经偏离导航线，重新规划！" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+//            [alert show];
+//            [routeManager requestRouteWithStart:localPoint End:endLocalPoint];
+//        } else {
+//            [self.mapView showRemainingRouteResultOnCurrentFloor:localPoint];
+//        }
 
     }
 }

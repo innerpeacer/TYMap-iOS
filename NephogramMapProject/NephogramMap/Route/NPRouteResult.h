@@ -29,4 +29,8 @@
 
 - (BOOL)isDeviatingFromRoute:(NPLocalPoint *)point WithThrehold:(double)distance;
 
+- (NSArray *)getRouteDirectionStringOnFloor:(NPMapInfo *)info;
+
++ (AGSPolyline *)getSubPolyline:(AGSPolyline *)originalLine WithStart:(AGSPoint *)start End:(AGSPoint *)end;
+
 @end
