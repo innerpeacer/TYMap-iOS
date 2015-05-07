@@ -117,7 +117,6 @@
     [self addMapLayer:structureGroupLayer.roomLayer withName:LAYER_NAME_ROOM];
     [self addMapLayer:structureGroupLayer.asserLayer withName:LAYER_NAME_ASSET];
     
-    
     labelGroupLayer = [NPLabelGroupLayer labelGroupLayerWithRenderingScheme:renderingScheme SpatialReference:spatialReference];
     labelGroupLayer.mapView = self;
     [self addMapLayer:labelGroupLayer.facilityLayer withName:LAYER_NAME_FACILITY];
@@ -126,12 +125,15 @@
     routeLayer = [NPRouteLayer routeLayerWithSpatialReference:[NPMapEnvironment defaultSpatialReference]];
     routeLayer.mapView = self;
     [self addMapLayer:routeLayer];
+    routeLayer.allowHitTest = NO;
     
     routeHintLayer = [NPRouteHintLayer routeHintLayerWithSpatialReference:[NPMapEnvironment defaultSpatialReference]];
     [self addMapLayer:routeHintLayer];
+    routeHintLayer.allowHitTest = NO;
     
     routeArrowLayer = [NPRouteArrowLayer routeArrowLayerWithSpatialReference:[NPMapEnvironment defaultSpatialReference]];
     [self addMapLayer:routeArrowLayer];
+    routeArrowLayer.allowHitTest = NO;
 
     locationLayer = [[NPLocationLayer alloc] initWithSpatialReference:spatialReference];
     [self addMapLayer:locationLayer withName:LAYER_NAME_LOCATION];
@@ -497,7 +499,9 @@
     }
 }
 
-- (void)showRouteHintForDirectionString:(NPDirectionalHint *)ds Centered:(BOOL)isCentered
+
+
+- (void)showRouteHintForDirectionHint:(NPDirectionalHint *)ds Centered:(BOOL)isCentered
 {
     NPRouteResult *routeResult = routeLayer.routeResult;
     if (routeResult) {
@@ -632,4 +636,3 @@
 }
 
 @end
-

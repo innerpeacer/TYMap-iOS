@@ -42,7 +42,7 @@
 //    [NPUserDefaults setDefaultBuilding:@"002100004"];
 //    [NPUserDefaults setDefaultBuilding:@"002188888"];
 //    [NPUserDefaults setDefaultBuilding:@"002199999"];
-//    
+
     [NPUserDefaults setDefaultCity:@"H852"];
     [NPUserDefaults setDefaultBuilding:@"H85200001"];
     

@@ -101,7 +101,7 @@
     [self.mapView setRouteEnd:endLocalPoint];
     [self.mapView showRouteResultOnCurrentFloor];
     
-    routeGuides = [routeResult getRouteDirectionStringOnFloor:self.currentMapInfo];
+    routeGuides = [routeResult getRouteDirectionHintOnFloor:self.currentMapInfo];
     for (NPDirectionalHint *ds in routeGuides) {
         NSLog(@"%@", [ds getDirectionString]);
     }
@@ -113,7 +113,7 @@
     
     if (isRouting) {
         [self.mapView showRouteResultOnCurrentFloor];
-        routeGuides = [routeResult getRouteDirectionStringOnFloor:self.currentMapInfo];
+        routeGuides = [routeResult getRouteDirectionHintOnFloor:self.currentMapInfo];
     }
 }
 
@@ -141,7 +141,7 @@ int testIndex = 0;
 //    NSLog(@"Map Scale: %f", self.mapView.mapScale);
     currentPoint = mappoint;
     
-//    NPLocalPoint *localPoint = [NPLocalPoint pointWithX:mappoint.x Y:mappoint.y Floor:self.mapView.currentMapInfo.floorNumber];
+    NPLocalPoint *localPoint = [NPLocalPoint pointWithX:mappoint.x Y:mappoint.y Floor:self.mapView.currentMapInfo.floorNumber];
     
     NPSimpleMarkerSymbol *sms = [NPSimpleMarkerSymbol simpleMarkerSymbolWithColor:[UIColor greenColor]];
     sms.size = CGSizeMake(5, 5);
@@ -151,16 +151,16 @@ int testIndex = 0;
     
     if (routeResult) {
         
-        if (routeGuides && routeGuides.count > 0) {
-            if (testIndex >= routeGuides.count) {
-                testIndex = 0;
-            }
-            
-            NPDirectionalHint *ds = routeGuides[testIndex++];
-            [self.mapView showRouteHintForDirectionString:ds Centered:YES];
-            
-            self.routeHintLabel.text = [ds getDirectionString];
-        }
+//        if (routeGuides && routeGuides.count > 0) {
+//            if (testIndex >= routeGuides.count) {
+//                testIndex = 0;
+//            }
+//            
+//            NPDirectionalHint *ds = routeGuides[testIndex++];
+//            [self.mapView showRouteHintForDirectionHint:ds Centered:YES];
+//            
+//            self.routeHintLabel.text = [ds getDirectionString];
+//        }
         
 //        BOOL isDeviating = [routeResult isDeviatingFromRoute:localPoint WithThrehold:2.0];
 //        
@@ -171,6 +171,16 @@ int testIndex = 0;
 //        } else {
 //            [self.mapView showRemainingRouteResultOnCurrentFloor:localPoint];
 //        }
+        
+        if (routeGuides && routeGuides.count > 0) {
+            NPDirectionalHint *hint = [routeResult getDirectionHintForLocation:localPoint FromHints:routeGuides];
+            
+            [self.mapView showRouteHintForDirectionHint:hint Centered:YES];
+            
+            self.routeHintLabel.text = [hint getDirectionString];
+
+            
+        }
 
     }
 }

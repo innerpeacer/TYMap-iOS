@@ -530,8 +530,8 @@
 				570DB3F31A890653001D137E /* MapCalloutVC.h */,
 				570DB3F41A890653001D137E /* MapCalloutVC.m */,
 				570DB3F61A890664001D137E /* CustomCalloutVC.h */,
-				574443F51AAEE1D500E6232C /* CreatePOIDatabaseVC.h */,
 				570DB3F71A890664001D137E /* CustomCalloutVC.m */,
+				574443F51AAEE1D500E6232C /* CreatePOIDatabaseVC.h */,
 				574443F61AAEE1D500E6232C /* CreatePOIDatabaseVC.m */,
 			);
 			path = ViewControllers;

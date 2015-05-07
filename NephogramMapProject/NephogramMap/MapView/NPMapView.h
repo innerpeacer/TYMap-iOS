@@ -141,7 +141,7 @@ typedef enum {
 - (void)showRouteResultOnCurrentFloor;
 - (void)showRemainingRouteResultOnCurrentFloor:(NPLocalPoint *)lp;
 
-- (void)showRouteHintForDirectionString:(NPDirectionalHint *)ds Centered:(BOOL)isCentered;
+- (void)showRouteHintForDirectionHint:(NPDirectionalHint *)ds Centered:(BOOL)isCentered;
 
 /**
  *  地图初始化方法

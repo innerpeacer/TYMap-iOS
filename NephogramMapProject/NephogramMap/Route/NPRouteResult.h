@@ -10,7 +10,10 @@
 #import "NPMapInfo.h"
 #import "NPPolyline.h"
 #import "NPPoint.h"
+#import "NPDirectionalHint.h"
+
 #import <NephogramData/NephogramData.h>
+
 @interface NPRouteResult : NSObject
 
 + (NPRouteResult *)routeResultWithDict:(NSDictionary *)dict FloorArray:(NSArray *)array;
@@ -29,7 +32,9 @@
 
 - (BOOL)isDeviatingFromRoute:(NPLocalPoint *)point WithThrehold:(double)distance;
 
-- (NSArray *)getRouteDirectionStringOnFloor:(NPMapInfo *)info;
+- (NSArray *)getRouteDirectionHintOnFloor:(NPMapInfo *)info;
+
+- (NPDirectionalHint *)getDirectionHintForLocation:(NPLocalPoint *)location FromHints:(NSArray *)directions;
 
 + (AGSPolyline *)getSubPolyline:(AGSPolyline *)originalLine WithStart:(AGSPoint *)start End:(AGSPoint *)end;
 

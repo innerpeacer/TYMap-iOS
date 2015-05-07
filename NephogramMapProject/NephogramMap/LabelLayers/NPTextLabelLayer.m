@@ -147,7 +147,6 @@
             [allTextLabels addObject:textLabel];
         }
     }
-    
 }
 
 - (BOOL)updateRoomLabel:(NSString *)pid WithName:(NSString *)name

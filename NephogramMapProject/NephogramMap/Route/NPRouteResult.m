@@ -26,7 +26,6 @@
     return [[NPRouteResult alloc] initRouteResultWithDict:dict FloorArray:array];
 }
 
-
 - (id)initRouteResultWithDict:(NSDictionary *)dict FloorArray:(NSArray *)array;
 {
     self = [super init];
@@ -157,14 +156,13 @@
     return result;
 }
 
-- (NSArray *)getRouteDirectionStringOnFloor:(NPMapInfo *)info
+- (NSArray *)getRouteDirectionHintOnFloor:(NPMapInfo *)info
 {
     NSMutableArray *result = [[NSMutableArray alloc] init];
     
     NPLandmarkManager *landmarkManager = [NPLandmarkManager sharedManager];
     [landmarkManager loadLandmark:info];
     
-//    NSLog(@"processRouteForDirectionStringOnFloor: %d", floorIndex);
     NPPolyline *originalLine = [_routeGraphicDict objectForKey:@(info.floorNumber)];
     AGSPolyline *line = [self processPolyline:originalLine];
     
@@ -173,7 +171,6 @@
     if (line) {
         
         int numPoints = (int)line.numPoints;
-        NSLog(@"numPoints: %d", numPoints);
         
         for (int i = 0; i < numPoints - 1; ++i) {
             AGSPoint *p0 = [line pointOnPath:0 atIndex:i];
@@ -192,13 +189,33 @@
             }
             
             [result addObject:ds];
-//            NSLog(@"%@", [ds getDirectionString]);
         }
     }
     
     return result;
 }
 
+- (NPDirectionalHint *)getDirectionHintForLocation:(NPLocalPoint *)location FromHints:(NSArray *)directions
+{
+    AGSMutablePolyline *line = [[AGSMutablePolyline alloc] init];
+    [line addPathToPolyline];
+    
+    for (NPDirectionalHint *hint in directions) {
+        [line addPointToPath:hint.startPoint];
+    }
+    
+    NPDirectionalHint *lastHint = [directions lastObject];
+    if (lastHint) {
+        [line addPointToPath:lastHint.endPoint];
+    }
+    
+    AGSPoint *pos = [AGSPoint pointWithX:location.x y:location.y spatialReference:[NPMapEnvironment defaultSpatialReference]];
+    AGSProximityResult *pr = [[AGSGeometryEngine defaultGeometryEngine] nearestCoordinateInGeometry:line toPoint:pos];
+
+    int index = (int)pr.pointIndex;
+    
+    return [directions objectAtIndex:index];
+}
 
 + (AGSPolyline *)getSubPolyline:(AGSPolyline *)originalLine WithStart:(AGSPoint *)start End:(AGSPoint *)end
 {
