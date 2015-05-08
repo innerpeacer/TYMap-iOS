@@ -51,13 +51,32 @@
 
 - (NSString *)getDirectionString
 {
-    NSMutableString *result = [NSMutableString string];
+//    NSMutableString *result = [NSMutableString string];
+//    if (_landMark) {
+//        [result appendFormat:@"在 %@ 附近",_landMark.name];
+//    }
+//
+//    [result appendFormat:@"%@ %.0fm", [self getDirection:_relativeDirection], _length];
+//    return result;
+    return [NSString stringWithFormat:@"%@ %.0fm", [self getDirection:_relativeDirection], _length];
+}
+
+- (NSString *)getLandMarkString
+{
+    NSString *result = nil;
     if (_landMark) {
-        [result appendFormat:@"在 %@ 附近",_landMark.name];
+        result = [NSString stringWithFormat:@"在 %@ 附近",_landMark.name];;
+    }
+    return result;
+}
+
+- (BOOL)hasLandMark
+{
+    if (_landMark) {
+        return YES;
     }
     
-    [result appendFormat:@"%@ %.0fm", [self getDirection:_relativeDirection], _length];
-    return result;
+    return NO;
 }
 
 - (NSString *)getDirection:(NPRelativeDirection)direction

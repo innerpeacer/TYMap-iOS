@@ -40,5 +40,7 @@ typedef enum {
 
 
 - (NSString *)getDirectionString;
+- (NSString *)getLandMarkString;
+- (BOOL)hasLandMark;
 
 @end
