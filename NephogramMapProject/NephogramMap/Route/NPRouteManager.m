@@ -101,6 +101,8 @@
         NPRouteResult *result = [self processRouteResult:routeResult];
         
         NSArray *array = [self processRouteResultV2:routeResult];
+        NPRouteResultV2 *result_V2 = [NPRouteResultV2 routeResultWithRouteParts:array];
+        
         NSLog(@"%d parts", (int)array.count);
         for (NPRoutePart *rp in array) {
             NSLog(@"%@", rp);
@@ -110,8 +112,8 @@
             return;
         }
         
-        if (self.delegate != nil || [self.delegate respondsToSelector:@selector(routeManager:didSolveRouteWithResult:)]) {
-            [self.delegate routeManager:self didSolveRouteWithResult:result];
+        if (self.delegate != nil || [self.delegate respondsToSelector:@selector(routeManager:didSolveRouteWithResult: V2:)]) {
+            [self.delegate routeManager:self didSolveRouteWithResult:result V2:result_V2];
         }
     }
 }
@@ -191,7 +193,7 @@
                     [pointArray addObject:currentArray];
                     [floorArray addObject:@(currentFloor)];
                 }
-                [currentArray addObject:p];
+                [currentArray addObject:lp];
             }
         }
     }
@@ -209,11 +211,11 @@
         
         NSMutableArray *pArray = [pointArray objectAtIndex:i];
         for (int j = 0; j < pArray.count; ++j) {
-            [line addPointToPath:pArray[i]];
+            NPLocalPoint *lp = pArray[j];
+            [line addPointToPath:[AGSPoint pointWithX:lp.x y:lp.y spatialReference:[NPMapEnvironment defaultSpatialReference]]];
         }
         
         NPMapInfo *info = [NPMapInfo searchMapInfoFromArray:allMapInfos Floor:floor];
-//        NPRoutePart *rp = [[NPRoutePart alloc] initWithRouteLine:line Floor:floor];
         NPRoutePart *rp = [[NPRoutePart alloc] initWithRouteLine:line MapInfo:info];
         [routePartArray addObject:rp];
     }
@@ -230,19 +232,6 @@
             p.nextPart = routePartArray[i+1];
         }
         
-//        if (i == 0) {
-//            NPRoutePart *p0 = routePartArray[i];
-//            p0.previousPart = nil;
-//            p0.nextPart = routePartArray[i+1];
-//        } else if (i == routePartNum - 1) {
-//            NPRoutePart *p1 = routePartArray[i];
-//            p1.nextPart = nil;
-//            p1.previousPart = routePartArray[i-1];
-//        } else {
-//            NPRoutePart *p = routePartArray[i];
-//            p.previousPart = routePartArray[i-1];
-//            p.nextPart = routePartArray[i+1];
-//        }
     }
     
     return routePartArray;

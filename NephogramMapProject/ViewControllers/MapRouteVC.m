@@ -20,6 +20,8 @@
 #import "NPPoint.h"
 #import "NPDirectionalHint.h"
 
+#import "NPRouteResultV2.h"
+
 @interface MapRouteVC() <NPRouteManagerDelegate>
 {
     NPRouteManager *routeManager;
@@ -30,6 +32,7 @@
     
     BOOL isRouting;
     NPRouteResult *routeResult;
+    NPRouteResultV2 *routeResult_V2;
     
     NSArray *routeGuides;
     
@@ -62,6 +65,11 @@
     
     routeManager = [NPRouteManager routeManagerWithBuilding:self.currentBuilding credential:[NPMapEnvironment defaultCredential] MapInfos:self.allMapInfos];
     routeManager.delegate = self;
+    
+    [self.mapView zoomToEnvelope:[AGSEnvelope envelopeWithXmin:1780 ymin:432.187299 xmax:1944.755560 ymax:658.589997 spatialReference:[NPMapEnvironment defaultSpatialReference]] animated:YES];
+    startLocalPoint = [NPLocalPoint pointWithX:1779.204079 Y:581.868337 Floor:self.mapView.currentMapInfo.floorNumber];
+    endLocalPoint = [NPLocalPoint pointWithX:1917 Y:558 Floor:self.mapView.currentMapInfo.floorNumber];
+
 }
 
 - (void)initSymbols
@@ -89,22 +97,26 @@
 //    NSLog(@"didFailToRetrieveDefaultRouteTaskParametersWithError:\n%@", error.localizedDescription);
 }
 
-- (void)routeManager:(NPRouteManager *)routeManager didSolveRouteWithResult:(NPRouteResult *)rs
+- (void)routeManager:(NPRouteManager *)routeManager didSolveRouteWithResult:(NPRouteResult *)rs V2:(NPRouteResultV2 *)rs_V2
 {
 //    NSLog(@"routeManager: didSolveRouteWithResult:");
     
     [hintLayer removeAllGraphics];
     
     routeResult = rs;
+    routeResult_V2 = rs_V2;
+    
     [self.mapView setRouteResult:rs];
+    [self.mapView setRouteResultV2:rs_V2];
+    
     [self.mapView setRouteStart:startLocalPoint];
     [self.mapView setRouteEnd:endLocalPoint];
     [self.mapView showRouteResultOnCurrentFloor];
     
     routeGuides = [routeResult getRouteDirectionHintOnFloor:self.currentMapInfo];
-    for (NPDirectionalHint *ds in routeGuides) {
-        NSLog(@"%@", [ds getDirectionString]);
-    }
+//    for (NPDirectionalHint *ds in routeGuides) {
+//        NSLog(@"%@", [ds getDirectionString]);
+//    }
 }
 
 - (void)NPMapView:(NPMapView *)mapView didFinishLoadingFloor:(NPMapInfo *)mapInfo
@@ -137,7 +149,7 @@ int testIndex = 0;
 
 - (void)NPMapView:(NPMapView *)mapView didClickAtPoint:(CGPoint)screen mapPoint:(NPPoint *)mappoint
 {
-//    NSLog(@"(%f, %f) in floor %d", mappoint.x, mappoint.y, self.currentMapInfo.floorNumber);
+    NSLog(@"(%f, %f) in floor %d", mappoint.x, mappoint.y, self.currentMapInfo.floorNumber);
 //    NSLog(@"Map Scale: %f", self.mapView.mapScale);
     currentPoint = mappoint;
     
@@ -150,18 +162,6 @@ int testIndex = 0;
     [hintLayer addGraphic:[AGSGraphic graphicWithGeometry:mappoint symbol:sms attributes:nil]];
     
     if (routeResult) {
-        
-//        if (routeGuides && routeGuides.count > 0) {
-//            if (testIndex >= routeGuides.count) {
-//                testIndex = 0;
-//            }
-//            
-//            NPDirectionalHint *ds = routeGuides[testIndex++];
-//            [self.mapView showRouteHintForDirectionHint:ds Centered:YES];
-//            
-//            self.routeHintLabel.text = [ds getDirectionString];
-//        }
-        
 //        BOOL isDeviating = [routeResult isDeviatingFromRoute:localPoint WithThrehold:2.0];
 //        
 //        if (isDeviating) {
@@ -197,6 +197,7 @@ int testIndex = 0;
 }
 
 - (IBAction)requtestRoute:(id)sender {
+    
     if (startLocalPoint == nil || endLocalPoint == nil) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"需要两个点请求路径！" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
         [alert show];

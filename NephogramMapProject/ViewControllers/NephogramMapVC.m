@@ -33,7 +33,9 @@ int tIndex = 0;
 
 - (void)NPMapView:(NPMapView *)mapView didClickAtPoint:(CGPoint)screen mapPoint:(AGSPoint *)mappoint
 {
-//    NSLog(@"didClickAtPoint: %f, %f", mappoint.x, mappoint.y);
+    NSLog(@"didClickAtPoint: %f, %f", mappoint.x, mappoint.y);
+    
+//    NSLog(@"MapExtent: %@", self.mapView.maxEnvelope);
     
     NPPoi *poi = [self.mapView extractRoomPoiOnCurrentFloorWithX:mappoint.x Y:mappoint.y];
     NSLog(@"%@", poi);

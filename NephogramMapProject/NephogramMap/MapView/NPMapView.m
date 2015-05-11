@@ -188,6 +188,11 @@
     routeLayer.routeResult = result;
 }
 
+- (void)setRouteResultV2:(NPRouteResultV2 *)result
+{
+    routeLayer.routeResultV2 = result;
+}
+
 - (void)setRouteStart:(NPLocalPoint *)start
 {
     routeLayer.startPoint = start;
@@ -485,19 +490,24 @@
 
 - (void)showRouteResultOnCurrentFloor
 {
-    AGSPolyline *lineToShow = [routeLayer showRouteResultOnFloor:self.currentMapInfo.floorNumber];
-    if (lineToShow) {
-        [routeArrowLayer showRouteArrow:lineToShow];
+//    AGSPolyline *lineToShow = [routeLayer showRouteResultOnFloor:self.currentMapInfo.floorNumber];
+//    if (lineToShow) {
+//        [routeArrowLayer showRouteArrow:lineToShow];
+//    }
+    
+    NSArray *linesToShow = [routeLayer showRouteResultOnFloor:self.currentMapInfo.floorNumber];
+    if (linesToShow && linesToShow.count > 0) {
+        [routeArrowLayer showRouteArrow:linesToShow];
     }
 }
 
-- (void)showRemainingRouteResultOnCurrentFloor:(NPLocalPoint *)lp
-{
-    AGSPolyline *lineToShow = [routeLayer showRemaingRouteResultOnFloor:self.currentMapInfo.floorNumber WithLocation:lp];
-    if (lineToShow) {
-        [routeArrowLayer showRouteArrow:lineToShow];
-    }
-}
+//- (void)showRemainingRouteResultOnCurrentFloor:(NPLocalPoint *)lp
+//{
+//    AGSPolyline *lineToShow = [routeLayer showRemaingRouteResultOnFloor:self.currentMapInfo.floorNumber WithLocation:lp];
+//    if (lineToShow) {
+//        [routeArrowLayer showRouteArrow:lineToShow];
+//    }
+//}
 
 
 

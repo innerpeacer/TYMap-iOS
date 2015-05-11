@@ -9,7 +9,10 @@
 #import <Foundation/Foundation.h>
 #import <ArcGIS/ArcGIS.h>
 #import "NPMapEnviroment.h"
+
 #import "NPRouteResult.h"
+#import "NPRouteResultV2.h"
+
 #import <NephogramData/NephogramData.h>
 #import "NPPoint.h"
 
@@ -34,7 +37,8 @@
  *  @param routeManager       路径管理实例
  *  @param routeResultGraphic 路径规划结果
  */
-- (void)routeManager:(NPRouteManager *)routeManager didSolveRouteWithResult:(NPRouteResult *)routeResult;
+- (void)routeManager:(NPRouteManager *)routeManager didSolveRouteWithResult:(NPRouteResult *)routeResult V2:(NPRouteResultV2 *)routeResult_V2;
+
 
 /**
  *  路径规划失败回调方法

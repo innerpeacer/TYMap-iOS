@@ -11,12 +11,10 @@
 @implementation NPRoutePart
 
 - (id)initWithRouteLine:(AGSPolyline *)route MapInfo:(NPMapInfo *)mapInfo
-//- (id)initWithRouteLine:(AGSPolyline *)route Floor:(int)floor
 {
     self = [super init];
     if (self) {
         _route = route;
-//        _floor = floor;
         _info = mapInfo;
     }
     return self;

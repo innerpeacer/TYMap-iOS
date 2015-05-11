@@ -144,7 +144,6 @@
         v.y = p1.y - p0.y;
         double angle = [v getAngle];
 
-//        if (currentAngle != angle) {
         if (ABS(currentAngle - angle) > ANGLE_THREHOLD) {
             [result addPointToPath:p0];
             currentAngle = angle;

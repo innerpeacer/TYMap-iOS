@@ -15,6 +15,8 @@
 
 + (NPRouteArrowLayer *)routeArrowLayerWithSpatialReference:(NPSpatialReference *)sr;
 
-- (void)showRouteArrow:(AGSPolyline *)line;
+
+- (void)showRouteArrow:(NSArray *)array;
+//- (void)showRouteArrow:(AGSPolyline *)line;
 
 @end

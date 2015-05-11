@@ -38,133 +38,139 @@
     return self;
 }
 
-- (AGSPolyline *)showRouteResultOnFloor:(int)floor
+//- (AGSPolyline *)showRouteResultOnFloor:(int)floor
+//{
+//    [self removeAllGraphics];
+//    
+//    AGSPolyline *lineToReturn = [self showLineForRouteResultOnFloor:floor];
+//    [self showSwitchSymbolForRouteResultOnFloor:floor];
+//    [self showStartSymbol:self.startPoint];
+//    [self showEndSymbol:self.endPoint];
+//    
+//    return lineToReturn;
+//}
+
+- (NSArray *)showRouteResultOnFloor:(int)floor
 {
     [self removeAllGraphics];
     
-    AGSPolyline *lineToReturn = [self showLineForRouteResultOnFloor:floor];
+    NSArray *linesToReturn = [self showLinesForRouteResultOnFloor:floor];
     [self showSwitchSymbolForRouteResultOnFloor:floor];
     [self showStartSymbol:self.startPoint];
     [self showEndSymbol:self.endPoint];
     
-    return lineToReturn;
+    return linesToReturn;
 }
 
-- (AGSPolyline *)showRemaingRouteResultOnFloor:(int)floor WithLocation:(NPLocalPoint *)location
-{
-    [self removeAllGraphics];
-    
-    AGSPolyline *lineToReturn = [self showRemainingLineForRouteResultOnFloor:floor WithLocation:location];
-    
-    [self showSwitchSymbolForRouteResultOnFloor:floor];
-    [self showStartSymbol:self.startPoint];
-    [self showEndSymbol:self.endPoint];
-    
-    return lineToReturn;
-}
+//- (AGSPolyline *)showRemaingRouteResultOnFloor:(int)floor WithLocation:(NPLocalPoint *)location
+//{
+//    [self removeAllGraphics];
+//    
+//    AGSPolyline *lineToReturn = [self showRemainingLineForRouteResultOnFloor:floor WithLocation:location];
+//    
+//    [self showSwitchSymbolForRouteResultOnFloor:floor];
+//    [self showStartSymbol:self.startPoint];
+//    [self showEndSymbol:self.endPoint];
+//    
+//    return lineToReturn;
+//}
 
 - (void)showSwitchSymbolForRouteResultOnFloor:(int)floor
 {
-    if (_routeResult) {
-        AGSPolyline *line = [_routeResult getRouteOnFloor:floor];
-        if (line) {
-            if ([_routeResult isFirstFloor:floor] && [_routeResult isLastFloor:floor]) {
-                return;
-            }
-            
-            if ([_routeResult isFirstFloor:floor] && ![_routeResult isLastFloor:floor]) {
-                NPPoint *p = [_routeResult getLastPointOnFloor:floor];
-                if (p) {
-                    [self addGraphic:[NPGraphic graphicWithGeometry:p symbol:_switchSymbol attributes:nil]];
+    if (_routeResultV2) {
+        NSArray *routePartArray = [_routeResultV2 getRoutePartsOnFloor:floor];
+        if (routePartArray && routePartArray.count > 0) {
+            for (NPRoutePart *rp in routePartArray) {
+                if ([rp isFirstPart] && ![rp isLastPart]) {
+                    [self addGraphic:[NPGraphic graphicWithGeometry:[rp getLastPoint] symbol:_switchSymbol attributes:nil]];
+                } else if (![rp isFirstPart] && [rp isLastPart]) {
+                    [self addGraphic:[NPGraphic graphicWithGeometry:[rp getFirstPoint] symbol:_switchSymbol attributes:nil]];
+                } else if (![rp isFirstPart] && ![rp isLastPart]) {
+                    [self addGraphic:[NPGraphic graphicWithGeometry:[rp getFirstPoint] symbol:_switchSymbol attributes:nil]];
+                    [self addGraphic:[NPGraphic graphicWithGeometry:[rp getLastPoint] symbol:_switchSymbol attributes:nil]];
                 }
-                return;
-            }
-            
-            if (![_routeResult isFirstFloor:floor] && [_routeResult isLastFloor:floor]) {
-                NPPoint *p = [_routeResult getFirstPointOnFloor:floor];
-                if (p) {
-                    [self addGraphic:[NPGraphic graphicWithGeometry:p symbol:_switchSymbol attributes:nil]];
-                }
-                return;
-            }
-            
-            if (![_routeResult isFirstFloor:floor] && ![_routeResult isLastFloor:floor]) {
-                NPPoint *fp = [_routeResult getFirstPointOnFloor:floor];
-                NPPoint *lp = [_routeResult getLastPointOnFloor:floor];
-                if (fp) {
-                    [self addGraphic:[NPGraphic graphicWithGeometry:fp symbol:_switchSymbol attributes:nil]];
-                }
-                
-                if (lp) {
-                    [self addGraphic:[NPGraphic graphicWithGeometry:lp symbol:_switchSymbol attributes:nil]];
-                }
-                return;
             }
         }
     }
 }
 
-- (AGSPolyline *)showLineForRouteResultOnFloor:(int)floor
-{
-    if (_routeResult) {
-        AGSPolyline *line = [_routeResult getRouteOnFloor:floor];
-        if (line) {
-            [self addGraphic:[NPGraphic graphicWithGeometry:line symbol:nil attributes:nil]];
-//            [self showRouteArrow:line];
-            return line;
-        }
-    }
-    
-    return nil;
-}
+//- (AGSPolyline *)showLineForRouteResultOnFloor:(int)floor
+//{
+//    if (_routeResult) {
+//        AGSPolyline *line = [_routeResult getRouteOnFloor:floor];
+//        if (line) {
+//            [self addGraphic:[NPGraphic graphicWithGeometry:line symbol:nil attributes:nil]];
+////            [self showRouteArrow:line];
+//            return line;
+//        }
+//    }
+//    return nil;
+//}
 
-- (AGSPolyline *)showRemainingLineForRouteResultOnFloor:(int)floor WithLocation:(NPLocalPoint *)location
+- (NSArray *)showLinesForRouteResultOnFloor:(int)floor
 {
-    if (_routeResult) {
-        AGSPolyline *line = [_routeResult getRouteOnFloor:floor];
-        if (line) {
-            AGSPoint *pos = [AGSPoint pointWithX:location.x y:location.y spatialReference:[NPMapEnvironment defaultSpatialReference]];
-            AGSPolyline *remainingLine = [self getRemainingLine:line WithPoint:pos];
-            if (remainingLine) {
-                [self addGraphic:[NPGraphic graphicWithGeometry:remainingLine symbol:nil attributes:nil]];
-//                [self showRouteArrow:remainingLine];
-                return remainingLine;
+    NSMutableArray *linesToReturn = [[NSMutableArray alloc] init];
+    if (_routeResultV2) {
+        NSArray *routePartArray = [_routeResultV2 getRoutePartsOnFloor:floor];
+        if (routePartArray && routePartArray.count > 0) {
+            for (NPRoutePart *rp in routePartArray) {
+                [self addGraphic:[NPGraphic graphicWithGeometry:rp.route symbol:nil attributes:nil]];
+                [linesToReturn addObject:rp.route];
             }
+            return linesToReturn;
         }
     }
-    
-    return nil;
+    return linesToReturn;
 }
 
-- (AGSPolyline *)getRemainingLine:(AGSPolyline *)originalLine WithPoint:(AGSPoint *)point
-{
-    AGSPolyline *result = nil;
-    
-    AGSPoint *lastPoint = [originalLine pointOnPath:0 atIndex:originalLine.numPoints-1];
-    
-    AGSGeometryEngine *engine = [AGSGeometryEngine defaultGeometryEngine];
-    AGSProximityResult *proximitResult = [engine nearestCoordinateInGeometry:originalLine toPoint:point];
-    AGSPoint *cutPoint = proximitResult.point;
-    
-    AGSMutablePolyline *cutLine = [[AGSMutablePolyline alloc] init];
-    [cutLine addPathToPolyline];
-    [cutLine addPointToPath:point];
-    [cutLine addPointToPath:cutPoint];
-    
-    NSArray *cuttedLineArray = [engine cutGeometry:originalLine withCutter:cutLine];
-    
-    for (AGSPolyline *line in cuttedLineArray) {
-        BOOL isLastHalf = [engine geometry:line touchesGeometry:lastPoint];
-        if (isLastHalf) {
-            result = line;
-        }
-    }
-    return result;
-}
+//- (AGSPolyline *)showRemainingLineForRouteResultOnFloor:(int)floor WithLocation:(NPLocalPoint *)location
+//{
+//    if (_routeResult) {
+//        AGSPolyline *line = [_routeResult getRouteOnFloor:floor];
+//        if (line) {
+//            AGSPoint *pos = [AGSPoint pointWithX:location.x y:location.y spatialReference:[NPMapEnvironment defaultSpatialReference]];
+//            AGSPolyline *remainingLine = [self getRemainingLine:line WithPoint:pos];
+//            if (remainingLine) {
+//                [self addGraphic:[NPGraphic graphicWithGeometry:remainingLine symbol:nil attributes:nil]];
+////                [self showRouteArrow:remainingLine];
+//                return remainingLine;
+//            }
+//        }
+//    }
+//    
+//    return nil;
+//}
+
+//- (AGSPolyline *)getRemainingLine:(AGSPolyline *)originalLine WithPoint:(AGSPoint *)point
+//{
+//    AGSPolyline *result = nil;
+//    
+//    AGSPoint *lastPoint = [originalLine pointOnPath:0 atIndex:originalLine.numPoints-1];
+//    
+//    AGSGeometryEngine *engine = [AGSGeometryEngine defaultGeometryEngine];
+//    AGSProximityResult *proximitResult = [engine nearestCoordinateInGeometry:originalLine toPoint:point];
+//    AGSPoint *cutPoint = proximitResult.point;
+//    
+//    AGSMutablePolyline *cutLine = [[AGSMutablePolyline alloc] init];
+//    [cutLine addPathToPolyline];
+//    [cutLine addPointToPath:point];
+//    [cutLine addPointToPath:cutPoint];
+//    
+//    NSArray *cuttedLineArray = [engine cutGeometry:originalLine withCutter:cutLine];
+//    
+//    for (AGSPolyline *line in cuttedLineArray) {
+//        BOOL isLastHalf = [engine geometry:line touchesGeometry:lastPoint];
+//        if (isLastHalf) {
+//            result = line;
+//        }
+//    }
+//    return result;
+//}
 
 - (void)reset
 {
     _routeResult = nil;
+    _routeResultV2 = nil;
     [self removeAllGraphics];
 }
 

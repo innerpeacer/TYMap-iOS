@@ -33,11 +33,17 @@
     return self;
 }
 
-#define ARROW_INTERVAL 0.005
-- (void)showRouteArrow:(AGSPolyline *)line
+- (void)showRouteArrow:(NSArray *)array
 {
     [self removeAllGraphics];
-    
+    for (AGSPolyline *line in array) {
+        [self showRouteArrowForLine:line];
+    }
+}
+
+#define ARROW_INTERVAL 0.005
+- (void)showRouteArrowForLine:(AGSPolyline *)line
+{
     double interval = ARROW_INTERVAL * self.mapView.mapScale;
     double totalLength = [[AGSGeometryEngine defaultGeometryEngine] lengthOfGeometry:line];
     int numSegments = (int)line.numPoints - 1;
