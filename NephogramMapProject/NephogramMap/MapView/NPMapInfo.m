@@ -140,6 +140,16 @@ MapSize NPMapSizeMake(double x, double y)
     return toReturn;
 }
 
++ (NPMapInfo *)searchMapInfoFromArray:(NSArray *)array Floor:(int)floor
+{
+    for (NPMapInfo *info in array) {
+        if (floor == info.floorNumber) {
+            return info;
+        }
+    }
+    return nil;
+}
+
 - (NSString *)description
 {
     return [NSString stringWithFormat:@"MapID: %@, Floor: %@, Size: (%.2f, %.2f) Extent: (%.4f, %.4f, %.4f, %.4f)", _mapID, _floorName, _mapSize.x, _mapSize.y, _mapExtent.xmin, _mapExtent.ymin, _mapExtent.xmax, _mapExtent.ymax];

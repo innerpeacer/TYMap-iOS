@@ -77,5 +77,6 @@ typedef struct mapextent {
 
 + (NSArray *)parseAllMapInfo:(NPBuilding *)building;
 
++ (NPMapInfo *)searchMapInfoFromArray:(NSArray *)array Floor:(int)floor;
 
 @end

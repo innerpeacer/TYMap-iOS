@@ -11,6 +11,7 @@
 #import "NPPolyline.h"
 #import "NPPoint.h"
 #import "NPDirectionalHint.h"
+//#import "NPRoutePart.h"
 
 #import <NephogramData/NephogramData.h>
 

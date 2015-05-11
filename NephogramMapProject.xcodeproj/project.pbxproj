@@ -19,6 +19,7 @@
 		571310B31ABC217500E980F9 /* NephogramData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 571310B21ABC217500E980F9 /* NephogramData.framework */; };
 		571E58981AB921FC007B36DD /* NPRoutePointConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 571E58971AB921FC007B36DD /* NPRoutePointConverter.m */; };
 		571E58B61AB9D2F0007B36DD /* NPRouteResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 571E58B51AB9D2F0007B36DD /* NPRouteResult.m */; };
+		57306D9E1B0047A300DE2F32 /* NPRouteResultV2.m in Sources */ = {isa = PBXBuildFile; fileRef = 57306D9D1B0047A300DE2F32 /* NPRouteResultV2.m */; };
 		574443D01AAED31000E6232C /* CreatingPOIDBAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 574443CF1AAED31000E6232C /* CreatingPOIDBAdapter.m */; };
 		574443EE1AAED36300E6232C /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 574443E51AAED36300E6232C /* FMDatabase.m */; };
 		574443EF1AAED36300E6232C /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 574443E71AAED36300E6232C /* FMDatabaseAdditions.m */; };
@@ -33,6 +34,7 @@
 		576094D71AD8FDFF00647DAE /* NPMapFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 576094D61AD8FDFF00647DAE /* NPMapFileManager.m */; };
 		5772869F1AF9EB6A008F3363 /* NPRouteArrowLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5772869E1AF9EB6A008F3363 /* NPRouteArrowLayer.m */; };
 		577286A21AF9EB78008F3363 /* NPRouteHintLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 577286A11AF9EB78008F3363 /* NPRouteHintLayer.m */; };
+		57753CC81AFC8A4C00AF4B51 /* NPRoutePart.m in Sources */ = {isa = PBXBuildFile; fileRef = 57753CC71AFC8A4C00AF4B51 /* NPRoutePart.m */; };
 		57AD3F691ACBE0C30013B1E0 /* NPPathCalibration.m in Sources */ = {isa = PBXBuildFile; fileRef = 57AD3F681ACBE0C30013B1E0 /* NPPathCalibration.m */; };
 		57AD3F841ACCD9810013B1E0 /* NPCredential.m in Sources */ = {isa = PBXBuildFile; fileRef = 57AD3F811ACCD9810013B1E0 /* NPCredential.m */; };
 		57AD3F851ACCD9810013B1E0 /* NPGraphicsLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 57AD3F831ACCD9810013B1E0 /* NPGraphicsLayer.m */; };
@@ -109,6 +111,8 @@
 		571E58971AB921FC007B36DD /* NPRoutePointConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPRoutePointConverter.m; sourceTree = "<group>"; };
 		571E58B41AB9D2F0007B36DD /* NPRouteResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPRouteResult.h; sourceTree = "<group>"; };
 		571E58B51AB9D2F0007B36DD /* NPRouteResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPRouteResult.m; sourceTree = "<group>"; };
+		57306D9C1B0047A300DE2F32 /* NPRouteResultV2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPRouteResultV2.h; sourceTree = "<group>"; };
+		57306D9D1B0047A300DE2F32 /* NPRouteResultV2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPRouteResultV2.m; sourceTree = "<group>"; };
 		57422E211AB018CB009065FB /* NPMapType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NPMapType.h; sourceTree = "<group>"; };
 		574443CE1AAED31000E6232C /* CreatingPOIDBAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreatingPOIDBAdapter.h; sourceTree = "<group>"; };
 		574443CF1AAED31000E6232C /* CreatingPOIDBAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreatingPOIDBAdapter.m; sourceTree = "<group>"; };
@@ -137,6 +141,8 @@
 		5772869E1AF9EB6A008F3363 /* NPRouteArrowLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPRouteArrowLayer.m; sourceTree = "<group>"; };
 		577286A01AF9EB78008F3363 /* NPRouteHintLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPRouteHintLayer.h; sourceTree = "<group>"; };
 		577286A11AF9EB78008F3363 /* NPRouteHintLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPRouteHintLayer.m; sourceTree = "<group>"; };
+		57753CC61AFC8A4C00AF4B51 /* NPRoutePart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPRoutePart.h; sourceTree = "<group>"; };
+		57753CC71AFC8A4C00AF4B51 /* NPRoutePart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPRoutePart.m; sourceTree = "<group>"; };
 		57AD3F671ACBE0C30013B1E0 /* NPPathCalibration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPPathCalibration.h; path = NephogramMap/NPPathCalibration.h; sourceTree = "<group>"; };
 		57AD3F681ACBE0C30013B1E0 /* NPPathCalibration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NPPathCalibration.m; path = NephogramMap/NPPathCalibration.m; sourceTree = "<group>"; };
 		57AD3F801ACCD9810013B1E0 /* NPCredential.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPCredential.h; sourceTree = "<group>"; };
@@ -508,6 +514,10 @@
 				5746B9DE1AF9B3A2007E4219 /* NPLandmark.m */,
 				5746B9E01AF9B48A007E4219 /* NPLandmarkManager.h */,
 				5746B9E11AF9B48A007E4219 /* NPLandmarkManager.m */,
+				57753CC61AFC8A4C00AF4B51 /* NPRoutePart.h */,
+				57753CC71AFC8A4C00AF4B51 /* NPRoutePart.m */,
+				57306D9C1B0047A300DE2F32 /* NPRouteResultV2.h */,
+				57306D9D1B0047A300DE2F32 /* NPRouteResultV2.m */,
 			);
 			path = Route;
 			sourceTree = "<group>";
@@ -622,6 +632,7 @@
 				570DB3F81A890664001D137E /* CustomCalloutVC.m in Sources */,
 				57AD3FA01ACCE34A0013B1E0 /* NPPictureMarkerSymbol.m in Sources */,
 				57E6CF761ADCBEDF00D4C8C7 /* NPRoomLayer.m in Sources */,
+				57306D9E1B0047A300DE2F32 /* NPRouteResultV2.m in Sources */,
 				571E58B61AB9D2F0007B36DD /* NPRouteResult.m in Sources */,
 				57F06CE81A87BF8D00B9511F /* NPPoi.m in Sources */,
 				57E6CF8A1ADCE44300D4C8C7 /* NPLabelBorderCalculator.m in Sources */,
@@ -647,6 +658,7 @@
 				574443F71AAEE1D500E6232C /* CreatePOIDatabaseVC.m in Sources */,
 				57AD3FA31ACCE37A0013B1E0 /* NPGeometry.m in Sources */,
 				574443EE1AAED36300E6232C /* FMDatabase.m in Sources */,
+				57753CC81AFC8A4C00AF4B51 /* NPRoutePart.m in Sources */,
 				5746B9E21AF9B48A007E4219 /* NPLandmarkManager.m in Sources */,
 				574443D01AAED31000E6232C /* CreatingPOIDBAdapter.m in Sources */,
 				57F06CFA1A87C18D00B9511F /* NPRenderingScheme.m in Sources */,
