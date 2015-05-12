@@ -50,19 +50,6 @@
     return linesToReturn;
 }
 
-//- (AGSPolyline *)showRemaingRouteResultOnFloor:(int)floor WithLocation:(NPLocalPoint *)location
-//{
-//    [self removeAllGraphics];
-//    
-//    AGSPolyline *lineToReturn = [self showRemainingLineForRouteResultOnFloor:floor WithLocation:location];
-//    
-//    [self showSwitchSymbolForRouteResultOnFloor:floor];
-//    [self showStartSymbol:self.startPoint];
-//    [self showEndSymbol:self.endPoint];
-//    
-//    return lineToReturn;
-//}
-
 - (NSArray *)showRemainingRouteResultOnFloor:(int)floor WithLocation:(NPLocalPoint *)location
 {
     [self removeAllGraphics];
@@ -78,8 +65,8 @@
 
 - (void)showSwitchSymbolForRouteResultOnFloor:(int)floor
 {
-    if (_routeResultV2) {
-        NSArray *routePartArray = [_routeResultV2 getRoutePartsOnFloor:floor];
+    if (_routeResult) {
+        NSArray *routePartArray = [_routeResult getRoutePartsOnFloor:floor];
         if (routePartArray && routePartArray.count > 0) {
             for (NPRoutePart *rp in routePartArray) {
                 if ([rp isFirstPart] && ![rp isLastPart]) {
@@ -98,8 +85,8 @@
 - (NSArray *)showLinesForRouteResultOnFloor:(int)floor
 {
     NSMutableArray *linesToReturn = [[NSMutableArray alloc] init];
-    if (_routeResultV2) {
-        NSArray *routePartArray = [_routeResultV2 getRoutePartsOnFloor:floor];
+    if (_routeResult) {
+        NSArray *routePartArray = [_routeResult getRoutePartsOnFloor:floor];
         if (routePartArray && routePartArray.count > 0) {
             for (NPRoutePart *rp in routePartArray) {
                 [self addGraphic:[NPGraphic graphicWithGeometry:rp.route symbol:nil attributes:nil]];
@@ -111,29 +98,11 @@
     return linesToReturn;
 }
 
-//- (AGSPolyline *)showRemainingLineForRouteResultOnFloor:(int)floor WithLocation:(NPLocalPoint *)location
-//{
-//    if (_routeResult) {
-//        AGSPolyline *line = [_routeResult getRouteOnFloor:floor];
-//        if (line) {
-//            AGSPoint *pos = [AGSPoint pointWithX:location.x y:location.y spatialReference:[NPMapEnvironment defaultSpatialReference]];
-//            AGSPolyline *remainingLine = [self getRemainingLine:line WithPoint:pos];
-//            if (remainingLine) {
-//                [self addGraphic:[NPGraphic graphicWithGeometry:remainingLine symbol:nil attributes:nil]];
-////                [self showRouteArrow:remainingLine];
-//                return remainingLine;
-//            }
-//        }
-//    }
-//    
-//    return nil;
-//}
-
 - (NPRoutePart *)getNearestRoutePartWithLocation:(NPLocalPoint *)location
 {
     NPRoutePart *result = nil;
-    if (_routeResultV2) {
-        NSArray *routePartArray = [_routeResultV2 getRoutePartsOnFloor:location.floor];
+    if (_routeResult) {
+        NSArray *routePartArray = [_routeResult getRoutePartsOnFloor:location.floor];
         if (routePartArray && routePartArray.count > 0) {
             double nearestDistance = 10000000;
             
@@ -157,8 +126,8 @@
     NSMutableArray *linesToReturn = [[NSMutableArray alloc] init];
     NPRoutePart *nearestRoutePart = [self getNearestRoutePartWithLocation:location];
     
-    if (_routeResultV2) {
-        NSArray *routePartArray = [_routeResultV2 getRoutePartsOnFloor:floor];
+    if (_routeResult) {
+        NSArray *routePartArray = [_routeResult getRoutePartsOnFloor:floor];
         if (routePartArray && routePartArray.count > 0) {
             for (NPRoutePart *rp in routePartArray) {
                 if (rp == nearestRoutePart) {
@@ -207,7 +176,6 @@
 - (void)reset
 {
     _routeResult = nil;
-    _routeResultV2 = nil;
     [self removeAllGraphics];
 }
 

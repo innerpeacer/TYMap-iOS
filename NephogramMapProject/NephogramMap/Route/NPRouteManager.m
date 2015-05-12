@@ -97,68 +97,18 @@
     AGSRouteResult *routeResult = [routeTaskResult.routeResults firstObject];
     if (routeResult) {
         NPRouteResult *result = [self processRouteResult:routeResult];
-        NPRouteResultV2 *result_V2 = [self processRouteResultV2:routeResult];
         
         if (result == nil) {
             return;
         }
         
-        if (self.delegate != nil || [self.delegate respondsToSelector:@selector(routeManager:didSolveRouteWithResult: V2:)]) {
-            [self.delegate routeManager:self didSolveRouteWithResult:result V2:result_V2];
+        if (self.delegate != nil || [self.delegate respondsToSelector:@selector(routeManager:didSolveRouteWithResult:)]) {
+            [self.delegate routeManager:self didSolveRouteWithResult:result];
         }
     }
 }
 
 - (NPRouteResult *)processRouteResult:(AGSRouteResult *)rs
-{
-    NSMutableDictionary *pointDict = [[NSMutableDictionary alloc] init];
-    
-    NSMutableArray *floorArray = [[NSMutableArray alloc] init];
-    NSMutableDictionary *routeDict = [[NSMutableDictionary alloc] init];
-    
-    AGSPolyline *routeLine = (AGSPolyline *)rs.routeGraphic.geometry;
-    
-    int pathNum = (int)routeLine.numPaths;
-    if (pathNum > 0) {
-        
-        int num = (int)[routeLine numPointsInPath:0];
-        
-        for (int i = 0; i < num; ++i) {
-            NPPoint *p = (NPPoint *)[routeLine pointOnPath:0 atIndex:i];
-            
-            NPLocalPoint *lp = [routePointConverter localPointFromRoutePoint:p];
-            BOOL isValid = [routePointConverter checkPointValidity:lp];
-            if (isValid) {
-                if (![pointDict.allKeys containsObject:@(lp.floor)]) {
-                    [pointDict setObject:[NSMutableArray array] forKey:@(lp.floor)];
-                    [floorArray addObject:@(lp.floor)];
-                }
-                NSMutableArray *array = [pointDict objectForKey:@(lp.floor)];
-                [array addObject:lp];
-            }
-        }
-    }
-    
-    for (NSNumber *f in floorArray) {
-        NSMutableArray *array = [pointDict objectForKey:f];
-        
-        AGSMutablePolyline *polyline = [[AGSMutablePolyline alloc] initWithSpatialReference:[NPMapEnvironment defaultSpatialReference]];
-        [polyline addPathToPolyline];
-        
-        for (NPLocalPoint *lp in array) {
-            [polyline addPointToPath:[AGSPoint pointWithX:lp.x y:lp.y spatialReference:[NPMapEnvironment defaultSpatialReference]]];
-        }
-        [routeDict setObject:polyline forKey:f];
-    }
-    
-    if (routeDict.count < 1) {
-        return nil;
-    }
-    
-    return [NPRouteResult routeResultWithDict:routeDict FloorArray:floorArray];
-}
-
-- (NPRouteResultV2 *)processRouteResultV2:(AGSRouteResult *)rs
 {
     NSMutableArray *pointArray = [[NSMutableArray alloc] init];
     NSMutableArray *floorArray = [[NSMutableArray alloc] init];
@@ -225,7 +175,7 @@
         
     }
     
-    return [NPRouteResultV2 routeResultWithRouteParts:routePartArray];
+    return [NPRouteResult routeResultWithRouteParts:routePartArray];
 }
 
 - (void)routeTask:(AGSRouteTask *)routeTask operation:(NSOperation *)op didFailToRetrieveDefaultRouteTaskParametersWithError:(NSError *)error

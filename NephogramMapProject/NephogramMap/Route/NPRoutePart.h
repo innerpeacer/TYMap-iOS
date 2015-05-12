@@ -12,9 +12,7 @@
 
 @interface NPRoutePart : NSObject
 
-//- (id)initWithRouteLine:(AGSPolyline *)route Floor:(int)floor;
 - (id)initWithRouteLine:(AGSPolyline *)route MapInfo:(NPMapInfo *)mapInfo;
-
 
 @property (nonatomic, strong, readonly) AGSPolyline *route;
 //@property (nonatomic, assign, readonly) int floor;

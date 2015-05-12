@@ -11,7 +11,6 @@
 #import "NPSpatialReference.h"
 #import "NPPictureMarkerSymbol.h"
 #import "NPRouteResult.h"
-#import "NPRouteResultV2.h"
 
 @class NPMapView;
 
@@ -25,7 +24,6 @@
 @property (nonatomic, weak) NPMapView *mapView;
 
 @property (nonatomic, strong) NPRouteResult *routeResult;
-@property (nonatomic, strong) NPRouteResultV2 *routeResultV2;
 
 @property (nonatomic, strong) NPLocalPoint *startPoint;
 @property (nonatomic, strong) NPLocalPoint *endPoint;
@@ -43,15 +41,10 @@
  */
 + (NPRouteLayer *)routeLayerWithSpatialReference:(NPSpatialReference *)sr;
 
-//- (AGSPolyline *)showRouteResultOnFloor:(int)floor;
 - (NSArray *)showRouteResultOnFloor:(int)floor;
 
 - (NSArray *)showRemainingRouteResultOnFloor:(int)floor WithLocation:(NPLocalPoint *)location;
 - (NPRoutePart *)getNearestRoutePartWithLocation:(NPLocalPoint *)location;
-
-//- (AGSPolyline *)showRemaingRouteResultOnFloor:(int)floor WithLocation:(NPLocalPoint *)location;
-//- (AGSPolyline *)getRemainingLine:(AGSPolyline *)originalLine WithPoint:(AGSPoint *)point;
-
 
 - (void)reset;
 

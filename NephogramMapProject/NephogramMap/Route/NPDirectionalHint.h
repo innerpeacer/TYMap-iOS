@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <ArcGIS/ArcGIS.h>
 #import "NPLandmark.h"
+#import "NPRoutePart.h"
 
 #define INITIAL_EMPTY_ANGLE 1000
 
@@ -38,6 +39,7 @@ typedef enum {
 
 @property (nonatomic, strong) NPLandmark *landMark;
 
+@property (nonatomic, weak) NPRoutePart *routePart;
 
 - (NSString *)getDirectionString;
 - (NSString *)getLandMarkString;

@@ -17,9 +17,7 @@
 #import "NPLocationDisplay.h"
 #import "NPMarkerSymbol.h"
 #import "NPPictureMarkerSymbol.h"
-
 #import "NPRouteResult.h"
-#import "NPRouteResultV2.h"
 
 #import "NPDirectionalHint.h"
 
@@ -129,9 +127,7 @@ typedef enum {
 - (void)setRouteStartSymbol:(NPPictureMarkerSymbol *)symbol;
 - (void)setRouteEndSymbol:(NPPictureMarkerSymbol *)symbol;
 - (void)setRouteSwitchSymbol:(NPPictureMarkerSymbol *)symbol;
-
 - (void)setRouteResult:(NPRouteResult *)result;
-- (void)setRouteResultV2:(NPRouteResultV2 *)result;
 
 - (void)setRouteStart:(NPLocalPoint *)start;
 - (void)setRouteEnd:(NPLocalPoint *)end;
