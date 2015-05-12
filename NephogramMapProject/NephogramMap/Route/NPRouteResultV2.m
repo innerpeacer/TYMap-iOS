@@ -10,6 +10,7 @@
 #import "NPLandmarkManager.h"
 #import "Vector2.h"
 #import "NPPolyline.h"
+#import "NPMapEnviroment.h"
 
 @interface NPRouteResultV2()
 {
@@ -49,6 +50,54 @@
         _allFloorRoutePartDict = tempDict;
     }
     return self;
+}
+
+- (BOOL)isDeviatingFromRoute:(NPLocalPoint *)point WithThrehold:(double)distance
+{
+    BOOL isDeviating = YES;
+    
+    int floor = point.floor;
+    AGSPoint *pos = [AGSPoint pointWithX:point.x y:point.y spatialReference:[NPMapEnvironment defaultSpatialReference]];
+    
+    NSArray *rpArray = [_allFloorRoutePartDict objectForKey:@(floor)];
+    if (rpArray && rpArray.count > 0) {
+        for (NPRoutePart *rp in rpArray) {
+            AGSProximityResult *pr = [[AGSGeometryEngine defaultGeometryEngine] nearestCoordinateInGeometry:rp.route toPoint:pos];
+            AGSPoint *nearestPoint = pr.point;
+            
+            double nearestDistance = [[AGSGeometryEngine defaultGeometryEngine] distanceFromGeometry:pos toGeometry:nearestPoint];
+            if (nearestDistance <= distance) {
+                isDeviating = NO;
+                return isDeviating;
+            }
+        }
+    }
+    return isDeviating;
+}
+
+- (NPRoutePart *)getNearestRoutePart:(NPLocalPoint *)location
+{
+    NPRoutePart *result = nil;
+    
+    int floor = location.floor;
+    double nearestDistance = 1000000;
+    
+    AGSPoint *pos = [AGSPoint pointWithX:location.x y:location.y spatialReference:[NPMapEnvironment defaultSpatialReference]];
+    
+    NSArray *rpArray = [_allFloorRoutePartDict objectForKey:@(floor)];
+    if (rpArray && rpArray.count > 0) {
+        for (NPRoutePart *rp in rpArray) {
+            AGSProximityResult *pr = [[AGSGeometryEngine defaultGeometryEngine] nearestCoordinateInGeometry:rp.route toPoint:pos];
+            AGSPoint *nearestPoint = pr.point;
+            
+            double distance = [[AGSGeometryEngine defaultGeometryEngine] distanceFromGeometry:pos toGeometry:nearestPoint];
+            if (distance < nearestDistance) {
+                nearestDistance = distance;
+                result = rp;
+            }
+        }
+    }
+    return result;
 }
 
 - (NSArray *)getRoutePartsOnFloor:(int)floor
@@ -97,6 +146,28 @@
     }
     
     return result;
+}
+
+- (NPDirectionalHint *)getDirectionHintForLocation:(NPLocalPoint *)location FromHints:(NSArray *)directions
+{
+    AGSMutablePolyline *line = [[AGSMutablePolyline alloc] init];
+    [line addPathToPolyline];
+    
+    for (NPDirectionalHint *hint in directions) {
+        [line addPointToPath:hint.startPoint];
+    }
+    
+    NPDirectionalHint *lastHint = [directions lastObject];
+    if (lastHint) {
+        [line addPointToPath:lastHint.endPoint];
+    }
+    
+    AGSPoint *pos = [AGSPoint pointWithX:location.x y:location.y spatialReference:[NPMapEnvironment defaultSpatialReference]];
+    AGSProximityResult *pr = [[AGSGeometryEngine defaultGeometryEngine] nearestCoordinateInGeometry:line toPoint:pos];
+    
+    int index = (int)pr.pointIndex;
+    
+    return [directions objectAtIndex:index];
 }
 
 - (AGSPolyline *)processPolyline:(AGSPolyline *)polyline

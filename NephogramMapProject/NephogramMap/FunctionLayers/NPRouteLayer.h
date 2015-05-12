@@ -46,6 +46,9 @@
 //- (AGSPolyline *)showRouteResultOnFloor:(int)floor;
 - (NSArray *)showRouteResultOnFloor:(int)floor;
 
+- (NSArray *)showRemainingRouteResultOnFloor:(int)floor WithLocation:(NPLocalPoint *)location;
+- (NPRoutePart *)getNearestRoutePartWithLocation:(NPLocalPoint *)location;
+
 //- (AGSPolyline *)showRemaingRouteResultOnFloor:(int)floor WithLocation:(NPLocalPoint *)location;
 //- (AGSPolyline *)getRemainingLine:(AGSPolyline *)originalLine WithPoint:(AGSPoint *)point;
 

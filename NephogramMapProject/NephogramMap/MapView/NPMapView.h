@@ -144,7 +144,7 @@ typedef enum {
 - (void)showRouteSwitchSymbolOnCurrentFloor:(NPLocalPoint *)sp;
 
 - (void)showRouteResultOnCurrentFloor;
-//- (void)showRemainingRouteResultOnCurrentFloor:(NPLocalPoint *)lp;
+- (void)showRemainingRouteResultOnCurrentFloor:(NPLocalPoint *)lp;
 
 - (void)showRouteHintForDirectionHint:(NPDirectionalHint *)ds Centered:(BOOL)isCentered;
 

@@ -17,11 +17,11 @@
 
 @interface NPRouteResult : NSObject
 
-+ (NPRouteResult *)routeResultWithDict:(NSDictionary *)dict FloorArray:(NSArray *)array;
 
 @property (nonatomic, readonly) NSDictionary *routeGraphicDict;
 @property (nonatomic, readonly) NSArray *routeFloorArray;
 
++ (NPRouteResult *)routeResultWithDict:(NSDictionary *)dict FloorArray:(NSArray *)array;
 
 - (NPPolyline *)getRouteOnFloor:(int)floorIndex;
 - (NPPoint *)getFirstPointOnFloor:(int)floorIndex;

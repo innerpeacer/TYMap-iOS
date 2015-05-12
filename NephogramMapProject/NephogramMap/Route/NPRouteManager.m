@@ -67,7 +67,7 @@
     routeTaskParams.outputGeometryPrecisionUnits = AGSUnitsMeters;
     
     routeTaskParams.returnRouteGraphics = YES;
-    routeTaskParams.returnDirections = YES;
+    routeTaskParams.returnDirections = NO;
     
     routeTaskParams.findBestSequence = YES;
     routeTaskParams.preserveFirstStop = YES;
@@ -95,18 +95,9 @@
 //    NSLog(@"didSolveWithResult");
     
     AGSRouteResult *routeResult = [routeTaskResult.routeResults firstObject];
-    
     if (routeResult) {
-        
         NPRouteResult *result = [self processRouteResult:routeResult];
-        
-        NSArray *array = [self processRouteResultV2:routeResult];
-        NPRouteResultV2 *result_V2 = [NPRouteResultV2 routeResultWithRouteParts:array];
-        
-        NSLog(@"%d parts", (int)array.count);
-        for (NPRoutePart *rp in array) {
-            NSLog(@"%@", rp);
-        }
+        NPRouteResultV2 *result_V2 = [self processRouteResultV2:routeResult];
         
         if (result == nil) {
             return;
@@ -167,7 +158,7 @@
     return [NPRouteResult routeResultWithDict:routeDict FloorArray:floorArray];
 }
 
-- (NSArray *)processRouteResultV2:(AGSRouteResult *)rs
+- (NPRouteResultV2 *)processRouteResultV2:(AGSRouteResult *)rs
 {
     NSMutableArray *pointArray = [[NSMutableArray alloc] init];
     NSMutableArray *floorArray = [[NSMutableArray alloc] init];
@@ -234,7 +225,7 @@
         
     }
     
-    return routePartArray;
+    return [NPRouteResultV2 routeResultWithRouteParts:routePartArray];
 }
 
 - (void)routeTask:(AGSRouteTask *)routeTask operation:(NSOperation *)op didFailToRetrieveDefaultRouteTaskParametersWithError:(NSError *)error

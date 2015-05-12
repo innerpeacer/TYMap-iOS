@@ -18,10 +18,15 @@
 
 + (NPRouteResultV2 *)routeResultWithRouteParts:(NSArray *)routePartArray;
 
+- (BOOL)isDeviatingFromRoute:(NPLocalPoint *)point WithThrehold:(double)distance;
+
+- (NPRoutePart *)getNearestRoutePart:(NPLocalPoint *)location;
+
 - (NSArray *)getRoutePartsOnFloor:(int)floor;
 
 - (NPRoutePart *)getRoutePart:(int)index;
 
 - (NSArray *)getRouteDirectionalHint:(NPRoutePart *)rp;
+- (NPDirectionalHint *)getDirectionHintForLocation:(NPLocalPoint *)location FromHints:(NSArray *)directions;
 
 @end

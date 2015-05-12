@@ -38,18 +38,6 @@
     return self;
 }
 
-//- (AGSPolyline *)showRouteResultOnFloor:(int)floor
-//{
-//    [self removeAllGraphics];
-//    
-//    AGSPolyline *lineToReturn = [self showLineForRouteResultOnFloor:floor];
-//    [self showSwitchSymbolForRouteResultOnFloor:floor];
-//    [self showStartSymbol:self.startPoint];
-//    [self showEndSymbol:self.endPoint];
-//    
-//    return lineToReturn;
-//}
-
 - (NSArray *)showRouteResultOnFloor:(int)floor
 {
     [self removeAllGraphics];
@@ -75,6 +63,19 @@
 //    return lineToReturn;
 //}
 
+- (NSArray *)showRemainingRouteResultOnFloor:(int)floor WithLocation:(NPLocalPoint *)location
+{
+    [self removeAllGraphics];
+    
+    NSArray *linesToReturn = [self showRemainingLinesForResultOnFloor:floor WithLocation:location];
+    
+    [self showSwitchSymbolForRouteResultOnFloor:floor];
+    [self showStartSymbol:self.startPoint];
+    [self showEndSymbol: self.endPoint];
+    
+    return linesToReturn;
+}
+
 - (void)showSwitchSymbolForRouteResultOnFloor:(int)floor
 {
     if (_routeResultV2) {
@@ -93,19 +94,6 @@
         }
     }
 }
-
-//- (AGSPolyline *)showLineForRouteResultOnFloor:(int)floor
-//{
-//    if (_routeResult) {
-//        AGSPolyline *line = [_routeResult getRouteOnFloor:floor];
-//        if (line) {
-//            [self addGraphic:[NPGraphic graphicWithGeometry:line symbol:nil attributes:nil]];
-////            [self showRouteArrow:line];
-//            return line;
-//        }
-//    }
-//    return nil;
-//}
 
 - (NSArray *)showLinesForRouteResultOnFloor:(int)floor
 {
@@ -141,31 +129,80 @@
 //    return nil;
 //}
 
-//- (AGSPolyline *)getRemainingLine:(AGSPolyline *)originalLine WithPoint:(AGSPoint *)point
-//{
-//    AGSPolyline *result = nil;
-//    
-//    AGSPoint *lastPoint = [originalLine pointOnPath:0 atIndex:originalLine.numPoints-1];
-//    
-//    AGSGeometryEngine *engine = [AGSGeometryEngine defaultGeometryEngine];
-//    AGSProximityResult *proximitResult = [engine nearestCoordinateInGeometry:originalLine toPoint:point];
-//    AGSPoint *cutPoint = proximitResult.point;
-//    
-//    AGSMutablePolyline *cutLine = [[AGSMutablePolyline alloc] init];
-//    [cutLine addPathToPolyline];
-//    [cutLine addPointToPath:point];
-//    [cutLine addPointToPath:cutPoint];
-//    
-//    NSArray *cuttedLineArray = [engine cutGeometry:originalLine withCutter:cutLine];
-//    
-//    for (AGSPolyline *line in cuttedLineArray) {
-//        BOOL isLastHalf = [engine geometry:line touchesGeometry:lastPoint];
-//        if (isLastHalf) {
-//            result = line;
-//        }
-//    }
-//    return result;
-//}
+- (NPRoutePart *)getNearestRoutePartWithLocation:(NPLocalPoint *)location
+{
+    NPRoutePart *result = nil;
+    if (_routeResultV2) {
+        NSArray *routePartArray = [_routeResultV2 getRoutePartsOnFloor:location.floor];
+        if (routePartArray && routePartArray.count > 0) {
+            double nearestDistance = 10000000;
+            
+            AGSGeometryEngine *engine = [AGSGeometryEngine defaultGeometryEngine];
+            AGSPoint *pos = [AGSPoint pointWithX:location.x y:location.y spatialReference:[NPMapEnvironment defaultSpatialReference]];
+            for (NPRoutePart *rp in routePartArray) {
+                AGSProximityResult *pr = [engine nearestCoordinateInGeometry:rp.route toPoint:pos];
+                double distance = [engine distanceFromGeometry:pr.point toGeometry:pos];
+                if (distance < nearestDistance) {
+                    nearestDistance = distance;
+                    result = rp;
+                }
+            }
+        }
+    }
+    return result;
+}
+
+- (NSArray *)showRemainingLinesForResultOnFloor:(int)floor WithLocation:(NPLocalPoint *)location
+{
+    NSMutableArray *linesToReturn = [[NSMutableArray alloc] init];
+    NPRoutePart *nearestRoutePart = [self getNearestRoutePartWithLocation:location];
+    
+    if (_routeResultV2) {
+        NSArray *routePartArray = [_routeResultV2 getRoutePartsOnFloor:floor];
+        if (routePartArray && routePartArray.count > 0) {
+            for (NPRoutePart *rp in routePartArray) {
+                if (rp == nearestRoutePart) {
+                    AGSPolyline *remainingLine = [self getRemainingLine:rp.route WithPoint:[AGSPoint pointWithX:location.x y:location.y spatialReference:[NPMapEnvironment defaultSpatialReference]]];
+                    if (remainingLine) {
+                        [self addGraphic:[NPGraphic graphicWithGeometry:remainingLine symbol:nil attributes:nil]];
+                        [linesToReturn addObject:remainingLine];
+                    }
+                } else {
+                    [self addGraphic:[NPGraphic graphicWithGeometry:rp.route symbol:nil attributes:nil]];
+                    [linesToReturn addObject:rp.route];
+                }
+            }
+        }
+    }
+    return linesToReturn;
+}
+
+- (AGSPolyline *)getRemainingLine:(AGSPolyline *)originalLine WithPoint:(AGSPoint *)point
+{
+    AGSPolyline *result = nil;
+    
+    AGSPoint *lastPoint = [originalLine pointOnPath:0 atIndex:originalLine.numPoints-1];
+    
+    AGSGeometryEngine *engine = [AGSGeometryEngine defaultGeometryEngine];
+    AGSProximityResult *proximitResult = [engine nearestCoordinateInGeometry:originalLine toPoint:point];
+    AGSPoint *cutPoint = proximitResult.point;
+    
+    AGSMutablePolyline *cutLine = [[AGSMutablePolyline alloc] init];
+    [cutLine addPathToPolyline];
+    [cutLine addPointToPath:point];
+    [cutLine addPointToPath:cutPoint];
+    
+    NSArray *cuttedLineArray = [engine cutGeometry:originalLine withCutter:cutLine];
+    
+    for (AGSPolyline *line in cuttedLineArray) {
+        BOOL isLastHalf = [engine geometry:line touchesGeometry:lastPoint];
+        if (isLastHalf) {
+            result = line;
+        }
+    }
+    return result;
+}
+
 
 - (void)reset
 {

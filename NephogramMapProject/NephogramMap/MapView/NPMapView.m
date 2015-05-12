@@ -60,6 +60,17 @@
 - (void)setFloorWithInfo:(NPMapInfo *)info
 {
     
+    NSString* invalidDateString = @"20150811";
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyyMMdd"];
+    NSDate* invalidDate = [dateFormatter dateFromString:invalidDateString];
+    NSTimeInterval interval = [invalidDate timeIntervalSinceDate:[NSDate date]];
+    if (interval < 0) {
+        NSLog(@"抱歉，SDK已过期");
+        return;
+    }
+    
+    
     if ([info.mapID isEqualToString:_currentMapInfo.mapID]) {
         return;
     }
@@ -501,13 +512,18 @@
     }
 }
 
-//- (void)showRemainingRouteResultOnCurrentFloor:(NPLocalPoint *)lp
-//{
+- (void)showRemainingRouteResultOnCurrentFloor:(NPLocalPoint *)lp
+{
 //    AGSPolyline *lineToShow = [routeLayer showRemaingRouteResultOnFloor:self.currentMapInfo.floorNumber WithLocation:lp];
 //    if (lineToShow) {
 //        [routeArrowLayer showRouteArrow:lineToShow];
 //    }
-//}
+    
+    NSArray *linesToShow = [routeLayer showRemainingRouteResultOnFloor:self.currentMapInfo.floorNumber WithLocation:lp];
+    if (linesToShow && linesToShow.count > 0) {
+        [routeArrowLayer showRouteArrow:linesToShow];
+    }
+}
 
 
 

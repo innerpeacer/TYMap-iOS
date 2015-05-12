@@ -138,7 +138,7 @@
             ts.angleAlignment = AGSMarkerSymbolAngleAlignmentScreen;
             ts.hAlignment = AGSTextSymbolHAlignmentCenter;
             ts.vAlignment = AGSTextSymbolVAlignmentMiddle;
-            ts.fontSize = 10.0f;
+            ts.fontSize = 8.0f;
             ts.fontFamily = @"Heiti SC";
             textLabel.textSymbol = ts;
             
