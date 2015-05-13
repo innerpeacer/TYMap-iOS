@@ -31,7 +31,7 @@
     NPLocalPoint *endLocalPoint;
     
     BOOL isRouting;
-    NPRouteResult *routeResult_V2;
+    NPRouteResult *routeResult;
     
     NPRoutePart *currentRoutePart;
     NSArray *routeGuides;
@@ -50,6 +50,7 @@
 - (IBAction)reset:(id)sender;
 
 @property (weak, nonatomic) IBOutlet UILabel *routeHintLabel;
+
 @end
 
 @implementation MapRouteVC
@@ -97,27 +98,27 @@
 //    NSLog(@"didFailToRetrieveDefaultRouteTaskParametersWithError:\n%@", error.localizedDescription);
 }
 
-- (void)routeManager:(NPRouteManager *)routeManager didSolveRouteWithResult:(NPRouteResult *)rs_V2
+- (void)routeManager:(NPRouteManager *)routeManager didSolveRouteWithResult:(NPRouteResult *)rs
 {
 //    NSLog(@"routeManager: didSolveRouteWithResult:");
     
     [hintLayer removeAllGraphics];
     
-    routeResult_V2 = rs_V2;
+    routeResult = rs;
     
-    [self.mapView setRouteResult:rs_V2];
+    [self.mapView setRouteResult:rs];
     
     [self.mapView setRouteStart:startLocalPoint];
     [self.mapView setRouteEnd:endLocalPoint];
     [self.mapView showRouteResultOnCurrentFloor];
     
-    NSArray *routePartArray = [routeResult_V2 getRoutePartsOnFloor:self.currentMapInfo.floorNumber];
+    NSArray *routePartArray = [routeResult getRoutePartsOnFloor:self.currentMapInfo.floorNumber];
     if (routePartArray && routePartArray.count > 0) {
         currentRoutePart = [routePartArray objectAtIndex:0];
     }
     
     if (currentRoutePart) {
-        routeGuides = [routeResult_V2 getRouteDirectionalHint:currentRoutePart];
+        routeGuides = [routeResult getRouteDirectionalHint:currentRoutePart];
     }
     
 //    for (NPDirectionalHint *ds in routeGuides) {
@@ -166,7 +167,7 @@ int testIndex = 0;
     [hintLayer removeAllGraphics];
     [hintLayer addGraphic:[AGSGraphic graphicWithGeometry:mappoint symbol:sms attributes:nil]];
     
-    if (routeResult_V2) {
+    if (routeResult) {
 //        BOOL isDeviating = [routeResult isDeviatingFromRoute:localPoint WithThrehold:10.0];
 //        
 //        if (isDeviating) {
@@ -177,14 +178,14 @@ int testIndex = 0;
 //            [self.mapView showRemainingRouteResultOnCurrentFloor:localPoint];
 //        }
         
-        NPRoutePart *nearestPart = [routeResult_V2 getNearestRoutePart:localPoint];
+        NPRoutePart *nearestPart = [routeResult getNearestRoutePart:localPoint];
         if (nearestPart != currentRoutePart) {
             currentRoutePart = nearestPart;
-            routeGuides = [routeResult_V2 getRouteDirectionalHint:currentRoutePart];
+            routeGuides = [routeResult getRouteDirectionalHint:currentRoutePart];
         }
         
         if (routeGuides && routeGuides.count > 0) {
-            NPDirectionalHint *hint = [routeResult_V2 getDirectionHintForLocation:localPoint FromHints:routeGuides];
+            NPDirectionalHint *hint = [routeResult getDirectionHintForLocation:localPoint FromHints:routeGuides];
             [self.mapView showRouteHintForDirectionHint:hint Centered:YES];
             self.routeHintLabel.text = [hint getDirectionString];
         }
@@ -210,7 +211,7 @@ int testIndex = 0;
         return;
     }
     
-    routeResult_V2 = nil;
+    routeResult = nil;
     isRouting = YES;
     
     [routeManager requestRouteWithStart:startLocalPoint End:endLocalPoint];
@@ -226,7 +227,7 @@ int testIndex = 0;
     currentPoint = nil;
     
     isRouting = NO;
-    routeResult_V2 = nil;
+    routeResult = nil;
 }
 
 @end
