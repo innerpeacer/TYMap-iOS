@@ -60,16 +60,15 @@
 - (void)setFloorWithInfo:(NPMapInfo *)info
 {
     
-    NSString* invalidDateString = @"20150811";
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyyMMdd"];
-    NSDate* invalidDate = [dateFormatter dateFromString:invalidDateString];
-    NSTimeInterval interval = [invalidDate timeIntervalSinceDate:[NSDate date]];
-    if (interval < 0) {
-        NSLog(@"抱歉，SDK已过期");
-        return;
-    }
-    
+//    NSString* invalidDateString = @"20150811";
+//    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+//    [dateFormatter setDateFormat:@"yyyyMMdd"];
+//    NSDate* invalidDate = [dateFormatter dateFromString:invalidDateString];
+//    NSTimeInterval interval = [invalidDate timeIntervalSinceDate:[NSDate date]];
+//    if (interval < 0) {
+//        NSLog(@"抱歉，SDK已过期");
+//        return;
+//    }
     
     if ([info.mapID isEqualToString:_currentMapInfo.mapID]) {
         return;

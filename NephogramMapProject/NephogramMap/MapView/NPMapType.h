@@ -18,6 +18,10 @@
 #define GRAPHIC_ATTRIBUTE_CATEGORY_ID @"CATEGORY_ID"
 #define GRAPHIC_ATTRIBUTE_FLOOR @"FLOOR"
 
+#define NAME_FIELD_TRADITIONAL_CHINESE @"NAME_TC"
+#define NAME_FIELD_SIMPLIFIED_CHINESE @"NAME"
+#define NAME_FIELD_ENGLISH @"NAME_EN"
+
 // =========== Map Layer Name ===================
 #define LAYER_NAME_FLOOR @"FloorLayer"
 #define LAYER_NAME_ROOM @"RoomLayer"
@@ -27,6 +31,5 @@
 #define LAYER_NAME_GROUP_LABEL @"LabelGroupLayer"
 
 #define LAYER_NAME_LOCATION @"LocationLayer"
-
 
 #endif

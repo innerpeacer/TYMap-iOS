@@ -13,7 +13,7 @@
 @interface NPRouteResult : NSObject
 
 
-@property (nonatomic, readonly) NSArray *allRoutePartsArray;
+@property (nonatomic, readonly) NSArray *allRoutePartArray;
 @property (nonatomic, readonly) NSDictionary *allFloorRoutePartDict;
 
 + (NPRouteResult *)routeResultWithRouteParts:(NSArray *)routePartArray;
@@ -27,7 +27,9 @@
 - (NPRoutePart *)getRoutePart:(int)index;
 
 - (NSArray *)getRouteDirectionalHint:(NPRoutePart *)rp;
+
 - (NPDirectionalHint *)getDirectionHintForLocation:(NPLocalPoint *)location FromHints:(NSArray *)directions;
 
 + (AGSPolyline *)getSubPolyline:(AGSPolyline *)originalLine WithStart:(AGSPoint *)start End:(AGSPoint *)end;
+
 @end

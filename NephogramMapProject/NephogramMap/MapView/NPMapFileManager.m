@@ -101,7 +101,7 @@
     return [buildingDir stringByAppendingPathComponent:fileName];
 }
 
-+ (NSString *)getLandMarkJsonPath:(NPMapInfo *)info
++ (NSString *)getLandmarkJsonPath:(NPMapInfo *)info
 {
     NSString *mapRootDir = [NPMapEnvironment getRootDirectoryForMapFiles];
     NSString *cityDir = [mapRootDir stringByAppendingPathComponent:info.cityID];

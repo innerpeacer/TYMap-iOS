@@ -45,7 +45,7 @@ static NPLandmarkManager *manager;
     [allLandmarks removeAllObjects];
     currentFloor = info.floorNumber;
     
-    NSString *path = [NPMapFileManager getLandMarkJsonPath:info];
+    NSString *path = [NPMapFileManager getLandmarkJsonPath:info];
     if ([[NSFileManager defaultManager] fileExistsAtPath:path isDirectory:nil]) {
 
         NSError *error = nil;

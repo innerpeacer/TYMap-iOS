@@ -54,7 +54,7 @@
 {
     [self removeAllGraphics];
     
-    NSArray *linesToReturn = [self showRemainingLinesForResultOnFloor:floor WithLocation:location];
+    NSArray *linesToReturn = [self showRemainingLinesForRouteResultOnFloor:floor WithLocation:location];
     
     [self showSwitchSymbolForRouteResultOnFloor:floor];
     [self showStartSymbol:self.startPoint];
@@ -92,7 +92,6 @@
                 [self addGraphic:[NPGraphic graphicWithGeometry:rp.route symbol:nil attributes:nil]];
                 [linesToReturn addObject:rp.route];
             }
-            return linesToReturn;
         }
     }
     return linesToReturn;
@@ -121,7 +120,7 @@
     return result;
 }
 
-- (NSArray *)showRemainingLinesForResultOnFloor:(int)floor WithLocation:(NPLocalPoint *)location
+- (NSArray *)showRemainingLinesForRouteResultOnFloor:(int)floor WithLocation:(NPLocalPoint *)location
 {
     NSMutableArray *linesToReturn = [[NSMutableArray alloc] init];
     NPRoutePart *nearestRoutePart = [self getNearestRoutePartWithLocation:location];
@@ -176,6 +175,8 @@
 - (void)reset
 {
     _routeResult = nil;
+    _startPoint = nil;
+    _endPoint = nil;
     [self removeAllGraphics];
 }
 

@@ -172,7 +172,6 @@
         if (i < routePartNum - 1) {
             p.nextPart = routePartArray[i+1];
         }
-        
     }
     
     return [NPRouteResult routeResultWithRouteParts:routePartArray];

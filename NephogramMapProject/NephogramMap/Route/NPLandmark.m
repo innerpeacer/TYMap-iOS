@@ -10,4 +10,9 @@
 
 @implementation NPLandmark
 
+- (NSString *)description
+{
+    return [NSString stringWithFormat:@"Landmark: %@", _name];
+}
+
 @end

@@ -31,7 +31,7 @@
     if (self) {
         NSMutableArray *tempArray = [[NSMutableArray alloc] init];
         [tempArray addObjectsFromArray:routePartArray];
-        _allRoutePartsArray = tempArray;
+        _allRoutePartArray = tempArray;
         
         NSMutableDictionary *tempDict = [[NSMutableDictionary alloc] init];
         for (int i = 0; i < tempArray.count; ++i) {
@@ -106,7 +106,7 @@
 
 - (NPRoutePart *)getRoutePart:(int)index
 {
-    return [_allRoutePartsArray objectAtIndex:index];
+    return [_allRoutePartArray objectAtIndex:index];
 }
 
 - (NSArray *)getRouteDirectionalHint:(NPRoutePart *)rp

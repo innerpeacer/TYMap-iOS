@@ -23,7 +23,7 @@
 + (NSString *)getAssetLayerPath:(NPMapInfo *)info;
 + (NSString *)getFacilityLayerPath:(NPMapInfo *)info;
 + (NSString *)getLabelLayerPath:(NPMapInfo *)info;
-+ (NSString *)getLandMarkJsonPath:(NPMapInfo *)info;
++ (NSString *)getLandmarkJsonPath:(NPMapInfo *)info;
 
 + (NSString *)getRenderingScheme:(NPBuilding *)building;
 

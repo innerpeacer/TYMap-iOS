@@ -77,10 +77,6 @@
     }
 }
 
-#define NAME_FIELD_TRADITIONAL_CHINESE @"NAME_TC"
-#define NAME_FIELD_SIMPLIFIED_CHINESE @"NAME"
-#define NAME_FIELD_ENGLISH @"NAME_EN"
-
 - (NSString *)getNameFieldForLanguage:(NPMapLanguage)l
 {
     NSString *result = nil;

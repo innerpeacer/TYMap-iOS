@@ -62,7 +62,7 @@
     AGSSimpleLineSymbol *sls1 = [AGSSimpleLineSymbol simpleLineSymbol];
     sls1.color = [UIColor colorWithRed:255/255.0f green:255/255.0f blue:255/255.0f alpha:1.0f];
     sls1.style = AGSSimpleLineSymbolStyleSolid;
-    sls1.width = 8;
+    sls1.width = 9;
     [cs addSymbol:sls1];
     
     AGSSimpleLineSymbol *sls2 = [AGSSimpleLineSymbol simpleLineSymbol];

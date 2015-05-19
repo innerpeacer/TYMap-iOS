@@ -15,7 +15,6 @@
 - (id)initWithRouteLine:(AGSPolyline *)route MapInfo:(NPMapInfo *)mapInfo;
 
 @property (nonatomic, strong, readonly) AGSPolyline *route;
-//@property (nonatomic, assign, readonly) int floor;
 @property (nonatomic, strong, readonly) NPMapInfo *info;
 
 @property (nonatomic, weak) NPRoutePart *previousPart;
