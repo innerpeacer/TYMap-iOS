@@ -14,7 +14,7 @@
 
 @interface NPLabelBorderCalculator : NSObject
 
-+ (AGSPolygon *)polygonFromCGRect:(CGRect)rect MapView:(NPMapView *)mapView;
+//+ (AGSPolygon *)polygonFromCGRect:(CGRect)rect MapView:(NPMapView *)mapView;
 
 
 + (NPLabelBorder *)getFacilityLabelBorder:(CGPoint)screenPoint;

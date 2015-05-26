@@ -1,53 +1,119 @@
 //
-//  NPRouteArrowLayer.m
+//  NPAnimatedRouteArrowLayer.m
 //  NephogramMapProject
 //
-//  Created by innerpeacer on 15/5/6.
+//  Created by innerpeacer on 15/5/25.
 //  Copyright (c) 2015年 innerpeacer. All rights reserved.
 //
 
-#import "NPRouteArrowLayer.h"
-#import "Vector2.h"
+#import "NPAnimatedRouteArrowLayer.h"
 #import "NPMapEnviroment.h"
+#import "Vector2.h"
 
-@interface NPRouteArrowLayer()
+@interface NPAnimatedRouteArrowLayer()
 {
-
+    NSTimer *timer;
+    double currentOffset;
 }
 
 @end
 
-@implementation NPRouteArrowLayer
+@implementation NPAnimatedRouteArrowLayer
 
-+ (NPRouteArrowLayer *)routeArrowLayerWithSpatialReference:(NPSpatialReference *)sr
++ (NPAnimatedRouteArrowLayer *)animatedRouteArrowLayerWithSpatialReference:(NPSpatialReference *)sr
 {
-    return [[NPRouteArrowLayer alloc] initWithSpatialReference:sr];
+    return [[NPAnimatedRouteArrowLayer alloc] initWithSpatialReference:sr];
 }
 
-- (id)initRouteArrowLayerWithSpatialReference:(NPSpatialReference *)sr
+- (id)initAnimatedRouteArrowWithSpatialReference:(NPSpatialReference *)sr
 {
     self = [super initWithSpatialReference:sr];
     if (self) {
-
+        
     }
     return self;
 }
 
 - (void)showRouteArrow:(NSArray *)array
 {
-    [self removeAllGraphics];
-    for (AGSPolyline *line in array) {
-        [self showRouteArrowForLine:line];
+    _lineToShow = array;
+    
+    if (_lineToShow == nil) {
+        return;
     }
+    
+    if (timer) {
+        [timer invalidate];
+    }
+    
+    timer = [NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(showArrowForLines) userInfo:nil repeats:YES];
+    
 }
 
-#define ARROW_INTERVAL 0.005
-- (void)showRouteArrowForLine:(AGSPolyline *)line
+#define ANIMATED_ARROW_INTERVAL 0.005
+#define OFFSET_INCREASING_INTERVAL 0.001
+
+- (void)showArrowForLines
 {
-    double interval = ARROW_INTERVAL * self.mapView.mapScale;
+    NSLog(@"showArrowForLines Fired!");
+    [self removeAllGraphics];
+    
+    if (currentOffset >= ANIMATED_ARROW_INTERVAL) {
+        currentOffset = 0;
+    }
+    currentOffset += OFFSET_INCREASING_INTERVAL;
+    
+    for (AGSPolyline *line in _lineToShow) {
+        [self showRouteArrowForLine:line withTranslation:currentOffset];
+    }
+
+}
+
+- (void)showRouteArrow:(NSArray *)array withTranslation:(double)translation
+{
+//    if (timer == nil) {
+//        timer = [NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(showRouteArrow:withTranslation:) userInfo:nil repeats:YES];
+//    }
+    
+//    if (currentArray == nil) {
+//        currentArray = array;
+//    }
+    
+//    [self removeAllGraphics];
+//    
+//    if (currentOffset >= ANIMATED_ARROW_INTERVAL) {
+//        currentOffset = 0;
+//    }
+//    currentOffset += OFFSET_INCREASING_INTERVAL;
+//    
+//    NSLog(@"Timer Fired: %f", currentOffset);
+//
+//    for (AGSPolyline *line in currentArray) {
+//        [self showRouteArrowForLine:line withTranslation:currentOffset];
+//    }
+}
+
+- (void)stopShowArrow
+{
+    if (timer) {
+        [timer invalidate];
+        timer = nil;
+    }
+    [self removeAllGraphics];
+}
+
+
+
+- (void)showRouteArrowForLine:(AGSPolyline *)line withTranslation:(double)translation
+{
+    double interval = ANIMATED_ARROW_INTERVAL * self.mapView.mapScale;
+    double translationInterval = translation * self.mapView.mapScale;
+//    double translationInterval = OFFSET_INCREASING_INTERVAL * self.mapView.mapScale;
+
+    
     double totalLength = [[AGSGeometryEngine defaultGeometryEngine] lengthOfGeometry:line];
     int numSegments = (int)line.numPoints - 1;
-    int numRoutePoints = (int)(totalLength / interval);
+    int numRoutePoints = (int)((totalLength - translationInterval)/ interval);
     
     if (numRoutePoints < 1) {
         return;
@@ -69,19 +135,17 @@
     
     int currentSegmentIndex = 0;
     NSMutableArray *routePointSegmentArray = [[NSMutableArray alloc] init];
-    [routePointSegmentArray addObject:@(0)];
-    for (int i = 1; i < numRoutePoints; ++i) {
-        double offset = interval * i;
+    for (int i = 0; i < numRoutePoints; ++i) {
+        double offset = interval * i + translationInterval;
         double currentAccumulativeLength = [accumulativeLengthArray[currentSegmentIndex] doubleValue];
-        while (currentAccumulativeLength < offset) {
+        while (currentAccumulativeLength <= offset) {
             currentSegmentIndex++;
             currentAccumulativeLength = [accumulativeLengthArray[currentSegmentIndex] doubleValue];
         }
-        
         [routePointSegmentArray addObject:@(currentSegmentIndex-1)];
     }
     
-    for (int i = 1; i < numRoutePoints; ++i) {
+    for (int i = 0; i < numRoutePoints; ++i) {
         int currentSegment = [[routePointSegmentArray objectAtIndex:i] intValue];
         
         currentStart = [line pointOnPath:0 atIndex:currentSegment];
@@ -95,13 +159,14 @@
         v.y = currentEnd.y - currentStart.y;
         double currentAngle = [v getAngle];
         
-        AGSPoint *point = [self getPointFrom:currentStart To:currentEnd withSegmentLength:currentSegmentLength withOffset: (i) * interval - currentAccumulativeLength];
+        AGSPoint *point = [self getPointFrom:currentStart To:currentEnd withSegmentLength:currentSegmentLength withOffset: (i) * interval - currentAccumulativeLength + translationInterval];
         
         NPPictureMarkerSymbol *pms = [NPPictureMarkerSymbol pictureMarkerSymbolWithImageNamed:@"routeArrow"];
         
         pms.angle = currentAngle;
         [self addGraphic:[AGSGraphic graphicWithGeometry:point symbol:pms attributes:nil]];
     }
+    
 }
 
 - (AGSPoint *)getPointFrom:(AGSPoint *)start To:(AGSPoint *)end withSegmentLength:(double)length withOffset:(double)offset
@@ -113,6 +178,5 @@
     
     return [AGSPoint pointWithX:x y:y spatialReference:[NPMapEnvironment defaultSpatialReference]];
 }
-
 
 @end

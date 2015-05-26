@@ -22,6 +22,8 @@
     NSString *documentDirectory = [paths objectAtIndex:0];
     NSLog(@"%@", documentDirectory);
     
+    
+    
     [NPMapEnvironment initMapEnvironment];
     
 //    [NPMapEnvironment setMapLanguage:NPTraditionalChinese];
@@ -45,7 +47,7 @@
 //
 //    [NPUserDefaults setDefaultCity:@"H852"];
 //    [NPUserDefaults setDefaultBuilding:@"H85200001"];
-//    
+//
 //    [NPUserDefaults setDefaultCity:@"H852"];
 //    [NPUserDefaults setDefaultBuilding:@"H85200001"];
     

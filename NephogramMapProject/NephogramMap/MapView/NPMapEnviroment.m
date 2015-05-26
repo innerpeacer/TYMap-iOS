@@ -55,6 +55,10 @@ static NSString *mapFileRootDirectory;
     if(error){
         NSLog(@"Error using client ID : %@",[error localizedDescription]);
     }
+    
+    [[AGSRuntimeEnvironment license] setLicenseCode:@"runtimestandard,101,rud514140042,none, 8SF97XLL6S875E5HJ220"];
+    
+//    ArcGISRuntime.SetLicense("runtimestandard,101,rud514140042,none, 8SF97XLL6S875E5HJ220");
 }
 
 static NPMapLanguage mapLanguage = NPSimplifiedChinese;

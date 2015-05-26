@@ -67,9 +67,12 @@
     routeManager = [NPRouteManager routeManagerWithBuilding:self.currentBuilding credential:[NPMapEnvironment defaultCredential] MapInfos:self.allMapInfos];
     routeManager.delegate = self;
     
-    [self.mapView zoomToEnvelope:[AGSEnvelope envelopeWithXmin:1780 ymin:432.187299 xmax:1944.755560 ymax:658.589997 spatialReference:[NPMapEnvironment defaultSpatialReference]] animated:YES];
-    startLocalPoint = [NPLocalPoint pointWithX:1779.204079 Y:581.868337 Floor:self.mapView.currentMapInfo.floorNumber];
-    endLocalPoint = [NPLocalPoint pointWithX:1917 Y:558 Floor:self.mapView.currentMapInfo.floorNumber];
+//    [self.mapView zoomToEnvelope:[AGSEnvelope envelopeWithXmin:1780 ymin:432.187299 xmax:1944.755560 ymax:658.589997 spatialReference:[NPMapEnvironment defaultSpatialReference]] animated:YES];
+//    startLocalPoint = [NPLocalPoint pointWithX:1779.204079 Y:581.868337 Floor:self.mapView.currentMapInfo.floorNumber];
+//    endLocalPoint = [NPLocalPoint pointWithX:1917 Y:558 Floor:self.mapView.currentMapInfo.floorNumber];
+    
+    startLocalPoint = [NPLocalPoint pointWithX:-16368295.127012 Y:406.263263 Floor:self.mapView.currentMapInfo.floorNumber];
+    endLocalPoint = [NPLocalPoint pointWithX:-16368298.841312 Y:417.294456 Floor:self.mapView.currentMapInfo.floorNumber];
 
 }
 

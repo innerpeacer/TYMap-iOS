@@ -16,6 +16,7 @@
 		570DB3F21A890649001D137E /* MapRouteVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 570DB3F11A890649001D137E /* MapRouteVC.m */; };
 		570DB3F51A890653001D137E /* MapCalloutVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 570DB3F41A890653001D137E /* MapCalloutVC.m */; };
 		570DB3F81A890664001D137E /* CustomCalloutVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 570DB3F71A890664001D137E /* CustomCalloutVC.m */; };
+		5711C9961B131B8800C6C2E3 /* NPAnimatedRouteArrowLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5711C9951B131B8800C6C2E3 /* NPAnimatedRouteArrowLayer.m */; };
 		571310B31ABC217500E980F9 /* NephogramData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 571310B21ABC217500E980F9 /* NephogramData.framework */; };
 		571E58981AB921FC007B36DD /* NPRoutePointConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 571E58971AB921FC007B36DD /* NPRoutePointConverter.m */; };
 		57306D9E1B0047A300DE2F32 /* NPRouteResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 57306D9D1B0047A300DE2F32 /* NPRouteResult.m */; };
@@ -105,6 +106,8 @@
 		570DB3F41A890653001D137E /* MapCalloutVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapCalloutVC.m; sourceTree = "<group>"; };
 		570DB3F61A890664001D137E /* CustomCalloutVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCalloutVC.h; sourceTree = "<group>"; };
 		570DB3F71A890664001D137E /* CustomCalloutVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCalloutVC.m; sourceTree = "<group>"; };
+		5711C9941B131B8800C6C2E3 /* NPAnimatedRouteArrowLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPAnimatedRouteArrowLayer.h; sourceTree = "<group>"; };
+		5711C9951B131B8800C6C2E3 /* NPAnimatedRouteArrowLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPAnimatedRouteArrowLayer.m; sourceTree = "<group>"; };
 		571310B21ABC217500E980F9 /* NephogramData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = NephogramData.framework; sourceTree = "<group>"; };
 		571E58961AB921FC007B36DD /* NPRoutePointConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPRoutePointConverter.h; sourceTree = "<group>"; };
 		571E58971AB921FC007B36DD /* NPRoutePointConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPRoutePointConverter.m; sourceTree = "<group>"; };
@@ -377,6 +380,8 @@
 				5772869E1AF9EB6A008F3363 /* NPRouteArrowLayer.m */,
 				577286A01AF9EB78008F3363 /* NPRouteHintLayer.h */,
 				577286A11AF9EB78008F3363 /* NPRouteHintLayer.m */,
+				5711C9941B131B8800C6C2E3 /* NPAnimatedRouteArrowLayer.h */,
+				5711C9951B131B8800C6C2E3 /* NPAnimatedRouteArrowLayer.m */,
 			);
 			path = FunctionLayers;
 			sourceTree = "<group>";
@@ -672,6 +677,7 @@
 				57F06D061A87C1B700B9511F /* NPMapEnviroment.m in Sources */,
 				574443EF1AAED36300E6232C /* FMDatabaseAdditions.m in Sources */,
 				57AD3F841ACCD9810013B1E0 /* NPCredential.m in Sources */,
+				5711C9961B131B8800C6C2E3 /* NPAnimatedRouteArrowLayer.m in Sources */,
 				57F06C261A87BC7500B9511F /* AppDelegate.m in Sources */,
 				57AD3F941ACCDE710013B1E0 /* NPMarkerSymbol.m in Sources */,
 				57AD3F691ACBE0C30013B1E0 /* NPPathCalibration.m in Sources */,

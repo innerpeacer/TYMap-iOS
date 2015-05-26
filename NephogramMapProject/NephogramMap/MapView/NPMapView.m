@@ -18,6 +18,8 @@
 #import "NPLabelGroupLayer.h"
 #import "NPRouteLayer.h"
 #import "NPRouteArrowLayer.h"
+#import "NPAnimatedRouteArrowLayer.h"
+
 #import "NPRouteHintLayer.h"
 
 @interface NPMapView() <AGSMapViewTouchDelegate, AGSMapViewLayerDelegate, AGSCalloutDelegate>
@@ -29,7 +31,8 @@
     
     NPLocationLayer *locationLayer;
     NPRouteLayer *routeLayer;
-    NPRouteArrowLayer *routeArrowLayer;
+//    NPRouteArrowLayer *routeArrowLayer;
+    NPAnimatedRouteArrowLayer *animatedRouteArrowLayer;
     NPRouteHintLayer *routeHintLayer;
     
     AGSEnvelope *initialEnvelope;
@@ -79,7 +82,9 @@
     [locationLayer removeAllGraphics];
     [routeLayer removeAllGraphics];
     [routeHintLayer removeAllGraphics];
-    [routeArrowLayer removeAllGraphics];
+    
+//    [routeArrowLayer removeAllGraphics];
+    [animatedRouteArrowLayer stopShowArrow];
     
     [structureGroupLayer loadContentsWithInfo:info];
     [labelGroupLayer loadContentsWithInfo:info];
@@ -141,9 +146,13 @@
     [self addMapLayer:routeHintLayer];
     routeHintLayer.allowHitTest = NO;
     
-    routeArrowLayer = [NPRouteArrowLayer routeArrowLayerWithSpatialReference:[NPMapEnvironment defaultSpatialReference]];
-    [self addMapLayer:routeArrowLayer];
-    routeArrowLayer.allowHitTest = NO;
+//    routeArrowLayer = [NPRouteArrowLayer routeArrowLayerWithSpatialReference:[NPMapEnvironment defaultSpatialReference]];
+//    [self addMapLayer:routeArrowLayer];
+//    routeArrowLayer.allowHitTest = NO;
+    
+    animatedRouteArrowLayer = [NPAnimatedRouteArrowLayer animatedRouteArrowLayerWithSpatialReference:[NPMapEnvironment defaultSpatialReference]];
+    [self addMapLayer:animatedRouteArrowLayer];
+    animatedRouteArrowLayer.allowHitTest = NO;
 
     locationLayer = [[NPLocationLayer alloc] initWithSpatialReference:spatialReference];
     [self addMapLayer:locationLayer withName:LAYER_NAME_LOCATION];
@@ -212,14 +221,16 @@
 {
     [routeLayer reset];
     [routeHintLayer removeAllGraphics];
-    [routeArrowLayer removeAllGraphics];
+//    [routeArrowLayer removeAllGraphics];
+    [animatedRouteArrowLayer stopShowArrow];
 }
 
 - (void)clearRouteLayer
 {
     [routeLayer removeAllGraphics];
     [routeHintLayer removeAllGraphics];
-    [routeArrowLayer removeAllGraphics];
+//    [routeArrowLayer removeAllGraphics];
+    [animatedRouteArrowLayer stopShowArrow];
 }
 
 - (void)showRouteStartSymbolOnCurrentFloor:(NPLocalPoint *)sp
@@ -497,7 +508,9 @@
 {
     NSArray *linesToShow = [routeLayer showRouteResultOnFloor:self.currentMapInfo.floorNumber];
     if (linesToShow && linesToShow.count > 0) {
-        [routeArrowLayer showRouteArrow:linesToShow];
+//        [routeArrowLayer showRouteArrow:linesToShow];
+        [animatedRouteArrowLayer showRouteArrow:linesToShow];
+//        [animatedRouteArrowLayer showRouteArrow:linesToShow withTranslation:0.001];
     }
 }
 
@@ -505,7 +518,9 @@
 {
     NSArray *linesToShow = [routeLayer showRemainingRouteResultOnFloor:self.currentMapInfo.floorNumber WithLocation:lp];
     if (linesToShow && linesToShow.count > 0) {
-        [routeArrowLayer showRouteArrow:linesToShow];
+//        [routeArrowLayer showRouteArrow:linesToShow];
+        [animatedRouteArrowLayer showRouteArrow:linesToShow];
+//        [animatedRouteArrowLayer showRouteArrow:linesToShow withTranslation:0.001];
     }
 }
 
@@ -643,6 +658,13 @@
     NSData *data = [NSJSONSerialization dataWithJSONObject:jsonDict options:NSJSONWritingPrettyPrinted error:nil];
     
     [data writeToFile:filePath atomically:YES];
+}
+
+- (void)dealloc
+{
+    if (animatedRouteArrowLayer) {
+        [animatedRouteArrowLayer stopShowArrow];
+    }
 }
 
 @end
