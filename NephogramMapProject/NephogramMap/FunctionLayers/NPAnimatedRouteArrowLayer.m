@@ -14,6 +14,9 @@
 {
     NSTimer *timer;
     double currentOffset;
+    
+    NSArray *lineToShow;
+
 }
 
 @end
@@ -36,9 +39,9 @@
 
 - (void)showRouteArrow:(NSArray *)array
 {
-    _lineToShow = array;
+    lineToShow = array;
     
-    if (_lineToShow == nil) {
+    if (lineToShow == nil) {
         return;
     }
     
@@ -46,12 +49,12 @@
         [timer invalidate];
     }
     
-    timer = [NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(showArrowForLines) userInfo:nil repeats:YES];
+    timer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(showArrowForLines) userInfo:nil repeats:YES];
     
 }
 
 #define ANIMATED_ARROW_INTERVAL 0.005
-#define OFFSET_INCREASING_INTERVAL 0.001
+#define OFFSET_INCREASING_INTERVAL 0.002
 
 - (void)showArrowForLines
 {
@@ -63,42 +66,20 @@
     }
     currentOffset += OFFSET_INCREASING_INTERVAL;
     
-    for (AGSPolyline *line in _lineToShow) {
+    for (AGSPolyline *line in lineToShow) {
         [self showRouteArrowForLine:line withTranslation:currentOffset];
     }
 
 }
 
-- (void)showRouteArrow:(NSArray *)array withTranslation:(double)translation
-{
-//    if (timer == nil) {
-//        timer = [NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(showRouteArrow:withTranslation:) userInfo:nil repeats:YES];
-//    }
-    
-//    if (currentArray == nil) {
-//        currentArray = array;
-//    }
-    
-//    [self removeAllGraphics];
-//    
-//    if (currentOffset >= ANIMATED_ARROW_INTERVAL) {
-//        currentOffset = 0;
-//    }
-//    currentOffset += OFFSET_INCREASING_INTERVAL;
-//    
-//    NSLog(@"Timer Fired: %f", currentOffset);
-//
-//    for (AGSPolyline *line in currentArray) {
-//        [self showRouteArrowForLine:line withTranslation:currentOffset];
-//    }
-}
-
-- (void)stopShowArrow
+- (void)stopShowingArrow
 {
     if (timer) {
         [timer invalidate];
         timer = nil;
     }
+
+    lineToShow = nil;
     [self removeAllGraphics];
 }
 

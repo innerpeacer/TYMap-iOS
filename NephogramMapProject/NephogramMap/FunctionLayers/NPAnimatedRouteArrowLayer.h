@@ -15,12 +15,8 @@
 
 + (NPAnimatedRouteArrowLayer *)animatedRouteArrowLayerWithSpatialReference:(NPSpatialReference *)sr;
 
-@property (nonatomic, strong) NSArray *lineToShow;
-
 - (void)showRouteArrow:(NSArray *)array;
 
-//- (void)showRouteArrow:(NSArray *)array withTranslation:(double)translation;
-
-- (void)stopShowArrow;
+- (void)stopShowingArrow;
 
 @end

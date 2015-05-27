@@ -84,7 +84,7 @@
     [routeHintLayer removeAllGraphics];
     
 //    [routeArrowLayer removeAllGraphics];
-    [animatedRouteArrowLayer stopShowArrow];
+    [animatedRouteArrowLayer stopShowingArrow];
     
     [structureGroupLayer loadContentsWithInfo:info];
     [labelGroupLayer loadContentsWithInfo:info];
@@ -222,7 +222,7 @@
     [routeLayer reset];
     [routeHintLayer removeAllGraphics];
 //    [routeArrowLayer removeAllGraphics];
-    [animatedRouteArrowLayer stopShowArrow];
+    [animatedRouteArrowLayer stopShowingArrow];
 }
 
 - (void)clearRouteLayer
@@ -230,7 +230,7 @@
     [routeLayer removeAllGraphics];
     [routeHintLayer removeAllGraphics];
 //    [routeArrowLayer removeAllGraphics];
-    [animatedRouteArrowLayer stopShowArrow];
+    [animatedRouteArrowLayer stopShowingArrow];
 }
 
 - (void)showRouteStartSymbolOnCurrentFloor:(NPLocalPoint *)sp
@@ -663,7 +663,7 @@
 - (void)dealloc
 {
     if (animatedRouteArrowLayer) {
-        [animatedRouteArrowLayer stopShowArrow];
+        [animatedRouteArrowLayer stopShowingArrow];
     }
 }
 
