@@ -36,8 +36,8 @@
 {
     double scale = DPI_SCALE;
 
-    double textWidth = textLabel.textSize.width;
-    double textHeight = textLabel.textSize.height;
+    double textWidth = textLabel.labelSize.width;
+    double textHeight = textLabel.labelSize.height;
     
     double left = screenPoint.x - textWidth * 0.5 * scale;
 //    double right = screenPoint.x + (textWidth + TEXT_OFFSET_X) * scale;

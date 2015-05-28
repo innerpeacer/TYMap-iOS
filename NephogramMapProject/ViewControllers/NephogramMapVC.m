@@ -47,13 +47,12 @@ int tIndex = 0;
 
 - (void)NPMapView:(NPMapView *)mapView PoiSelected:(NSArray *)array
 {
-//    NSLog(@"PoiSelected: %@", array);
+    NSLog(@"PoiSelected: %@", array);
 }
 
 - (void)NPMapView:(NPMapView *)mapView didFinishLoadingFloor:(NPMapInfo *)mapInfo
 {
     NSLog(@"didFinishLoadingFloor");
-    
 }
 
                    

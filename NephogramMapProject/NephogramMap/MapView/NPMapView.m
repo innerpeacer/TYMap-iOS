@@ -645,19 +645,28 @@
 
 - (BOOL)updateRoomPOI:(NSString *)pid WithName:(NSString *)name
 {
-//    return [structureGroupLayer updateRoomPOI:pid WithName:name];
-    return [labelGroupLayer updateRoomLabel:pid WithName:name];
+    BOOL structureUpdated = [structureGroupLayer updateRoomPOI:pid WithName:name];
+    BOOL labelUpdated = [labelGroupLayer updateRoomLabel:pid WithName:name];
+    
+    return (structureUpdated && labelUpdated);
 }
 
 - (void)updateMapFiles
 {
-    NSString *filePath = [NPMapFileManager getLabelLayerPath:self.currentMapInfo];
-    AGSFeatureSet *set = [labelGroupLayer getTextFeatureSet];
+    NSString *labelFilePath = [NPMapFileManager getLabelLayerPath:self.currentMapInfo];
+    AGSFeatureSet *lableSet = [labelGroupLayer getTextFeatureSet];
     
-    NSDictionary *jsonDict = [set encodeToJSON];
-    NSData *data = [NSJSONSerialization dataWithJSONObject:jsonDict options:NSJSONWritingPrettyPrinted error:nil];
+    NSDictionary *labelJsonDict = [lableSet encodeToJSON];
+    NSData *labelData = [NSJSONSerialization dataWithJSONObject:labelJsonDict options:NSJSONWritingPrettyPrinted error:nil];
+    [labelData writeToFile:labelFilePath atomically:YES];
     
-    [data writeToFile:filePath atomically:YES];
+    
+    NSString *roomFilePath = [NPMapFileManager getRoomLayerPath:self.currentMapInfo];
+    AGSFeatureSet *roomSet = [structureGroupLayer getRoomFeatureSet];
+    
+    NSDictionary *roomJsonDict = [roomSet encodeToJSON];
+    NSData *roomData = [NSJSONSerialization dataWithJSONObject:roomJsonDict options:NSJSONWritingPrettyPrinted error:nil];
+    [roomData writeToFile:roomFilePath atomically:YES];
 }
 
 - (void)dealloc

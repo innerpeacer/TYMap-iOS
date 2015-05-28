@@ -15,10 +15,10 @@
 @property (nonatomic, strong) NPPoint *position;
 
 @property (nonatomic, strong) NSString *text;
-@property (nonatomic, readonly) CGSize textSize;
+@property (nonatomic, readonly) CGSize labelSize;
 
 @property (nonatomic, strong) AGSGraphic *textGraphic;
-@property (nonatomic, strong) AGSTextSymbol *textSymbol;
+@property (nonatomic, strong) AGSSymbol *textSymbol;
 
 @property (nonatomic, assign) BOOL isHidden;
 

@@ -44,7 +44,7 @@ static AGSSimpleMarkerSymbol *pointSymbol = nil;
         _position = pos;
         
         _text = name;
-        _textSize = [name sizeWithAttributes:@{NSFontAttributeName : [NPTextLabel getDefaultFont]}];
+        _labelSize = [name sizeWithAttributes:@{NSFontAttributeName : [NPTextLabel getDefaultFont]}];
     }
     return self;
 }
