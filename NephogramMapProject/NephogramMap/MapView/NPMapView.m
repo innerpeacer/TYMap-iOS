@@ -21,6 +21,7 @@
 #import "NPAnimatedRouteArrowLayer.h"
 
 #import "NPRouteHintLayer.h"
+#import "NPBrand.h"
 
 @interface NPMapView() <AGSMapViewTouchDelegate, AGSMapViewLayerDelegate, AGSCalloutDelegate>
 {
@@ -40,6 +41,8 @@
     
     double currentDeviceHeading;
     double lastRotationAngle;
+    
+    NSDictionary *allBrandDict;
 }
 
 @end
@@ -125,6 +128,13 @@
         
     mapViewMode = NPMapViewModeDefault;
     
+    NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+    NSArray *brandArray = [NPBrand parseAllBrands:b];
+    for (NPBrand *brand in brandArray) {
+        [dict setObject:brand forKey:brand.poiID];
+    }
+    allBrandDict = dict;
+    
     AGSSpatialReference *spatialReference = [NPMapEnvironment defaultSpatialReference];
     
     structureGroupLayer = [NPStructureGroupLayer structureLayerWithRenderingScheme:renderingScheme SpatialReference:spatialReference];
@@ -134,6 +144,7 @@
     
     labelGroupLayer = [NPLabelGroupLayer labelGroupLayerWithRenderingScheme:renderingScheme SpatialReference:spatialReference];
     labelGroupLayer.mapView = self;
+    labelGroupLayer.labelLayer.brandDict = allBrandDict;
     [self addMapLayer:labelGroupLayer.facilityLayer withName:LAYER_NAME_FACILITY];
     [self addMapLayer:labelGroupLayer.labelLayer withName:LAYER_NAME_LABEL];
     

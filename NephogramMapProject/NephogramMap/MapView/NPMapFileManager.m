@@ -15,6 +15,9 @@
 
 #define FILE_MAPINFO @"MapInfo_Building_%@.json"
 
+#define FILE_BRANDS @"Brands_Building_%@.json"
+
+
 #define FILE_RENDERING_SCHEME @"%@_RenderingScheme.json"
 #define FILE_DEFAULT_RENDERING_SCHEME @"RenderingScheme.json"
 
@@ -107,6 +110,16 @@
     NSString *cityDir = [mapRootDir stringByAppendingPathComponent:info.cityID];
     NSString *buildingDir = [cityDir stringByAppendingPathComponent:info.buildingID];
     NSString *fileName = [NSString stringWithFormat:FILE_LAYER_PATH_LANDMARK, info.mapID];
+    return [buildingDir stringByAppendingPathComponent:fileName];
+}
+
++ (NSString *)getBrandJsonPath:(NPBuilding *)building
+{
+    NSString *mapRootDir = [NPMapEnvironment getRootDirectoryForMapFiles];
+    NSString *cityDir = [mapRootDir stringByAppendingPathComponent:building.cityID];
+    NSString *buildingDir = [cityDir stringByAppendingPathComponent:building.buildingID];
+    
+    NSString *fileName = [NSString stringWithFormat:FILE_BRANDS, building.buildingID];
     return [buildingDir stringByAppendingPathComponent:fileName];
 }
 

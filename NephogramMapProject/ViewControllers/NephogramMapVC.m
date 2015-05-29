@@ -9,6 +9,7 @@
 #import "NephogramMapVC.h"
 #import "NPAreaAnalysis.h"
 
+#import "NPBrand.h"
 
 @interface NephogramMapVC()
 {
@@ -26,6 +27,8 @@
     NSString *path = [[NSBundle mainBundle] pathForResource:@"AOI" ofType:@"json"];
     areaAnalysis = [[NPAreaAnalysis alloc] initWithPath:path];
     
+    NSArray *brandArray = [NPBrand parseAllBrands:self.currentBuilding];
+    NSLog(@"%@", brandArray);
 }
 
 int count = 0;

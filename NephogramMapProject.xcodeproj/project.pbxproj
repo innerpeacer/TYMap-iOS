@@ -20,6 +20,7 @@
 		571310B31ABC217500E980F9 /* NephogramData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 571310B21ABC217500E980F9 /* NephogramData.framework */; };
 		571E58981AB921FC007B36DD /* NPRoutePointConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 571E58971AB921FC007B36DD /* NPRoutePointConverter.m */; };
 		57306D9E1B0047A300DE2F32 /* NPRouteResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 57306D9D1B0047A300DE2F32 /* NPRouteResult.m */; };
+		573D3B321B17FA0C0088D871 /* NPBrand.m in Sources */ = {isa = PBXBuildFile; fileRef = 573D3B311B17FA0C0088D871 /* NPBrand.m */; };
 		574443D01AAED31000E6232C /* CreatingPOIDBAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 574443CF1AAED31000E6232C /* CreatingPOIDBAdapter.m */; };
 		574443EE1AAED36300E6232C /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 574443E51AAED36300E6232C /* FMDatabase.m */; };
 		574443EF1AAED36300E6232C /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 574443E71AAED36300E6232C /* FMDatabaseAdditions.m */; };
@@ -113,6 +114,8 @@
 		571E58971AB921FC007B36DD /* NPRoutePointConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPRoutePointConverter.m; sourceTree = "<group>"; };
 		57306D9C1B0047A300DE2F32 /* NPRouteResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPRouteResult.h; sourceTree = "<group>"; };
 		57306D9D1B0047A300DE2F32 /* NPRouteResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPRouteResult.m; sourceTree = "<group>"; };
+		573D3B301B17FA0C0088D871 /* NPBrand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPBrand.h; sourceTree = "<group>"; };
+		573D3B311B17FA0C0088D871 /* NPBrand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPBrand.m; sourceTree = "<group>"; };
 		57422E211AB018CB009065FB /* NPMapType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NPMapType.h; sourceTree = "<group>"; };
 		574443CE1AAED31000E6232C /* CreatingPOIDBAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreatingPOIDBAdapter.h; sourceTree = "<group>"; };
 		574443CF1AAED31000E6232C /* CreatingPOIDBAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreatingPOIDBAdapter.m; sourceTree = "<group>"; };
@@ -497,6 +500,8 @@
 			children = (
 				57F06CE61A87BF8D00B9511F /* NPPoi.h */,
 				57F06CE71A87BF8D00B9511F /* NPPoi.m */,
+				573D3B301B17FA0C0088D871 /* NPBrand.h */,
+				573D3B311B17FA0C0088D871 /* NPBrand.m */,
 			);
 			path = POI;
 			sourceTree = "<group>";
@@ -660,6 +665,7 @@
 				57753CC81AFC8A4C00AF4B51 /* NPRoutePart.m in Sources */,
 				5746B9E21AF9B48A007E4219 /* NPLandmarkManager.m in Sources */,
 				574443D01AAED31000E6232C /* CreatingPOIDBAdapter.m in Sources */,
+				573D3B321B17FA0C0088D871 /* NPBrand.m in Sources */,
 				57F06CFA1A87C18D00B9511F /* NPRenderingScheme.m in Sources */,
 				57D66A161ADB995E00DF653B /* NPBuilding.m in Sources */,
 				57E6CF751ADCBEDF00D4C8C7 /* NPFloorLayer.m in Sources */,

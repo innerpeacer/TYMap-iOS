@@ -15,6 +15,8 @@
 
 @property (nonatomic, weak) NPLabelGroupLayer *groupLayer;
 
+@property (nonatomic, strong) NSDictionary *brandDict;
+
 + (NPTextLabelLayer *)textLabelLayerWithSpatialReference:(AGSSpatialReference *)sr;
 
 - (void)loadContentsWithInfo:(NPMapInfo *)info;

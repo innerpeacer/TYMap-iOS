@@ -58,7 +58,7 @@
 
 - (void)showArrowForLines
 {
-    NSLog(@"showArrowForLines Fired!");
+//    NSLog(@"showArrowForLines Fired!");
     [self removeAllGraphics];
     
     if (currentOffset >= ANIMATED_ARROW_INTERVAL) {

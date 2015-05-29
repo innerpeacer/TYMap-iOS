@@ -25,6 +25,8 @@
 + (NSString *)getLabelLayerPath:(NPMapInfo *)info;
 + (NSString *)getLandmarkJsonPath:(NPMapInfo *)info;
 
++ (NSString *)getBrandJsonPath:(NPBuilding *)building;
+
 + (NSString *)getRenderingScheme:(NPBuilding *)building;
 
 + (NSString *)getPOIDBPath:(NPBuilding *)building;

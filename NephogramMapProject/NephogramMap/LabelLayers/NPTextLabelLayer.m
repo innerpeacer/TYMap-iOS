@@ -13,6 +13,8 @@
 #import "NPMapType.h"
 #import "NPLabelBorderCalculator.h"
 #import "NPLabelGroupLayer.h"
+#import "NPMapType.h"
+#import "NPBrand.h"
 
 @interface NPTextLabelLayer()
 {
@@ -129,14 +131,25 @@
             NPPoint *position = (NPPoint *)[AGSPoint pointWithX:x y:y spatialReference:sr];
             NPTextLabel *textLabel = [[NPTextLabel alloc] initWithName:name Position:position];
 
-            
-            AGSTextSymbol *ts = [AGSTextSymbol textSymbolWithText:name color:[UIColor blackColor]];
-            ts.angleAlignment = AGSMarkerSymbolAngleAlignmentScreen;
-            ts.hAlignment = AGSTextSymbolHAlignmentCenter;
-            ts.vAlignment = AGSTextSymbolVAlignmentMiddle;
-            ts.fontSize = 8.0f;
-            ts.fontFamily = @"Heiti SC";
-            textLabel.textSymbol = ts;
+            NSString *poiID = [graphic attributeForKey:GRAPHIC_ATTRIBUTE_POI_ID];
+            if ([self.brandDict.allKeys containsObject:poiID]) {
+                NPBrand *brand = [self.brandDict objectForKey:poiID];
+                
+                AGSPictureMarkerSymbol *pms = [AGSPictureMarkerSymbol pictureMarkerSymbolWithImageNamed:brand.logo];
+                pms.size = brand.logoSize;
+                
+                textLabel.textSymbol = pms;
+                textLabel.labelSize = brand.logoSize;
+                
+            } else {
+                AGSTextSymbol *ts = [AGSTextSymbol textSymbolWithText:name color:[UIColor blackColor]];
+                ts.angleAlignment = AGSMarkerSymbolAngleAlignmentScreen;
+                ts.hAlignment = AGSTextSymbolHAlignmentCenter;
+                ts.vAlignment = AGSTextSymbolVAlignmentMiddle;
+                ts.fontSize = 10.0f;
+                ts.fontFamily = @"Heiti SC";
+                textLabel.textSymbol = ts;
+            }
             
             textLabel.textGraphic = graphic;
             [self addGraphic:textLabel.textGraphic];

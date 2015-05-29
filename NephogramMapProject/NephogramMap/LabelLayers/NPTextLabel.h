@@ -15,7 +15,7 @@
 @property (nonatomic, strong) NPPoint *position;
 
 @property (nonatomic, strong) NSString *text;
-@property (nonatomic, readonly) CGSize labelSize;
+@property (nonatomic, assign) CGSize labelSize;
 
 @property (nonatomic, strong) AGSGraphic *textGraphic;
 @property (nonatomic, strong) AGSSymbol *textSymbol;
