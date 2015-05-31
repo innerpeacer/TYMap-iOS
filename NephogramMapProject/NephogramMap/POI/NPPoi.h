@@ -29,7 +29,7 @@ typedef enum
 @property (nonatomic, strong) NSString *geoID;
 
 /**
- *  @brief POI ID
+ *  POI ID
  */
 @property (nonatomic, strong) NSString *poiID;
 
@@ -63,9 +63,18 @@ typedef enum
  */
 @property (nonatomic, readonly) POI_LAYER layer;
 
-
 /**
- *  @discussion 创建POI实例的静态方法
+ *  创建POI实例的静态方法
+ *
+ *  @param gid      地理ID
+ *  @param pid      POI ID
+ *  @param fid      楼层ID
+ *  @param bid      建筑ID
+ *  @param pname    POI名称
+ *  @param geometry POI位置
+ *  @param cid      POI类型
+ *  @param pLayer   POI所在层
+ *
  *  @return POI实例
  */
 + (NPPoi *)poiWithGeoID:(NSString *)gid PoiID:(NSString *)pid FloorID:(NSString *)fid  BuildingID:(NSString *)bid Name:(NSString *)pname Geometry:(NPGeometry *)geometry CategoryID:(int)cid Layer:(POI_LAYER)pLayer;

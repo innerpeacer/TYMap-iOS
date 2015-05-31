@@ -33,8 +33,15 @@ typedef struct mapextent {
  */
 @interface NPMapInfo : NSObject
 
+/**
+ *  所在城市的ID
+ */
 @property (nonatomic, readonly) NSString *cityID;
 
+
+/**
+ *  所在建筑的ID
+ */
 @property (nonatomic, readonly) NSString *buildingID;
 
 /**
@@ -63,20 +70,42 @@ typedef struct mapextent {
 @property (readonly) int floorNumber;
 
 /**
- *
+ *  地图X方向放缩比例，当前比例为1
  */
 @property (readonly) double scalex;
 
 /**
- *
+ *  地图Y方向放缩比例，当前比例为1
  */
 @property (readonly) double scaley;
 
-
+/**
+ *  解析目标建筑的特定名称的地图信息
+ *
+ *  @param floor    目标楼层名称
+ *  @param building 目标建筑信息
+ *
+ *  @return 目标楼层地图信息
+ */
 + (NPMapInfo *)parseMapInfo:(NSString *)floor ForBuilding:(NPBuilding *)building;
 
+/**
+ *  解析目标建筑的所有楼层地图信息
+ *
+ *  @param building 目标建筑
+ *
+ *  @return 目标楼层所有地图信息
+ */
 + (NSArray *)parseAllMapInfo:(NPBuilding *)building;
 
+/**
+ *  从一组地图信息中搜索特定楼层的地图信息
+ *
+ *  @param array 目标地图信息数组
+ *  @param floor 目标楼层
+ *
+ *  @return 目标楼层信息
+ */
 + (NPMapInfo *)searchMapInfoFromArray:(NSArray *)array Floor:(int)floor;
 
 @end

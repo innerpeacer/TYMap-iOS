@@ -37,18 +37,18 @@
 @property (assign) int status;
 
 /**
- *  解析所有城市信息信息列表
+ *  解析所有城市信息列表
  *
- *  @return 城市类数组
+ *  @return 所有城市信息数组
  */
 + (NSArray *)parseAllCities;
 
 /**
- *  解析特定城市信息
+ *  解析目标城市信息
  *
- *  @param cityID 城市ID
+ *  @param cityID 目标城市ID
  *
- *  @return 城市类
+ *  @return 目标城市信息
  */
 + (NPCity *)parseCity:(NSString *)cityID;
 

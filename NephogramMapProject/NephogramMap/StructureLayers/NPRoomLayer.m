@@ -9,6 +9,7 @@
 #import "NPRoomLayer.h"
 #import "NPMapType.h"
 #import "NPMapFileManager.h"
+#import "NPMapEnviroment.h"
 
 @interface NPRoomLayer()
 {
@@ -121,14 +122,41 @@
 - (BOOL)updateRoomPOI:(NSString *)pid WithName:(NSString *)name
 {
     NSArray *graphicArray = self.graphics;
+    
+    NPMapLanguage language = [NPMapEnvironment getMapLanguage];
+    NSString *field = [self getNameFieldForLanguage:language];
+    
     for (AGSGraphic *g in graphicArray) {
         NSString *poiID = [g attributeForKey:GRAPHIC_ATTRIBUTE_POI_ID];
         if ([poiID isEqualToString:pid]) {
-            [g setAttribute:name forKey:GRAPHIC_ATTRIBUTE_NAME];
+            [g setAttribute:name forKey:field];
             return YES;
         }
     }
     return NO;
+}
+
+- (NSString *)getNameFieldForLanguage:(NPMapLanguage)l
+{
+    NSString *result = nil;
+    switch (l) {
+        case NPSimplifiedChinese:
+            result = NAME_FIELD_SIMPLIFIED_CHINESE;
+            break;
+            
+        case NPTraditionalChinese:
+            result = NAME_FIELD_TRADITIONAL_CHINESE;
+            break;
+            
+        case NPEnglish:
+            result = NAME_FIELD_ENGLISH;
+            break;
+            
+        default:
+            result = NAME_FIELD_SIMPLIFIED_CHINESE;
+            break;
+    }
+    return result;
 }
 
 - (AGSFeatureSet *)getFeatureSet

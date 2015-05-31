@@ -7,13 +7,21 @@
 //
 
 #import <Foundation/Foundation.h>
-
 #import <NephogramData/NephogramData.h>
 
+/**
+ *  路标类，用于导航的提示
+ */
 @interface NPLandmark : NSObject
 
+/**
+ *  当前路标的名称
+ */
 @property (nonatomic, strong) NSString *name;
 
+/**
+ *  当前路标的位置
+ */
 @property (nonatomic, strong) NPLocalPoint *location;
 
 @end

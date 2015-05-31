@@ -46,6 +46,11 @@
  */
 - (void)routeManager:(NPRouteManager *)routeManager didFailSolveRouteWithError:(NSError *)error;
 
+/**
+ *  路径规划获取默认参数回调
+ *
+ *  @param routeManager 路径管理实例
+ */
 - (void)routeManagerDidRetrieveDefaultRouteTaskParameters:(NPRouteManager *)routeManager;
 
 @end
@@ -73,8 +78,9 @@
 /**
  *  路径管理类的静态实例化方法
  *
- *  @param url        路径服务URL
- *  @param credential 用户访问验证
+ *  @param building     目标建筑
+ *  @param credential   用户访问验证
+ *  @param mapInfoArray 目标建筑的所有楼层信息
  *
  *  @return 路径管理类实例
  */

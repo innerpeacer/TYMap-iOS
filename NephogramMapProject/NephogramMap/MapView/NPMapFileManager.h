@@ -33,5 +33,4 @@
 
 + (NSString *)getPrimitiveDBPath:(NPBuilding *)building;
 
-
 @end

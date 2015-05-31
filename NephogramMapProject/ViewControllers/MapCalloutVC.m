@@ -68,6 +68,11 @@
     
     self.mapView.callout.customView = self.calloutViewController.view;
     
+//    self.mapView.callout.borderColor = [UIColor blackColor];
+//    self.mapView.callout.borderWidth = 5;
+//    self.mapView.callout.margin = CGSizeMake(0, 0);
+    self.mapView.callout.color = [UIColor cyanColor];
+    
     return YES;
 }
 

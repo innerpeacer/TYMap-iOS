@@ -25,6 +25,9 @@
 
 #import "NPBuilding.h"
 
+/**
+    地图模式类型：默认模式和跟随模式
+ */
 typedef enum {
     NPMapViewModeDefault = 0,
     NPMapViewModeFollowing = 1
@@ -66,17 +69,48 @@ typedef enum {
  */
 - (void)NPMapView:(NPMapView *)mapView didFinishLoadingFloor:(NPMapInfo *)mapInfo;
 
+/**
+ *  地图放缩事件回调
+ *
+ *  @param mapView 地图视图
+ */
 - (void)NPMapViewDidZoomed:(NPMapView *)mapView;
 
+/**
+ *  地图加载完成事件回调
+ *
+ *  @param mapView 地图视图
+ */
 - (void)NPMapViewDidLoad:(NPMapView *)mapView;
 
+/**
+ *  地图弹出框解除完成事件回调
+ *
+ *  @param mapView 地图视图
+ *  @param callout 地图弹出框
+ */
 - (void)NPMapView:(NPMapView *)mapView calloutDidDismiss:(NPCallout *)callout;
 
+/**
+ *  地图弹出框即将解除事件回调
+ *
+ *  @param mapView 地图视图
+ *  @param callout 地图弹出框
+ */
 - (void)NPMapView:(NPMapView *)mapView calloutWillDismiss:(NPCallout *)callout;
 
+/**
+ *  地图即将为要素显示弹出框事件回调
+ *
+ *  @param mapView  地图视图
+ *  @param graphic  目标要素
+ *  @param layer    目标要素所在层
+ *  @param mappoint 目标点
+ *
+ *  @return 是否显示弹出框
+ */
 - (BOOL)NPMapView:(NPMapView *)mapView willShowForGraphic:(NPGraphic *)graphic layer:(NPGraphicsLayer *)layer mapPoint:(NPPoint *)mappoint;
 
-//- (BOOL)NPMapView:(NPMapView *)mapView callout:(NPCallout *)callout willShowForLocationDisplay:(NPLocationDisplay *)locationDisplay;
 @end
 
 /**
@@ -85,7 +119,7 @@ typedef enum {
 @interface NPMapView : AGSMapView
 
 /**
- *  地图代理，用于处理地图点击、Poi点选事件
+ *  地图代理，用于处理地图点击、Poi点选事件、弹出框等
  */
 @property (nonatomic, weak) id<NPMapViewDelegate> mapDelegate;
 
@@ -104,7 +138,9 @@ typedef enum {
  */
 @property (nonatomic, assign) BOOL highlightPOIOnSelection;
 
-
+/**
+ *  重新加载地图
+ */
 - (void)reloadMapView;
 
 /**
@@ -114,40 +150,136 @@ typedef enum {
  */
 - (void)setFloorWithInfo:(NPMapInfo *)info;
 
+/**
+ *  设置定位点符号，用于标识定位结果
+ *
+ *  @param symbol 定位点符号
+ */
 - (void)setLocationSymbol:(NPMarkerSymbol *)symbol;
 
+/**
+ *  在地图上显示定位结果
+ *
+ *  @param location 定位结果坐标点
+ */
 - (void)showLocation:(NPLocalPoint *)location;
 
+/**
+ *  在地图上移除定位结果
+ */
 - (void)removeLocation;
 
+/**
+ *  处理设备旋转事件
+ *
+ *  @param newHeading 设备方向角
+ */
 - (void)processDeviceRotation:(double)newHeading;
 
+/**
+ *  设置地图模式
+ *
+ *  @param mode 目标地图模式，包括默认模式和跟随模式
+ */
 - (void)setMapMode:(NPMapViewMode)mode;
 
+/**
+ *  设置导航线的起点符号
+ *
+ *  @param symbol 起点标识符号
+ */
 - (void)setRouteStartSymbol:(NPPictureMarkerSymbol *)symbol;
+
+/**
+ *  设置导航线的终点符号
+ *
+ *  @param symbol 终点标识符号
+ */
 - (void)setRouteEndSymbol:(NPPictureMarkerSymbol *)symbol;
+
+/**
+ *  设置跨层导航切换点符号
+ *
+ *  @param symbol 切换点标识符号
+ */
 - (void)setRouteSwitchSymbol:(NPPictureMarkerSymbol *)symbol;
+
+/**
+ *  设置导航结果
+ *
+ *  @param result 导航结果
+ */
 - (void)setRouteResult:(NPRouteResult *)result;
 
+/**
+ *  设置导航起点
+ *
+ *  @param start 导航起点
+ */
 - (void)setRouteStart:(NPLocalPoint *)start;
+
+/**
+ *  设置导航终点
+ *
+ *  @param end 导航终点
+ */
 - (void)setRouteEnd:(NPLocalPoint *)end;
 
+/**
+ *  重置导航层，移除显示的结果，并将导航结果清空
+ */
 - (void)resetRouteLayer;
+
+/**
+ *  清除导航层，只在地图上移除相关显示的结果
+ */
 - (void)clearRouteLayer;
 
+/**
+ *  在地图当前楼层显示起点符号
+ *
+ *  @param sp 起点位置
+ */
 - (void)showRouteStartSymbolOnCurrentFloor:(NPLocalPoint *)sp;
+
+/**
+ *  在地图当前楼层显示终点符号
+ *
+ *  @param ep 终点位置
+ */
 - (void)showRouteEndSymbolOnCurrentFloor:(NPLocalPoint *)ep;
+
+/**
+ *  在地图当前楼层显示切换点符号
+ *
+ *  @param sp 切换点位置
+ */
 - (void)showRouteSwitchSymbolOnCurrentFloor:(NPLocalPoint *)sp;
 
+/**
+ *  在地图显示当前楼层的导航路径
+ */
 - (void)showRouteResultOnCurrentFloor;
+
+/**
+ *  在地图显示当前楼层当前位置的剩余路径，结合定位结果，移除已经经过的路径部分
+ *
+ *  @param lp 当前位置
+ */
 - (void)showRemainingRouteResultOnCurrentFloor:(NPLocalPoint *)lp;
 
+/**
+ *  显示导航提示对应的路径段
+ *
+ *  @param ds         目标路径提示
+ *  @param isCentered 是否移动地图将路径提示段居中
+ */
 - (void)showRouteHintForDirectionHint:(NPDirectionalHint *)ds Centered:(BOOL)isCentered;
 
 /**
  *  地图初始化方法
  *
- *  @param renderingScheme 地图渲染方案
+ *  @param buidling 地图显示的目标建筑
  */
 - (void)initMapViewWithBuilding:(NPBuilding *)buidling;
 
@@ -226,9 +358,19 @@ typedef enum {
  */
 - (NPPoi *)extractRoomPoiOnCurrentFloorWithX:(double)x Y:(double)y;
 
-
+/**
+ *  更新ROOM层目标POI的名称信息
+ *
+ *  @param pid  目标POI的ID
+ *  @param name 修改后的名称
+ *
+ *  @return 是否修改成功
+ */
 - (BOOL)updateRoomPOI:(NSString *)pid WithName:(NSString *)name;
 
+/**
+ *  将修改结果更新至地图文件中
+ */
 - (void)updateMapFiles;
 
 @end
