@@ -33,7 +33,7 @@
  *  解决路径规划返回方法
  *
  *  @param routeManager       路径管理实例
- *  @param routeResultGraphic 路径规划结果
+ *  @param routeResult 路径规划结果
  */
 - (void)routeManager:(NPRouteManager *)routeManager didSolveRouteWithResult:(NPRouteResult *)routeResult;
 

@@ -92,6 +92,9 @@
     [structureGroupLayer loadContentsWithInfo:info];
     [labelGroupLayer loadContentsWithInfo:info];
     
+    self.testLayer = [AGSGraphicsLayer graphicsLayer];
+    [self addMapLayer:self.testLayer];
+    
 
     if (initialEnvelope == nil) {
         initialEnvelope = [AGSEnvelope envelopeWithXmin:_currentMapInfo.mapExtent.xmin ymin:_currentMapInfo.mapExtent.ymin xmax:_currentMapInfo.mapExtent.xmax ymax:_currentMapInfo.mapExtent.ymax spatialReference:[NPMapEnvironment defaultSpatialReference]];
@@ -306,7 +309,7 @@
  *
  *  @param x x平移距离
  *  @param y y平移距离
- *
+ *  @param animated 是否使用动画
  */
 - (void)translateInScreenUnitByX:(double)x Y:(double)y animated:(BOOL)animated
 {
@@ -319,9 +322,9 @@
 /**
  *  以地图坐标为单位平移x、y距离
  *
- *  @param x x平移距离
- *  @param y y平移距离
- *
+ *  @param x        x平移距离
+ *  @param y        y平移距离
+ *  @param animated 是否使用动画
  */
 - (void)translateInMapUnitByX:(double)x Y:(double)y animated:(BOOL)animated
 {

@@ -14,6 +14,8 @@
 @interface NephogramMapVC()
 {
     NPAreaAnalysis *areaAnalysis;
+    
+    AGSGraphicsLayer *testLayer;
 }
 
 @end
