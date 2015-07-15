@@ -7,7 +7,7 @@
 //
 
 #import "NPRouteLayer.h"
-#import "NPGraphic.h"
+#import "TYGraphic.h"
 #import "NPMapView.h"
 #import "NPMapEnviroment.h"
 #import "Vector2.h"
@@ -23,12 +23,12 @@
 
 @implementation NPRouteLayer
 
-+ (NPRouteLayer *)routeLayerWithSpatialReference:(NPSpatialReference *)sr
++ (NPRouteLayer *)routeLayerWithSpatialReference:(TYSpatialReference *)sr
 {
     return [[NPRouteLayer alloc] initRouteLayerWithSpatialReference:sr];
 }
 
-- (id)initRouteLayerWithSpatialReference:(NPSpatialReference *)sr
+- (id)initRouteLayerWithSpatialReference:(TYSpatialReference *)sr
 {
     self = [super initWithSpatialReference:sr];
     if (self) {
@@ -70,12 +70,12 @@
         if (routePartArray && routePartArray.count > 0) {
             for (NPRoutePart *rp in routePartArray) {
                 if ([rp isFirstPart] && ![rp isLastPart]) {
-                    [self addGraphic:[NPGraphic graphicWithGeometry:[rp getLastPoint] symbol:_switchSymbol attributes:nil]];
+                    [self addGraphic:[TYGraphic graphicWithGeometry:[rp getLastPoint] symbol:_switchSymbol attributes:nil]];
                 } else if (![rp isFirstPart] && [rp isLastPart]) {
-                    [self addGraphic:[NPGraphic graphicWithGeometry:[rp getFirstPoint] symbol:_switchSymbol attributes:nil]];
+                    [self addGraphic:[TYGraphic graphicWithGeometry:[rp getFirstPoint] symbol:_switchSymbol attributes:nil]];
                 } else if (![rp isFirstPart] && ![rp isLastPart]) {
-                    [self addGraphic:[NPGraphic graphicWithGeometry:[rp getFirstPoint] symbol:_switchSymbol attributes:nil]];
-                    [self addGraphic:[NPGraphic graphicWithGeometry:[rp getLastPoint] symbol:_switchSymbol attributes:nil]];
+                    [self addGraphic:[TYGraphic graphicWithGeometry:[rp getFirstPoint] symbol:_switchSymbol attributes:nil]];
+                    [self addGraphic:[TYGraphic graphicWithGeometry:[rp getLastPoint] symbol:_switchSymbol attributes:nil]];
                 }
             }
         }
@@ -88,7 +88,7 @@
         NSArray *routePartArray = [_routeResult getRoutePartsOnFloor:floor];
         if (routePartArray && routePartArray.count > 0) {
             for (NPRoutePart *rp in routePartArray) {
-                [self addGraphic:[NPGraphic graphicWithGeometry:rp.route symbol:nil attributes:nil]];
+                [self addGraphic:[TYGraphic graphicWithGeometry:rp.route symbol:nil attributes:nil]];
                 [linesToReturn addObject:rp.route];
             }
         }
@@ -131,11 +131,11 @@
                 if (rp == nearestRoutePart) {
                     AGSPolyline *remainingLine = [self getRemainingLine:rp.route WithPoint:[AGSPoint pointWithX:location.x y:location.y spatialReference:[NPMapEnvironment defaultSpatialReference]]];
                     if (remainingLine) {
-                        [self addGraphic:[NPGraphic graphicWithGeometry:remainingLine symbol:nil attributes:nil]];
+                        [self addGraphic:[TYGraphic graphicWithGeometry:remainingLine symbol:nil attributes:nil]];
                         [linesToReturn addObject:remainingLine];
                     }
                 } else {
-                    [self addGraphic:[NPGraphic graphicWithGeometry:rp.route symbol:nil attributes:nil]];
+                    [self addGraphic:[TYGraphic graphicWithGeometry:rp.route symbol:nil attributes:nil]];
                     [linesToReturn addObject:rp.route];
                 }
             }
@@ -215,21 +215,21 @@
 - (void)showStartSymbol:(NPLocalPoint *)sp
 {
     if (sp && sp.floor == self.mapView.currentMapInfo.floorNumber) {
-        [self addGraphic:[NPGraphic graphicWithGeometry:[AGSPoint pointWithX:sp.x y:sp.y spatialReference:self.mapView.spatialReference] symbol:_startSymbol attributes:nil]];
+        [self addGraphic:[TYGraphic graphicWithGeometry:[AGSPoint pointWithX:sp.x y:sp.y spatialReference:self.mapView.spatialReference] symbol:_startSymbol attributes:nil]];
     }
 }
 
 - (void)showEndSymbol:(NPLocalPoint *)ep
 {
     if (ep && ep.floor == self.mapView.currentMapInfo.floorNumber) {
-        [self addGraphic:[NPGraphic graphicWithGeometry:[AGSPoint pointWithX:ep.x y:ep.y spatialReference:self.mapView.spatialReference] symbol:_endSymbol attributes:nil]];
+        [self addGraphic:[TYGraphic graphicWithGeometry:[AGSPoint pointWithX:ep.x y:ep.y spatialReference:self.mapView.spatialReference] symbol:_endSymbol attributes:nil]];
     }
 }
 
 - (void)showSwitchSymbol:(NPLocalPoint *)sp
 {
     if (sp && sp.floor == self.mapView.currentMapInfo.floorNumber) {
-        [self addGraphic:[NPGraphic graphicWithGeometry:[AGSPoint pointWithX:sp.x y:sp.y spatialReference:self.mapView.spatialReference] symbol:_switchSymbol attributes:nil]];
+        [self addGraphic:[TYGraphic graphicWithGeometry:[AGSPoint pointWithX:sp.x y:sp.y spatialReference:self.mapView.spatialReference] symbol:_switchSymbol attributes:nil]];
     }
 }
 

@@ -12,12 +12,12 @@
 #import "NPRouteLayer.h"
 #import "NPMapEnviroment.h"
 #import "NPRoutePointConverter.h"
-#import "NPGraphicsLayer.h"
-#import "NPPictureMarkerSymbol.h"
-#import "NPCredential.h"
-#import "NPGraphic.h"
-#import "NPSimpleMarkerSymbol.h"
-#import "NPPoint.h"
+#import "TYGraphicsLayer.h"
+#import "TYPictureMarkerSymbol.h"
+#import "TYCredential.h"
+#import "TYGraphic.h"
+#import "TYSimpleMarkerSymbol.h"
+#import "TYPoint.h"
 #import "NPDirectionalHint.h"
 
 #import "NPRouteResult.h"
@@ -26,7 +26,7 @@
 {
     NPRouteManager *routeManager;
     
-    NPPoint *currentPoint;
+    TYPoint *currentPoint;
     NPLocalPoint *startLocalPoint;
     NPLocalPoint *endLocalPoint;
     
@@ -36,11 +36,11 @@
     NPRoutePart *currentRoutePart;
     NSArray *routeGuides;
     
-    NPGraphicsLayer *hintLayer;
+    TYGraphicsLayer *hintLayer;
     
-    NPPictureMarkerSymbol *startSymbol;
-    NPPictureMarkerSymbol *endSymbol;
-    NPPictureMarkerSymbol *switchSymbol;
+    TYPictureMarkerSymbol *startSymbol;
+    TYPictureMarkerSymbol *endSymbol;
+    TYPictureMarkerSymbol *switchSymbol;
 
 }
 
@@ -61,7 +61,7 @@
     
     [self initSymbols];
     
-    hintLayer = [NPGraphicsLayer graphicsLayer];
+    hintLayer = [TYGraphicsLayer graphicsLayer];
     [self.mapView addMapLayer:hintLayer];
     
     routeManager = [NPRouteManager routeManagerWithBuilding:self.currentBuilding credential:[NPMapEnvironment defaultCredential] MapInfos:self.allMapInfos];
@@ -78,13 +78,13 @@
 
 - (void)initSymbols
 {
-    startSymbol = [NPPictureMarkerSymbol pictureMarkerSymbolWithImageNamed:@"start"];
+    startSymbol = [TYPictureMarkerSymbol pictureMarkerSymbolWithImageNamed:@"start"];
     startSymbol.offset = CGPointMake(0, 22);
     
-    endSymbol = [NPPictureMarkerSymbol pictureMarkerSymbolWithImageNamed:@"end"];
+    endSymbol = [TYPictureMarkerSymbol pictureMarkerSymbolWithImageNamed:@"end"];
     endSymbol.offset = CGPointMake(0, 22);
     
-    switchSymbol = [NPPictureMarkerSymbol pictureMarkerSymbolWithImageNamed:@"nav_exit"];
+    switchSymbol = [TYPictureMarkerSymbol pictureMarkerSymbolWithImageNamed:@"nav_exit"];
     
     [self.mapView setRouteStartSymbol:startSymbol];
     [self.mapView setRouteEndSymbol:endSymbol];
@@ -173,7 +173,7 @@
 
 int testIndex = 0;
 
-- (void)NPMapView:(NPMapView *)mapView didClickAtPoint:(CGPoint)screen mapPoint:(NPPoint *)mappoint
+- (void)NPMapView:(NPMapView *)mapView didClickAtPoint:(CGPoint)screen mapPoint:(TYPoint *)mappoint
 {
     NSLog(@"(%f, %f) in floor %d", mappoint.x, mappoint.y, self.currentMapInfo.floorNumber);
 //    NSLog(@"Map Scale: %f", self.mapView.mapScale);
@@ -181,7 +181,7 @@ int testIndex = 0;
     
     NPLocalPoint *localPoint = [NPLocalPoint pointWithX:mappoint.x Y:mappoint.y Floor:self.mapView.currentMapInfo.floorNumber];
     
-    NPSimpleMarkerSymbol *sms = [NPSimpleMarkerSymbol simpleMarkerSymbolWithColor:[UIColor greenColor]];
+    TYSimpleMarkerSymbol *sms = [TYSimpleMarkerSymbol simpleMarkerSymbolWithColor:[UIColor greenColor]];
     sms.size = CGSizeMake(5, 5);
     
     [hintLayer removeAllGraphics];

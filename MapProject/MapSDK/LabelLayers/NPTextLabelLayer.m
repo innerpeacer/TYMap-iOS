@@ -119,7 +119,7 @@
     AGSFeatureSet *set = [[AGSFeatureSet alloc] initWithJSON:dict];
     NSArray *allGraphics = set.features;
     
-    NPSpatialReference *sr = [NPMapEnvironment defaultSpatialReference];
+    TYSpatialReference *sr = [NPMapEnvironment defaultSpatialReference];
     NPMapLanguage language = [NPMapEnvironment getMapLanguage];
     
     for (AGSGraphic *graphic in allGraphics) {
@@ -129,7 +129,7 @@
         if (name != nil && name != (id)[NSNull null]) {
             double x = ((AGSPoint *)graphic.geometry).x;
             double y = ((AGSPoint *)graphic.geometry).y;
-            NPPoint *position = (NPPoint *)[AGSPoint pointWithX:x y:y spatialReference:sr];
+            TYPoint *position = (TYPoint *)[AGSPoint pointWithX:x y:y spatialReference:sr];
             NPTextLabel *textLabel = [[NPTextLabel alloc] initWithName:name Position:position];
 
             NSString *poiID = [graphic attributeForKey:GRAPHIC_ATTRIBUTE_POI_ID];

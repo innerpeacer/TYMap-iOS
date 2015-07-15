@@ -10,13 +10,13 @@
 #import "NPMapInfo.h"
 #import "NPPoi.h"
 #import "NPRenderingScheme.h"
-#import "NPPoint.h"
+#import "TYPoint.h"
 #import "TYCallout.h"
-#import "NPGraphic.h"
-#import "NPGraphicsLayer.h"
-#import "NPLocationDisplay.h"
-#import "NPMarkerSymbol.h"
-#import "NPPictureMarkerSymbol.h"
+#import "TYGraphic.h"
+#import "TYGraphicsLayer.h"
+#import "TYLocationDisplay.h"
+#import "TYMarkerSymbol.h"
+#import "TYPictureMarkerSymbol.h"
 #import "NPRouteResult.h"
 
 #import "NPDirectionalHint.h"
@@ -50,7 +50,7 @@ typedef enum {
  *  @param screen   点击事件的屏幕坐标
  *  @param mappoint 点击事件的地图坐标
  */
-- (void)NPMapView:(NPMapView *)mapView didClickAtPoint:(CGPoint)screen mapPoint:(NPPoint *)mappoint;
+- (void)NPMapView:(NPMapView *)mapView didClickAtPoint:(CGPoint)screen mapPoint:(TYPoint *)mappoint;
 
 /**
  *  地图POI选中事件回调
@@ -109,7 +109,7 @@ typedef enum {
  *
  *  @return 是否显示弹出框
  */
-- (BOOL)NPMapView:(NPMapView *)mapView willShowForGraphic:(NPGraphic *)graphic layer:(NPGraphicsLayer *)layer mapPoint:(NPPoint *)mappoint;
+- (BOOL)NPMapView:(NPMapView *)mapView willShowForGraphic:(TYGraphic *)graphic layer:(TYGraphicsLayer *)layer mapPoint:(TYPoint *)mappoint;
 
 @end
 
@@ -155,7 +155,7 @@ typedef enum {
  *
  *  @param symbol 定位点符号
  */
-- (void)setLocationSymbol:(NPMarkerSymbol *)symbol;
+- (void)setLocationSymbol:(TYMarkerSymbol *)symbol;
 
 /**
  *  在地图上显示定位结果
@@ -188,21 +188,21 @@ typedef enum {
  *
  *  @param symbol 起点标识符号
  */
-- (void)setRouteStartSymbol:(NPPictureMarkerSymbol *)symbol;
+- (void)setRouteStartSymbol:(TYPictureMarkerSymbol *)symbol;
 
 /**
  *  设置导航线的终点符号
  *
  *  @param symbol 终点标识符号
  */
-- (void)setRouteEndSymbol:(NPPictureMarkerSymbol *)symbol;
+- (void)setRouteEndSymbol:(TYPictureMarkerSymbol *)symbol;
 
 /**
  *  设置跨层导航切换点符号
  *
  *  @param symbol 切换点标识符号
  */
-- (void)setRouteSwitchSymbol:(NPPictureMarkerSymbol *)symbol;
+- (void)setRouteSwitchSymbol:(TYPictureMarkerSymbol *)symbol;
 
 /**
  *  设置导航结果
@@ -290,7 +290,7 @@ typedef enum {
  *  @param range 目标屏幕范围
  *
  */
-- (void)restrictLocation:(NPPoint *)location toScreenRange:(CGRect)range;
+- (void)restrictLocation:(TYPoint *)location toScreenRange:(CGRect)range;
 
 /**
  *  清除高亮显示的POI

@@ -29,20 +29,20 @@ static NSString *mapFileRootDirectory;
     mapFileRootDirectory = [NSString stringWithString:dir];
 }
 
-+ (NPSpatialReference *)defaultSpatialReference
++ (TYSpatialReference *)defaultSpatialReference
 {
-    static NPSpatialReference *spatialReference;
+    static TYSpatialReference *spatialReference;
     if (spatialReference == nil) {
-        spatialReference = [NPSpatialReference spatialReferenceWithWKID:3395];
+        spatialReference = [TYSpatialReference spatialReferenceWithWKID:3395];
     }
     return spatialReference;
 }
 
-+ (NPCredential *)defaultCredential
++ (TYCredential *)defaultCredential
 {
-    static NPCredential *credential;
+    static TYCredential *credential;
     if (credential == nil) {
-        credential = [[NPCredential alloc] initWithUser:@"arcgis" password:@"666666"];
+        credential = [[TYCredential alloc] initWithUser:@"arcgis" password:@"666666"];
     }
     return credential;
 }

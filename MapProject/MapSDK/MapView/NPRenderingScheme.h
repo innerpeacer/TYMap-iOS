@@ -7,8 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "NPSimpleFillSymbol.h"
-#import "NPSimpleLineSymbol.h"
+#import "TYSimpleFillSymbol.h"
+#import "TYSimpleLineSymbol.h"
 
 /**
  *  渲染方案类：用于表示地图的渲染规则
@@ -27,22 +27,22 @@
 /**
  *  默认填充符号
  */
-@property (nonatomic, strong) NPSimpleFillSymbol *defaultFillSymbol;
+@property (nonatomic, strong) TYSimpleFillSymbol *defaultFillSymbol;
 
 /**
  *  默认高亮填充符号
  */
-@property (nonatomic, strong) NPSimpleFillSymbol *defaultHighlightFillSymbol;
+@property (nonatomic, strong) TYSimpleFillSymbol *defaultHighlightFillSymbol;
 
 /**
  *  默认线型符号
  */
-@property (nonatomic, strong) NPSimpleLineSymbol *defaultLineSymbol;
+@property (nonatomic, strong) TYSimpleLineSymbol *defaultLineSymbol;
 
 /**
  *  默认高亮线型符号
  */
-@property (nonatomic, strong) NPSimpleLineSymbol *defaultHighlightLineSymbol;
+@property (nonatomic, strong) TYSimpleLineSymbol *defaultHighlightLineSymbol;
 
 /**
  *  填充符号字典，{NSNumber: FillSymbol} -> {类型: 填充符号}

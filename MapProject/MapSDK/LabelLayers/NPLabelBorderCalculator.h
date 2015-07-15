@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "NPLabelBorder.h"
-#import "NPPoint.h"
+#import "TYPoint.h"
 #import "NPTextLabel.h"
 #import "NPMapView.h"
 

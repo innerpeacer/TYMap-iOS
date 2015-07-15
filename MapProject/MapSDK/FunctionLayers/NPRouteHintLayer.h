@@ -8,11 +8,11 @@
 
 #import <ArcGIS/ArcGIS.h>
 
-#import "NPSpatialReference.h"
+#import "TYSpatialReference.h"
 
 @interface NPRouteHintLayer : AGSGraphicsLayer
 
-+ (NPRouteHintLayer *)routeHintLayerWithSpatialReference:(NPSpatialReference *)sr;
++ (NPRouteHintLayer *)routeHintLayerWithSpatialReference:(TYSpatialReference *)sr;
 
 - (void)showRouteHint:(AGSPolyline *)line;
 

@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "NPGeometry.h"
+#import "TYGeometry.h"
 /**
  *  POI所在层，当前按层来分类：房间层（ROOM）、资产层（ASSET）、公共设施层（FACILITY）
  */
@@ -51,7 +51,7 @@ typedef enum
 /**
  *  POI几何数据
  */
-@property (nonatomic, strong) NPGeometry *geometry;
+@property (nonatomic, strong) TYGeometry *geometry;
 
 /**
  *  POI分类类型ID
@@ -77,6 +77,6 @@ typedef enum
  *
  *  @return POI实例
  */
-+ (NPPoi *)poiWithGeoID:(NSString *)gid PoiID:(NSString *)pid FloorID:(NSString *)fid  BuildingID:(NSString *)bid Name:(NSString *)pname Geometry:(NPGeometry *)geometry CategoryID:(int)cid Layer:(POI_LAYER)pLayer;
++ (NPPoi *)poiWithGeoID:(NSString *)gid PoiID:(NSString *)pid FloorID:(NSString *)fid  BuildingID:(NSString *)bid Name:(NSString *)pname Geometry:(TYGeometry *)geometry CategoryID:(int)cid Layer:(POI_LAYER)pLayer;
 
 @end

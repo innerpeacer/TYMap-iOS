@@ -34,7 +34,7 @@
     [self.calloutViewController.view setClipsToBounds:YES];
 }
 
-- (void)NPMapView:(NPMapView *)mapView didClickAtPoint:(CGPoint)screen mapPoint:(NPPoint *)mappoint
+- (void)NPMapView:(NPMapView *)mapView didClickAtPoint:(CGPoint)screen mapPoint:(TYPoint *)mappoint
 {
     NSLog(@"didClickAtPoint: %f, %f", mappoint.x, mappoint.y);
 }
@@ -44,12 +44,12 @@
     NSLog(@"NPMapView:calloutWillDismiss");
 }
 
-- (void)NPMapView:(NPMapView *)mapView calloutWillDismiss:(NPCallout *)callout
+- (void)NPMapView:(NPMapView *)mapView calloutWillDismiss:(TYCallout *)callout
 {
     NSLog(@"NPMapView:calloutWillDismiss");
 }
 
-- (BOOL)NPMapView:(NPMapView *)mapView willShowForGraphic:(NPGraphic *)graphic layer:(NPGraphicsLayer *)layer mapPoint:(NPPoint *)mappoint
+- (BOOL)NPMapView:(NPMapView *)mapView willShowForGraphic:(TYGraphic *)graphic layer:(TYGraphicsLayer *)layer mapPoint:(TYPoint *)mappoint
 {
     NSLog(@"NPMapView:willShowForGraphic:layer:mapPoint:");
     

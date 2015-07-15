@@ -174,9 +174,9 @@
  *
  *  @return 公共设施类型数组:[NSNumber]
  */
-- (NPPoint *)getPointForScreenCenter
+- (TYPoint *)getPointForScreenCenter
 {
-    return (NPPoint *)self.mapAnchor;
+    return (TYPoint *)self.mapAnchor;
 }
 
 - (void)setMapMode:(NPMapViewMode)mode
@@ -197,17 +197,17 @@
     }
 }
 
-- (void)setRouteStartSymbol:(NPPictureMarkerSymbol *)symbol
+- (void)setRouteStartSymbol:(TYPictureMarkerSymbol *)symbol
 {
     routeLayer.startSymbol = symbol;
 }
 
-- (void)setRouteEndSymbol:(NPPictureMarkerSymbol *)symbol
+- (void)setRouteEndSymbol:(TYPictureMarkerSymbol *)symbol
 {
     routeLayer.endSymbol = symbol;
 }
 
-- (void)setRouteSwitchSymbol:(NPPictureMarkerSymbol *)symbol
+- (void)setRouteSwitchSymbol:(TYPictureMarkerSymbol *)symbol
 {
     routeLayer.switchSymbol = symbol;
 }
@@ -258,7 +258,7 @@
     [routeLayer showSwitchSymbol:sp];
 }
 
-- (void)setLocationSymbol:(NPMarkerSymbol *)symbol
+- (void)setLocationSymbol:(TYMarkerSymbol *)symbol
 {
     [locationLayer setLocationSymbol:symbol];
 }
@@ -267,7 +267,7 @@
 {
     [locationLayer removeAllGraphics];
     if (self.currentMapInfo.floorNumber == location.floor) {
-        NPPoint *pos = [NPPoint pointWithX:location.x y:location.y spatialReference:[NPMapEnvironment defaultSpatialReference]];
+        TYPoint *pos = [TYPoint pointWithX:location.x y:location.y spatialReference:[NPMapEnvironment defaultSpatialReference]];
         [locationLayer showLocation:pos withDeviceHeading:currentDeviceHeading initAngle:self.building.initAngle mapViewMode:mapViewMode];
     }
 }
@@ -329,7 +329,7 @@
     [self centerAtPoint:newCenter animated:animated];
 }
 
-- (void)restrictLocation:(NPPoint *)location toScreenRange:(CGRect)range
+- (void)restrictLocation:(TYPoint *)location toScreenRange:(CGRect)range
 {
     CGPoint locationOnScreen = [self toScreenPoint:location];
     if (CGRectContainsPoint(range, locationOnScreen)) {
@@ -370,7 +370,7 @@
     [self clearSelection];
     
     if (self.mapDelegate && [self.mapDelegate respondsToSelector:@selector(NPMapView:didClickAtPoint:mapPoint:)]) {
-        [self.mapDelegate NPMapView:self didClickAtPoint:screen mapPoint:(NPPoint *)mappoint];
+        [self.mapDelegate NPMapView:self didClickAtPoint:screen mapPoint:(TYPoint *)mappoint];
     }
     
     if (self.mapDelegate && [self.mapDelegate respondsToSelector:@selector(NPMapView:PoiSelected:)]) {
@@ -438,9 +438,9 @@
     BOOL result = NO;
     
     if (self.mapDelegate && [self.mapDelegate respondsToSelector:@selector(NPMapView:willShowForGraphic:layer:mapPoint:)]) {
-        NPGraphic *graphic = (NPGraphic *)feature;
-        NPGraphicsLayer *graphicLayer = (NPGraphicsLayer *)layer;
-        NPPoint *point = (NPPoint *)mapPoint;
+        TYGraphic *graphic = (TYGraphic *)feature;
+        TYGraphicsLayer *graphicLayer = (TYGraphicsLayer *)layer;
+        TYPoint *point = (TYPoint *)mapPoint;
         
         result = [self.mapDelegate NPMapView:self willShowForGraphic:graphic layer:graphicLayer mapPoint:point];
     }
@@ -455,7 +455,7 @@
         for (int i = 0; i < array.count; ++i) {
             AGSGraphic *graphic = (AGSGraphic *)array[i];
             
-            NPPoi *poi = [NPPoi poiWithGeoID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_GEO_ID] PoiID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_POI_ID] FloorID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_FLOOR_ID] BuildingID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_BUILDING_ID] Name:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_NAME] Geometry:(NPGeometry *)graphic.geometry CategoryID:[[graphic attributeForKey:GRAPHIC_ATTRIBUTE_CATEGORY_ID] intValue] Layer:POI_FACILITY];
+            NPPoi *poi = [NPPoi poiWithGeoID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_GEO_ID] PoiID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_POI_ID] FloorID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_FLOOR_ID] BuildingID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_BUILDING_ID] Name:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_NAME] Geometry:(TYGeometry *)graphic.geometry CategoryID:[[graphic attributeForKey:GRAPHIC_ATTRIBUTE_CATEGORY_ID] intValue] Layer:POI_FACILITY];
             [poiArray addObject:poi];
         }
     }
@@ -465,7 +465,7 @@
         for (int i = 0; i < array.count; ++i) {
             AGSGraphic *graphic = (AGSGraphic *)array[i];
             
-            NPPoi *poi = [NPPoi poiWithGeoID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_GEO_ID] PoiID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_POI_ID] FloorID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_FLOOR_ID] BuildingID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_BUILDING_ID] Name:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_NAME] Geometry:(NPGeometry *)graphic.geometry CategoryID:[[graphic attributeForKey:GRAPHIC_ATTRIBUTE_CATEGORY_ID] intValue] Layer:POI_ROOM];
+            NPPoi *poi = [NPPoi poiWithGeoID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_GEO_ID] PoiID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_POI_ID] FloorID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_FLOOR_ID] BuildingID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_BUILDING_ID] Name:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_NAME] Geometry:(TYGeometry *)graphic.geometry CategoryID:[[graphic attributeForKey:GRAPHIC_ATTRIBUTE_CATEGORY_ID] intValue] Layer:POI_ROOM];
             [poiArray addObject:poi];
         }
     }
@@ -475,7 +475,7 @@
         for (int i = 0; i < array.count; ++i) {
             AGSGraphic *graphic = (AGSGraphic *)array[i];
             
-            NPPoi *poi = [NPPoi poiWithGeoID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_GEO_ID] PoiID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_POI_ID] FloorID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_FLOOR_ID] BuildingID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_BUILDING_ID] Name:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_NAME] Geometry:(NPGeometry *)graphic.geometry CategoryID:[[graphic attributeForKey:GRAPHIC_ATTRIBUTE_CATEGORY_ID] intValue] Layer:POI_ASSET];
+            NPPoi *poi = [NPPoi poiWithGeoID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_GEO_ID] PoiID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_POI_ID] FloorID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_FLOOR_ID] BuildingID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_BUILDING_ID] Name:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_NAME] Geometry:(TYGeometry *)graphic.geometry CategoryID:[[graphic attributeForKey:GRAPHIC_ATTRIBUTE_CATEGORY_ID] intValue] Layer:POI_ASSET];
             [poiArray addObject:poi];
         }
     }

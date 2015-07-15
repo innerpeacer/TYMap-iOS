@@ -23,12 +23,12 @@
 
 @implementation NPAnimatedRouteArrowLayer
 
-+ (NPAnimatedRouteArrowLayer *)animatedRouteArrowLayerWithSpatialReference:(NPSpatialReference *)sr
++ (NPAnimatedRouteArrowLayer *)animatedRouteArrowLayerWithSpatialReference:(TYSpatialReference *)sr
 {
     return [[NPAnimatedRouteArrowLayer alloc] initWithSpatialReference:sr];
 }
 
-- (id)initAnimatedRouteArrowWithSpatialReference:(NPSpatialReference *)sr
+- (id)initAnimatedRouteArrowWithSpatialReference:(TYSpatialReference *)sr
 {
     self = [super initWithSpatialReference:sr];
     if (self) {
@@ -142,7 +142,7 @@
         
         AGSPoint *point = [self getPointFrom:currentStart To:currentEnd withSegmentLength:currentSegmentLength withOffset: (i) * interval - currentAccumulativeLength + translationInterval];
         
-        NPPictureMarkerSymbol *pms = [NPPictureMarkerSymbol pictureMarkerSymbolWithImageNamed:@"routeArrow"];
+        TYPictureMarkerSymbol *pms = [TYPictureMarkerSymbol pictureMarkerSymbolWithImageNamed:@"routeArrow"];
         
         pms.angle = currentAngle;
         [self addGraphic:[AGSGraphic graphicWithGeometry:point symbol:pms attributes:nil]];

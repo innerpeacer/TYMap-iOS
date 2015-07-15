@@ -8,8 +8,8 @@
 
 #import <ArcGIS/ArcGIS.h>
 
-#import "NPSpatialReference.h"
-#import "NPPictureMarkerSymbol.h"
+#import "TYSpatialReference.h"
+#import "TYPictureMarkerSymbol.h"
 #import "NPRouteResult.h"
 
 @class NPMapView;
@@ -28,9 +28,9 @@
 @property (nonatomic, strong) NPLocalPoint *startPoint;
 @property (nonatomic, strong) NPLocalPoint *endPoint;
 
-@property (nonatomic, strong) NPPictureMarkerSymbol *startSymbol;
-@property (nonatomic, strong) NPPictureMarkerSymbol *endSymbol;
-@property (nonatomic, strong) NPPictureMarkerSymbol *switchSymbol;
+@property (nonatomic, strong) TYPictureMarkerSymbol *startSymbol;
+@property (nonatomic, strong) TYPictureMarkerSymbol *endSymbol;
+@property (nonatomic, strong) TYPictureMarkerSymbol *switchSymbol;
 
 /**
  *  路径导航层的静态实例化方法
@@ -39,7 +39,7 @@
  *
  *  @return 路径导航层
  */
-+ (NPRouteLayer *)routeLayerWithSpatialReference:(NPSpatialReference *)sr;
++ (NPRouteLayer *)routeLayerWithSpatialReference:(TYSpatialReference *)sr;
 
 - (NSArray *)showRouteResultOnFloor:(int)floor;
 

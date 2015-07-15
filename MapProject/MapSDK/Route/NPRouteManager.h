@@ -12,7 +12,7 @@
 #import "NPRouteResult.h"
 
 #import <NephogramData/NephogramData.h>
-#import "NPPoint.h"
+#import "TYPoint.h"
 
 @class NPRouteManager;
 
@@ -63,12 +63,12 @@
 /**
  *  路径规划起点
  */
-@property (nonatomic, strong, readonly) NPPoint *startPoint;
+@property (nonatomic, strong, readonly) TYPoint *startPoint;
 
 /**
  *  路径规划终点
  */
-@property (nonatomic, strong, readonly) NPPoint *endPoint;
+@property (nonatomic, strong, readonly) TYPoint *endPoint;
 
 /**
  *  路径管理代理
@@ -84,7 +84,7 @@
  *
  *  @return 路径管理类实例
  */
-+ (NPRouteManager *)routeManagerWithBuilding:(NPBuilding *)building credential:(NPCredential *)credential MapInfos:(NSArray *)mapInfoArray;
++ (NPRouteManager *)routeManagerWithBuilding:(NPBuilding *)building credential:(TYCredential *)credential MapInfos:(NSArray *)mapInfoArray;
 
 /**
  *  请求路径规划，在代理方法获取规划结果

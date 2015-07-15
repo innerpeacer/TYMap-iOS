@@ -10,7 +10,7 @@
 
 @interface NPLocationLayer()
 {
-    NPMarkerSymbol *locationSymbol;
+    TYMarkerSymbol *locationSymbol;
 }
 
 @end
@@ -31,7 +31,7 @@
     return self;
 }
 
-- (void)setLocationSymbol:(NPMarkerSymbol *)symbol
+- (void)setLocationSymbol:(TYMarkerSymbol *)symbol
 {
     locationSymbol = [symbol copy];
     AGSSimpleRenderer *renderer = [AGSSimpleRenderer simpleRendererWithSymbol:locationSymbol];
@@ -49,7 +49,7 @@
     locationSymbol.angle = deviceHeading + initAngle;
 }
 
-- (void)showLocation:(NPPoint *)location withDeviceHeading:(double)deviceHeading initAngle:(double)initAngle mapViewMode:(NPMapViewMode)mode
+- (void)showLocation:(TYPoint *)location withDeviceHeading:(double)deviceHeading initAngle:(double)initAngle mapViewMode:(NPMapViewMode)mode
 {
     [self removeAllGraphics];
 

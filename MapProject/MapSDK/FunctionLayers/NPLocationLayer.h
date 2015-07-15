@@ -7,17 +7,17 @@
 //
 
 #import <ArcGIS/ArcGIS.h>
-#import "NPMarkerSymbol.h"
-#import "NPPoint.h"
+#import "TYMarkerSymbol.h"
+#import "TYPoint.h"
 #import "NPMapView.h"
 
 @interface NPLocationLayer : AGSGraphicsLayer
 
-- (void)setLocationSymbol:(NPMarkerSymbol *)symbol;
+- (void)setLocationSymbol:(TYMarkerSymbol *)symbol;
 
 - (void)updateDeviceHeading:(double)deviceHeading initAngle:(double)initAngle mapViewMode:(NPMapViewMode)mode;
 
-- (void)showLocation:(NPPoint *)location withDeviceHeading:(double)deviceHeading initAngle:(double)initAngle mapViewMode:(NPMapViewMode)mode;
+- (void)showLocation:(TYPoint *)location withDeviceHeading:(double)deviceHeading initAngle:(double)initAngle mapViewMode:(NPMapViewMode)mode;
 
 - (void)removeLocation;
 

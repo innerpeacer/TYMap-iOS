@@ -8,25 +8,25 @@
 
 #import <Foundation/Foundation.h>
 
-#import "NPPoint.h"
-#import "NPGraphicsLayer.h"
-#import "NPSpatialReference.h"
-#import "NPPictureMarkerSymbol.h"
+#import "TYPoint.h"
+#import "TYGraphicsLayer.h"
+#import "TYSpatialReference.h"
+#import "TYPictureMarkerSymbol.h"
 
 @interface NPArcGISDrawer : NSObject
 
-+ (void)drawPoint:(NPPoint *)p AtLayer:(NPGraphicsLayer *)layer WithColor:(UIColor *)color;
++ (void)drawPoint:(TYPoint *)p AtLayer:(TYGraphicsLayer *)layer WithColor:(UIColor *)color;
 
-+ (void)drawPoint:(NPPoint *)p AtLayer:(NPGraphicsLayer *)layer WithColor:(UIColor *)color Size:(CGSize)size;
++ (void)drawPoint:(TYPoint *)p AtLayer:(TYGraphicsLayer *)layer WithColor:(UIColor *)color Size:(CGSize)size;
 
-+ (void)drawPoint:(NPPoint *)p AtLayer:(NPGraphicsLayer *)layer WithBuffer1:(double)buffer1 Buffer2:(double)buffer2;
++ (void)drawPoint:(TYPoint *)p AtLayer:(TYGraphicsLayer *)layer WithBuffer1:(double)buffer1 Buffer2:(double)buffer2;
 
-+ (void)drawLineFrom:(NPPoint *)start To:(NPPoint *)end AtLayer:(NPGraphicsLayer *)layer WithColor:(UIColor *)color Width:(CGFloat)width spatialReference:(NPSpatialReference *)spatialReference;
-+ (void)drawString:(NSString *)s Position:(NPPoint *)point AtLayer:(NPGraphicsLayer *)layer WithColor:(UIColor *)color;
-+ (void)drawCircleCenterAt:(NPPoint *)center Radius:(double)r AtLayer:(NPGraphicsLayer *)layer WithColor:(UIColor *)color;
-+ (void)drawPictureSymbol:(NPPictureMarkerSymbol *)pms At:(NPPoint *)point AtLayer:(NPGraphicsLayer *)layer;
++ (void)drawLineFrom:(TYPoint *)start To:(TYPoint *)end AtLayer:(TYGraphicsLayer *)layer WithColor:(UIColor *)color Width:(CGFloat)width spatialReference:(TYSpatialReference *)spatialReference;
++ (void)drawString:(NSString *)s Position:(TYPoint *)point AtLayer:(TYGraphicsLayer *)layer WithColor:(UIColor *)color;
++ (void)drawCircleCenterAt:(TYPoint *)center Radius:(double)r AtLayer:(TYGraphicsLayer *)layer WithColor:(UIColor *)color;
++ (void)drawPictureSymbol:(TYPictureMarkerSymbol *)pms At:(TYPoint *)point AtLayer:(TYGraphicsLayer *)layer;
 
-+ (void)drawPolygon:(NSArray *)points AtLayer:(NPGraphicsLayer *)layer Color:(UIColor *)color spatialReference:(NPSpatialReference *)spatialReference;
++ (void)drawPolygon:(NSArray *)points AtLayer:(TYGraphicsLayer *)layer Color:(UIColor *)color spatialReference:(TYSpatialReference *)spatialReference;
 
 
 @end

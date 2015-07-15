@@ -37,7 +37,7 @@ static AGSSimpleMarkerSymbol *pointSymbol = nil;
 //    return self;
 //}
 
-- (id)initWithName:(NSString *)name Position:(NPPoint *)pos
+- (id)initWithName:(NSString *)name Position:(TYPoint *)pos
 {
     self = [super init];
     if (self) {

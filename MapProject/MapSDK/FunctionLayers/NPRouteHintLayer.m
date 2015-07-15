@@ -19,12 +19,12 @@
 
 @implementation NPRouteHintLayer
 
-+ (NPRouteHintLayer *)routeHintLayerWithSpatialReference:(NPSpatialReference *)sr
++ (NPRouteHintLayer *)routeHintLayerWithSpatialReference:(TYSpatialReference *)sr
 {
     return [[NPRouteHintLayer alloc] initRouteHintLayerWithSpatialReference:sr];
 }
 
-- (id)initRouteHintLayerWithSpatialReference:(NPSpatialReference *)sr
+- (id)initRouteHintLayerWithSpatialReference:(TYSpatialReference *)sr
 {
     self = [super initWithSpatialReference:sr];
     if (self) {

@@ -7,8 +7,8 @@
 //
 
 #import <ArcGIS/ArcGIS.h>
-#import "NPCredential.h"
-#import "NPSpatialReference.h"
+#import "TYCredential.h"
+#import "TYSpatialReference.h"
 
 /**
     地图显示的语言类型
@@ -29,7 +29,7 @@ typedef enum {
  *
  *  @return WKID:3395
  */
-+ (NPSpatialReference *)defaultSpatialReference;
++ (TYSpatialReference *)defaultSpatialReference;
 
 
 /**
@@ -37,7 +37,7 @@ typedef enum {
  *
  *  @return [user:password] --> ["arcgis":"666666"]
  */
-+ (NPCredential *)defaultCredential;
++ (TYCredential *)defaultCredential;
 
 
 /**

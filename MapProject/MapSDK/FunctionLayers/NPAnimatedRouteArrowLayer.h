@@ -8,12 +8,12 @@
 
 #import <ArcGIS/ArcGIS.h>
 
-#import "NPPictureMarkerSymbol.h"
-#import "NPSpatialReference.h"
+#import "TYPictureMarkerSymbol.h"
+#import "TYSpatialReference.h"
 
 @interface NPAnimatedRouteArrowLayer : AGSGraphicsLayer
 
-+ (NPAnimatedRouteArrowLayer *)animatedRouteArrowLayerWithSpatialReference:(NPSpatialReference *)sr;
++ (NPAnimatedRouteArrowLayer *)animatedRouteArrowLayerWithSpatialReference:(TYSpatialReference *)sr;
 
 - (void)showRouteArrow:(NSArray *)array;
 

@@ -9,7 +9,7 @@
 #import "NPRouteResult.h"
 #import "NPLandmarkManager.h"
 #import "Vector2.h"
-#import "NPPolyline.h"
+#import "TYPolyline.h"
 #import "NPMapEnviroment.h"
 
 @interface NPRouteResult()
