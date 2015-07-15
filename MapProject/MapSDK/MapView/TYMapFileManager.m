@@ -7,7 +7,7 @@
 //
 
 #import "TYMapFileManager.h"
-#import "NPMapEnviroment.h"
+#import "TYMapEnviroment.h"
 
 #define FILE_CITIES @"Cities.json"
 

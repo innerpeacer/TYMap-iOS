@@ -8,8 +8,8 @@
 
 #import "NephogramMapVC.h"
 #import "TYAreaAnalysis.h"
-#import "NPMapEnviroment.h"
-#import "NPBrand.h"
+#import "TYMapEnviroment.h"
+#import "TYBrand.h"
 
 @interface NephogramMapVC()
 {

@@ -7,23 +7,23 @@
 //  Copyright (c) 2015年 innerpeacer. All rights reserved.
 //
 
-#import "NPStructureGroupLayer.h"
+#import "TYStructureGroupLayer.h"
 
-@implementation NPStructureGroupLayer
+@implementation TYStructureGroupLayer
 
-+ (NPStructureGroupLayer *)structureLayerWithRenderingScheme:(TYRenderingScheme *)aRenderingScheme SpatialReference:(AGSSpatialReference *)sr
++ (TYStructureGroupLayer *)structureLayerWithRenderingScheme:(TYRenderingScheme *)aRenderingScheme SpatialReference:(AGSSpatialReference *)sr
 {
-    return [[NPStructureGroupLayer alloc] initWithRenderingScheme:aRenderingScheme SpatialReference:sr];
+    return [[TYStructureGroupLayer alloc] initWithRenderingScheme:aRenderingScheme SpatialReference:sr];
 }
 
 - (id)initWithRenderingScheme:(TYRenderingScheme *)aRenderingScheme SpatialReference:(AGSSpatialReference *)sr
 {
     self = [super init];
     if (self) {
-        _floorLayer = [NPFloorLayer floorLayerWithRenderingScheme:aRenderingScheme SpatialReference:sr];
+        _floorLayer = [TYFloorLayer floorLayerWithRenderingScheme:aRenderingScheme SpatialReference:sr];
         _floorLayer.allowHitTest = NO;
         
-        _roomLayer = [NPRoomLayer roomLayerWithRenderingScheme:aRenderingScheme SpatialReference:sr];
+        _roomLayer = [TYRoomLayer roomLayerWithRenderingScheme:aRenderingScheme SpatialReference:sr];
         _roomLayer.selectionSymbol = aRenderingScheme.defaultHighlightFillSymbol;
         
         _asserLayer = [TYAssetLayer assetLayerWithRenderingScheme:aRenderingScheme SpatialReference:sr];
@@ -43,7 +43,7 @@
     [_asserLayer loadContentsWithInfo:info];
 }
 
-- (NPPoi *)getRoomPoiWithPoiID:(NSString *)pid
+- (TYPoi *)getRoomPoiWithPoiID:(NSString *)pid
 {
     return [_roomLayer getPoiWithPoiID:pid];
 }
@@ -53,7 +53,7 @@
     [_roomLayer highlightPoi:poiID];
 }
 
-- (NPPoi *)extractRoomPoiOnCurrentFloorWithX:(double)x Y:(double)y
+- (TYPoi *)extractRoomPoiOnCurrentFloorWithX:(double)x Y:(double)y
 {
     return [_roomLayer extractPoiOnCurrentFloorWithX:x Y:y];
 }

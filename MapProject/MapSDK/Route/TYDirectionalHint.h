@@ -8,8 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import <ArcGIS/ArcGIS.h>
-#import "NPLandmark.h"
-#import "NPRoutePart.h"
+#import "TYLandmark.h"
+#import "TYRoutePart.h"
 
 #define INITIAL_EMPTY_ANGLE 1000
 
@@ -30,7 +30,7 @@ typedef enum {
 /**
     导航方向提示，用于导航结果的展示，表示其中的一段
  */
-@interface NPDirectionalHint : NSObject
+@interface TYDirectionalHint : NSObject
 
 /**
  *  导航方向提示的初始化方法，一般不需要直接调用，由导航管理类调用生成
@@ -76,12 +76,12 @@ typedef enum {
 /**
  *  当前段的路标信息
  */
-@property (nonatomic, strong) NPLandmark *landMark;
+@property (nonatomic, strong) TYLandmark *landMark;
 
 /**
  *  包含当前段的路径部分
  */
-@property (nonatomic, weak) NPRoutePart *routePart;
+@property (nonatomic, weak) TYRoutePart *routePart;
 
 /**
  *  生成当前段的方向提示

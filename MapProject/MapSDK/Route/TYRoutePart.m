@@ -6,9 +6,9 @@
 //  Copyright (c) 2015年 innerpeacer. All rights reserved.
 //
 
-#import "NPRoutePart.h"
+#import "TYRoutePart.h"
 
-@implementation NPRoutePart
+@implementation TYRoutePart
 
 - (id)initWithRouteLine:(AGSPolyline *)route MapInfo:(TYMapInfo *)mapInfo
 {

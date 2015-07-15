@@ -9,25 +9,25 @@
 #import "TYMapView.h"
 
 #import "TYMapInfo.h"
-#import "NPMapType.h"
-#import "NPMapEnviroment.h"
+#import "TYMapType.h"
+#import "TYMapEnviroment.h"
 #import "TYLocationLayer.h"
 #import "TYMapFileManager.h"
 
-#import "NPStructureGroupLayer.h"
+#import "TYStructureGroupLayer.h"
 #import "TYLabelGroupLayer.h"
 #import "TYRouteLayer.h"
 #import "TYRouteArrowLayer.h"
 #import "TYAnimatedRouteArrowLayer.h"
 
 #import "TYRouteHintLayer.h"
-#import "NPBrand.h"
+#import "TYBrand.h"
 
 @interface TYMapView() <AGSMapViewTouchDelegate, AGSMapViewLayerDelegate, AGSCalloutDelegate>
 {
     TYRenderingScheme *renderingScheme;
     
-    NPStructureGroupLayer *structureGroupLayer;
+    TYStructureGroupLayer *structureGroupLayer;
     TYLabelGroupLayer *labelGroupLayer;
     
     TYLocationLayer *locationLayer;
@@ -128,15 +128,15 @@
     mapViewMode = NPMapViewModeDefault;
     
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
-    NSArray *brandArray = [NPBrand parseAllBrands:b];
-    for (NPBrand *brand in brandArray) {
+    NSArray *brandArray = [TYBrand parseAllBrands:b];
+    for (TYBrand *brand in brandArray) {
         [dict setObject:brand forKey:brand.poiID];
     }
     allBrandDict = dict;
     
     AGSSpatialReference *spatialReference = [TYMapEnvironment defaultSpatialReference];
     
-    structureGroupLayer = [NPStructureGroupLayer structureLayerWithRenderingScheme:renderingScheme SpatialReference:spatialReference];
+    structureGroupLayer = [TYStructureGroupLayer structureLayerWithRenderingScheme:renderingScheme SpatialReference:spatialReference];
     [self addMapLayer:structureGroupLayer.floorLayer withName:LAYER_NAME_FLOOR];
     [self addMapLayer:structureGroupLayer.roomLayer withName:LAYER_NAME_ROOM];
     [self addMapLayer:structureGroupLayer.asserLayer withName:LAYER_NAME_ASSET];
@@ -212,7 +212,7 @@
     routeLayer.switchSymbol = symbol;
 }
 
-- (void)setRouteResult:(NPRouteResult *)result
+- (void)setRouteResult:(TYRouteResult *)result
 {
     routeLayer.routeResult = result;
 }
@@ -455,7 +455,7 @@
         for (int i = 0; i < array.count; ++i) {
             AGSGraphic *graphic = (AGSGraphic *)array[i];
             
-            NPPoi *poi = [NPPoi poiWithGeoID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_GEO_ID] PoiID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_POI_ID] FloorID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_FLOOR_ID] BuildingID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_BUILDING_ID] Name:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_NAME] Geometry:(TYGeometry *)graphic.geometry CategoryID:[[graphic attributeForKey:GRAPHIC_ATTRIBUTE_CATEGORY_ID] intValue] Layer:POI_FACILITY];
+            TYPoi *poi = [TYPoi poiWithGeoID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_GEO_ID] PoiID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_POI_ID] FloorID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_FLOOR_ID] BuildingID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_BUILDING_ID] Name:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_NAME] Geometry:(TYGeometry *)graphic.geometry CategoryID:[[graphic attributeForKey:GRAPHIC_ATTRIBUTE_CATEGORY_ID] intValue] Layer:POI_FACILITY];
             [poiArray addObject:poi];
         }
     }
@@ -465,7 +465,7 @@
         for (int i = 0; i < array.count; ++i) {
             AGSGraphic *graphic = (AGSGraphic *)array[i];
             
-            NPPoi *poi = [NPPoi poiWithGeoID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_GEO_ID] PoiID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_POI_ID] FloorID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_FLOOR_ID] BuildingID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_BUILDING_ID] Name:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_NAME] Geometry:(TYGeometry *)graphic.geometry CategoryID:[[graphic attributeForKey:GRAPHIC_ATTRIBUTE_CATEGORY_ID] intValue] Layer:POI_ROOM];
+            TYPoi *poi = [TYPoi poiWithGeoID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_GEO_ID] PoiID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_POI_ID] FloorID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_FLOOR_ID] BuildingID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_BUILDING_ID] Name:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_NAME] Geometry:(TYGeometry *)graphic.geometry CategoryID:[[graphic attributeForKey:GRAPHIC_ATTRIBUTE_CATEGORY_ID] intValue] Layer:POI_ROOM];
             [poiArray addObject:poi];
         }
     }
@@ -475,7 +475,7 @@
         for (int i = 0; i < array.count; ++i) {
             AGSGraphic *graphic = (AGSGraphic *)array[i];
             
-            NPPoi *poi = [NPPoi poiWithGeoID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_GEO_ID] PoiID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_POI_ID] FloorID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_FLOOR_ID] BuildingID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_BUILDING_ID] Name:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_NAME] Geometry:(TYGeometry *)graphic.geometry CategoryID:[[graphic attributeForKey:GRAPHIC_ATTRIBUTE_CATEGORY_ID] intValue] Layer:POI_ASSET];
+            TYPoi *poi = [TYPoi poiWithGeoID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_GEO_ID] PoiID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_POI_ID] FloorID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_FLOOR_ID] BuildingID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_BUILDING_ID] Name:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_NAME] Geometry:(TYGeometry *)graphic.geometry CategoryID:[[graphic attributeForKey:GRAPHIC_ATTRIBUTE_CATEGORY_ID] intValue] Layer:POI_ASSET];
             [poiArray addObject:poi];
         }
     }
@@ -536,12 +536,12 @@
 
 
 
-- (void)showRouteHintForDirectionHint:(NPDirectionalHint *)ds Centered:(BOOL)isCentered
+- (void)showRouteHintForDirectionHint:(TYDirectionalHint *)ds Centered:(BOOL)isCentered
 {
-    NPRouteResult *routeResult = routeLayer.routeResult;
+    TYRouteResult *routeResult = routeLayer.routeResult;
     if (routeResult) {
         AGSPolyline *currentLine = ds.routePart.route;
-        AGSPolyline *subLine = [NPRouteResult getSubPolyline:currentLine WithStart:ds.startPoint End:ds.endPoint];
+        AGSPolyline *subLine = [TYRouteResult getSubPolyline:currentLine WithStart:ds.startPoint End:ds.endPoint];
         [routeHintLayer showRouteHint:subLine];
         
         if (isCentered) {
@@ -571,9 +571,9 @@
     return [labelGroupLayer getAllFacilityCategoryIDOnCurrentFloor];
 }
 
-- (NPPoi *)getPoiOnCurrentFloorWithPoiID:(NSString *)pid layer:(POI_LAYER)layer
+- (TYPoi *)getPoiOnCurrentFloorWithPoiID:(NSString *)pid layer:(POI_LAYER)layer
 {
-    NPPoi *result = nil;
+    TYPoi *result = nil;
     switch (layer) {
         case POI_ROOM:
             result = [structureGroupLayer getRoomPoiWithPoiID:pid];
@@ -589,7 +589,7 @@
     return result;
 }
 
-- (void)highlightPoi:(NPPoi *)poi
+- (void)highlightPoi:(TYPoi *)poi
 {
     switch (poi.layer) {
         case POI_ROOM:
@@ -607,7 +607,7 @@
 
 - (void)highlightPois:(NSArray *)poiArray
 {
-    for (NPPoi *poi in poiArray) {
+    for (TYPoi *poi in poiArray) {
         [self highlightPoi:poi];
     }
 }
@@ -648,7 +648,7 @@
     [self centerAtPoint:[AGSPoint pointWithX:x y:y spatialReference:self.spatialReference] animated:YES];
 }
 
-- (NPPoi *)extractRoomPoiOnCurrentFloorWithX:(double)x Y:(double)y
+- (TYPoi *)extractRoomPoiOnCurrentFloorWithX:(double)x Y:(double)y
 {
     return [structureGroupLayer extractRoomPoiOnCurrentFloorWithX:x Y:y];
 }

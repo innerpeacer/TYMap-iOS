@@ -14,7 +14,7 @@
 /**
     导航点转换类
  */
-@interface NPRoutePointConverter : NSObject
+@interface TYRoutePointConverter : NSObject
 
 /**
  *  导航点转换类初始化方法

@@ -6,21 +6,21 @@
 //  Copyright (c) 2015年 innerpeacer. All rights reserved.
 //
 
-#import "NPFloorLayer.h"
+#import "TYFloorLayer.h"
 #import "TYMapFileManager.h"
 
-@interface NPFloorLayer()
+@interface TYFloorLayer()
 {
     AGSRenderer *floorRender;
     TYRenderingScheme *renderingScheme;
 }
 @end
 
-@implementation NPFloorLayer
+@implementation TYFloorLayer
 
-+ (NPFloorLayer *)floorLayerWithRenderingScheme:(TYRenderingScheme *)aRenderingScheme SpatialReference:(AGSSpatialReference *)sr
++ (TYFloorLayer *)floorLayerWithRenderingScheme:(TYRenderingScheme *)aRenderingScheme SpatialReference:(AGSSpatialReference *)sr
 {
-    return [[NPFloorLayer alloc] initFloorLayerWithRenderingScheme:aRenderingScheme SpatialReference:sr];
+    return [[TYFloorLayer alloc] initFloorLayerWithRenderingScheme:aRenderingScheme SpatialReference:sr];
 }
 
 - (id)initFloorLayerWithRenderingScheme:(TYRenderingScheme *)aRenderingScheme SpatialReference:(AGSSpatialReference *)sr

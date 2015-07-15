@@ -11,7 +11,7 @@
 #import "NPUserDefaults.h"
 #import "TYMapInfo.h"
 #import <ArcGIS/ArcGIS.h>
-#import "NPPoi.h"
+#import "TYPoi.h"
 #import "TYBuilding.h"
 #import "TYMapFileManager.h"
 

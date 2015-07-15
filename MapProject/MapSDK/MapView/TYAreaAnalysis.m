@@ -8,9 +8,9 @@
 
 #import "TYAreaAnalysis.h"
 #import <ArcGIS/ArcGIS.h>
-#import "NPPoi.h"
-#import "NPMapType.h"
-#import "NPMapEnviroment.h"
+#import "TYPoi.h"
+#import "TYMapType.h"
+#import "TYMapEnviroment.h"
 
 @interface TYAreaAnalysis()
 {
@@ -39,7 +39,7 @@
 
         featureArray = [[NSMutableArray alloc] init];
         for (AGSGraphic *graphic in allGraphics) {
-            NPPoi *poi = [NPPoi poiWithGeoID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_GEO_ID] PoiID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_POI_ID] FloorID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_FLOOR_ID] BuildingID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_BUILDING_ID] Name:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_NAME] Geometry:(TYGeometry *)graphic.geometry CategoryID:[[graphic attributeForKey:GRAPHIC_ATTRIBUTE_CATEGORY_ID] intValue] Layer:POI_ROOM];
+            TYPoi *poi = [TYPoi poiWithGeoID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_GEO_ID] PoiID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_POI_ID] FloorID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_FLOOR_ID] BuildingID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_BUILDING_ID] Name:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_NAME] Geometry:(TYGeometry *)graphic.geometry CategoryID:[[graphic attributeForKey:GRAPHIC_ATTRIBUTE_CATEGORY_ID] intValue] Layer:POI_ROOM];
             [featureArray addObject:poi];
         }
         _areaCount = (int) featureArray.count;
@@ -53,7 +53,7 @@
     AGSGeometryEngine *engine = [AGSGeometryEngine defaultGeometryEngine];
     AGSPoint *point = [AGSPoint pointWithX:x y:y spatialReference:[TYMapEnvironment defaultSpatialReference]];
     
-    for (NPPoi *poi in featureArray) {
+    for (TYPoi *poi in featureArray) {
         AGSGeometry *bufferedGeometry = [engine bufferGeometry:poi.geometry byDistance:_buffer];
         if ([engine geometry:bufferedGeometry containsGeometry:point]) {
             [resultArray addObject:poi];

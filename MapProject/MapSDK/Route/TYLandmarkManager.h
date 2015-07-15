@@ -8,14 +8,14 @@
 
 #import <Foundation/Foundation.h>
 #import "TYMapInfo.h"
-#import "NPLandmark.h"
+#import "TYLandmark.h"
 
-@interface NPLandmarkManager : NSObject
+@interface TYLandmarkManager : NSObject
 
-+ (NPLandmarkManager *)sharedManager;
++ (TYLandmarkManager *)sharedManager;
 
 - (void)loadLandmark:(TYMapInfo *)info;
 
-- (NPLandmark *)searchLandmark:(NPLocalPoint *)location Tolerance:(double)tolerance;
+- (TYLandmark *)searchLandmark:(NPLocalPoint *)location Tolerance:(double)tolerance;
 
 @end

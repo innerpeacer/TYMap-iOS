@@ -8,23 +8,23 @@
 
 #import <ArcGIS/ArcGIS.h>
 #import "TYMapInfo.h"
-#import "NPFloorLayer.h"
-#import "NPRoomLayer.h"
+#import "TYFloorLayer.h"
+#import "TYRoomLayer.h"
 #import "TYAssetLayer.h"
 
-@interface NPStructureGroupLayer : NSObject
+@interface TYStructureGroupLayer : NSObject
 
-@property (nonatomic, strong) NPFloorLayer *floorLayer;
-@property (nonatomic, strong) NPRoomLayer *roomLayer;
+@property (nonatomic, strong) TYFloorLayer *floorLayer;
+@property (nonatomic, strong) TYRoomLayer *roomLayer;
 @property (nonatomic, strong) TYAssetLayer *asserLayer;
 
-+ (NPStructureGroupLayer *)structureLayerWithRenderingScheme:(TYRenderingScheme *)aRenderingScheme SpatialReference:(AGSSpatialReference *)sr;
++ (TYStructureGroupLayer *)structureLayerWithRenderingScheme:(TYRenderingScheme *)aRenderingScheme SpatialReference:(AGSSpatialReference *)sr;
 
 - (void)loadContentsWithInfo:(TYMapInfo *)info;
 
-- (NPPoi *)getRoomPoiWithPoiID:(NSString *)pid;
+- (TYPoi *)getRoomPoiWithPoiID:(NSString *)pid;
 - (void)highlightRoomPoi:(NSString *)poiID;
-- (NPPoi *)extractRoomPoiOnCurrentFloorWithX:(double)x Y:(double)y;
+- (TYPoi *)extractRoomPoiOnCurrentFloorWithX:(double)x Y:(double)y;
 
 - (void)clearSelection;
 

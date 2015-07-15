@@ -10,7 +10,7 @@
 
 #import "TYSpatialReference.h"
 #import "TYPictureMarkerSymbol.h"
-#import "NPRouteResult.h"
+#import "TYRouteResult.h"
 
 @class TYMapView;
 
@@ -23,7 +23,7 @@
 
 @property (nonatomic, weak) TYMapView *mapView;
 
-@property (nonatomic, strong) NPRouteResult *routeResult;
+@property (nonatomic, strong) TYRouteResult *routeResult;
 
 @property (nonatomic, strong) NPLocalPoint *startPoint;
 @property (nonatomic, strong) NPLocalPoint *endPoint;
@@ -44,7 +44,7 @@
 - (NSArray *)showRouteResultOnFloor:(int)floor;
 
 - (NSArray *)showRemainingRouteResultOnFloor:(int)floor WithLocation:(NPLocalPoint *)location;
-- (NPRoutePart *)getNearestRoutePartWithLocation:(NPLocalPoint *)location;
+- (TYRoutePart *)getNearestRoutePartWithLocation:(NPLocalPoint *)location;
 
 - (void)reset;
 

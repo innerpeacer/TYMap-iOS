@@ -7,7 +7,7 @@
 //
 
 #import "TYRouteHintLayer.h"
-#import "NPMapEnviroment.h"
+#import "TYMapEnviroment.h"
 #import "Vector2.h"
 
 @interface TYRouteHintLayer()

@@ -9,7 +9,7 @@
 #import <ArcGIS/ArcGIS.h>
 #import "TYMapInfo.h"
 #import "TYRenderingScheme.h"
-#import "NPPoi.h"
+#import "TYPoi.h"
 
 
 @class TYLabelGroupLayer;
@@ -30,7 +30,7 @@
 
 - (void)showFacilityOnCurrentWithCategorys:(NSArray *)categoryIDs;
 
-- (NPPoi *)getPoiWithPoiID:(NSString *)pid;
+- (TYPoi *)getPoiWithPoiID:(NSString *)pid;
 
 - (void)highlightPoi:(NSString *)poiID;
 

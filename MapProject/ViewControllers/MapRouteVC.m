@@ -8,32 +8,32 @@
 
 #import "MapRouteVC.h"
 
-#import "NPRouteManager.h"
+#import "TYRouteManager.h"
 #import "TYRouteLayer.h"
-#import "NPMapEnviroment.h"
-#import "NPRoutePointConverter.h"
+#import "TYMapEnviroment.h"
+#import "TYRoutePointConverter.h"
 #import "TYGraphicsLayer.h"
 #import "TYPictureMarkerSymbol.h"
 #import "TYCredential.h"
 #import "TYGraphic.h"
 #import "TYSimpleMarkerSymbol.h"
 #import "TYPoint.h"
-#import "NPDirectionalHint.h"
+#import "TYDirectionalHint.h"
 
-#import "NPRouteResult.h"
+#import "TYRouteResult.h"
 
-@interface MapRouteVC() <NPRouteManagerDelegate>
+@interface MapRouteVC() <TYRouteManagerDelegate>
 {
-    NPRouteManager *routeManager;
+    TYRouteManager *routeManager;
     
     TYPoint *currentPoint;
     NPLocalPoint *startLocalPoint;
     NPLocalPoint *endLocalPoint;
     
     BOOL isRouting;
-    NPRouteResult *routeResult;
+    TYRouteResult *routeResult;
     
-    NPRoutePart *currentRoutePart;
+    TYRoutePart *currentRoutePart;
     NSArray *routeGuides;
     
     TYGraphicsLayer *hintLayer;
@@ -64,7 +64,7 @@
     hintLayer = [TYGraphicsLayer graphicsLayer];
     [self.mapView addMapLayer:hintLayer];
     
-    routeManager = [NPRouteManager routeManagerWithBuilding:self.currentBuilding credential:[TYMapEnvironment defaultCredential] MapInfos:self.allMapInfos];
+    routeManager = [TYRouteManager routeManagerWithBuilding:self.currentBuilding credential:[TYMapEnvironment defaultCredential] MapInfos:self.allMapInfos];
     routeManager.delegate = self;
     
 //    [self.mapView zoomToEnvelope:[AGSEnvelope envelopeWithXmin:1780 ymin:432.187299 xmax:1944.755560 ymax:658.589997 spatialReference:[NPMapEnvironment defaultSpatialReference]] animated:YES];
@@ -91,17 +91,17 @@
     [self.mapView setRouteSwitchSymbol:switchSymbol];
 }
 
-- (void)routeManagerDidRetrieveDefaultRouteTaskParameters:(NPRouteManager *)routeManager
+- (void)routeManagerDidRetrieveDefaultRouteTaskParameters:(TYRouteManager *)routeManager
 {
     NSLog(@"routeManagerDidRetrieveDefaultRouteTaskParameters");
 }
 
-- (void)routeManager:(NPRouteManager *)routeManager didFailRetrieveDefaultRouteTaskParametersWithError:(NSError *)error
+- (void)routeManager:(TYRouteManager *)routeManager didFailRetrieveDefaultRouteTaskParametersWithError:(NSError *)error
 {
 //    NSLog(@"didFailToRetrieveDefaultRouteTaskParametersWithError:\n%@", error.localizedDescription);
 }
 
-- (void)routeManager:(NPRouteManager *)routeManager didSolveRouteWithResult:(NPRouteResult *)rs
+- (void)routeManager:(TYRouteManager *)routeManager didSolveRouteWithResult:(TYRouteResult *)rs
 {
     NSLog(@"routeManager: didSolveRouteWithResult:");
     
@@ -110,7 +110,7 @@
     routeResult = rs;
     
     NSLog(@"route part: %d", (int)routeResult.allRoutePartArray.count);
-    NPRoutePart *rp = [routeResult.allRoutePartArray objectAtIndex:0];
+    TYRoutePart *rp = [routeResult.allRoutePartArray objectAtIndex:0];
     NSLog(@"point: %d", (int)rp.route.numPoints);
     
     AGSGraphicsLayer *testLayer = [AGSGraphicsLayer graphicsLayer];
@@ -162,7 +162,7 @@
     }
 }
 
-- (void)routeManager:(NPRouteManager *)routeManager didFailSolveRouteWithError:(NSError *)error
+- (void)routeManager:(TYRouteManager *)routeManager didFailSolveRouteWithError:(NSError *)error
 {
     NSLog(@"routeManager:routeManager didFailSolveRouteWithError:");
     
@@ -198,14 +198,14 @@ int testIndex = 0;
 //            [self.mapView showRemainingRouteResultOnCurrentFloor:localPoint];
 //        }
         
-        NPRoutePart *nearestPart = [routeResult getNearestRoutePart:localPoint];
+        TYRoutePart *nearestPart = [routeResult getNearestRoutePart:localPoint];
         if (nearestPart != currentRoutePart) {
             currentRoutePart = nearestPart;
             routeGuides = [routeResult getRouteDirectionalHint:currentRoutePart];
         }
         
         if (routeGuides && routeGuides.count > 0) {
-            NPDirectionalHint *hint = [routeResult getDirectionHintForLocation:localPoint FromHints:routeGuides];
+            TYDirectionalHint *hint = [routeResult getDirectionHintForLocation:localPoint FromHints:routeGuides];
             [self.mapView showRouteHintForDirectionHint:hint Centered:YES];
             self.routeHintLabel.text = [hint getDirectionString];
         }

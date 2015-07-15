@@ -7,7 +7,7 @@
 //
 
 #import "TYAnimatedRouteArrowLayer.h"
-#import "NPMapEnviroment.h"
+#import "TYMapEnviroment.h"
 #import "Vector2.h"
 
 @interface TYAnimatedRouteArrowLayer()

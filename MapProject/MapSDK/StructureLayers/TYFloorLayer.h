@@ -10,9 +10,9 @@
 #import "TYMapInfo.h"
 #import "TYRenderingScheme.h"
 
-@interface NPFloorLayer : AGSGraphicsLayer
+@interface TYFloorLayer : AGSGraphicsLayer
 
-+ (NPFloorLayer *)floorLayerWithRenderingScheme:(TYRenderingScheme *)aRenderingScheme SpatialReference:(AGSSpatialReference *)sr;
++ (TYFloorLayer *)floorLayerWithRenderingScheme:(TYRenderingScheme *)aRenderingScheme SpatialReference:(AGSSpatialReference *)sr;
 
 - (void)loadContentsWithInfo:(TYMapInfo *)info;
 

@@ -34,7 +34,7 @@
 
 - (void)showFacilityOnCurrentWithCategorys:(NSArray *)categoryIDs;
 
-- (NPPoi *)getFacilityPoiWithPoiID:(NSString *)pid;
+- (TYPoi *)getFacilityPoiWithPoiID:(NSString *)pid;
 
 - (void)highlightFacilityPoi:(NSString *)poiID;
 

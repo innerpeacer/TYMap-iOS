@@ -6,11 +6,11 @@
 //  Copyright (c) 2015年 innerpeacer. All rights reserved.
 //
 
-#import "NPLandmarkManager.h"
+#import "TYLandmarkManager.h"
 #import "TYMapFileManager.h"
 #import <ArcGIS/ArcGIS.h>
 
-@interface NPLandmarkManager()
+@interface TYLandmarkManager()
 {
     NSMutableArray *allLandmarks;
     int currentFloor;
@@ -18,14 +18,14 @@
 
 @end
 
-@implementation NPLandmarkManager
+@implementation TYLandmarkManager
 
-static NPLandmarkManager *manager;
+static TYLandmarkManager *manager;
 
-+ (NPLandmarkManager *)sharedManager
++ (TYLandmarkManager *)sharedManager
 {
     if (manager == nil) {
-        manager = [[NPLandmarkManager alloc] init];
+        manager = [[TYLandmarkManager alloc] init];
     }
     return manager;
 }
@@ -62,7 +62,7 @@ static NPLandmarkManager *manager;
             AGSPoint *pos = (AGSPoint *)g.geometry;
             NPLocalPoint *location = [NPLocalPoint pointWithX:pos.x Y:pos.y Floor:currentFloor];
             
-            NPLandmark *landmark = [[NPLandmark alloc] init];
+            TYLandmark *landmark = [[TYLandmark alloc] init];
             landmark.name = name;
             landmark.location = location;
             
@@ -71,13 +71,13 @@ static NPLandmarkManager *manager;
     }
 }
 
-- (NPLandmark *)searchLandmark:(NPLocalPoint *)location Tolerance:(double)tolerance
+- (TYLandmark *)searchLandmark:(NPLocalPoint *)location Tolerance:(double)tolerance
 {
     if (location.floor != currentFloor) {
         return nil;
     }
     
-    for (NPLandmark *landmark in allLandmarks) {
+    for (TYLandmark *landmark in allLandmarks) {
         NPLocalPoint *lp = landmark.location;
         
         double distance = [lp distanceWith:location];

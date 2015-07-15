@@ -6,12 +6,12 @@
 //  Copyright (c) 2015年 innerpeacer. All rights reserved.
 //
 
-#import "NPRouteManager.h"
-#import "NPRoutePointConverter.h"
+#import "TYRouteManager.h"
+#import "TYRoutePointConverter.h"
 #import "TYBuilding.h"
-#import "NPRoutePart.h"
+#import "TYRoutePart.h"
 
-@interface NPRouteManager() <AGSRouteTaskDelegate>
+@interface TYRouteManager() <AGSRouteTaskDelegate>
 {
     AGSRouteTask *routeTask;
     AGSRouteTaskParameters *routeTaskParams;
@@ -19,17 +19,17 @@
 
     NSArray *allMapInfos;
     
-    NPRoutePointConverter *routePointConverter;
+    TYRoutePointConverter *routePointConverter;
 }
 
 @end
 
-@implementation NPRouteManager
+@implementation TYRouteManager
 
 
-+ (NPRouteManager *)routeManagerWithBuilding:(TYBuilding *)building credential:(TYCredential *)credential MapInfos:(NSArray *)mapInfoArray
++ (TYRouteManager *)routeManagerWithBuilding:(TYBuilding *)building credential:(TYCredential *)credential MapInfos:(NSArray *)mapInfoArray
 {
-    return [[NPRouteManager alloc] initRouteTaskWithBuilding:building credential:credential MapInfos:mapInfoArray];
+    return [[TYRouteManager alloc] initRouteTaskWithBuilding:building credential:credential MapInfos:mapInfoArray];
 }
 
 - (id)initRouteTaskWithBuilding:(TYBuilding *)building credential:(TYCredential *)cr  MapInfos:(NSArray *)mapInfoArray
@@ -40,7 +40,7 @@
         allMapInfos = mapInfoArray;
         
         TYMapInfo *info = [allMapInfos objectAtIndex:0];
-        routePointConverter = [[NPRoutePointConverter alloc] initWithBaseMapExtent:info.mapExtent Offset:building.offset];
+        routePointConverter = [[TYRoutePointConverter alloc] initWithBaseMapExtent:info.mapExtent Offset:building.offset];
         
         NSURL *url = [NSURL URLWithString:building.routeURL];
         routeTask = [AGSRouteTask routeTaskWithURL:url credential:cr];
@@ -96,7 +96,7 @@
     
     AGSRouteResult *routeResult = [routeTaskResult.routeResults firstObject];
     if (routeResult) {
-        NPRouteResult *result = [self processRouteResult:routeResult];
+        TYRouteResult *result = [self processRouteResult:routeResult];
         
         if (result == nil) {
             return;
@@ -108,7 +108,7 @@
     }
 }
 
-- (NPRouteResult *)processRouteResult:(AGSRouteResult *)rs
+- (TYRouteResult *)processRouteResult:(AGSRouteResult *)rs
 {
     NSMutableArray *pointArray = [[NSMutableArray alloc] init];
     NSMutableArray *floorArray = [[NSMutableArray alloc] init];
@@ -159,14 +159,14 @@
         }
         
         TYMapInfo *info = [TYMapInfo searchMapInfoFromArray:allMapInfos Floor:floor];
-        NPRoutePart *rp = [[NPRoutePart alloc] initWithRouteLine:line MapInfo:info];
+        TYRoutePart *rp = [[TYRoutePart alloc] initWithRouteLine:line MapInfo:info];
         [routePartArray addObject:rp];
     }
     
     int routePartNum = (int)routePartArray.count;
     for (int i = 0; i < routePartNum; ++i) {
         
-        NPRoutePart *p = routePartArray[i];
+        TYRoutePart *p = routePartArray[i];
         if (i > 0) {
             p.previousPart = routePartArray[i-1];
         }
@@ -176,7 +176,7 @@
         }
     }
     
-    return [NPRouteResult routeResultWithRouteParts:routePartArray];
+    return [TYRouteResult routeResultWithRouteParts:routePartArray];
 }
 
 - (void)routeTask:(AGSRouteTask *)routeTask operation:(NSOperation *)op didFailToRetrieveDefaultRouteTaskParametersWithError:(NSError *)error

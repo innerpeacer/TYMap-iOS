@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "TYMapInfo.h"
-#import "NPPoi.h"
+#import "TYPoi.h"
 #import "TYRenderingScheme.h"
 #import "TYPoint.h"
 #import "TYCallout.h"
@@ -17,9 +17,9 @@
 #import "TYLocationDisplay.h"
 #import "TYMarkerSymbol.h"
 #import "TYPictureMarkerSymbol.h"
-#import "NPRouteResult.h"
+#import "TYRouteResult.h"
 
-#import "NPDirectionalHint.h"
+#import "TYDirectionalHint.h"
 
 #import <NephogramData/NephogramData.h>
 
@@ -209,7 +209,7 @@ typedef enum {
  *
  *  @param result 导航结果
  */
-- (void)setRouteResult:(NPRouteResult *)result;
+- (void)setRouteResult:(TYRouteResult *)result;
 
 /**
  *  设置导航起点
@@ -274,7 +274,7 @@ typedef enum {
  *  @param ds         目标路径提示
  *  @param isCentered 是否移动地图将路径提示段居中
  */
-- (void)showRouteHintForDirectionHint:(NPDirectionalHint *)ds Centered:(BOOL)isCentered;
+- (void)showRouteHintForDirectionHint:(TYDirectionalHint *)ds Centered:(BOOL)isCentered;
 
 /**
  *  地图初始化方法
@@ -331,7 +331,7 @@ typedef enum {
  *
  *  @return poi信息
  */
-- (NPPoi *)getPoiOnCurrentFloorWithPoiID:(NSString *)pid layer:(POI_LAYER)layer;
+- (TYPoi *)getPoiOnCurrentFloorWithPoiID:(NSString *)pid layer:(POI_LAYER)layer;
 
 /**
  *  高亮显示POI
@@ -339,7 +339,7 @@ typedef enum {
  *  @param poi 目标poi
  *  目标poi至少包含poiID和layer信息，当前支持ROOM和FACILITY高亮
  */
-- (void)highlightPoi:(NPPoi *)poi;
+- (void)highlightPoi:(TYPoi *)poi;
 
 /**
  *  高亮显示一组POI
@@ -356,7 +356,7 @@ typedef enum {
  *
  *  @return ROOM POI
  */
-- (NPPoi *)extractRoomPoiOnCurrentFloorWithX:(double)x Y:(double)y;
+- (TYPoi *)extractRoomPoiOnCurrentFloorWithX:(double)x Y:(double)y;
 
 /**
  *  更新ROOM层目标POI的名称信息

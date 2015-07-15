@@ -14,8 +14,8 @@
     地图显示的语言类型
  */
 typedef enum {
-    NPSimplifiedChinese, NPTraditionalChinese, NPEnglish
-} NPMapLanguage;
+    TYSimplifiedChinese, TYTraditionalChinese, TYEnglish
+} TYMapLanguage;
 
 
 
@@ -64,13 +64,13 @@ typedef enum {
  *
  *  @param language 目标语言类型
  */
-+ (void)setMapLanguage:(NPMapLanguage)language;
++ (void)setMapLanguage:(TYMapLanguage)language;
 
 /**
  *  获取当前地图显示的语言类型
  *
  *  @return 当前语言类型
  */
-+ (NPMapLanguage)getMapLanguage;
++ (TYMapLanguage)getMapLanguage;
 
 @end

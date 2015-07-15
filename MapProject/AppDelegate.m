@@ -9,8 +9,8 @@
 #import "AppDelegate.h"
 #import "NPUserDefaults.h"
 
-#import "NPMapEnviroment.h"
-#import "NPPoi.h"
+#import "TYMapEnviroment.h"
+#import "TYPoi.h"
 
 @implementation AppDelegate
 
@@ -24,7 +24,7 @@
     
     [TYMapEnvironment initMapEnvironment];
     
-    [TYMapEnvironment setMapLanguage:NPTraditionalChinese];
+    [TYMapEnvironment setMapLanguage:TYTraditionalChinese];
     
     [TYMapEnvironment setRootDirectoryForMapFiles:[documentDirectory stringByAppendingPathComponent:DEFAULT_MAP_ROOT]];
     [self copyMapFilesIfNeeded];

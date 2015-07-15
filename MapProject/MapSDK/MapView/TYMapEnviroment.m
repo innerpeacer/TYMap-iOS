@@ -6,7 +6,7 @@
 //  Copyright (c) 2015年 innerpeacer. All rights reserved.
 //
 
-#import "NPMapEnviroment.h"
+#import "TYMapEnviroment.h"
 
 #define DEFAULT_MAP_ROOT @"Map"
 
@@ -61,13 +61,13 @@ static NSString *mapFileRootDirectory;
 //    ArcGISRuntime.SetLicense("runtimestandard,101,rud514140042,none, 8SF97XLL6S875E5HJ220");
 }
 
-static NPMapLanguage mapLanguage = NPSimplifiedChinese;
-+ (void)setMapLanguage:(NPMapLanguage)language
+static TYMapLanguage mapLanguage = TYSimplifiedChinese;
++ (void)setMapLanguage:(TYMapLanguage)language
 {
     mapLanguage = language;
 }
 
-+ (NPMapLanguage)getMapLanguage
++ (TYMapLanguage)getMapLanguage
 {
     return mapLanguage;
 }

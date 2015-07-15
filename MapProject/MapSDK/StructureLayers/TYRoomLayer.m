@@ -6,12 +6,12 @@
 //  Copyright (c) 2015年 innerpeacer. All rights reserved.
 //
 
-#import "NPRoomLayer.h"
-#import "NPMapType.h"
+#import "TYRoomLayer.h"
+#import "TYMapType.h"
 #import "TYMapFileManager.h"
-#import "NPMapEnviroment.h"
+#import "TYMapEnviroment.h"
 
-@interface NPRoomLayer()
+@interface TYRoomLayer()
 {
     AGSRenderer *roomRender;
     
@@ -22,11 +22,11 @@
 
 @end
 
-@implementation NPRoomLayer
+@implementation TYRoomLayer
 
-+ (NPRoomLayer *)roomLayerWithRenderingScheme:(TYRenderingScheme *)aRenderingScheme SpatialReference:(AGSSpatialReference *)sr
++ (TYRoomLayer *)roomLayerWithRenderingScheme:(TYRenderingScheme *)aRenderingScheme SpatialReference:(AGSSpatialReference *)sr
 {
-    return [[NPRoomLayer alloc] initRoomLayerWithRenderingScheme:aRenderingScheme SpatialReference:sr];
+    return [[TYRoomLayer alloc] initRoomLayerWithRenderingScheme:aRenderingScheme SpatialReference:sr];
 }
 
 - (id)initRoomLayerWithRenderingScheme:(TYRenderingScheme *)aRenderingScheme SpatialReference:(AGSSpatialReference *)sr
@@ -88,12 +88,12 @@
     [self addGraphics:allGraphics];
 }
 
-- (NPPoi *)getPoiWithPoiID:(NSString *)pid
+- (TYPoi *)getPoiWithPoiID:(NSString *)pid
 {
-    NPPoi *result = nil;
+    TYPoi *result = nil;
     AGSGraphic *graphic = [roomDict objectForKey:pid];
     if (graphic) {
-        result = [NPPoi poiWithGeoID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_GEO_ID] PoiID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_POI_ID] FloorID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_FLOOR_ID] BuildingID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_BUILDING_ID] Name:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_NAME] Geometry:(TYGeometry *)graphic.geometry CategoryID:[[graphic attributeForKey:GRAPHIC_ATTRIBUTE_CATEGORY_ID] intValue] Layer:POI_ROOM];
+        result = [TYPoi poiWithGeoID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_GEO_ID] PoiID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_POI_ID] FloorID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_FLOOR_ID] BuildingID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_BUILDING_ID] Name:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_NAME] Geometry:(TYGeometry *)graphic.geometry CategoryID:[[graphic attributeForKey:GRAPHIC_ATTRIBUTE_CATEGORY_ID] intValue] Layer:POI_ROOM];
     }
     return result;
 }
@@ -104,15 +104,15 @@
     [self setSelected:YES forGraphic:graphic];
 }
 
-- (NPPoi *)extractPoiOnCurrentFloorWithX:(double)x Y:(double)y
+- (TYPoi *)extractPoiOnCurrentFloorWithX:(double)x Y:(double)y
 {
-    NPPoi *poi = nil;
+    TYPoi *poi = nil;
     AGSGeometryEngine *engine = [AGSGeometryEngine defaultGeometryEngine];
     AGSPoint *point = [AGSPoint pointWithX:x y:y spatialReference:self.mapView.spatialReference];
     for (NSString *poiID in roomDict.allKeys) {
         AGSGraphic *graphic = [roomDict objectForKey:poiID];
         if ([engine geometry:graphic.geometry containsGeometry:point]) {
-            poi = [NPPoi poiWithGeoID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_GEO_ID] PoiID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_POI_ID] FloorID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_FLOOR_ID] BuildingID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_BUILDING_ID] Name:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_NAME] Geometry:(TYGeometry *)graphic.geometry CategoryID:[[graphic attributeForKey:GRAPHIC_ATTRIBUTE_CATEGORY_ID] intValue] Layer:POI_ROOM];
+            poi = [TYPoi poiWithGeoID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_GEO_ID] PoiID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_POI_ID] FloorID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_FLOOR_ID] BuildingID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_BUILDING_ID] Name:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_NAME] Geometry:(TYGeometry *)graphic.geometry CategoryID:[[graphic attributeForKey:GRAPHIC_ATTRIBUTE_CATEGORY_ID] intValue] Layer:POI_ROOM];
             break;
         }
     }
@@ -123,7 +123,7 @@
 {
     NSArray *graphicArray = self.graphics;
     
-    NPMapLanguage language = [TYMapEnvironment getMapLanguage];
+    TYMapLanguage language = [TYMapEnvironment getMapLanguage];
     NSString *field = [self getNameFieldForLanguage:language];
     
     for (AGSGraphic *g in graphicArray) {
@@ -136,19 +136,19 @@
     return NO;
 }
 
-- (NSString *)getNameFieldForLanguage:(NPMapLanguage)l
+- (NSString *)getNameFieldForLanguage:(TYMapLanguage)l
 {
     NSString *result = nil;
     switch (l) {
-        case NPSimplifiedChinese:
+        case TYSimplifiedChinese:
             result = NAME_FIELD_SIMPLIFIED_CHINESE;
             break;
             
-        case NPTraditionalChinese:
+        case TYTraditionalChinese:
             result = NAME_FIELD_TRADITIONAL_CHINESE;
             break;
             
-        case NPEnglish:
+        case TYEnglish:
             result = NAME_FIELD_ENGLISH;
             break;
             

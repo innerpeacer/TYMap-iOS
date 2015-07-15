@@ -6,10 +6,10 @@
 //  Copyright (c) 2015年 innerpeacer. All rights reserved.
 //
 
-#import "NPRoutePointConverter.h"
-#import "NPMapEnviroment.h"
+#import "TYRoutePointConverter.h"
+#import "TYMapEnviroment.h"
 
-@interface NPRoutePointConverter()
+@interface TYRoutePointConverter()
 {
     MapExtent baseExtent;
     MapSize baseOffset;
@@ -17,7 +17,7 @@
 
 @end
 
-@implementation NPRoutePointConverter
+@implementation TYRoutePointConverter
 
 - (id)initWithBaseMapExtent:(MapExtent)extent Offset:(MapSize)offset
 {

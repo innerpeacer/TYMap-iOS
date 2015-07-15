@@ -74,7 +74,7 @@
     [_facilityLayer showFacilityOnCurrentWithCategorys:categoryIDs];
 }
 
-- (NPPoi *)getFacilityPoiWithPoiID:(NSString *)pid
+- (TYPoi *)getFacilityPoiWithPoiID:(NSString *)pid
 {
     return [_facilityLayer getPoiWithPoiID:pid];
 }

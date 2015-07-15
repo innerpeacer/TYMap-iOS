@@ -7,7 +7,7 @@
 //
 
 #import "TYFacilityLayer.h"
-#import "NPMapType.h"
+#import "TYMapType.h"
 #import "TYMapFileManager.h"
 #import "TYFacilityLabel.h"
 #import "TYMapView.h"
@@ -221,14 +221,14 @@
 
 }
 
-- (NPPoi *)getPoiWithPoiID:(NSString *)pid
+- (TYPoi *)getPoiWithPoiID:(NSString *)pid
 {
-    NPPoi *result = nil;
+    TYPoi *result = nil;
     TYFacilityLabel *fl = [facilityLabelDict objectForKey:pid];
     AGSGraphic *graphic = fl.facilityGraphic;
 
     if (graphic) {
-        result = [NPPoi poiWithGeoID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_GEO_ID] PoiID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_POI_ID] FloorID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_FLOOR_ID] BuildingID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_BUILDING_ID] Name:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_NAME] Geometry:(TYGeometry *)graphic.geometry CategoryID:[[graphic attributeForKey:GRAPHIC_ATTRIBUTE_CATEGORY_ID] intValue] Layer:POI_FACILITY];
+        result = [TYPoi poiWithGeoID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_GEO_ID] PoiID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_POI_ID] FloorID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_FLOOR_ID] BuildingID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_BUILDING_ID] Name:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_NAME] Geometry:(TYGeometry *)graphic.geometry CategoryID:[[graphic attributeForKey:GRAPHIC_ATTRIBUTE_CATEGORY_ID] intValue] Layer:POI_FACILITY];
     }
     return result;
 }

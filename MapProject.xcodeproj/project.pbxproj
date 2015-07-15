@@ -72,25 +72,25 @@
 		5794C0E01B560558002DCE9F /* TYAreaAnalysis.m in Sources */ = {isa = PBXBuildFile; fileRef = 5794C0921B560558002DCE9F /* TYAreaAnalysis.m */; };
 		5794C0E11B560558002DCE9F /* TYBuilding.m in Sources */ = {isa = PBXBuildFile; fileRef = 5794C0941B560558002DCE9F /* TYBuilding.m */; };
 		5794C0E21B560558002DCE9F /* TYCity.m in Sources */ = {isa = PBXBuildFile; fileRef = 5794C0961B560558002DCE9F /* TYCity.m */; };
-		5794C0E31B560558002DCE9F /* NPMapEnviroment.m in Sources */ = {isa = PBXBuildFile; fileRef = 5794C0981B560558002DCE9F /* NPMapEnviroment.m */; };
+		5794C0E31B560558002DCE9F /* TYMapEnviroment.m in Sources */ = {isa = PBXBuildFile; fileRef = 5794C0981B560558002DCE9F /* TYMapEnviroment.m */; };
 		5794C0E41B560558002DCE9F /* TYMapFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5794C09A1B560558002DCE9F /* TYMapFileManager.m */; };
 		5794C0E51B560558002DCE9F /* TYMapInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 5794C09C1B560558002DCE9F /* TYMapInfo.m */; };
 		5794C0E61B560558002DCE9F /* TYMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5794C09F1B560558002DCE9F /* TYMapView.m */; };
 		5794C0E71B560558002DCE9F /* TYRenderingScheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 5794C0A11B560558002DCE9F /* TYRenderingScheme.m */; };
 		5794C0E81B560558002DCE9F /* TYPathCalibration.m in Sources */ = {isa = PBXBuildFile; fileRef = 5794C0A31B560558002DCE9F /* TYPathCalibration.m */; };
-		5794C0E91B560558002DCE9F /* NPBrand.m in Sources */ = {isa = PBXBuildFile; fileRef = 5794C0A61B560558002DCE9F /* NPBrand.m */; };
-		5794C0EA1B560558002DCE9F /* NPPoi.m in Sources */ = {isa = PBXBuildFile; fileRef = 5794C0A81B560558002DCE9F /* NPPoi.m */; };
-		5794C0EB1B560558002DCE9F /* NPDirectionalHint.m in Sources */ = {isa = PBXBuildFile; fileRef = 5794C0AB1B560558002DCE9F /* NPDirectionalHint.m */; };
-		5794C0EC1B560558002DCE9F /* NPLandmark.m in Sources */ = {isa = PBXBuildFile; fileRef = 5794C0AD1B560558002DCE9F /* NPLandmark.m */; };
-		5794C0ED1B560558002DCE9F /* NPLandmarkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5794C0AF1B560558002DCE9F /* NPLandmarkManager.m */; };
-		5794C0EE1B560558002DCE9F /* NPRouteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5794C0B11B560558002DCE9F /* NPRouteManager.m */; };
-		5794C0EF1B560558002DCE9F /* NPRoutePart.m in Sources */ = {isa = PBXBuildFile; fileRef = 5794C0B31B560558002DCE9F /* NPRoutePart.m */; };
-		5794C0F01B560558002DCE9F /* NPRoutePointConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5794C0B51B560558002DCE9F /* NPRoutePointConverter.m */; };
-		5794C0F11B560558002DCE9F /* NPRouteResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 5794C0B71B560558002DCE9F /* NPRouteResult.m */; };
+		5794C0E91B560558002DCE9F /* TYBrand.m in Sources */ = {isa = PBXBuildFile; fileRef = 5794C0A61B560558002DCE9F /* TYBrand.m */; };
+		5794C0EA1B560558002DCE9F /* TYPoi.m in Sources */ = {isa = PBXBuildFile; fileRef = 5794C0A81B560558002DCE9F /* TYPoi.m */; };
+		5794C0EB1B560558002DCE9F /* TYDirectionalHint.m in Sources */ = {isa = PBXBuildFile; fileRef = 5794C0AB1B560558002DCE9F /* TYDirectionalHint.m */; };
+		5794C0EC1B560558002DCE9F /* TYLandmark.m in Sources */ = {isa = PBXBuildFile; fileRef = 5794C0AD1B560558002DCE9F /* TYLandmark.m */; };
+		5794C0ED1B560558002DCE9F /* TYLandmarkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5794C0AF1B560558002DCE9F /* TYLandmarkManager.m */; };
+		5794C0EE1B560558002DCE9F /* TYRouteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5794C0B11B560558002DCE9F /* TYRouteManager.m */; };
+		5794C0EF1B560558002DCE9F /* TYRoutePart.m in Sources */ = {isa = PBXBuildFile; fileRef = 5794C0B31B560558002DCE9F /* TYRoutePart.m */; };
+		5794C0F01B560558002DCE9F /* TYRoutePointConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5794C0B51B560558002DCE9F /* TYRoutePointConverter.m */; };
+		5794C0F11B560558002DCE9F /* TYRouteResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 5794C0B71B560558002DCE9F /* TYRouteResult.m */; };
 		5794C0F21B560558002DCE9F /* TYAssetLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5794C0BA1B560558002DCE9F /* TYAssetLayer.m */; };
-		5794C0F31B560558002DCE9F /* NPFloorLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5794C0BC1B560558002DCE9F /* NPFloorLayer.m */; };
-		5794C0F41B560558002DCE9F /* NPRoomLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5794C0BE1B560558002DCE9F /* NPRoomLayer.m */; };
-		5794C0F51B560558002DCE9F /* NPStructureGroupLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5794C0C01B560558002DCE9F /* NPStructureGroupLayer.m */; };
+		5794C0F31B560558002DCE9F /* TYFloorLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5794C0BC1B560558002DCE9F /* TYFloorLayer.m */; };
+		5794C0F41B560558002DCE9F /* TYRoomLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5794C0BE1B560558002DCE9F /* TYRoomLayer.m */; };
+		5794C0F51B560558002DCE9F /* TYStructureGroupLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5794C0C01B560558002DCE9F /* TYStructureGroupLayer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -212,45 +212,45 @@
 		5794C0941B560558002DCE9F /* TYBuilding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYBuilding.m; sourceTree = "<group>"; };
 		5794C0951B560558002DCE9F /* TYCity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYCity.h; sourceTree = "<group>"; };
 		5794C0961B560558002DCE9F /* TYCity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYCity.m; sourceTree = "<group>"; };
-		5794C0971B560558002DCE9F /* NPMapEnviroment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPMapEnviroment.h; sourceTree = "<group>"; };
-		5794C0981B560558002DCE9F /* NPMapEnviroment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPMapEnviroment.m; sourceTree = "<group>"; };
+		5794C0971B560558002DCE9F /* TYMapEnviroment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYMapEnviroment.h; sourceTree = "<group>"; };
+		5794C0981B560558002DCE9F /* TYMapEnviroment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYMapEnviroment.m; sourceTree = "<group>"; };
 		5794C0991B560558002DCE9F /* TYMapFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYMapFileManager.h; sourceTree = "<group>"; };
 		5794C09A1B560558002DCE9F /* TYMapFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYMapFileManager.m; sourceTree = "<group>"; };
 		5794C09B1B560558002DCE9F /* TYMapInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYMapInfo.h; sourceTree = "<group>"; };
 		5794C09C1B560558002DCE9F /* TYMapInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYMapInfo.m; sourceTree = "<group>"; };
-		5794C09D1B560558002DCE9F /* NPMapType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPMapType.h; sourceTree = "<group>"; };
+		5794C09D1B560558002DCE9F /* TYMapType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYMapType.h; sourceTree = "<group>"; };
 		5794C09E1B560558002DCE9F /* TYMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYMapView.h; sourceTree = "<group>"; };
 		5794C09F1B560558002DCE9F /* TYMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYMapView.m; sourceTree = "<group>"; };
 		5794C0A01B560558002DCE9F /* TYRenderingScheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYRenderingScheme.h; sourceTree = "<group>"; };
 		5794C0A11B560558002DCE9F /* TYRenderingScheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYRenderingScheme.m; sourceTree = "<group>"; };
 		5794C0A21B560558002DCE9F /* TYPathCalibration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYPathCalibration.h; sourceTree = "<group>"; };
 		5794C0A31B560558002DCE9F /* TYPathCalibration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYPathCalibration.m; sourceTree = "<group>"; };
-		5794C0A51B560558002DCE9F /* NPBrand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPBrand.h; sourceTree = "<group>"; };
-		5794C0A61B560558002DCE9F /* NPBrand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPBrand.m; sourceTree = "<group>"; };
-		5794C0A71B560558002DCE9F /* NPPoi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPPoi.h; sourceTree = "<group>"; };
-		5794C0A81B560558002DCE9F /* NPPoi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPPoi.m; sourceTree = "<group>"; };
-		5794C0AA1B560558002DCE9F /* NPDirectionalHint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPDirectionalHint.h; sourceTree = "<group>"; };
-		5794C0AB1B560558002DCE9F /* NPDirectionalHint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPDirectionalHint.m; sourceTree = "<group>"; };
-		5794C0AC1B560558002DCE9F /* NPLandmark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPLandmark.h; sourceTree = "<group>"; };
-		5794C0AD1B560558002DCE9F /* NPLandmark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPLandmark.m; sourceTree = "<group>"; };
-		5794C0AE1B560558002DCE9F /* NPLandmarkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPLandmarkManager.h; sourceTree = "<group>"; };
-		5794C0AF1B560558002DCE9F /* NPLandmarkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPLandmarkManager.m; sourceTree = "<group>"; };
-		5794C0B01B560558002DCE9F /* NPRouteManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPRouteManager.h; sourceTree = "<group>"; };
-		5794C0B11B560558002DCE9F /* NPRouteManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPRouteManager.m; sourceTree = "<group>"; };
-		5794C0B21B560558002DCE9F /* NPRoutePart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPRoutePart.h; sourceTree = "<group>"; };
-		5794C0B31B560558002DCE9F /* NPRoutePart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPRoutePart.m; sourceTree = "<group>"; };
-		5794C0B41B560558002DCE9F /* NPRoutePointConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPRoutePointConverter.h; sourceTree = "<group>"; };
-		5794C0B51B560558002DCE9F /* NPRoutePointConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPRoutePointConverter.m; sourceTree = "<group>"; };
-		5794C0B61B560558002DCE9F /* NPRouteResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPRouteResult.h; sourceTree = "<group>"; };
-		5794C0B71B560558002DCE9F /* NPRouteResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPRouteResult.m; sourceTree = "<group>"; };
+		5794C0A51B560558002DCE9F /* TYBrand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYBrand.h; sourceTree = "<group>"; };
+		5794C0A61B560558002DCE9F /* TYBrand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYBrand.m; sourceTree = "<group>"; };
+		5794C0A71B560558002DCE9F /* TYPoi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYPoi.h; sourceTree = "<group>"; };
+		5794C0A81B560558002DCE9F /* TYPoi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYPoi.m; sourceTree = "<group>"; };
+		5794C0AA1B560558002DCE9F /* TYDirectionalHint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYDirectionalHint.h; sourceTree = "<group>"; };
+		5794C0AB1B560558002DCE9F /* TYDirectionalHint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYDirectionalHint.m; sourceTree = "<group>"; };
+		5794C0AC1B560558002DCE9F /* TYLandmark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYLandmark.h; sourceTree = "<group>"; };
+		5794C0AD1B560558002DCE9F /* TYLandmark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYLandmark.m; sourceTree = "<group>"; };
+		5794C0AE1B560558002DCE9F /* TYLandmarkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYLandmarkManager.h; sourceTree = "<group>"; };
+		5794C0AF1B560558002DCE9F /* TYLandmarkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYLandmarkManager.m; sourceTree = "<group>"; };
+		5794C0B01B560558002DCE9F /* TYRouteManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYRouteManager.h; sourceTree = "<group>"; };
+		5794C0B11B560558002DCE9F /* TYRouteManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYRouteManager.m; sourceTree = "<group>"; };
+		5794C0B21B560558002DCE9F /* TYRoutePart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYRoutePart.h; sourceTree = "<group>"; };
+		5794C0B31B560558002DCE9F /* TYRoutePart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYRoutePart.m; sourceTree = "<group>"; };
+		5794C0B41B560558002DCE9F /* TYRoutePointConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYRoutePointConverter.h; sourceTree = "<group>"; };
+		5794C0B51B560558002DCE9F /* TYRoutePointConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYRoutePointConverter.m; sourceTree = "<group>"; };
+		5794C0B61B560558002DCE9F /* TYRouteResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYRouteResult.h; sourceTree = "<group>"; };
+		5794C0B71B560558002DCE9F /* TYRouteResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYRouteResult.m; sourceTree = "<group>"; };
 		5794C0B91B560558002DCE9F /* TYAssetLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYAssetLayer.h; sourceTree = "<group>"; };
 		5794C0BA1B560558002DCE9F /* TYAssetLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYAssetLayer.m; sourceTree = "<group>"; };
-		5794C0BB1B560558002DCE9F /* NPFloorLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPFloorLayer.h; sourceTree = "<group>"; };
-		5794C0BC1B560558002DCE9F /* NPFloorLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPFloorLayer.m; sourceTree = "<group>"; };
-		5794C0BD1B560558002DCE9F /* NPRoomLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPRoomLayer.h; sourceTree = "<group>"; };
-		5794C0BE1B560558002DCE9F /* NPRoomLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPRoomLayer.m; sourceTree = "<group>"; };
-		5794C0BF1B560558002DCE9F /* NPStructureGroupLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPStructureGroupLayer.h; sourceTree = "<group>"; };
-		5794C0C01B560558002DCE9F /* NPStructureGroupLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPStructureGroupLayer.m; sourceTree = "<group>"; };
+		5794C0BB1B560558002DCE9F /* TYFloorLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYFloorLayer.h; sourceTree = "<group>"; };
+		5794C0BC1B560558002DCE9F /* TYFloorLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYFloorLayer.m; sourceTree = "<group>"; };
+		5794C0BD1B560558002DCE9F /* TYRoomLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYRoomLayer.h; sourceTree = "<group>"; };
+		5794C0BE1B560558002DCE9F /* TYRoomLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYRoomLayer.m; sourceTree = "<group>"; };
+		5794C0BF1B560558002DCE9F /* TYStructureGroupLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYStructureGroupLayer.h; sourceTree = "<group>"; };
+		5794C0C01B560558002DCE9F /* TYStructureGroupLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYStructureGroupLayer.m; sourceTree = "<group>"; };
 		57F06C1D1A87BC7500B9511F /* MapProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MapProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -513,13 +513,13 @@
 				5794C0941B560558002DCE9F /* TYBuilding.m */,
 				5794C0951B560558002DCE9F /* TYCity.h */,
 				5794C0961B560558002DCE9F /* TYCity.m */,
-				5794C0971B560558002DCE9F /* NPMapEnviroment.h */,
-				5794C0981B560558002DCE9F /* NPMapEnviroment.m */,
+				5794C0971B560558002DCE9F /* TYMapEnviroment.h */,
+				5794C0981B560558002DCE9F /* TYMapEnviroment.m */,
 				5794C0991B560558002DCE9F /* TYMapFileManager.h */,
 				5794C09A1B560558002DCE9F /* TYMapFileManager.m */,
 				5794C09B1B560558002DCE9F /* TYMapInfo.h */,
 				5794C09C1B560558002DCE9F /* TYMapInfo.m */,
-				5794C09D1B560558002DCE9F /* NPMapType.h */,
+				5794C09D1B560558002DCE9F /* TYMapType.h */,
 				5794C09E1B560558002DCE9F /* TYMapView.h */,
 				5794C09F1B560558002DCE9F /* TYMapView.m */,
 				5794C0A01B560558002DCE9F /* TYRenderingScheme.h */,
@@ -531,10 +531,10 @@
 		5794C0A41B560558002DCE9F /* POI */ = {
 			isa = PBXGroup;
 			children = (
-				5794C0A51B560558002DCE9F /* NPBrand.h */,
-				5794C0A61B560558002DCE9F /* NPBrand.m */,
-				5794C0A71B560558002DCE9F /* NPPoi.h */,
-				5794C0A81B560558002DCE9F /* NPPoi.m */,
+				5794C0A51B560558002DCE9F /* TYBrand.h */,
+				5794C0A61B560558002DCE9F /* TYBrand.m */,
+				5794C0A71B560558002DCE9F /* TYPoi.h */,
+				5794C0A81B560558002DCE9F /* TYPoi.m */,
 			);
 			path = POI;
 			sourceTree = "<group>";
@@ -542,20 +542,20 @@
 		5794C0A91B560558002DCE9F /* Route */ = {
 			isa = PBXGroup;
 			children = (
-				5794C0AA1B560558002DCE9F /* NPDirectionalHint.h */,
-				5794C0AB1B560558002DCE9F /* NPDirectionalHint.m */,
-				5794C0AC1B560558002DCE9F /* NPLandmark.h */,
-				5794C0AD1B560558002DCE9F /* NPLandmark.m */,
-				5794C0AE1B560558002DCE9F /* NPLandmarkManager.h */,
-				5794C0AF1B560558002DCE9F /* NPLandmarkManager.m */,
-				5794C0B01B560558002DCE9F /* NPRouteManager.h */,
-				5794C0B11B560558002DCE9F /* NPRouteManager.m */,
-				5794C0B21B560558002DCE9F /* NPRoutePart.h */,
-				5794C0B31B560558002DCE9F /* NPRoutePart.m */,
-				5794C0B41B560558002DCE9F /* NPRoutePointConverter.h */,
-				5794C0B51B560558002DCE9F /* NPRoutePointConverter.m */,
-				5794C0B61B560558002DCE9F /* NPRouteResult.h */,
-				5794C0B71B560558002DCE9F /* NPRouteResult.m */,
+				5794C0AA1B560558002DCE9F /* TYDirectionalHint.h */,
+				5794C0AB1B560558002DCE9F /* TYDirectionalHint.m */,
+				5794C0AC1B560558002DCE9F /* TYLandmark.h */,
+				5794C0AD1B560558002DCE9F /* TYLandmark.m */,
+				5794C0AE1B560558002DCE9F /* TYLandmarkManager.h */,
+				5794C0AF1B560558002DCE9F /* TYLandmarkManager.m */,
+				5794C0B01B560558002DCE9F /* TYRouteManager.h */,
+				5794C0B11B560558002DCE9F /* TYRouteManager.m */,
+				5794C0B21B560558002DCE9F /* TYRoutePart.h */,
+				5794C0B31B560558002DCE9F /* TYRoutePart.m */,
+				5794C0B41B560558002DCE9F /* TYRoutePointConverter.h */,
+				5794C0B51B560558002DCE9F /* TYRoutePointConverter.m */,
+				5794C0B61B560558002DCE9F /* TYRouteResult.h */,
+				5794C0B71B560558002DCE9F /* TYRouteResult.m */,
 			);
 			path = Route;
 			sourceTree = "<group>";
@@ -565,12 +565,12 @@
 			children = (
 				5794C0B91B560558002DCE9F /* TYAssetLayer.h */,
 				5794C0BA1B560558002DCE9F /* TYAssetLayer.m */,
-				5794C0BB1B560558002DCE9F /* NPFloorLayer.h */,
-				5794C0BC1B560558002DCE9F /* NPFloorLayer.m */,
-				5794C0BD1B560558002DCE9F /* NPRoomLayer.h */,
-				5794C0BE1B560558002DCE9F /* NPRoomLayer.m */,
-				5794C0BF1B560558002DCE9F /* NPStructureGroupLayer.h */,
-				5794C0C01B560558002DCE9F /* NPStructureGroupLayer.m */,
+				5794C0BB1B560558002DCE9F /* TYFloorLayer.h */,
+				5794C0BC1B560558002DCE9F /* TYFloorLayer.m */,
+				5794C0BD1B560558002DCE9F /* TYRoomLayer.h */,
+				5794C0BE1B560558002DCE9F /* TYRoomLayer.m */,
+				5794C0BF1B560558002DCE9F /* TYStructureGroupLayer.h */,
+				5794C0C01B560558002DCE9F /* TYStructureGroupLayer.m */,
 			);
 			path = StructureLayers;
 			sourceTree = "<group>";
@@ -668,9 +668,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5794C0E91B560558002DCE9F /* NPBrand.m in Sources */,
+				5794C0E91B560558002DCE9F /* TYBrand.m in Sources */,
 				5794C0E11B560558002DCE9F /* TYBuilding.m in Sources */,
-				5794C0F31B560558002DCE9F /* NPFloorLayer.m in Sources */,
+				5794C0F31B560558002DCE9F /* TYFloorLayer.m in Sources */,
 				5794C0C41B560558002DCE9F /* TYGeometry.m in Sources */,
 				57672D5D1B55FF9900DAD219 /* NPUserDefaults.m in Sources */,
 				57672D541B55FF8000DAD219 /* CreatePOIDatabaseVC.m in Sources */,
@@ -683,18 +683,18 @@
 				57672E2F1B55FFF900DAD219 /* FMDatabase.m in Sources */,
 				5794C0D01B560558002DCE9F /* TYSimpleMarkerSymbol.m in Sources */,
 				571AC4711B55FED900E9FF7D /* AppDelegate.m in Sources */,
-				5794C0EE1B560558002DCE9F /* NPRouteManager.m in Sources */,
+				5794C0EE1B560558002DCE9F /* TYRouteManager.m in Sources */,
 				5794C0D81B560558002DCE9F /* TYFacilityLabel.m in Sources */,
 				5794C0E41B560558002DCE9F /* TYMapFileManager.m in Sources */,
 				5794C0CF1B560558002DCE9F /* TYSimpleLineSymbol.m in Sources */,
 				5794C0E01B560558002DCE9F /* TYAreaAnalysis.m in Sources */,
 				57672E331B55FFF900DAD219 /* FMResultSet.m in Sources */,
 				5794C0C61B560558002DCE9F /* TYGraphic.m in Sources */,
-				5794C0ED1B560558002DCE9F /* NPLandmarkManager.m in Sources */,
+				5794C0ED1B560558002DCE9F /* TYLandmarkManager.m in Sources */,
 				57672D081B55FF4A00DAD219 /* NPPoiDBAdapter.m in Sources */,
 				57672D571B55FF8000DAD219 /* MapRouteVC.m in Sources */,
-				5794C0F11B560558002DCE9F /* NPRouteResult.m in Sources */,
-				5794C0EF1B560558002DCE9F /* NPRoutePart.m in Sources */,
+				5794C0F11B560558002DCE9F /* TYRouteResult.m in Sources */,
+				5794C0EF1B560558002DCE9F /* TYRoutePart.m in Sources */,
 				5794C0E81B560558002DCE9F /* TYPathCalibration.m in Sources */,
 				5794C0DE1B560558002DCE9F /* TYTextLabelLayer.m in Sources */,
 				57672E311B55FFF900DAD219 /* FMDatabasePool.m in Sources */,
@@ -703,22 +703,22 @@
 				5794C0D51B560558002DCE9F /* TYRouteHintLayer.m in Sources */,
 				57672E301B55FFF900DAD219 /* FMDatabaseAdditions.m in Sources */,
 				57672D071B55FF4A00DAD219 /* CreatingPOIDBAdapter.m in Sources */,
-				5794C0F51B560558002DCE9F /* NPStructureGroupLayer.m in Sources */,
+				5794C0F51B560558002DCE9F /* TYStructureGroupLayer.m in Sources */,
 				5794C0C31B560558002DCE9F /* TYEnvelope.m in Sources */,
 				5794C0DB1B560558002DCE9F /* TYLabelBorderCalculator.m in Sources */,
-				5794C0F01B560558002DCE9F /* NPRoutePointConverter.m in Sources */,
+				5794C0F01B560558002DCE9F /* TYRoutePointConverter.m in Sources */,
 				5794C0E21B560558002DCE9F /* TYCity.m in Sources */,
 				5794C0D71B560558002DCE9F /* Vector2.m in Sources */,
 				5794C0E61B560558002DCE9F /* TYMapView.m in Sources */,
 				57672D581B55FF8000DAD219 /* MapTableVC.m in Sources */,
-				5794C0E31B560558002DCE9F /* NPMapEnviroment.m in Sources */,
+				5794C0E31B560558002DCE9F /* TYMapEnviroment.m in Sources */,
 				5794C0DC1B560558002DCE9F /* TYLabelGroupLayer.m in Sources */,
-				5794C0EC1B560558002DCE9F /* NPLandmark.m in Sources */,
+				5794C0EC1B560558002DCE9F /* TYLandmark.m in Sources */,
 				57672D591B55FF8000DAD219 /* NephogramMapVC.m in Sources */,
 				5794C0CB1B560558002DCE9F /* TYPoint.m in Sources */,
 				57672D551B55FF8000DAD219 /* CustomCalloutVC.m in Sources */,
 				5794C0C21B560558002DCE9F /* TYCredential.m in Sources */,
-				5794C0F41B560558002DCE9F /* NPRoomLayer.m in Sources */,
+				5794C0F41B560558002DCE9F /* TYRoomLayer.m in Sources */,
 				57672D521B55FF8000DAD219 /* BaseLogVC.m in Sources */,
 				5794C0C71B560558002DCE9F /* TYGraphicsLayer.m in Sources */,
 				5794C0DD1B560558002DCE9F /* TYTextLabel.m in Sources */,
@@ -727,13 +727,13 @@
 				5794C0CA1B560558002DCE9F /* TYPictureMarkerSymbol.m in Sources */,
 				57672EF51B56006700DAD219 /* main.m in Sources */,
 				5794C0D21B560558002DCE9F /* TYAnimatedRouteArrowLayer.m in Sources */,
-				5794C0EA1B560558002DCE9F /* NPPoi.m in Sources */,
+				5794C0EA1B560558002DCE9F /* TYPoi.m in Sources */,
 				5794C0D41B560558002DCE9F /* TYRouteArrowLayer.m in Sources */,
 				5794C0E51B560558002DCE9F /* TYMapInfo.m in Sources */,
 				5794C0D31B560558002DCE9F /* TYLocationLayer.m in Sources */,
 				5794C0C51B560558002DCE9F /* TYGeometryEngine.m in Sources */,
 				5794C0CC1B560558002DCE9F /* TYPolygon.m in Sources */,
-				5794C0EB1B560558002DCE9F /* NPDirectionalHint.m in Sources */,
+				5794C0EB1B560558002DCE9F /* TYDirectionalHint.m in Sources */,
 				5794C0F21B560558002DCE9F /* TYAssetLayer.m in Sources */,
 				5794C0D91B560558002DCE9F /* TYFacilityLayer.m in Sources */,
 				5794C0C81B560558002DCE9F /* TYLocationDisplay.m in Sources */,

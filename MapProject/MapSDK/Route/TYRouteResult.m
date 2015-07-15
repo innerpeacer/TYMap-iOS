@@ -6,23 +6,23 @@
 //  Copyright (c) 2015年 innerpeacer. All rights reserved.
 //
 
-#import "NPRouteResult.h"
-#import "NPLandmarkManager.h"
+#import "TYRouteResult.h"
+#import "TYLandmarkManager.h"
 #import "Vector2.h"
 #import "TYPolyline.h"
-#import "NPMapEnviroment.h"
+#import "TYMapEnviroment.h"
 
-@interface NPRouteResult()
+@interface TYRouteResult()
 {
 
 }
 @end
 
-@implementation NPRouteResult
+@implementation TYRouteResult
 
-+ (NPRouteResult *)routeResultWithRouteParts:(NSArray *)routePartArray
++ (TYRouteResult *)routeResultWithRouteParts:(NSArray *)routePartArray
 {
-    return [[NPRouteResult alloc] initRouteResultWithRouteParts:routePartArray];
+    return [[TYRouteResult alloc] initRouteResultWithRouteParts:routePartArray];
 }
 
 - (id)initRouteResultWithRouteParts:(NSArray *)routePartArray
@@ -35,7 +35,7 @@
         
         NSMutableDictionary *tempDict = [[NSMutableDictionary alloc] init];
         for (int i = 0; i < tempArray.count; ++i) {
-            NPRoutePart *rp = tempArray[i];
+            TYRoutePart *rp = tempArray[i];
             int floor = rp.info.floorNumber;
             
             if (![tempDict.allKeys containsObject:@(floor)]) {
@@ -60,7 +60,7 @@
     
     NSArray *rpArray = [_allFloorRoutePartDict objectForKey:@(floor)];
     if (rpArray && rpArray.count > 0) {
-        for (NPRoutePart *rp in rpArray) {
+        for (TYRoutePart *rp in rpArray) {
             AGSProximityResult *pr = [[AGSGeometryEngine defaultGeometryEngine] nearestCoordinateInGeometry:rp.route toPoint:pos];
             AGSPoint *nearestPoint = pr.point;
             
@@ -74,9 +74,9 @@
     return isDeviating;
 }
 
-- (NPRoutePart *)getNearestRoutePart:(NPLocalPoint *)location
+- (TYRoutePart *)getNearestRoutePart:(NPLocalPoint *)location
 {
-    NPRoutePart *result = nil;
+    TYRoutePart *result = nil;
     
     int floor = location.floor;
     double nearestDistance = 1000000;
@@ -85,7 +85,7 @@
     
     NSArray *rpArray = [_allFloorRoutePartDict objectForKey:@(floor)];
     if (rpArray && rpArray.count > 0) {
-        for (NPRoutePart *rp in rpArray) {
+        for (TYRoutePart *rp in rpArray) {
             AGSProximityResult *pr = [[AGSGeometryEngine defaultGeometryEngine] nearestCoordinateInGeometry:rp.route toPoint:pos];
             AGSPoint *nearestPoint = pr.point;
             
@@ -104,16 +104,16 @@
     return [_allFloorRoutePartDict objectForKey:@(floor)];
 }
 
-- (NPRoutePart *)getRoutePart:(int)index
+- (TYRoutePart *)getRoutePart:(int)index
 {
     return [_allRoutePartArray objectAtIndex:index];
 }
 
-- (NSArray *)getRouteDirectionalHint:(NPRoutePart *)rp
+- (NSArray *)getRouteDirectionalHint:(TYRoutePart *)rp
 {
     NSMutableArray *result = [[NSMutableArray alloc] init];
     
-    NPLandmarkManager *landmarkManager = [NPLandmarkManager sharedManager];
+    TYLandmarkManager *landmarkManager = [TYLandmarkManager sharedManager];
     [landmarkManager loadLandmark:rp.info];
 
     AGSPolyline *line = [self processPolyline:rp.route];
@@ -129,9 +129,9 @@
             
             NPLocalPoint *lp = [NPLocalPoint pointWithX:p0.x Y:p0.y Floor:rp.info.floorNumber];
             
-            NPLandmark *landmark = [landmarkManager searchLandmark:lp Tolerance:10];
+            TYLandmark *landmark = [landmarkManager searchLandmark:lp Tolerance:10];
             
-            NPDirectionalHint *ds = [[NPDirectionalHint alloc] initWithStartPoint:p0 EndPoint:p1 PreviousAngle:currentAngle];
+            TYDirectionalHint *ds = [[TYDirectionalHint alloc] initWithStartPoint:p0 EndPoint:p1 PreviousAngle:currentAngle];
             currentAngle = ds.currentAngle;
             ds.routePart = rp;
             
@@ -144,16 +144,16 @@
     return result;
 }
 
-- (NPDirectionalHint *)getDirectionHintForLocation:(NPLocalPoint *)location FromHints:(NSArray *)directions
+- (TYDirectionalHint *)getDirectionHintForLocation:(NPLocalPoint *)location FromHints:(NSArray *)directions
 {
     AGSMutablePolyline *line = [[AGSMutablePolyline alloc] init];
     [line addPathToPolyline];
     
-    for (NPDirectionalHint *hint in directions) {
+    for (TYDirectionalHint *hint in directions) {
         [line addPointToPath:hint.startPoint];
     }
     
-    NPDirectionalHint *lastHint = [directions lastObject];
+    TYDirectionalHint *lastHint = [directions lastObject];
     if (lastHint) {
         [line addPointToPath:lastHint.endPoint];
     }

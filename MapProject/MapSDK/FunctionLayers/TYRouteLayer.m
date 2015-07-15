@@ -9,7 +9,7 @@
 #import "TYRouteLayer.h"
 #import "TYGraphic.h"
 #import "TYMapView.h"
-#import "NPMapEnviroment.h"
+#import "TYMapEnviroment.h"
 #import "Vector2.h"
 
 #import <NephogramData/NephogramData.h>
@@ -68,7 +68,7 @@
     if (_routeResult) {
         NSArray *routePartArray = [_routeResult getRoutePartsOnFloor:floor];
         if (routePartArray && routePartArray.count > 0) {
-            for (NPRoutePart *rp in routePartArray) {
+            for (TYRoutePart *rp in routePartArray) {
                 if ([rp isFirstPart] && ![rp isLastPart]) {
                     [self addGraphic:[TYGraphic graphicWithGeometry:[rp getLastPoint] symbol:_switchSymbol attributes:nil]];
                 } else if (![rp isFirstPart] && [rp isLastPart]) {
@@ -87,7 +87,7 @@
     if (_routeResult) {
         NSArray *routePartArray = [_routeResult getRoutePartsOnFloor:floor];
         if (routePartArray && routePartArray.count > 0) {
-            for (NPRoutePart *rp in routePartArray) {
+            for (TYRoutePart *rp in routePartArray) {
                 [self addGraphic:[TYGraphic graphicWithGeometry:rp.route symbol:nil attributes:nil]];
                 [linesToReturn addObject:rp.route];
             }
@@ -96,9 +96,9 @@
     return linesToReturn;
 }
 
-- (NPRoutePart *)getNearestRoutePartWithLocation:(NPLocalPoint *)location
+- (TYRoutePart *)getNearestRoutePartWithLocation:(NPLocalPoint *)location
 {
-    NPRoutePart *result = nil;
+    TYRoutePart *result = nil;
     if (_routeResult) {
         NSArray *routePartArray = [_routeResult getRoutePartsOnFloor:location.floor];
         if (routePartArray && routePartArray.count > 0) {
@@ -106,7 +106,7 @@
             
             AGSGeometryEngine *engine = [AGSGeometryEngine defaultGeometryEngine];
             AGSPoint *pos = [AGSPoint pointWithX:location.x y:location.y spatialReference:[TYMapEnvironment defaultSpatialReference]];
-            for (NPRoutePart *rp in routePartArray) {
+            for (TYRoutePart *rp in routePartArray) {
                 AGSProximityResult *pr = [engine nearestCoordinateInGeometry:rp.route toPoint:pos];
                 double distance = [engine distanceFromGeometry:pr.point toGeometry:pos];
                 if (distance < nearestDistance) {
@@ -122,12 +122,12 @@
 - (NSArray *)showRemainingLinesForRouteResultOnFloor:(int)floor WithLocation:(NPLocalPoint *)location
 {
     NSMutableArray *linesToReturn = [[NSMutableArray alloc] init];
-    NPRoutePart *nearestRoutePart = [self getNearestRoutePartWithLocation:location];
+    TYRoutePart *nearestRoutePart = [self getNearestRoutePartWithLocation:location];
     
     if (_routeResult) {
         NSArray *routePartArray = [_routeResult getRoutePartsOnFloor:floor];
         if (routePartArray && routePartArray.count > 0) {
-            for (NPRoutePart *rp in routePartArray) {
+            for (TYRoutePart *rp in routePartArray) {
                 if (rp == nearestRoutePart) {
                     AGSPolyline *remainingLine = [self getRemainingLine:rp.route WithPoint:[AGSPoint pointWithX:location.x y:location.y spatialReference:[TYMapEnvironment defaultSpatialReference]]];
                     if (remainingLine) {

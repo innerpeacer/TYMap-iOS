@@ -9,12 +9,12 @@
 #import "TYTextLabelLayer.h"
 #import "TYMapFileManager.h"
 #import "TYTextLabel.h"
-#import "NPMapEnviroment.h"
-#import "NPMapType.h"
+#import "TYMapEnviroment.h"
+#import "TYMapType.h"
 #import "TYLabelBorderCalculator.h"
 #import "TYLabelGroupLayer.h"
-#import "NPMapType.h"
-#import "NPBrand.h"
+#import "TYMapType.h"
+#import "TYBrand.h"
 //#import "NPMapView.h"
 
 @interface TYTextLabelLayer()
@@ -80,19 +80,19 @@
     }
 }
 
-- (NSString *)getNameFieldForLanguage:(NPMapLanguage)l
+- (NSString *)getNameFieldForLanguage:(TYMapLanguage)l
 {
     NSString *result = nil;
     switch (l) {
-        case NPSimplifiedChinese:
+        case TYSimplifiedChinese:
         result = NAME_FIELD_SIMPLIFIED_CHINESE;
         break;
         
-        case NPTraditionalChinese:
+        case TYTraditionalChinese:
         result = NAME_FIELD_TRADITIONAL_CHINESE;
         break;
         
-        case NPEnglish:
+        case TYEnglish:
         result = NAME_FIELD_ENGLISH;
         break;
         
@@ -120,7 +120,7 @@
     NSArray *allGraphics = set.features;
     
     TYSpatialReference *sr = [TYMapEnvironment defaultSpatialReference];
-    NPMapLanguage language = [TYMapEnvironment getMapLanguage];
+    TYMapLanguage language = [TYMapEnvironment getMapLanguage];
     
     for (AGSGraphic *graphic in allGraphics) {
         NSString *field = [self getNameFieldForLanguage:language];
@@ -134,7 +134,7 @@
 
             NSString *poiID = [graphic attributeForKey:GRAPHIC_ATTRIBUTE_POI_ID];
             if ([self.brandDict.allKeys containsObject:poiID]) {
-                NPBrand *brand = [self.brandDict objectForKey:poiID];
+                TYBrand *brand = [self.brandDict objectForKey:poiID];
                 
                 AGSPictureMarkerSymbol *pms = [AGSPictureMarkerSymbol pictureMarkerSymbolWithImageNamed:brand.logo];
                 pms.size = brand.logoSize;
@@ -163,7 +163,7 @@
 {
     NSArray *graphicArray = self.graphics;
     
-    NPMapLanguage language = [TYMapEnvironment getMapLanguage];
+    TYMapLanguage language = [TYMapEnvironment getMapLanguage];
     NSString *field = [self getNameFieldForLanguage:language];
 
     for (AGSGraphic *g in graphicArray) {

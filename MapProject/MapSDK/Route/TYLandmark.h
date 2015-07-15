@@ -12,7 +12,7 @@
 /**
  *  路标类，用于导航的提示
  */
-@interface NPLandmark : NSObject
+@interface TYLandmark : NSObject
 
 /**
  *  当前路标的名称

@@ -6,7 +6,7 @@
 //  Copyright (c) 2015年 innerpeacer. All rights reserved.
 //
 
-#import "NPDirectionalHint.h"
+#import "TYDirectionalHint.h"
 #import "Vector2.h"
 
 #define DIRECTIONAL_STRING_STRAIGHT @"直行"
@@ -19,7 +19,7 @@
 #define DIRECTIONAL_STRING_RIGHT_BACKWARD @"向右后方行进"
 #define DIRECTIONAL_STRING_LEFT_BACKWARD @"向左后方行进"
 
-@interface NPDirectionalHint()
+@interface TYDirectionalHint()
 {
     Vector2 *vector;
 }
@@ -27,7 +27,7 @@
 @end
 
 
-@implementation NPDirectionalHint
+@implementation TYDirectionalHint
 
 - (id)initWithStartPoint:(AGSPoint *)start EndPoint:(AGSPoint *)end PreviousAngle:(double)angle
 {

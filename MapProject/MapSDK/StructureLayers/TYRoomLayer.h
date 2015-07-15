@@ -9,16 +9,16 @@
 #import <ArcGIS/ArcGIS.h>
 #import "TYMapInfo.h"
 #import "TYRenderingScheme.h"
-#import "NPPoi.h"
+#import "TYPoi.h"
 
-@interface NPRoomLayer : AGSGraphicsLayer
+@interface TYRoomLayer : AGSGraphicsLayer
 
-+ (NPRoomLayer *)roomLayerWithRenderingScheme:(TYRenderingScheme *)aRenderingScheme SpatialReference:(AGSSpatialReference *)sr;
++ (TYRoomLayer *)roomLayerWithRenderingScheme:(TYRenderingScheme *)aRenderingScheme SpatialReference:(AGSSpatialReference *)sr;
 
 - (void)loadContentsWithInfo:(TYMapInfo *)info;
-- (NPPoi *)getPoiWithPoiID:(NSString *)pid;
+- (TYPoi *)getPoiWithPoiID:(NSString *)pid;
 - (void)highlightPoi:(NSString *)poiID;
-- (NPPoi *)extractPoiOnCurrentFloorWithX:(double)x Y:(double)y;
+- (TYPoi *)extractPoiOnCurrentFloorWithX:(double)x Y:(double)y;
 
 - (BOOL)updateRoomPOI:(NSString *)pid WithName:(NSString *)name;
 

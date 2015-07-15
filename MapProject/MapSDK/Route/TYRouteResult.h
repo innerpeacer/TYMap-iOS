@@ -7,13 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "NPRoutePart.h"
-#import "NPDirectionalHint.h"
+#import "TYRoutePart.h"
+#import "TYDirectionalHint.h"
 
 /**
  *  路径规划结果
  */
-@interface NPRouteResult : NSObject
+@interface TYRouteResult : NSObject
 
 /**
  *  路径结果的所有路径段
@@ -32,7 +32,7 @@
  *
  *  @return 路径结果实例
  */
-+ (NPRouteResult *)routeResultWithRouteParts:(NSArray *)routePartArray;
++ (TYRouteResult *)routeResultWithRouteParts:(NSArray *)routePartArray;
 
 /**
  *  判断位置位置点是否偏离导航线
@@ -51,7 +51,7 @@
  *
  *  @return 最近的路径段
  */
-- (NPRoutePart *)getNearestRoutePart:(NPLocalPoint *)location;
+- (TYRoutePart *)getNearestRoutePart:(NPLocalPoint *)location;
 
 /**
  *  获取目标楼层的所有路径段
@@ -69,7 +69,7 @@
  *
  *  @return 目标段
  */
-- (NPRoutePart *)getRoutePart:(int)index;
+- (TYRoutePart *)getRoutePart:(int)index;
 
 /**
  *  获取目标路径段的导航提示
@@ -78,7 +78,7 @@
  *
  *  @return 目标路径段的导航提示
  */
-- (NSArray *)getRouteDirectionalHint:(NPRoutePart *)rp;
+- (NSArray *)getRouteDirectionalHint:(TYRoutePart *)rp;
 
 /**
  *  从一组导航提示中获取与目标位置点对应的导航提示
@@ -88,7 +88,7 @@
  *
  *  @return 与目标位置点对应的导航提示
  */
-- (NPDirectionalHint *)getDirectionHintForLocation:(NPLocalPoint *)location FromHints:(NSArray *)directions;
+- (TYDirectionalHint *)getDirectionHintForLocation:(NPLocalPoint *)location FromHints:(NSArray *)directions;
 
 /**
  *  获取一组折线的子折线

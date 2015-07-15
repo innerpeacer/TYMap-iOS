@@ -13,7 +13,7 @@
 /**
     路径导航段，用于表示跨层导航中的一段路径
  */
-@interface NPRoutePart : NSObject
+@interface TYRoutePart : NSObject
 
 /**
  *  路径导航段的初始化方法，一般不需要直接调用，由导航管理类调用生成
@@ -38,12 +38,12 @@
 /**
  *  当前段的前一段
  */
-@property (nonatomic, weak) NPRoutePart *previousPart;
+@property (nonatomic, weak) TYRoutePart *previousPart;
 
 /**
  *  当前段的下一段
  */
-@property (nonatomic, weak) NPRoutePart *nextPart;
+@property (nonatomic, weak) TYRoutePart *nextPart;
 
 /**
  *  判断当前段是否为跨层导航的第一段

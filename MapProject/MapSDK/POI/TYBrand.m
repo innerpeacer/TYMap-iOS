@@ -6,7 +6,7 @@
 //  Copyright (c) 2015年 innerpeacer. All rights reserved.
 //
 
-#import "NPBrand.h"
+#import "TYBrand.h"
 
 #import "TYMapFileManager.h"
 
@@ -18,7 +18,7 @@
 #define KEY_BRAND_SIZE_X @"width"
 #define KEY_BRAND_SIZE_Y @"height"
 
-@implementation NPBrand
+@implementation TYBrand
 
 + (NSArray *)parseAllBrands:(TYBuilding *)building
 {
@@ -45,7 +45,7 @@
             double width = [[brandDict objectForKey:KEY_BRAND_SIZE_X] doubleValue];
             double height = [[brandDict objectForKey:KEY_BRAND_SIZE_Y] doubleValue];
             
-            NPBrand *brand = [[NPBrand alloc] init];
+            TYBrand *brand = [[TYBrand alloc] init];
             brand.poiID = poiID;
             brand.name = name;
             brand.logo = logo;

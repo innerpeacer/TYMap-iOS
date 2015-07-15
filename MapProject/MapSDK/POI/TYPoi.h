@@ -21,7 +21,7 @@ typedef enum
 /**
  *  @brief POI类：用于表示POI相关数据，主要包含POI地理信息，及相应POI ID
  */
-@interface NPPoi : NSObject
+@interface TYPoi : NSObject
 
 /**
  *  POI地理ID
@@ -77,6 +77,6 @@ typedef enum
  *
  *  @return POI实例
  */
-+ (NPPoi *)poiWithGeoID:(NSString *)gid PoiID:(NSString *)pid FloorID:(NSString *)fid  BuildingID:(NSString *)bid Name:(NSString *)pname Geometry:(TYGeometry *)geometry CategoryID:(int)cid Layer:(POI_LAYER)pLayer;
++ (TYPoi *)poiWithGeoID:(NSString *)gid PoiID:(NSString *)pid FloorID:(NSString *)fid  BuildingID:(NSString *)bid Name:(NSString *)pname Geometry:(TYGeometry *)geometry CategoryID:(int)cid Layer:(POI_LAYER)pLayer;
 
 @end

@@ -10,7 +10,7 @@
 #import <UIKit/UIKit.h>
 #import "TYBuilding.h"
 
-@interface NPBrand : NSObject
+@interface TYBrand : NSObject
 
 @property (nonatomic, strong) NSString *poiID;
 @property (nonatomic, strong) NSString *name;

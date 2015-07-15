@@ -8,7 +8,7 @@
 
 #import "TYRouteArrowLayer.h"
 #import "Vector2.h"
-#import "NPMapEnviroment.h"
+#import "TYMapEnviroment.h"
 
 @interface TYRouteArrowLayer()
 {

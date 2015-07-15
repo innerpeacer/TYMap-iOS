@@ -8,7 +8,7 @@
 
 #import "CreatingPOIDBAdapter.h"
 #import "FMDatabase.h"
-#import "NPPoi.h"
+#import "TYPoi.h"
 
 @interface CreatingPOIDBAdapter()
 {

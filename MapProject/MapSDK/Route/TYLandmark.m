@@ -6,9 +6,9 @@
 //  Copyright (c) 2015年 innerpeacer. All rights reserved.
 //
 
-#import "NPLandmark.h"
+#import "TYLandmark.h"
 
-@implementation NPLandmark
+@implementation TYLandmark
 
 - (NSString *)description
 {
