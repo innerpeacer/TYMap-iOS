@@ -1,6 +1,6 @@
 
 //
-//  NPStructureGroupLayer.m
+//  TYStructureGroupLayer.m
 //  MapProject
 //
 //  Created by innerpeacer on 15/4/14.
@@ -11,12 +11,12 @@
 
 @implementation NPStructureGroupLayer
 
-+ (NPStructureGroupLayer *)structureLayerWithRenderingScheme:(NPRenderingScheme *)aRenderingScheme SpatialReference:(AGSSpatialReference *)sr
++ (NPStructureGroupLayer *)structureLayerWithRenderingScheme:(TYRenderingScheme *)aRenderingScheme SpatialReference:(AGSSpatialReference *)sr
 {
     return [[NPStructureGroupLayer alloc] initWithRenderingScheme:aRenderingScheme SpatialReference:sr];
 }
 
-- (id)initWithRenderingScheme:(NPRenderingScheme *)aRenderingScheme SpatialReference:(AGSSpatialReference *)sr
+- (id)initWithRenderingScheme:(TYRenderingScheme *)aRenderingScheme SpatialReference:(AGSSpatialReference *)sr
 {
     self = [super init];
     if (self) {
@@ -26,13 +26,13 @@
         _roomLayer = [NPRoomLayer roomLayerWithRenderingScheme:aRenderingScheme SpatialReference:sr];
         _roomLayer.selectionSymbol = aRenderingScheme.defaultHighlightFillSymbol;
         
-        _asserLayer = [NPAssetLayer assetLayerWithRenderingScheme:aRenderingScheme SpatialReference:sr];
+        _asserLayer = [TYAssetLayer assetLayerWithRenderingScheme:aRenderingScheme SpatialReference:sr];
 
     }
     return self;
 }
 
-- (void)loadContentsWithInfo:(NPMapInfo *)info
+- (void)loadContentsWithInfo:(TYMapInfo *)info
 {
     [_floorLayer removeAllGraphics];
     [_roomLayer removeAllGraphics];

@@ -1,11 +1,11 @@
 #import <Foundation/Foundation.h>
-#import "NPCity.h"
-#import "NPMapInfo.h"
+#import "TYCity.h"
+#import "TYMapInfo.h"
 
 /**
  * 建筑类，表示整栋建筑的信息
  */
-@interface NPBuilding : NSObject
+@interface TYBuilding : NSObject
 
 /**
  *  建筑所在城市ID
@@ -64,7 +64,7 @@
  *
  *  @return 建筑信息数组
  */
-+ (NSArray *)parseAllBuildings:(NPCity *)city;
++ (NSArray *)parseAllBuildings:(TYCity *)city;
 
 /**
  *  解析目标城市特定ID的建筑信息
@@ -74,6 +74,6 @@
  *
  *  @return 目标建筑信息
  */
-+ (NPBuilding *)parseBuilding:(NSString *)buildingID InCity:(NPCity *)city;
++ (TYBuilding *)parseBuilding:(NSString *)buildingID InCity:(TYCity *)city;
 
 @end

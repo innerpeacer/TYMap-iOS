@@ -1,5 +1,5 @@
 //
-//  NPRouteManager.m
+//  TYRouteManager.m
 //  MapProject
 //
 //  Created by innerpeacer on 15/2/9.
@@ -8,7 +8,7 @@
 
 #import "NPRouteManager.h"
 #import "NPRoutePointConverter.h"
-#import "NPBuilding.h"
+#import "TYBuilding.h"
 #import "NPRoutePart.h"
 
 @interface NPRouteManager() <AGSRouteTaskDelegate>
@@ -27,19 +27,19 @@
 @implementation NPRouteManager
 
 
-+ (NPRouteManager *)routeManagerWithBuilding:(NPBuilding *)building credential:(TYCredential *)credential MapInfos:(NSArray *)mapInfoArray
++ (NPRouteManager *)routeManagerWithBuilding:(TYBuilding *)building credential:(TYCredential *)credential MapInfos:(NSArray *)mapInfoArray
 {
     return [[NPRouteManager alloc] initRouteTaskWithBuilding:building credential:credential MapInfos:mapInfoArray];
 }
 
-- (id)initRouteTaskWithBuilding:(NPBuilding *)building credential:(TYCredential *)cr  MapInfos:(NSArray *)mapInfoArray
+- (id)initRouteTaskWithBuilding:(TYBuilding *)building credential:(TYCredential *)cr  MapInfos:(NSArray *)mapInfoArray
 {
     self = [super init];
     if (self) {
         credential = cr;
         allMapInfos = mapInfoArray;
         
-        NPMapInfo *info = [allMapInfos objectAtIndex:0];
+        TYMapInfo *info = [allMapInfos objectAtIndex:0];
         routePointConverter = [[NPRoutePointConverter alloc] initWithBaseMapExtent:info.mapExtent Offset:building.offset];
         
         NSURL *url = [NSURL URLWithString:building.routeURL];
@@ -74,7 +74,7 @@
     routeTaskParams.preserveLastStop = YES;
     
     routeTaskParams.returnStopGraphics = YES;
-    routeTaskParams.outSpatialReference = [NPMapEnvironment defaultSpatialReference];
+    routeTaskParams.outSpatialReference = [TYMapEnvironment defaultSpatialReference];
     
     routeTaskParams.ignoreInvalidLocations = YES;
     
@@ -155,10 +155,10 @@
         NSMutableArray *pArray = [pointArray objectAtIndex:i];
         for (int j = 0; j < pArray.count; ++j) {
             NPLocalPoint *lp = pArray[j];
-            [line addPointToPath:[AGSPoint pointWithX:lp.x y:lp.y spatialReference:[NPMapEnvironment defaultSpatialReference]]];
+            [line addPointToPath:[AGSPoint pointWithX:lp.x y:lp.y spatialReference:[TYMapEnvironment defaultSpatialReference]]];
         }
         
-        NPMapInfo *info = [NPMapInfo searchMapInfoFromArray:allMapInfos Floor:floor];
+        TYMapInfo *info = [TYMapInfo searchMapInfoFromArray:allMapInfos Floor:floor];
         NPRoutePart *rp = [[NPRoutePart alloc] initWithRouteLine:line MapInfo:info];
         [routePartArray addObject:rp];
     }

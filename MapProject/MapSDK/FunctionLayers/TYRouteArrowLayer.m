@@ -111,7 +111,7 @@
     double x = start.x * (1 - scale) + end.x * scale;
     double y = start.y * (1 - scale) + end.y * scale;
     
-    return [AGSPoint pointWithX:x y:y spatialReference:[NPMapEnvironment defaultSpatialReference]];
+    return [AGSPoint pointWithX:x y:y spatialReference:[TYMapEnvironment defaultSpatialReference]];
 }
 
 

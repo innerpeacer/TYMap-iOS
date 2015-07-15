@@ -7,7 +7,7 @@
 //
 
 #import "TYTextLabelLayer.h"
-#import "NPMapFileManager.h"
+#import "TYMapFileManager.h"
 #import "TYTextLabel.h"
 #import "NPMapEnviroment.h"
 #import "NPMapType.h"
@@ -103,14 +103,14 @@
     return result;
 }
 
-- (void)loadContentsWithInfo:(NPMapInfo *)info;
+- (void)loadContentsWithInfo:(TYMapInfo *)info;
 {
     [self removeAllGraphics];
     
     [allTextLabels removeAllObjects];
     
     NSError *error = nil;
-    NSString *fullPath = [NPMapFileManager getLabelLayerPath:info];
+    NSString *fullPath = [TYMapFileManager getLabelLayerPath:info];
     NSString *jsonString = [NSString stringWithContentsOfFile:fullPath encoding:NSUTF8StringEncoding error:&error];
     
     AGSSBJsonParser *parser = [[AGSSBJsonParser alloc] init];
@@ -119,8 +119,8 @@
     AGSFeatureSet *set = [[AGSFeatureSet alloc] initWithJSON:dict];
     NSArray *allGraphics = set.features;
     
-    TYSpatialReference *sr = [NPMapEnvironment defaultSpatialReference];
-    NPMapLanguage language = [NPMapEnvironment getMapLanguage];
+    TYSpatialReference *sr = [TYMapEnvironment defaultSpatialReference];
+    NPMapLanguage language = [TYMapEnvironment getMapLanguage];
     
     for (AGSGraphic *graphic in allGraphics) {
         NSString *field = [self getNameFieldForLanguage:language];
@@ -163,7 +163,7 @@
 {
     NSArray *graphicArray = self.graphics;
     
-    NPMapLanguage language = [NPMapEnvironment getMapLanguage];
+    NPMapLanguage language = [TYMapEnvironment getMapLanguage];
     NSString *field = [self getNameFieldForLanguage:language];
 
     for (AGSGraphic *g in graphicArray) {

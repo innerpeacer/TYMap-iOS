@@ -12,7 +12,7 @@
 #import "TYPictureMarkerSymbol.h"
 #import "NPRouteResult.h"
 
-@class NPMapView;
+@class TYMapView;
 
 @class NPLocalPoint;
 
@@ -21,7 +21,7 @@
  */
 @interface TYRouteLayer : AGSGraphicsLayer
 
-@property (nonatomic, weak) NPMapView *mapView;
+@property (nonatomic, weak) TYMapView *mapView;
 
 @property (nonatomic, strong) NPRouteResult *routeResult;
 

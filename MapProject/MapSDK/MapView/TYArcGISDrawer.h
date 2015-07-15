@@ -1,5 +1,5 @@
 //
-//  NPArcGISDrawer.h
+//  TYArcGISDrawer.h
 //  MapProject
 //
 //  Created by innerpeacer on 15/2/9.
@@ -13,7 +13,7 @@
 #import "TYSpatialReference.h"
 #import "TYPictureMarkerSymbol.h"
 
-@interface NPArcGISDrawer : NSObject
+@interface TYArcGISDrawer : NSObject
 
 + (void)drawPoint:(TYPoint *)p AtLayer:(TYGraphicsLayer *)layer WithColor:(UIColor *)color;
 

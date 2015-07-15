@@ -7,22 +7,22 @@
 //
 
 #import <ArcGIS/ArcGIS.h>
-#import "NPMapInfo.h"
+#import "TYMapInfo.h"
 #import "TYTextLabelLayer.h"
 #import "TYFacilityLayer.h"
 
-@class NPMapView;
+@class TYMapView;
 
 @interface TYLabelGroupLayer : NSObject
 
-@property (nonatomic, weak) NPMapView *mapView;
+@property (nonatomic, weak) TYMapView *mapView;
 
 @property (nonatomic, strong) TYTextLabelLayer *labelLayer;
 @property (nonatomic, strong) TYFacilityLayer *facilityLayer;
 
-+ (TYLabelGroupLayer *)labelGroupLayerWithRenderingScheme:(NPRenderingScheme *)aRenderingScheme SpatialReference:(AGSSpatialReference *)sr;
++ (TYLabelGroupLayer *)labelGroupLayerWithRenderingScheme:(TYRenderingScheme *)aRenderingScheme SpatialReference:(AGSSpatialReference *)sr;
 
-- (void)loadContentsWithInfo:(NPMapInfo *)info;
+- (void)loadContentsWithInfo:(TYMapInfo *)info;
 
 - (void)clearSelection;
 

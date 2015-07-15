@@ -1,5 +1,5 @@
 //
-//  NPRenderingScheme.h
+//  TYRenderingScheme.h
 //  MapProject
 //
 //  Created by innerpeacer on 15/2/9.
@@ -13,7 +13,7 @@
 /**
  *  渲染方案类：用于表示地图的渲染规则
  */
-@interface NPRenderingScheme : NSObject
+@interface TYRenderingScheme : NSObject
 
 /**
  *  渲染方案初始化方法

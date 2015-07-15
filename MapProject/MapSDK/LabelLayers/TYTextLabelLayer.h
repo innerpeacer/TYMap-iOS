@@ -7,7 +7,7 @@
 //
 
 #import <ArcGIS/ArcGIS.h>
-#import "NPMapInfo.h"
+#import "TYMapInfo.h"
 
 @class TYLabelGroupLayer;
 
@@ -19,7 +19,7 @@
 
 + (TYTextLabelLayer *)textLabelLayerWithSpatialReference:(AGSSpatialReference *)sr;
 
-- (void)loadContentsWithInfo:(NPMapInfo *)info;
+- (void)loadContentsWithInfo:(TYMapInfo *)info;
 
 - (void)displayLabels:(NSMutableArray *)array;
 

@@ -1,30 +1,30 @@
 //
-//  NPAssetLayer.m
+//  TYAssetLayer.m
 //  MapProject
 //
 //  Created by innerpeacer on 15/2/9.
 //  Copyright (c) 2015年 innerpeacer. All rights reserved.
 //
 
-#import "NPAssetLayer.h"
-#import "NPMapFileManager.h"
+#import "TYAssetLayer.h"
+#import "TYMapFileManager.h"
 
-@interface NPAssetLayer()
+@interface TYAssetLayer()
 {
     AGSRenderer *assetRender;
-    NPRenderingScheme *renderingScheme;
+    TYRenderingScheme *renderingScheme;
 }
 
 @end
 
-@implementation NPAssetLayer
+@implementation TYAssetLayer
 
-+ (NPAssetLayer *)assetLayerWithRenderingScheme:(NPRenderingScheme *)aRenderingScheme SpatialReference:(AGSSpatialReference *)sr
++ (TYAssetLayer *)assetLayerWithRenderingScheme:(TYRenderingScheme *)aRenderingScheme SpatialReference:(AGSSpatialReference *)sr
 {
-    return [[NPAssetLayer alloc] initAssetLayerWithRenderingScheme:aRenderingScheme SpatialReference:sr];
+    return [[TYAssetLayer alloc] initAssetLayerWithRenderingScheme:aRenderingScheme SpatialReference:sr];
 }
 
-- (id)initAssetLayerWithRenderingScheme:(NPRenderingScheme *)aRenderingScheme SpatialReference:(AGSSpatialReference *)sr
+- (id)initAssetLayerWithRenderingScheme:(TYRenderingScheme *)aRenderingScheme SpatialReference:(AGSSpatialReference *)sr
 {
     self = [super initWithSpatialReference:sr];
     if (self) {
@@ -57,13 +57,13 @@
     return render;
 }
 
-- (void)loadContentsWithInfo:(NPMapInfo *)info
+- (void)loadContentsWithInfo:(TYMapInfo *)info
 {
 //    NSLog(@"addShopContents");
     [self removeAllGraphics];
     
     NSError *error = nil;
-    NSString *fullPath = [NPMapFileManager getAssetLayerPath:info];
+    NSString *fullPath = [TYMapFileManager getAssetLayerPath:info];
     NSString *jsonString = [NSString stringWithContentsOfFile:fullPath encoding:NSUTF8StringEncoding error:&error];
     
     AGSSBJsonParser *parser = [[AGSSBJsonParser alloc] init];

@@ -7,7 +7,7 @@
 //
 
 #import "TYLabelBorderCalculator.h"
-#import "NPMapView.h"
+#import "TYMapView.h"
 
 #define DPI_SCALE 1.0
 #define FACILITY_LOGO_SIZE 26
@@ -48,7 +48,7 @@
     return [TYLabelBorder borderWithXMin:left XMax:right YMin:top YMax:bottom];
 }
 
-+ (AGSPolygon *)polygonFromCGRect:(CGRect)rect MapView:(NPMapView *)mapView
++ (AGSPolygon *)polygonFromCGRect:(CGRect)rect MapView:(TYMapView *)mapView
 {
     double left = rect.origin.x;
     double right = rect.origin.x + rect.size.width;

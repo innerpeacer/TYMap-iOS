@@ -37,7 +37,7 @@
 		57672EF61B56006800DAD219 /* NephogramData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57672EF31B56006700DAD219 /* NephogramData.framework */; };
 		57672EF91B56009700DAD219 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 57672EF81B56009700DAD219 /* libsqlite3.0.dylib */; };
 		57672EFD1B5600B900DAD219 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 57672EFC1B5600B900DAD219 /* Default-568h@2x.png */; };
-		57672EFF1B56046300DAD219 /* NephogramMapResource in Resources */ = {isa = PBXBuildFile; fileRef = 57672EFE1B56046300DAD219 /* NephogramMapResource */; };
+		57672EFF1B56046300DAD219 /* MapResource in Resources */ = {isa = PBXBuildFile; fileRef = 57672EFE1B56046300DAD219 /* MapResource */; };
 		5794C0C11B560558002DCE9F /* TYCallout.m in Sources */ = {isa = PBXBuildFile; fileRef = 5794C0511B560558002DCE9F /* TYCallout.m */; };
 		5794C0C21B560558002DCE9F /* TYCredential.m in Sources */ = {isa = PBXBuildFile; fileRef = 5794C0531B560558002DCE9F /* TYCredential.m */; };
 		5794C0C31B560558002DCE9F /* TYEnvelope.m in Sources */ = {isa = PBXBuildFile; fileRef = 5794C0551B560558002DCE9F /* TYEnvelope.m */; };
@@ -68,16 +68,16 @@
 		5794C0DC1B560558002DCE9F /* TYLabelGroupLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5794C0891B560558002DCE9F /* TYLabelGroupLayer.m */; };
 		5794C0DD1B560558002DCE9F /* TYTextLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5794C08B1B560558002DCE9F /* TYTextLabel.m */; };
 		5794C0DE1B560558002DCE9F /* TYTextLabelLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5794C08D1B560558002DCE9F /* TYTextLabelLayer.m */; };
-		5794C0DF1B560558002DCE9F /* NPArcGISDrawer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5794C0901B560558002DCE9F /* NPArcGISDrawer.m */; };
-		5794C0E01B560558002DCE9F /* NPAreaAnalysis.m in Sources */ = {isa = PBXBuildFile; fileRef = 5794C0921B560558002DCE9F /* NPAreaAnalysis.m */; };
-		5794C0E11B560558002DCE9F /* NPBuilding.m in Sources */ = {isa = PBXBuildFile; fileRef = 5794C0941B560558002DCE9F /* NPBuilding.m */; };
-		5794C0E21B560558002DCE9F /* NPCity.m in Sources */ = {isa = PBXBuildFile; fileRef = 5794C0961B560558002DCE9F /* NPCity.m */; };
+		5794C0DF1B560558002DCE9F /* TYArcGISDrawer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5794C0901B560558002DCE9F /* TYArcGISDrawer.m */; };
+		5794C0E01B560558002DCE9F /* TYAreaAnalysis.m in Sources */ = {isa = PBXBuildFile; fileRef = 5794C0921B560558002DCE9F /* TYAreaAnalysis.m */; };
+		5794C0E11B560558002DCE9F /* TYBuilding.m in Sources */ = {isa = PBXBuildFile; fileRef = 5794C0941B560558002DCE9F /* TYBuilding.m */; };
+		5794C0E21B560558002DCE9F /* TYCity.m in Sources */ = {isa = PBXBuildFile; fileRef = 5794C0961B560558002DCE9F /* TYCity.m */; };
 		5794C0E31B560558002DCE9F /* NPMapEnviroment.m in Sources */ = {isa = PBXBuildFile; fileRef = 5794C0981B560558002DCE9F /* NPMapEnviroment.m */; };
-		5794C0E41B560558002DCE9F /* NPMapFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5794C09A1B560558002DCE9F /* NPMapFileManager.m */; };
-		5794C0E51B560558002DCE9F /* NPMapInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 5794C09C1B560558002DCE9F /* NPMapInfo.m */; };
-		5794C0E61B560558002DCE9F /* NPMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5794C09F1B560558002DCE9F /* NPMapView.m */; };
-		5794C0E71B560558002DCE9F /* NPRenderingScheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 5794C0A11B560558002DCE9F /* NPRenderingScheme.m */; };
-		5794C0E81B560558002DCE9F /* NPPathCalibration.m in Sources */ = {isa = PBXBuildFile; fileRef = 5794C0A31B560558002DCE9F /* NPPathCalibration.m */; };
+		5794C0E41B560558002DCE9F /* TYMapFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5794C09A1B560558002DCE9F /* TYMapFileManager.m */; };
+		5794C0E51B560558002DCE9F /* TYMapInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 5794C09C1B560558002DCE9F /* TYMapInfo.m */; };
+		5794C0E61B560558002DCE9F /* TYMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5794C09F1B560558002DCE9F /* TYMapView.m */; };
+		5794C0E71B560558002DCE9F /* TYRenderingScheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 5794C0A11B560558002DCE9F /* TYRenderingScheme.m */; };
+		5794C0E81B560558002DCE9F /* TYPathCalibration.m in Sources */ = {isa = PBXBuildFile; fileRef = 5794C0A31B560558002DCE9F /* TYPathCalibration.m */; };
 		5794C0E91B560558002DCE9F /* NPBrand.m in Sources */ = {isa = PBXBuildFile; fileRef = 5794C0A61B560558002DCE9F /* NPBrand.m */; };
 		5794C0EA1B560558002DCE9F /* NPPoi.m in Sources */ = {isa = PBXBuildFile; fileRef = 5794C0A81B560558002DCE9F /* NPPoi.m */; };
 		5794C0EB1B560558002DCE9F /* NPDirectionalHint.m in Sources */ = {isa = PBXBuildFile; fileRef = 5794C0AB1B560558002DCE9F /* NPDirectionalHint.m */; };
@@ -87,7 +87,7 @@
 		5794C0EF1B560558002DCE9F /* NPRoutePart.m in Sources */ = {isa = PBXBuildFile; fileRef = 5794C0B31B560558002DCE9F /* NPRoutePart.m */; };
 		5794C0F01B560558002DCE9F /* NPRoutePointConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5794C0B51B560558002DCE9F /* NPRoutePointConverter.m */; };
 		5794C0F11B560558002DCE9F /* NPRouteResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 5794C0B71B560558002DCE9F /* NPRouteResult.m */; };
-		5794C0F21B560558002DCE9F /* NPAssetLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5794C0BA1B560558002DCE9F /* NPAssetLayer.m */; };
+		5794C0F21B560558002DCE9F /* TYAssetLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5794C0BA1B560558002DCE9F /* TYAssetLayer.m */; };
 		5794C0F31B560558002DCE9F /* NPFloorLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5794C0BC1B560558002DCE9F /* NPFloorLayer.m */; };
 		5794C0F41B560558002DCE9F /* NPRoomLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5794C0BE1B560558002DCE9F /* NPRoomLayer.m */; };
 		5794C0F51B560558002DCE9F /* NPStructureGroupLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5794C0C01B560558002DCE9F /* NPStructureGroupLayer.m */; };
@@ -143,7 +143,7 @@
 		57672EF31B56006700DAD219 /* NephogramData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = NephogramData.framework; sourceTree = "<group>"; };
 		57672EF81B56009700DAD219 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		57672EFC1B5600B900DAD219 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		57672EFE1B56046300DAD219 /* NephogramMapResource */ = {isa = PBXFileReference; lastKnownFileType = folder; path = NephogramMapResource; sourceTree = "<group>"; };
+		57672EFE1B56046300DAD219 /* MapResource */ = {isa = PBXFileReference; lastKnownFileType = folder; path = MapResource; sourceTree = "<group>"; };
 		5794C0501B560558002DCE9F /* TYCallout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYCallout.h; sourceTree = "<group>"; };
 		5794C0511B560558002DCE9F /* TYCallout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYCallout.m; sourceTree = "<group>"; };
 		5794C0521B560558002DCE9F /* TYCredential.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYCredential.h; sourceTree = "<group>"; };
@@ -204,27 +204,27 @@
 		5794C08B1B560558002DCE9F /* TYTextLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYTextLabel.m; sourceTree = "<group>"; };
 		5794C08C1B560558002DCE9F /* TYTextLabelLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYTextLabelLayer.h; sourceTree = "<group>"; };
 		5794C08D1B560558002DCE9F /* TYTextLabelLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYTextLabelLayer.m; sourceTree = "<group>"; };
-		5794C08F1B560558002DCE9F /* NPArcGISDrawer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPArcGISDrawer.h; sourceTree = "<group>"; };
-		5794C0901B560558002DCE9F /* NPArcGISDrawer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPArcGISDrawer.m; sourceTree = "<group>"; };
-		5794C0911B560558002DCE9F /* NPAreaAnalysis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPAreaAnalysis.h; sourceTree = "<group>"; };
-		5794C0921B560558002DCE9F /* NPAreaAnalysis.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPAreaAnalysis.m; sourceTree = "<group>"; };
-		5794C0931B560558002DCE9F /* NPBuilding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPBuilding.h; sourceTree = "<group>"; };
-		5794C0941B560558002DCE9F /* NPBuilding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPBuilding.m; sourceTree = "<group>"; };
-		5794C0951B560558002DCE9F /* NPCity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPCity.h; sourceTree = "<group>"; };
-		5794C0961B560558002DCE9F /* NPCity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPCity.m; sourceTree = "<group>"; };
+		5794C08F1B560558002DCE9F /* TYArcGISDrawer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYArcGISDrawer.h; sourceTree = "<group>"; };
+		5794C0901B560558002DCE9F /* TYArcGISDrawer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYArcGISDrawer.m; sourceTree = "<group>"; };
+		5794C0911B560558002DCE9F /* TYAreaAnalysis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYAreaAnalysis.h; sourceTree = "<group>"; };
+		5794C0921B560558002DCE9F /* TYAreaAnalysis.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYAreaAnalysis.m; sourceTree = "<group>"; };
+		5794C0931B560558002DCE9F /* TYBuilding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYBuilding.h; sourceTree = "<group>"; };
+		5794C0941B560558002DCE9F /* TYBuilding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYBuilding.m; sourceTree = "<group>"; };
+		5794C0951B560558002DCE9F /* TYCity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYCity.h; sourceTree = "<group>"; };
+		5794C0961B560558002DCE9F /* TYCity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYCity.m; sourceTree = "<group>"; };
 		5794C0971B560558002DCE9F /* NPMapEnviroment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPMapEnviroment.h; sourceTree = "<group>"; };
 		5794C0981B560558002DCE9F /* NPMapEnviroment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPMapEnviroment.m; sourceTree = "<group>"; };
-		5794C0991B560558002DCE9F /* NPMapFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPMapFileManager.h; sourceTree = "<group>"; };
-		5794C09A1B560558002DCE9F /* NPMapFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPMapFileManager.m; sourceTree = "<group>"; };
-		5794C09B1B560558002DCE9F /* NPMapInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPMapInfo.h; sourceTree = "<group>"; };
-		5794C09C1B560558002DCE9F /* NPMapInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPMapInfo.m; sourceTree = "<group>"; };
+		5794C0991B560558002DCE9F /* TYMapFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYMapFileManager.h; sourceTree = "<group>"; };
+		5794C09A1B560558002DCE9F /* TYMapFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYMapFileManager.m; sourceTree = "<group>"; };
+		5794C09B1B560558002DCE9F /* TYMapInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYMapInfo.h; sourceTree = "<group>"; };
+		5794C09C1B560558002DCE9F /* TYMapInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYMapInfo.m; sourceTree = "<group>"; };
 		5794C09D1B560558002DCE9F /* NPMapType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPMapType.h; sourceTree = "<group>"; };
-		5794C09E1B560558002DCE9F /* NPMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPMapView.h; sourceTree = "<group>"; };
-		5794C09F1B560558002DCE9F /* NPMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPMapView.m; sourceTree = "<group>"; };
-		5794C0A01B560558002DCE9F /* NPRenderingScheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPRenderingScheme.h; sourceTree = "<group>"; };
-		5794C0A11B560558002DCE9F /* NPRenderingScheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPRenderingScheme.m; sourceTree = "<group>"; };
-		5794C0A21B560558002DCE9F /* NPPathCalibration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPPathCalibration.h; sourceTree = "<group>"; };
-		5794C0A31B560558002DCE9F /* NPPathCalibration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPPathCalibration.m; sourceTree = "<group>"; };
+		5794C09E1B560558002DCE9F /* TYMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYMapView.h; sourceTree = "<group>"; };
+		5794C09F1B560558002DCE9F /* TYMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYMapView.m; sourceTree = "<group>"; };
+		5794C0A01B560558002DCE9F /* TYRenderingScheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYRenderingScheme.h; sourceTree = "<group>"; };
+		5794C0A11B560558002DCE9F /* TYRenderingScheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYRenderingScheme.m; sourceTree = "<group>"; };
+		5794C0A21B560558002DCE9F /* TYPathCalibration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYPathCalibration.h; sourceTree = "<group>"; };
+		5794C0A31B560558002DCE9F /* TYPathCalibration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYPathCalibration.m; sourceTree = "<group>"; };
 		5794C0A51B560558002DCE9F /* NPBrand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPBrand.h; sourceTree = "<group>"; };
 		5794C0A61B560558002DCE9F /* NPBrand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPBrand.m; sourceTree = "<group>"; };
 		5794C0A71B560558002DCE9F /* NPPoi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPPoi.h; sourceTree = "<group>"; };
@@ -243,8 +243,8 @@
 		5794C0B51B560558002DCE9F /* NPRoutePointConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPRoutePointConverter.m; sourceTree = "<group>"; };
 		5794C0B61B560558002DCE9F /* NPRouteResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPRouteResult.h; sourceTree = "<group>"; };
 		5794C0B71B560558002DCE9F /* NPRouteResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPRouteResult.m; sourceTree = "<group>"; };
-		5794C0B91B560558002DCE9F /* NPAssetLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPAssetLayer.h; sourceTree = "<group>"; };
-		5794C0BA1B560558002DCE9F /* NPAssetLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPAssetLayer.m; sourceTree = "<group>"; };
+		5794C0B91B560558002DCE9F /* TYAssetLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYAssetLayer.h; sourceTree = "<group>"; };
+		5794C0BA1B560558002DCE9F /* TYAssetLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYAssetLayer.m; sourceTree = "<group>"; };
 		5794C0BB1B560558002DCE9F /* NPFloorLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPFloorLayer.h; sourceTree = "<group>"; };
 		5794C0BC1B560558002DCE9F /* NPFloorLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPFloorLayer.m; sourceTree = "<group>"; };
 		5794C0BD1B560558002DCE9F /* NPRoomLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPRoomLayer.h; sourceTree = "<group>"; };
@@ -358,7 +358,7 @@
 		57672D6A1B55FFF900DAD219 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				57672EFE1B56046300DAD219 /* NephogramMapResource */,
+				57672EFE1B56046300DAD219 /* MapResource */,
 				57672D6B1B55FFF900DAD219 /* ArcGIS.bundle */,
 				57672D6C1B55FFF900DAD219 /* MapFiles */,
 				57672D711B55FFF900DAD219 /* MapTool */,
@@ -408,12 +408,12 @@
 		5794C04E1B560558002DCE9F /* MapSDK */ = {
 			isa = PBXGroup;
 			children = (
+				5794C0A21B560558002DCE9F /* TYPathCalibration.h */,
+				5794C0A31B560558002DCE9F /* TYPathCalibration.m */,
 				5794C04F1B560558002DCE9F /* Entity */,
 				5794C0721B560558002DCE9F /* FunctionLayers */,
 				5794C07F1B560558002DCE9F /* LabelLayers */,
 				5794C08E1B560558002DCE9F /* MapView */,
-				5794C0A21B560558002DCE9F /* NPPathCalibration.h */,
-				5794C0A31B560558002DCE9F /* NPPathCalibration.m */,
 				5794C0A41B560558002DCE9F /* POI */,
 				5794C0A91B560558002DCE9F /* Route */,
 				5794C0B81B560558002DCE9F /* StructureLayers */,
@@ -505,25 +505,25 @@
 		5794C08E1B560558002DCE9F /* MapView */ = {
 			isa = PBXGroup;
 			children = (
-				5794C08F1B560558002DCE9F /* NPArcGISDrawer.h */,
-				5794C0901B560558002DCE9F /* NPArcGISDrawer.m */,
-				5794C0911B560558002DCE9F /* NPAreaAnalysis.h */,
-				5794C0921B560558002DCE9F /* NPAreaAnalysis.m */,
-				5794C0931B560558002DCE9F /* NPBuilding.h */,
-				5794C0941B560558002DCE9F /* NPBuilding.m */,
-				5794C0951B560558002DCE9F /* NPCity.h */,
-				5794C0961B560558002DCE9F /* NPCity.m */,
+				5794C08F1B560558002DCE9F /* TYArcGISDrawer.h */,
+				5794C0901B560558002DCE9F /* TYArcGISDrawer.m */,
+				5794C0911B560558002DCE9F /* TYAreaAnalysis.h */,
+				5794C0921B560558002DCE9F /* TYAreaAnalysis.m */,
+				5794C0931B560558002DCE9F /* TYBuilding.h */,
+				5794C0941B560558002DCE9F /* TYBuilding.m */,
+				5794C0951B560558002DCE9F /* TYCity.h */,
+				5794C0961B560558002DCE9F /* TYCity.m */,
 				5794C0971B560558002DCE9F /* NPMapEnviroment.h */,
 				5794C0981B560558002DCE9F /* NPMapEnviroment.m */,
-				5794C0991B560558002DCE9F /* NPMapFileManager.h */,
-				5794C09A1B560558002DCE9F /* NPMapFileManager.m */,
-				5794C09B1B560558002DCE9F /* NPMapInfo.h */,
-				5794C09C1B560558002DCE9F /* NPMapInfo.m */,
+				5794C0991B560558002DCE9F /* TYMapFileManager.h */,
+				5794C09A1B560558002DCE9F /* TYMapFileManager.m */,
+				5794C09B1B560558002DCE9F /* TYMapInfo.h */,
+				5794C09C1B560558002DCE9F /* TYMapInfo.m */,
 				5794C09D1B560558002DCE9F /* NPMapType.h */,
-				5794C09E1B560558002DCE9F /* NPMapView.h */,
-				5794C09F1B560558002DCE9F /* NPMapView.m */,
-				5794C0A01B560558002DCE9F /* NPRenderingScheme.h */,
-				5794C0A11B560558002DCE9F /* NPRenderingScheme.m */,
+				5794C09E1B560558002DCE9F /* TYMapView.h */,
+				5794C09F1B560558002DCE9F /* TYMapView.m */,
+				5794C0A01B560558002DCE9F /* TYRenderingScheme.h */,
+				5794C0A11B560558002DCE9F /* TYRenderingScheme.m */,
 			);
 			path = MapView;
 			sourceTree = "<group>";
@@ -563,8 +563,8 @@
 		5794C0B81B560558002DCE9F /* StructureLayers */ = {
 			isa = PBXGroup;
 			children = (
-				5794C0B91B560558002DCE9F /* NPAssetLayer.h */,
-				5794C0BA1B560558002DCE9F /* NPAssetLayer.m */,
+				5794C0B91B560558002DCE9F /* TYAssetLayer.h */,
+				5794C0BA1B560558002DCE9F /* TYAssetLayer.m */,
 				5794C0BB1B560558002DCE9F /* NPFloorLayer.h */,
 				5794C0BC1B560558002DCE9F /* NPFloorLayer.m */,
 				5794C0BD1B560558002DCE9F /* NPRoomLayer.h */,
@@ -657,7 +657,7 @@
 				57672EF01B56002900DAD219 /* Images.xcassets in Resources */,
 				57672E371B55FFF900DAD219 /* beacon-jz.db in Resources */,
 				57672E351B55FFF900DAD219 /* AOI.json in Resources */,
-				57672EFF1B56046300DAD219 /* NephogramMapResource in Resources */,
+				57672EFF1B56046300DAD219 /* MapResource in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -669,7 +669,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5794C0E91B560558002DCE9F /* NPBrand.m in Sources */,
-				5794C0E11B560558002DCE9F /* NPBuilding.m in Sources */,
+				5794C0E11B560558002DCE9F /* TYBuilding.m in Sources */,
 				5794C0F31B560558002DCE9F /* NPFloorLayer.m in Sources */,
 				5794C0C41B560558002DCE9F /* TYGeometry.m in Sources */,
 				57672D5D1B55FF9900DAD219 /* NPUserDefaults.m in Sources */,
@@ -678,16 +678,16 @@
 				5794C0C11B560558002DCE9F /* TYCallout.m in Sources */,
 				57672E321B55FFF900DAD219 /* FMDatabaseQueue.m in Sources */,
 				57672D561B55FF8000DAD219 /* MapCalloutVC.m in Sources */,
-				5794C0DF1B560558002DCE9F /* NPArcGISDrawer.m in Sources */,
+				5794C0DF1B560558002DCE9F /* TYArcGISDrawer.m in Sources */,
 				5794C0C91B560558002DCE9F /* TYMarkerSymbol.m in Sources */,
 				57672E2F1B55FFF900DAD219 /* FMDatabase.m in Sources */,
 				5794C0D01B560558002DCE9F /* TYSimpleMarkerSymbol.m in Sources */,
 				571AC4711B55FED900E9FF7D /* AppDelegate.m in Sources */,
 				5794C0EE1B560558002DCE9F /* NPRouteManager.m in Sources */,
 				5794C0D81B560558002DCE9F /* TYFacilityLabel.m in Sources */,
-				5794C0E41B560558002DCE9F /* NPMapFileManager.m in Sources */,
+				5794C0E41B560558002DCE9F /* TYMapFileManager.m in Sources */,
 				5794C0CF1B560558002DCE9F /* TYSimpleLineSymbol.m in Sources */,
-				5794C0E01B560558002DCE9F /* NPAreaAnalysis.m in Sources */,
+				5794C0E01B560558002DCE9F /* TYAreaAnalysis.m in Sources */,
 				57672E331B55FFF900DAD219 /* FMResultSet.m in Sources */,
 				5794C0C61B560558002DCE9F /* TYGraphic.m in Sources */,
 				5794C0ED1B560558002DCE9F /* NPLandmarkManager.m in Sources */,
@@ -695,7 +695,7 @@
 				57672D571B55FF8000DAD219 /* MapRouteVC.m in Sources */,
 				5794C0F11B560558002DCE9F /* NPRouteResult.m in Sources */,
 				5794C0EF1B560558002DCE9F /* NPRoutePart.m in Sources */,
-				5794C0E81B560558002DCE9F /* NPPathCalibration.m in Sources */,
+				5794C0E81B560558002DCE9F /* TYPathCalibration.m in Sources */,
 				5794C0DE1B560558002DCE9F /* TYTextLabelLayer.m in Sources */,
 				57672E311B55FFF900DAD219 /* FMDatabasePool.m in Sources */,
 				5794C0D11B560558002DCE9F /* TYSpatialReference.m in Sources */,
@@ -707,9 +707,9 @@
 				5794C0C31B560558002DCE9F /* TYEnvelope.m in Sources */,
 				5794C0DB1B560558002DCE9F /* TYLabelBorderCalculator.m in Sources */,
 				5794C0F01B560558002DCE9F /* NPRoutePointConverter.m in Sources */,
-				5794C0E21B560558002DCE9F /* NPCity.m in Sources */,
+				5794C0E21B560558002DCE9F /* TYCity.m in Sources */,
 				5794C0D71B560558002DCE9F /* Vector2.m in Sources */,
-				5794C0E61B560558002DCE9F /* NPMapView.m in Sources */,
+				5794C0E61B560558002DCE9F /* TYMapView.m in Sources */,
 				57672D581B55FF8000DAD219 /* MapTableVC.m in Sources */,
 				5794C0E31B560558002DCE9F /* NPMapEnviroment.m in Sources */,
 				5794C0DC1B560558002DCE9F /* TYLabelGroupLayer.m in Sources */,
@@ -729,16 +729,16 @@
 				5794C0D21B560558002DCE9F /* TYAnimatedRouteArrowLayer.m in Sources */,
 				5794C0EA1B560558002DCE9F /* NPPoi.m in Sources */,
 				5794C0D41B560558002DCE9F /* TYRouteArrowLayer.m in Sources */,
-				5794C0E51B560558002DCE9F /* NPMapInfo.m in Sources */,
+				5794C0E51B560558002DCE9F /* TYMapInfo.m in Sources */,
 				5794C0D31B560558002DCE9F /* TYLocationLayer.m in Sources */,
 				5794C0C51B560558002DCE9F /* TYGeometryEngine.m in Sources */,
 				5794C0CC1B560558002DCE9F /* TYPolygon.m in Sources */,
 				5794C0EB1B560558002DCE9F /* NPDirectionalHint.m in Sources */,
-				5794C0F21B560558002DCE9F /* NPAssetLayer.m in Sources */,
+				5794C0F21B560558002DCE9F /* TYAssetLayer.m in Sources */,
 				5794C0D91B560558002DCE9F /* TYFacilityLayer.m in Sources */,
 				5794C0C81B560558002DCE9F /* TYLocationDisplay.m in Sources */,
 				5794C0D61B560558002DCE9F /* TYRouteLayer.m in Sources */,
-				5794C0E71B560558002DCE9F /* NPRenderingScheme.m in Sources */,
+				5794C0E71B560558002DCE9F /* TYRenderingScheme.m in Sources */,
 				5794C0CE1B560558002DCE9F /* TYSimpleFillSymbol.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

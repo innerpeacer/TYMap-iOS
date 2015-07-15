@@ -1,5 +1,5 @@
 //
-//  NPMapInfo.h
+//  TYMapInfo.h
 //  MapProject
 //
 //  Created by innerpeacer on 15/2/9.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@class NPBuilding;
+@class TYBuilding;
 
 /**
  *  地图尺寸,对应地图所示区域实际大小
@@ -31,7 +31,7 @@ typedef struct mapextent {
 /**
  *  地图信息类：用于表示某一层地图的配置信息，包含地图ID、地图尺寸、地图范围、地图偏转角等
  */
-@interface NPMapInfo : NSObject
+@interface TYMapInfo : NSObject
 
 /**
  *  所在城市的ID
@@ -87,7 +87,7 @@ typedef struct mapextent {
  *
  *  @return 目标楼层地图信息
  */
-+ (NPMapInfo *)parseMapInfo:(NSString *)floor ForBuilding:(NPBuilding *)building;
++ (TYMapInfo *)parseMapInfo:(NSString *)floor ForBuilding:(TYBuilding *)building;
 
 /**
  *  解析目标建筑的所有楼层地图信息
@@ -96,7 +96,7 @@ typedef struct mapextent {
  *
  *  @return 目标楼层所有地图信息
  */
-+ (NSArray *)parseAllMapInfo:(NPBuilding *)building;
++ (NSArray *)parseAllMapInfo:(TYBuilding *)building;
 
 /**
  *  从一组地图信息中搜索特定楼层的地图信息
@@ -106,6 +106,6 @@ typedef struct mapextent {
  *
  *  @return 目标楼层信息
  */
-+ (NPMapInfo *)searchMapInfoFromArray:(NSArray *)array Floor:(int)floor;
++ (TYMapInfo *)searchMapInfoFromArray:(NSArray *)array Floor:(int)floor;
 
 @end

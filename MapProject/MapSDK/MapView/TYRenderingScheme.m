@@ -1,12 +1,12 @@
 //
-//  NPRenderingScheme.m
+//  TYRenderingScheme.m
 //  MapProject
 //
 //  Created by innerpeacer on 15/2/9.
 //  Copyright (c) 2015年 innerpeacer. All rights reserved.
 //
 
-#import "NPRenderingScheme.h"
+#import "TYRenderingScheme.h"
 
 #define JSON_FIELD_ROOT_RENDERING_SCHEME @"RenderingScheme"
 
@@ -26,7 +26,7 @@
 #define JSON_FIELD_LEAVE_ICON @"icon"
 
 
-@implementation NPRenderingScheme
+@implementation TYRenderingScheme
 
 - (id)initWithPath:(NSString *)path
 {

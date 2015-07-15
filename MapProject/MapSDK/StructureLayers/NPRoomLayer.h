@@ -1,5 +1,5 @@
 //
-//  NPRoomLayer.h
+//  TYRoomLayer.h
 //  MapProject
 //
 //  Created by innerpeacer on 15/2/9.
@@ -7,15 +7,15 @@
 //
 
 #import <ArcGIS/ArcGIS.h>
-#import "NPMapInfo.h"
-#import "NPRenderingScheme.h"
+#import "TYMapInfo.h"
+#import "TYRenderingScheme.h"
 #import "NPPoi.h"
 
 @interface NPRoomLayer : AGSGraphicsLayer
 
-+ (NPRoomLayer *)roomLayerWithRenderingScheme:(NPRenderingScheme *)aRenderingScheme SpatialReference:(AGSSpatialReference *)sr;
++ (NPRoomLayer *)roomLayerWithRenderingScheme:(TYRenderingScheme *)aRenderingScheme SpatialReference:(AGSSpatialReference *)sr;
 
-- (void)loadContentsWithInfo:(NPMapInfo *)info;
+- (void)loadContentsWithInfo:(TYMapInfo *)info;
 - (NPPoi *)getPoiWithPoiID:(NSString *)pid;
 - (void)highlightPoi:(NSString *)poiID;
 - (NPPoi *)extractPoiOnCurrentFloorWithX:(double)x Y:(double)y;

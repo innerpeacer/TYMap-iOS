@@ -1,5 +1,5 @@
-#import "NPCity.h"
-#import "NPMapFileManager.h"
+#import "TYCity.h"
+#import "TYMapFileManager.h"
 
 #define KEY_CITIES @"Cities"
 #define KEY_CITY_ID @"id"
@@ -9,7 +9,7 @@
 #define KEY_CITY_LATITUDE @"latitude"
 #define KEY_CITY_STATUS @"status"
 
-@implementation NPCity
+@implementation TYCity
 
 - (id)initWithCityID:(NSString *)cityId Name:(NSString *)name SName:(NSString *)sname Lon:(double)lon Lat:(double)lat
 {
@@ -29,7 +29,7 @@
     NSMutableArray *toReturn = [[NSMutableArray alloc] init];
 
     NSError *error = nil;
-    NSString *fullPath = [NPMapFileManager getCityJsonPath];
+    NSString *fullPath = [TYMapFileManager getCityJsonPath];
     NSData *data = [NSData dataWithContentsOfFile:fullPath];
     NSDictionary *cityDict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:&error];
     
@@ -42,23 +42,23 @@
         NSNumber *latNumber = [dict objectForKey:KEY_CITY_LATITUDE];
         NSNumber *satNumber = [dict objectForKey:KEY_CITY_STATUS];
             
-        NPCity *city = [[NPCity alloc] initWithCityID:cid Name:name SName:sname Lon:lonNumber.doubleValue Lat:latNumber.doubleValue];
+        TYCity *city = [[TYCity alloc] initWithCityID:cid Name:name SName:sname Lon:lonNumber.doubleValue Lat:latNumber.doubleValue];
         city.status = satNumber.intValue;
         [toReturn addObject:city];
     }
     return toReturn;
 }
 
-+ (NPCity *)parseCity:(NSString *)cityID
++ (TYCity *)parseCity:(NSString *)cityID
 {
-    NPCity *city = nil;
+    TYCity *city = nil;
     
     if (cityID == nil) {
         return city;
     }
     
     NSError *error = nil;
-    NSString *fullPath = [NPMapFileManager getCityJsonPath];
+    NSString *fullPath = [TYMapFileManager getCityJsonPath];
     NSData *data = [NSData dataWithContentsOfFile:fullPath];
     NSDictionary *cityDict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:&error];
     
@@ -73,7 +73,7 @@
             NSNumber *latNumber = [dict objectForKey:KEY_CITY_LATITUDE];
             NSNumber *staNumber = [dict objectForKey:KEY_CITY_STATUS];
             
-            city = [[NPCity alloc] initWithCityID:cid Name:name SName:sname Lon:lonNumber.doubleValue Lat:latNumber.doubleValue];
+            city = [[TYCity alloc] initWithCityID:cid Name:name SName:sname Lon:lonNumber.doubleValue Lat:latNumber.doubleValue];
             city.status = staNumber.intValue;
             break;
         }

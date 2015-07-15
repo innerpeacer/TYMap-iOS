@@ -1,5 +1,5 @@
 //
-//  NPFloorLayer.m
+//  TYFloorLayer.m
 //  MapProject
 //
 //  Created by innerpeacer on 15/2/9.
@@ -7,23 +7,23 @@
 //
 
 #import "NPFloorLayer.h"
-#import "NPMapFileManager.h"
+#import "TYMapFileManager.h"
 
 @interface NPFloorLayer()
 {
     AGSRenderer *floorRender;
-    NPRenderingScheme *renderingScheme;
+    TYRenderingScheme *renderingScheme;
 }
 @end
 
 @implementation NPFloorLayer
 
-+ (NPFloorLayer *)floorLayerWithRenderingScheme:(NPRenderingScheme *)aRenderingScheme SpatialReference:(AGSSpatialReference *)sr
++ (NPFloorLayer *)floorLayerWithRenderingScheme:(TYRenderingScheme *)aRenderingScheme SpatialReference:(AGSSpatialReference *)sr
 {
     return [[NPFloorLayer alloc] initFloorLayerWithRenderingScheme:aRenderingScheme SpatialReference:sr];
 }
 
-- (id)initFloorLayerWithRenderingScheme:(NPRenderingScheme *)aRenderingScheme SpatialReference:(AGSSpatialReference *)sr
+- (id)initFloorLayerWithRenderingScheme:(TYRenderingScheme *)aRenderingScheme SpatialReference:(AGSSpatialReference *)sr
 {
     self = [super initWithSpatialReference:sr];
     if (self) {
@@ -35,14 +35,14 @@
     return self;
 }
 
-- (void)loadContentsWithInfo:(NPMapInfo *)info
+- (void)loadContentsWithInfo:(TYMapInfo *)info
 {
 //    NSLog(@"addFloorContent");
     
     [self removeAllGraphics];
     
     NSError *error = nil;
-    NSString *fullPath = [NPMapFileManager getFloorLayerPath:info];
+    NSString *fullPath = [TYMapFileManager getFloorLayerPath:info];
     NSString *jsonString = [NSString stringWithContentsOfFile:fullPath encoding:NSUTF8StringEncoding error:&error];
     
     AGSSBJsonParser *parser = [[AGSSBJsonParser alloc] init];

@@ -1,5 +1,5 @@
 //
-//  NPLandMarkManager.m
+//  TYLandMarkManager.m
 //  MapProject
 //
 //  Created by innerpeacer on 15/5/6.
@@ -7,7 +7,7 @@
 //
 
 #import "NPLandmarkManager.h"
-#import "NPMapFileManager.h"
+#import "TYMapFileManager.h"
 #import <ArcGIS/ArcGIS.h>
 
 @interface NPLandmarkManager()
@@ -40,12 +40,12 @@ static NPLandmarkManager *manager;
     return self;
 }
 
-- (void)loadLandmark:(NPMapInfo *)info
+- (void)loadLandmark:(TYMapInfo *)info
 {
     [allLandmarks removeAllObjects];
     currentFloor = info.floorNumber;
     
-    NSString *path = [NPMapFileManager getLandmarkJsonPath:info];
+    NSString *path = [TYMapFileManager getLandmarkJsonPath:info];
     if ([[NSFileManager defaultManager] fileExistsAtPath:path isDirectory:nil]) {
 
         NSError *error = nil;

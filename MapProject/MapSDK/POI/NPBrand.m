@@ -1,5 +1,5 @@
 //
-//  NPBrand.m
+//  TYBrand.m
 //  MapProject
 //
 //  Created by innerpeacer on 15/5/29.
@@ -8,7 +8,7 @@
 
 #import "NPBrand.h"
 
-#import "NPMapFileManager.h"
+#import "TYMapFileManager.h"
 
 #define KEY_BRANDS @"Brands"
 
@@ -20,7 +20,7 @@
 
 @implementation NPBrand
 
-+ (NSArray *)parseAllBrands:(NPBuilding *)building
++ (NSArray *)parseAllBrands:(TYBuilding *)building
 {
     NSMutableArray *toReturn = [[NSMutableArray alloc] init];
     
@@ -28,7 +28,7 @@
         return toReturn;
     }
     
-    NSString *path = [NPMapFileManager getBrandJsonPath:building];
+    NSString *path = [TYMapFileManager getBrandJsonPath:building];
     
     NSError *error = nil;
     if ([[NSFileManager defaultManager] fileExistsAtPath:path]) {

@@ -1,5 +1,5 @@
 //
-//  NPRoutePart.m
+//  TYRoutePart.m
 //  MapProject
 //
 //  Created by innerpeacer on 15/5/8.
@@ -10,7 +10,7 @@
 
 @implementation NPRoutePart
 
-- (id)initWithRouteLine:(AGSPolyline *)route MapInfo:(NPMapInfo *)mapInfo
+- (id)initWithRouteLine:(AGSPolyline *)route MapInfo:(TYMapInfo *)mapInfo
 {
     self = [super init];
     if (self) {

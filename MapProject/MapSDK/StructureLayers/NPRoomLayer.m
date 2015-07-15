@@ -1,5 +1,5 @@
 //
-//  NPRoomLayer.m
+//  TYRoomLayer.m
 //  MapProject
 //
 //  Created by innerpeacer on 15/2/9.
@@ -8,14 +8,14 @@
 
 #import "NPRoomLayer.h"
 #import "NPMapType.h"
-#import "NPMapFileManager.h"
+#import "TYMapFileManager.h"
 #import "NPMapEnviroment.h"
 
 @interface NPRoomLayer()
 {
     AGSRenderer *roomRender;
     
-    NPRenderingScheme *renderingScheme;
+    TYRenderingScheme *renderingScheme;
     
     NSMutableDictionary *roomDict;
 }
@@ -24,12 +24,12 @@
 
 @implementation NPRoomLayer
 
-+ (NPRoomLayer *)roomLayerWithRenderingScheme:(NPRenderingScheme *)aRenderingScheme SpatialReference:(AGSSpatialReference *)sr
++ (NPRoomLayer *)roomLayerWithRenderingScheme:(TYRenderingScheme *)aRenderingScheme SpatialReference:(AGSSpatialReference *)sr
 {
     return [[NPRoomLayer alloc] initRoomLayerWithRenderingScheme:aRenderingScheme SpatialReference:sr];
 }
 
-- (id)initRoomLayerWithRenderingScheme:(NPRenderingScheme *)aRenderingScheme SpatialReference:(AGSSpatialReference *)sr
+- (id)initRoomLayerWithRenderingScheme:(TYRenderingScheme *)aRenderingScheme SpatialReference:(AGSSpatialReference *)sr
 {
     self = [super initWithSpatialReference:sr];
     if (self) {
@@ -64,14 +64,14 @@
     return render;
 }
 
-- (void)loadContentsWithInfo:(NPMapInfo *)info
+- (void)loadContentsWithInfo:(TYMapInfo *)info
 {
 //    NSLog(@"addRoomContents");
     [self removeAllGraphics];
     [roomDict removeAllObjects];
     
     NSError *error = nil;
-    NSString *fullPath = [NPMapFileManager getRoomLayerPath:info];
+    NSString *fullPath = [TYMapFileManager getRoomLayerPath:info];
     NSString *jsonString = [NSString stringWithContentsOfFile:fullPath encoding:NSUTF8StringEncoding error:&error];
     
     AGSSBJsonParser *parser = [[AGSSBJsonParser alloc] init];
@@ -123,7 +123,7 @@
 {
     NSArray *graphicArray = self.graphics;
     
-    NPMapLanguage language = [NPMapEnvironment getMapLanguage];
+    NPMapLanguage language = [TYMapEnvironment getMapLanguage];
     NSString *field = [self getNameFieldForLanguage:language];
     
     for (AGSGraphic *g in graphicArray) {

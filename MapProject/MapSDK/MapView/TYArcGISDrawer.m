@@ -1,14 +1,14 @@
 //
-//  NPArcGISDrawer.m
+//  TYArcGISDrawer.m
 //  MapProject
 //
 //  Created by innerpeacer on 15/2/9.
 //  Copyright (c) 2015年 innerpeacer. All rights reserved.
 //
 
-#import "NPArcGISDrawer.h"
+#import "TYArcGISDrawer.h"
 
-@implementation NPArcGISDrawer
+@implementation TYArcGISDrawer
 
 + (void)drawPoint:(TYPoint *)p AtLayer:(TYGraphicsLayer *)layer WithColor:(UIColor *)color
 {

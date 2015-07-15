@@ -1,5 +1,5 @@
 //
-//  NPMapType.h
+//  TYMapType.h
 //  MapProject
 //
 //  Created by innerpeacer on 15/3/11.

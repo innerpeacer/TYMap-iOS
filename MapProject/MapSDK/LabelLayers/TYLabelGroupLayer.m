@@ -17,12 +17,12 @@
 
 @implementation TYLabelGroupLayer
 
-+ (TYLabelGroupLayer *)labelGroupLayerWithRenderingScheme:(NPRenderingScheme *)aRenderingScheme SpatialReference:(AGSSpatialReference *)sr
++ (TYLabelGroupLayer *)labelGroupLayerWithRenderingScheme:(TYRenderingScheme *)aRenderingScheme SpatialReference:(AGSSpatialReference *)sr
 {
     return [[TYLabelGroupLayer alloc] initWithRenderingScheme:aRenderingScheme SpatialReference:sr];
 }
 
-- (id)initWithRenderingScheme:(NPRenderingScheme *)aRenderingScheme SpatialReference:(AGSSpatialReference *)sr
+- (id)initWithRenderingScheme:(TYRenderingScheme *)aRenderingScheme SpatialReference:(AGSSpatialReference *)sr
 {
     self = [super init];
     if (self) {
@@ -39,7 +39,7 @@
     return self;
 }
 
-- (void)loadContentsWithInfo:(NPMapInfo *)info
+- (void)loadContentsWithInfo:(TYMapInfo *)info
 {
     [_labelLayer removeAllGraphics];
     [_facilityLayer removeAllGraphics];

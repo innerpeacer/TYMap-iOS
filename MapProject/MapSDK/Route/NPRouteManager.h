@@ -1,5 +1,5 @@
 //
-//  NPRouteManager.h
+//  TYRouteManager.h
 //  MapProject
 //
 //  Created by innerpeacer on 15/2/9.
@@ -84,7 +84,7 @@
  *
  *  @return 路径管理类实例
  */
-+ (NPRouteManager *)routeManagerWithBuilding:(NPBuilding *)building credential:(TYCredential *)credential MapInfos:(NSArray *)mapInfoArray;
++ (NPRouteManager *)routeManagerWithBuilding:(TYBuilding *)building credential:(TYCredential *)credential MapInfos:(NSArray *)mapInfoArray;
 
 /**
  *  请求路径规划，在代理方法获取规划结果

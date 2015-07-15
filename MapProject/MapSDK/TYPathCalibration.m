@@ -1,16 +1,16 @@
 //
-//  NPPathModifier.m
+//  TYPathCalibration.m
 //  MapProject
 //
 //  Created by innerpeacer on 15/4/1.
 //  Copyright (c) 2015年 innerpeacer. All rights reserved.
 //
 
-#import "NPPathCalibration.h"
+#import "TYPathCalibration.h"
 
 #define PATH_CALIBRATION_SOURCE_PATH @"%@_Path"
 #define DEFAULT_BUFFER_WIDTH 1.0
-@interface NPPathCalibration()
+@interface TYPathCalibration()
 {
     NSMutableArray *featureArray;
     
@@ -23,7 +23,7 @@
 @end
 
 
-@implementation NPPathCalibration
+@implementation TYPathCalibration
 
 - (id)initWithFloorID:(NSString *)floorID
 {

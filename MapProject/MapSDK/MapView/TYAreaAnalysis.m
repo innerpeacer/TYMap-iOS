@@ -1,18 +1,18 @@
 //
-//  NPAreaAnalysis.m
+//  TYAreaAnalysis.m
 //  MapProject
 //
 //  Created by innerpeacer on 15/3/24.
 //  Copyright (c) 2015年 innerpeacer. All rights reserved.
 //
 
-#import "NPAreaAnalysis.h"
+#import "TYAreaAnalysis.h"
 #import <ArcGIS/ArcGIS.h>
 #import "NPPoi.h"
 #import "NPMapType.h"
 #import "NPMapEnviroment.h"
 
-@interface NPAreaAnalysis()
+@interface TYAreaAnalysis()
 {
     NSMutableArray *featureArray;
 }
@@ -20,7 +20,7 @@
 
 #define DEFAULT_BUFFER 1.0
 
-@implementation NPAreaAnalysis
+@implementation TYAreaAnalysis
 
 - (id)initWithPath:(NSString *)path
 {
@@ -51,7 +51,7 @@
 {
     NSMutableArray *resultArray = [NSMutableArray array];
     AGSGeometryEngine *engine = [AGSGeometryEngine defaultGeometryEngine];
-    AGSPoint *point = [AGSPoint pointWithX:x y:y spatialReference:[NPMapEnvironment defaultSpatialReference]];
+    AGSPoint *point = [AGSPoint pointWithX:x y:y spatialReference:[TYMapEnvironment defaultSpatialReference]];
     
     for (NPPoi *poi in featureArray) {
         AGSGeometry *bufferedGeometry = [engine bufferGeometry:poi.geometry byDistance:_buffer];

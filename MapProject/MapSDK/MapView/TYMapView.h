@@ -1,5 +1,5 @@
 //
-//  NPMapView.h
+//  TYMapView.h
 //  MapProject
 //
 //  Created by innerpeacer on 15/2/9.
@@ -7,9 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "NPMapInfo.h"
+#import "TYMapInfo.h"
 #import "NPPoi.h"
-#import "NPRenderingScheme.h"
+#import "TYRenderingScheme.h"
 #import "TYPoint.h"
 #import "TYCallout.h"
 #import "TYGraphic.h"
@@ -23,7 +23,7 @@
 
 #import <NephogramData/NephogramData.h>
 
-#import "NPBuilding.h"
+#import "TYBuilding.h"
 
 /**
     地图模式类型：默认模式和跟随模式
@@ -33,12 +33,12 @@ typedef enum {
     NPMapViewModeFollowing = 1
 } NPMapViewMode;
 
-@class NPMapView;
+@class TYMapView;
 
 /**
  *  地图代理协议
  */
-@protocol NPMapViewDelegate <NSObject>
+@protocol TYMapViewDelegate <NSObject>
 
 
 @optional
@@ -50,7 +50,7 @@ typedef enum {
  *  @param screen   点击事件的屏幕坐标
  *  @param mappoint 点击事件的地图坐标
  */
-- (void)NPMapView:(NPMapView *)mapView didClickAtPoint:(CGPoint)screen mapPoint:(TYPoint *)mappoint;
+- (void)NPMapView:(TYMapView *)mapView didClickAtPoint:(CGPoint)screen mapPoint:(TYPoint *)mappoint;
 
 /**
  *  地图POI选中事件回调
@@ -58,7 +58,7 @@ typedef enum {
  *  @param mapView 地图视图
  *  @param array   选中的POI数组:[NPPoi]
  */
-- (void)NPMapView:(NPMapView *)mapView PoiSelected:(NSArray *)array;
+- (void)NPMapView:(TYMapView *)mapView PoiSelected:(NSArray *)array;
 
 
 /**
@@ -67,21 +67,21 @@ typedef enum {
  *  @param mapView 地图视图
  *  @param mapInfo 加载楼层信息
  */
-- (void)NPMapView:(NPMapView *)mapView didFinishLoadingFloor:(NPMapInfo *)mapInfo;
+- (void)NPMapView:(TYMapView *)mapView didFinishLoadingFloor:(TYMapInfo *)mapInfo;
 
 /**
  *  地图放缩事件回调
  *
  *  @param mapView 地图视图
  */
-- (void)NPMapViewDidZoomed:(NPMapView *)mapView;
+- (void)NPMapViewDidZoomed:(TYMapView *)mapView;
 
 /**
  *  地图加载完成事件回调
  *
  *  @param mapView 地图视图
  */
-- (void)NPMapViewDidLoad:(NPMapView *)mapView;
+- (void)NPMapViewDidLoad:(TYMapView *)mapView;
 
 /**
  *  地图弹出框解除完成事件回调
@@ -89,7 +89,7 @@ typedef enum {
  *  @param mapView 地图视图
  *  @param callout 地图弹出框
  */
-- (void)NPMapView:(NPMapView *)mapView calloutDidDismiss:(TYCallout *)callout;
+- (void)NPMapView:(TYMapView *)mapView calloutDidDismiss:(TYCallout *)callout;
 
 /**
  *  地图弹出框即将解除事件回调
@@ -97,7 +97,7 @@ typedef enum {
  *  @param mapView 地图视图
  *  @param callout 地图弹出框
  */
-- (void)NPMapView:(NPMapView *)mapView calloutWillDismiss:(TYCallout *)callout;
+- (void)NPMapView:(TYMapView *)mapView calloutWillDismiss:(TYCallout *)callout;
 
 /**
  *  地图即将为要素显示弹出框事件回调
@@ -109,29 +109,29 @@ typedef enum {
  *
  *  @return 是否显示弹出框
  */
-- (BOOL)NPMapView:(NPMapView *)mapView willShowForGraphic:(TYGraphic *)graphic layer:(TYGraphicsLayer *)layer mapPoint:(TYPoint *)mappoint;
+- (BOOL)NPMapView:(TYMapView *)mapView willShowForGraphic:(TYGraphic *)graphic layer:(TYGraphicsLayer *)layer mapPoint:(TYPoint *)mappoint;
 
 @end
 
 /**
  *  地图视图类
  */
-@interface NPMapView : AGSMapView
+@interface TYMapView : AGSMapView
 
 /**
  *  地图代理，用于处理地图点击、Poi点选事件、弹出框等
  */
-@property (nonatomic, weak) id<NPMapViewDelegate> mapDelegate;
+@property (nonatomic, weak) id<TYMapViewDelegate> mapDelegate;
 
 /**
  *  当前显示的建筑ID
  */
-@property (nonatomic, strong) NPBuilding *building;
+@property (nonatomic, strong) TYBuilding *building;
 
 /**
  *  当前建筑的当前楼层信息
  */
-@property (nonatomic, readonly) NPMapInfo *currentMapInfo;
+@property (nonatomic, readonly) TYMapInfo *currentMapInfo;
 
 /**
  *  在POI被点选时是否高亮显示，默认为NO
@@ -148,7 +148,7 @@ typedef enum {
  *
  *  @param info 目标楼层的地图信息
  */
-- (void)setFloorWithInfo:(NPMapInfo *)info;
+- (void)setFloorWithInfo:(TYMapInfo *)info;
 
 /**
  *  设置定位点符号，用于标识定位结果
@@ -281,7 +281,7 @@ typedef enum {
  *
  *  @param buidling 地图显示的目标建筑
  */
-- (void)initMapViewWithBuilding:(NPBuilding *)buidling;
+- (void)initMapViewWithBuilding:(TYBuilding *)buidling;
 
 /**
  *  移动地图将特定坐标限定在特定屏幕范围内

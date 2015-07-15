@@ -25,29 +25,29 @@
     [defaults setObject:buildingID forKey:KEY_BUILDING_ID];
 }
 
-+ (NPBuilding *)getDefaultBuilding
++ (TYBuilding *)getDefaultBuilding
 {
-    NPBuilding *building = nil;
+    TYBuilding *building = nil;
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *cityID = [defaults objectForKey:KEY_CITY_ID];
     NSString *buildingID = [defaults objectForKey:KEY_BUILDING_ID];
     
     if (cityID && buildingID) {
-        NPCity *city = [NPCity parseCity:cityID];
-        building = [NPBuilding parseBuilding:buildingID InCity:city];
+        TYCity *city = [TYCity parseCity:cityID];
+        building = [TYBuilding parseBuilding:buildingID InCity:city];
     }
     return building;
 }
 
-+ (NPCity *)getDefaultCity
++ (TYCity *)getDefaultCity
 {
-    NPCity *city = nil;
+    TYCity *city = nil;
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *cityID = [defaults objectForKey:KEY_CITY_ID];
     if (cityID) {
-        city = [NPCity parseCity:cityID];
+        city = [TYCity parseCity:cityID];
     }
     return city;
 }

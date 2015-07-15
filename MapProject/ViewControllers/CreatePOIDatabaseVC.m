@@ -9,16 +9,16 @@
 #import "CreatePOIDatabaseVC.h"
 #import "CreatingPOIDBAdapter.h"
 #import "NPUserDefaults.h"
-#import "NPMapInfo.h"
+#import "TYMapInfo.h"
 #import <ArcGIS/ArcGIS.h>
 #import "NPPoi.h"
-#import "NPBuilding.h"
-#import "NPMapFileManager.h"
+#import "TYBuilding.h"
+#import "TYMapFileManager.h"
 
 @interface CreatePOIDatabaseVC()
 {
-    NPCity *currentCity;
-    NPBuilding *currentBuilding;
+    TYCity *currentCity;
+    TYBuilding *currentBuilding;
     
     NSArray *allMapInfos;
     
@@ -40,7 +40,7 @@
     self.title = currentBuilding.buildingID;
 
     
-    allMapInfos = [NPMapInfo parseAllMapInfo:currentBuilding];
+    allMapInfos = [TYMapInfo parseAllMapInfo:currentBuilding];
     
     engine = [AGSGeometryEngine defaultGeometryEngine];
     
@@ -53,7 +53,7 @@
     
     [db erasePOITable];
     
-    for (NPMapInfo *info in allMapInfos) {
+    for (TYMapInfo *info in allMapInfos) {
         NSArray *roomArray = [self loadRoomsWithInfo:info];
         [self addToLog:[NSString stringWithFormat:@"Begin %@", info.mapID]];
         
@@ -115,10 +115,10 @@
     [db close];
 }
 
-- (NSArray *)loadRoomsWithInfo:(NPMapInfo *)info
+- (NSArray *)loadRoomsWithInfo:(TYMapInfo *)info
 {
     NSError *error = nil;
-    NSString *fullPath = [NPMapFileManager getRoomLayerPath:info];
+    NSString *fullPath = [TYMapFileManager getRoomLayerPath:info];
     NSString *jsonString = [NSString stringWithContentsOfFile:fullPath encoding:NSUTF8StringEncoding error:&error];
     
     AGSSBJsonParser *parser = [[AGSSBJsonParser alloc] init];
@@ -128,10 +128,10 @@
     return set.features;
 }
 
-- (NSArray *)loadFacilitiesWithInfo:(NPMapInfo *)info
+- (NSArray *)loadFacilitiesWithInfo:(TYMapInfo *)info
 {
     NSError *error = nil;
-    NSString *fullPath = [NPMapFileManager getFacilityLayerPath:info];
+    NSString *fullPath = [TYMapFileManager getFacilityLayerPath:info];
     NSString *jsonString = [NSString stringWithContentsOfFile:fullPath encoding:NSUTF8StringEncoding error:&error];
     
     AGSSBJsonParser *parser = [[AGSSBJsonParser alloc] init];

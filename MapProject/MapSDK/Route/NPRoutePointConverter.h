@@ -1,5 +1,5 @@
 //
-//  NPRoutePointConverter.h
+//  TYRoutePointConverter.h
 //  MapProject
 //
 //  Created by innerpeacer on 15/3/18.
@@ -8,7 +8,7 @@
 
 #import <ArcGIS/ArcGIS.h>
 #import <NephogramData/NephogramData.h>
-#import "NPMapInfo.h"
+#import "TYMapInfo.h"
 #import "TYPoint.h"
 
 /**

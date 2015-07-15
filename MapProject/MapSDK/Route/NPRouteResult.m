@@ -1,5 +1,5 @@
 //
-//  NPRouteResult.m
+//  TYRouteResult.m
 //  MapProject
 //
 //  Created by innerpeacer on 15/5/11.
@@ -56,7 +56,7 @@
     BOOL isDeviating = YES;
     
     int floor = point.floor;
-    AGSPoint *pos = [AGSPoint pointWithX:point.x y:point.y spatialReference:[NPMapEnvironment defaultSpatialReference]];
+    AGSPoint *pos = [AGSPoint pointWithX:point.x y:point.y spatialReference:[TYMapEnvironment defaultSpatialReference]];
     
     NSArray *rpArray = [_allFloorRoutePartDict objectForKey:@(floor)];
     if (rpArray && rpArray.count > 0) {
@@ -81,7 +81,7 @@
     int floor = location.floor;
     double nearestDistance = 1000000;
     
-    AGSPoint *pos = [AGSPoint pointWithX:location.x y:location.y spatialReference:[NPMapEnvironment defaultSpatialReference]];
+    AGSPoint *pos = [AGSPoint pointWithX:location.x y:location.y spatialReference:[TYMapEnvironment defaultSpatialReference]];
     
     NSArray *rpArray = [_allFloorRoutePartDict objectForKey:@(floor)];
     if (rpArray && rpArray.count > 0) {
@@ -158,7 +158,7 @@
         [line addPointToPath:lastHint.endPoint];
     }
     
-    AGSPoint *pos = [AGSPoint pointWithX:location.x y:location.y spatialReference:[NPMapEnvironment defaultSpatialReference]];
+    AGSPoint *pos = [AGSPoint pointWithX:location.x y:location.y spatialReference:[TYMapEnvironment defaultSpatialReference]];
     AGSProximityResult *pr = [[AGSGeometryEngine defaultGeometryEngine] nearestCoordinateInGeometry:line toPoint:pos];
     
     int index = (int)pr.pointIndex;

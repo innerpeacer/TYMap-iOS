@@ -9,7 +9,7 @@
 #import <ArcGIS/ArcGIS.h>
 #import "TYMarkerSymbol.h"
 #import "TYPoint.h"
-#import "NPMapView.h"
+#import "TYMapView.h"
 
 @interface TYLocationLayer : AGSGraphicsLayer
 

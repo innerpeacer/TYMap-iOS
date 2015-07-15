@@ -1,5 +1,5 @@
 //
-//  NPLandMark.h
+//  TYLandMark.h
 //  MapProject
 //
 //  Created by innerpeacer on 15/5/6.

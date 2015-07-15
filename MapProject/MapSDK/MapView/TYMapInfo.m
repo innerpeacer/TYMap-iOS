@@ -1,14 +1,14 @@
 //
-//  NPMapInfo.m
+//  TYMapInfo.m
 //  MapProject
 //
 //  Created by innerpeacer on 15/2/9.
 //  Copyright (c) 2015年 innerpeacer. All rights reserved.
 //
 
-#import "NPMapInfo.h"
-#import "NPMapFileManager.h"
-#import "NPBuilding.h"
+#import "TYMapInfo.h"
+#import "TYMapFileManager.h"
+#import "TYBuilding.h"
 
 #define KEY_MAPINFOS @"MapInfo"
 
@@ -40,7 +40,7 @@ MapSize NPMapSizeMake(double x, double y)
     return size;
 }
 
-@implementation NPMapInfo
+@implementation TYMapInfo
 
 - (id)initWithCityID:(NSString *)cityID BuildingID:(NSString *)buidlingID MapID:(NSString *)mapID Extent:(MapExtent)e Size:(MapSize)s Floor:(NSString *)fs FloorIndex:(int)fi
 {
@@ -59,14 +59,14 @@ MapSize NPMapSizeMake(double x, double y)
     return self;
 }
 
-+ (NPMapInfo *)parseMapInfo:(NSString *)floor ForBuilding:(NPBuilding *)building
++ (TYMapInfo *)parseMapInfo:(NSString *)floor ForBuilding:(TYBuilding *)building
 {
-    NPMapInfo *info = nil;
+    TYMapInfo *info = nil;
     
     if (floor == nil || building == nil) {
         return info;
     }
-    NSString *path = [NPMapFileManager getMapInfoJsonPath:building.cityID buildingID:building.buildingID];
+    NSString *path = [TYMapFileManager getMapInfoJsonPath:building.cityID buildingID:building.buildingID];
     
     NSError *error = nil;
     if ([[NSFileManager defaultManager] fileExistsAtPath:path]) {
@@ -92,7 +92,7 @@ MapSize NPMapSizeMake(double x, double y)
                 NSNumber *yminStr = [infoDict objectForKey:KEY_MAPINFO_YMIN];
                 NSNumber *ymaxStr = [infoDict objectForKey:KEY_MAPINFO_YMAX];
                 
-                info = [[NPMapInfo alloc] initWithCityID:cityID BuildingID:buildingID MapID:mapID Extent:NPMapExtentMake(xminStr.doubleValue, yminStr.doubleValue, xmaxStr.doubleValue, ymaxStr.doubleValue) Size:NPMapSizeMake(sizexStr.doubleValue, sizeyStr.doubleValue) Floor:floorStr FloorIndex:floorIndexStr.intValue];
+                info = [[TYMapInfo alloc] initWithCityID:cityID BuildingID:buildingID MapID:mapID Extent:NPMapExtentMake(xminStr.doubleValue, yminStr.doubleValue, xmaxStr.doubleValue, ymaxStr.doubleValue) Size:NPMapSizeMake(sizexStr.doubleValue, sizeyStr.doubleValue) Floor:floorStr FloorIndex:floorIndexStr.intValue];
                 break;
             }
         }
@@ -100,7 +100,7 @@ MapSize NPMapSizeMake(double x, double y)
     return info;
 }
 
-+ (NSArray *)parseAllMapInfo:(NPBuilding *)building
++ (NSArray *)parseAllMapInfo:(TYBuilding *)building
 {
     NSMutableArray *toReturn = [[NSMutableArray alloc] init];
     
@@ -108,7 +108,7 @@ MapSize NPMapSizeMake(double x, double y)
         return toReturn;
     }
     
-    NSString *path = [NPMapFileManager getMapInfoJsonPath:building.cityID buildingID:building.buildingID];
+    NSString *path = [TYMapFileManager getMapInfoJsonPath:building.cityID buildingID:building.buildingID];
     
     NSError *error = nil;
     if ([[NSFileManager defaultManager] fileExistsAtPath:path]) {
@@ -131,7 +131,7 @@ MapSize NPMapSizeMake(double x, double y)
             NSNumber *yminStr = [infoDict objectForKey:KEY_MAPINFO_YMIN];
             NSNumber *ymaxStr = [infoDict objectForKey:KEY_MAPINFO_YMAX];
             
-            NPMapInfo *info = [[NPMapInfo alloc] initWithCityID:cityID BuildingID:buildingID MapID:mapID Extent:NPMapExtentMake(xminStr.doubleValue, yminStr.doubleValue, xmaxStr.doubleValue, ymaxStr.doubleValue) Size:NPMapSizeMake(sizexStr.doubleValue, sizeyStr.doubleValue) Floor:floorStr FloorIndex:floorIndexStr.intValue];
+            TYMapInfo *info = [[TYMapInfo alloc] initWithCityID:cityID BuildingID:buildingID MapID:mapID Extent:NPMapExtentMake(xminStr.doubleValue, yminStr.doubleValue, xmaxStr.doubleValue, ymaxStr.doubleValue) Size:NPMapSizeMake(sizexStr.doubleValue, sizeyStr.doubleValue) Floor:floorStr FloorIndex:floorIndexStr.intValue];
             
             [toReturn addObject:info];
         }
@@ -140,9 +140,9 @@ MapSize NPMapSizeMake(double x, double y)
     return toReturn;
 }
 
-+ (NPMapInfo *)searchMapInfoFromArray:(NSArray *)array Floor:(int)floor
++ (TYMapInfo *)searchMapInfoFromArray:(NSArray *)array Floor:(int)floor
 {
-    for (NPMapInfo *info in array) {
+    for (TYMapInfo *info in array) {
         if (floor == info.floorNumber) {
             return info;
         }

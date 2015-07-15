@@ -64,7 +64,7 @@
     hintLayer = [TYGraphicsLayer graphicsLayer];
     [self.mapView addMapLayer:hintLayer];
     
-    routeManager = [NPRouteManager routeManagerWithBuilding:self.currentBuilding credential:[NPMapEnvironment defaultCredential] MapInfos:self.allMapInfos];
+    routeManager = [NPRouteManager routeManagerWithBuilding:self.currentBuilding credential:[TYMapEnvironment defaultCredential] MapInfos:self.allMapInfos];
     routeManager.delegate = self;
     
 //    [self.mapView zoomToEnvelope:[AGSEnvelope envelopeWithXmin:1780 ymin:432.187299 xmax:1944.755560 ymax:658.589997 spatialReference:[NPMapEnvironment defaultSpatialReference]] animated:YES];
@@ -146,7 +146,7 @@
 //    }
 }
 
-- (void)NPMapView:(NPMapView *)mapView didFinishLoadingFloor:(NPMapInfo *)mapInfo
+- (void)NPMapView:(TYMapView *)mapView didFinishLoadingFloor:(TYMapInfo *)mapInfo
 {
     self.routeHintLabel.text = @"";
     
@@ -155,7 +155,7 @@
     }
 }
 
-- (void)NPMapViewDidZoomed:(NPMapView *)mapView
+- (void)NPMapViewDidZoomed:(TYMapView *)mapView
 {
     if (isRouting) {
         [self.mapView showRouteResultOnCurrentFloor];
@@ -173,7 +173,7 @@
 
 int testIndex = 0;
 
-- (void)NPMapView:(NPMapView *)mapView didClickAtPoint:(CGPoint)screen mapPoint:(TYPoint *)mappoint
+- (void)NPMapView:(TYMapView *)mapView didClickAtPoint:(CGPoint)screen mapPoint:(TYPoint *)mappoint
 {
     NSLog(@"(%f, %f) in floor %d", mappoint.x, mappoint.y, self.currentMapInfo.floorNumber);
 //    NSLog(@"Map Scale: %f", self.mapView.mapScale);

@@ -1,5 +1,5 @@
 //
-//  NPAreaAnalysis.h
+//  TYAreaAnalysis.h
 //  MapProject
 //
 //  Created by innerpeacer on 15/3/24.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NPAreaAnalysis : NSObject
+@interface TYAreaAnalysis : NSObject
 
 @property (nonatomic, assign) double buffer;
 @property (nonatomic, readonly) int areaCount;

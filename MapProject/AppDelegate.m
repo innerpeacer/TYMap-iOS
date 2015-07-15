@@ -22,11 +22,11 @@
     NSString *documentDirectory = [paths objectAtIndex:0];
     NSLog(@"%@", documentDirectory);
     
-    [NPMapEnvironment initMapEnvironment];
+    [TYMapEnvironment initMapEnvironment];
     
-    [NPMapEnvironment setMapLanguage:NPTraditionalChinese];
+    [TYMapEnvironment setMapLanguage:NPTraditionalChinese];
     
-    [NPMapEnvironment setRootDirectoryForMapFiles:[documentDirectory stringByAppendingPathComponent:DEFAULT_MAP_ROOT]];
+    [TYMapEnvironment setRootDirectoryForMapFiles:[documentDirectory stringByAppendingPathComponent:DEFAULT_MAP_ROOT]];
     [self copyMapFilesIfNeeded];
     
     [self setDefaultPlaceIfNeeded];
@@ -61,8 +61,8 @@
 {
     NSFileManager *fileManager = [NSFileManager defaultManager];
     
-    NSString *targetRootDir = [NPMapEnvironment getRootDirectoryForMapFiles];
-    NSString *sourceRootDir = [[NSBundle mainBundle] pathForResource:@"NephogramMapResource" ofType:nil];
+    NSString *targetRootDir = [TYMapEnvironment getRootDirectoryForMapFiles];
+    NSString *sourceRootDir = [[NSBundle mainBundle] pathForResource:@"MapResource" ofType:nil];
     
     NSDirectoryEnumerator *enumerator;
     enumerator = [fileManager enumeratorAtPath:sourceRootDir];

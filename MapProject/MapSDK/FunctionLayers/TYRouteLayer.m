@@ -8,7 +8,7 @@
 
 #import "TYRouteLayer.h"
 #import "TYGraphic.h"
-#import "NPMapView.h"
+#import "TYMapView.h"
 #import "NPMapEnviroment.h"
 #import "Vector2.h"
 
@@ -105,7 +105,7 @@
             double nearestDistance = 10000000;
             
             AGSGeometryEngine *engine = [AGSGeometryEngine defaultGeometryEngine];
-            AGSPoint *pos = [AGSPoint pointWithX:location.x y:location.y spatialReference:[NPMapEnvironment defaultSpatialReference]];
+            AGSPoint *pos = [AGSPoint pointWithX:location.x y:location.y spatialReference:[TYMapEnvironment defaultSpatialReference]];
             for (NPRoutePart *rp in routePartArray) {
                 AGSProximityResult *pr = [engine nearestCoordinateInGeometry:rp.route toPoint:pos];
                 double distance = [engine distanceFromGeometry:pr.point toGeometry:pos];
@@ -129,7 +129,7 @@
         if (routePartArray && routePartArray.count > 0) {
             for (NPRoutePart *rp in routePartArray) {
                 if (rp == nearestRoutePart) {
-                    AGSPolyline *remainingLine = [self getRemainingLine:rp.route WithPoint:[AGSPoint pointWithX:location.x y:location.y spatialReference:[NPMapEnvironment defaultSpatialReference]]];
+                    AGSPolyline *remainingLine = [self getRemainingLine:rp.route WithPoint:[AGSPoint pointWithX:location.x y:location.y spatialReference:[TYMapEnvironment defaultSpatialReference]]];
                     if (remainingLine) {
                         [self addGraphic:[TYGraphic graphicWithGeometry:remainingLine symbol:nil attributes:nil]];
                         [linesToReturn addObject:remainingLine];

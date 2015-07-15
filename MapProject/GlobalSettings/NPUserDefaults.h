@@ -7,15 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "NPBuilding.h"
-#import "NPCity.h"
+#import "TYBuilding.h"
+#import "TYCity.h"
 
 @interface NPUserDefaults : NSObject
 
 + (void)setDefaultBuilding:(NSString *)buildingID;
 + (void)setDefaultCity:(NSString *)cityID;
 
-+ (NPBuilding *)getDefaultBuilding;
-+ (NPCity *)getDefaultCity;
++ (TYBuilding *)getDefaultBuilding;
++ (TYCity *)getDefaultCity;
 
 @end

@@ -1,5 +1,5 @@
 //
-//  NPStructureGroupLayer.h
+//  TYStructureGroupLayer.h
 //  MapProject
 //
 //  Created by innerpeacer on 15/4/14.
@@ -7,20 +7,20 @@
 //
 
 #import <ArcGIS/ArcGIS.h>
-#import "NPMapInfo.h"
+#import "TYMapInfo.h"
 #import "NPFloorLayer.h"
 #import "NPRoomLayer.h"
-#import "NPAssetLayer.h"
+#import "TYAssetLayer.h"
 
 @interface NPStructureGroupLayer : NSObject
 
 @property (nonatomic, strong) NPFloorLayer *floorLayer;
 @property (nonatomic, strong) NPRoomLayer *roomLayer;
-@property (nonatomic, strong) NPAssetLayer *asserLayer;
+@property (nonatomic, strong) TYAssetLayer *asserLayer;
 
-+ (NPStructureGroupLayer *)structureLayerWithRenderingScheme:(NPRenderingScheme *)aRenderingScheme SpatialReference:(AGSSpatialReference *)sr;
++ (NPStructureGroupLayer *)structureLayerWithRenderingScheme:(TYRenderingScheme *)aRenderingScheme SpatialReference:(AGSSpatialReference *)sr;
 
-- (void)loadContentsWithInfo:(NPMapInfo *)info;
+- (void)loadContentsWithInfo:(TYMapInfo *)info;
 
 - (NPPoi *)getRoomPoiWithPoiID:(NSString *)pid;
 - (void)highlightRoomPoi:(NSString *)poiID;

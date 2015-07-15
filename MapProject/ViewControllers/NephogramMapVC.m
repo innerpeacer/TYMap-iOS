@@ -7,13 +7,13 @@
 //
 
 #import "NephogramMapVC.h"
-#import "NPAreaAnalysis.h"
+#import "TYAreaAnalysis.h"
 #import "NPMapEnviroment.h"
 #import "NPBrand.h"
 
 @interface NephogramMapVC()
 {
-    NPAreaAnalysis *areaAnalysis;
+    TYAreaAnalysis *areaAnalysis;
     
     AGSGraphicsLayer *testLayer;
     NSTimer *testTimer;
@@ -39,7 +39,7 @@
 int count = 0;
 int tIndex = 0;
 
-- (void)NPMapView:(NPMapView *)mapView didClickAtPoint:(CGPoint)screen mapPoint:(AGSPoint *)mappoint
+- (void)NPMapView:(TYMapView *)mapView didClickAtPoint:(CGPoint)screen mapPoint:(AGSPoint *)mappoint
 {
     NSLog(@"didClickAtPoint: %f, %f", mappoint.x, mappoint.y);
     testLocation = mappoint;

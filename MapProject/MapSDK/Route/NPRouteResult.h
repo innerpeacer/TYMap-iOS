@@ -1,5 +1,5 @@
 //
-//  NPRouteResult.h
+//  TYRouteResult.h
 //  MapProject
 //
 //  Created by innerpeacer on 15/5/11.

@@ -1,5 +1,5 @@
 //
-//  NPRoutePointConverter.m
+//  TYRoutePointConverter.m
 //  MapProject
 //
 //  Created by innerpeacer on 15/3/18.
@@ -32,7 +32,7 @@
 - (TYPoint *)routePointFromLocalPoint:(NPLocalPoint *)localPoint
 {
     double newX = localPoint.x + baseOffset.x * (localPoint.floor - 1);
-    return [TYPoint pointWithX:newX y:localPoint.y spatialReference:[NPMapEnvironment defaultSpatialReference]];
+    return [TYPoint pointWithX:newX y:localPoint.y spatialReference:[TYMapEnvironment defaultSpatialReference]];
 }
 
 - (NPLocalPoint *)localPointFromRoutePoint:(TYPoint *)routePoint

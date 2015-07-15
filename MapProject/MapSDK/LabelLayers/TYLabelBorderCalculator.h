@@ -10,11 +10,11 @@
 #import "TYLabelBorder.h"
 #import "TYPoint.h"
 #import "TYTextLabel.h"
-#import "NPMapView.h"
+#import "TYMapView.h"
 
 @interface TYLabelBorderCalculator : NSObject
 
-+ (AGSPolygon *)polygonFromCGRect:(CGRect)rect MapView:(NPMapView *)mapView;
++ (AGSPolygon *)polygonFromCGRect:(CGRect)rect MapView:(TYMapView *)mapView;
 
 
 + (TYLabelBorder *)getFacilityLabelBorder:(CGPoint)screenPoint;

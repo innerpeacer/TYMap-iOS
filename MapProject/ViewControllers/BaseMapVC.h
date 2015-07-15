@@ -7,16 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "NPMapView.h"
-#include "NPBuilding.h"
-#include "NPCity.h"
+#import "TYMapView.h"
+#include "TYBuilding.h"
+#include "TYCity.h"
 
-@interface BaseMapVC : UIViewController <NPMapViewDelegate>
+@interface BaseMapVC : UIViewController <TYMapViewDelegate>
 
-@property (weak, nonatomic) IBOutlet NPMapView *mapView;
-@property (strong, nonatomic) NPMapInfo *currentMapInfo;
-@property (strong, nonatomic) NPCity *currentCity;
-@property (strong, nonatomic) NPBuilding *currentBuilding;
+@property (weak, nonatomic) IBOutlet TYMapView *mapView;
+@property (strong, nonatomic) TYMapInfo *currentMapInfo;
+@property (strong, nonatomic) TYCity *currentCity;
+@property (strong, nonatomic) TYBuilding *currentBuilding;
 
 @property (strong, nonatomic) NSArray *allMapInfos;
 @property (strong, nonatomic) UISegmentedControl *floorSegment;

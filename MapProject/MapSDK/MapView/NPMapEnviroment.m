@@ -1,5 +1,5 @@
 //
-//  NPMapEnviroment.m
+//  TYMapEnviroment.m
 //  MapProject
 //
 //  Created by innerpeacer on 15/2/9.
@@ -10,7 +10,7 @@
 
 #define DEFAULT_MAP_ROOT @"Map"
 
-@implementation NPMapEnvironment
+@implementation TYMapEnvironment
 
 static NSString *mapFileRootDirectory;
 

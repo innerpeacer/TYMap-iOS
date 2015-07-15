@@ -1,5 +1,5 @@
 //
-//  NPPathModifier.h
+//  TYPathCalibration.h
 //  MapProject
 //
 //  Created by innerpeacer on 15/4/1.
@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <ArcGIS/ArcGIS.h>
 
-@interface NPPathCalibration : NSObject
+@interface TYPathCalibration : NSObject
 
 - (id)initWithFloorID:(NSString *)floorID;
 

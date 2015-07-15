@@ -1,5 +1,5 @@
 //
-//  NPMapEnviroment.h
+//  TYMapEnviroment.h
 //  MapProject
 //
 //  Created by innerpeacer on 15/2/9.
@@ -22,7 +22,7 @@ typedef enum {
 /**
  *  地图环境
  */
-@interface NPMapEnvironment : NSObject
+@interface TYMapEnvironment : NSObject
 
 /**
  *  默认坐标系空间参考

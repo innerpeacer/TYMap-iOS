@@ -1,5 +1,5 @@
-#import "NPBuilding.h"
-#import "NPMapFileManager.h"
+#import "TYBuilding.h"
+#import "TYMapFileManager.h"
 
 #define KEY_BUILDINGS @"Buildings"
 #define KEY_BUILDING_CITY_ID @"cityID"
@@ -15,7 +15,7 @@
 
 #define KEY_BUILDING_STATUS @"status"
 
-@implementation NPBuilding
+@implementation TYBuilding
 
 - (id)initWithCityID:(NSString *)cityID BuildingID:(NSString *)buildingID Name:(NSString *)name Lon:(double)lon Lat:(double)lat Address:(NSString *)address InitAngle:(double)initAngle RouteURL:(NSString *)url Offset:(MapSize)offset
 {
@@ -34,16 +34,16 @@
     return self;
 }
 
-+ (NPBuilding *)parseBuilding:(NSString *)buildingID InCity:(NPCity *)city
++ (TYBuilding *)parseBuilding:(NSString *)buildingID InCity:(TYCity *)city
 {
-    NPBuilding *building = nil;
+    TYBuilding *building = nil;
     
     if (city == nil || buildingID == nil) {
         return building;
     }
     
     NSError *error = nil;
-    NSString *fullPath = [NPMapFileManager getBuildingJsonPath:city.cityID];
+    NSString *fullPath = [TYMapFileManager getBuildingJsonPath:city.cityID];
     NSData *data = [NSData dataWithContentsOfFile:fullPath];
     NSDictionary *buildingDict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:&error];
     
@@ -67,7 +67,7 @@
             NSNumber *staNumber = [dict objectForKey:KEY_BUILDING_STATUS];
             
             
-            building = [[NPBuilding alloc] initWithCityID:city.cityID BuildingID:mid Name:name Lon:lonNumber.doubleValue Lat:latNumber.doubleValue Address:address InitAngle:initStr.doubleValue RouteURL:url Offset:offset];
+            building = [[TYBuilding alloc] initWithCityID:city.cityID BuildingID:mid Name:name Lon:lonNumber.doubleValue Lat:latNumber.doubleValue Address:address InitAngle:initStr.doubleValue RouteURL:url Offset:offset];
             building.status = staNumber.intValue;
             break;
         }
@@ -76,7 +76,7 @@
     return building;
 }
 
-+ (NSArray *)parseAllBuildings:(NPCity *)city
++ (NSArray *)parseAllBuildings:(TYCity *)city
 {
     NSMutableArray *toReturn = [[NSMutableArray alloc] init];
     
@@ -85,7 +85,7 @@
     }
     
     NSError *error = nil;
-    NSString *fullPath = [NPMapFileManager getBuildingJsonPath:city.cityID];
+    NSString *fullPath = [TYMapFileManager getBuildingJsonPath:city.cityID];
     
     
     if ([[NSFileManager defaultManager] fileExistsAtPath:fullPath]) {
@@ -111,7 +111,7 @@
 
             NSNumber *staNumber = [dict objectForKey:KEY_BUILDING_STATUS];
             
-            NPBuilding *building = [[NPBuilding alloc] initWithCityID:city.cityID BuildingID:mid Name:name Lon:lonNumber.doubleValue Lat:latNumber.doubleValue Address:address InitAngle:initStr.doubleValue RouteURL:url Offset:offset];
+            TYBuilding *building = [[TYBuilding alloc] initWithCityID:city.cityID BuildingID:mid Name:name Lon:lonNumber.doubleValue Lat:latNumber.doubleValue Address:address InitAngle:initStr.doubleValue RouteURL:url Offset:offset];
             building.status = staNumber.intValue;
             
             [toReturn addObject:building];

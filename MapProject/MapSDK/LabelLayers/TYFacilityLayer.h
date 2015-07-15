@@ -7,8 +7,8 @@
 //
 
 #import <ArcGIS/ArcGIS.h>
-#import "NPMapInfo.h"
-#import "NPRenderingScheme.h"
+#import "TYMapInfo.h"
+#import "TYRenderingScheme.h"
 #import "NPPoi.h"
 
 
@@ -18,9 +18,9 @@
 
 @property (nonatomic, weak) TYLabelGroupLayer *groupLayer;
 
-+ (TYFacilityLayer *)facilityLayerWithRenderingScheme:(NPRenderingScheme *)aRenderingScheme SpatialReference:(AGSSpatialReference *)sr;
++ (TYFacilityLayer *)facilityLayerWithRenderingScheme:(TYRenderingScheme *)aRenderingScheme SpatialReference:(AGSSpatialReference *)sr;
 
-- (void)loadContentsWithInfo:(NPMapInfo *)info;
+- (void)loadContentsWithInfo:(TYMapInfo *)info;
 
 - (NSArray *)getAllFacilityCategoryIDOnCurrentFloor;
 

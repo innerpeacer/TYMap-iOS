@@ -1,5 +1,5 @@
 //
-//  NPBrand.h
+//  TYBrand.h
 //  MapProject
 //
 //  Created by innerpeacer on 15/5/29.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import "NPBuilding.h"
+#import "TYBuilding.h"
 
 @interface NPBrand : NSObject
 
@@ -17,6 +17,6 @@
 @property (nonatomic, strong) NSString *logo;
 @property (nonatomic, assign) CGSize logoSize;
 
-+ (NSArray *)parseAllBrands:(NPBuilding *)building;
++ (NSArray *)parseAllBrands:(TYBuilding *)building;
 
 @end

@@ -3,7 +3,7 @@
 /**
  *  城市类
  */
-@interface NPCity : NSObject
+@interface TYCity : NSObject
 
 /**
  *  城市ID
@@ -50,6 +50,6 @@
  *
  *  @return 目标城市信息
  */
-+ (NPCity *)parseCity:(NSString *)cityID;
++ (TYCity *)parseCity:(NSString *)cityID;
 
 @end

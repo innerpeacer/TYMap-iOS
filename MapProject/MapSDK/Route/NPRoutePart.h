@@ -1,5 +1,5 @@
 //
-//  NPRoutePart.h
+//  TYRoutePart.h
 //  MapProject
 //
 //  Created by innerpeacer on 15/5/8.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <ArcGIS/ArcGIS.h>
-#import "NPMapInfo.h"
+#import "TYMapInfo.h"
 
 /**
     路径导航段，用于表示跨层导航中的一段路径
@@ -23,7 +23,7 @@
  *
  *  @return 路径导航类实例
  */
-- (id)initWithRouteLine:(AGSPolyline *)route MapInfo:(NPMapInfo *)mapInfo;
+- (id)initWithRouteLine:(AGSPolyline *)route MapInfo:(TYMapInfo *)mapInfo;
 
 /**
  *  当前段的几何数据
@@ -33,7 +33,7 @@
 /**
  *  当前段的地图信息
  */
-@property (nonatomic, strong, readonly) NPMapInfo *info;
+@property (nonatomic, strong, readonly) TYMapInfo *info;
 
 /**
  *  当前段的前一段

@@ -9,7 +9,7 @@
 #import "BaseMapVC.h"
 
 #import "NPUserDefaults.h"
-#import "NPRenderingScheme.h"
+#import "TYRenderingScheme.h"
 
 @interface BaseMapVC()
 {
@@ -25,7 +25,7 @@
     _currentCity = [NPUserDefaults getDefaultCity];
     _currentBuilding = [NPUserDefaults getDefaultBuilding];
 
-    _allMapInfos = [NPMapInfo parseAllMapInfo:_currentBuilding];
+    _allMapInfos = [TYMapInfo parseAllMapInfo:_currentBuilding];
     
     if (_allMapInfos.count == 1) {
         currentIndex = 0;
@@ -41,7 +41,7 @@
         _currentMapInfo = [_allMapInfos objectAtIndex:0];
         
         for (int i = 0; i < _allMapInfos.count; ++i) {
-            NPMapInfo *info = [_allMapInfos objectAtIndex:i];
+            TYMapInfo *info = [_allMapInfos objectAtIndex:i];
             if (info.floorNumber == 7) {
                 currentIndex = i;
                 _currentMapInfo = info;
@@ -58,7 +58,7 @@
 - (void)initFloorSegment
 {
     NSMutableArray *floorStringArray = [[NSMutableArray alloc] init];
-    for (NPMapInfo *mapInfo in _allMapInfos) {
+    for (TYMapInfo *mapInfo in _allMapInfos) {
         [floorStringArray addObject:mapInfo.floorName];
     }
     
@@ -100,24 +100,24 @@
     self.mapView = nil;
 }
 
-- (void)NPMapView:(NPMapView *)mapView didClickAtPoint:(CGPoint)screen mapPoint:(AGSPoint *)mappoint
+- (void)NPMapView:(TYMapView *)mapView didClickAtPoint:(CGPoint)screen mapPoint:(AGSPoint *)mappoint
 {
     //    NSLog(@"didClickAtPoint");
     
     
 }
 
-- (void)NPMapView:(NPMapView *)mapView PoiSelected:(NSArray *)array
+- (void)NPMapView:(TYMapView *)mapView PoiSelected:(NSArray *)array
 {
     
 }
 
-- (void)NPMapView:(NPMapView *)mapView didFinishLoadingFloor:(NPMapInfo *)mapInfo
+- (void)NPMapView:(TYMapView *)mapView didFinishLoadingFloor:(TYMapInfo *)mapInfo
 {
     NSLog(@"Floor %@ did Loaded", mapInfo.floorName);
 }
 
-- (void)NPMapViewDidLoad:(NPMapView *)mapView
+- (void)NPMapViewDidLoad:(TYMapView *)mapView
 {
 //    NSLog(@"NPMapViewDidLoad:");
 }

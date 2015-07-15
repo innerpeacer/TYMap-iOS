@@ -1,5 +1,5 @@
 //
-//  TYFloorLayer.h
+//  TYAssetLayer.h
 //  MapProject
 //
 //  Created by innerpeacer on 15/2/9.
@@ -10,10 +10,11 @@
 #import "TYMapInfo.h"
 #import "TYRenderingScheme.h"
 
-@interface NPFloorLayer : AGSGraphicsLayer
+@interface TYAssetLayer : AGSGraphicsLayer
 
-+ (NPFloorLayer *)floorLayerWithRenderingScheme:(TYRenderingScheme *)aRenderingScheme SpatialReference:(AGSSpatialReference *)sr;
++ (TYAssetLayer *)assetLayerWithRenderingScheme:(TYRenderingScheme *)aRenderingScheme SpatialReference:(AGSSpatialReference *)sr;
 
 - (void)loadContentsWithInfo:(TYMapInfo *)info;
 
 @end
+

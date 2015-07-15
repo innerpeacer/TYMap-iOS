@@ -8,9 +8,9 @@
 
 #import "TYFacilityLayer.h"
 #import "NPMapType.h"
-#import "NPMapFileManager.h"
+#import "TYMapFileManager.h"
 #import "TYFacilityLabel.h"
-#import "NPMapView.h"
+#import "TYMapView.h"
 #import "TYLabelGroupLayer.h"
 #import "TYLabelBorder.h"
 #import "TYLabelBorderCalculator.h"
@@ -23,19 +23,19 @@
     NSMutableDictionary *groupedFacilityLabelDict;
     NSMutableDictionary *facilityLabelDict;
     
-    NPRenderingScheme *renderingScheme;
+    TYRenderingScheme *renderingScheme;
 }
 
 @end
 
 @implementation TYFacilityLayer
 
-+ (TYFacilityLayer *)facilityLayerWithRenderingScheme:(NPRenderingScheme *)aRenderingScheme SpatialReference:(AGSSpatialReference *)sr
++ (TYFacilityLayer *)facilityLayerWithRenderingScheme:(TYRenderingScheme *)aRenderingScheme SpatialReference:(AGSSpatialReference *)sr
 {
     return [[TYFacilityLayer alloc] initFacilityLayerWithRenderingScheme:aRenderingScheme SpatialReference:sr];
 }
 
-- (id)initFacilityLayerWithRenderingScheme:(NPRenderingScheme *)aRenderingScheme SpatialReference:(AGSSpatialReference *)sr
+- (id)initFacilityLayerWithRenderingScheme:(TYRenderingScheme *)aRenderingScheme SpatialReference:(AGSSpatialReference *)sr
 {
     self = [super initWithFullEnvelope:nil renderingMode:AGSGraphicsLayerRenderingModeDynamic];
     if (self) {
@@ -113,7 +113,7 @@
     }
 }
 
-- (void)loadContentsWithInfo:(NPMapInfo *)info;
+- (void)loadContentsWithInfo:(TYMapInfo *)info;
 {
 //    NSLog(@"addFacilityContents");
     [self removeAllGraphics];
@@ -122,7 +122,7 @@
     [facilityLabelDict removeAllObjects];
     
     NSError *error = nil;
-    NSString *fullPath = [NPMapFileManager getFacilityLayerPath:info];
+    NSString *fullPath = [TYMapFileManager getFacilityLayerPath:info];
     NSString *jsonString = [NSString stringWithContentsOfFile:fullPath encoding:NSUTF8StringEncoding error:&error];
     
     AGSSBJsonParser *parser = [[AGSSBJsonParser alloc] init];

@@ -7,7 +7,7 @@
 //
 
 #import "MapCalloutVC.h"
-#import "NPMapView.h"
+#import "TYMapView.h"
 #import "CustomCalloutVC.h"
 
 @interface MapCalloutVC() <AGSCalloutDelegate>
@@ -34,22 +34,22 @@
     [self.calloutViewController.view setClipsToBounds:YES];
 }
 
-- (void)NPMapView:(NPMapView *)mapView didClickAtPoint:(CGPoint)screen mapPoint:(TYPoint *)mappoint
+- (void)NPMapView:(TYMapView *)mapView didClickAtPoint:(CGPoint)screen mapPoint:(TYPoint *)mappoint
 {
     NSLog(@"didClickAtPoint: %f, %f", mappoint.x, mappoint.y);
 }
 
-- (void)NPMapView:(NPMapView *)mapView didFinishLoadingFloor:(NPMapInfo *)mapInfo
+- (void)NPMapView:(TYMapView *)mapView didFinishLoadingFloor:(TYMapInfo *)mapInfo
 {
     NSLog(@"NPMapView:calloutWillDismiss");
 }
 
-- (void)NPMapView:(NPMapView *)mapView calloutWillDismiss:(TYCallout *)callout
+- (void)NPMapView:(TYMapView *)mapView calloutWillDismiss:(TYCallout *)callout
 {
     NSLog(@"NPMapView:calloutWillDismiss");
 }
 
-- (BOOL)NPMapView:(NPMapView *)mapView willShowForGraphic:(TYGraphic *)graphic layer:(TYGraphicsLayer *)layer mapPoint:(TYPoint *)mappoint
+- (BOOL)NPMapView:(TYMapView *)mapView willShowForGraphic:(TYGraphic *)graphic layer:(TYGraphicsLayer *)layer mapPoint:(TYPoint *)mappoint
 {
     NSLog(@"NPMapView:willShowForGraphic:layer:mapPoint:");
     

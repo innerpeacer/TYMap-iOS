@@ -1,5 +1,5 @@
 //
-//  NPDirectionalString.m
+//  TYDirectionalString.m
 //  MapProject
 //
 //  Created by innerpeacer on 15/5/5.

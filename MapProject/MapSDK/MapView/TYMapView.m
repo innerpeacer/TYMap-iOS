@@ -1,18 +1,18 @@
 //
-//  NPMapView.m
+//  TYMapView.m
 //  MapProject
 //
 //  Created by innerpeacer on 15/2/9.
 //  Copyright (c) 2015年 innerpeacer. All rights reserved.
 //
 
-#import "NPMapView.h"
+#import "TYMapView.h"
 
-#import "NPMapInfo.h"
+#import "TYMapInfo.h"
 #import "NPMapType.h"
 #import "NPMapEnviroment.h"
 #import "TYLocationLayer.h"
-#import "NPMapFileManager.h"
+#import "TYMapFileManager.h"
 
 #import "NPStructureGroupLayer.h"
 #import "TYLabelGroupLayer.h"
@@ -23,9 +23,9 @@
 #import "TYRouteHintLayer.h"
 #import "NPBrand.h"
 
-@interface NPMapView() <AGSMapViewTouchDelegate, AGSMapViewLayerDelegate, AGSCalloutDelegate>
+@interface TYMapView() <AGSMapViewTouchDelegate, AGSMapViewLayerDelegate, AGSCalloutDelegate>
 {
-    NPRenderingScheme *renderingScheme;
+    TYRenderingScheme *renderingScheme;
     
     NPStructureGroupLayer *structureGroupLayer;
     TYLabelGroupLayer *labelGroupLayer;
@@ -48,7 +48,7 @@
 @end
 
 
-@implementation NPMapView
+@implementation TYMapView
 
 - (void)reloadMapView
 {
@@ -63,7 +63,7 @@
     }
 }
 
-- (void)setFloorWithInfo:(NPMapInfo *)info
+- (void)setFloorWithInfo:(TYMapInfo *)info
 {
     
 //    NSString* invalidDateString = @"20150811";
@@ -93,7 +93,7 @@
     [labelGroupLayer loadContentsWithInfo:info];
 
     if (initialEnvelope == nil) {
-        initialEnvelope = [AGSEnvelope envelopeWithXmin:_currentMapInfo.mapExtent.xmin ymin:_currentMapInfo.mapExtent.ymin xmax:_currentMapInfo.mapExtent.xmax ymax:_currentMapInfo.mapExtent.ymax spatialReference:[NPMapEnvironment defaultSpatialReference]];
+        initialEnvelope = [AGSEnvelope envelopeWithXmin:_currentMapInfo.mapExtent.xmin ymin:_currentMapInfo.mapExtent.ymin xmax:_currentMapInfo.mapExtent.xmax ymax:_currentMapInfo.mapExtent.ymax spatialReference:[TYMapEnvironment defaultSpatialReference]];
         [self zoomToEnvelope:initialEnvelope animated:NO];
         
         double width = 0.06; // 6cm
@@ -107,11 +107,11 @@
     }
 }
 
-- (void)initMapViewWithBuilding:(NPBuilding *)b
+- (void)initMapViewWithBuilding:(TYBuilding *)b
 {
     _building = b;
-    NSString *renderingSchemePath = [NPMapFileManager getRenderingScheme:_building];
-    renderingScheme = [[NPRenderingScheme alloc] initWithPath:(NSString *)renderingSchemePath];
+    NSString *renderingSchemePath = [TYMapFileManager getRenderingScheme:_building];
+    renderingScheme = [[TYRenderingScheme alloc] initWithPath:(NSString *)renderingSchemePath];
     
     self.touchDelegate = self;
     self.layerDelegate = self;
@@ -134,7 +134,7 @@
     }
     allBrandDict = dict;
     
-    AGSSpatialReference *spatialReference = [NPMapEnvironment defaultSpatialReference];
+    AGSSpatialReference *spatialReference = [TYMapEnvironment defaultSpatialReference];
     
     structureGroupLayer = [NPStructureGroupLayer structureLayerWithRenderingScheme:renderingScheme SpatialReference:spatialReference];
     [self addMapLayer:structureGroupLayer.floorLayer withName:LAYER_NAME_FLOOR];
@@ -147,12 +147,12 @@
     [self addMapLayer:labelGroupLayer.facilityLayer withName:LAYER_NAME_FACILITY];
     [self addMapLayer:labelGroupLayer.labelLayer withName:LAYER_NAME_LABEL];
     
-    routeLayer = [TYRouteLayer routeLayerWithSpatialReference:[NPMapEnvironment defaultSpatialReference]];
+    routeLayer = [TYRouteLayer routeLayerWithSpatialReference:[TYMapEnvironment defaultSpatialReference]];
     routeLayer.mapView = self;
     [self addMapLayer:routeLayer];
     routeLayer.allowHitTest = NO;
     
-    routeHintLayer = [TYRouteHintLayer routeHintLayerWithSpatialReference:[NPMapEnvironment defaultSpatialReference]];
+    routeHintLayer = [TYRouteHintLayer routeHintLayerWithSpatialReference:[TYMapEnvironment defaultSpatialReference]];
     [self addMapLayer:routeHintLayer];
     routeHintLayer.allowHitTest = NO;
     
@@ -160,7 +160,7 @@
 //    [self addMapLayer:routeArrowLayer];
 //    routeArrowLayer.allowHitTest = NO;
     
-    animatedRouteArrowLayer = [TYAnimatedRouteArrowLayer animatedRouteArrowLayerWithSpatialReference:[NPMapEnvironment defaultSpatialReference]];
+    animatedRouteArrowLayer = [TYAnimatedRouteArrowLayer animatedRouteArrowLayerWithSpatialReference:[TYMapEnvironment defaultSpatialReference]];
     [self addMapLayer:animatedRouteArrowLayer];
     animatedRouteArrowLayer.allowHitTest = NO;
 
@@ -267,7 +267,7 @@
 {
     [locationLayer removeAllGraphics];
     if (self.currentMapInfo.floorNumber == location.floor) {
-        TYPoint *pos = [TYPoint pointWithX:location.x y:location.y spatialReference:[NPMapEnvironment defaultSpatialReference]];
+        TYPoint *pos = [TYPoint pointWithX:location.x y:location.y spatialReference:[TYMapEnvironment defaultSpatialReference]];
         [locationLayer showLocation:pos withDeviceHeading:currentDeviceHeading initAngle:self.building.initAngle mapViewMode:mapViewMode];
     }
 }
@@ -545,7 +545,7 @@
         [routeHintLayer showRouteHint:subLine];
         
         if (isCentered) {
-            AGSPoint *center = [AGSPoint pointWithX:(ds.startPoint.x + ds.endPoint.x)*0.5 y:(ds.startPoint.y + ds.endPoint.y)*0.5 spatialReference:[NPMapEnvironment defaultSpatialReference]];
+            AGSPoint *center = [AGSPoint pointWithX:(ds.startPoint.x + ds.endPoint.x)*0.5 y:(ds.startPoint.y + ds.endPoint.y)*0.5 spatialReference:[TYMapEnvironment defaultSpatialReference]];
             [self centerAtPoint:center animated:YES];
         }
     }
@@ -663,7 +663,7 @@
 
 - (void)updateMapFiles
 {
-    NSString *labelFilePath = [NPMapFileManager getLabelLayerPath:self.currentMapInfo];
+    NSString *labelFilePath = [TYMapFileManager getLabelLayerPath:self.currentMapInfo];
     AGSFeatureSet *lableSet = [labelGroupLayer getTextFeatureSet];
     
     NSDictionary *labelJsonDict = [lableSet encodeToJSON];
@@ -671,7 +671,7 @@
     [labelData writeToFile:labelFilePath atomically:YES];
     
     
-    NSString *roomFilePath = [NPMapFileManager getRoomLayerPath:self.currentMapInfo];
+    NSString *roomFilePath = [TYMapFileManager getRoomLayerPath:self.currentMapInfo];
     AGSFeatureSet *roomSet = [structureGroupLayer getRoomFeatureSet];
     
     NSDictionary *roomJsonDict = [roomSet encodeToJSON];
