@@ -8,7 +8,7 @@
 
 #import "CreatePOIDatabaseVC.h"
 #import "CreatingPOIDBAdapter.h"
-#import "NPUserDefaults.h"
+#import "TYUserDefaults.h"
 #import "TYMapInfo.h"
 #import <ArcGIS/ArcGIS.h>
 #import "TYPoi.h"
@@ -34,8 +34,8 @@
 {
     [super viewDidLoad];
     
-    currentCity = [NPUserDefaults getDefaultCity];
-    currentBuilding = [NPUserDefaults getDefaultBuilding];
+    currentCity = [TYUserDefaults getDefaultCity];
+    currentBuilding = [TYUserDefaults getDefaultBuilding];
 
     self.title = currentBuilding.buildingID;
 

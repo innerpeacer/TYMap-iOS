@@ -7,7 +7,7 @@
 //
 
 #import <ArcGIS/ArcGIS.h>
-#import <NephogramData/NephogramData.h>
+#import <MapData/MapData.h>
 #import "TYMapInfo.h"
 #import "TYPoint.h"
 
@@ -33,7 +33,7 @@
  *
  *  @return 相应的导航坐标点
  */
-- (TYPoint *)routePointFromLocalPoint:(NPLocalPoint *)localPoint;
+- (TYPoint *)routePointFromLocalPoint:(TYLocalPoint *)localPoint;
 
 /**
  *  将导航坐标眯转换成实际坐标点
@@ -42,7 +42,7 @@
  *
  *  @return 相应的实际坐标点
  */
-- (NPLocalPoint *)localPointFromRoutePoint:(TYPoint *)routePoint;
+- (TYLocalPoint *)localPointFromRoutePoint:(TYPoint *)routePoint;
 
 /**
  *  检测坐标点的有效性
@@ -51,6 +51,6 @@
  *
  *  @return 是否有效
  */
-- (BOOL)checkPointValidity:(NPLocalPoint *)point;
+- (BOOL)checkPointValidity:(TYLocalPoint *)point;
 
 @end

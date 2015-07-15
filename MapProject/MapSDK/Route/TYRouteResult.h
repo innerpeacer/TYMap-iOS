@@ -42,7 +42,7 @@
  *
  *  @return 是否偏离导航线
  */
-- (BOOL)isDeviatingFromRoute:(NPLocalPoint *)point WithThrehold:(double)distance;
+- (BOOL)isDeviatingFromRoute:(TYLocalPoint *)point WithThrehold:(double)distance;
 
 /**
  *  获取距离目标位置点最近的路径段
@@ -51,7 +51,7 @@
  *
  *  @return 最近的路径段
  */
-- (TYRoutePart *)getNearestRoutePart:(NPLocalPoint *)location;
+- (TYRoutePart *)getNearestRoutePart:(TYLocalPoint *)location;
 
 /**
  *  获取目标楼层的所有路径段
@@ -88,7 +88,7 @@
  *
  *  @return 与目标位置点对应的导航提示
  */
-- (TYDirectionalHint *)getDirectionHintForLocation:(NPLocalPoint *)location FromHints:(NSArray *)directions;
+- (TYDirectionalHint *)getDirectionHintForLocation:(TYLocalPoint *)location FromHints:(NSArray *)directions;
 
 /**
  *  获取一组折线的子折线

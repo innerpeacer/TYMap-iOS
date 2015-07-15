@@ -15,9 +15,9 @@
 
 - (void)setLocationSymbol:(TYMarkerSymbol *)symbol;
 
-- (void)updateDeviceHeading:(double)deviceHeading initAngle:(double)initAngle mapViewMode:(NPMapViewMode)mode;
+- (void)updateDeviceHeading:(double)deviceHeading initAngle:(double)initAngle mapViewMode:(TYMapViewMode)mode;
 
-- (void)showLocation:(TYPoint *)location withDeviceHeading:(double)deviceHeading initAngle:(double)initAngle mapViewMode:(NPMapViewMode)mode;
+- (void)showLocation:(TYPoint *)location withDeviceHeading:(double)deviceHeading initAngle:(double)initAngle mapViewMode:(TYMapViewMode)mode;
 
 - (void)removeLocation;
 

@@ -60,7 +60,7 @@ static TYLandmarkManager *manager;
         for (AGSGraphic *g in allGraphics) {
             NSString *name = [g attributeForKey:@"NAME"];
             AGSPoint *pos = (AGSPoint *)g.geometry;
-            NPLocalPoint *location = [NPLocalPoint pointWithX:pos.x Y:pos.y Floor:currentFloor];
+            TYLocalPoint *location = [TYLocalPoint pointWithX:pos.x Y:pos.y Floor:currentFloor];
             
             TYLandmark *landmark = [[TYLandmark alloc] init];
             landmark.name = name;
@@ -71,14 +71,14 @@ static TYLandmarkManager *manager;
     }
 }
 
-- (TYLandmark *)searchLandmark:(NPLocalPoint *)location Tolerance:(double)tolerance
+- (TYLandmark *)searchLandmark:(TYLocalPoint *)location Tolerance:(double)tolerance
 {
     if (location.floor != currentFloor) {
         return nil;
     }
     
     for (TYLandmark *landmark in allLandmarks) {
-        NPLocalPoint *lp = landmark.location;
+        TYLocalPoint *lp = landmark.location;
         
         double distance = [lp distanceWith:location];
         if (distance < tolerance) {

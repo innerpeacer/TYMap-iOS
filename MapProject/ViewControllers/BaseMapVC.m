@@ -8,7 +8,7 @@
 
 #import "BaseMapVC.h"
 
-#import "NPUserDefaults.h"
+#import "TYUserDefaults.h"
 #import "TYRenderingScheme.h"
 
 @interface BaseMapVC()
@@ -22,8 +22,8 @@
 
 - (void)viewDidLoad
 {
-    _currentCity = [NPUserDefaults getDefaultCity];
-    _currentBuilding = [NPUserDefaults getDefaultBuilding];
+    _currentCity = [TYUserDefaults getDefaultCity];
+    _currentBuilding = [TYUserDefaults getDefaultBuilding];
 
     _allMapInfos = [TYMapInfo parseAllMapInfo:_currentBuilding];
     
@@ -100,26 +100,26 @@
     self.mapView = nil;
 }
 
-- (void)NPMapView:(TYMapView *)mapView didClickAtPoint:(CGPoint)screen mapPoint:(AGSPoint *)mappoint
+- (void)TYMapView:(TYMapView *)mapView didClickAtPoint:(CGPoint)screen mapPoint:(AGSPoint *)mappoint
 {
     //    NSLog(@"didClickAtPoint");
     
     
 }
 
-- (void)NPMapView:(TYMapView *)mapView PoiSelected:(NSArray *)array
+- (void)TYMapView:(TYMapView *)mapView PoiSelected:(NSArray *)array
 {
     
 }
 
-- (void)NPMapView:(TYMapView *)mapView didFinishLoadingFloor:(TYMapInfo *)mapInfo
+- (void)TYMapView:(TYMapView *)mapView didFinishLoadingFloor:(TYMapInfo *)mapInfo
 {
     NSLog(@"Floor %@ did Loaded", mapInfo.floorName);
 }
 
-- (void)NPMapViewDidLoad:(TYMapView *)mapView
+- (void)TYMapViewDidLoad:(TYMapView *)mapView
 {
-//    NSLog(@"NPMapViewDidLoad:");
+//    NSLog(@"TYMapViewDidLoad:");
 }
 
 - (void)respondToZooming:(NSNotification *)notification

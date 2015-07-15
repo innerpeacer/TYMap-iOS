@@ -1,5 +1,5 @@
 //
-//  NPPoiDBAdapter.h
+//  TYPoiDBAdapter.h
 //  MapProject
 //
 //  Created by innerpeacer on 15/3/11.
@@ -8,9 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NPPoiDBAdapter : NSObject
+@interface TYPoiDBAdapter : NSObject
 
-+ (NPPoiDBAdapter *)sharedDBAdapter:(NSString *)buildingID;
++ (TYPoiDBAdapter *)sharedDBAdapter:(NSString *)buildingID;
 
 - (BOOL)open;
 - (BOOL)close;

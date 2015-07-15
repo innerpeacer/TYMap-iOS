@@ -1,5 +1,5 @@
 //
-//  NPUserDefaults.h
+//  TYUserDefaults.h
 //  MapProject
 //
 //  Created by innerpeacer on 15/2/9.
@@ -10,7 +10,7 @@
 #import "TYBuilding.h"
 #import "TYCity.h"
 
-@interface NPUserDefaults : NSObject
+@interface TYUserDefaults : NSObject
 
 + (void)setDefaultBuilding:(NSString *)buildingID;
 + (void)setDefaultCity:(NSString *)cityID;

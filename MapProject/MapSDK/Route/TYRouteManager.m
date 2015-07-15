@@ -51,7 +51,7 @@
     return self;
 }
 
-- (void)requestRouteWithStart:(NPLocalPoint *)start End:(NPLocalPoint *)end
+- (void)requestRouteWithStart:(TYLocalPoint *)start End:(TYLocalPoint *)end
 {
     NSMutableArray *stops = [NSMutableArray array];
     
@@ -124,7 +124,7 @@
         for (int i = 0; i < num; ++i) {
             
             TYPoint *p = (TYPoint *)[routeLine pointOnPath:0 atIndex:i];
-            NPLocalPoint *lp = [routePointConverter localPointFromRoutePoint:p];
+            TYLocalPoint *lp = [routePointConverter localPointFromRoutePoint:p];
             BOOL isValid = [routePointConverter checkPointValidity:lp];
             if (isValid) {
                 
@@ -154,7 +154,7 @@
         
         NSMutableArray *pArray = [pointArray objectAtIndex:i];
         for (int j = 0; j < pArray.count; ++j) {
-            NPLocalPoint *lp = pArray[j];
+            TYLocalPoint *lp = pArray[j];
             [line addPointToPath:[AGSPoint pointWithX:lp.x y:lp.y spatialReference:[TYMapEnvironment defaultSpatialReference]]];
         }
         

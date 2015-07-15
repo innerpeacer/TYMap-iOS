@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <NephogramData/NephogramData.h>
+#import <MapData/MapData.h>
 
 /**
  *  路标类，用于导航的提示
@@ -22,6 +22,6 @@
 /**
  *  当前路标的位置
  */
-@property (nonatomic, strong) NPLocalPoint *location;
+@property (nonatomic, strong) TYLocalPoint *location;
 
 @end

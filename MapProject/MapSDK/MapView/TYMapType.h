@@ -6,8 +6,8 @@
 //  Copyright (c) 2015年 innerpeacer. All rights reserved.
 //
 
-#ifndef MapProject_NPMapType_h
-#define MapProject_NPMapType_h
+#ifndef MapProject_TYMapType_h
+#define MapProject_TYMapType_h
 
 // =========== Graphic Attribute ================
 #define GRAPHIC_ATTRIBUTE_GEO_ID @"GEO_ID"

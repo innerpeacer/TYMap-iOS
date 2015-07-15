@@ -32,12 +32,12 @@
     
     TYLocationLayer *locationLayer;
     TYRouteLayer *routeLayer;
-//    NPRouteArrowLayer *routeArrowLayer;
+//    TYUserDefaultsRouteArrowLayer *routeArrowLayer;
     TYAnimatedRouteArrowLayer *animatedRouteArrowLayer;
     TYRouteHintLayer *routeHintLayer;
     
     AGSEnvelope *initialEnvelope;
-    NPMapViewMode mapViewMode;
+    TYMapViewMode mapViewMode;
     
     double currentDeviceHeading;
     double lastRotationAngle;
@@ -56,9 +56,9 @@
         [structureGroupLayer loadContentsWithInfo:self.currentMapInfo];
         [labelGroupLayer loadContentsWithInfo:self.currentMapInfo];
 
-        if (self.mapDelegate && [self.mapDelegate respondsToSelector:@selector(NPMapView:didFinishLoadingFloor:)]) {
+        if (self.mapDelegate && [self.mapDelegate respondsToSelector:@selector(TYMapView:didFinishLoadingFloor:)]) {
             [labelGroupLayer updateLabels];
-            [self.mapDelegate NPMapView:self didFinishLoadingFloor:_currentMapInfo];
+            [self.mapDelegate TYMapView:self didFinishLoadingFloor:_currentMapInfo];
         }
     }
 }
@@ -101,9 +101,9 @@
         self.maxScale = 6 / width;
     }
     
-    if (self.mapDelegate && [self.mapDelegate respondsToSelector:@selector(NPMapView:didFinishLoadingFloor:)]) {
+    if (self.mapDelegate && [self.mapDelegate respondsToSelector:@selector(TYMapView:didFinishLoadingFloor:)]) {
         [labelGroupLayer updateLabels];
-        [self.mapDelegate NPMapView:self didFinishLoadingFloor:_currentMapInfo];
+        [self.mapDelegate TYMapView:self didFinishLoadingFloor:_currentMapInfo];
     }
 }
 
@@ -125,7 +125,7 @@
     self.backgroundColor = [UIColor lightGrayColor];
     self.gridLineWidth = 0.0;
         
-    mapViewMode = NPMapViewModeDefault;
+    mapViewMode = TYMapViewModeDefault;
     
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
     NSArray *brandArray = [TYBrand parseAllBrands:b];
@@ -179,15 +179,15 @@
     return (TYPoint *)self.mapAnchor;
 }
 
-- (void)setMapMode:(NPMapViewMode)mode
+- (void)setMapMode:(TYMapViewMode)mode
 {
     mapViewMode = mode;
     switch (mapViewMode) {
-        case NPMapViewModeFollowing:
+        case TYMapViewModeFollowing:
             [self setAllowRotationByPinching:NO];
             break;
             
-        case NPMapViewModeDefault:
+        case TYMapViewModeDefault:
             [self setAllowRotationByPinching:YES];
             self.rotationAngle = 0.0;
             break;
@@ -217,12 +217,12 @@
     routeLayer.routeResult = result;
 }
 
-- (void)setRouteStart:(NPLocalPoint *)start
+- (void)setRouteStart:(TYLocalPoint *)start
 {
     routeLayer.startPoint = start;
 }
 
-- (void)setRouteEnd:(NPLocalPoint *)end
+- (void)setRouteEnd:(TYLocalPoint *)end
 {
     routeLayer.endPoint = end;
 }
@@ -243,17 +243,17 @@
     [animatedRouteArrowLayer stopShowingArrow];
 }
 
-- (void)showRouteStartSymbolOnCurrentFloor:(NPLocalPoint *)sp
+- (void)showRouteStartSymbolOnCurrentFloor:(TYLocalPoint *)sp
 {
     [routeLayer showStartSymbol:sp];
 }
 
-- (void)showRouteEndSymbolOnCurrentFloor:(NPLocalPoint *)ep
+- (void)showRouteEndSymbolOnCurrentFloor:(TYLocalPoint *)ep
 {
     [routeLayer showEndSymbol:ep];
 }
 
-- (void)showRouteSwitchSymbolOnCurrentFloor:(NPLocalPoint *)sp
+- (void)showRouteSwitchSymbolOnCurrentFloor:(TYLocalPoint *)sp
 {
     [routeLayer showSwitchSymbol:sp];
 }
@@ -263,7 +263,7 @@
     [locationLayer setLocationSymbol:symbol];
 }
 
-- (void)showLocation:(NPLocalPoint *)location
+- (void)showLocation:(TYLocalPoint *)location
 {
     [locationLayer removeAllGraphics];
     if (self.currentMapInfo.floorNumber == location.floor) {
@@ -283,11 +283,11 @@
     [locationLayer updateDeviceHeading:newHeading initAngle:self.building.initAngle mapViewMode:mapViewMode];
     
     switch (mapViewMode) {
-        case NPMapViewModeFollowing:
+        case TYMapViewModeFollowing:
             self.rotationAngle = self.building.initAngle + currentDeviceHeading;
             break;
             
-        case NPMapViewModeDefault:
+        case TYMapViewModeDefault:
             break;
             
         default:
@@ -369,14 +369,14 @@
     //    NSLog(@"didClickAtPoint");
     [self clearSelection];
     
-    if (self.mapDelegate && [self.mapDelegate respondsToSelector:@selector(NPMapView:didClickAtPoint:mapPoint:)]) {
-        [self.mapDelegate NPMapView:self didClickAtPoint:screen mapPoint:(TYPoint *)mappoint];
+    if (self.mapDelegate && [self.mapDelegate respondsToSelector:@selector(TYMapView:didClickAtPoint:mapPoint:)]) {
+        [self.mapDelegate TYMapView:self didClickAtPoint:screen mapPoint:(TYPoint *)mappoint];
     }
     
-    if (self.mapDelegate && [self.mapDelegate respondsToSelector:@selector(NPMapView:PoiSelected:)]) {
+    if (self.mapDelegate && [self.mapDelegate respondsToSelector:@selector(TYMapView:PoiSelected:)]) {
         NSArray *poiSelected = [self extractSelectedPoi:features];
         if (poiSelected.count > 0) {
-            [self.mapDelegate NPMapView:self PoiSelected:poiSelected];
+            [self.mapDelegate TYMapView:self PoiSelected:poiSelected];
         }
     }
     
@@ -405,22 +405,22 @@
 
 - (void)mapViewDidLoad:(AGSMapView *)mapView
 {
-    if (self.mapDelegate && [self.mapDelegate respondsToSelector:@selector(NPMapViewDidLoad:)]) {
-        [self.mapDelegate NPMapViewDidLoad:self];
+    if (self.mapDelegate && [self.mapDelegate respondsToSelector:@selector(TYMapViewDidLoad:)]) {
+        [self.mapDelegate TYMapViewDidLoad:self];
     }
 }
 
 - (void)calloutDidDismiss:(AGSCallout *)callout
 {
-    if (self.mapDelegate && [self.mapDelegate respondsToSelector:@selector(NPMapView:calloutDidDismiss:)]) {
-        [self.mapDelegate NPMapView:self calloutDidDismiss:(TYCallout *)callout];
+    if (self.mapDelegate && [self.mapDelegate respondsToSelector:@selector(TYMapView:calloutDidDismiss:)]) {
+        [self.mapDelegate TYMapView:self calloutDidDismiss:(TYCallout *)callout];
     }
 }
 
 - (void)calloutWillDismiss:(AGSCallout *)callout
 {
-    if (self.mapDelegate && [self.mapDelegate respondsToSelector:@selector(NPMapView:calloutWillDismiss:)]) {
-        [self.mapDelegate NPMapView:self calloutWillDismiss:(TYCallout *)callout];
+    if (self.mapDelegate && [self.mapDelegate respondsToSelector:@selector(TYMapView:calloutWillDismiss:)]) {
+        [self.mapDelegate TYMapView:self calloutWillDismiss:(TYCallout *)callout];
     }
 }
 
@@ -437,12 +437,12 @@
 {
     BOOL result = NO;
     
-    if (self.mapDelegate && [self.mapDelegate respondsToSelector:@selector(NPMapView:willShowForGraphic:layer:mapPoint:)]) {
+    if (self.mapDelegate && [self.mapDelegate respondsToSelector:@selector(TYMapView:willShowForGraphic:layer:mapPoint:)]) {
         TYGraphic *graphic = (TYGraphic *)feature;
         TYGraphicsLayer *graphicLayer = (TYGraphicsLayer *)layer;
         TYPoint *point = (TYPoint *)mapPoint;
         
-        result = [self.mapDelegate NPMapView:self willShowForGraphic:graphic layer:graphicLayer mapPoint:point];
+        result = [self.mapDelegate TYMapView:self willShowForGraphic:graphic layer:graphicLayer mapPoint:point];
     }
     return result;
 }
@@ -524,7 +524,7 @@
     }
 }
 
-- (void)showRemainingRouteResultOnCurrentFloor:(NPLocalPoint *)lp
+- (void)showRemainingRouteResultOnCurrentFloor:(TYLocalPoint *)lp
 {
     NSArray *linesToShow = [routeLayer showRemainingRouteResultOnFloor:self.currentMapInfo.floorNumber WithLocation:lp];
     if (linesToShow && linesToShow.count > 0) {
@@ -624,8 +624,8 @@
 {
     [labelGroupLayer updateLabels];
     
-    if (self.mapDelegate && [self.mapDelegate respondsToSelector:@selector(NPMapViewDidZoomed:)]) {
-        [self.mapDelegate NPMapViewDidZoomed:self];
+    if (self.mapDelegate && [self.mapDelegate respondsToSelector:@selector(TYMapViewDidZoomed:)]) {
+        [self.mapDelegate TYMapViewDidZoomed:self];
     }
 }
 

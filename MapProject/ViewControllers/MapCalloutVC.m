@@ -34,24 +34,24 @@
     [self.calloutViewController.view setClipsToBounds:YES];
 }
 
-- (void)NPMapView:(TYMapView *)mapView didClickAtPoint:(CGPoint)screen mapPoint:(TYPoint *)mappoint
+- (void)TYMapView:(TYMapView *)mapView didClickAtPoint:(CGPoint)screen mapPoint:(TYPoint *)mappoint
 {
     NSLog(@"didClickAtPoint: %f, %f", mappoint.x, mappoint.y);
 }
 
-- (void)NPMapView:(TYMapView *)mapView didFinishLoadingFloor:(TYMapInfo *)mapInfo
+- (void)TYMapView:(TYMapView *)mapView didFinishLoadingFloor:(TYMapInfo *)mapInfo
 {
-    NSLog(@"NPMapView:calloutWillDismiss");
+    NSLog(@"TYMapView:calloutWillDismiss");
 }
 
-- (void)NPMapView:(TYMapView *)mapView calloutWillDismiss:(TYCallout *)callout
+- (void)TYMapView:(TYMapView *)mapView calloutWillDismiss:(TYCallout *)callout
 {
-    NSLog(@"NPMapView:calloutWillDismiss");
+    NSLog(@"TYMapView:calloutWillDismiss");
 }
 
-- (BOOL)NPMapView:(TYMapView *)mapView willShowForGraphic:(TYGraphic *)graphic layer:(TYGraphicsLayer *)layer mapPoint:(TYPoint *)mappoint
+- (BOOL)TYMapView:(TYMapView *)mapView willShowForGraphic:(TYGraphic *)graphic layer:(TYGraphicsLayer *)layer mapPoint:(TYPoint *)mappoint
 {
-    NSLog(@"NPMapView:willShowForGraphic:layer:mapPoint:");
+    NSLog(@"TYMapView:willShowForGraphic:layer:mapPoint:");
     
     if ([layer.name isEqualToString:@"LabelLayer"] || [layer.name isEqualToString:@"FloorLayer"] || [layer.name isEqualToString:@"hintLayer"]) {
         return NO;

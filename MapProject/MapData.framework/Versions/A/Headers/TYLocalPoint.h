@@ -5,7 +5,7 @@
 /**
  *  位置点类
  */
-@interface NPLocalPoint : NSObject
+@interface TYLocalPoint : NSObject
 
 /**
  *  x坐标
@@ -22,8 +22,8 @@
  */
 @property (assign) int floor;
 
-+ (NPLocalPoint *)pointWithX:(double)x Y:(double)y;
-+ (NPLocalPoint *)pointWithX:(double)x Y:(double)y Floor:(int)f;
++ (TYLocalPoint *)pointWithX:(double)x Y:(double)y;
++ (TYLocalPoint *)pointWithX:(double)x Y:(double)y Floor:(int)f;
 
 /**
  *  计算当前点P到特定点P'的距离
@@ -32,7 +32,7 @@
  *
  *  @return 两点间距离
  */
-- (double)distanceWith:(NPLocalPoint *)p;
+- (double)distanceWith:(TYLocalPoint *)p;
 
 /**
  *  计算两点P1、P2间的距离
@@ -42,6 +42,6 @@
  *
  *  @return 两点间距离
  */
-+ (double)distanceBetween:(NPLocalPoint *)p1 and:(NPLocalPoint *)p2;
++ (double)distanceBetween:(TYLocalPoint *)p1 and:(TYLocalPoint *)p2;
 
 @end

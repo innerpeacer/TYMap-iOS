@@ -35,10 +35,10 @@
             </objects>
             <point key="canvasLocation" x="37" y="542"/>
         </scene>
-        <!--Nephogram MapVC-->
+        <!--MapVC-->
         <scene sceneID="SIb-a9-MRP">
             <objects>
-                <viewController storyboardIdentifier="nephogramMapController" id="2hj-26-FeO" customClass="NephogramMapVC" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="mapController" id="2hj-26-FeO" customClass="MapVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="saL-SB-J0b"/>
                         <viewControllerLayoutGuide type="bottom" id="Qs8-OS-pIf"/>

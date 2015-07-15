@@ -14,7 +14,7 @@
 
 @class TYMapView;
 
-@class NPLocalPoint;
+@class TYLocalPoint;
 
 /**
  *  路径导航层，用于显示导航路径
@@ -25,8 +25,8 @@
 
 @property (nonatomic, strong) TYRouteResult *routeResult;
 
-@property (nonatomic, strong) NPLocalPoint *startPoint;
-@property (nonatomic, strong) NPLocalPoint *endPoint;
+@property (nonatomic, strong) TYLocalPoint *startPoint;
+@property (nonatomic, strong) TYLocalPoint *endPoint;
 
 @property (nonatomic, strong) TYPictureMarkerSymbol *startSymbol;
 @property (nonatomic, strong) TYPictureMarkerSymbol *endSymbol;
@@ -43,13 +43,13 @@
 
 - (NSArray *)showRouteResultOnFloor:(int)floor;
 
-- (NSArray *)showRemainingRouteResultOnFloor:(int)floor WithLocation:(NPLocalPoint *)location;
-- (TYRoutePart *)getNearestRoutePartWithLocation:(NPLocalPoint *)location;
+- (NSArray *)showRemainingRouteResultOnFloor:(int)floor WithLocation:(TYLocalPoint *)location;
+- (TYRoutePart *)getNearestRoutePartWithLocation:(TYLocalPoint *)location;
 
 - (void)reset;
 
-- (void)showStartSymbol:(NPLocalPoint *)sp;
-- (void)showEndSymbol:(NPLocalPoint *)ep;
-- (void)showSwitchSymbol:(NPLocalPoint *)sp;
+- (void)showStartSymbol:(TYLocalPoint *)sp;
+- (void)showEndSymbol:(TYLocalPoint *)ep;
+- (void)showSwitchSymbol:(TYLocalPoint *)sp;
 
 @end

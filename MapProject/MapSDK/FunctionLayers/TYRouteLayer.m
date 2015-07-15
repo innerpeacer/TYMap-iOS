@@ -12,7 +12,7 @@
 #import "TYMapEnviroment.h"
 #import "Vector2.h"
 
-#import <NephogramData/NephogramData.h>
+#import <MapData/MapData.h>
 
 @interface TYRouteLayer()
 {
@@ -50,7 +50,7 @@
     return linesToReturn;
 }
 
-- (NSArray *)showRemainingRouteResultOnFloor:(int)floor WithLocation:(NPLocalPoint *)location
+- (NSArray *)showRemainingRouteResultOnFloor:(int)floor WithLocation:(TYLocalPoint *)location
 {
     [self removeAllGraphics];
     
@@ -96,7 +96,7 @@
     return linesToReturn;
 }
 
-- (TYRoutePart *)getNearestRoutePartWithLocation:(NPLocalPoint *)location
+- (TYRoutePart *)getNearestRoutePartWithLocation:(TYLocalPoint *)location
 {
     TYRoutePart *result = nil;
     if (_routeResult) {
@@ -119,7 +119,7 @@
     return result;
 }
 
-- (NSArray *)showRemainingLinesForRouteResultOnFloor:(int)floor WithLocation:(NPLocalPoint *)location
+- (NSArray *)showRemainingLinesForRouteResultOnFloor:(int)floor WithLocation:(TYLocalPoint *)location
 {
     NSMutableArray *linesToReturn = [[NSMutableArray alloc] init];
     TYRoutePart *nearestRoutePart = [self getNearestRoutePartWithLocation:location];
@@ -212,21 +212,21 @@
     return cs;
 }
 
-- (void)showStartSymbol:(NPLocalPoint *)sp
+- (void)showStartSymbol:(TYLocalPoint *)sp
 {
     if (sp && sp.floor == self.mapView.currentMapInfo.floorNumber) {
         [self addGraphic:[TYGraphic graphicWithGeometry:[AGSPoint pointWithX:sp.x y:sp.y spatialReference:self.mapView.spatialReference] symbol:_startSymbol attributes:nil]];
     }
 }
 
-- (void)showEndSymbol:(NPLocalPoint *)ep
+- (void)showEndSymbol:(TYLocalPoint *)ep
 {
     if (ep && ep.floor == self.mapView.currentMapInfo.floorNumber) {
         [self addGraphic:[TYGraphic graphicWithGeometry:[AGSPoint pointWithX:ep.x y:ep.y spatialReference:self.mapView.spatialReference] symbol:_endSymbol attributes:nil]];
     }
 }
 
-- (void)showSwitchSymbol:(NPLocalPoint *)sp
+- (void)showSwitchSymbol:(TYLocalPoint *)sp
 {
     if (sp && sp.floor == self.mapView.currentMapInfo.floorNumber) {
         [self addGraphic:[TYGraphic graphicWithGeometry:[AGSPoint pointWithX:sp.x y:sp.y spatialReference:self.mapView.spatialReference] symbol:_switchSymbol attributes:nil]];

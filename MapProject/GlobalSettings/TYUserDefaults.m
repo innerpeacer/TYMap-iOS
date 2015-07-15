@@ -1,17 +1,17 @@
 //
-//  NPUserDefaults.m
+//  TYUserDefaults.m
 //  MapProject
 //
 //  Created by innerpeacer on 15/2/9.
 //  Copyright (c) 2015年 innerpeacer. All rights reserved.
 //
  
-#import "NPUserDefaults.h"
+#import "TYUserDefaults.h"
 
 #define KEY_BUILDING_ID @"buildingID"
 #define KEY_CITY_ID @"cityID"
 
-@implementation NPUserDefaults
+@implementation TYUserDefaults
 
 + (void)setDefaultCity:(NSString *)cityID
 {

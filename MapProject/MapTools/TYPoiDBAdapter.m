@@ -1,16 +1,16 @@
 
 //
-//  NPPoiDBAdapter.m
+//  TYPoiDBAdapter.m
 //  MapProject
 //
 //  Created by innerpeacer on 15/3/11.
 //  Copyright (c) 2015年 innerpeacer. All rights reserved.
 //
 
-#import "NPPoiDBAdapter.h"
+#import "TYPoiDBAdapter.h"
 #import "FMDatabase.h"
 
-@interface NPPoiDBAdapter()
+@interface TYPoiDBAdapter()
 {
     FMDatabase *database;
 }
@@ -32,15 +32,15 @@
 #define FIELD_LABEL_Y @"LABEL_Y"
 #define FIELD_POI_LAYER @"LAYER"
 
-@implementation NPPoiDBAdapter
+@implementation TYPoiDBAdapter
 
-static NPPoiDBAdapter *_sharedDBAdapter;
+static TYPoiDBAdapter *_sharedDBAdapter;
 static NSString *_currentBuildingID;
 
-+ (NPPoiDBAdapter *)sharedDBAdapter:(NSString *)buildingID
++ (TYPoiDBAdapter *)sharedDBAdapter:(NSString *)buildingID
 {
     if (_currentBuildingID == nil || ![_currentBuildingID isEqualToString:buildingID]) {
-        _sharedDBAdapter = [[NPPoiDBAdapter alloc] initWithDBFile:buildingID];
+        _sharedDBAdapter = [[TYPoiDBAdapter alloc] initWithDBFile:buildingID];
         _currentBuildingID = buildingID;
     }
     return _sharedDBAdapter;

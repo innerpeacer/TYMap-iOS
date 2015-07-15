@@ -27,8 +27,8 @@
     TYRouteManager *routeManager;
     
     TYPoint *currentPoint;
-    NPLocalPoint *startLocalPoint;
-    NPLocalPoint *endLocalPoint;
+    TYLocalPoint *startLocalPoint;
+    TYLocalPoint *endLocalPoint;
     
     BOOL isRouting;
     TYRouteResult *routeResult;
@@ -67,12 +67,12 @@
     routeManager = [TYRouteManager routeManagerWithBuilding:self.currentBuilding credential:[TYMapEnvironment defaultCredential] MapInfos:self.allMapInfos];
     routeManager.delegate = self;
     
-//    [self.mapView zoomToEnvelope:[AGSEnvelope envelopeWithXmin:1780 ymin:432.187299 xmax:1944.755560 ymax:658.589997 spatialReference:[NPMapEnvironment defaultSpatialReference]] animated:YES];
-//    endLocalPoint = [NPLocalPoint pointWithX:1779.204079 Y:581.868337 Floor:self.mapView.currentMapInfo.floorNumber];
-//    startLocalPoint = [NPLocalPoint pointWithX:1917 Y:558 Floor:self.mapView.currentMapInfo.floorNumber];
-    
-//    startLocalPoint = [NPLocalPoint pointWithX:-16368295.127012 Y:406.263263 Floor:self.mapView.currentMapInfo.floorNumber];
-//    endLocalPoint = [NPLocalPoint pointWithX:-16368298.841312 Y:417.294456 Floor:self.mapView.currentMapInfo.floorNumber];
+//    [self.mapView zoomToEnvelope:[AGSEnvelope envelopeWithXmin:1780 ymin:432.187299 xmax:1944.755560 ymax:658.589997 spatialReference:[TYMapEnvironment defaultSpatialReference]] animated:YES];
+//    endLocalPoint = [TYLocalPoint pointWithX:1779.204079 Y:581.868337 Floor:self.mapView.currentMapInfo.floorNumber];
+//    startLocalPoint = [TYLocalPoint pointWithX:1917 Y:558 Floor:self.mapView.currentMapInfo.floorNumber];
+//    
+//    startLocalPoint = [TYLocalPoint pointWithX:-16368295.127012 Y:406.263263 Floor:self.mapView.currentMapInfo.floorNumber];
+//    endLocalPoint = [TYLocalPoint pointWithX:-16368298.841312 Y:417.294456 Floor:self.mapView.currentMapInfo.floorNumber];
 
 }
 
@@ -146,7 +146,7 @@
 //    }
 }
 
-- (void)NPMapView:(TYMapView *)mapView didFinishLoadingFloor:(TYMapInfo *)mapInfo
+- (void)TYMapView:(TYMapView *)mapView didFinishLoadingFloor:(TYMapInfo *)mapInfo
 {
     self.routeHintLabel.text = @"";
     
@@ -155,7 +155,7 @@
     }
 }
 
-- (void)NPMapViewDidZoomed:(TYMapView *)mapView
+- (void)TYMapViewDidZoomed:(TYMapView *)mapView
 {
     if (isRouting) {
         [self.mapView showRouteResultOnCurrentFloor];
@@ -173,13 +173,13 @@
 
 int testIndex = 0;
 
-- (void)NPMapView:(TYMapView *)mapView didClickAtPoint:(CGPoint)screen mapPoint:(TYPoint *)mappoint
+- (void)TYMapView:(TYMapView *)mapView didClickAtPoint:(CGPoint)screen mapPoint:(TYPoint *)mappoint
 {
     NSLog(@"(%f, %f) in floor %d", mappoint.x, mappoint.y, self.currentMapInfo.floorNumber);
 //    NSLog(@"Map Scale: %f", self.mapView.mapScale);
     currentPoint = mappoint;
     
-    NPLocalPoint *localPoint = [NPLocalPoint pointWithX:mappoint.x Y:mappoint.y Floor:self.mapView.currentMapInfo.floorNumber];
+    TYLocalPoint *localPoint = [TYLocalPoint pointWithX:mappoint.x Y:mappoint.y Floor:self.mapView.currentMapInfo.floorNumber];
     
     TYSimpleMarkerSymbol *sms = [TYSimpleMarkerSymbol simpleMarkerSymbolWithColor:[UIColor greenColor]];
     sms.size = CGSizeMake(5, 5);
@@ -213,13 +213,13 @@ int testIndex = 0;
 }
 
 - (IBAction)setStartPoint:(id)sender {
-    startLocalPoint = [NPLocalPoint pointWithX:currentPoint.x Y:currentPoint.y Floor:self.mapView.currentMapInfo.floorNumber];
+    startLocalPoint = [TYLocalPoint pointWithX:currentPoint.x Y:currentPoint.y Floor:self.mapView.currentMapInfo.floorNumber];
     [self.mapView showRouteStartSymbolOnCurrentFloor:startLocalPoint];
     
 }
 
 - (IBAction)setEndPoint:(id)sender {
-    endLocalPoint = [NPLocalPoint pointWithX:currentPoint.x Y:currentPoint.y Floor:self.mapView.currentMapInfo.floorNumber];
+    endLocalPoint = [TYLocalPoint pointWithX:currentPoint.x Y:currentPoint.y Floor:self.mapView.currentMapInfo.floorNumber];
     [self.mapView showRouteEndSymbolOnCurrentFloor:endLocalPoint];
 }
 

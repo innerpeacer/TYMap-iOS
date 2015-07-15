@@ -1,5 +1,5 @@
 //
-//  NephogramMapVC.h
+//  MapVC.h
 //  MapProject
 //
 //  Created by innerpeacer on 15/2/9.
@@ -8,6 +8,6 @@
 
 #import "BaseMapVC.h"
 
-@interface NephogramMapVC : BaseMapVC
+@interface MapVC : BaseMapVC
 
 @end

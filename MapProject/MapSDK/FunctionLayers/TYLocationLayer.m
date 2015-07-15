@@ -44,12 +44,12 @@
 //    [self addGraphic:[AGSGraphic graphicWithGeometry:location symbol:locationSymbol attributes:nil]];
 //}
 
-- (void)updateDeviceHeading:(double)deviceHeading initAngle:(double)initAngle mapViewMode:(NPMapViewMode)mode
+- (void)updateDeviceHeading:(double)deviceHeading initAngle:(double)initAngle mapViewMode:(TYMapViewMode)mode
 {
     locationSymbol.angle = deviceHeading + initAngle;
 }
 
-- (void)showLocation:(TYPoint *)location withDeviceHeading:(double)deviceHeading initAngle:(double)initAngle mapViewMode:(NPMapViewMode)mode
+- (void)showLocation:(TYPoint *)location withDeviceHeading:(double)deviceHeading initAngle:(double)initAngle mapViewMode:(TYMapViewMode)mode
 {
     [self removeAllGraphics];
 

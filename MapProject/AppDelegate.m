@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "NPUserDefaults.h"
+#import "TYUserDefaults.h"
 
 #import "TYMapEnviroment.h"
 #import "TYPoi.h"
@@ -37,23 +37,23 @@
 
 - (void)setDefaultPlaceIfNeeded
 {
-    [NPUserDefaults setDefaultCity:@"0021"];
-//    [NPUserDefaults setDefaultBuilding:@"002100001"];
-    [NPUserDefaults setDefaultBuilding:@"002100002"];
-    [NPUserDefaults setDefaultBuilding:@"002100004"];
-//    [NPUserDefaults setDefaultBuilding:@"002100005"];
+    [TYUserDefaults setDefaultCity:@"0021"];
+//    [TYUserDefaults setDefaultBuilding:@"002100001"];
+    [TYUserDefaults setDefaultBuilding:@"002100002"];
+    [TYUserDefaults setDefaultBuilding:@"002100004"];
+//    [TYUserDefaults setDefaultBuilding:@"002100005"];
 
-//    [NPUserDefaults setDefaultBuilding:@"002188888"];
-//    [NPUserDefaults setDefaultBuilding:@"002199999"];
+//    [TYUserDefaults setDefaultBuilding:@"002188888"];
+//    [TYUserDefaults setDefaultBuilding:@"002199999"];
 //
-//    [NPUserDefaults setDefaultCity:@"H852"];
-//    [NPUserDefaults setDefaultBuilding:@"H85200001"];
+//    [TYUserDefaults setDefaultCity:@"H852"];
+//    [TYUserDefaults setDefaultBuilding:@"H85200001"];
 //
-//    [NPUserDefaults setDefaultCity:@"H852"];
-//    [NPUserDefaults setDefaultBuilding:@"H85200001"];
+//    [TYUserDefaults setDefaultCity:@"H852"];
+//    [TYUserDefaults setDefaultBuilding:@"H85200001"];
     
-//        [NPUserDefaults setDefaultCity:@"0755"];
-//        [NPUserDefaults setDefaultBuilding:@"075500001"];
+//        [TYUserDefaults setDefaultCity:@"0755"];
+//        [TYUserDefaults setDefaultBuilding:@"075500001"];
     
 }
 

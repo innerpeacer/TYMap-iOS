@@ -29,13 +29,13 @@
     return self;
 }
 
-- (TYPoint *)routePointFromLocalPoint:(NPLocalPoint *)localPoint
+- (TYPoint *)routePointFromLocalPoint:(TYLocalPoint *)localPoint
 {
     double newX = localPoint.x + baseOffset.x * (localPoint.floor - 1);
     return [TYPoint pointWithX:newX y:localPoint.y spatialReference:[TYMapEnvironment defaultSpatialReference]];
 }
 
-- (NPLocalPoint *)localPointFromRoutePoint:(TYPoint *)routePoint
+- (TYLocalPoint *)localPointFromRoutePoint:(TYPoint *)routePoint
 {
     double xOffset = routePoint.x - baseExtent.xmin;
     
@@ -45,10 +45,10 @@
     double originX = routePoint.x - index * baseOffset.x;
     double originY = routePoint.y;
     int floor = index + 1;
-    return [NPLocalPoint pointWithX:originX Y:originY Floor:floor];
+    return [TYLocalPoint pointWithX:originX Y:originY Floor:floor];
 }
 
-- (BOOL)checkPointValidity:(NPLocalPoint *)point
+- (BOOL)checkPointValidity:(TYLocalPoint *)point
 {
     if (point.x >= baseExtent.xmin && point.x <= baseExtent.xmax &&  point.y >= baseExtent.ymin && point.y <= baseExtent.ymax){
         return YES;

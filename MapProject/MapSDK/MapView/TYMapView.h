@@ -21,7 +21,7 @@
 
 #import "TYDirectionalHint.h"
 
-#import <NephogramData/NephogramData.h>
+#import <MapData/MapData.h>
 
 #import "TYBuilding.h"
 
@@ -29,9 +29,9 @@
     地图模式类型：默认模式和跟随模式
  */
 typedef enum {
-    NPMapViewModeDefault = 0,
-    NPMapViewModeFollowing = 1
-} NPMapViewMode;
+    TYMapViewModeDefault = 0,
+    TYMapViewModeFollowing = 1
+} TYMapViewMode;
 
 @class TYMapView;
 
@@ -50,7 +50,7 @@ typedef enum {
  *  @param screen   点击事件的屏幕坐标
  *  @param mappoint 点击事件的地图坐标
  */
-- (void)NPMapView:(TYMapView *)mapView didClickAtPoint:(CGPoint)screen mapPoint:(TYPoint *)mappoint;
+- (void)TYMapView:(TYMapView *)mapView didClickAtPoint:(CGPoint)screen mapPoint:(TYPoint *)mappoint;
 
 /**
  *  地图POI选中事件回调
@@ -58,7 +58,7 @@ typedef enum {
  *  @param mapView 地图视图
  *  @param array   选中的POI数组:[NPPoi]
  */
-- (void)NPMapView:(TYMapView *)mapView PoiSelected:(NSArray *)array;
+- (void)TYMapView:(TYMapView *)mapView PoiSelected:(NSArray *)array;
 
 
 /**
@@ -67,21 +67,21 @@ typedef enum {
  *  @param mapView 地图视图
  *  @param mapInfo 加载楼层信息
  */
-- (void)NPMapView:(TYMapView *)mapView didFinishLoadingFloor:(TYMapInfo *)mapInfo;
+- (void)TYMapView:(TYMapView *)mapView didFinishLoadingFloor:(TYMapInfo *)mapInfo;
 
 /**
  *  地图放缩事件回调
  *
  *  @param mapView 地图视图
  */
-- (void)NPMapViewDidZoomed:(TYMapView *)mapView;
+- (void)TYMapViewDidZoomed:(TYMapView *)mapView;
 
 /**
  *  地图加载完成事件回调
  *
  *  @param mapView 地图视图
  */
-- (void)NPMapViewDidLoad:(TYMapView *)mapView;
+- (void)TYMapViewDidLoad:(TYMapView *)mapView;
 
 /**
  *  地图弹出框解除完成事件回调
@@ -89,7 +89,7 @@ typedef enum {
  *  @param mapView 地图视图
  *  @param callout 地图弹出框
  */
-- (void)NPMapView:(TYMapView *)mapView calloutDidDismiss:(TYCallout *)callout;
+- (void)TYMapView:(TYMapView *)mapView calloutDidDismiss:(TYCallout *)callout;
 
 /**
  *  地图弹出框即将解除事件回调
@@ -97,7 +97,7 @@ typedef enum {
  *  @param mapView 地图视图
  *  @param callout 地图弹出框
  */
-- (void)NPMapView:(TYMapView *)mapView calloutWillDismiss:(TYCallout *)callout;
+- (void)TYMapView:(TYMapView *)mapView calloutWillDismiss:(TYCallout *)callout;
 
 /**
  *  地图即将为要素显示弹出框事件回调
@@ -109,7 +109,7 @@ typedef enum {
  *
  *  @return 是否显示弹出框
  */
-- (BOOL)NPMapView:(TYMapView *)mapView willShowForGraphic:(TYGraphic *)graphic layer:(TYGraphicsLayer *)layer mapPoint:(TYPoint *)mappoint;
+- (BOOL)TYMapView:(TYMapView *)mapView willShowForGraphic:(TYGraphic *)graphic layer:(TYGraphicsLayer *)layer mapPoint:(TYPoint *)mappoint;
 
 @end
 
@@ -162,7 +162,7 @@ typedef enum {
  *
  *  @param location 定位结果坐标点
  */
-- (void)showLocation:(NPLocalPoint *)location;
+- (void)showLocation:(TYLocalPoint *)location;
 
 /**
  *  在地图上移除定位结果
@@ -181,7 +181,7 @@ typedef enum {
  *
  *  @param mode 目标地图模式，包括默认模式和跟随模式
  */
-- (void)setMapMode:(NPMapViewMode)mode;
+- (void)setMapMode:(TYMapViewMode)mode;
 
 /**
  *  设置导航线的起点符号
@@ -216,14 +216,14 @@ typedef enum {
  *
  *  @param start 导航起点
  */
-- (void)setRouteStart:(NPLocalPoint *)start;
+- (void)setRouteStart:(TYLocalPoint *)start;
 
 /**
  *  设置导航终点
  *
  *  @param end 导航终点
  */
-- (void)setRouteEnd:(NPLocalPoint *)end;
+- (void)setRouteEnd:(TYLocalPoint *)end;
 
 /**
  *  重置导航层，移除显示的结果，并将导航结果清空
@@ -240,21 +240,21 @@ typedef enum {
  *
  *  @param sp 起点位置
  */
-- (void)showRouteStartSymbolOnCurrentFloor:(NPLocalPoint *)sp;
+- (void)showRouteStartSymbolOnCurrentFloor:(TYLocalPoint *)sp;
 
 /**
  *  在地图当前楼层显示终点符号
  *
  *  @param ep 终点位置
  */
-- (void)showRouteEndSymbolOnCurrentFloor:(NPLocalPoint *)ep;
+- (void)showRouteEndSymbolOnCurrentFloor:(TYLocalPoint *)ep;
 
 /**
  *  在地图当前楼层显示切换点符号
  *
  *  @param sp 切换点位置
  */
-- (void)showRouteSwitchSymbolOnCurrentFloor:(NPLocalPoint *)sp;
+- (void)showRouteSwitchSymbolOnCurrentFloor:(TYLocalPoint *)sp;
 
 /**
  *  在地图显示当前楼层的导航路径
@@ -266,7 +266,7 @@ typedef enum {
  *
  *  @param lp 当前位置
  */
-- (void)showRemainingRouteResultOnCurrentFloor:(NPLocalPoint *)lp;
+- (void)showRemainingRouteResultOnCurrentFloor:(TYLocalPoint *)lp;
 
 /**
  *  显示导航提示对应的路径段

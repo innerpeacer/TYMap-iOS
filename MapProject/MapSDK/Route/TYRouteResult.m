@@ -51,7 +51,7 @@
     return self;
 }
 
-- (BOOL)isDeviatingFromRoute:(NPLocalPoint *)point WithThrehold:(double)distance
+- (BOOL)isDeviatingFromRoute:(TYLocalPoint *)point WithThrehold:(double)distance
 {
     BOOL isDeviating = YES;
     
@@ -74,7 +74,7 @@
     return isDeviating;
 }
 
-- (TYRoutePart *)getNearestRoutePart:(NPLocalPoint *)location
+- (TYRoutePart *)getNearestRoutePart:(TYLocalPoint *)location
 {
     TYRoutePart *result = nil;
     
@@ -127,7 +127,7 @@
             AGSPoint *p0 = [line pointOnPath:0 atIndex:i];
             AGSPoint *p1 = [line pointOnPath:0 atIndex:i+1];
             
-            NPLocalPoint *lp = [NPLocalPoint pointWithX:p0.x Y:p0.y Floor:rp.info.floorNumber];
+            TYLocalPoint *lp = [TYLocalPoint pointWithX:p0.x Y:p0.y Floor:rp.info.floorNumber];
             
             TYLandmark *landmark = [landmarkManager searchLandmark:lp Tolerance:10];
             
@@ -144,7 +144,7 @@
     return result;
 }
 
-- (TYDirectionalHint *)getDirectionHintForLocation:(NPLocalPoint *)location FromHints:(NSArray *)directions
+- (TYDirectionalHint *)getDirectionHintForLocation:(TYLocalPoint *)location FromHints:(NSArray *)directions
 {
     AGSMutablePolyline *line = [[AGSMutablePolyline alloc] init];
     [line addPathToPolyline];

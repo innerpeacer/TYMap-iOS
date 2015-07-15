@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		571AC4711B55FED900E9FF7D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 571AC4701B55FED900E9FF7D /* AppDelegate.m */; };
 		57672D071B55FF4A00DAD219 /* CreatingPOIDBAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 57672C911B55FF4A00DAD219 /* CreatingPOIDBAdapter.m */; };
-		57672D081B55FF4A00DAD219 /* NPPoiDBAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 57672C931B55FF4A00DAD219 /* NPPoiDBAdapter.m */; };
+		57672D081B55FF4A00DAD219 /* TYPoiDBAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 57672C931B55FF4A00DAD219 /* TYPoiDBAdapter.m */; };
 		57672D511B55FF8000DAD219 /* BaseControllerTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 57672D401B55FF8000DAD219 /* BaseControllerTableVC.m */; };
 		57672D521B55FF8000DAD219 /* BaseLogVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 57672D421B55FF8000DAD219 /* BaseLogVC.m */; };
 		57672D531B55FF8000DAD219 /* BaseMapVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 57672D441B55FF8000DAD219 /* BaseMapVC.m */; };
@@ -18,8 +18,8 @@
 		57672D561B55FF8000DAD219 /* MapCalloutVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 57672D4A1B55FF8000DAD219 /* MapCalloutVC.m */; };
 		57672D571B55FF8000DAD219 /* MapRouteVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 57672D4C1B55FF8000DAD219 /* MapRouteVC.m */; };
 		57672D581B55FF8000DAD219 /* MapTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 57672D4E1B55FF8000DAD219 /* MapTableVC.m */; };
-		57672D591B55FF8000DAD219 /* NephogramMapVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 57672D501B55FF8000DAD219 /* NephogramMapVC.m */; };
-		57672D5D1B55FF9900DAD219 /* NPUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 57672D5C1B55FF9900DAD219 /* NPUserDefaults.m */; };
+		57672D591B55FF8000DAD219 /* MapVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 57672D501B55FF8000DAD219 /* MapVC.m */; };
+		57672D5D1B55FF9900DAD219 /* TYUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 57672D5C1B55FF9900DAD219 /* TYUserDefaults.m */; };
 		57672E2F1B55FFF900DAD219 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 57672D611B55FFF900DAD219 /* FMDatabase.m */; };
 		57672E301B55FFF900DAD219 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 57672D631B55FFF900DAD219 /* FMDatabaseAdditions.m */; };
 		57672E311B55FFF900DAD219 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 57672D651B55FFF900DAD219 /* FMDatabasePool.m */; };
@@ -34,7 +34,6 @@
 		57672EEF1B56002900DAD219 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57672EEB1B56002900DAD219 /* Main.storyboard */; };
 		57672EF01B56002900DAD219 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57672EED1B56002900DAD219 /* Images.xcassets */; };
 		57672EF51B56006700DAD219 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 57672EF21B56006700DAD219 /* main.m */; };
-		57672EF61B56006800DAD219 /* NephogramData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57672EF31B56006700DAD219 /* NephogramData.framework */; };
 		57672EF91B56009700DAD219 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 57672EF81B56009700DAD219 /* libsqlite3.0.dylib */; };
 		57672EFD1B5600B900DAD219 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 57672EFC1B5600B900DAD219 /* Default-568h@2x.png */; };
 		57672EFF1B56046300DAD219 /* MapResource in Resources */ = {isa = PBXBuildFile; fileRef = 57672EFE1B56046300DAD219 /* MapResource */; };
@@ -91,6 +90,7 @@
 		5794C0F31B560558002DCE9F /* TYFloorLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5794C0BC1B560558002DCE9F /* TYFloorLayer.m */; };
 		5794C0F41B560558002DCE9F /* TYRoomLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5794C0BE1B560558002DCE9F /* TYRoomLayer.m */; };
 		5794C0F51B560558002DCE9F /* TYStructureGroupLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5794C0C01B560558002DCE9F /* TYStructureGroupLayer.m */; };
+		5794C0F71B5611B1002DCE9F /* MapData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5794C0F61B5611B1002DCE9F /* MapData.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -98,8 +98,8 @@
 		571AC4701B55FED900E9FF7D /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		57672C901B55FF4A00DAD219 /* CreatingPOIDBAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreatingPOIDBAdapter.h; sourceTree = "<group>"; };
 		57672C911B55FF4A00DAD219 /* CreatingPOIDBAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreatingPOIDBAdapter.m; sourceTree = "<group>"; };
-		57672C921B55FF4A00DAD219 /* NPPoiDBAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPPoiDBAdapter.h; sourceTree = "<group>"; };
-		57672C931B55FF4A00DAD219 /* NPPoiDBAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPPoiDBAdapter.m; sourceTree = "<group>"; };
+		57672C921B55FF4A00DAD219 /* TYPoiDBAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYPoiDBAdapter.h; sourceTree = "<group>"; };
+		57672C931B55FF4A00DAD219 /* TYPoiDBAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYPoiDBAdapter.m; sourceTree = "<group>"; };
 		57672D3F1B55FF8000DAD219 /* BaseControllerTableVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseControllerTableVC.h; sourceTree = "<group>"; };
 		57672D401B55FF8000DAD219 /* BaseControllerTableVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseControllerTableVC.m; sourceTree = "<group>"; };
 		57672D411B55FF8000DAD219 /* BaseLogVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseLogVC.h; sourceTree = "<group>"; };
@@ -116,10 +116,10 @@
 		57672D4C1B55FF8000DAD219 /* MapRouteVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapRouteVC.m; sourceTree = "<group>"; };
 		57672D4D1B55FF8000DAD219 /* MapTableVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapTableVC.h; sourceTree = "<group>"; };
 		57672D4E1B55FF8000DAD219 /* MapTableVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapTableVC.m; sourceTree = "<group>"; };
-		57672D4F1B55FF8000DAD219 /* NephogramMapVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NephogramMapVC.h; sourceTree = "<group>"; };
-		57672D501B55FF8000DAD219 /* NephogramMapVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NephogramMapVC.m; sourceTree = "<group>"; };
-		57672D5B1B55FF9900DAD219 /* NPUserDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPUserDefaults.h; sourceTree = "<group>"; };
-		57672D5C1B55FF9900DAD219 /* NPUserDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPUserDefaults.m; sourceTree = "<group>"; };
+		57672D4F1B55FF8000DAD219 /* MapVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapVC.h; sourceTree = "<group>"; };
+		57672D501B55FF8000DAD219 /* MapVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapVC.m; sourceTree = "<group>"; };
+		57672D5B1B55FF9900DAD219 /* TYUserDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYUserDefaults.h; sourceTree = "<group>"; };
+		57672D5C1B55FF9900DAD219 /* TYUserDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYUserDefaults.m; sourceTree = "<group>"; };
 		57672D601B55FFF900DAD219 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
 		57672D611B55FFF900DAD219 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
 		57672D621B55FFF900DAD219 /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
@@ -140,7 +140,6 @@
 		57672EED1B56002900DAD219 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		57672EF11B56006700DAD219 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		57672EF21B56006700DAD219 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		57672EF31B56006700DAD219 /* NephogramData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = NephogramData.framework; sourceTree = "<group>"; };
 		57672EF81B56009700DAD219 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		57672EFC1B5600B900DAD219 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		57672EFE1B56046300DAD219 /* MapResource */ = {isa = PBXFileReference; lastKnownFileType = folder; path = MapResource; sourceTree = "<group>"; };
@@ -251,6 +250,8 @@
 		5794C0BE1B560558002DCE9F /* TYRoomLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYRoomLayer.m; sourceTree = "<group>"; };
 		5794C0BF1B560558002DCE9F /* TYStructureGroupLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYStructureGroupLayer.h; sourceTree = "<group>"; };
 		5794C0C01B560558002DCE9F /* TYStructureGroupLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYStructureGroupLayer.m; sourceTree = "<group>"; };
+		5794C0F61B5611B1002DCE9F /* MapData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MapData.framework; sourceTree = "<group>"; };
+		5794C0FA1B5613CC002DCE9F /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		57F06C1D1A87BC7500B9511F /* MapProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MapProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -260,7 +261,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				57672EF91B56009700DAD219 /* libsqlite3.0.dylib in Frameworks */,
-				57672EF61B56006800DAD219 /* NephogramData.framework in Frameworks */,
+				5794C0F71B5611B1002DCE9F /* MapData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,8 +291,8 @@
 			children = (
 				57672C901B55FF4A00DAD219 /* CreatingPOIDBAdapter.h */,
 				57672C911B55FF4A00DAD219 /* CreatingPOIDBAdapter.m */,
-				57672C921B55FF4A00DAD219 /* NPPoiDBAdapter.h */,
-				57672C931B55FF4A00DAD219 /* NPPoiDBAdapter.m */,
+				57672C921B55FF4A00DAD219 /* TYPoiDBAdapter.h */,
+				57672C931B55FF4A00DAD219 /* TYPoiDBAdapter.m */,
 			);
 			path = MapTools;
 			sourceTree = "<group>";
@@ -315,8 +316,8 @@
 				57672D4C1B55FF8000DAD219 /* MapRouteVC.m */,
 				57672D4D1B55FF8000DAD219 /* MapTableVC.h */,
 				57672D4E1B55FF8000DAD219 /* MapTableVC.m */,
-				57672D4F1B55FF8000DAD219 /* NephogramMapVC.h */,
-				57672D501B55FF8000DAD219 /* NephogramMapVC.m */,
+				57672D4F1B55FF8000DAD219 /* MapVC.h */,
+				57672D501B55FF8000DAD219 /* MapVC.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -324,8 +325,8 @@
 		57672D5A1B55FF9800DAD219 /* GlobalSettings */ = {
 			isa = PBXGroup;
 			children = (
-				57672D5B1B55FF9900DAD219 /* NPUserDefaults.h */,
-				57672D5C1B55FF9900DAD219 /* NPUserDefaults.m */,
+				57672D5B1B55FF9900DAD219 /* TYUserDefaults.h */,
+				57672D5C1B55FF9900DAD219 /* TYUserDefaults.m */,
 			);
 			path = GlobalSettings;
 			sourceTree = "<group>";
@@ -396,11 +397,12 @@
 		57672EF71B56006E00DAD219 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				5794C0F61B5611B1002DCE9F /* MapData.framework */,
 				57672EFC1B5600B900DAD219 /* Default-568h@2x.png */,
 				57672EF81B56009700DAD219 /* libsqlite3.0.dylib */,
 				57672EF11B56006700DAD219 /* Info.plist */,
 				57672EF21B56006700DAD219 /* main.m */,
-				57672EF31B56006700DAD219 /* NephogramData.framework */,
+				5794C0FA1B5613CC002DCE9F /* PrefixHeader.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -672,7 +674,7 @@
 				5794C0E11B560558002DCE9F /* TYBuilding.m in Sources */,
 				5794C0F31B560558002DCE9F /* TYFloorLayer.m in Sources */,
 				5794C0C41B560558002DCE9F /* TYGeometry.m in Sources */,
-				57672D5D1B55FF9900DAD219 /* NPUserDefaults.m in Sources */,
+				57672D5D1B55FF9900DAD219 /* TYUserDefaults.m in Sources */,
 				57672D541B55FF8000DAD219 /* CreatePOIDatabaseVC.m in Sources */,
 				5794C0CD1B560558002DCE9F /* TYPolyline.m in Sources */,
 				5794C0C11B560558002DCE9F /* TYCallout.m in Sources */,
@@ -691,7 +693,7 @@
 				57672E331B55FFF900DAD219 /* FMResultSet.m in Sources */,
 				5794C0C61B560558002DCE9F /* TYGraphic.m in Sources */,
 				5794C0ED1B560558002DCE9F /* TYLandmarkManager.m in Sources */,
-				57672D081B55FF4A00DAD219 /* NPPoiDBAdapter.m in Sources */,
+				57672D081B55FF4A00DAD219 /* TYPoiDBAdapter.m in Sources */,
 				57672D571B55FF8000DAD219 /* MapRouteVC.m in Sources */,
 				5794C0F11B560558002DCE9F /* TYRouteResult.m in Sources */,
 				5794C0EF1B560558002DCE9F /* TYRoutePart.m in Sources */,
@@ -714,7 +716,7 @@
 				5794C0E31B560558002DCE9F /* TYMapEnviroment.m in Sources */,
 				5794C0DC1B560558002DCE9F /* TYLabelGroupLayer.m in Sources */,
 				5794C0EC1B560558002DCE9F /* TYLandmark.m in Sources */,
-				57672D591B55FF8000DAD219 /* NephogramMapVC.m in Sources */,
+				57672D591B55FF8000DAD219 /* MapVC.m in Sources */,
 				5794C0CB1B560558002DCE9F /* TYPoint.m in Sources */,
 				57672D551B55FF8000DAD219 /* CustomCalloutVC.m in Sources */,
 				5794C0C21B560558002DCE9F /* TYCredential.m in Sources */,
@@ -853,6 +855,7 @@
 					"$(HOME)/Library/SDKs/ArcGIS/iOS/",
 					"$(PROJECT_DIR)/MapProject",
 				);
+				GCC_PREFIX_HEADER = /Users/innerpeacer/wsForIOS/TYMap/MapProject/MapProject/PrefixHeader.pch;
 				INFOPLIST_FILE = MapProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -876,6 +879,7 @@
 					"$(HOME)/Library/SDKs/ArcGIS/iOS/",
 					"$(PROJECT_DIR)/MapProject",
 				);
+				GCC_PREFIX_HEADER = /Users/innerpeacer/wsForIOS/TYMap/MapProject/MapProject/PrefixHeader.pch;
 				INFOPLIST_FILE = MapProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (

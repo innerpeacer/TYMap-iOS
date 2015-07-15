@@ -18,7 +18,7 @@
     self.title = @"云图地图 Demo";
     
     [self.objects addObject:@"云图地图 Demo"];
-    [self.controllerDict setObject:@"nephogramMapController" forKey:@"云图地图 Demo"];
+    [self.controllerDict setObject:@"mapController" forKey:@"云图地图 Demo"];
     
     [self.objects addObject:@"地图导航 Demo"];
     [self.controllerDict setObject:@"mapRouteController" forKey:@"地图导航 Demo"];

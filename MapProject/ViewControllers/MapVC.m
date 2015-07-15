@@ -1,17 +1,17 @@
 //
-//  NephogramMapVC.m
+//  MapVC.m
 //  MapProject
 //
 //  Created by innerpeacer on 15/2/9.
 //  Copyright (c) 2015年 innerpeacer. All rights reserved.
 //
 
-#import "NephogramMapVC.h"
+#import "MapVC.h"
 #import "TYAreaAnalysis.h"
 #import "TYMapEnviroment.h"
 #import "TYBrand.h"
 
-@interface NephogramMapVC()
+@interface MapVC()
 {
     TYAreaAnalysis *areaAnalysis;
     
@@ -27,7 +27,7 @@
 
 @end
 
-@implementation NephogramMapVC
+@implementation MapVC
 
 - (void)viewDidLoad
 {
@@ -39,7 +39,7 @@
 int count = 0;
 int tIndex = 0;
 
-- (void)NPMapView:(TYMapView *)mapView didClickAtPoint:(CGPoint)screen mapPoint:(AGSPoint *)mappoint
+- (void)TYMapView:(TYMapView *)mapView didClickAtPoint:(CGPoint)screen mapPoint:(AGSPoint *)mappoint
 {
     NSLog(@"didClickAtPoint: %f, %f", mappoint.x, mappoint.y);
     testLocation = mappoint;

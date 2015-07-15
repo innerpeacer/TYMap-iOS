@@ -11,7 +11,7 @@
 #import "TYMapEnviroment.h"
 #import "TYRouteResult.h"
 
-#import <NephogramData/NephogramData.h>
+#import <MapData/MapData.h>
 #import "TYPoint.h"
 
 @class TYRouteManager;
@@ -92,7 +92,7 @@
  *  @param start 路径规划起点
  *  @param end   路径规划终点
  */
-- (void)requestRouteWithStart:(NPLocalPoint *)start End:(NPLocalPoint *)end;
+- (void)requestRouteWithStart:(TYLocalPoint *)start End:(TYLocalPoint *)end;
 
 
 @end

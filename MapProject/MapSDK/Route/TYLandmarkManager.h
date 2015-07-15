@@ -16,6 +16,6 @@
 
 - (void)loadLandmark:(TYMapInfo *)info;
 
-- (TYLandmark *)searchLandmark:(NPLocalPoint *)location Tolerance:(double)tolerance;
+- (TYLandmark *)searchLandmark:(TYLocalPoint *)location Tolerance:(double)tolerance;
 
 @end
