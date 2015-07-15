@@ -1,14 +1,14 @@
 //
-//  NPLocationLayer.m
+//  TYLocationLayer.m
 //  MapProject
 //
 //  Created by innerpeacer on 15/4/2.
 //  Copyright (c) 2015年 innerpeacer. All rights reserved.
 //
 
-#import "NPLocationLayer.h"
+#import "TYLocationLayer.h"
 
-@interface NPLocationLayer()
+@interface TYLocationLayer()
 {
     TYMarkerSymbol *locationSymbol;
 }
@@ -16,7 +16,7 @@
 @end
 
 
-@implementation NPLocationLayer
+@implementation TYLocationLayer
 
 - (id)initWithSpatialReference:(AGSSpatialReference *)sr
 {

@@ -1,21 +1,21 @@
 //
-//  NPTextLabel.m
+//  TYTextLabel.m
 //  MapProject
 //
 //  Created by innerpeacer on 15/4/14.
 //  Copyright (c) 2015年 innerpeacer. All rights reserved.
 //
 
-#import "NPTextLabel.h"
+#import "TYTextLabel.h"
 
-@interface NPTextLabel()
+@interface TYTextLabel()
 {
     
 }
 
 @end
 
-@implementation NPTextLabel
+@implementation TYTextLabel
 
 static UIFont *font = nil;
 
@@ -44,7 +44,7 @@ static AGSSimpleMarkerSymbol *pointSymbol = nil;
         _position = pos;
         
         _text = name;
-        _labelSize = [name sizeWithAttributes:@{NSFontAttributeName : [NPTextLabel getDefaultFont]}];
+        _labelSize = [name sizeWithAttributes:@{NSFontAttributeName : [TYTextLabel getDefaultFont]}];
     }
     return self;
 }

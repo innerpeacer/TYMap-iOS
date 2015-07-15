@@ -1,5 +1,5 @@
 //
-//  NPAnimatedRouteArrowLayer.h
+//  TYAnimatedRouteArrowLayer.h
 //  MapProject
 //
 //  Created by innerpeacer on 15/5/25.
@@ -11,9 +11,9 @@
 #import "TYPictureMarkerSymbol.h"
 #import "TYSpatialReference.h"
 
-@interface NPAnimatedRouteArrowLayer : AGSGraphicsLayer
+@interface TYAnimatedRouteArrowLayer : AGSGraphicsLayer
 
-+ (NPAnimatedRouteArrowLayer *)animatedRouteArrowLayerWithSpatialReference:(TYSpatialReference *)sr;
++ (TYAnimatedRouteArrowLayer *)animatedRouteArrowLayerWithSpatialReference:(TYSpatialReference *)sr;
 
 - (void)showRouteArrow:(NSArray *)array;
 

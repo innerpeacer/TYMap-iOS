@@ -1,33 +1,33 @@
 //
-//  NPLabelLayer.m
+//  TYLabelLayer.m
 //  MapProject
 //
 //  Created by innerpeacer on 15/2/9.
 //  Copyright (c) 2015年 innerpeacer. All rights reserved.
 //
 
-#import "NPTextLabelLayer.h"
+#import "TYTextLabelLayer.h"
 #import "NPMapFileManager.h"
-#import "NPTextLabel.h"
+#import "TYTextLabel.h"
 #import "NPMapEnviroment.h"
 #import "NPMapType.h"
-#import "NPLabelBorderCalculator.h"
-#import "NPLabelGroupLayer.h"
+#import "TYLabelBorderCalculator.h"
+#import "TYLabelGroupLayer.h"
 #import "NPMapType.h"
 #import "NPBrand.h"
 //#import "NPMapView.h"
 
-@interface NPTextLabelLayer()
+@interface TYTextLabelLayer()
 {
     NSMutableArray *allTextLabels;
 }
 @end
 
-@implementation NPTextLabelLayer
+@implementation TYTextLabelLayer
 
-+ (NPTextLabelLayer *)textLabelLayerWithSpatialReference:(AGSSpatialReference *)sr
++ (TYTextLabelLayer *)textLabelLayerWithSpatialReference:(AGSSpatialReference *)sr
 {
-    return [[NPTextLabelLayer alloc] initTextLabelLayerWithSpatialReference:sr];
+    return [[TYTextLabelLayer alloc] initTextLabelLayerWithSpatialReference:sr];
 }
 
 - (id)initTextLabelLayerWithSpatialReference:(AGSSpatialReference *)sr
@@ -47,13 +47,13 @@
 
 - (void)calculateLabelBorders:(NSMutableArray *)array
 {
-    for (NPTextLabel *tl in allTextLabels) {
+    for (TYTextLabel *tl in allTextLabels) {
         CGPoint screenPoint = [self.groupLayer.mapView toScreenPoint:tl.position];
-        NPLabelBorder *border = [NPLabelBorderCalculator getTextLabelBorder:tl Point:screenPoint];
+        TYLabelBorder *border = [TYLabelBorderCalculator getTextLabelBorder:tl Point:screenPoint];
         
         BOOL isOverlapping = NO;
-        for (NPLabelBorder *visiableBorder in array) {
-            if ([NPLabelBorder CheckIntersect:border WithBorder:visiableBorder]) {
+        for (TYLabelBorder *visiableBorder in array) {
+            if ([TYLabelBorder CheckIntersect:border WithBorder:visiableBorder]) {
                 isOverlapping = YES;
                 break;
             }
@@ -71,7 +71,7 @@
 
 - (void)updateLabelState
 {
-    for (NPTextLabel *tl in allTextLabels) {
+    for (TYTextLabel *tl in allTextLabels) {
         if (tl.isHidden) {
             tl.textGraphic.symbol = nil;
         } else {
@@ -130,7 +130,7 @@
             double x = ((AGSPoint *)graphic.geometry).x;
             double y = ((AGSPoint *)graphic.geometry).y;
             TYPoint *position = (TYPoint *)[AGSPoint pointWithX:x y:y spatialReference:sr];
-            NPTextLabel *textLabel = [[NPTextLabel alloc] initWithName:name Position:position];
+            TYTextLabel *textLabel = [[TYTextLabel alloc] initWithName:name Position:position];
 
             NSString *poiID = [graphic attributeForKey:GRAPHIC_ATTRIBUTE_POI_ID];
             if ([self.brandDict.allKeys containsObject:poiID]) {

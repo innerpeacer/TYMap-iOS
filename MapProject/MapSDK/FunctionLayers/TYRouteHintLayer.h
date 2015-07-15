@@ -1,5 +1,5 @@
 //
-//  NPRouteHintLayer.h
+//  TYRouteHintLayer.h
 //  MapProject
 //
 //  Created by innerpeacer on 15/5/6.
@@ -10,9 +10,9 @@
 
 #import "TYSpatialReference.h"
 
-@interface NPRouteHintLayer : AGSGraphicsLayer
+@interface TYRouteHintLayer : AGSGraphicsLayer
 
-+ (NPRouteHintLayer *)routeHintLayerWithSpatialReference:(TYSpatialReference *)sr;
++ (TYRouteHintLayer *)routeHintLayerWithSpatialReference:(TYSpatialReference *)sr;
 
 - (void)showRouteHint:(AGSPolyline *)line;
 

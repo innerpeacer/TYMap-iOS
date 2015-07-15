@@ -1,27 +1,27 @@
 //
-//  NPRouteArrowLayer.m
+//  TYRouteArrowLayer.m
 //  MapProject
 //
 //  Created by innerpeacer on 15/5/6.
 //  Copyright (c) 2015年 innerpeacer. All rights reserved.
 //
 
-#import "NPRouteArrowLayer.h"
+#import "TYRouteArrowLayer.h"
 #import "Vector2.h"
 #import "NPMapEnviroment.h"
 
-@interface NPRouteArrowLayer()
+@interface TYRouteArrowLayer()
 {
 
 }
 
 @end
 
-@implementation NPRouteArrowLayer
+@implementation TYRouteArrowLayer
 
-+ (NPRouteArrowLayer *)routeArrowLayerWithSpatialReference:(TYSpatialReference *)sr
++ (TYRouteArrowLayer *)routeArrowLayerWithSpatialReference:(TYSpatialReference *)sr
 {
-    return [[NPRouteArrowLayer alloc] initWithSpatialReference:sr];
+    return [[TYRouteArrowLayer alloc] initWithSpatialReference:sr];
 }
 
 - (id)initRouteArrowLayerWithSpatialReference:(TYSpatialReference *)sr

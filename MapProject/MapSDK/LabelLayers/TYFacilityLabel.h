@@ -1,5 +1,5 @@
 //
-//  NPFacilityLabel.h
+//  TYFacilityLabel.h
 //  MapProject
 //
 //  Created by innerpeacer on 15/4/14.
@@ -9,7 +9,7 @@
 #import <ArcGIS/ArcGIS.h>
 #import "TYPoint.h"
 
-@interface NPFacilityLabel : NSObject
+@interface TYFacilityLabel : NSObject
 
 @property (nonatomic, strong) TYPoint *position;
 @property (nonatomic, readonly) int categoryID;

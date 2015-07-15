@@ -9,7 +9,7 @@
 #import "MapRouteVC.h"
 
 #import "NPRouteManager.h"
-#import "NPRouteLayer.h"
+#import "TYRouteLayer.h"
 #import "NPMapEnviroment.h"
 #import "NPRoutePointConverter.h"
 #import "TYGraphicsLayer.h"

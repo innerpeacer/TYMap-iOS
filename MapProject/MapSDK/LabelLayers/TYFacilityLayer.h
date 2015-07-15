@@ -1,5 +1,5 @@
 //
-//  NPFacilityLayer.h
+//  TYFacilityLayer.h
 //  MapProject
 //
 //  Created by innerpeacer on 15/2/9.
@@ -12,13 +12,13 @@
 #import "NPPoi.h"
 
 
-@class NPLabelGroupLayer;
+@class TYLabelGroupLayer;
 
-@interface NPFacilityLayer : AGSGraphicsLayer
+@interface TYFacilityLayer : AGSGraphicsLayer
 
-@property (nonatomic, weak) NPLabelGroupLayer *groupLayer;
+@property (nonatomic, weak) TYLabelGroupLayer *groupLayer;
 
-+ (NPFacilityLayer *)facilityLayerWithRenderingScheme:(NPRenderingScheme *)aRenderingScheme SpatialReference:(AGSSpatialReference *)sr;
++ (TYFacilityLayer *)facilityLayerWithRenderingScheme:(NPRenderingScheme *)aRenderingScheme SpatialReference:(AGSSpatialReference *)sr;
 
 - (void)loadContentsWithInfo:(NPMapInfo *)info;
 

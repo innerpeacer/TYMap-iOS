@@ -1,5 +1,5 @@
 //
-//  NPLocationLayer.h
+//  TYLocationLayer.h
 //  MapProject
 //
 //  Created by innerpeacer on 15/4/2.
@@ -11,7 +11,7 @@
 #import "TYPoint.h"
 #import "NPMapView.h"
 
-@interface NPLocationLayer : AGSGraphicsLayer
+@interface TYLocationLayer : AGSGraphicsLayer
 
 - (void)setLocationSymbol:(TYMarkerSymbol *)symbol;
 

@@ -1,5 +1,5 @@
 //
-//  NPTextLabel.h
+//  TYTextLabel.h
 //  MapProject
 //
 //  Created by innerpeacer on 15/4/14.
@@ -10,7 +10,7 @@
 #import "TYPoint.h"
 #import <ArcGIS/ArcGIS.h>
 
-@interface NPTextLabel : NSObject
+@interface TYTextLabel : NSObject
 
 @property (nonatomic, strong) TYPoint *position;
 

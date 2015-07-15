@@ -1,16 +1,16 @@
 //
-//  NPAnimatedRouteArrowLayer.m
+//  TYAnimatedRouteArrowLayer.m
 //  MapProject
 //
 //  Created by innerpeacer on 15/5/25.
 //  Copyright (c) 2015年 innerpeacer. All rights reserved.
 //
 
-#import "NPAnimatedRouteArrowLayer.h"
+#import "TYAnimatedRouteArrowLayer.h"
 #import "NPMapEnviroment.h"
 #import "Vector2.h"
 
-@interface NPAnimatedRouteArrowLayer()
+@interface TYAnimatedRouteArrowLayer()
 {
     NSTimer *timer;
     double currentOffset;
@@ -21,11 +21,11 @@
 
 @end
 
-@implementation NPAnimatedRouteArrowLayer
+@implementation TYAnimatedRouteArrowLayer
 
-+ (NPAnimatedRouteArrowLayer *)animatedRouteArrowLayerWithSpatialReference:(TYSpatialReference *)sr
++ (TYAnimatedRouteArrowLayer *)animatedRouteArrowLayerWithSpatialReference:(TYSpatialReference *)sr
 {
-    return [[NPAnimatedRouteArrowLayer alloc] initWithSpatialReference:sr];
+    return [[TYAnimatedRouteArrowLayer alloc] initWithSpatialReference:sr];
 }
 
 - (id)initAnimatedRouteArrowWithSpatialReference:(TYSpatialReference *)sr

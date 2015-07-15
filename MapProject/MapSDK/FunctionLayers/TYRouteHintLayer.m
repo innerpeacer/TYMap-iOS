@@ -1,27 +1,27 @@
 //
-//  NPRouteHintLayer.m
+//  TYRouteHintLayer.m
 //  MapProject
 //
 //  Created by innerpeacer on 15/5/6.
 //  Copyright (c) 2015年 innerpeacer. All rights reserved.
 //
 
-#import "NPRouteHintLayer.h"
+#import "TYRouteHintLayer.h"
 #import "NPMapEnviroment.h"
 #import "Vector2.h"
 
-@interface NPRouteHintLayer()
+@interface TYRouteHintLayer()
 {
     AGSSymbol *routeHintSymbol;
 }
 
 @end
 
-@implementation NPRouteHintLayer
+@implementation TYRouteHintLayer
 
-+ (NPRouteHintLayer *)routeHintLayerWithSpatialReference:(TYSpatialReference *)sr
++ (TYRouteHintLayer *)routeHintLayerWithSpatialReference:(TYSpatialReference *)sr
 {
-    return [[NPRouteHintLayer alloc] initRouteHintLayerWithSpatialReference:sr];
+    return [[TYRouteHintLayer alloc] initRouteHintLayerWithSpatialReference:sr];
 }
 
 - (id)initRouteHintLayerWithSpatialReference:(TYSpatialReference *)sr

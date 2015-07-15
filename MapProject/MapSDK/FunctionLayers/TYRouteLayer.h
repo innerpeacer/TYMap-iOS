@@ -1,5 +1,5 @@
 //
-//  NPRouteLayer.h
+//  TYRouteLayer.h
 //  MapProject
 //
 //  Created by innerpeacer on 15/2/9.
@@ -19,7 +19,7 @@
 /**
  *  路径导航层，用于显示导航路径
  */
-@interface NPRouteLayer : AGSGraphicsLayer
+@interface TYRouteLayer : AGSGraphicsLayer
 
 @property (nonatomic, weak) NPMapView *mapView;
 
@@ -39,7 +39,7 @@
  *
  *  @return 路径导航层
  */
-+ (NPRouteLayer *)routeLayerWithSpatialReference:(TYSpatialReference *)sr;
++ (TYRouteLayer *)routeLayerWithSpatialReference:(TYSpatialReference *)sr;
 
 - (NSArray *)showRouteResultOnFloor:(int)floor;
 

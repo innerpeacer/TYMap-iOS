@@ -1,5 +1,5 @@
 //
-//  NPLabelLayer.h
+//  TYLabelLayer.h
 //  MapProject
 //
 //  Created by innerpeacer on 15/2/9.
@@ -9,15 +9,15 @@
 #import <ArcGIS/ArcGIS.h>
 #import "NPMapInfo.h"
 
-@class NPLabelGroupLayer;
+@class TYLabelGroupLayer;
 
-@interface NPTextLabelLayer : AGSGraphicsLayer
+@interface TYTextLabelLayer : AGSGraphicsLayer
 
-@property (nonatomic, weak) NPLabelGroupLayer *groupLayer;
+@property (nonatomic, weak) TYLabelGroupLayer *groupLayer;
 
 @property (nonatomic, strong) NSDictionary *brandDict;
 
-+ (NPTextLabelLayer *)textLabelLayerWithSpatialReference:(AGSSpatialReference *)sr;
++ (TYTextLabelLayer *)textLabelLayerWithSpatialReference:(AGSSpatialReference *)sr;
 
 - (void)loadContentsWithInfo:(NPMapInfo *)info;
 

@@ -1,25 +1,25 @@
 //
-//  NPLabelGroupLayer.m
+//  TYLabelGroupLayer.m
 //  MapProject
 //
 //  Created by innerpeacer on 15/4/14.
 //  Copyright (c) 2015年 innerpeacer. All rights reserved.
 //
 
-#import "NPLabelGroupLayer.h"
+#import "TYLabelGroupLayer.h"
 
-@interface NPLabelGroupLayer()
+@interface TYLabelGroupLayer()
 {
     NSMutableArray *visiableBorders;
 }
 
 @end
 
-@implementation NPLabelGroupLayer
+@implementation TYLabelGroupLayer
 
-+ (NPLabelGroupLayer *)labelGroupLayerWithRenderingScheme:(NPRenderingScheme *)aRenderingScheme SpatialReference:(AGSSpatialReference *)sr
++ (TYLabelGroupLayer *)labelGroupLayerWithRenderingScheme:(NPRenderingScheme *)aRenderingScheme SpatialReference:(AGSSpatialReference *)sr
 {
-    return [[NPLabelGroupLayer alloc] initWithRenderingScheme:aRenderingScheme SpatialReference:sr];
+    return [[TYLabelGroupLayer alloc] initWithRenderingScheme:aRenderingScheme SpatialReference:sr];
 }
 
 - (id)initWithRenderingScheme:(NPRenderingScheme *)aRenderingScheme SpatialReference:(AGSSpatialReference *)sr
@@ -28,11 +28,11 @@
     if (self) {
         visiableBorders = [[NSMutableArray alloc] init];
         
-        _labelLayer = [NPTextLabelLayer textLabelLayerWithSpatialReference:sr];
+        _labelLayer = [TYTextLabelLayer textLabelLayerWithSpatialReference:sr];
         _labelLayer.allowHitTest = NO;
         _labelLayer.groupLayer = self;
         
-        _facilityLayer = [NPFacilityLayer facilityLayerWithRenderingScheme:aRenderingScheme SpatialReference:sr];
+        _facilityLayer = [TYFacilityLayer facilityLayerWithRenderingScheme:aRenderingScheme SpatialReference:sr];
         _facilityLayer.selectionColor = [UIColor cyanColor];
         _facilityLayer.groupLayer = self;
     }

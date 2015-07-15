@@ -1,5 +1,5 @@
 //
-//  NPLabelBorderCalculator.h
+//  TYLabelBorderCalculator.h
 //  MapProject
 //
 //  Created by innerpeacer on 15/4/14.
@@ -7,17 +7,17 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "NPLabelBorder.h"
+#import "TYLabelBorder.h"
 #import "TYPoint.h"
-#import "NPTextLabel.h"
+#import "TYTextLabel.h"
 #import "NPMapView.h"
 
-@interface NPLabelBorderCalculator : NSObject
+@interface TYLabelBorderCalculator : NSObject
 
 + (AGSPolygon *)polygonFromCGRect:(CGRect)rect MapView:(NPMapView *)mapView;
 
 
-+ (NPLabelBorder *)getFacilityLabelBorder:(CGPoint)screenPoint;
++ (TYLabelBorder *)getFacilityLabelBorder:(CGPoint)screenPoint;
 
-+ (NPLabelBorder *)getTextLabelBorder:(NPTextLabel *)textLabel Point:(CGPoint)screenPoint;
++ (TYLabelBorder *)getTextLabelBorder:(TYTextLabel *)textLabel Point:(CGPoint)screenPoint;
 @end

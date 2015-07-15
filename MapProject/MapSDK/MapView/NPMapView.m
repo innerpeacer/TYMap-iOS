@@ -11,16 +11,16 @@
 #import "NPMapInfo.h"
 #import "NPMapType.h"
 #import "NPMapEnviroment.h"
-#import "NPLocationLayer.h"
+#import "TYLocationLayer.h"
 #import "NPMapFileManager.h"
 
 #import "NPStructureGroupLayer.h"
-#import "NPLabelGroupLayer.h"
-#import "NPRouteLayer.h"
-#import "NPRouteArrowLayer.h"
-#import "NPAnimatedRouteArrowLayer.h"
+#import "TYLabelGroupLayer.h"
+#import "TYRouteLayer.h"
+#import "TYRouteArrowLayer.h"
+#import "TYAnimatedRouteArrowLayer.h"
 
-#import "NPRouteHintLayer.h"
+#import "TYRouteHintLayer.h"
 #import "NPBrand.h"
 
 @interface NPMapView() <AGSMapViewTouchDelegate, AGSMapViewLayerDelegate, AGSCalloutDelegate>
@@ -28,13 +28,13 @@
     NPRenderingScheme *renderingScheme;
     
     NPStructureGroupLayer *structureGroupLayer;
-    NPLabelGroupLayer *labelGroupLayer;
+    TYLabelGroupLayer *labelGroupLayer;
     
-    NPLocationLayer *locationLayer;
-    NPRouteLayer *routeLayer;
+    TYLocationLayer *locationLayer;
+    TYRouteLayer *routeLayer;
 //    NPRouteArrowLayer *routeArrowLayer;
-    NPAnimatedRouteArrowLayer *animatedRouteArrowLayer;
-    NPRouteHintLayer *routeHintLayer;
+    TYAnimatedRouteArrowLayer *animatedRouteArrowLayer;
+    TYRouteHintLayer *routeHintLayer;
     
     AGSEnvelope *initialEnvelope;
     NPMapViewMode mapViewMode;
@@ -141,18 +141,18 @@
     [self addMapLayer:structureGroupLayer.roomLayer withName:LAYER_NAME_ROOM];
     [self addMapLayer:structureGroupLayer.asserLayer withName:LAYER_NAME_ASSET];
     
-    labelGroupLayer = [NPLabelGroupLayer labelGroupLayerWithRenderingScheme:renderingScheme SpatialReference:spatialReference];
+    labelGroupLayer = [TYLabelGroupLayer labelGroupLayerWithRenderingScheme:renderingScheme SpatialReference:spatialReference];
     labelGroupLayer.mapView = self;
     labelGroupLayer.labelLayer.brandDict = allBrandDict;
     [self addMapLayer:labelGroupLayer.facilityLayer withName:LAYER_NAME_FACILITY];
     [self addMapLayer:labelGroupLayer.labelLayer withName:LAYER_NAME_LABEL];
     
-    routeLayer = [NPRouteLayer routeLayerWithSpatialReference:[NPMapEnvironment defaultSpatialReference]];
+    routeLayer = [TYRouteLayer routeLayerWithSpatialReference:[NPMapEnvironment defaultSpatialReference]];
     routeLayer.mapView = self;
     [self addMapLayer:routeLayer];
     routeLayer.allowHitTest = NO;
     
-    routeHintLayer = [NPRouteHintLayer routeHintLayerWithSpatialReference:[NPMapEnvironment defaultSpatialReference]];
+    routeHintLayer = [TYRouteHintLayer routeHintLayerWithSpatialReference:[NPMapEnvironment defaultSpatialReference]];
     [self addMapLayer:routeHintLayer];
     routeHintLayer.allowHitTest = NO;
     
@@ -160,11 +160,11 @@
 //    [self addMapLayer:routeArrowLayer];
 //    routeArrowLayer.allowHitTest = NO;
     
-    animatedRouteArrowLayer = [NPAnimatedRouteArrowLayer animatedRouteArrowLayerWithSpatialReference:[NPMapEnvironment defaultSpatialReference]];
+    animatedRouteArrowLayer = [TYAnimatedRouteArrowLayer animatedRouteArrowLayerWithSpatialReference:[NPMapEnvironment defaultSpatialReference]];
     [self addMapLayer:animatedRouteArrowLayer];
     animatedRouteArrowLayer.allowHitTest = NO;
 
-    locationLayer = [[NPLocationLayer alloc] initWithSpatialReference:spatialReference];
+    locationLayer = [[TYLocationLayer alloc] initWithSpatialReference:spatialReference];
     [self addMapLayer:locationLayer withName:LAYER_NAME_LOCATION];
     locationLayer.allowHitTest = NO;
 }

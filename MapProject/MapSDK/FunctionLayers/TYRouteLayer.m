@@ -1,12 +1,12 @@
 //
-//  NPRouteLayer.m
+//  TYRouteLayer.m
 //  MapProject
 //
 //  Created by innerpeacer on 15/2/9.
 //  Copyright (c) 2015年 innerpeacer. All rights reserved.
 //
 
-#import "NPRouteLayer.h"
+#import "TYRouteLayer.h"
 #import "TYGraphic.h"
 #import "NPMapView.h"
 #import "NPMapEnviroment.h"
@@ -14,18 +14,18 @@
 
 #import <NephogramData/NephogramData.h>
 
-@interface NPRouteLayer()
+@interface TYRouteLayer()
 {
     AGSSymbol *routeSymbol;
 }
 
 @end
 
-@implementation NPRouteLayer
+@implementation TYRouteLayer
 
-+ (NPRouteLayer *)routeLayerWithSpatialReference:(TYSpatialReference *)sr
++ (TYRouteLayer *)routeLayerWithSpatialReference:(TYSpatialReference *)sr
 {
-    return [[NPRouteLayer alloc] initRouteLayerWithSpatialReference:sr];
+    return [[TYRouteLayer alloc] initRouteLayerWithSpatialReference:sr];
 }
 
 - (id)initRouteLayerWithSpatialReference:(TYSpatialReference *)sr

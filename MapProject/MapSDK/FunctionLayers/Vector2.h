@@ -1,6 +1,6 @@
 //
-//  NPVector2.h
-//  CloudAtlasTestProject
+//  Vector2.h
+//  MapProject
 //
 //  Created by innerpeacer on 15/4/17.
 //  Copyright (c) 2015年 innerpeacer. All rights reserved.

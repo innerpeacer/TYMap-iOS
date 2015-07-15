@@ -1,5 +1,5 @@
 //
-//  NPLabelGroupLayer.h
+//  TYLabelGroupLayer.h
 //  MapProject
 //
 //  Created by innerpeacer on 15/4/14.
@@ -8,19 +8,19 @@
 
 #import <ArcGIS/ArcGIS.h>
 #import "NPMapInfo.h"
-#import "NPTextLabelLayer.h"
-#import "NPFacilityLayer.h"
+#import "TYTextLabelLayer.h"
+#import "TYFacilityLayer.h"
 
 @class NPMapView;
 
-@interface NPLabelGroupLayer : NSObject
+@interface TYLabelGroupLayer : NSObject
 
 @property (nonatomic, weak) NPMapView *mapView;
 
-@property (nonatomic, strong) NPTextLabelLayer *labelLayer;
-@property (nonatomic, strong) NPFacilityLayer *facilityLayer;
+@property (nonatomic, strong) TYTextLabelLayer *labelLayer;
+@property (nonatomic, strong) TYFacilityLayer *facilityLayer;
 
-+ (NPLabelGroupLayer *)labelGroupLayerWithRenderingScheme:(NPRenderingScheme *)aRenderingScheme SpatialReference:(AGSSpatialReference *)sr;
++ (TYLabelGroupLayer *)labelGroupLayerWithRenderingScheme:(NPRenderingScheme *)aRenderingScheme SpatialReference:(AGSSpatialReference *)sr;
 
 - (void)loadContentsWithInfo:(NPMapInfo *)info;
 

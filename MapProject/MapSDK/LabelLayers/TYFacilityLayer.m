@@ -1,21 +1,21 @@
 //
-//  NPFacilityLayer.m
+//  TYFacilityLayer.m
 //  MapProject
 //
 //  Created by innerpeacer on 15/2/9.
 //  Copyright (c) 2015年 innerpeacer. All rights reserved.
 //
 
-#import "NPFacilityLayer.h"
+#import "TYFacilityLayer.h"
 #import "NPMapType.h"
 #import "NPMapFileManager.h"
-#import "NPFacilityLabel.h"
+#import "TYFacilityLabel.h"
 #import "NPMapView.h"
-#import "NPLabelGroupLayer.h"
-#import "NPLabelBorder.h"
-#import "NPLabelBorderCalculator.h"
+#import "TYLabelGroupLayer.h"
+#import "TYLabelBorder.h"
+#import "TYLabelBorderCalculator.h"
 
-@interface NPFacilityLayer()
+@interface TYFacilityLayer()
 {
     NSMutableDictionary *allFacilitySymbols;
     NSMutableDictionary *allHighlightFacilitySymbols;
@@ -28,11 +28,11 @@
 
 @end
 
-@implementation NPFacilityLayer
+@implementation TYFacilityLayer
 
-+ (NPFacilityLayer *)facilityLayerWithRenderingScheme:(NPRenderingScheme *)aRenderingScheme SpatialReference:(AGSSpatialReference *)sr
++ (TYFacilityLayer *)facilityLayerWithRenderingScheme:(NPRenderingScheme *)aRenderingScheme SpatialReference:(AGSSpatialReference *)sr
 {
-    return [[NPFacilityLayer alloc] initFacilityLayerWithRenderingScheme:aRenderingScheme SpatialReference:sr];
+    return [[TYFacilityLayer alloc] initFacilityLayerWithRenderingScheme:aRenderingScheme SpatialReference:sr];
 }
 
 - (id)initFacilityLayerWithRenderingScheme:(NPRenderingScheme *)aRenderingScheme SpatialReference:(AGSSpatialReference *)sr
@@ -81,13 +81,13 @@
 
 - (void)updateLabelBorders:(NSMutableArray *)array
 {
-    for (NPFacilityLabel *fl in facilityLabelDict.allValues) {
+    for (TYFacilityLabel *fl in facilityLabelDict.allValues) {
         CGPoint screenPoint = [self.groupLayer.mapView toScreenPoint:fl.position];
-        NPLabelBorder *border = [NPLabelBorderCalculator getFacilityLabelBorder:screenPoint];
+        TYLabelBorder *border = [TYLabelBorderCalculator getFacilityLabelBorder:screenPoint];
         
         BOOL isOverlapping = NO;
-        for (NPLabelBorder *visiableBorder in array) {
-            if ([NPLabelBorder CheckIntersect:border WithBorder:visiableBorder]) {
+        for (TYLabelBorder *visiableBorder in array) {
+            if ([TYLabelBorder CheckIntersect:border WithBorder:visiableBorder]) {
                 isOverlapping = YES;
                 break;
             }
@@ -104,7 +104,7 @@
 
 - (void)updateLabelState
 {
-    for (NPFacilityLabel *fl in facilityLabelDict.allValues) {
+    for (TYFacilityLabel *fl in facilityLabelDict.allValues) {
         if (fl.isHidden) {
             fl.facilityGraphic.symbol = nil;
         } else {
@@ -144,7 +144,7 @@
             [groupedFacilityLabelDict setObject:array forKey:@(categoryID)];
         }
         
-        NPFacilityLabel *fLabel = [[NPFacilityLabel alloc] initWithCategoryID:categoryID Position:pos];
+        TYFacilityLabel *fLabel = [[TYFacilityLabel alloc] initWithCategoryID:categoryID Position:pos];
         fLabel.facilityGraphic = graphic;
         fLabel.normalFacilitySymbol = [allFacilitySymbols objectForKey:@(categoryID)];
         fLabel.highlightedFacilitySymbol = [allHighlightFacilitySymbols objectForKey:@(categoryID)];
@@ -169,11 +169,11 @@
     while ((key = [enumerator nextObject])) {
         NSArray *array = groupedFacilityLabelDict[key];
         if ([key intValue] == categoryID) {
-            for (NPFacilityLabel *fl in array) {
+            for (TYFacilityLabel *fl in array) {
                 fl.currentSymbol = fl.highlightedFacilitySymbol;
             }
         } else {
-            for (NPFacilityLabel *fl in array) {
+            for (TYFacilityLabel *fl in array) {
                 fl.currentSymbol = fl.normalFacilitySymbol;
             }
         }
@@ -185,7 +185,7 @@
 - (void)showAllFacilities
 {
     for (NSArray *array in groupedFacilityLabelDict.allValues) {
-        for (NPFacilityLabel *fl in array) {
+        for (TYFacilityLabel *fl in array) {
             fl.currentSymbol = fl.normalFacilitySymbol;
         }
     }
@@ -202,11 +202,11 @@
         NSArray *array = groupedFacilityLabelDict[key];
         
         if ([categoryIDs containsObject:key]) {
-            for (NPFacilityLabel *fl in array) {
+            for (TYFacilityLabel *fl in array) {
                 fl.currentSymbol = fl.highlightedFacilitySymbol;
             }
         } else {
-            for (NPFacilityLabel *fl in array) {
+            for (TYFacilityLabel *fl in array) {
                 fl.currentSymbol = fl.normalFacilitySymbol;
             }
         }
@@ -224,7 +224,7 @@
 - (NPPoi *)getPoiWithPoiID:(NSString *)pid
 {
     NPPoi *result = nil;
-    NPFacilityLabel *fl = [facilityLabelDict objectForKey:pid];
+    TYFacilityLabel *fl = [facilityLabelDict objectForKey:pid];
     AGSGraphic *graphic = fl.facilityGraphic;
 
     if (graphic) {
@@ -235,7 +235,7 @@
 
 - (void)highlightPoi:(NSString *)poiID
 {
-    NPFacilityLabel *fl = [facilityLabelDict objectForKey:poiID];
+    TYFacilityLabel *fl = [facilityLabelDict objectForKey:poiID];
     fl.currentSymbol = fl.highlightedFacilitySymbol;
     
     [self updateLabelState];

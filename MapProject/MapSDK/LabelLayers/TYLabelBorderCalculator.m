@@ -1,12 +1,12 @@
 //
-//  NPLabelBorderCalculator.m
+//  TYLabelBorderCalculator.m
 //  MapProject
 //
 //  Created by innerpeacer on 15/4/14.
 //  Copyright (c) 2015年 innerpeacer. All rights reserved.
 //
 
-#import "NPLabelBorderCalculator.h"
+#import "TYLabelBorderCalculator.h"
 #import "NPMapView.h"
 
 #define DPI_SCALE 1.0
@@ -15,9 +15,9 @@
 #define TEXT_OFFSET_X 5
 #define TEXT_OOFSET_Y 5
 
-@implementation NPLabelBorderCalculator
+@implementation TYLabelBorderCalculator
 
-+ (NPLabelBorder *)getFacilityLabelBorder:(CGPoint)screenPoint
++ (TYLabelBorder *)getFacilityLabelBorder:(CGPoint)screenPoint
 {
     double scale = DPI_SCALE;
     
@@ -29,10 +29,10 @@
     double width = halfSize * 2;
     double height = halfSize * 2;
     
-    return [NPLabelBorder borderWithXmin:xmin YMin:ymin Width:width Height:height];
+    return [TYLabelBorder borderWithXmin:xmin YMin:ymin Width:width Height:height];
 }
 
-+ (NPLabelBorder *)getTextLabelBorder:(NPTextLabel *)textLabel Point:(CGPoint)screenPoint
++ (TYLabelBorder *)getTextLabelBorder:(TYTextLabel *)textLabel Point:(CGPoint)screenPoint
 {
     double scale = DPI_SCALE;
 
@@ -45,7 +45,7 @@
     double top = screenPoint.y - textHeight * 0.5 * scale;
     double bottom = screenPoint.y + textHeight * 0.5 * scale;
     
-    return [NPLabelBorder borderWithXMin:left XMax:right YMin:top YMax:bottom];
+    return [TYLabelBorder borderWithXMin:left XMax:right YMin:top YMax:bottom];
 }
 
 + (AGSPolygon *)polygonFromCGRect:(CGRect)rect MapView:(NPMapView *)mapView

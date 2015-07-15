@@ -1,34 +1,34 @@
 //
-//  NPLabelBorder.m
+//  TYLabelBorder.m
 //  MapProject
 //
 //  Created by innerpeacer on 15/4/14.
 //  Copyright (c) 2015年 innerpeacer. All rights reserved.
 //
 
-#import "NPLabelBorder.h"
+#import "TYLabelBorder.h"
 
 #define PROTECT_INTERVAL_X 0
 #define PROTECT_INTERVAL_Y 0
 
-@interface NPLabelBorder()
+@interface TYLabelBorder()
 {
 
 }
 @end
 
-@implementation NPLabelBorder
+@implementation TYLabelBorder
 
-+ (NPLabelBorder *)borderWithXMin:(double)xmin XMax:(double)xmax YMin:(double)ymin YMax:(double)ymax
++ (TYLabelBorder *)borderWithXMin:(double)xmin XMax:(double)xmax YMin:(double)ymin YMax:(double)ymax
 {
     double width = xmax - xmin;
     double height = ymax - ymin;
-    return [[NPLabelBorder alloc] initWithRect:CGRectMake(xmin, ymin, width, height)];
+    return [[TYLabelBorder alloc] initWithRect:CGRectMake(xmin, ymin, width, height)];
 }
 
-+ (NPLabelBorder *)borderWithXmin:(double)xmin YMin:(double)ymin Width:(double)w Height:(double)h
++ (TYLabelBorder *)borderWithXmin:(double)xmin YMin:(double)ymin Width:(double)w Height:(double)h
 {
-    return [[NPLabelBorder alloc] initWithRect:CGRectMake(xmin, ymin, w, h)];
+    return [[TYLabelBorder alloc] initWithRect:CGRectMake(xmin, ymin, w, h)];
 }
 
 - (id)initWithRect:(CGRect)r
@@ -40,7 +40,7 @@
     return self;
 }
 
-+ (BOOL)CheckIntersect:(NPLabelBorder *)border1 WithBorder:(NPLabelBorder *)border2
++ (BOOL)CheckIntersect:(TYLabelBorder *)border1 WithBorder:(TYLabelBorder *)border2
 {
     return CGRectIntersectsRect(border1.border, border2.border);
 

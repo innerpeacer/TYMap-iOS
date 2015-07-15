@@ -1,5 +1,5 @@
 //
-//  NPRouteArrowLayer.h
+//  TYRouteArrowLayer.h
 //  MapProject
 //
 //  Created by innerpeacer on 15/5/6.
@@ -11,9 +11,9 @@
 #import "TYSpatialReference.h"
 #import "TYPictureMarkerSymbol.h"
 
-@interface NPRouteArrowLayer : AGSGraphicsLayer
+@interface TYRouteArrowLayer : AGSGraphicsLayer
 
-+ (NPRouteArrowLayer *)routeArrowLayerWithSpatialReference:(TYSpatialReference *)sr;
++ (TYRouteArrowLayer *)routeArrowLayerWithSpatialReference:(TYSpatialReference *)sr;
 
 - (void)showRouteArrow:(NSArray *)array;
 

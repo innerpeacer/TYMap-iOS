@@ -1,20 +1,20 @@
 //
-//  NPFacilityLabel.m
+//  TYFacilityLabel.m
 //  MapProject
 //
 //  Created by innerpeacer on 15/4/14.
 //  Copyright (c) 2015年 innerpeacer. All rights reserved.
 //
 
-#import "NPFacilityLabel.h"
+#import "TYFacilityLabel.h"
 
-@interface NPFacilityLabel()
+@interface TYFacilityLabel()
 {
     BOOL isHighlighted;
 }
 @end
 
-@implementation NPFacilityLabel
+@implementation TYFacilityLabel
 
 #define FACILITY_SIZE 26
 
