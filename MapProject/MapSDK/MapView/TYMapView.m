@@ -156,7 +156,7 @@
     [self addMapLayer:routeHintLayer];
     routeHintLayer.allowHitTest = NO;
     
-//    routeArrowLayer = [NPRouteArrowLayer routeArrowLayerWithSpatialReference:[NPMapEnvironment defaultSpatialReference]];
+//    routeArrowLayer = [TYRouteArrowLayer routeArrowLayerWithSpatialReference:[TYMapEnvironment defaultSpatialReference]];
 //    [self addMapLayer:routeArrowLayer];
 //    routeArrowLayer.allowHitTest = NO;
     
@@ -427,8 +427,8 @@
 //- (BOOL)callout:(AGSCallout *)callout willShowForLocationDisplay:(AGSLocationDisplay *)locationDisplay
 //{
 //    BOOL result = NO;
-//    if (self.mapDelegate && [self.mapDelegate respondsToSelector:@selector(NPMapView:callout:willShowForLocationDisplay:)]) {
-//        result = [self.mapDelegate NPMapView:self callout:(NPCallout *)callout willShowForLocationDisplay:(NPLocationDisplay *)locationDisplay];
+//    if (self.mapDelegate && [self.mapDelegate respondsToSelector:@selector(TYMapView:callout:willShowForLocationDisplay:)]) {
+//        result = [self.mapDelegate TYMapView:self callout:(TYCallout *)callout willShowForLocationDisplay:(TYLocationDisplay *)locationDisplay];
 //    }
 //    return result;
 //}

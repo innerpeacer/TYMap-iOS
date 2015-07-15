@@ -15,7 +15,7 @@
 #import "TYLabelGroupLayer.h"
 #import "TYMapType.h"
 #import "TYBrand.h"
-//#import "NPMapView.h"
+//#import "TYMapView.h"
 
 @interface TYTextLabelLayer()
 {

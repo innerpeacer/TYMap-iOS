@@ -17,15 +17,15 @@
     相对方向类型，用于导航提示
  */
 typedef enum {
-    NPStraight,
-    NPTurnRight,
-    NPRightForward,
-    NPLeftForward,
-    NPRightBackward,
-    NPLeftBackward,
-    NPTurnLeft,
-    NPBackward
-} NPRelativeDirection;
+    TYStraight,
+    TYTurnRight,
+    TYRightForward,
+    TYLeftForward,
+    TYRightBackward,
+    TYLeftBackward,
+    TYTurnLeft,
+    TYBackward
+} TYRelativeDirection;
 
 /**
     导航方向提示，用于导航结果的展示，表示其中的一段
@@ -56,7 +56,7 @@ typedef enum {
 /**
  *  当前段的相对方向
  */
-@property (nonatomic, readonly) NPRelativeDirection relativeDirection;
+@property (nonatomic, readonly) TYRelativeDirection relativeDirection;
 
 /**
  *  前一段的方向角

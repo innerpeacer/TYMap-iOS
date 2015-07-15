@@ -38,7 +38,7 @@
     self.renderer = renderer;
 }
 
-//- (void)showLocation:(NPPoint *)location
+//- (void)showLocation:(TYPoint *)location
 //{
 //    [self removeAllGraphics];
 //    [self addGraphic:[AGSGraphic graphicWithGeometry:location symbol:locationSymbol attributes:nil]];

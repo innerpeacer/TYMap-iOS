@@ -141,7 +141,7 @@
         routeGuides = [routeResult getRouteDirectionalHint:currentRoutePart];
     }
     
-//    for (NPDirectionalHint *ds in routeGuides) {
+//    for (TYDirectionalHint *ds in routeGuides) {
 //        NSLog(@"%@", [ds getDirectionString]);
 //    }
 }

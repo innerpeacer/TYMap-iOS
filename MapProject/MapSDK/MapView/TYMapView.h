@@ -56,7 +56,7 @@ typedef enum {
  *  地图POI选中事件回调
  *
  *  @param mapView 地图视图
- *  @param array   选中的POI数组:[NPPoi]
+ *  @param array   选中的POI数组:[TYPoi]
  */
 - (void)TYMapView:(TYMapView *)mapView PoiSelected:(NSArray *)array;
 

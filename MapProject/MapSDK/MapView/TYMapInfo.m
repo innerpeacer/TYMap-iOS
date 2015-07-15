@@ -28,13 +28,13 @@
 #define KEY_MAPINFO_YMIN @"ymin"
 #define KEY_MAPINFO_YMAX @"ymax"
 
-MapExtent NPMapExtentMake(double xmin, double ymin, double xmax, double ymax)
+MapExtent TYMapExtentMake(double xmin, double ymin, double xmax, double ymax)
 {
     MapExtent extent  = {xmin, ymin, xmax, ymax};
     return extent;
 }
 
-MapSize NPMapSizeMake(double x, double y)
+MapSize TYMapSizeMake(double x, double y)
 {
     MapSize size = { x, y };
     return size;
@@ -92,7 +92,7 @@ MapSize NPMapSizeMake(double x, double y)
                 NSNumber *yminStr = [infoDict objectForKey:KEY_MAPINFO_YMIN];
                 NSNumber *ymaxStr = [infoDict objectForKey:KEY_MAPINFO_YMAX];
                 
-                info = [[TYMapInfo alloc] initWithCityID:cityID BuildingID:buildingID MapID:mapID Extent:NPMapExtentMake(xminStr.doubleValue, yminStr.doubleValue, xmaxStr.doubleValue, ymaxStr.doubleValue) Size:NPMapSizeMake(sizexStr.doubleValue, sizeyStr.doubleValue) Floor:floorStr FloorIndex:floorIndexStr.intValue];
+                info = [[TYMapInfo alloc] initWithCityID:cityID BuildingID:buildingID MapID:mapID Extent:TYMapExtentMake(xminStr.doubleValue, yminStr.doubleValue, xmaxStr.doubleValue, ymaxStr.doubleValue) Size:TYMapSizeMake(sizexStr.doubleValue, sizeyStr.doubleValue) Floor:floorStr FloorIndex:floorIndexStr.intValue];
                 break;
             }
         }
@@ -131,7 +131,7 @@ MapSize NPMapSizeMake(double x, double y)
             NSNumber *yminStr = [infoDict objectForKey:KEY_MAPINFO_YMIN];
             NSNumber *ymaxStr = [infoDict objectForKey:KEY_MAPINFO_YMAX];
             
-            TYMapInfo *info = [[TYMapInfo alloc] initWithCityID:cityID BuildingID:buildingID MapID:mapID Extent:NPMapExtentMake(xminStr.doubleValue, yminStr.doubleValue, xmaxStr.doubleValue, ymaxStr.doubleValue) Size:NPMapSizeMake(sizexStr.doubleValue, sizeyStr.doubleValue) Floor:floorStr FloorIndex:floorIndexStr.intValue];
+            TYMapInfo *info = [[TYMapInfo alloc] initWithCityID:cityID BuildingID:buildingID MapID:mapID Extent:TYMapExtentMake(xminStr.doubleValue, yminStr.doubleValue, xmaxStr.doubleValue, ymaxStr.doubleValue) Size:TYMapSizeMake(sizexStr.doubleValue, sizeyStr.doubleValue) Floor:floorStr FloorIndex:floorIndexStr.intValue];
             
             [toReturn addObject:info];
         }

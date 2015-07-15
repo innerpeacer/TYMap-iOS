@@ -79,48 +79,48 @@
     return NO;
 }
 
-- (NSString *)getDirection:(NPRelativeDirection)direction
+- (NSString *)getDirection:(TYRelativeDirection)direction
 {
     NSString *result = nil;
     switch (direction) {
-        case NPStraight:
+        case TYStraight:
             result = DIRECTIONAL_STRING_STRAIGHT;
             break;
             
-        case NPTurnRight:
+        case TYTurnRight:
             result = DIRECTIONAL_STRING_TURN_RIGHT;
             break;
             
-        case NPTurnLeft:
+        case TYTurnLeft:
             result = DIRECTIONAL_STRING_TURN_LEFT;
             break;
             
-        case NPLeftForward:
+        case TYLeftForward:
             result = DIRECTIONAL_STRING_LEFT_FORWARD;
             break;
             
-        case NPLeftBackward:
+        case TYLeftBackward:
             result = DIRECTIONAL_STRING_LEFT_BACKWARD;
             break;
             
-        case NPRightForward:
+        case TYRightForward:
             result = DIRECTIONAL_STRING_RIGHT_FORWARD;
             break;
             
-        case NPRightBackward:
+        case TYRightBackward:
             result = DIRECTIONAL_STRING_RIGHT_BACKWARD;
             break;
             
-        case NPBackward:
+        case TYBackward:
             result = DIRECTIONAL_STRING_BACKWARD;
             break;
     }
     return result;
 }
 
-- (NPRelativeDirection)calculateRelativeDirection:(double)angle previousAngle:(double)preAngle
+- (TYRelativeDirection)calculateRelativeDirection:(double)angle previousAngle:(double)preAngle
 {
-    NPRelativeDirection direction;
+    TYRelativeDirection direction;
     
     double deltaAngle = angle - preAngle;
     
@@ -137,26 +137,26 @@
 #define LEFT_RIGHT_REFERENCE_ANGLE 30
     
     if (preAngle == INITIAL_EMPTY_ANGLE) {
-        direction = NPStraight;
+        direction = TYStraight;
         return direction;
     }
     
     if (deltaAngle < -180 + BACKWARD_REFERENCE_ANGLE || deltaAngle > 180 - BACKWARD_REFERENCE_ANGLE) {
-        direction = NPBackward;
+        direction = TYBackward;
     } else if (deltaAngle >= -180 + BACKWARD_REFERENCE_ANGLE && deltaAngle <= -90 - LEFT_RIGHT_REFERENCE_ANGLE) {
-        direction = NPLeftBackward;
+        direction = TYLeftBackward;
     } else if (deltaAngle >= -90 - LEFT_RIGHT_REFERENCE_ANGLE && deltaAngle <= -90 + LEFT_RIGHT_REFERENCE_ANGLE) {
-        direction = NPTurnLeft;
+        direction = TYTurnLeft;
     } else if (deltaAngle >= -90 + LEFT_RIGHT_REFERENCE_ANGLE && deltaAngle <= -FORWARD_REFERENCE_ANGLE) {
-        direction = NPLeftForward;
+        direction = TYLeftForward;
     } else if (deltaAngle >= -FORWARD_REFERENCE_ANGLE && deltaAngle <= FORWARD_REFERENCE_ANGLE) {
-        direction = NPStraight;
+        direction = TYStraight;
     } else if (deltaAngle >= FORWARD_REFERENCE_ANGLE && deltaAngle <= 90 - LEFT_RIGHT_REFERENCE_ANGLE) {
-        direction = NPRightForward;
+        direction = TYRightForward;
     } else if (deltaAngle >= 90 - LEFT_RIGHT_REFERENCE_ANGLE && deltaAngle <= 90 + LEFT_RIGHT_REFERENCE_ANGLE) {
-        direction = NPTurnRight;
+        direction = TYTurnRight;
     } else if (deltaAngle >= 90 + LEFT_RIGHT_REFERENCE_ANGLE && deltaAngle <= 180 - BACKWARD_REFERENCE_ANGLE) {
-        direction = NPRightBackward;
+        direction = TYRightBackward;
     }
     
     return direction;
