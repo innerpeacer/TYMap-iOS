@@ -83,8 +83,7 @@
 }
 
 - (NSArray *)showLinesForRouteResultOnFloor:(int)floor
-{
-    NSMutableArray *linesToReturn = [[NSMutableArray alloc] init];
+{    NSMutableArray *linesToReturn = [[NSMutableArray alloc] init];
     if (_routeResult) {
         NSArray *routePartArray = [_routeResult getRoutePartsOnFloor:floor];
         if (routePartArray && routePartArray.count > 0) {

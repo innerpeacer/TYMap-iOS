@@ -53,6 +53,7 @@ static AGSSimpleMarkerSymbol *pointSymbol = nil;
 + (UIFont *)getDefaultFont
 {
     if (font == nil) {
+//        NSLog(@"%@", [UIFont familyNames]);
         font = [UIFont fontWithName:@"Heiti SC" size:10.0];
     }
     return font;

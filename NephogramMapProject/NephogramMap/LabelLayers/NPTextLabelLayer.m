@@ -47,10 +47,6 @@
 
 - (void)calculateLabelBorders:(NSMutableArray *)array
 {
-    AGSSimpleFillSymbol *visiableSFS = [AGSSimpleFillSymbol simpleFillSymbolWithColor:[UIColor colorWithRed:0.5 green:0.0 blue:0.0 alpha:0.3] outlineColor:[UIColor blackColor]];
-    AGSSimpleFillSymbol *hiddenSFS = [AGSSimpleFillSymbol simpleFillSymbolWithColor:[UIColor colorWithRed:0.0 green:0.5 blue:0.0 alpha:0.1] outlineColor:[UIColor blackColor]];
-//    [self.groupLayer.mapView.testLayer removeAllGraphics];
-    
     for (NPTextLabel *tl in allTextLabels) {
         CGPoint screenPoint = [self.groupLayer.mapView toScreenPoint:tl.position];
         NPLabelBorder *border = [NPLabelBorderCalculator getTextLabelBorder:tl Point:screenPoint];
@@ -65,14 +61,9 @@
         
         if (isOverlapping) {
             tl.isHidden = YES;
-            AGSGraphic *graphic = [AGSGraphic graphicWithGeometry:[NPLabelBorderCalculator polygonFromCGRect:border.border MapView:self.groupLayer.mapView] symbol:hiddenSFS attributes:nil];
-            [self.groupLayer.mapView.testLayer addGraphic:graphic];
         } else {
             tl.isHidden = NO;
             [array addObject:border];
-            
-            AGSGraphic *graphic = [AGSGraphic graphicWithGeometry:[NPLabelBorderCalculator polygonFromCGRect:border.border MapView:self.groupLayer.mapView] symbol:visiableSFS attributes:nil];
-            [self.groupLayer.mapView.testLayer addGraphic:graphic];
         }
         
     }

@@ -373,7 +373,5 @@ typedef enum {
  */
 - (void)updateMapFiles;
 
-
-@property (nonatomic, strong) AGSGraphicsLayer *testLayer;
 @end
 

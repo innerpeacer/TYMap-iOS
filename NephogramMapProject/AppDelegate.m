@@ -22,8 +22,6 @@
     NSString *documentDirectory = [paths objectAtIndex:0];
     NSLog(@"%@", documentDirectory);
     
-    
-    
     [NPMapEnvironment initMapEnvironment];
     
     [NPMapEnvironment setMapLanguage:NPTraditionalChinese];
@@ -40,17 +38,22 @@
 - (void)setDefaultPlaceIfNeeded
 {
     [NPUserDefaults setDefaultCity:@"0021"];
-    [NPUserDefaults setDefaultBuilding:@"002100001"];
-//    [NPUserDefaults setDefaultBuilding:@"002100002"];
-//    [NPUserDefaults setDefaultBuilding:@"002100004"];
+//    [NPUserDefaults setDefaultBuilding:@"002100001"];
+    [NPUserDefaults setDefaultBuilding:@"002100002"];
+    [NPUserDefaults setDefaultBuilding:@"002100004"];
+//    [NPUserDefaults setDefaultBuilding:@"002100005"];
+
 //    [NPUserDefaults setDefaultBuilding:@"002188888"];
 //    [NPUserDefaults setDefaultBuilding:@"002199999"];
 //
-    [NPUserDefaults setDefaultCity:@"H852"];
-    [NPUserDefaults setDefaultBuilding:@"H85200001"];
+//    [NPUserDefaults setDefaultCity:@"H852"];
+//    [NPUserDefaults setDefaultBuilding:@"H85200001"];
 //
 //    [NPUserDefaults setDefaultCity:@"H852"];
 //    [NPUserDefaults setDefaultBuilding:@"H85200001"];
+    
+//        [NPUserDefaults setDefaultCity:@"0755"];
+//        [NPUserDefaults setDefaultBuilding:@"075500001"];
     
 }
 

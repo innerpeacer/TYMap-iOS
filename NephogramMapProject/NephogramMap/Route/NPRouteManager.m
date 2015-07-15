@@ -130,6 +130,8 @@
                 
                 if (lp.floor != currentFloor) {
                     currentFloor = lp.floor;
+                    NSLog(@"process currentFloor: %d", currentFloor);
+
                     currentArray = [[NSMutableArray alloc] init];
                     [pointArray addObject:currentArray];
                     [floorArray addObject:@(currentFloor)];

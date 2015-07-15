@@ -67,9 +67,9 @@
     routeManager = [NPRouteManager routeManagerWithBuilding:self.currentBuilding credential:[NPMapEnvironment defaultCredential] MapInfos:self.allMapInfos];
     routeManager.delegate = self;
     
-    [self.mapView zoomToEnvelope:[AGSEnvelope envelopeWithXmin:1780 ymin:432.187299 xmax:1944.755560 ymax:658.589997 spatialReference:[NPMapEnvironment defaultSpatialReference]] animated:YES];
-    endLocalPoint = [NPLocalPoint pointWithX:1779.204079 Y:581.868337 Floor:self.mapView.currentMapInfo.floorNumber];
-    startLocalPoint = [NPLocalPoint pointWithX:1917 Y:558 Floor:self.mapView.currentMapInfo.floorNumber];
+//    [self.mapView zoomToEnvelope:[AGSEnvelope envelopeWithXmin:1780 ymin:432.187299 xmax:1944.755560 ymax:658.589997 spatialReference:[NPMapEnvironment defaultSpatialReference]] animated:YES];
+//    endLocalPoint = [NPLocalPoint pointWithX:1779.204079 Y:581.868337 Floor:self.mapView.currentMapInfo.floorNumber];
+//    startLocalPoint = [NPLocalPoint pointWithX:1917 Y:558 Floor:self.mapView.currentMapInfo.floorNumber];
     
 //    startLocalPoint = [NPLocalPoint pointWithX:-16368295.127012 Y:406.263263 Floor:self.mapView.currentMapInfo.floorNumber];
 //    endLocalPoint = [NPLocalPoint pointWithX:-16368298.841312 Y:417.294456 Floor:self.mapView.currentMapInfo.floorNumber];
@@ -93,7 +93,7 @@
 
 - (void)routeManagerDidRetrieveDefaultRouteTaskParameters:(NPRouteManager *)routeManager
 {
-//    NSLog(@"routeManagerDidRetrieveDefaultRouteTaskParameters");
+    NSLog(@"routeManagerDidRetrieveDefaultRouteTaskParameters");
 }
 
 - (void)routeManager:(NPRouteManager *)routeManager didFailRetrieveDefaultRouteTaskParametersWithError:(NSError *)error
@@ -103,11 +103,28 @@
 
 - (void)routeManager:(NPRouteManager *)routeManager didSolveRouteWithResult:(NPRouteResult *)rs
 {
-//    NSLog(@"routeManager: didSolveRouteWithResult:");
+    NSLog(@"routeManager: didSolveRouteWithResult:");
     
     [hintLayer removeAllGraphics];
     
     routeResult = rs;
+    
+    NSLog(@"route part: %d", (int)routeResult.allRoutePartArray.count);
+    NPRoutePart *rp = [routeResult.allRoutePartArray objectAtIndex:0];
+    NSLog(@"point: %d", (int)rp.route.numPoints);
+    
+    AGSGraphicsLayer *testLayer = [AGSGraphicsLayer graphicsLayer];
+    [self.mapView addMapLayer:testLayer];
+    
+    AGSSimpleMarkerSymbol *sms = [AGSSimpleMarkerSymbol simpleMarkerSymbolWithColor:[UIColor redColor]];
+    
+    for (int i = 0; i < rp.route.numPoints; i++) {
+        NSLog(@"P: %@", [rp.route pointOnPath:0 atIndex:i]);
+        [testLayer addGraphic:[AGSGraphic graphicWithGeometry:[rp.route pointOnPath:0 atIndex:i] symbol:sms attributes:nil]];
+    }
+    
+    
+    
     
     [self.mapView setRouteResult:rs];
     

@@ -91,10 +91,6 @@
     
     [structureGroupLayer loadContentsWithInfo:info];
     [labelGroupLayer loadContentsWithInfo:info];
-    
-    self.testLayer = [AGSGraphicsLayer graphicsLayer];
-    [self addMapLayer:self.testLayer];
-    
 
     if (initialEnvelope == nil) {
         initialEnvelope = [AGSEnvelope envelopeWithXmin:_currentMapInfo.mapExtent.xmin ymin:_currentMapInfo.mapExtent.ymin xmax:_currentMapInfo.mapExtent.xmax ymax:_currentMapInfo.mapExtent.ymax spatialReference:[NPMapEnvironment defaultSpatialReference]];

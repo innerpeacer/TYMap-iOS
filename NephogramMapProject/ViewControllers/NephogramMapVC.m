@@ -8,7 +8,7 @@
 
 #import "NephogramMapVC.h"
 #import "NPAreaAnalysis.h"
-
+#import "NPMapEnviroment.h"
 #import "NPBrand.h"
 
 @interface NephogramMapVC()
@@ -16,7 +16,14 @@
     NPAreaAnalysis *areaAnalysis;
     
     AGSGraphicsLayer *testLayer;
+    NSTimer *testTimer;
+    AGSPoint *testLocation;
+    AGSSimpleFillSymbol *testSimpleFillSymbol;
+    AGSSimpleLineSymbol *testSimpleLineSymbol;
+    int currentRadius;
+    int picIndex;
 }
+
 
 @end
 
@@ -25,12 +32,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"AOI" ofType:@"json"];
-    areaAnalysis = [[NPAreaAnalysis alloc] initWithPath:path];
-    
-    NSArray *brandArray = [NPBrand parseAllBrands:self.currentBuilding];
-    NSLog(@"%@", brandArray);
+    testLayer = [AGSGraphicsLayer graphicsLayer];
+    [self.mapView addMapLayer:testLayer];
 }
 
 int count = 0;
@@ -39,26 +42,27 @@ int tIndex = 0;
 - (void)NPMapView:(NPMapView *)mapView didClickAtPoint:(CGPoint)screen mapPoint:(AGSPoint *)mappoint
 {
     NSLog(@"didClickAtPoint: %f, %f", mappoint.x, mappoint.y);
-    
-//    NSLog(@"MapExtent: %@", self.mapView.maxEnvelope);
-    
-    NPPoi *poi = [self.mapView extractRoomPoiOnCurrentFloorWithX:mappoint.x Y:mappoint.y];
-    NSLog(@"%@", poi);
-    
-    [self.mapView updateRoomPOI:poi.poiID WithName:@"Test"];
-    [self.mapView updateMapFiles];
-    [self.mapView reloadMapView];
+    testLocation = mappoint;
+    if (testTimer) {
+        [testTimer invalidate];
+    }
+    testTimer = [NSTimer scheduledTimerWithTimeInterval:0.15 target:self selector:@selector(showTestLocation) userInfo:nil repeats:YES];
+    picIndex = PIC_INITIAL;
+    [testLayer removeAllGraphics];
 }
 
-- (void)NPMapView:(NPMapView *)mapView PoiSelected:(NSArray *)array
+const int PIC_INITIAL = 0;
+const int PIC_LAST = 7;
+- (void)showTestLocation
 {
-    NSLog(@"PoiSelected: %@", array);
+    [testLayer removeAllGraphics];
+    
+    if (picIndex > PIC_LAST) {
+        picIndex = PIC_INITIAL;
+    }
+    NSString *imageName = [NSString stringWithFormat:@"l%d", picIndex++];
+    AGSPictureMarkerSymbol *pms = [AGSPictureMarkerSymbol pictureMarkerSymbolWithImageNamed:imageName];
+    [testLayer addGraphic:[AGSGraphic graphicWithGeometry:testLocation symbol:pms attributes:nil]];
 }
 
-- (void)NPMapView:(NPMapView *)mapView didFinishLoadingFloor:(NPMapInfo *)mapInfo
-{
-    NSLog(@"didFinishLoadingFloor");
-}
-
-                   
 @end
