@@ -1,6 +1,6 @@
 //
 //  NPPoi.h
-//  NephogramMapProject
+//  MapProject
 //
 //  Created by innerpeacer on 15/2/9.
 //  Copyright (c) 2015年 innerpeacer. All rights reserved.

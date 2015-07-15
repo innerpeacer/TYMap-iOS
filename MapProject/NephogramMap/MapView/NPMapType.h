@@ -1,13 +1,13 @@
 //
 //  NPMapType.h
-//  NephogramMapProject
+//  MapProject
 //
 //  Created by innerpeacer on 15/3/11.
 //  Copyright (c) 2015年 innerpeacer. All rights reserved.
 //
 
-#ifndef NephogramMapProject_NPMapType_h
-#define NephogramMapProject_NPMapType_h
+#ifndef MapProject_NPMapType_h
+#define MapProject_NPMapType_h
 
 // =========== Graphic Attribute ================
 #define GRAPHIC_ATTRIBUTE_GEO_ID @"GEO_ID"
