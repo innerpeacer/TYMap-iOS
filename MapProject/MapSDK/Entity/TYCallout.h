@@ -1,13 +1,13 @@
 //
-//  NPCallout.m
+//  TYCallout.h
 //  MapProject
 //
 //  Created by innerpeacer on 15/4/2.
 //  Copyright (c) 2015年 innerpeacer. All rights reserved.
 //
 
-#import "NPCallout.h"
+#import <ArcGIS/ArcGIS.h>
 
-@implementation NPCallout
+@interface TYCallout : AGSCallout
 
 @end

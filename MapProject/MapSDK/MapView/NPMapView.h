@@ -11,7 +11,7 @@
 #import "NPPoi.h"
 #import "NPRenderingScheme.h"
 #import "NPPoint.h"
-#import "NPCallout.h"
+#import "TYCallout.h"
 #import "NPGraphic.h"
 #import "NPGraphicsLayer.h"
 #import "NPLocationDisplay.h"
@@ -89,7 +89,7 @@ typedef enum {
  *  @param mapView 地图视图
  *  @param callout 地图弹出框
  */
-- (void)NPMapView:(NPMapView *)mapView calloutDidDismiss:(NPCallout *)callout;
+- (void)NPMapView:(NPMapView *)mapView calloutDidDismiss:(TYCallout *)callout;
 
 /**
  *  地图弹出框即将解除事件回调
@@ -97,7 +97,7 @@ typedef enum {
  *  @param mapView 地图视图
  *  @param callout 地图弹出框
  */
-- (void)NPMapView:(NPMapView *)mapView calloutWillDismiss:(NPCallout *)callout;
+- (void)NPMapView:(NPMapView *)mapView calloutWillDismiss:(TYCallout *)callout;
 
 /**
  *  地图即将为要素显示弹出框事件回调

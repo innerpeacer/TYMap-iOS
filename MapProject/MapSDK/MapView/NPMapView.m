@@ -413,14 +413,14 @@
 - (void)calloutDidDismiss:(AGSCallout *)callout
 {
     if (self.mapDelegate && [self.mapDelegate respondsToSelector:@selector(NPMapView:calloutDidDismiss:)]) {
-        [self.mapDelegate NPMapView:self calloutDidDismiss:(NPCallout *)callout];
+        [self.mapDelegate NPMapView:self calloutDidDismiss:(TYCallout *)callout];
     }
 }
 
 - (void)calloutWillDismiss:(AGSCallout *)callout
 {
     if (self.mapDelegate && [self.mapDelegate respondsToSelector:@selector(NPMapView:calloutWillDismiss:)]) {
-        [self.mapDelegate NPMapView:self calloutWillDismiss:(NPCallout *)callout];
+        [self.mapDelegate NPMapView:self calloutWillDismiss:(TYCallout *)callout];
     }
 }
 
