@@ -12,7 +12,7 @@
 #import "TYMapEnviroment.h"
 #import "Vector2.h"
 
-#import <MapData/MapData.h>
+#import <TYMapData/TYMapData.h>
 
 @interface TYRouteLayer()
 {

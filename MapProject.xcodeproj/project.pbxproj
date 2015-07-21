@@ -90,7 +90,7 @@
 		5794C0F31B560558002DCE9F /* TYFloorLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5794C0BC1B560558002DCE9F /* TYFloorLayer.m */; };
 		5794C0F41B560558002DCE9F /* TYRoomLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5794C0BE1B560558002DCE9F /* TYRoomLayer.m */; };
 		5794C0F51B560558002DCE9F /* TYStructureGroupLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5794C0C01B560558002DCE9F /* TYStructureGroupLayer.m */; };
-		5794C0F71B5611B1002DCE9F /* MapData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5794C0F61B5611B1002DCE9F /* MapData.framework */; };
+		57B527531B56332300FD3C27 /* TYMapData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57B527521B56332300FD3C27 /* TYMapData.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -250,8 +250,8 @@
 		5794C0BE1B560558002DCE9F /* TYRoomLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYRoomLayer.m; sourceTree = "<group>"; };
 		5794C0BF1B560558002DCE9F /* TYStructureGroupLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYStructureGroupLayer.h; sourceTree = "<group>"; };
 		5794C0C01B560558002DCE9F /* TYStructureGroupLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYStructureGroupLayer.m; sourceTree = "<group>"; };
-		5794C0F61B5611B1002DCE9F /* MapData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MapData.framework; sourceTree = "<group>"; };
 		5794C0FA1B5613CC002DCE9F /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		57B527521B56332300FD3C27 /* TYMapData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TYMapData.framework; sourceTree = "<group>"; };
 		57F06C1D1A87BC7500B9511F /* MapProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MapProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -260,8 +260,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57B527531B56332300FD3C27 /* TYMapData.framework in Frameworks */,
 				57672EF91B56009700DAD219 /* libsqlite3.0.dylib in Frameworks */,
-				5794C0F71B5611B1002DCE9F /* MapData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -397,7 +397,7 @@
 		57672EF71B56006E00DAD219 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				5794C0F61B5611B1002DCE9F /* MapData.framework */,
+				57B527521B56332300FD3C27 /* TYMapData.framework */,
 				57672EFC1B5600B900DAD219 /* Default-568h@2x.png */,
 				57672EF81B56009700DAD219 /* libsqlite3.0.dylib */,
 				57672EF11B56006700DAD219 /* Info.plist */,

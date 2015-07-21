@@ -22,6 +22,8 @@
 
 - (void)viewDidLoad
 {
+    [super viewDidLoad];
+    
     _currentCity = [TYUserDefaults getDefaultCity];
     _currentBuilding = [TYUserDefaults getDefaultBuilding];
 
@@ -114,7 +116,7 @@
 
 - (void)TYMapView:(TYMapView *)mapView didFinishLoadingFloor:(TYMapInfo *)mapInfo
 {
-    NSLog(@"Floor %@ did Loaded", mapInfo.floorName);
+//    NSLog(@"Floor %@ did Loaded", mapInfo.floorName);
 }
 
 - (void)TYMapViewDidLoad:(TYMapView *)mapView

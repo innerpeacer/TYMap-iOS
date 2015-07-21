@@ -21,7 +21,7 @@
 
 #import "TYDirectionalHint.h"
 
-#import <MapData/MapData.h>
+#import <TYMapData/TYMapData.h>
 
 #import "TYBuilding.h"
 
@@ -357,21 +357,6 @@ typedef enum {
  *  @return ROOM POI
  */
 - (TYPoi *)extractRoomPoiOnCurrentFloorWithX:(double)x Y:(double)y;
-
-/**
- *  更新ROOM层目标POI的名称信息
- *
- *  @param pid  目标POI的ID
- *  @param name 修改后的名称
- *
- *  @return 是否修改成功
- */
-- (BOOL)updateRoomPOI:(NSString *)pid WithName:(NSString *)name;
-
-/**
- *  将修改结果更新至地图文件中
- */
-- (void)updateMapFiles;
 
 @end
 

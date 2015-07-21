@@ -6,5 +6,5 @@
 //  Copyright (c) 2015年 innerpeacer. All rights reserved.
 //
 
-#import <MapData/TYLocalPoint.h>
+#import <TYMapData/TYLocalPoint.h>
 

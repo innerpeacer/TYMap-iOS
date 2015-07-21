@@ -7,7 +7,7 @@
 //
 
 #import <ArcGIS/ArcGIS.h>
-#import <MapData/MapData.h>
+#import <TYMapData/TYMapData.h>
 #import "TYMapInfo.h"
 #import "TYPoint.h"
 

@@ -11,7 +11,7 @@
 #import "TYMapEnviroment.h"
 #import "TYRouteResult.h"
 
-#import <MapData/MapData.h>
+#import <TYMapData/TYMapData.h>
 #import "TYPoint.h"
 
 @class TYRouteManager;

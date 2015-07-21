@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <MapData/MapData.h>
+#import <TYMapData/TYMapData.h>
 
 /**
  *  路标类，用于导航的提示

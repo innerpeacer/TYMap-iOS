@@ -36,7 +36,7 @@
 
 - (void)TYMapView:(TYMapView *)mapView didClickAtPoint:(CGPoint)screen mapPoint:(TYPoint *)mappoint
 {
-    NSLog(@"didClickAtPoint: %f, %f", mappoint.x, mappoint.y);
+//    NSLog(@"didClickAtPoint: %f, %f", mappoint.x, mappoint.y);
 }
 
 - (void)TYMapView:(TYMapView *)mapView didFinishLoadingFloor:(TYMapInfo *)mapInfo

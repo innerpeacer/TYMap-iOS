@@ -32,7 +32,7 @@
     
     TYLocationLayer *locationLayer;
     TYRouteLayer *routeLayer;
-//    TYUserDefaultsRouteArrowLayer *routeArrowLayer;
+    //    TYUserDefaultsRouteArrowLayer *routeArrowLayer;
     TYAnimatedRouteArrowLayer *animatedRouteArrowLayer;
     TYRouteHintLayer *routeHintLayer;
     
@@ -55,7 +55,7 @@
     if (self.currentMapInfo) {
         [structureGroupLayer loadContentsWithInfo:self.currentMapInfo];
         [labelGroupLayer loadContentsWithInfo:self.currentMapInfo];
-
+        
         if (self.mapDelegate && [self.mapDelegate respondsToSelector:@selector(TYMapView:didFinishLoadingFloor:)]) {
             [labelGroupLayer updateLabels];
             [self.mapDelegate TYMapView:self didFinishLoadingFloor:_currentMapInfo];
@@ -66,32 +66,34 @@
 - (void)setFloorWithInfo:(TYMapInfo *)info
 {
     
-//    NSString* invalidDateString = @"20150811";
-//    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-//    [dateFormatter setDateFormat:@"yyyyMMdd"];
-//    NSDate* invalidDate = [dateFormatter dateFromString:invalidDateString];
-//    NSTimeInterval interval = [invalidDate timeIntervalSinceDate:[NSDate date]];
-//    if (interval < 0) {
-//        NSLog(@"抱歉，SDK已过期");
-//        return;
-//    }
+    NSString* invalidDateString = @"20160120";
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyyMMdd"];
+    NSDate* invalidDate = [dateFormatter dateFromString:invalidDateString];
+    NSTimeInterval interval = [invalidDate timeIntervalSinceDate:[NSDate date]];
+    if (interval < 0) {
+        NSLog(@"抱歉，SDK已过期");
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"错误！" message:@"抱歉，SDK已过期，请联系开发者。" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        [alert show];
+        return;
+    }
     
     if ([info.mapID isEqualToString:_currentMapInfo.mapID]) {
         return;
     }
     
     _currentMapInfo = info;
-
+    
     [locationLayer removeAllGraphics];
     [routeLayer removeAllGraphics];
     [routeHintLayer removeAllGraphics];
     
-//    [routeArrowLayer removeAllGraphics];
+    //    [routeArrowLayer removeAllGraphics];
     [animatedRouteArrowLayer stopShowingArrow];
     
     [structureGroupLayer loadContentsWithInfo:info];
     [labelGroupLayer loadContentsWithInfo:info];
-
+    
     if (initialEnvelope == nil) {
         initialEnvelope = [AGSEnvelope envelopeWithXmin:_currentMapInfo.mapExtent.xmin ymin:_currentMapInfo.mapExtent.ymin xmax:_currentMapInfo.mapExtent.xmax ymax:_currentMapInfo.mapExtent.ymax spatialReference:[TYMapEnvironment defaultSpatialReference]];
         [self zoomToEnvelope:initialEnvelope animated:NO];
@@ -124,7 +126,7 @@
     
     self.backgroundColor = [UIColor lightGrayColor];
     self.gridLineWidth = 0.0;
-        
+    
     mapViewMode = TYMapViewModeDefault;
     
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
@@ -156,14 +158,14 @@
     [self addMapLayer:routeHintLayer];
     routeHintLayer.allowHitTest = NO;
     
-//    routeArrowLayer = [TYRouteArrowLayer routeArrowLayerWithSpatialReference:[TYMapEnvironment defaultSpatialReference]];
-//    [self addMapLayer:routeArrowLayer];
-//    routeArrowLayer.allowHitTest = NO;
+    //    routeArrowLayer = [TYRouteArrowLayer routeArrowLayerWithSpatialReference:[TYMapEnvironment defaultSpatialReference]];
+    //    [self addMapLayer:routeArrowLayer];
+    //    routeArrowLayer.allowHitTest = NO;
     
     animatedRouteArrowLayer = [TYAnimatedRouteArrowLayer animatedRouteArrowLayerWithSpatialReference:[TYMapEnvironment defaultSpatialReference]];
     [self addMapLayer:animatedRouteArrowLayer];
     animatedRouteArrowLayer.allowHitTest = NO;
-
+    
     locationLayer = [[TYLocationLayer alloc] initWithSpatialReference:spatialReference];
     [self addMapLayer:locationLayer withName:LAYER_NAME_LOCATION];
     locationLayer.allowHitTest = NO;
@@ -231,7 +233,7 @@
 {
     [routeLayer reset];
     [routeHintLayer removeAllGraphics];
-//    [routeArrowLayer removeAllGraphics];
+    //    [routeArrowLayer removeAllGraphics];
     [animatedRouteArrowLayer stopShowingArrow];
 }
 
@@ -239,7 +241,7 @@
 {
     [routeLayer removeAllGraphics];
     [routeHintLayer removeAllGraphics];
-//    [routeArrowLayer removeAllGraphics];
+    //    [routeArrowLayer removeAllGraphics];
     [animatedRouteArrowLayer stopShowingArrow];
 }
 
@@ -338,7 +340,7 @@
     
     double xOffset = 0;
     double yOffset = 0;
-
+    
     if (locationOnScreen.x < range.origin.x) {
         xOffset = range.origin.x - locationOnScreen.x;
     }
@@ -354,7 +356,7 @@
     if (locationOnScreen.y > range.origin.y + range.size.height) {
         yOffset = range.origin.y + range.size.height - locationOnScreen.y;
     }
-
+    
     [self translateInScreenUnitByX:xOffset Y:yOffset animated:YES];
 }
 
@@ -388,19 +390,19 @@
 
 - (void)mapView:(AGSMapView *)mapView didMoveTapAndHoldAtPoint:(CGPoint)screen mapPoint:(AGSPoint *)mappoint features:(NSDictionary *)features
 {
-//    NSLog(@"%@",NSStringFromSelector(_cmd));
+    //    NSLog(@"%@",NSStringFromSelector(_cmd));
 }
 
 - (void)mapView:(AGSMapView *)mapView didEndTapAndHoldAtPoint:(CGPoint)screen mapPoint:(AGSPoint *)mappoint features:(NSDictionary *)features
 {
-//    NSLog(@"%@",NSStringFromSelector(_cmd));
-
+    //    NSLog(@"%@",NSStringFromSelector(_cmd));
+    
 }
 
 - (void)mapView:(AGSMapView *)mapView didTapAndHoldAtPoint:(CGPoint)screen mapPoint:(AGSPoint *)mappoint features:(NSDictionary *)features
 {
-//    NSLog(@"%@",NSStringFromSelector(_cmd));
-
+    //    NSLog(@"%@",NSStringFromSelector(_cmd));
+    
 }
 
 - (void)mapViewDidLoad:(AGSMapView *)mapView
@@ -484,15 +486,15 @@
 
 - (void)highlightPoiFeature:(NSDictionary *)features
 {
-//    if ([features.allKeys containsObject:LAYER_NAME_FACILITY]) {
-//        NSArray *array = [features objectForKey:LAYER_NAME_FACILITY];
-//        if (array != nil && array.count > 0) {
-//            AGSGraphic *graphic = (AGSGraphic *)array[0];
-//            [labelGroupLayer setFacilitySelected:YES forGraphic:graphic];
-//            
-//        }
-//        return;
-//    }
+    //    if ([features.allKeys containsObject:LAYER_NAME_FACILITY]) {
+    //        NSArray *array = [features objectForKey:LAYER_NAME_FACILITY];
+    //        if (array != nil && array.count > 0) {
+    //            AGSGraphic *graphic = (AGSGraphic *)array[0];
+    //            [labelGroupLayer setFacilitySelected:YES forGraphic:graphic];
+    //
+    //        }
+    //        return;
+    //    }
     
     //    if ([features.allKeys containsObject:LAYER_NAME_ASSET]) {
     //        NSArray *array = [features objectForKey:LAYER_NAME_ASSET];
@@ -518,9 +520,9 @@
 {
     NSArray *linesToShow = [routeLayer showRouteResultOnFloor:self.currentMapInfo.floorNumber];
     if (linesToShow && linesToShow.count > 0) {
-//        [routeArrowLayer showRouteArrow:linesToShow];
+        //        [routeArrowLayer showRouteArrow:linesToShow];
         [animatedRouteArrowLayer showRouteArrow:linesToShow];
-//        [animatedRouteArrowLayer showRouteArrow:linesToShow withTranslation:0.001];
+        //        [animatedRouteArrowLayer showRouteArrow:linesToShow withTranslation:0.001];
     }
 }
 
@@ -528,9 +530,9 @@
 {
     NSArray *linesToShow = [routeLayer showRemainingRouteResultOnFloor:self.currentMapInfo.floorNumber WithLocation:lp];
     if (linesToShow && linesToShow.count > 0) {
-//        [routeArrowLayer showRouteArrow:linesToShow];
+        //        [routeArrowLayer showRouteArrow:linesToShow];
         [animatedRouteArrowLayer showRouteArrow:linesToShow];
-//        [animatedRouteArrowLayer showRouteArrow:linesToShow withTranslation:0.001];
+        //        [animatedRouteArrowLayer showRouteArrow:linesToShow withTranslation:0.001];
     }
 }
 
@@ -631,7 +633,7 @@
 
 - (void)respondToPanning:(NSNotification *)notification
 {
-//    NSLog(@"respondToPanning: %f, %f", self.mapAnchor.x, self.mapAnchor.y);
+    //    NSLog(@"respondToPanning: %f, %f", self.mapAnchor.x, self.mapAnchor.y);
     
     AGSPoint *center = self.mapAnchor;
     
@@ -653,6 +655,14 @@
     return [structureGroupLayer extractRoomPoiOnCurrentFloorWithX:x Y:y];
 }
 
+
+//  更新ROOM层目标POI的名称信息
+//
+//  @param pid  目标POI的ID
+//  @param name 修改后的名称
+//
+//  @return 是否修改成功
+
 - (BOOL)updateRoomPOI:(NSString *)pid WithName:(NSString *)name
 {
     BOOL structureUpdated = [structureGroupLayer updateRoomPOI:pid WithName:name];
@@ -661,6 +671,9 @@
     return (structureUpdated && labelUpdated);
 }
 
+
+
+//将修改结果更新至地图文件中
 - (void)updateMapFiles
 {
     NSString *labelFilePath = [TYMapFileManager getLabelLayerPath:self.currentMapInfo];

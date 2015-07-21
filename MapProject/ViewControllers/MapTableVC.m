@@ -15,10 +15,10 @@
     self.objects = [[NSMutableArray alloc] init];
     self.controllerDict = [[NSMutableDictionary alloc] init];
     
-    self.title = @"云图地图 Demo";
+    self.title = @"地图 Demo";
     
-    [self.objects addObject:@"云图地图 Demo"];
-    [self.controllerDict setObject:@"mapController" forKey:@"云图地图 Demo"];
+    [self.objects addObject:@"地图 Demo"];
+    [self.controllerDict setObject:@"mapController" forKey:@"地图 Demo"];
     
     [self.objects addObject:@"地图导航 Demo"];
     [self.controllerDict setObject:@"mapRouteController" forKey:@"地图导航 Demo"];
