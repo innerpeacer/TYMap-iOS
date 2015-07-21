@@ -32,6 +32,7 @@
 
 #import "TYBuilding.h"
 #import "TYCity.h"
+#import "MD5Utils.h"
 
 @implementation TYMapFileManager
 
@@ -65,6 +66,10 @@
     NSString *cityDir = [mapRootDir stringByAppendingPathComponent:info.cityID];
     NSString *buildingDir = [cityDir stringByAppendingPathComponent:info.buildingID];
     NSString *fileName = [NSString stringWithFormat:FILE_LAYER_PATH_FLOOR, info.mapID];
+    if ([TYMapEnvironment useEncryption]) {
+        fileName = [MD5Utils md5:fileName];
+    }
+    
     return [buildingDir stringByAppendingPathComponent:fileName];
 }
 
@@ -74,6 +79,10 @@
     NSString *cityDir = [mapRootDir stringByAppendingPathComponent:info.cityID];
     NSString *buildingDir = [cityDir stringByAppendingPathComponent:info.buildingID];
     NSString *fileName = [NSString stringWithFormat:FILE_LAYER_PATH_ROOM, info.mapID];
+    if ([TYMapEnvironment useEncryption]) {
+        fileName = [MD5Utils md5:fileName];
+    }
+    
     return [buildingDir stringByAppendingPathComponent:fileName];
 }
 
@@ -83,6 +92,10 @@
     NSString *cityDir = [mapRootDir stringByAppendingPathComponent:info.cityID];
     NSString *buildingDir = [cityDir stringByAppendingPathComponent:info.buildingID];
     NSString *fileName = [NSString stringWithFormat:FILE_LAYER_PATH_ASSET, info.mapID];
+    if ([TYMapEnvironment useEncryption]) {
+        fileName = [MD5Utils md5:fileName];
+    }
+    
     return [buildingDir stringByAppendingPathComponent:fileName];
 }
 
@@ -92,6 +105,10 @@
     NSString *cityDir = [mapRootDir stringByAppendingPathComponent:info.cityID];
     NSString *buildingDir = [cityDir stringByAppendingPathComponent:info.buildingID];
     NSString *fileName = [NSString stringWithFormat:FILE_LAYER_PATH_FACILITY, info.mapID];
+    if ([TYMapEnvironment useEncryption]) {
+        fileName = [MD5Utils md5:fileName];
+    }
+    
     return [buildingDir stringByAppendingPathComponent:fileName];
 }
 
@@ -101,6 +118,10 @@
     NSString *cityDir = [mapRootDir stringByAppendingPathComponent:info.cityID];
     NSString *buildingDir = [cityDir stringByAppendingPathComponent:info.buildingID];
     NSString *fileName = [NSString stringWithFormat:FILE_LAYER_PATH_LABEL, info.mapID];
+    if ([TYMapEnvironment useEncryption]) {
+        fileName = [MD5Utils md5:fileName];
+    }
+    
     return [buildingDir stringByAppendingPathComponent:fileName];
 }
 

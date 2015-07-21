@@ -8,6 +8,8 @@
 
 #import "TYFloorLayer.h"
 #import "TYMapFileManager.h"
+#import "TYEncryption.h"
+#import "TYMapEnviroment.h"
 
 @interface TYFloorLayer()
 {
@@ -44,6 +46,10 @@
     NSError *error = nil;
     NSString *fullPath = [TYMapFileManager getFloorLayerPath:info];
     NSString *jsonString = [NSString stringWithContentsOfFile:fullPath encoding:NSUTF8StringEncoding error:&error];
+    
+    if ([TYMapEnvironment useEncryption]) {
+        jsonString = [TYEncryption decryptString:jsonString];
+    }
     
     AGSSBJsonParser *parser = [[AGSSBJsonParser alloc] init];
     NSDictionary *dict = [parser objectWithString:jsonString];

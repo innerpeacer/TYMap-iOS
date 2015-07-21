@@ -22,12 +22,20 @@
     NSString *documentDirectory = [paths objectAtIndex:0];
     NSLog(@"%@", documentDirectory);
     
+    
+    NSString *pathMapEncrypted = [[NSBundle mainBundle] pathForResource:@"MapEncrypted" ofType:nil];
+    
     [TYMapEnvironment initMapEnvironment];
     
-    [TYMapEnvironment setMapLanguage:TYTraditionalChinese];
+//    [TYMapEnvironment setEncryptionEnabled:NO];
     
-    [TYMapEnvironment setRootDirectoryForMapFiles:[documentDirectory stringByAppendingPathComponent:DEFAULT_MAP_ROOT]];
-    [self copyMapFilesIfNeeded];
+//    [TYMapEnvironment setMapLanguage:TYTraditionalChinese];
+    
+//    [TYMapEnvironment setRootDirectoryForMapFiles:[documentDirectory stringByAppendingPathComponent:DEFAULT_MAP_ROOT]];
+//    [self copyMapFilesIfNeeded];
+
+    [TYMapEnvironment setRootDirectoryForMapFiles:pathMapEncrypted];
+
     
     [self setDefaultPlaceIfNeeded];
     
@@ -39,9 +47,9 @@
 {
     [TYUserDefaults setDefaultCity:@"0021"];
 //    [TYUserDefaults setDefaultBuilding:@"002100001"];
-    [TYUserDefaults setDefaultBuilding:@"002100002"];
+//    [TYUserDefaults setDefaultBuilding:@"002100002"];
     [TYUserDefaults setDefaultBuilding:@"002100004"];
-//    [TYUserDefaults setDefaultBuilding:@"002100005"];
+    [TYUserDefaults setDefaultBuilding:@"002100005"];
 
 //    [TYUserDefaults setDefaultBuilding:@"002188888"];
 //    [TYUserDefaults setDefaultBuilding:@"002199999"];

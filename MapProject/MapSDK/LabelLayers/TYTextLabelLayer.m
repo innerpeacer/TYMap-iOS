@@ -15,7 +15,7 @@
 #import "TYLabelGroupLayer.h"
 #import "TYMapType.h"
 #import "TYBrand.h"
-//#import "TYMapView.h"
+#import "TYEncryption.h"
 
 @interface TYTextLabelLayer()
 {
@@ -112,6 +112,9 @@
     NSError *error = nil;
     NSString *fullPath = [TYMapFileManager getLabelLayerPath:info];
     NSString *jsonString = [NSString stringWithContentsOfFile:fullPath encoding:NSUTF8StringEncoding error:&error];
+    if ([TYMapEnvironment useEncryption]) {
+        jsonString = [TYEncryption decryptString:jsonString];
+    }
     
     AGSSBJsonParser *parser = [[AGSSBJsonParser alloc] init];
     NSDictionary *dict = [parser objectWithString:jsonString];

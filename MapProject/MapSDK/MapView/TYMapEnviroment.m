@@ -56,8 +56,7 @@ static NSString *mapFileRootDirectory;
         NSLog(@"Error using client ID : %@",[error localizedDescription]);
     }
     
-    [[AGSRuntimeEnvironment license] setLicenseCode:@"runtimestandard,101,rud514140042,none, 8SF97XLL6S875E5HJ220"];
-    
+//    [[AGSRuntimeEnvironment license] setLicenseCode:@"runtimestandard,101,rud514140042,none, 8SF97XLL6S875E5HJ220"];
 //    ArcGISRuntime.SetLicense("runtimestandard,101,rud514140042,none, 8SF97XLL6S875E5HJ220");
 }
 
@@ -70,6 +69,17 @@ static TYMapLanguage mapLanguage = TYSimplifiedChinese;
 + (TYMapLanguage)getMapLanguage
 {
     return mapLanguage;
+}
+
+static BOOL useEncryption = YES;
++ (void)setEncryptionEnabled:(BOOL)enable
+{
+    useEncryption = enable;
+}
+
++ (BOOL)useEncryption
+{
+    return useEncryption;
 }
 
 @end

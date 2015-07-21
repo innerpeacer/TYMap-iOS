@@ -10,6 +10,7 @@
 #import "TYMapType.h"
 #import "TYMapFileManager.h"
 #import "TYMapEnviroment.h"
+#import "TYEncryption.h"
 
 @interface TYRoomLayer()
 {
@@ -73,6 +74,9 @@
     NSError *error = nil;
     NSString *fullPath = [TYMapFileManager getRoomLayerPath:info];
     NSString *jsonString = [NSString stringWithContentsOfFile:fullPath encoding:NSUTF8StringEncoding error:&error];
+    if ([TYMapEnvironment useEncryption]) {
+        jsonString = [TYEncryption decryptString:jsonString];
+    }
     
     AGSSBJsonParser *parser = [[AGSSBJsonParser alloc] init];
     NSDictionary *dict = [parser objectWithString:jsonString];

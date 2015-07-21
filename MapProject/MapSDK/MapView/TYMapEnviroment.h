@@ -73,4 +73,9 @@ typedef enum {
  */
 + (TYMapLanguage)getMapLanguage;
 
+
++ (void)setEncryptionEnabled:(BOOL)enabled;
+
++ (BOOL)useEncryption;
+
 @end

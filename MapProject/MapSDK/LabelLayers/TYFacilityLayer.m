@@ -14,6 +14,8 @@
 #import "TYLabelGroupLayer.h"
 #import "TYLabelBorder.h"
 #import "TYLabelBorderCalculator.h"
+#import "TYMapEnviroment.h"
+#import "TYEncryption.h"
 
 @interface TYFacilityLayer()
 {
@@ -124,6 +126,9 @@
     NSError *error = nil;
     NSString *fullPath = [TYMapFileManager getFacilityLayerPath:info];
     NSString *jsonString = [NSString stringWithContentsOfFile:fullPath encoding:NSUTF8StringEncoding error:&error];
+    if ([TYMapEnvironment useEncryption]) {
+        jsonString = [TYEncryption decryptString:jsonString];
+    }
     
     AGSSBJsonParser *parser = [[AGSSBJsonParser alloc] init];
     NSDictionary *dict = [parser objectWithString:jsonString];
