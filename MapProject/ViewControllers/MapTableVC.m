@@ -28,7 +28,9 @@
     
     [self.objects addObject:@"生成POI数据库"];
     [self.controllerDict setObject:@"CreatePOIDatabaseVC" forKey:@"生成POI数据库"];
+ 
     
+    [self tableView:self.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

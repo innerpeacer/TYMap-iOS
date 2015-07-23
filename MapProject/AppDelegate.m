@@ -27,14 +27,18 @@
     
     [TYMapEnvironment initMapEnvironment];
     
-//    [TYMapEnvironment setEncryptionEnabled:NO];
+    [TYMapEnvironment setEncryptionEnabled:NO];
     
-//    [TYMapEnvironment setMapLanguage:TYTraditionalChinese];
+#if TARGET_IPHONE_SIMULATOR
+    [TYMapEnvironment setMapLanguage:TYTraditionalChinese];
+#elif TARGET_OS_IPHONE
     
-//    [TYMapEnvironment setRootDirectoryForMapFiles:[documentDirectory stringByAppendingPathComponent:DEFAULT_MAP_ROOT]];
-//    [self copyMapFilesIfNeeded];
+#endif
+    
+    [TYMapEnvironment setRootDirectoryForMapFiles:[documentDirectory stringByAppendingPathComponent:DEFAULT_MAP_ROOT]];
+    [self copyMapFilesIfNeeded];
 
-    [TYMapEnvironment setRootDirectoryForMapFiles:pathMapEncrypted];
+//    [TYMapEnvironment setRootDirectoryForMapFiles:pathMapEncrypted];
 
     
     [self setDefaultPlaceIfNeeded];
@@ -48,7 +52,7 @@
     [TYUserDefaults setDefaultCity:@"0021"];
 //    [TYUserDefaults setDefaultBuilding:@"002100001"];
 //    [TYUserDefaults setDefaultBuilding:@"002100002"];
-    [TYUserDefaults setDefaultBuilding:@"002100004"];
+//    [TYUserDefaults setDefaultBuilding:@"002100004"];
     [TYUserDefaults setDefaultBuilding:@"002100005"];
 
 //    [TYUserDefaults setDefaultBuilding:@"002188888"];
@@ -59,9 +63,14 @@
 //
 //    [TYUserDefaults setDefaultCity:@"H852"];
 //    [TYUserDefaults setDefaultBuilding:@"H85200001"];
-    
+//    
 //        [TYUserDefaults setDefaultCity:@"0755"];
 //        [TYUserDefaults setDefaultBuilding:@"075500001"];
+    
+    
+    [TYUserDefaults setDefaultCity:@"0452"];
+    [TYUserDefaults setDefaultBuilding:@"045200001"];
+
     
 }
 

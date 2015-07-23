@@ -877,8 +877,9 @@
 					"$(HOME)/Library/SDKs/ArcGIS/iOS/",
 					"$(PROJECT_DIR)/MapProject",
 				);
-				GCC_PREFIX_HEADER = /Users/innerpeacer/wsForIOS/TYMap/MapProject/MapProject/PrefixHeader.pch;
+				GCC_PREFIX_HEADER = MapProject/PrefixHeader.pch;
 				INFOPLIST_FILE = MapProject/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -901,8 +902,9 @@
 					"$(HOME)/Library/SDKs/ArcGIS/iOS/",
 					"$(PROJECT_DIR)/MapProject",
 				);
-				GCC_PREFIX_HEADER = /Users/innerpeacer/wsForIOS/TYMap/MapProject/MapProject/PrefixHeader.pch;
+				GCC_PREFIX_HEADER = MapProject/PrefixHeader.pch;
 				INFOPLIST_FILE = MapProject/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"-ObjC",

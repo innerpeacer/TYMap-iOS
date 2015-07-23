@@ -68,6 +68,7 @@
     NSString *fileName = [NSString stringWithFormat:FILE_LAYER_PATH_FLOOR, info.mapID];
     if ([TYMapEnvironment useEncryption]) {
         fileName = [MD5Utils md5:fileName];
+        fileName = [NSString stringWithFormat:@"%@.tymap", fileName];
     }
     
     return [buildingDir stringByAppendingPathComponent:fileName];
@@ -81,9 +82,11 @@
     NSString *fileName = [NSString stringWithFormat:FILE_LAYER_PATH_ROOM, info.mapID];
     if ([TYMapEnvironment useEncryption]) {
         fileName = [MD5Utils md5:fileName];
+        fileName = [NSString stringWithFormat:@"%@.tymap", fileName];
     }
     
     return [buildingDir stringByAppendingPathComponent:fileName];
+    
 }
 
 + (NSString *)getAssetLayerPath:(TYMapInfo *)info
@@ -94,6 +97,7 @@
     NSString *fileName = [NSString stringWithFormat:FILE_LAYER_PATH_ASSET, info.mapID];
     if ([TYMapEnvironment useEncryption]) {
         fileName = [MD5Utils md5:fileName];
+        fileName = [NSString stringWithFormat:@"%@.tymap", fileName];
     }
     
     return [buildingDir stringByAppendingPathComponent:fileName];
@@ -107,6 +111,7 @@
     NSString *fileName = [NSString stringWithFormat:FILE_LAYER_PATH_FACILITY, info.mapID];
     if ([TYMapEnvironment useEncryption]) {
         fileName = [MD5Utils md5:fileName];
+        fileName = [NSString stringWithFormat:@"%@.tymap", fileName];
     }
     
     return [buildingDir stringByAppendingPathComponent:fileName];
@@ -120,6 +125,7 @@
     NSString *fileName = [NSString stringWithFormat:FILE_LAYER_PATH_LABEL, info.mapID];
     if ([TYMapEnvironment useEncryption]) {
         fileName = [MD5Utils md5:fileName];
+        fileName = [NSString stringWithFormat:@"%@.tymap", fileName];
     }
     
     return [buildingDir stringByAppendingPathComponent:fileName];

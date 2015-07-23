@@ -78,6 +78,14 @@
         return;
     }
     
+    
+//    if (![info.buildingID isEqualToString:@"002100005"]) {
+//        NSLog(@"抱歉，当前SDK只支持002100005，请联系开发者");
+//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"错误！" message:@"抱歉，当前SDK只支持002100005，请联系开发者" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+//        [alert show];
+//        return;
+//    }
+    
     if ([info.mapID isEqualToString:_currentMapInfo.mapID]) {
         return;
     }

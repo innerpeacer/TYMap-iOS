@@ -44,7 +44,7 @@ typedef enum {
 @optional
 
 /**
- *  地图点选事件回调方法
+ *  地图点选事件回调方xxxx法
  *
  *  @param mapView  地图视图
  *  @param screen   点击事件的屏幕坐标
