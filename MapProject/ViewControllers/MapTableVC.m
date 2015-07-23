@@ -29,8 +29,10 @@
     [self.objects addObject:@"生成POI数据库"];
     [self.controllerDict setObject:@"CreatePOIDatabaseVC" forKey:@"生成POI数据库"];
  
+    [self.objects addObject:@"加密地图文件"];
+    [self.controllerDict setObject:@"mapEncryptionController" forKey:@"加密地图文件"];
     
-    [self tableView:self.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+    [self tableView:self.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:4 inSection:0]];
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

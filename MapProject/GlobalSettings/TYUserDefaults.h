@@ -10,6 +10,10 @@
 #import "TYBuilding.h"
 #import "TYCity.h"
 
+#define DEFAULT_MAP_ROOT @"MapResource"
+#define DEFAULT_MAP_ENCRPTION_ROOT @"MapEncrypted"
+
+
 @interface TYUserDefaults : NSObject
 
 + (void)setDefaultBuilding:(NSString *)buildingID;

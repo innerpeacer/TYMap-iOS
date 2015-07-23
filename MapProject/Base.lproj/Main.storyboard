@@ -123,6 +123,43 @@
             </objects>
             <point key="canvasLocation" x="2623" y="74"/>
         </scene>
+        <!--Map EncryptionVC-->
+        <scene sceneID="Zhw-8h-CYn">
+            <objects>
+                <viewController storyboardIdentifier="mapEncryptionController" id="Ebc-iY-xU6" customClass="MapEncryptionVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="HiG-OJ-0Ba"/>
+                        <viewControllerLayoutGuide type="bottom" id="O58-V2-UaI"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="6te-iH-biw">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cLK-Fk-oHE">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="cLK-Fk-oHE" firstAttribute="leading" secondItem="6te-iH-biw" secondAttribute="leading" id="05z-l5-72b"/>
+                            <constraint firstAttribute="trailing" secondItem="cLK-Fk-oHE" secondAttribute="trailing" id="8hb-LY-Z4k"/>
+                            <constraint firstItem="cLK-Fk-oHE" firstAttribute="top" secondItem="6te-iH-biw" secondAttribute="top" id="cdy-D0-LuO"/>
+                            <constraint firstItem="O58-V2-UaI" firstAttribute="top" secondItem="cLK-Fk-oHE" secondAttribute="bottom" id="fzm-bV-U7O"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="logView" destination="cLK-Fk-oHE" id="dcb-yf-D09"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2xZ-Ac-q1N" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2615" y="900"/>
+        </scene>
         <!--Map RouteVC-->
         <scene sceneID="PLm-g8-NTv">
             <objects>

@@ -95,6 +95,7 @@
 		5794C0F41B560558002DCE9F /* TYRoomLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5794C0BE1B560558002DCE9F /* TYRoomLayer.m */; };
 		5794C0F51B560558002DCE9F /* TYStructureGroupLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5794C0C01B560558002DCE9F /* TYStructureGroupLayer.m */; };
 		57B527531B56332300FD3C27 /* TYMapData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57B527521B56332300FD3C27 /* TYMapData.framework */; };
+		57D8FC6D1B60E0AE00D7A6F8 /* MapEncryptionVC.mm in Sources */ = {isa = PBXBuildFile; fileRef = 57D8FC6C1B60E0AE00D7A6F8 /* MapEncryptionVC.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -263,6 +264,9 @@
 		5794C0C01B560558002DCE9F /* TYStructureGroupLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYStructureGroupLayer.m; sourceTree = "<group>"; };
 		5794C0FA1B5613CC002DCE9F /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		57B527521B56332300FD3C27 /* TYMapData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TYMapData.framework; sourceTree = "<group>"; };
+		57D8FC6B1B60E0AE00D7A6F8 /* MapEncryptionVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapEncryptionVC.h; sourceTree = "<group>"; };
+		57D8FC6C1B60E0AE00D7A6F8 /* MapEncryptionVC.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MapEncryptionVC.mm; sourceTree = "<group>"; };
+		57D8FC6F1B60F4F700D7A6F8 /* TYMapFileContants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYMapFileContants.h; sourceTree = "<group>"; };
 		57F06C1D1A87BC7500B9511F /* MapProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MapProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -317,6 +321,8 @@
 				57672D421B55FF8000DAD219 /* BaseLogVC.m */,
 				57672D431B55FF8000DAD219 /* BaseMapVC.h */,
 				57672D441B55FF8000DAD219 /* BaseMapVC.m */,
+				57D8FC6B1B60E0AE00D7A6F8 /* MapEncryptionVC.h */,
+				57D8FC6C1B60E0AE00D7A6F8 /* MapEncryptionVC.mm */,
 				57672D451B55FF8000DAD219 /* CreatePOIDatabaseVC.h */,
 				57672D461B55FF8000DAD219 /* CreatePOIDatabaseVC.m */,
 				57672D471B55FF8000DAD219 /* CustomCalloutVC.h */,
@@ -533,6 +539,7 @@
 				5794C0961B560558002DCE9F /* TYCity.m */,
 				5794C0971B560558002DCE9F /* TYMapEnviroment.h */,
 				5794C0981B560558002DCE9F /* TYMapEnviroment.m */,
+				57D8FC6F1B60F4F700D7A6F8 /* TYMapFileContants.h */,
 				5794C0991B560558002DCE9F /* TYMapFileManager.h */,
 				5794C09A1B560558002DCE9F /* TYMapFileManager.mm */,
 				5794C09B1B560558002DCE9F /* TYMapInfo.h */,
@@ -743,6 +750,7 @@
 				5794C0F41B560558002DCE9F /* TYRoomLayer.m in Sources */,
 				575442AF1B5DF66900EA3A1F /* MD5Utils.mm in Sources */,
 				57672D521B55FF8000DAD219 /* BaseLogVC.m in Sources */,
+				57D8FC6D1B60E0AE00D7A6F8 /* MapEncryptionVC.mm in Sources */,
 				5794C0C71B560558002DCE9F /* TYGraphicsLayer.m in Sources */,
 				5794C0DD1B560558002DCE9F /* TYTextLabel.m in Sources */,
 				57672D531B55FF8000DAD219 /* BaseMapVC.m in Sources */,
