@@ -11,16 +11,15 @@
 
 #import "TYMapEnviroment.h"
 #import "TYPoi.h"
+#import "EnviromentManager.h"
 
-#define USE_ENCRYPTION_MAP 0
 
 @implementation AppDelegate
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentDirectory = [paths objectAtIndex:0];
+    NSString *documentDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     NSLog(@"%@", documentDirectory);
     
     [TYMapEnvironment initMapEnvironment];
@@ -31,17 +30,7 @@
     
 #endif
     
-    
-    
-#if USE_ENCRYPTION_MAP
-    NSString *pathMapEncrypted = [[NSBundle mainBundle] pathForResource:DEFAULT_MAP_ENCRPTION_ROOT ofType:nil];
-    [TYMapEnvironment setRootDirectoryForMapFiles:pathMapEncrypted];
-#else
-    [TYMapEnvironment setEncryptionEnabled:NO];
-    [TYMapEnvironment setRootDirectoryForMapFiles:[documentDirectory stringByAppendingPathComponent:DEFAULT_MAP_ROOT]];
     [self copyMapFilesIfNeeded];
-#endif
-
     [self setDefaultPlaceIfNeeded];
     
     return YES;
@@ -58,14 +47,14 @@
     //    [TYUserDefaults setDefaultBuilding:@"002188888"];
     //    [TYUserDefaults setDefaultBuilding:@"002199999"];
     //
-        [TYUserDefaults setDefaultCity:@"H852"];
-        [TYUserDefaults setDefaultBuilding:@"H85200001"];
+//        [TYUserDefaults setDefaultCity:@"H852"];
+//        [TYUserDefaults setDefaultBuilding:@"H85200001"];
     //
     //    [TYUserDefaults setDefaultCity:@"H852"];
     //    [TYUserDefaults setDefaultBuilding:@"H85200001"];
     //
-            [TYUserDefaults setDefaultCity:@"0755"];
-            [TYUserDefaults setDefaultBuilding:@"075500001"];
+//            [TYUserDefaults setDefaultCity:@"0755"];
+//            [TYUserDefaults setDefaultBuilding:@"075500001"];
     
     
 //    [TYUserDefaults setDefaultCity:@"0452"];
@@ -78,6 +67,7 @@
 {
     NSFileManager *fileManager = [NSFileManager defaultManager];
     
+    [EnviromentManager switchToOriginal];
     NSString *targetRootDir = [TYMapEnvironment getRootDirectoryForMapFiles];
     NSString *sourceRootDir = [[NSBundle mainBundle] pathForResource:DEFAULT_MAP_ROOT ofType:nil];
     

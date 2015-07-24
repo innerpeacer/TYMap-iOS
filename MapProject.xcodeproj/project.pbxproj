@@ -8,21 +8,23 @@
 
 /* Begin PBXBuildFile section */
 		571AC4711B55FED900E9FF7D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 571AC4701B55FED900E9FF7D /* AppDelegate.m */; };
+		57494DDA1B61DAE7000B6F2C /* BaseControllerTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 57494DD31B61DAE7000B6F2C /* BaseControllerTableVC.m */; };
+		57494DDB1B61DAE7000B6F2C /* BaseLogVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 57494DD51B61DAE7000B6F2C /* BaseLogVC.m */; };
+		57494DDD1B61DAE7000B6F2C /* CityTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 57494DD91B61DAE7000B6F2C /* CityTableVC.m */; };
+		57494DE01B61DB08000B6F2C /* EncyptedCityVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 57494DDF1B61DB08000B6F2C /* EncyptedCityVC.m */; };
+		57494DE31B61DB17000B6F2C /* OriginalCityVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 57494DE21B61DB17000B6F2C /* OriginalCityVC.m */; };
+		57494DE61B61DDF4000B6F2C /* BuildingTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 57494DE51B61DDF4000B6F2C /* BuildingTableVC.m */; };
+		57494DE91B61E06C000B6F2C /* EncryptedBuildingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 57494DE81B61E06C000B6F2C /* EncryptedBuildingVC.m */; };
+		57494DEC1B61E079000B6F2C /* OriginalBuildingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 57494DEB1B61E079000B6F2C /* OriginalBuildingVC.m */; };
+		57494DEF1B61E1D1000B6F2C /* EncryptedMapVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 57494DEE1B61E1D1000B6F2C /* EncryptedMapVC.m */; };
+		57494DF21B61E1DF000B6F2C /* OriginalMapVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 57494DF11B61E1DF000B6F2C /* OriginalMapVC.m */; };
+		57494DF51B61E730000B6F2C /* EnviromentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 57494DF41B61E730000B6F2C /* EnviromentManager.m */; };
 		575442A61B5DF11900EA3A1F /* MapEncrypted in Resources */ = {isa = PBXBuildFile; fileRef = 575442A51B5DF11900EA3A1F /* MapEncrypted */; };
 		575442A91B5DF20A00EA3A1F /* TYEncryption.m in Sources */ = {isa = PBXBuildFile; fileRef = 575442A81B5DF20A00EA3A1F /* TYEncryption.m */; };
 		575442AC1B5DF62000EA3A1F /* MD5.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 575442AB1B5DF62000EA3A1F /* MD5.cpp */; };
 		575442AF1B5DF66900EA3A1F /* MD5Utils.mm in Sources */ = {isa = PBXBuildFile; fileRef = 575442AE1B5DF66900EA3A1F /* MD5Utils.mm */; };
 		57672D071B55FF4A00DAD219 /* CreatingPOIDBAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 57672C911B55FF4A00DAD219 /* CreatingPOIDBAdapter.m */; };
 		57672D081B55FF4A00DAD219 /* TYPoiDBAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 57672C931B55FF4A00DAD219 /* TYPoiDBAdapter.m */; };
-		57672D511B55FF8000DAD219 /* BaseControllerTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 57672D401B55FF8000DAD219 /* BaseControllerTableVC.m */; };
-		57672D521B55FF8000DAD219 /* BaseLogVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 57672D421B55FF8000DAD219 /* BaseLogVC.m */; };
-		57672D531B55FF8000DAD219 /* BaseMapVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 57672D441B55FF8000DAD219 /* BaseMapVC.m */; };
-		57672D541B55FF8000DAD219 /* CreatePOIDatabaseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 57672D461B55FF8000DAD219 /* CreatePOIDatabaseVC.m */; };
-		57672D551B55FF8000DAD219 /* CustomCalloutVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 57672D481B55FF8000DAD219 /* CustomCalloutVC.m */; };
-		57672D561B55FF8000DAD219 /* MapCalloutVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 57672D4A1B55FF8000DAD219 /* MapCalloutVC.m */; };
-		57672D571B55FF8000DAD219 /* MapRouteVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 57672D4C1B55FF8000DAD219 /* MapRouteVC.m */; };
-		57672D581B55FF8000DAD219 /* MapTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 57672D4E1B55FF8000DAD219 /* MapTableVC.m */; };
-		57672D591B55FF8000DAD219 /* MapVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 57672D501B55FF8000DAD219 /* MapVC.m */; };
 		57672D5D1B55FF9900DAD219 /* TYUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 57672D5C1B55FF9900DAD219 /* TYUserDefaults.m */; };
 		57672E2F1B55FFF900DAD219 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 57672D611B55FFF900DAD219 /* FMDatabase.m */; };
 		57672E301B55FFF900DAD219 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 57672D631B55FFF900DAD219 /* FMDatabaseAdditions.m */; };
@@ -41,6 +43,13 @@
 		57672EF91B56009700DAD219 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 57672EF81B56009700DAD219 /* libsqlite3.0.dylib */; };
 		57672EFD1B5600B900DAD219 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 57672EFC1B5600B900DAD219 /* Default-568h@2x.png */; };
 		57672EFF1B56046300DAD219 /* MapResource in Resources */ = {isa = PBXBuildFile; fileRef = 57672EFE1B56046300DAD219 /* MapResource */; };
+		576AEEA71B61D97100D55CA4 /* CreatePOIDatabaseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 576AEE991B61D97100D55CA4 /* CreatePOIDatabaseVC.m */; };
+		576AEEA81B61D97100D55CA4 /* MapCalloutVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 576AEE9B1B61D97100D55CA4 /* MapCalloutVC.m */; };
+		576AEEA91B61D97100D55CA4 /* MapEncryptionVC.mm in Sources */ = {isa = PBXBuildFile; fileRef = 576AEE9D1B61D97100D55CA4 /* MapEncryptionVC.mm */; };
+		576AEEAA1B61D97100D55CA4 /* MapRouteVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 576AEE9F1B61D97100D55CA4 /* MapRouteVC.m */; };
+		576AEEAB1B61D97100D55CA4 /* MapDevVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 576AEEA11B61D97100D55CA4 /* MapDevVC.m */; };
+		576AEEAC1B61D97100D55CA4 /* MapVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 576AEEA31B61D97100D55CA4 /* MapVC.m */; };
+		576AEEB21B61D9E400D55CA4 /* CustomCalloutVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 576AEEB01B61D9E400D55CA4 /* CustomCalloutVC.m */; };
 		5794C0C11B560558002DCE9F /* TYCallout.m in Sources */ = {isa = PBXBuildFile; fileRef = 5794C0511B560558002DCE9F /* TYCallout.m */; };
 		5794C0C21B560558002DCE9F /* TYCredential.m in Sources */ = {isa = PBXBuildFile; fileRef = 5794C0531B560558002DCE9F /* TYCredential.m */; };
 		5794C0C31B560558002DCE9F /* TYEnvelope.m in Sources */ = {isa = PBXBuildFile; fileRef = 5794C0551B560558002DCE9F /* TYEnvelope.m */; };
@@ -95,12 +104,34 @@
 		5794C0F41B560558002DCE9F /* TYRoomLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5794C0BE1B560558002DCE9F /* TYRoomLayer.m */; };
 		5794C0F51B560558002DCE9F /* TYStructureGroupLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5794C0C01B560558002DCE9F /* TYStructureGroupLayer.m */; };
 		57B527531B56332300FD3C27 /* TYMapData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57B527521B56332300FD3C27 /* TYMapData.framework */; };
-		57D8FC6D1B60E0AE00D7A6F8 /* MapEncryptionVC.mm in Sources */ = {isa = PBXBuildFile; fileRef = 57D8FC6C1B60E0AE00D7A6F8 /* MapEncryptionVC.mm */; };
+		57C03F5A1B61E19800490179 /* BaseMapVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 57C03F591B61E19800490179 /* BaseMapVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		571AC46F1B55FED900E9FF7D /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		571AC4701B55FED900E9FF7D /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		57494DD21B61DAE7000B6F2C /* BaseControllerTableVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseControllerTableVC.h; sourceTree = "<group>"; };
+		57494DD31B61DAE7000B6F2C /* BaseControllerTableVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseControllerTableVC.m; sourceTree = "<group>"; };
+		57494DD41B61DAE7000B6F2C /* BaseLogVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseLogVC.h; sourceTree = "<group>"; };
+		57494DD51B61DAE7000B6F2C /* BaseLogVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseLogVC.m; sourceTree = "<group>"; };
+		57494DD81B61DAE7000B6F2C /* CityTableVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityTableVC.h; sourceTree = "<group>"; };
+		57494DD91B61DAE7000B6F2C /* CityTableVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityTableVC.m; sourceTree = "<group>"; };
+		57494DDE1B61DB08000B6F2C /* EncyptedCityVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EncyptedCityVC.h; sourceTree = "<group>"; };
+		57494DDF1B61DB08000B6F2C /* EncyptedCityVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EncyptedCityVC.m; sourceTree = "<group>"; };
+		57494DE11B61DB17000B6F2C /* OriginalCityVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OriginalCityVC.h; sourceTree = "<group>"; };
+		57494DE21B61DB17000B6F2C /* OriginalCityVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OriginalCityVC.m; sourceTree = "<group>"; };
+		57494DE41B61DDF4000B6F2C /* BuildingTableVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuildingTableVC.h; sourceTree = "<group>"; };
+		57494DE51B61DDF4000B6F2C /* BuildingTableVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuildingTableVC.m; sourceTree = "<group>"; };
+		57494DE71B61E06C000B6F2C /* EncryptedBuildingVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EncryptedBuildingVC.h; sourceTree = "<group>"; };
+		57494DE81B61E06C000B6F2C /* EncryptedBuildingVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EncryptedBuildingVC.m; sourceTree = "<group>"; };
+		57494DEA1B61E079000B6F2C /* OriginalBuildingVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OriginalBuildingVC.h; sourceTree = "<group>"; };
+		57494DEB1B61E079000B6F2C /* OriginalBuildingVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OriginalBuildingVC.m; sourceTree = "<group>"; };
+		57494DED1B61E1D1000B6F2C /* EncryptedMapVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EncryptedMapVC.h; sourceTree = "<group>"; };
+		57494DEE1B61E1D1000B6F2C /* EncryptedMapVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EncryptedMapVC.m; sourceTree = "<group>"; };
+		57494DF01B61E1DF000B6F2C /* OriginalMapVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OriginalMapVC.h; sourceTree = "<group>"; };
+		57494DF11B61E1DF000B6F2C /* OriginalMapVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OriginalMapVC.m; sourceTree = "<group>"; };
+		57494DF31B61E730000B6F2C /* EnviromentManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnviromentManager.h; sourceTree = "<group>"; };
+		57494DF41B61E730000B6F2C /* EnviromentManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnviromentManager.m; sourceTree = "<group>"; };
 		575442A51B5DF11900EA3A1F /* MapEncrypted */ = {isa = PBXFileReference; lastKnownFileType = folder; path = MapEncrypted; sourceTree = "<group>"; };
 		575442A71B5DF20A00EA3A1F /* TYEncryption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYEncryption.h; sourceTree = "<group>"; };
 		575442A81B5DF20A00EA3A1F /* TYEncryption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYEncryption.m; sourceTree = "<group>"; };
@@ -112,24 +143,6 @@
 		57672C911B55FF4A00DAD219 /* CreatingPOIDBAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreatingPOIDBAdapter.m; sourceTree = "<group>"; };
 		57672C921B55FF4A00DAD219 /* TYPoiDBAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYPoiDBAdapter.h; sourceTree = "<group>"; };
 		57672C931B55FF4A00DAD219 /* TYPoiDBAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYPoiDBAdapter.m; sourceTree = "<group>"; };
-		57672D3F1B55FF8000DAD219 /* BaseControllerTableVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseControllerTableVC.h; sourceTree = "<group>"; };
-		57672D401B55FF8000DAD219 /* BaseControllerTableVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseControllerTableVC.m; sourceTree = "<group>"; };
-		57672D411B55FF8000DAD219 /* BaseLogVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseLogVC.h; sourceTree = "<group>"; };
-		57672D421B55FF8000DAD219 /* BaseLogVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseLogVC.m; sourceTree = "<group>"; };
-		57672D431B55FF8000DAD219 /* BaseMapVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseMapVC.h; sourceTree = "<group>"; };
-		57672D441B55FF8000DAD219 /* BaseMapVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseMapVC.m; sourceTree = "<group>"; };
-		57672D451B55FF8000DAD219 /* CreatePOIDatabaseVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreatePOIDatabaseVC.h; sourceTree = "<group>"; };
-		57672D461B55FF8000DAD219 /* CreatePOIDatabaseVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreatePOIDatabaseVC.m; sourceTree = "<group>"; };
-		57672D471B55FF8000DAD219 /* CustomCalloutVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCalloutVC.h; sourceTree = "<group>"; };
-		57672D481B55FF8000DAD219 /* CustomCalloutVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCalloutVC.m; sourceTree = "<group>"; };
-		57672D491B55FF8000DAD219 /* MapCalloutVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapCalloutVC.h; sourceTree = "<group>"; };
-		57672D4A1B55FF8000DAD219 /* MapCalloutVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapCalloutVC.m; sourceTree = "<group>"; };
-		57672D4B1B55FF8000DAD219 /* MapRouteVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapRouteVC.h; sourceTree = "<group>"; };
-		57672D4C1B55FF8000DAD219 /* MapRouteVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapRouteVC.m; sourceTree = "<group>"; };
-		57672D4D1B55FF8000DAD219 /* MapTableVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapTableVC.h; sourceTree = "<group>"; };
-		57672D4E1B55FF8000DAD219 /* MapTableVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapTableVC.m; sourceTree = "<group>"; };
-		57672D4F1B55FF8000DAD219 /* MapVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapVC.h; sourceTree = "<group>"; };
-		57672D501B55FF8000DAD219 /* MapVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapVC.m; sourceTree = "<group>"; };
 		57672D5B1B55FF9900DAD219 /* TYUserDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYUserDefaults.h; sourceTree = "<group>"; };
 		57672D5C1B55FF9900DAD219 /* TYUserDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYUserDefaults.m; sourceTree = "<group>"; };
 		57672D601B55FFF900DAD219 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
@@ -155,6 +168,20 @@
 		57672EF81B56009700DAD219 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		57672EFC1B5600B900DAD219 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		57672EFE1B56046300DAD219 /* MapResource */ = {isa = PBXFileReference; lastKnownFileType = folder; path = MapResource; sourceTree = "<group>"; };
+		576AEE981B61D97100D55CA4 /* CreatePOIDatabaseVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreatePOIDatabaseVC.h; sourceTree = "<group>"; };
+		576AEE991B61D97100D55CA4 /* CreatePOIDatabaseVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreatePOIDatabaseVC.m; sourceTree = "<group>"; };
+		576AEE9A1B61D97100D55CA4 /* MapCalloutVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapCalloutVC.h; sourceTree = "<group>"; };
+		576AEE9B1B61D97100D55CA4 /* MapCalloutVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapCalloutVC.m; sourceTree = "<group>"; };
+		576AEE9C1B61D97100D55CA4 /* MapEncryptionVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapEncryptionVC.h; sourceTree = "<group>"; };
+		576AEE9D1B61D97100D55CA4 /* MapEncryptionVC.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MapEncryptionVC.mm; sourceTree = "<group>"; };
+		576AEE9E1B61D97100D55CA4 /* MapRouteVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapRouteVC.h; sourceTree = "<group>"; };
+		576AEE9F1B61D97100D55CA4 /* MapRouteVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapRouteVC.m; sourceTree = "<group>"; };
+		576AEEA01B61D97100D55CA4 /* MapDevVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapDevVC.h; sourceTree = "<group>"; };
+		576AEEA11B61D97100D55CA4 /* MapDevVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapDevVC.m; sourceTree = "<group>"; };
+		576AEEA21B61D97100D55CA4 /* MapVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapVC.h; sourceTree = "<group>"; };
+		576AEEA31B61D97100D55CA4 /* MapVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapVC.m; sourceTree = "<group>"; };
+		576AEEAF1B61D9E400D55CA4 /* CustomCalloutVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCalloutVC.h; sourceTree = "<group>"; };
+		576AEEB01B61D9E400D55CA4 /* CustomCalloutVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCalloutVC.m; sourceTree = "<group>"; };
 		5794C0501B560558002DCE9F /* TYCallout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYCallout.h; sourceTree = "<group>"; };
 		5794C0511B560558002DCE9F /* TYCallout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYCallout.m; sourceTree = "<group>"; };
 		5794C0521B560558002DCE9F /* TYCredential.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYCredential.h; sourceTree = "<group>"; };
@@ -264,8 +291,8 @@
 		5794C0C01B560558002DCE9F /* TYStructureGroupLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYStructureGroupLayer.m; sourceTree = "<group>"; };
 		5794C0FA1B5613CC002DCE9F /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		57B527521B56332300FD3C27 /* TYMapData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TYMapData.framework; sourceTree = "<group>"; };
-		57D8FC6B1B60E0AE00D7A6F8 /* MapEncryptionVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapEncryptionVC.h; sourceTree = "<group>"; };
-		57D8FC6C1B60E0AE00D7A6F8 /* MapEncryptionVC.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MapEncryptionVC.mm; sourceTree = "<group>"; };
+		57C03F581B61E19800490179 /* BaseMapVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseMapVC.h; sourceTree = "<group>"; };
+		57C03F591B61E19800490179 /* BaseMapVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseMapVC.m; sourceTree = "<group>"; };
 		57D8FC6F1B60F4F700D7A6F8 /* TYMapFileContants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYMapFileContants.h; sourceTree = "<group>"; };
 		57F06C1D1A87BC7500B9511F /* MapProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MapProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -301,6 +328,23 @@
 			path = MapProject;
 			sourceTree = "<group>";
 		};
+		57494DD11B61DAE7000B6F2C /* HelperVC */ = {
+			isa = PBXGroup;
+			children = (
+				57494DD21B61DAE7000B6F2C /* BaseControllerTableVC.h */,
+				57494DD31B61DAE7000B6F2C /* BaseControllerTableVC.m */,
+				57494DD41B61DAE7000B6F2C /* BaseLogVC.h */,
+				57494DD51B61DAE7000B6F2C /* BaseLogVC.m */,
+				57494DD81B61DAE7000B6F2C /* CityTableVC.h */,
+				57494DD91B61DAE7000B6F2C /* CityTableVC.m */,
+				57494DE41B61DDF4000B6F2C /* BuildingTableVC.h */,
+				57494DE51B61DDF4000B6F2C /* BuildingTableVC.m */,
+				57C03F581B61E19800490179 /* BaseMapVC.h */,
+				57C03F591B61E19800490179 /* BaseMapVC.m */,
+			);
+			path = HelperVC;
+			sourceTree = "<group>";
+		};
 		57672C8F1B55FF4A00DAD219 /* MapTools */ = {
 			isa = PBXGroup;
 			children = (
@@ -315,26 +359,10 @@
 		57672D3E1B55FF8000DAD219 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				57672D3F1B55FF8000DAD219 /* BaseControllerTableVC.h */,
-				57672D401B55FF8000DAD219 /* BaseControllerTableVC.m */,
-				57672D411B55FF8000DAD219 /* BaseLogVC.h */,
-				57672D421B55FF8000DAD219 /* BaseLogVC.m */,
-				57672D431B55FF8000DAD219 /* BaseMapVC.h */,
-				57672D441B55FF8000DAD219 /* BaseMapVC.m */,
-				57D8FC6B1B60E0AE00D7A6F8 /* MapEncryptionVC.h */,
-				57D8FC6C1B60E0AE00D7A6F8 /* MapEncryptionVC.mm */,
-				57672D451B55FF8000DAD219 /* CreatePOIDatabaseVC.h */,
-				57672D461B55FF8000DAD219 /* CreatePOIDatabaseVC.m */,
-				57672D471B55FF8000DAD219 /* CustomCalloutVC.h */,
-				57672D481B55FF8000DAD219 /* CustomCalloutVC.m */,
-				57672D491B55FF8000DAD219 /* MapCalloutVC.h */,
-				57672D4A1B55FF8000DAD219 /* MapCalloutVC.m */,
-				57672D4B1B55FF8000DAD219 /* MapRouteVC.h */,
-				57672D4C1B55FF8000DAD219 /* MapRouteVC.m */,
-				57672D4D1B55FF8000DAD219 /* MapTableVC.h */,
-				57672D4E1B55FF8000DAD219 /* MapTableVC.m */,
-				57672D4F1B55FF8000DAD219 /* MapVC.h */,
-				57672D501B55FF8000DAD219 /* MapVC.m */,
+				57494DD11B61DAE7000B6F2C /* HelperVC */,
+				576AEE971B61D97100D55CA4 /* MapDevelopment */,
+				576AEE921B61D97100D55CA4 /* EncryptedMapList */,
+				576AEEA41B61D97100D55CA4 /* OriginalMapList */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -344,6 +372,8 @@
 			children = (
 				57672D5B1B55FF9900DAD219 /* TYUserDefaults.h */,
 				57672D5C1B55FF9900DAD219 /* TYUserDefaults.m */,
+				57494DF31B61E730000B6F2C /* EnviromentManager.h */,
+				57494DF41B61E730000B6F2C /* EnviromentManager.m */,
 			);
 			path = GlobalSettings;
 			sourceTree = "<group>";
@@ -423,6 +453,53 @@
 				5794C0FA1B5613CC002DCE9F /* PrefixHeader.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		576AEE921B61D97100D55CA4 /* EncryptedMapList */ = {
+			isa = PBXGroup;
+			children = (
+				57494DDE1B61DB08000B6F2C /* EncyptedCityVC.h */,
+				57494DDF1B61DB08000B6F2C /* EncyptedCityVC.m */,
+				57494DE71B61E06C000B6F2C /* EncryptedBuildingVC.h */,
+				57494DE81B61E06C000B6F2C /* EncryptedBuildingVC.m */,
+				57494DED1B61E1D1000B6F2C /* EncryptedMapVC.h */,
+				57494DEE1B61E1D1000B6F2C /* EncryptedMapVC.m */,
+			);
+			path = EncryptedMapList;
+			sourceTree = "<group>";
+		};
+		576AEE971B61D97100D55CA4 /* MapDevelopment */ = {
+			isa = PBXGroup;
+			children = (
+				576AEEAF1B61D9E400D55CA4 /* CustomCalloutVC.h */,
+				576AEEB01B61D9E400D55CA4 /* CustomCalloutVC.m */,
+				576AEE981B61D97100D55CA4 /* CreatePOIDatabaseVC.h */,
+				576AEE991B61D97100D55CA4 /* CreatePOIDatabaseVC.m */,
+				576AEE9A1B61D97100D55CA4 /* MapCalloutVC.h */,
+				576AEE9B1B61D97100D55CA4 /* MapCalloutVC.m */,
+				576AEE9C1B61D97100D55CA4 /* MapEncryptionVC.h */,
+				576AEE9D1B61D97100D55CA4 /* MapEncryptionVC.mm */,
+				576AEE9E1B61D97100D55CA4 /* MapRouteVC.h */,
+				576AEE9F1B61D97100D55CA4 /* MapRouteVC.m */,
+				576AEEA01B61D97100D55CA4 /* MapDevVC.h */,
+				576AEEA11B61D97100D55CA4 /* MapDevVC.m */,
+				576AEEA21B61D97100D55CA4 /* MapVC.h */,
+				576AEEA31B61D97100D55CA4 /* MapVC.m */,
+			);
+			path = MapDevelopment;
+			sourceTree = "<group>";
+		};
+		576AEEA41B61D97100D55CA4 /* OriginalMapList */ = {
+			isa = PBXGroup;
+			children = (
+				57494DE11B61DB17000B6F2C /* OriginalCityVC.h */,
+				57494DE21B61DB17000B6F2C /* OriginalCityVC.m */,
+				57494DEA1B61E079000B6F2C /* OriginalBuildingVC.h */,
+				57494DEB1B61E079000B6F2C /* OriginalBuildingVC.m */,
+				57494DF01B61E1DF000B6F2C /* OriginalMapVC.h */,
+				57494DF11B61E1DF000B6F2C /* OriginalMapVC.m */,
+			);
+			path = OriginalMapList;
 			sourceTree = "<group>";
 		};
 		5794C04E1B560558002DCE9F /* MapSDK */ = {
@@ -698,66 +775,74 @@
 			files = (
 				5794C0E91B560558002DCE9F /* TYBrand.m in Sources */,
 				5794C0E11B560558002DCE9F /* TYBuilding.m in Sources */,
+				57494DF21B61E1DF000B6F2C /* OriginalMapVC.m in Sources */,
+				57494DDD1B61DAE7000B6F2C /* CityTableVC.m in Sources */,
 				5794C0F31B560558002DCE9F /* TYFloorLayer.m in Sources */,
 				5794C0C41B560558002DCE9F /* TYGeometry.m in Sources */,
 				57672D5D1B55FF9900DAD219 /* TYUserDefaults.m in Sources */,
-				57672D541B55FF8000DAD219 /* CreatePOIDatabaseVC.m in Sources */,
 				5794C0CD1B560558002DCE9F /* TYPolyline.m in Sources */,
 				5794C0C11B560558002DCE9F /* TYCallout.m in Sources */,
 				57672E321B55FFF900DAD219 /* FMDatabaseQueue.m in Sources */,
-				57672D561B55FF8000DAD219 /* MapCalloutVC.m in Sources */,
+				57494DDB1B61DAE7000B6F2C /* BaseLogVC.m in Sources */,
 				5794C0DF1B560558002DCE9F /* TYArcGISDrawer.m in Sources */,
+				57494DE61B61DDF4000B6F2C /* BuildingTableVC.m in Sources */,
+				57494DEF1B61E1D1000B6F2C /* EncryptedMapVC.m in Sources */,
 				5794C0C91B560558002DCE9F /* TYMarkerSymbol.m in Sources */,
 				57672E2F1B55FFF900DAD219 /* FMDatabase.m in Sources */,
 				5794C0D01B560558002DCE9F /* TYSimpleMarkerSymbol.m in Sources */,
 				571AC4711B55FED900E9FF7D /* AppDelegate.m in Sources */,
 				5794C0EE1B560558002DCE9F /* TYRouteManager.m in Sources */,
+				576AEEAB1B61D97100D55CA4 /* MapDevVC.m in Sources */,
 				5794C0D81B560558002DCE9F /* TYFacilityLabel.m in Sources */,
 				5794C0E41B560558002DCE9F /* TYMapFileManager.mm in Sources */,
 				5794C0CF1B560558002DCE9F /* TYSimpleLineSymbol.m in Sources */,
+				576AEEA91B61D97100D55CA4 /* MapEncryptionVC.mm in Sources */,
 				5794C0E01B560558002DCE9F /* TYAreaAnalysis.m in Sources */,
+				576AEEAA1B61D97100D55CA4 /* MapRouteVC.m in Sources */,
 				57672E331B55FFF900DAD219 /* FMResultSet.m in Sources */,
+				57494DE01B61DB08000B6F2C /* EncyptedCityVC.m in Sources */,
 				5794C0C61B560558002DCE9F /* TYGraphic.m in Sources */,
 				5794C0ED1B560558002DCE9F /* TYLandmarkManager.m in Sources */,
 				57672D081B55FF4A00DAD219 /* TYPoiDBAdapter.m in Sources */,
-				57672D571B55FF8000DAD219 /* MapRouteVC.m in Sources */,
 				5794C0F11B560558002DCE9F /* TYRouteResult.m in Sources */,
 				5794C0EF1B560558002DCE9F /* TYRoutePart.m in Sources */,
 				5794C0E81B560558002DCE9F /* TYPathCalibration.m in Sources */,
 				5794C0DE1B560558002DCE9F /* TYTextLabelLayer.m in Sources */,
 				57672E311B55FFF900DAD219 /* FMDatabasePool.m in Sources */,
 				5794C0D11B560558002DCE9F /* TYSpatialReference.m in Sources */,
-				57672D511B55FF8000DAD219 /* BaseControllerTableVC.m in Sources */,
 				5794C0D51B560558002DCE9F /* TYRouteHintLayer.m in Sources */,
 				57672E301B55FFF900DAD219 /* FMDatabaseAdditions.m in Sources */,
 				57672D071B55FF4A00DAD219 /* CreatingPOIDBAdapter.m in Sources */,
+				576AEEB21B61D9E400D55CA4 /* CustomCalloutVC.m in Sources */,
 				5794C0F51B560558002DCE9F /* TYStructureGroupLayer.m in Sources */,
 				5794C0C31B560558002DCE9F /* TYEnvelope.m in Sources */,
+				57494DE91B61E06C000B6F2C /* EncryptedBuildingVC.m in Sources */,
 				5794C0DB1B560558002DCE9F /* TYLabelBorderCalculator.m in Sources */,
 				5794C0F01B560558002DCE9F /* TYRoutePointConverter.m in Sources */,
 				5794C0E21B560558002DCE9F /* TYCity.m in Sources */,
 				5794C0D71B560558002DCE9F /* Vector2.m in Sources */,
+				57494DF51B61E730000B6F2C /* EnviromentManager.m in Sources */,
 				5794C0E61B560558002DCE9F /* TYMapView.m in Sources */,
-				57672D581B55FF8000DAD219 /* MapTableVC.m in Sources */,
 				5794C0E31B560558002DCE9F /* TYMapEnviroment.m in Sources */,
 				5794C0DC1B560558002DCE9F /* TYLabelGroupLayer.m in Sources */,
+				57C03F5A1B61E19800490179 /* BaseMapVC.m in Sources */,
+				576AEEAC1B61D97100D55CA4 /* MapVC.m in Sources */,
 				5794C0EC1B560558002DCE9F /* TYLandmark.m in Sources */,
-				57672D591B55FF8000DAD219 /* MapVC.m in Sources */,
 				5794C0CB1B560558002DCE9F /* TYPoint.m in Sources */,
+				57494DDA1B61DAE7000B6F2C /* BaseControllerTableVC.m in Sources */,
 				575442AC1B5DF62000EA3A1F /* MD5.cpp in Sources */,
-				57672D551B55FF8000DAD219 /* CustomCalloutVC.m in Sources */,
 				5794C0C21B560558002DCE9F /* TYCredential.m in Sources */,
 				5794C0F41B560558002DCE9F /* TYRoomLayer.m in Sources */,
+				57494DEC1B61E079000B6F2C /* OriginalBuildingVC.m in Sources */,
 				575442AF1B5DF66900EA3A1F /* MD5Utils.mm in Sources */,
-				57672D521B55FF8000DAD219 /* BaseLogVC.m in Sources */,
-				57D8FC6D1B60E0AE00D7A6F8 /* MapEncryptionVC.mm in Sources */,
 				5794C0C71B560558002DCE9F /* TYGraphicsLayer.m in Sources */,
 				5794C0DD1B560558002DCE9F /* TYTextLabel.m in Sources */,
-				57672D531B55FF8000DAD219 /* BaseMapVC.m in Sources */,
 				5794C0DA1B560558002DCE9F /* TYLabelBorder.m in Sources */,
+				576AEEA81B61D97100D55CA4 /* MapCalloutVC.m in Sources */,
 				5794C0CA1B560558002DCE9F /* TYPictureMarkerSymbol.m in Sources */,
 				575442A91B5DF20A00EA3A1F /* TYEncryption.m in Sources */,
 				57672EF51B56006700DAD219 /* main.m in Sources */,
+				57494DE31B61DB17000B6F2C /* OriginalCityVC.m in Sources */,
 				5794C0D21B560558002DCE9F /* TYAnimatedRouteArrowLayer.m in Sources */,
 				5794C0EA1B560558002DCE9F /* TYPoi.m in Sources */,
 				5794C0D41B560558002DCE9F /* TYRouteArrowLayer.m in Sources */,
@@ -771,6 +856,7 @@
 				5794C0C81B560558002DCE9F /* TYLocationDisplay.m in Sources */,
 				5794C0D61B560558002DCE9F /* TYRouteLayer.m in Sources */,
 				5794C0E71B560558002DCE9F /* TYRenderingScheme.m in Sources */,
+				576AEEA71B61D97100D55CA4 /* CreatePOIDatabaseVC.m in Sources */,
 				5794C0CE1B560558002DCE9F /* TYSimpleFillSymbol.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
