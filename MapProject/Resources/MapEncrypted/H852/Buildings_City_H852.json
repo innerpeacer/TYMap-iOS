@@ -1,0 +1,17 @@
+{
+	"Buildings": [
+		{
+            "cityID":"H852",
+			"id":"H85200001",
+			"name":"香港机场",
+			"longitude":"116.362551",
+			"latitude":"39.958951", 
+			"address":"香港",
+            "initAngle":"15.0",
+            "routeURL":"http://121.40.16.26:6080/arcgis/rest/services/H85200001/NAServer/Route",
+            "offsetX":"2000",
+            "offsetY":"0",
+			"status":"0"
+		}
+	]
+}

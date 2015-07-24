@@ -32,7 +32,7 @@
     [self.objects addObject:@"加密地图文件"];
     [self.controllerDict setObject:@"mapEncryptionController" forKey:@"加密地图文件"];
     
-    [self tableView:self.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:4 inSection:0]];
+//    [self tableView:self.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:4 inSection:0]];
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

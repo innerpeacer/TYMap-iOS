@@ -60,7 +60,7 @@
     if ([[NSFileManager defaultManager] fileExistsAtPath:sourceRenderSchemeFile isDirectory:nil]) {
         [[NSFileManager defaultManager] copyItemAtPath:sourceRenderSchemeFile toPath:[targetBuildingDir stringByAppendingPathComponent:renderingSchemeFile] error:&errer];
         if (errer) {
-            NSLog(@"%@", [errer localizedDescription]);
+            NSLog(@"%@", [errer description]);
         }
         
         [self addToLog:[NSString stringWithFormat:@"\tCopy RenderingScheme: %@", renderingSchemeFile]];
@@ -69,12 +69,14 @@
     NSString *mapInfoFile = [NSString stringWithFormat:FILE_MAPINFO, currentBuilding.buildingID];
     [[NSFileManager defaultManager] copyItemAtPath:[sourceBuildingDir stringByAppendingPathComponent:mapInfoFile] toPath:[targetBuildingDir stringByAppendingPathComponent:mapInfoFile] error:&errer];
     if (errer) {
-        NSLog(@"%@", [errer localizedDescription]);
+        NSLog(@"%@", [errer description]);
+//        [errer description]
     }
     
     [self addToLog:[NSString stringWithFormat:@"\tCopy MapInfo: %@", mapInfoFile]];
 
-    
+
+    NSLog(@"MapInfo: %d", (int)allMapInfos.count);
     MD5 fileMd5;
 
     for(TYMapInfo *info in allMapInfos) {

@@ -12,7 +12,7 @@
 #import "TYMapEnviroment.h"
 #import "TYPoi.h"
 
-#define USE_ENCRYPTION_MAP 1
+#define USE_ENCRYPTION_MAP 0
 
 @implementation AppDelegate
 
@@ -58,14 +58,14 @@
     //    [TYUserDefaults setDefaultBuilding:@"002188888"];
     //    [TYUserDefaults setDefaultBuilding:@"002199999"];
     //
-    //    [TYUserDefaults setDefaultCity:@"H852"];
-    //    [TYUserDefaults setDefaultBuilding:@"H85200001"];
+        [TYUserDefaults setDefaultCity:@"H852"];
+        [TYUserDefaults setDefaultBuilding:@"H85200001"];
     //
     //    [TYUserDefaults setDefaultCity:@"H852"];
     //    [TYUserDefaults setDefaultBuilding:@"H85200001"];
     //
-    //        [TYUserDefaults setDefaultCity:@"0755"];
-    //        [TYUserDefaults setDefaultBuilding:@"075500001"];
+            [TYUserDefaults setDefaultCity:@"0755"];
+            [TYUserDefaults setDefaultBuilding:@"075500001"];
     
     
 //    [TYUserDefaults setDefaultCity:@"0452"];
