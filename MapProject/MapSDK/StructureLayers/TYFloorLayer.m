@@ -45,12 +45,14 @@
     
     NSError *error = nil;
     NSString *fullPath = [TYMapFileManager getFloorLayerPath:info];
-    NSString *jsonString = [NSString stringWithContentsOfFile:fullPath encoding:NSUTF8StringEncoding error:&error];
+    NSString *jsonString;
     
     if ([TYMapEnvironment useEncryption]) {
-        jsonString = [TYEncryption decryptString:jsonString];
+        jsonString = [TYEncryption descriptFile:fullPath];
+    } else {
+        jsonString = [NSString stringWithContentsOfFile:fullPath encoding:NSUTF8StringEncoding error:&error];
     }
-    
+        
     AGSSBJsonParser *parser = [[AGSSBJsonParser alloc] init];
     NSDictionary *dict = [parser objectWithString:jsonString];
     

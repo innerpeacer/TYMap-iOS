@@ -19,4 +19,6 @@ std::string encryptString(std::string str);
 void encryptFile(const char *originalPath, const char *encryptedFile);
 void decryptFile(const char *encryptedFile, const char *decryptedFile);
 
+std::string decryptFile(const char *file);
+
 #endif /* IPEncryption_hpp */

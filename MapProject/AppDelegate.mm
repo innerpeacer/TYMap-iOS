@@ -26,14 +26,12 @@
 {
     NSString *documentDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     NSLog(@"%@", documentDirectory);
-//
-//    [TYMapEnvironment initMapEnvironment];
-//    
-//    [self copyMapFilesIfNeeded];
-//    [self setDefaultPlaceIfNeeded];
+
+    [TYMapEnvironment initMapEnvironment];
     
-    [self testEncryption];
-    
+    [self copyMapFilesIfNeeded];
+    [self setDefaultPlaceIfNeeded];
+        
     return YES;
 }
 
@@ -70,7 +68,7 @@
 //    [TYUserDefaults setDefaultBuilding:@"002100004"];
 //    [TYUserDefaults setDefaultBuilding:@"002100005"];
         [TYUserDefaults setDefaultBuilding:@"002100006"];
-//            [TYUserDefaults setDefaultBuilding:@"00210100"];
+            [TYUserDefaults setDefaultBuilding:@"00210100"];
 
     
     //    [TYUserDefaults setDefaultBuilding:@"002188888"];
@@ -89,8 +87,8 @@
 //    [TYUserDefaults setDefaultCity:@"0452"];
 //    [TYUserDefaults setDefaultBuilding:@"04520001"];
     
-    [TYUserDefaults setDefaultCity:@"0571"];
-    [TYUserDefaults setDefaultBuilding:@"05710001"];
+//    [TYUserDefaults setDefaultCity:@"0571"];
+//    [TYUserDefaults setDefaultBuilding:@"05710001"];
     
     
 }

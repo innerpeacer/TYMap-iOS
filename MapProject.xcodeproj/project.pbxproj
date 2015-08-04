@@ -8,10 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		5709281E1B705A0A00410B8C /* IPMemery.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5709281D1B705A0A00410B8C /* IPMemery.cpp */; };
-		570928201B70603800410B8C /* 002100001F04_FLOOR.json in Resources */ = {isa = PBXBuildFile; fileRef = 5709281F1B70603800410B8C /* 002100001F04_FLOOR.json */; };
 		570928271B70646D00410B8C /* MD5.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 570928211B70646D00410B8C /* MD5.cpp */; };
 		570928281B70646D00410B8C /* MD5Utils.mm in Sources */ = {isa = PBXBuildFile; fileRef = 570928241B70646D00410B8C /* MD5Utils.mm */; };
-		570928291B70646D00410B8C /* TYEncryption.m in Sources */ = {isa = PBXBuildFile; fileRef = 570928261B70646D00410B8C /* TYEncryption.m */; };
+		570928291B70646D00410B8C /* TYEncryption.mm in Sources */ = {isa = PBXBuildFile; fileRef = 570928261B70646D00410B8C /* TYEncryption.mm */; };
 		571AC4711B55FED900E9FF7D /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 571AC4701B55FED900E9FF7D /* AppDelegate.mm */; };
 		574319161B70588D00234A63 /* IPEncryption.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 574319141B70588D00234A63 /* IPEncryption.cpp */; };
 		57494DDA1B61DAE7000B6F2C /* BaseControllerTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 57494DD31B61DAE7000B6F2C /* BaseControllerTableVC.m */; };
@@ -113,13 +112,12 @@
 /* Begin PBXFileReference section */
 		5709281C1B705A0A00410B8C /* IPMemery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPMemery.h; sourceTree = "<group>"; };
 		5709281D1B705A0A00410B8C /* IPMemery.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IPMemery.cpp; sourceTree = "<group>"; };
-		5709281F1B70603800410B8C /* 002100001F04_FLOOR.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 002100001F04_FLOOR.json; sourceTree = "<group>"; };
 		570928211B70646D00410B8C /* MD5.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MD5.cpp; sourceTree = "<group>"; };
 		570928221B70646D00410B8C /* MD5.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MD5.hpp; sourceTree = "<group>"; };
 		570928231B70646D00410B8C /* MD5Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MD5Utils.h; sourceTree = "<group>"; };
 		570928241B70646D00410B8C /* MD5Utils.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MD5Utils.mm; sourceTree = "<group>"; };
 		570928251B70646D00410B8C /* TYEncryption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYEncryption.h; sourceTree = "<group>"; };
-		570928261B70646D00410B8C /* TYEncryption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYEncryption.m; sourceTree = "<group>"; };
+		570928261B70646D00410B8C /* TYEncryption.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TYEncryption.mm; sourceTree = "<group>"; };
 		571AC46F1B55FED900E9FF7D /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		571AC4701B55FED900E9FF7D /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
 		574319141B70588D00234A63 /* IPEncryption.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IPEncryption.cpp; sourceTree = "<group>"; };
@@ -326,7 +324,7 @@
 				570928231B70646D00410B8C /* MD5Utils.h */,
 				570928241B70646D00410B8C /* MD5Utils.mm */,
 				570928251B70646D00410B8C /* TYEncryption.h */,
-				570928261B70646D00410B8C /* TYEncryption.m */,
+				570928261B70646D00410B8C /* TYEncryption.mm */,
 				5709281C1B705A0A00410B8C /* IPMemery.h */,
 				5709281D1B705A0A00410B8C /* IPMemery.cpp */,
 				574319151B70588D00234A63 /* IPEncryption.hpp */,
@@ -338,7 +336,6 @@
 		571AC46E1B55FED900E9FF7D /* MapProject */ = {
 			isa = PBXGroup;
 			children = (
-				5709281F1B70603800410B8C /* 002100001F04_FLOOR.json */,
 				571AC46F1B55FED900E9FF7D /* AppDelegate.h */,
 				571AC4701B55FED900E9FF7D /* AppDelegate.mm */,
 				57672D5A1B55FF9800DAD219 /* GlobalSettings */,
@@ -783,7 +780,6 @@
 				57672EF01B56002900DAD219 /* Images.xcassets in Resources */,
 				57672E371B55FFF900DAD219 /* beacon-jz.db in Resources */,
 				57672E351B55FFF900DAD219 /* AOI.json in Resources */,
-				570928201B70603800410B8C /* 002100001F04_FLOOR.json in Resources */,
 				57672EFF1B56046300DAD219 /* MapResource in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -830,7 +826,7 @@
 				5794C0EF1B560558002DCE9F /* TYRoutePart.m in Sources */,
 				5794C0E81B560558002DCE9F /* TYPathCalibration.m in Sources */,
 				5794C0DE1B560558002DCE9F /* TYTextLabelLayer.m in Sources */,
-				570928291B70646D00410B8C /* TYEncryption.m in Sources */,
+				570928291B70646D00410B8C /* TYEncryption.mm in Sources */,
 				574319161B70588D00234A63 /* IPEncryption.cpp in Sources */,
 				57672E311B55FFF900DAD219 /* FMDatabasePool.m in Sources */,
 				5794C0D11B560558002DCE9F /* TYSpatialReference.m in Sources */,

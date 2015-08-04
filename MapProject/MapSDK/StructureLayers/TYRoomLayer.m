@@ -73,9 +73,17 @@
     
     NSError *error = nil;
     NSString *fullPath = [TYMapFileManager getRoomLayerPath:info];
-    NSString *jsonString = [NSString stringWithContentsOfFile:fullPath encoding:NSUTF8StringEncoding error:&error];
+//    NSString *jsonString = [NSString stringWithContentsOfFile:fullPath encoding:NSUTF8StringEncoding error:&error];
+//    if ([TYMapEnvironment useEncryption]) {
+//        jsonString = [TYEncryption decryptString:jsonString];
+//    }
+    
+    NSString *jsonString;
+    
     if ([TYMapEnvironment useEncryption]) {
-        jsonString = [TYEncryption decryptString:jsonString];
+        jsonString = [TYEncryption descriptFile:fullPath];
+    } else {
+        jsonString = [NSString stringWithContentsOfFile:fullPath encoding:NSUTF8StringEncoding error:&error];
     }
     
     AGSSBJsonParser *parser = [[AGSSBJsonParser alloc] init];

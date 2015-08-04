@@ -103,6 +103,46 @@ void encryptFile(const char *originalPath, const char *encryptedFile)
     fclose(f);
 }
 
+std::string decryptFile(const char *file)
+{
+    int passLength = (int)strlen(PASSWORD_FOR_CONTENT);
+    int keyLength = (int)strlen(KEY);
+    
+    char passValue[passLength];
+    memcpy(&passValue[0], PASSWORD_FOR_CONTENT, passLength);
+    
+    char keyValue[keyLength];
+    memcpy(&keyValue[0], KEY, keyLength);
+    
+    int pa_pos = 0;
+    for (int i = 0; i < keyLength; ++i) {
+        keyValue[i] ^= passValue[pa_pos];
+        pa_pos++;
+        
+        if (pa_pos == passLength) {
+            pa_pos = 0;
+        }
+    }
+    
+    IPMemory *memory = mOpen(file);
+    int originalLength = memory->size;
+    char originalValue[originalLength + 1];
+    memcpy(&originalValue[0], memory->buffer, originalLength);
+    mClose(memory);
+    
+    int key_pos = 0;
+    for (int i = 0; i < originalLength ; ++i) {
+        originalValue[i] ^= keyValue[key_pos];
+        key_pos++;
+        if (key_pos == keyLength) {
+            key_pos = 0;
+        }
+    }
+    originalValue[originalLength] = 0;
+    
+    return originalValue;
+}
+
 void decryptFile(const char *encryptedFile, const char *decryptedFile)
 {
     encryptFile(encryptedFile, decryptedFile);

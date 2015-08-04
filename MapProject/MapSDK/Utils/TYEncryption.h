@@ -16,4 +16,6 @@
 + (void)encryptFile:(NSString *)originalPath toFile:(NSString *)encryptedFile;
 + (void)decryptFile:(NSString *)encryptedFile toFile:(NSString *)decryptedFile;
 
++ (NSString *)descriptFile:(NSString *)file;
+
 @end
