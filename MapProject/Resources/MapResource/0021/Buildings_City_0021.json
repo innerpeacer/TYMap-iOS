@@ -14,17 +14,17 @@
 			"status":"0"
 		},
         {
-            "cityID":"0021",
-            "id":"002100002",
-            "name":"联通国际大厦",
-            "longitude":"116.362551",
-            "latitude":"39.958951",
-            "address":"天目西路",
-            "initAngle":"70.0",
+                  "cityID":"0021",
+                  "id":"002100002",
+                  "name":"金钟广场",
+                  "longitude":"116.362551",
+                  "latitude":"39.958951",
+                  "address":"淮海中路",
+                  "initAngle":"70.0",
             "routeURL":"http://123.56.41.94:6080/arcgis/rest/services/002100002/NAServer/Route",
-            "offsetX":"100",
-            "offsetY":"0",
-            "status":"0"
+                  "offsetX":"200",
+                  "offsetY":"0",
+                  "status":"0"
         },
         {
             "cityID":"0021",
@@ -51,7 +51,20 @@
             "offsetX":"50",
             "offsetY":"0",
             "status":"0"
-        },
+                  },
+                  {
+                  "cityID":"0021",
+                  "id":"002100006",
+                  "name":"天易电子科技",
+                  "longitude":"116.362551",
+                  "latitude":"39.958951",
+                  "address":"淮海中路",
+                  "initAngle":"-70.0",
+                  "routeURL":"http://123.56.41.94:6080/arcgis/rest/services/00210006/NAServer/Route",
+                  "offsetX":"100",
+                  "offsetY":"0",
+                  "status":"0"
+                  },
         {
             "cityID":"0021",
             "id":"002199999",
@@ -64,6 +77,19 @@
             "offsetX":"0",
             "offsetY":"0",
             "status":"0"
-        }
+                  },
+                  {
+                  "cityID":"0021",
+                  "id":"00210100",
+                  "name":"联通国际大厦",
+                  "longitude":"116.362551",
+                  "latitude":"39.958951",
+                  "address":"天目西路",
+                  "initAngle":"70.0",
+                  "routeURL":"http://123.56.41.94:6080/arcgis/rest/services/00210100/NAServer/Route",
+                  "offsetX":"100",
+                  "offsetY":"0",
+                  "status":"0"
+                  }
 	]
 }

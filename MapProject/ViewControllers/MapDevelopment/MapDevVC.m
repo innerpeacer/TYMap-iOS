@@ -59,13 +59,13 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    NSLog(@"%@: %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
+//    NSLog(@"%@: %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #if USE_ENCRYPTION_MAP
     [EnviromentManager switchToEncrypted];
-    NSLog(@"[EnviromentManager switchToEncrypted]");
+//    NSLog(@"[EnviromentManager switchToEncrypted]");
 #else
     [EnviromentManager switchToOriginal];
-    NSLog(@"[EnviromentManager switchToOriginal]");
+//    NSLog(@"[EnviromentManager switchToOriginal]");
 #endif
 }
 

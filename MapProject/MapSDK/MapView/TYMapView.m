@@ -79,9 +79,9 @@
     }
     
     
-//    if (![info.buildingID isEqualToString:@"002100005"]) {
-//        NSLog(@"抱歉，当前SDK只支持002100005，请联系开发者");
-//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"错误！" message:@"抱歉，当前SDK只支持002100005，请联系开发者" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+//    if (![info.buildingID isEqualToString:@"002100005"] && ![info.buildingID isEqualToString:@"002100004"] && ![info.buildingID isEqualToString:@"04520001"]) {
+//        NSLog(@"抱歉，当前SDK不支持此建筑，请联系开发者");
+//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"错误！" message:@"抱歉，当前SDK不支持此建筑，请联系开发者" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
 //        [alert show];
 //        return;
 //    }

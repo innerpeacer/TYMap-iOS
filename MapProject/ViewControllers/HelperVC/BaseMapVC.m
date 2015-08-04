@@ -10,6 +10,7 @@
 
 #import "TYUserDefaults.h"
 #import "TYRenderingScheme.h"
+#import "TYGeometryEngine.h"
 
 @interface BaseMapVC()
 {
@@ -100,8 +101,6 @@
 - (void)TYMapView:(TYMapView *)mapView didClickAtPoint:(CGPoint)screen mapPoint:(AGSPoint *)mappoint
 {
     //    NSLog(@"didClickAtPoint");
-    
-    
 }
 
 - (void)TYMapView:(TYMapView *)mapView PoiSelected:(NSArray *)array

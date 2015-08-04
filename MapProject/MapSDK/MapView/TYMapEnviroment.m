@@ -42,7 +42,7 @@ static NSString *mapFileRootDirectory;
 {
     static TYCredential *credential;
     if (credential == nil) {
-        credential = [[TYCredential alloc] initWithUser:@"arcgis" password:@"666666"];
+        credential = [[TYCredential alloc] initWithUser:@"ArcGIS" password:@"OurArcGIS"];
     }
     return credential;
 }

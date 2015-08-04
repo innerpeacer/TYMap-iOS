@@ -58,6 +58,9 @@
     _startPoint = [routePointConverter routePointFromLocalPoint:start];
     _endPoint = [routePointConverter routePointFromLocalPoint:end];
     
+    NSLog(@"%@", _startPoint);
+    NSLog(@"%@", _endPoint);
+    
     [stops addObject:[AGSGraphic graphicWithGeometry:_startPoint symbol:nil attributes:nil]];
     [stops addObject:[AGSGraphic graphicWithGeometry:_endPoint symbol:nil attributes:nil]];
     

@@ -25,13 +25,20 @@
 
 @interface MapRouteVC() <TYRouteManagerDelegate>
 {
+    
+    // 路径管理器
     TYRouteManager *routeManager;
     
     TYPoint *currentPoint;
+    
+    // 路径规划起点
     TYLocalPoint *startLocalPoint;
+    // 路径规划终点
     TYLocalPoint *endLocalPoint;
     
     BOOL isRouting;
+    
+    // 路径规划结果
     TYRouteResult *routeResult;
     
     TYRoutePart *currentRoutePart;
@@ -39,6 +46,8 @@
     
     TYGraphicsLayer *hintLayer;
     
+    
+    // 起点、终点、切换点标识符号
     TYPictureMarkerSymbol *startSymbol;
     TYPictureMarkerSymbol *endSymbol;
     TYPictureMarkerSymbol *switchSymbol;
@@ -69,6 +78,7 @@
     hintLayer = [TYGraphicsLayer graphicsLayer];
     [self.mapView addMapLayer:hintLayer];
     
+    // 初始化路径管理器，并设置代理
     routeManager = [TYRouteManager routeManagerWithBuilding:self.currentBuilding credential:[TYMapEnvironment defaultCredential] MapInfos:self.allMapInfos];
     routeManager.delegate = self;
     
