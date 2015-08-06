@@ -9,6 +9,7 @@
 #import <ArcGIS/ArcGIS.h>
 #import "TYCredential.h"
 #import "TYSpatialReference.h"
+#import "TYBuilding.h"
 
 /**
     地图显示的语言类型
@@ -58,6 +59,9 @@ typedef enum {
  *  @return 根目录字符串
  */
 + (NSString *)getRootDirectoryForMapFiles;
+
+
++ (NSString *)getBuildingDirectory:(TYBuilding *)building;
 
 /**
  *  设置当前地图显示的语言类型

@@ -8,6 +8,7 @@
 
 #import "TYMapEnviroment.h"
 
+
 #define DEFAULT_MAP_ROOT @"Map"
 
 @implementation TYMapEnvironment
@@ -22,6 +23,11 @@ static NSString *mapFileRootDirectory;
         mapFileRootDirectory = [documentDirectory stringByAppendingPathComponent:DEFAULT_MAP_ROOT];
     }
     return mapFileRootDirectory;
+}
+
++ (NSString *)getBuildingDirectory:(TYBuilding *)building
+{
+    return [[mapFileRootDirectory stringByAppendingPathComponent:building.cityID] stringByAppendingPathComponent:building.buildingID];
 }
 
 + (void)setRootDirectoryForMapFiles:(NSString *)dir
@@ -55,9 +61,6 @@ static NSString *mapFileRootDirectory;
     if(error){
         NSLog(@"Error using client ID : %@",[error localizedDescription]);
     }
-    
-//    [[AGSRuntimeEnvironment license] setLicenseCode:@"runtimestandard,101,rud514140042,none, 8SF97XLL6S875E5HJ220"];
-//    ArcGISRuntime.SetLicense("runtimestandard,101,rud514140042,none, 8SF97XLL6S875E5HJ220");
 }
 
 static TYMapLanguage mapLanguage = TYSimplifiedChinese;
