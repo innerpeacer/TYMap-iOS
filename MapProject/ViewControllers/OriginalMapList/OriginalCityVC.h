@@ -8,6 +8,6 @@
 
 #import "CityTableVC.h"
 
-@interface OriginalCityVC : CityTableVC
+@interface OriginalCityVC : UIViewController
 
 @end
