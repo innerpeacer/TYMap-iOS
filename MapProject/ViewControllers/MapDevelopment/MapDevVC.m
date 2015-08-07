@@ -8,9 +8,17 @@
 
 #import "MapDevVC.h"
 #import "EnviromentManager.h"
+#import "SelectBuildingVC.h"
+#import "TYUserDefaults.h"
 
 #define USE_ENCRYPTION_MAP 0
 
+@interface MapDevVC() <SelectBuildingVCDelegate>
+{
+    
+}
+
+@end
 
 @implementation MapDevVC
 
@@ -43,6 +51,71 @@
     [self.controllerDict setObject:@"mapEncryptionController" forKey:@"加密地图文件"];
     
 //    [self tableView:self.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:4 inSection:0]];
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"设置" style:UIBarButtonItemStyleBordered target:self action:@selector(choosingPlace:)];
+    
+    [self updateTitle];
+}
+
+
+
+
+- (void)updateTitle
+{
+    if (self.currentBuilding) {
+        self.title = [NSString stringWithFormat:@"%@", self.currentBuilding.name];
+    }
+}
+
+//- (void)didSelectBuilding:(TYBuilding *)building City:(TYCity *)city
+//{
+//    NSLog(@"Hello: didSelectBuilding: %@ - %@", building.name, city.name);
+//    [TYUserDefaults setDefaultBuilding:building.buildingID];
+//    [TYUserDefaults setDefaultCity:city.cityID];
+//    
+//    self.currentCity = city;
+//    self.currentBuilding = building;
+//    
+//    [self dismissViewControllerAnimated:YES completion:^{
+//        [self updateTitle];
+//    }];
+//}
+
+- (void)SelectBuildingVC:(SelectBuildingVC *)controller didSelectBuliding:(TYBuilding *)building City:(TYCity *)city
+{
+    NSLog(@"MapDevVC:didSelectBuilding: %@ - %@", building.name, city.name);
+    [TYUserDefaults setDefaultBuilding:building.buildingID];
+    [TYUserDefaults setDefaultCity:city.cityID];
+    
+    self.currentCity = city;
+    self.currentBuilding = building;
+    
+    [self updateTitle];
+    
+//    [self dismissViewControllerAnimated:YES completion:^{
+//        [self updateTitle];
+//    }];
+
+}
+
+- (IBAction)choosingPlace:(id)sender
+{
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    SelectBuildingVC *controller = [storyboard instantiateViewControllerWithIdentifier:@"selectBuildingController"];
+    
+    controller.cityArray = [TYCity parseAllCities];
+    NSMutableArray *array = [NSMutableArray array];
+    for (TYCity *city in controller.cityArray) {
+        NSArray *bArray = [TYBuilding parseAllBuildings:city];
+        [array addObject:bArray];
+    }
+    controller.buildingArray = [NSArray arrayWithArray:array];
+    controller.title = @"选择当前位置";
+    controller.selectDelegate = self;
+    
+    UINavigationController *naviController = [[UINavigationController alloc] initWithRootViewController:controller];
+
+    [self presentViewController:naviController animated:YES completion:nil];
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

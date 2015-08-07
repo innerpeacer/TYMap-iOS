@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CityBuildingTableVC.h"
 
-@interface EncyptedCityVC : UIViewController
+@interface EncyptedCityVC : CityBuildingTableVC
 
 @end

@@ -84,6 +84,10 @@
             NSString *fileName = [NSString stringWithFormat:@"%@_%@.json", info.mapID, layerArray[layerIndex]];
             NSString *originalFile = [sourceBuildingDir stringByAppendingPathComponent:fileName];
 
+            if (![[NSFileManager defaultManager] fileExistsAtPath:originalFile]) {
+                continue;
+            }
+            
             fileMd5.reset();
             fileMd5.update([fileName UTF8String]);
             NSString *encryptedFileName = [NSString stringWithUTF8String:fileMd5.toString().c_str()];

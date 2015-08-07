@@ -8,7 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import "BaseControllerTableVC.h"
+#import "TYCity.h"
+#import "TYBuilding.h"
 
 @interface MapDevVC : BaseControllerTableVC
+
+@property (nonatomic, strong) TYCity *currentCity;
+@property (nonatomic, strong) TYBuilding *currentBuilding;
 
 @end

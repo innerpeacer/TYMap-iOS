@@ -71,6 +71,10 @@
 //        jsonString = [TYEncryption decryptString:jsonString];
 //    }
     
+    if (![[NSFileManager defaultManager] fileExistsAtPath:fullPath]) {
+        return;
+    }
+    
     NSString *jsonString;
     
     if ([TYMapEnvironment useEncryption]) {

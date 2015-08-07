@@ -576,6 +576,25 @@
             </objects>
             <point key="canvasLocation" x="589" y="2604"/>
         </scene>
+        <!--Select BuildingVC-->
+        <scene sceneID="SDt-rj-vmX">
+            <objects>
+                <viewController storyboardIdentifier="selectBuildingController" id="ba5-ks-5dh" customClass="SelectBuildingVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1zp-DD-S6Q"/>
+                        <viewControllerLayoutGuide type="bottom" id="BN2-tg-MCF"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="xeI-Xj-Oie">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="r8Z-iK-sXG"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x53-Wm-hPB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="477" y="3892"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Lock" width="30" height="30"/>

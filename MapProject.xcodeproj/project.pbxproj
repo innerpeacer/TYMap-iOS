@@ -112,6 +112,8 @@
 		57EB457B1B73D2B50050956F /* RATreeView+UIScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 57EB45701B73D2B50050956F /* RATreeView+UIScrollView.m */; };
 		57EB457C1B73D2B50050956F /* RATreeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 57EB45721B73D2B50050956F /* RATreeView.m */; };
 		57EB457F1B73D3690050956F /* RADataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 57EB457E1B73D3690050956F /* RADataObject.m */; };
+		57EE3E911B7471CC00977049 /* CityBuildingTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 57EE3E901B7471CC00977049 /* CityBuildingTableVC.m */; };
+		57EE3E941B74788100977049 /* SelectBuildingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 57EE3E931B74788100977049 /* SelectBuildingVC.m */; };
 		57F8DE5F1B74553100143739 /* OriginalMapVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F8DE5E1B74553100143739 /* OriginalMapVC.m */; };
 /* End PBXBuildFile section */
 
@@ -316,6 +318,10 @@
 		57EB45721B73D2B50050956F /* RATreeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RATreeView.m; sourceTree = "<group>"; };
 		57EB457D1B73D3690050956F /* RADataObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RADataObject.h; sourceTree = "<group>"; };
 		57EB457E1B73D3690050956F /* RADataObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RADataObject.m; sourceTree = "<group>"; };
+		57EE3E8F1B7471CC00977049 /* CityBuildingTableVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityBuildingTableVC.h; sourceTree = "<group>"; };
+		57EE3E901B7471CC00977049 /* CityBuildingTableVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityBuildingTableVC.m; sourceTree = "<group>"; };
+		57EE3E921B74788100977049 /* SelectBuildingVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectBuildingVC.h; sourceTree = "<group>"; };
+		57EE3E931B74788100977049 /* SelectBuildingVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectBuildingVC.m; sourceTree = "<group>"; };
 		57F06C1D1A87BC7500B9511F /* MapProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MapProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		57F8DE5D1B74553100143739 /* OriginalMapVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OriginalMapVC.h; sourceTree = "<group>"; };
 		57F8DE5E1B74553100143739 /* OriginalMapVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OriginalMapVC.m; sourceTree = "<group>"; };
@@ -378,6 +384,8 @@
 				57494DD51B61DAE7000B6F2C /* BaseLogVC.m */,
 				57C03F581B61E19800490179 /* BaseMapVC.h */,
 				57C03F591B61E19800490179 /* BaseMapVC.m */,
+				57EE3E8F1B7471CC00977049 /* CityBuildingTableVC.h */,
+				57EE3E901B7471CC00977049 /* CityBuildingTableVC.m */,
 			);
 			path = HelperVC;
 			sourceTree = "<group>";
@@ -519,6 +527,8 @@
 				576AEEA11B61D97100D55CA4 /* MapDevVC.m */,
 				576AEEA21B61D97100D55CA4 /* MapVC.h */,
 				576AEEA31B61D97100D55CA4 /* MapVC.m */,
+				57EE3E921B74788100977049 /* SelectBuildingVC.h */,
+				57EE3E931B74788100977049 /* SelectBuildingVC.m */,
 			);
 			path = MapDevelopment;
 			sourceTree = "<group>";
@@ -862,6 +872,7 @@
 				576AEEA91B61D97100D55CA4 /* MapEncryptionVC.mm in Sources */,
 				5794C0E01B560558002DCE9F /* TYAreaAnalysis.m in Sources */,
 				576AEEAA1B61D97100D55CA4 /* MapRouteVC.m in Sources */,
+				57EE3E911B7471CC00977049 /* CityBuildingTableVC.m in Sources */,
 				57672E331B55FFF900DAD219 /* FMResultSet.m in Sources */,
 				57494DE01B61DB08000B6F2C /* EncyptedCityVC.m in Sources */,
 				5794C0C61B560558002DCE9F /* TYGraphic.m in Sources */,
@@ -910,6 +921,7 @@
 				5794C0DD1B560558002DCE9F /* TYTextLabel.m in Sources */,
 				5794C0DA1B560558002DCE9F /* TYLabelBorder.m in Sources */,
 				576AEEA81B61D97100D55CA4 /* MapCalloutVC.m in Sources */,
+				57EE3E941B74788100977049 /* SelectBuildingVC.m in Sources */,
 				570928281B70646D00410B8C /* MD5Utils.mm in Sources */,
 				5794C0CA1B560558002DCE9F /* TYPictureMarkerSymbol.m in Sources */,
 				5709281E1B705A0A00410B8C /* IPMemery.cpp in Sources */,
