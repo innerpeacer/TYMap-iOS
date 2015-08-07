@@ -15,14 +15,8 @@
 		574319161B70588D00234A63 /* IPEncryption.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 574319141B70588D00234A63 /* IPEncryption.cpp */; };
 		57494DDA1B61DAE7000B6F2C /* BaseControllerTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 57494DD31B61DAE7000B6F2C /* BaseControllerTableVC.m */; };
 		57494DDB1B61DAE7000B6F2C /* BaseLogVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 57494DD51B61DAE7000B6F2C /* BaseLogVC.m */; };
-		57494DDD1B61DAE7000B6F2C /* CityTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 57494DD91B61DAE7000B6F2C /* CityTableVC.m */; };
 		57494DE01B61DB08000B6F2C /* EncyptedCityVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 57494DDF1B61DB08000B6F2C /* EncyptedCityVC.m */; };
 		57494DE31B61DB17000B6F2C /* OriginalCityVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 57494DE21B61DB17000B6F2C /* OriginalCityVC.m */; };
-		57494DE61B61DDF4000B6F2C /* BuildingTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 57494DE51B61DDF4000B6F2C /* BuildingTableVC.m */; };
-		57494DE91B61E06C000B6F2C /* EncryptedBuildingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 57494DE81B61E06C000B6F2C /* EncryptedBuildingVC.m */; };
-		57494DEC1B61E079000B6F2C /* OriginalBuildingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 57494DEB1B61E079000B6F2C /* OriginalBuildingVC.m */; };
-		57494DEF1B61E1D1000B6F2C /* EncryptedMapVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 57494DEE1B61E1D1000B6F2C /* EncryptedMapVC.m */; };
-		57494DF21B61E1DF000B6F2C /* OriginalMapVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 57494DF11B61E1DF000B6F2C /* OriginalMapVC.m */; };
 		57494DF51B61E730000B6F2C /* EnviromentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 57494DF41B61E730000B6F2C /* EnviromentManager.m */; };
 		574EE2C71B723C30005A6482 /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 574EE2C51B723C30005A6482 /* Launch Screen.xib */; };
 		575442A61B5DF11900EA3A1F /* MapEncrypted in Resources */ = {isa = PBXBuildFile; fileRef = 575442A51B5DF11900EA3A1F /* MapEncrypted */; };
@@ -118,6 +112,7 @@
 		57EB457B1B73D2B50050956F /* RATreeView+UIScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 57EB45701B73D2B50050956F /* RATreeView+UIScrollView.m */; };
 		57EB457C1B73D2B50050956F /* RATreeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 57EB45721B73D2B50050956F /* RATreeView.m */; };
 		57EB457F1B73D3690050956F /* RADataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 57EB457E1B73D3690050956F /* RADataObject.m */; };
+		57F8DE5F1B74553100143739 /* OriginalMapVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F8DE5E1B74553100143739 /* OriginalMapVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -137,22 +132,10 @@
 		57494DD31B61DAE7000B6F2C /* BaseControllerTableVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseControllerTableVC.m; sourceTree = "<group>"; };
 		57494DD41B61DAE7000B6F2C /* BaseLogVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseLogVC.h; sourceTree = "<group>"; };
 		57494DD51B61DAE7000B6F2C /* BaseLogVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseLogVC.m; sourceTree = "<group>"; };
-		57494DD81B61DAE7000B6F2C /* CityTableVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityTableVC.h; sourceTree = "<group>"; };
-		57494DD91B61DAE7000B6F2C /* CityTableVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityTableVC.m; sourceTree = "<group>"; };
 		57494DDE1B61DB08000B6F2C /* EncyptedCityVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EncyptedCityVC.h; sourceTree = "<group>"; };
 		57494DDF1B61DB08000B6F2C /* EncyptedCityVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EncyptedCityVC.m; sourceTree = "<group>"; };
 		57494DE11B61DB17000B6F2C /* OriginalCityVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OriginalCityVC.h; sourceTree = "<group>"; };
 		57494DE21B61DB17000B6F2C /* OriginalCityVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OriginalCityVC.m; sourceTree = "<group>"; };
-		57494DE41B61DDF4000B6F2C /* BuildingTableVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuildingTableVC.h; sourceTree = "<group>"; };
-		57494DE51B61DDF4000B6F2C /* BuildingTableVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuildingTableVC.m; sourceTree = "<group>"; };
-		57494DE71B61E06C000B6F2C /* EncryptedBuildingVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EncryptedBuildingVC.h; sourceTree = "<group>"; };
-		57494DE81B61E06C000B6F2C /* EncryptedBuildingVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EncryptedBuildingVC.m; sourceTree = "<group>"; };
-		57494DEA1B61E079000B6F2C /* OriginalBuildingVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OriginalBuildingVC.h; sourceTree = "<group>"; };
-		57494DEB1B61E079000B6F2C /* OriginalBuildingVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OriginalBuildingVC.m; sourceTree = "<group>"; };
-		57494DED1B61E1D1000B6F2C /* EncryptedMapVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EncryptedMapVC.h; sourceTree = "<group>"; };
-		57494DEE1B61E1D1000B6F2C /* EncryptedMapVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EncryptedMapVC.m; sourceTree = "<group>"; };
-		57494DF01B61E1DF000B6F2C /* OriginalMapVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OriginalMapVC.h; sourceTree = "<group>"; };
-		57494DF11B61E1DF000B6F2C /* OriginalMapVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OriginalMapVC.m; sourceTree = "<group>"; };
 		57494DF31B61E730000B6F2C /* EnviromentManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnviromentManager.h; sourceTree = "<group>"; };
 		57494DF41B61E730000B6F2C /* EnviromentManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnviromentManager.m; sourceTree = "<group>"; };
 		574EE2C61B723C30005A6482 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = "Launch Screen.xib"; sourceTree = "<group>"; };
@@ -334,6 +317,8 @@
 		57EB457D1B73D3690050956F /* RADataObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RADataObject.h; sourceTree = "<group>"; };
 		57EB457E1B73D3690050956F /* RADataObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RADataObject.m; sourceTree = "<group>"; };
 		57F06C1D1A87BC7500B9511F /* MapProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MapProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		57F8DE5D1B74553100143739 /* OriginalMapVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OriginalMapVC.h; sourceTree = "<group>"; };
+		57F8DE5E1B74553100143739 /* OriginalMapVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OriginalMapVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -391,10 +376,6 @@
 				57494DD31B61DAE7000B6F2C /* BaseControllerTableVC.m */,
 				57494DD41B61DAE7000B6F2C /* BaseLogVC.h */,
 				57494DD51B61DAE7000B6F2C /* BaseLogVC.m */,
-				57494DD81B61DAE7000B6F2C /* CityTableVC.h */,
-				57494DD91B61DAE7000B6F2C /* CityTableVC.m */,
-				57494DE41B61DDF4000B6F2C /* BuildingTableVC.h */,
-				57494DE51B61DDF4000B6F2C /* BuildingTableVC.m */,
 				57C03F581B61E19800490179 /* BaseMapVC.h */,
 				57C03F591B61E19800490179 /* BaseMapVC.m */,
 			);
@@ -517,10 +498,6 @@
 			children = (
 				57494DDE1B61DB08000B6F2C /* EncyptedCityVC.h */,
 				57494DDF1B61DB08000B6F2C /* EncyptedCityVC.m */,
-				57494DE71B61E06C000B6F2C /* EncryptedBuildingVC.h */,
-				57494DE81B61E06C000B6F2C /* EncryptedBuildingVC.m */,
-				57494DED1B61E1D1000B6F2C /* EncryptedMapVC.h */,
-				57494DEE1B61E1D1000B6F2C /* EncryptedMapVC.m */,
 			);
 			path = EncryptedMapList;
 			sourceTree = "<group>";
@@ -549,12 +526,10 @@
 		576AEEA41B61D97100D55CA4 /* OriginalMapList */ = {
 			isa = PBXGroup;
 			children = (
+				57F8DE5D1B74553100143739 /* OriginalMapVC.h */,
+				57F8DE5E1B74553100143739 /* OriginalMapVC.m */,
 				57494DE11B61DB17000B6F2C /* OriginalCityVC.h */,
 				57494DE21B61DB17000B6F2C /* OriginalCityVC.m */,
-				57494DEA1B61E079000B6F2C /* OriginalBuildingVC.h */,
-				57494DEB1B61E079000B6F2C /* OriginalBuildingVC.m */,
-				57494DF01B61E1DF000B6F2C /* OriginalMapVC.h */,
-				57494DF11B61E1DF000B6F2C /* OriginalMapVC.m */,
 			);
 			path = OriginalMapList;
 			sourceTree = "<group>";
@@ -865,8 +840,6 @@
 			files = (
 				5794C0E91B560558002DCE9F /* TYBrand.m in Sources */,
 				5794C0E11B560558002DCE9F /* TYBuilding.m in Sources */,
-				57494DF21B61E1DF000B6F2C /* OriginalMapVC.m in Sources */,
-				57494DDD1B61DAE7000B6F2C /* CityTableVC.m in Sources */,
 				5794C0F31B560558002DCE9F /* TYFloorLayer.m in Sources */,
 				5794C0C41B560558002DCE9F /* TYGeometry.m in Sources */,
 				57EB457C1B73D2B50050956F /* RATreeView.m in Sources */,
@@ -877,8 +850,6 @@
 				57672E321B55FFF900DAD219 /* FMDatabaseQueue.m in Sources */,
 				57494DDB1B61DAE7000B6F2C /* BaseLogVC.m in Sources */,
 				5794C0DF1B560558002DCE9F /* TYArcGISDrawer.m in Sources */,
-				57494DE61B61DDF4000B6F2C /* BuildingTableVC.m in Sources */,
-				57494DEF1B61E1D1000B6F2C /* EncryptedMapVC.m in Sources */,
 				5794C0C91B560558002DCE9F /* TYMarkerSymbol.m in Sources */,
 				57672E2F1B55FFF900DAD219 /* FMDatabase.m in Sources */,
 				5794C0D01B560558002DCE9F /* TYSimpleMarkerSymbol.m in Sources */,
@@ -914,7 +885,6 @@
 				57EB45761B73D2B50050956F /* RATreeNodeInfo.m in Sources */,
 				57EB457F1B73D3690050956F /* RADataObject.m in Sources */,
 				5794C0C31B560558002DCE9F /* TYEnvelope.m in Sources */,
-				57494DE91B61E06C000B6F2C /* EncryptedBuildingVC.m in Sources */,
 				5794C0DB1B560558002DCE9F /* TYLabelBorderCalculator.m in Sources */,
 				5794C0F01B560558002DCE9F /* TYRoutePointConverter.m in Sources */,
 				5794C0E21B560558002DCE9F /* TYCity.m in Sources */,
@@ -935,8 +905,8 @@
 				5794C0C21B560558002DCE9F /* TYCredential.m in Sources */,
 				5794C0F41B560558002DCE9F /* TYRoomLayer.m in Sources */,
 				57EB457B1B73D2B50050956F /* RATreeView+UIScrollView.m in Sources */,
-				57494DEC1B61E079000B6F2C /* OriginalBuildingVC.m in Sources */,
 				5794C0C71B560558002DCE9F /* TYGraphicsLayer.m in Sources */,
+				57F8DE5F1B74553100143739 /* OriginalMapVC.m in Sources */,
 				5794C0DD1B560558002DCE9F /* TYTextLabel.m in Sources */,
 				5794C0DA1B560558002DCE9F /* TYLabelBorder.m in Sources */,
 				576AEEA81B61D97100D55CA4 /* MapCalloutVC.m in Sources */,

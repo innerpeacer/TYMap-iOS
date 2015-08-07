@@ -7,11 +7,10 @@
 //
 
 #import "OriginalCityVC.h"
-#import "BuildingTableVC.h"
 #import "TYUserDefaults.h"
 #import "TYMapEnviroment.h"
 #import "EnviromentManager.h"
-
+#import "BaseMapVC.h"
 
 #import "RATreeView.h"
 #import "RADataObject.h"
@@ -40,10 +39,10 @@
     [self prepareData];
     [self prepareTreeView];
     
-//    NSLog(@"%@", self.cityArray);
-//    NSLog(@"%@", self.buildingArray);
 
 }
+
+
 
 - (void)prepareTreeView
 {
@@ -88,18 +87,6 @@
     self.treeData = cityObjectArray;
 }
 
-//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-//{
-//    if ([[segue identifier] isEqualToString:@"originalBuildingList"]) {
-//        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-//        TYCity *city = [self.cityArray objectAtIndex:indexPath.row];
-//        
-//        BuildingTableVC *buildingListController = [segue destinationViewController];
-//        buildingListController.currentCity = city;
-//    }
-//}
-//
-//
 - (void)viewDidAppear:(BOOL)animated
 {
     NSLog(@"%@: %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
@@ -134,27 +121,37 @@
 
 - (void)treeView:(RATreeView *)treeView willDisplayCell:(UITableViewCell *)cell forItem:(id)item treeNodeInfo:(RATreeNodeInfo *)treeNodeInfo
 {
-    if (treeNodeInfo.treeDepthLevel == 0) {
-        cell.backgroundColor = UIColorFromRGB(0xD1EEFC);
-    } else if (treeNodeInfo.treeDepthLevel == 1) {
-        cell.backgroundColor = UIColorFromRGB(0xE0F8D8);
-    } else if (treeNodeInfo.treeDepthLevel == 2) {
-        cell.backgroundColor = UIColorFromRGB(0xE0F8D8);
-    }
+//    if (treeNodeInfo.treeDepthLevel == 0) {
+//        cell.backgroundColor = UIColorFromRGB(0xD1EEFC);
+//    } else if (treeNodeInfo.treeDepthLevel == 1) {
+//        cell.backgroundColor = UIColorFromRGB(0xE0F8D8);
+//    } else if (treeNodeInfo.treeDepthLevel == 2) {
+//        cell.backgroundColor = UIColorFromRGB(0xE0F8D8);
+//    }
 }
 
 - (void)treeView:(RATreeView *)treeView didSelectRowForItem:(id)item treeNodeInfo:(RATreeNodeInfo *)treeNodeInfo
 {
     NSLog(@"%@", ((RADataObject *)item).data);
+    
+    if (treeNodeInfo.treeDepthLevel == 1) {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        BaseMapVC *controller = [storyboard instantiateViewControllerWithIdentifier:@"originalMapContoller"];
+        controller.currentBuilding = ((RADataObject *)item).data;
+        controller.currentCity = ((RADataObject *)treeNodeInfo.parent.item).data;
+        controller.allMapInfos = [TYMapInfo parseAllMapInfo:controller.currentBuilding];
+        
+        [self.navigationController pushViewController:controller animated:YES];
+    }
+
 }
 
 #pragma mark RATreeViewDataSource
 - (UITableViewCell *)treeView:(RATreeView *)treeView cellForItem:(id)item treeNodeInfo:(RATreeNodeInfo *)treeNodeInfo
 {
-    NSInteger numberOfChildren = [treeNodeInfo.children count];
+//    NSInteger numberOfChildren = [treeNodeInfo.children count];
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"cell"];
-//    cell.detailTextLabel.text = [NSString stringWithFormat:@"Number of children %d", (int)numberOfChildren];
-//    cell.textLabel.text = ((RADataObject *)item).name;
+
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     if (treeNodeInfo.treeDepthLevel == 0) {
@@ -162,12 +159,11 @@
         
         TYCity *city = ((RADataObject *)item).data;
         cell.textLabel.text = [NSString stringWithFormat:@"%@ (%@)", city.name, city.cityID];
-//        cell.detailTextLabel.text = [NSString stringWithFormat:@"地图数量：%d", (int)numberOfChildren];
     } else {
         
         TYBuilding *building = ((RADataObject *)item).data;
         cell.textLabel.text = [NSString stringWithFormat:@"%@", building.name];
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", building.address];
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"地址：%@", building.address];
     }
     
     

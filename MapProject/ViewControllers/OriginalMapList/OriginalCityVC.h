@@ -6,7 +6,7 @@
 //  Copyright © 2015年 innerpeacer. All rights reserved.
 //
 
-#import "CityTableVC.h"
+#import <UIKit/UIKit.h>
 
 @interface OriginalCityVC : UIViewController
 

@@ -30,36 +30,10 @@
     [TYMapEnvironment initMapEnvironment];
     
     [self copyMapFilesIfNeeded];
-    [self setDefaultPlaceIfNeeded];
-        
+//    [self setDefaultPlaceIfNeeded];
+    
     return YES;
 }
-
-- (void)testEncryption
-{
-    
-    NSString *file = [[NSBundle mainBundle] pathForResource:@"002100001F04_FLOOR" ofType:@"json"];
-    
-    NSString *documentDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-    NSString *eFile = [documentDirectory stringByAppendingPathComponent:@"Encrypted.json"];
-    
-    NSString *str = @"Hello World!你好";
-//    NSString *str = @"Hello World!";
-
-    NSLog(@"%@", str);
-    {
-        NSLog(@"==== ObjC ==> ");
-        NSLog(@"%@", [TYEncryption encryptString:str]);
-    }
-    
-    {
-        NSLog(@"==== C++ ==> ");
-        NSLog(@"%s", encryptString([str UTF8String]).c_str());
-        
-        encryptFile([file UTF8String], [eFile UTF8String]);
-    }
-}
-
 - (void)setDefaultPlaceIfNeeded
 {
     [TYUserDefaults setDefaultCity:@"0021"];

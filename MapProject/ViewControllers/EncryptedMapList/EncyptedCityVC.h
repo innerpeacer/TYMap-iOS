@@ -6,8 +6,8 @@
 //  Copyright © 2015年 innerpeacer. All rights reserved.
 //
 
-#import "CityTableVC.h"
+#import <UIKit/UIKit.h>
 
-@interface EncyptedCityVC : CityTableVC
+@interface EncyptedCityVC : UIViewController
 
 @end
