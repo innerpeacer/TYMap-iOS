@@ -98,9 +98,9 @@
 		5794C0F31B560558002DCE9F /* TYFloorLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5794C0BC1B560558002DCE9F /* TYFloorLayer.m */; };
 		5794C0F41B560558002DCE9F /* TYRoomLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5794C0BE1B560558002DCE9F /* TYRoomLayer.m */; };
 		5794C0F51B560558002DCE9F /* TYStructureGroupLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5794C0C01B560558002DCE9F /* TYStructureGroupLayer.m */; };
+		579B587B1B74F31B00F05206 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 579B587A1B74F31B00F05206 /* Images.xcassets */; };
 		57B527531B56332300FD3C27 /* TYMapData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57B527521B56332300FD3C27 /* TYMapData.framework */; };
 		57C03F5A1B61E19800490179 /* BaseMapVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 57C03F591B61E19800490179 /* BaseMapVC.m */; };
-		57C297511B708D4F00343D0F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57C2974F1B708D4F00343D0F /* Images.xcassets */; };
 		57EB45731B73D2B50050956F /* RATreeNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 57EB45601B73D2B50050956F /* RATreeNode.m */; };
 		57EB45741B73D2B50050956F /* RATreeNodeCollectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57EB45621B73D2B50050956F /* RATreeNodeCollectionController.m */; };
 		57EB45751B73D2B50050956F /* RATreeNodeInfo+Private.m in Sources */ = {isa = PBXBuildFile; fileRef = 57EB45641B73D2B50050956F /* RATreeNodeInfo+Private.m */; };
@@ -291,10 +291,10 @@
 		5794C0BF1B560558002DCE9F /* TYStructureGroupLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYStructureGroupLayer.h; sourceTree = "<group>"; };
 		5794C0C01B560558002DCE9F /* TYStructureGroupLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYStructureGroupLayer.m; sourceTree = "<group>"; };
 		5794C0FA1B5613CC002DCE9F /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		579B587A1B74F31B00F05206 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		57B527521B56332300FD3C27 /* TYMapData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TYMapData.framework; sourceTree = "<group>"; };
 		57C03F581B61E19800490179 /* BaseMapVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseMapVC.h; sourceTree = "<group>"; };
 		57C03F591B61E19800490179 /* BaseMapVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseMapVC.m; sourceTree = "<group>"; };
-		57C297501B708D4F00343D0F /* Base */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Base; path = Images.xcassets; sourceTree = "<group>"; };
 		57D8FC6F1B60F4F700D7A6F8 /* TYMapFileContants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYMapFileContants.h; sourceTree = "<group>"; };
 		57EB455F1B73D2B50050956F /* RATreeNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RATreeNode.h; sourceTree = "<group>"; };
 		57EB45601B73D2B50050956F /* RATreeNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RATreeNode.m; sourceTree = "<group>"; };
@@ -368,8 +368,8 @@
 				5794C04E1B560558002DCE9F /* MapSDK */,
 				57672D5E1B55FFF900DAD219 /* libs */,
 				57672D6A1B55FFF900DAD219 /* Resources */,
-				57C2974F1B708D4F00343D0F /* Images.xcassets */,
 				57672EE81B56002900DAD219 /* Base.lproj */,
+				579B587A1B74F31B00F05206 /* Images.xcassets */,
 				57672EF71B56006E00DAD219 /* Supporting Files */,
 			);
 			path = MapProject;
@@ -831,7 +831,7 @@
 				575442A61B5DF11900EA3A1F /* MapEncrypted in Resources */,
 				57672EEF1B56002900DAD219 /* Main.storyboard in Resources */,
 				57672E381B55FFF900DAD219 /* beacon-of.db in Resources */,
-				57C297511B708D4F00343D0F /* Images.xcassets in Resources */,
+				579B587B1B74F31B00F05206 /* Images.xcassets in Resources */,
 				574EE2C71B723C30005A6482 /* Launch Screen.xib in Resources */,
 				57672E341B55FFF900DAD219 /* ArcGIS.bundle in Resources */,
 				57672E361B55FFF900DAD219 /* beacon-hm.db in Resources */,
@@ -965,15 +965,6 @@
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		57C2974F1B708D4F00343D0F /* Images.xcassets */ = {
-			isa = PBXVariantGroup;
-			children = (
-				57C297501B708D4F00343D0F /* Base */,
-			);
-			name = Images.xcassets;
-			path = Base.lproj;
-			sourceTree = "<group>";
-		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -1082,6 +1073,7 @@
 				PRODUCT_NAME = MapProject;
 				PROVISIONING_PROFILE = "8412d76c-1806-4cc5-bdfd-33749130eaf3";
 				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = NO;
 			};
 			name = Debug;
@@ -1112,6 +1104,7 @@
 				PRODUCT_NAME = MapProject;
 				PROVISIONING_PROFILE = "8412d76c-1806-4cc5-bdfd-33749130eaf3";
 				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
