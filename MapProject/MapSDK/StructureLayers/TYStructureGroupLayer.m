@@ -64,6 +64,11 @@
 //    [assetLayer clearSelection];
 }
 
+- (void)setRenderingScheme:(TYRenderingScheme *)rs
+{
+    
+}
+
 - (void)setRoomSelected:(BOOL)selected forGraphic:(AGSGraphic *)graphic
 {
     [_roomLayer setSelected:selected forGraphic:graphic];

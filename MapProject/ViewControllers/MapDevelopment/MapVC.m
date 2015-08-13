@@ -55,6 +55,9 @@ int tIndex = 0;
     testTimer = [NSTimer scheduledTimerWithTimeInterval:0.15 target:self selector:@selector(showTestLocation) userInfo:nil repeats:YES];
     picIndex = PIC_INITIAL;
     [testLayer removeAllGraphics];
+    
+    TYPoi *poi = [self.mapView extractRoomPoiOnCurrentFloorWithX:mappoint.x Y:mappoint.y];
+    NSLog(@"%@", poi);
 }
 
 const int PIC_INITIAL = 0;

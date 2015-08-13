@@ -117,6 +117,48 @@
     }
 }
 
+- (void)switchBuilding:(TYBuilding *)b
+{
+    _building = b;
+    NSString *renderingSchemePath = [TYMapFileManager getRenderingScheme:_building];
+    renderingScheme = [[TYRenderingScheme alloc] initWithPath:(NSString *)renderingSchemePath];
+
+    NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+    NSArray *brandArray = [TYBrand parseAllBrands:b];
+    for (TYBrand *brand in brandArray) {
+        [dict setObject:brand forKey:brand.poiID];
+    }
+    allBrandDict = dict;
+
+//    structureGroupLayer = [TYStructureGroupLayer structureLayerWithRenderingScheme:renderingScheme SpatialReference:spatialReference];
+//    [self addMapLayer:structureGroupLayer.floorLayer withName:LAYER_NAME_FLOOR];
+//    [self addMapLayer:structureGroupLayer.roomLayer withName:LAYER_NAME_ROOM];
+//    [self addMapLayer:structureGroupLayer.asserLayer withName:LAYER_NAME_ASSET];
+//    
+//    labelGroupLayer = [TYLabelGroupLayer labelGroupLayerWithRenderingScheme:renderingScheme SpatialReference:spatialReference];
+//    labelGroupLayer.mapView = self;
+//    labelGroupLayer.labelLayer.brandDict = allBrandDict;
+//    [self addMapLayer:labelGroupLayer.facilityLayer withName:LAYER_NAME_FACILITY];
+//    [self addMapLayer:labelGroupLayer.labelLayer withName:LAYER_NAME_LABEL];
+//    
+//    routeLayer = [TYRouteLayer routeLayerWithSpatialReference:[TYMapEnvironment defaultSpatialReference]];
+//    routeLayer.mapView = self;
+//    [self addMapLayer:routeLayer];
+//    routeLayer.allowHitTest = NO;
+//    
+//    routeHintLayer = [TYRouteHintLayer routeHintLayerWithSpatialReference:[TYMapEnvironment defaultSpatialReference]];
+//    [self addMapLayer:routeHintLayer];
+//    routeHintLayer.allowHitTest = NO;
+//    
+//    animatedRouteArrowLayer = [TYAnimatedRouteArrowLayer animatedRouteArrowLayerWithSpatialReference:[TYMapEnvironment defaultSpatialReference]];
+//    [self addMapLayer:animatedRouteArrowLayer];
+//    animatedRouteArrowLayer.allowHitTest = NO;
+//    
+//    locationLayer = [[TYLocationLayer alloc] initWithSpatialReference:spatialReference];
+//    [self addMapLayer:locationLayer withName:LAYER_NAME_LOCATION];
+//    locationLayer.allowHitTest = NO;
+}
+
 - (void)initMapViewWithBuilding:(TYBuilding *)b
 {
     _building = b;
@@ -165,10 +207,6 @@
     routeHintLayer = [TYRouteHintLayer routeHintLayerWithSpatialReference:[TYMapEnvironment defaultSpatialReference]];
     [self addMapLayer:routeHintLayer];
     routeHintLayer.allowHitTest = NO;
-    
-    //    routeArrowLayer = [TYRouteArrowLayer routeArrowLayerWithSpatialReference:[TYMapEnvironment defaultSpatialReference]];
-    //    [self addMapLayer:routeArrowLayer];
-    //    routeArrowLayer.allowHitTest = NO;
     
     animatedRouteArrowLayer = [TYAnimatedRouteArrowLayer animatedRouteArrowLayerWithSpatialReference:[TYMapEnvironment defaultSpatialReference]];
     [self addMapLayer:animatedRouteArrowLayer];

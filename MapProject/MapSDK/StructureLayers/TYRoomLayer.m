@@ -124,7 +124,9 @@
     for (NSString *poiID in roomDict.allKeys) {
         AGSGraphic *graphic = [roomDict objectForKey:poiID];
         if ([engine geometry:graphic.geometry containsGeometry:point]) {
+            NSLog(@"%@", graphic);
             poi = [TYPoi poiWithGeoID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_GEO_ID] PoiID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_POI_ID] FloorID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_FLOOR_ID] BuildingID:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_BUILDING_ID] Name:[graphic attributeForKey:GRAPHIC_ATTRIBUTE_NAME] Geometry:(TYGeometry *)graphic.geometry CategoryID:[[graphic attributeForKey:GRAPHIC_ATTRIBUTE_CATEGORY_ID] intValue] Layer:POI_ROOM];
+            
             break;
         }
     }

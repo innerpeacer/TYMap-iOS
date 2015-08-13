@@ -30,6 +30,7 @@
 
 - (void)setRoomSelected:(BOOL)selected forGraphic:(AGSGraphic *)graphic;
 
+- (void)setRenderingScheme:(TYRenderingScheme *)rs;
 
 - (BOOL)updateRoomPOI:(NSString *)pid WithName:(NSString *)name;
 
