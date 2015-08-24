@@ -23,6 +23,7 @@
     NSArray *allMapInfos;
     
     AGSGeometryEngine *engine;
+    NSDictionary *allMapData;
 }
 
 - (IBAction)createPOIDatabase:(id)sender;
@@ -54,7 +55,11 @@
     [db erasePOITable];
     
     for (TYMapInfo *info in allMapInfos) {
-        NSArray *roomArray = [self loadRoomsWithInfo:info];
+//        NSArray *roomArray = [self loadRoomsWithInfo:info];
+        [self loadMapDataWithInfo:info];
+        
+        AGSFeatureSet *roomFeatureSet = [[AGSFeatureSet alloc] initWithJSON:allMapData[@"room"]];
+        NSArray *roomArray = roomFeatureSet.features;
         [self addToLog:[NSString stringWithFormat:@"Begin %@", info.mapID]];
         
         for (AGSGraphic *graphic in roomArray) {
@@ -83,7 +88,9 @@
         [self addToLog:[NSString stringWithFormat:@"End %@: Insert %d Room POI", info.mapID, (int)roomArray.count]];
 
         
-        NSArray *facilityArray = [self loadFacilitiesWithInfo:info];
+//        NSArray *facilityArray = [self loadFacilitiesWithInfo:info];
+        AGSFeatureSet *facilityFeatureSet = [[AGSFeatureSet alloc] initWithJSON:allMapData[@"facility"]];
+        NSArray *facilityArray = facilityFeatureSet.features;
         [self addToLog:[NSString stringWithFormat:@"Begin %@", info.mapID]];
         
         for (AGSGraphic *graphic in facilityArray) {
@@ -115,30 +122,40 @@
     [db close];
 }
 
-- (NSArray *)loadRoomsWithInfo:(TYMapInfo *)info
+- (void)loadMapDataWithInfo:(TYMapInfo *)info
 {
     NSError *error = nil;
-    NSString *fullPath = [TYMapFileManager getRoomLayerPath:info];
+    NSString *fullPath = [TYMapFileManager getMapDataPath:info];
     NSString *jsonString = [NSString stringWithContentsOfFile:fullPath encoding:NSUTF8StringEncoding error:&error];
     
     AGSSBJsonParser *parser = [[AGSSBJsonParser alloc] init];
-    NSDictionary *dict = [parser objectWithString:jsonString];
-    
-    AGSFeatureSet *set = [[AGSFeatureSet alloc] initWithJSON:dict];
-    return set.features;
+    allMapData = [parser objectWithString:jsonString];
 }
 
-- (NSArray *)loadFacilitiesWithInfo:(TYMapInfo *)info
-{
-    NSError *error = nil;
-    NSString *fullPath = [TYMapFileManager getFacilityLayerPath:info];
-    NSString *jsonString = [NSString stringWithContentsOfFile:fullPath encoding:NSUTF8StringEncoding error:&error];
-    
-    AGSSBJsonParser *parser = [[AGSSBJsonParser alloc] init];
-    NSDictionary *dict = [parser objectWithString:jsonString];
-    
-    AGSFeatureSet *set = [[AGSFeatureSet alloc] initWithJSON:dict];
-    return set.features;
-}
+//- (NSArray *)loadRoomsWithInfo:(TYMapInfo *)info
+//{
+//    NSError *error = nil;
+//    NSString *fullPath = [TYMapFileManager getRoomLayerPath:info];
+//    NSString *jsonString = [NSString stringWithContentsOfFile:fullPath encoding:NSUTF8StringEncoding error:&error];
+//    
+//    AGSSBJsonParser *parser = [[AGSSBJsonParser alloc] init];
+//    NSDictionary *dict = [parser objectWithString:jsonString];
+//    
+//    AGSFeatureSet *set = [[AGSFeatureSet alloc] initWithJSON:dict];
+//    return set.features;
+//}
+//
+//- (NSArray *)loadFacilitiesWithInfo:(TYMapInfo *)info
+//{
+//    NSError *error = nil;
+//    NSString *fullPath = [TYMapFileManager getFacilityLayerPath:info];
+//    NSString *jsonString = [NSString stringWithContentsOfFile:fullPath encoding:NSUTF8StringEncoding error:&error];
+//    
+//    AGSSBJsonParser *parser = [[AGSSBJsonParser alloc] init];
+//    NSDictionary *dict = [parser objectWithString:jsonString];
+//    
+//    AGSFeatureSet *set = [[AGSFeatureSet alloc] initWithJSON:dict];
+//    return set.features;
+//}
 
 @end

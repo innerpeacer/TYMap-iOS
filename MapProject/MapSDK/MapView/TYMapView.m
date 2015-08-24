@@ -23,6 +23,8 @@
 #import "TYRouteHintLayer.h"
 #import "TYBrand.h"
 
+#import "TYEncryption.h"
+
 @interface TYMapView() <AGSMapViewTouchDelegate, AGSMapViewLayerDelegate, AGSCalloutDelegate>
 {
     TYRenderingScheme *renderingScheme;
@@ -32,7 +34,7 @@
     
     TYLocationLayer *locationLayer;
     TYRouteLayer *routeLayer;
-    //    TYUserDefaultsRouteArrowLayer *routeArrowLayer;
+
     TYAnimatedRouteArrowLayer *animatedRouteArrowLayer;
     TYRouteHintLayer *routeHintLayer;
     
@@ -43,6 +45,8 @@
     double lastRotationAngle;
     
     NSDictionary *allBrandDict;
+    
+    NSDictionary *mapDataDict;
 }
 
 @end
@@ -53,14 +57,80 @@
 - (void)reloadMapView
 {
     if (self.currentMapInfo) {
-        [structureGroupLayer loadContentsWithInfo:self.currentMapInfo];
-        [labelGroupLayer loadContentsWithInfo:self.currentMapInfo];
+        [self loadMapDataWithInfo:self.currentMapInfo];
+        
+        [structureGroupLayer loadContents:mapDataDict];
+        [labelGroupLayer loadContents:mapDataDict];
+        
+//        [structureGroupLayer loadContentsWithInfo:self.currentMapInfo];
+//        [labelGroupLayer loadContentsWithInfo:self.currentMapInfo];
         
         if (self.mapDelegate && [self.mapDelegate respondsToSelector:@selector(TYMapView:didFinishLoadingFloor:)]) {
             [labelGroupLayer updateLabels];
             [self.mapDelegate TYMapView:self didFinishLoadingFloor:_currentMapInfo];
         }
     }
+}
+
+- (void)loadMapDataWithInfo:(TYMapInfo *)info
+{
+    NSString *dataPath = [TYMapFileManager getMapDataPath:info];
+    NSError *error;
+    NSString *jsonString;
+    if ([TYMapEnvironment useEncryption]) {
+        jsonString = [TYEncryption descriptFile:dataPath];
+    } else {
+        jsonString = [NSString stringWithContentsOfFile:dataPath encoding:NSUTF8StringEncoding error:&error];
+    }
+    
+    
+    if (error) {
+        NSLog(@"%@", error.localizedDescription);
+        //        return;
+    }
+    
+    
+    AGSSBJsonParser *parser = [[AGSSBJsonParser alloc] init];
+    NSDictionary *dict = [parser objectWithString:jsonString];
+    NSMutableDictionary *dataDict = [[NSMutableDictionary alloc] init];
+    
+    id object;
+    object = [dict objectForKey:@"floor"];
+    if ([object isKindOfClass:[NSString class]]) {
+        [dataDict setObject:[[AGSFeatureSet alloc] init] forKey:@"floor"];
+    } else {
+        [dataDict setObject:[[AGSFeatureSet alloc] initWithJSON:[dict objectForKey:@"floor"]] forKey:@"floor"];
+    }
+    
+    object = [dict objectForKey:@"room"];
+    if ([object isKindOfClass:[NSString class]]) {
+        [dataDict setObject:[[AGSFeatureSet alloc] init] forKey:@"room"];
+    } else {
+        [dataDict setObject:[[AGSFeatureSet alloc] initWithJSON:[dict objectForKey:@"room"]] forKey:@"room"];
+    }
+    
+    object = [dict objectForKey:@"asset"];
+    if ([object isKindOfClass:[NSString class]]) {
+        [dataDict setObject:[[AGSFeatureSet alloc] init] forKey:@"asset"];
+    } else {
+        [dataDict setObject:[[AGSFeatureSet alloc] initWithJSON:[dict objectForKey:@"asset"]] forKey:@"asset"];
+    }
+    
+    object = [dict objectForKey:@"facility"];
+    if ([object isKindOfClass:[NSString class]]) {
+        [dataDict setObject:[[AGSFeatureSet alloc] init] forKey:@"facility"];
+    } else {
+        [dataDict setObject:[[AGSFeatureSet alloc] initWithJSON:[dict objectForKey:@"facility"]] forKey:@"facility"];
+    }
+    
+    object = [dict objectForKey:@"label"];
+    if ([object isKindOfClass:[NSString class]]) {
+        [dataDict setObject:[[AGSFeatureSet alloc] init] forKey:@"label"];
+    } else {
+        [dataDict setObject:[[AGSFeatureSet alloc] initWithJSON:[dict objectForKey:@"label"]] forKey:@"label"];
+    }
+    
+    mapDataDict = [NSDictionary dictionaryWithDictionary:dataDict];
 }
 
 - (void)setFloorWithInfo:(TYMapInfo *)info
@@ -99,8 +169,15 @@
     //    [routeArrowLayer removeAllGraphics];
     [animatedRouteArrowLayer stopShowingArrow];
     
-    [structureGroupLayer loadContentsWithInfo:info];
-    [labelGroupLayer loadContentsWithInfo:info];
+    
+    [self loadMapDataWithInfo:info];
+    
+    
+    [structureGroupLayer loadContents:mapDataDict];
+    [labelGroupLayer loadContents:mapDataDict];
+    
+//    [structureGroupLayer loadContentsWithInfo:info];
+//    [labelGroupLayer loadContentsWithInfo:info];
     
     if (initialEnvelope == nil) {
         initialEnvelope = [AGSEnvelope envelopeWithXmin:_currentMapInfo.mapExtent.xmin ymin:_currentMapInfo.mapExtent.ymin xmax:_currentMapInfo.mapExtent.xmax ymax:_currentMapInfo.mapExtent.ymax spatialReference:[TYMapEnvironment defaultSpatialReference]];
@@ -166,7 +243,7 @@
     structureGroupLayer = [TYStructureGroupLayer structureLayerWithRenderingScheme:renderingScheme SpatialReference:spatialReference];
     [self addMapLayer:structureGroupLayer.floorLayer withName:LAYER_NAME_FLOOR];
     [self addMapLayer:structureGroupLayer.roomLayer withName:LAYER_NAME_ROOM];
-    [self addMapLayer:structureGroupLayer.asserLayer withName:LAYER_NAME_ASSET];
+    [self addMapLayer:structureGroupLayer.assetLayer withName:LAYER_NAME_ASSET];
     
     labelGroupLayer = [TYLabelGroupLayer labelGroupLayerWithRenderingScheme:renderingScheme SpatialReference:spatialReference];
     labelGroupLayer.mapView = self;
@@ -684,33 +761,33 @@
 //
 //  @return 是否修改成功
 
-- (BOOL)updateRoomPOI:(NSString *)pid WithName:(NSString *)name
-{
-    BOOL structureUpdated = [structureGroupLayer updateRoomPOI:pid WithName:name];
-    BOOL labelUpdated = [labelGroupLayer updateRoomLabel:pid WithName:name];
-    
-    return (structureUpdated && labelUpdated);
-}
+//- (BOOL)updateRoomPOI:(NSString *)pid WithName:(NSString *)name
+//{
+//    BOOL structureUpdated = [structureGroupLayer updateRoomPOI:pid WithName:name];
+//    BOOL labelUpdated = [labelGroupLayer updateRoomLabel:pid WithName:name];
+//    
+//    return (structureUpdated && labelUpdated);
+//}
 
 
 
 //将修改结果更新至地图文件中
 - (void)updateMapFiles
 {
-    NSString *labelFilePath = [TYMapFileManager getLabelLayerPath:self.currentMapInfo];
-    AGSFeatureSet *lableSet = [labelGroupLayer getTextFeatureSet];
-    
-    NSDictionary *labelJsonDict = [lableSet encodeToJSON];
-    NSData *labelData = [NSJSONSerialization dataWithJSONObject:labelJsonDict options:NSJSONWritingPrettyPrinted error:nil];
-    [labelData writeToFile:labelFilePath atomically:YES];
-    
-    
-    NSString *roomFilePath = [TYMapFileManager getRoomLayerPath:self.currentMapInfo];
-    AGSFeatureSet *roomSet = [structureGroupLayer getRoomFeatureSet];
-    
-    NSDictionary *roomJsonDict = [roomSet encodeToJSON];
-    NSData *roomData = [NSJSONSerialization dataWithJSONObject:roomJsonDict options:NSJSONWritingPrettyPrinted error:nil];
-    [roomData writeToFile:roomFilePath atomically:YES];
+//    NSString *labelFilePath = [TYMapFileManager getLabelLayerPath:self.currentMapInfo];
+//    AGSFeatureSet *lableSet = [labelGroupLayer getTextFeatureSet];
+//    
+//    NSDictionary *labelJsonDict = [lableSet encodeToJSON];
+//    NSData *labelData = [NSJSONSerialization dataWithJSONObject:labelJsonDict options:NSJSONWritingPrettyPrinted error:nil];
+//    [labelData writeToFile:labelFilePath atomically:YES];
+//    
+//    
+//    NSString *roomFilePath = [TYMapFileManager getRoomLayerPath:self.currentMapInfo];
+//    AGSFeatureSet *roomSet = [structureGroupLayer getRoomFeatureSet];
+//    
+//    NSDictionary *roomJsonDict = [roomSet encodeToJSON];
+//    NSData *roomData = [NSJSONSerialization dataWithJSONObject:roomJsonDict options:NSJSONWritingPrettyPrinted error:nil];
+//    [roomData writeToFile:roomFilePath atomically:YES];
 }
 
 - (void)dealloc

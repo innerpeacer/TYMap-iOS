@@ -28,9 +28,9 @@
     [TYMapEnvironment initMapEnvironment];
     
     [self copyMapFilesIfNeeded];
-//    [self setDefaultPlaceIfNeeded];
+    [self setDefaultPlaceIfNeeded];
     
-    [self testJson];
+//    [self testJson];
     
     return YES;
 }
@@ -60,13 +60,18 @@
 
 - (void)setDefaultPlaceIfNeeded
 {
-    [TYUserDefaults setDefaultCity:@"0021"];
-    [TYUserDefaults setDefaultBuilding:@"002100001"];
-    [TYUserDefaults setDefaultBuilding:@"002100002"];
+    if ([TYUserDefaults getDefaultBuilding] == nil) {
+        [TYUserDefaults setDefaultCity:@"0021"];
+        [TYUserDefaults setDefaultBuilding:@"00210100"];
+    }
+    
+//    [TYUserDefaults setDefaultCity:@"0021"];
+//    [TYUserDefaults setDefaultBuilding:@"002100001"];
+//    [TYUserDefaults setDefaultBuilding:@"002100002"];
 //    [TYUserDefaults setDefaultBuilding:@"002100004"];
 //    [TYUserDefaults setDefaultBuilding:@"002100005"];
-        [TYUserDefaults setDefaultBuilding:@"002100006"];
-            [TYUserDefaults setDefaultBuilding:@"00210100"];
+//        [TYUserDefaults setDefaultBuilding:@"002100006"];
+//            [TYUserDefaults setDefaultBuilding:@"00210100"];
 
     
     //    [TYUserDefaults setDefaultBuilding:@"002188888"];

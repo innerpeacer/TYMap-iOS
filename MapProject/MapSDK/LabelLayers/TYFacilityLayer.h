@@ -20,7 +20,9 @@
 
 + (TYFacilityLayer *)facilityLayerWithRenderingScheme:(TYRenderingScheme *)aRenderingScheme SpatialReference:(AGSSpatialReference *)sr;
 
-- (void)loadContentsWithInfo:(TYMapInfo *)info;
+//- (void)loadContentsWithInfo:(TYMapInfo *)info;
+- (void)loadContents:(AGSFeatureSet *)set;
+
 
 - (NSArray *)getAllFacilityCategoryIDOnCurrentFloor;
 

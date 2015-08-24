@@ -112,6 +112,27 @@
     return [buildingDir stringByAppendingPathComponent:fileName];
 }
 
++ (NSString *)getMapDataPath:(TYMapInfo *)info
+{
+    NSString *buildingDir = [TYMapFileManager getBuildingDir:info];
+    NSString *fileName = [NSString stringWithFormat:FILE_MAP_DATA_PATH, info.mapID];
+    if ([TYMapEnvironment useEncryption]) {
+        fileName = [MD5Utils md5:fileName];
+        fileName = [NSString stringWithFormat:@"%@.tymap", fileName];
+    }
+    return [buildingDir stringByAppendingPathComponent:fileName];
+}
+
++ (NSString *)getCityDir:(TYMapInfo *)info
+{
+    return [[TYMapEnvironment getRootDirectoryForMapFiles] stringByAppendingPathComponent:info.cityID];
+}
+
++ (NSString *)getBuildingDir:(TYMapInfo *)info
+{
+    return [[[TYMapEnvironment getRootDirectoryForMapFiles] stringByAppendingPathComponent:info.cityID] stringByAppendingPathComponent:info.buildingID];
+}
+
 + (NSString *)getLandmarkJsonPath:(TYMapInfo *)info
 {
     NSString *mapRootDir = [TYMapEnvironment getRootDirectoryForMapFiles];

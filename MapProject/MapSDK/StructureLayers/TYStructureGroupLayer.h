@@ -16,13 +16,15 @@
 
 @property (nonatomic, strong) TYFloorLayer *floorLayer;
 @property (nonatomic, strong) TYRoomLayer *roomLayer;
-@property (nonatomic, strong) TYAssetLayer *asserLayer;
+@property (nonatomic, strong) TYAssetLayer *assetLayer;
 
 + (TYStructureGroupLayer *)structureLayerWithRenderingScheme:(TYRenderingScheme *)aRenderingScheme SpatialReference:(AGSSpatialReference *)sr;
 - (void)setRenderingScheme:(TYRenderingScheme *)rs;
 
 
-- (void)loadContentsWithInfo:(TYMapInfo *)info;
+//- (void)loadContentsWithInfo:(TYMapInfo *)info;
+- (void)loadContents:(NSDictionary *)mapData;
+
 
 - (TYPoi *)getRoomPoiWithPoiID:(NSString *)pid;
 - (void)highlightRoomPoi:(NSString *)poiID;

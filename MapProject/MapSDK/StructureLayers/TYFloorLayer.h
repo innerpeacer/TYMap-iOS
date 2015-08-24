@@ -14,7 +14,8 @@
 
 + (TYFloorLayer *)floorLayerWithRenderingScheme:(TYRenderingScheme *)aRenderingScheme SpatialReference:(AGSSpatialReference *)sr;
 
-- (void)loadContentsWithInfo:(TYMapInfo *)info;
+//- (void)loadContentsWithInfo:(TYMapInfo *)info;
+- (void)loadContents:(AGSFeatureSet *)set;
 
 - (void)setRenderingScheme:(TYRenderingScheme *)rs;
 

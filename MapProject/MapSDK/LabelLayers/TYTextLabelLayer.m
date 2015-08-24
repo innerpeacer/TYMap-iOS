@@ -103,30 +103,79 @@
     return result;
 }
 
-- (void)loadContentsWithInfo:(TYMapInfo *)info;
+//- (void)loadContentsWithInfo:(TYMapInfo *)info;
+//{
+//    [self removeAllGraphics];
+//    
+//    [allTextLabels removeAllObjects];
+//    
+//    NSError *error = nil;
+//    NSString *fullPath = [TYMapFileManager getLabelLayerPath:info];
+////    NSString *jsonString = [NSString stringWithContentsOfFile:fullPath encoding:NSUTF8StringEncoding error:&error];
+////    if ([TYMapEnvironment useEncryption]) {
+////        jsonString = [TYEncryption decryptString:jsonString];
+////    }
+//    NSString *jsonString;
+//    
+//    if ([TYMapEnvironment useEncryption]) {
+//        jsonString = [TYEncryption descriptFile:fullPath];
+//    } else {
+//        jsonString = [NSString stringWithContentsOfFile:fullPath encoding:NSUTF8StringEncoding error:&error];
+//    }
+//    
+//    AGSSBJsonParser *parser = [[AGSSBJsonParser alloc] init];
+//    NSDictionary *dict = [parser objectWithString:jsonString];
+//    
+//    AGSFeatureSet *set = [[AGSFeatureSet alloc] initWithJSON:dict];
+//    NSArray *allGraphics = set.features;
+//    
+//    TYSpatialReference *sr = [TYMapEnvironment defaultSpatialReference];
+//    TYMapLanguage language = [TYMapEnvironment getMapLanguage];
+//    
+//    for (AGSGraphic *graphic in allGraphics) {
+//        NSString *field = [self getNameFieldForLanguage:language];
+//        NSString *name = [graphic attributeForKey:field];
+//        
+//        if (name != nil && name != (id)[NSNull null]) {
+//            double x = ((AGSPoint *)graphic.geometry).x;
+//            double y = ((AGSPoint *)graphic.geometry).y;
+//            TYPoint *position = (TYPoint *)[AGSPoint pointWithX:x y:y spatialReference:sr];
+//            TYTextLabel *textLabel = [[TYTextLabel alloc] initWithName:name Position:position];
+//
+//            NSString *poiID = [graphic attributeForKey:GRAPHIC_ATTRIBUTE_POI_ID];
+//            if ([self.brandDict.allKeys containsObject:poiID]) {
+//                TYBrand *brand = [self.brandDict objectForKey:poiID];
+//                
+//                AGSPictureMarkerSymbol *pms = [AGSPictureMarkerSymbol pictureMarkerSymbolWithImageNamed:brand.logo];
+//                pms.size = brand.logoSize;
+//                
+//                textLabel.textSymbol = pms;
+//                textLabel.labelSize = brand.logoSize;
+//                
+//            } else {
+//                AGSTextSymbol *ts = [AGSTextSymbol textSymbolWithText:name color:[UIColor blackColor]];
+//                ts.angleAlignment = AGSMarkerSymbolAngleAlignmentScreen;
+//                ts.hAlignment = AGSTextSymbolHAlignmentCenter;
+//                ts.vAlignment = AGSTextSymbolVAlignmentMiddle;
+//                ts.fontSize = 10.0f;
+//                ts.fontFamily = @"Heiti SC";
+//                textLabel.textSymbol = ts;
+//            }
+//            
+//            textLabel.textGraphic = graphic;
+//            [self addGraphic:textLabel.textGraphic];
+//            [allTextLabels addObject:textLabel];
+//        }
+//    }
+//}
+
+- (void)loadContents:(AGSFeatureSet *)set
 {
     [self removeAllGraphics];
     
     [allTextLabels removeAllObjects];
     
-    NSError *error = nil;
-    NSString *fullPath = [TYMapFileManager getLabelLayerPath:info];
-//    NSString *jsonString = [NSString stringWithContentsOfFile:fullPath encoding:NSUTF8StringEncoding error:&error];
-//    if ([TYMapEnvironment useEncryption]) {
-//        jsonString = [TYEncryption decryptString:jsonString];
-//    }
-    NSString *jsonString;
     
-    if ([TYMapEnvironment useEncryption]) {
-        jsonString = [TYEncryption descriptFile:fullPath];
-    } else {
-        jsonString = [NSString stringWithContentsOfFile:fullPath encoding:NSUTF8StringEncoding error:&error];
-    }
-    
-    AGSSBJsonParser *parser = [[AGSSBJsonParser alloc] init];
-    NSDictionary *dict = [parser objectWithString:jsonString];
-    
-    AGSFeatureSet *set = [[AGSFeatureSet alloc] initWithJSON:dict];
     NSArray *allGraphics = set.features;
     
     TYSpatialReference *sr = [TYMapEnvironment defaultSpatialReference];
@@ -141,7 +190,7 @@
             double y = ((AGSPoint *)graphic.geometry).y;
             TYPoint *position = (TYPoint *)[AGSPoint pointWithX:x y:y spatialReference:sr];
             TYTextLabel *textLabel = [[TYTextLabel alloc] initWithName:name Position:position];
-
+            
             NSString *poiID = [graphic attributeForKey:GRAPHIC_ATTRIBUTE_POI_ID];
             if ([self.brandDict.allKeys containsObject:poiID]) {
                 TYBrand *brand = [self.brandDict objectForKey:poiID];

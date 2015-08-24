@@ -15,7 +15,9 @@
 
 + (TYRoomLayer *)roomLayerWithRenderingScheme:(TYRenderingScheme *)aRenderingScheme SpatialReference:(AGSSpatialReference *)sr;
 
-- (void)loadContentsWithInfo:(TYMapInfo *)info;
+- (void)loadContents:(AGSFeatureSet *)set;
+//- (void)loadContentsWithInfo:(TYMapInfo *)info;
+
 - (TYPoi *)getPoiWithPoiID:(NSString *)pid;
 - (void)highlightPoi:(NSString *)poiID;
 - (TYPoi *)extractPoiOnCurrentFloorWithX:(double)x Y:(double)y;

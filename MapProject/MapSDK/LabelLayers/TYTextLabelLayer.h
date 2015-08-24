@@ -19,7 +19,8 @@
 
 + (TYTextLabelLayer *)textLabelLayerWithSpatialReference:(AGSSpatialReference *)sr;
 
-- (void)loadContentsWithInfo:(TYMapInfo *)info;
+//- (void)loadContentsWithInfo:(TYMapInfo *)info;
+- (void)loadContents:(AGSFeatureSet *)set;
 
 - (void)displayLabels:(NSMutableArray *)array;
 

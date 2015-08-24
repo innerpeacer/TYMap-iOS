@@ -124,32 +124,67 @@
     }
 }
 
-- (void)loadContentsWithInfo:(TYMapInfo *)info;
+//- (void)loadContentsWithInfo:(TYMapInfo *)info;
+//{
+////    NSLog(@"addFacilityContents");
+//    [self removeAllGraphics];
+//    
+//    [groupedFacilityLabelDict removeAllObjects];
+//    [facilityLabelDict removeAllObjects];
+//    
+//    NSError *error = nil;
+//    NSString *fullPath = [TYMapFileManager getFacilityLayerPath:info];
+//    NSString *jsonString;
+//    
+//    if ([TYMapEnvironment useEncryption]) {
+//        jsonString = [TYEncryption descriptFile:fullPath];
+//    } else {
+//        jsonString = [NSString stringWithContentsOfFile:fullPath encoding:NSUTF8StringEncoding error:&error];
+//    }
+//    
+//    AGSSBJsonParser *parser = [[AGSSBJsonParser alloc] init];
+//    NSDictionary *dict = [parser objectWithString:jsonString];
+//    
+//    AGSFeatureSet *set = [[AGSFeatureSet alloc] initWithJSON:dict];
+//    NSArray *allGraphics = set.features;
+//    
+//    for (AGSGraphic *graphic in allGraphics) {
+//        id categoryIDObject = [graphic attributeForKey:@"COLOR"];
+//        if ([categoryIDObject isKindOfClass:[NSNull class]]) {
+//            continue;
+//        }
+//        int categoryID = [[graphic attributeForKey:@"COLOR"] intValue];
+//        TYPoint *pos = (TYPoint *)graphic.geometry;
+//        
+//        if (![groupedFacilityLabelDict.allKeys containsObject:@(categoryID)]) {
+//            NSMutableArray *array = [NSMutableArray array];
+//            [groupedFacilityLabelDict setObject:array forKey:@(categoryID)];
+//        }
+//        
+//        TYFacilityLabel *fLabel = [[TYFacilityLabel alloc] initWithCategoryID:categoryID Position:pos];
+//        fLabel.facilityGraphic = graphic;
+//        fLabel.normalFacilitySymbol = [allFacilitySymbols objectForKey:@(categoryID)];
+//        fLabel.highlightedFacilitySymbol = [allHighlightFacilitySymbols objectForKey:@(categoryID)];
+//        [fLabel setHighlighted:NO];
+//        
+//        
+//        NSMutableArray *array = groupedFacilityLabelDict[@(categoryID)];
+//        [array addObject:fLabel];
+//        
+//        NSString *poiID = [graphic attributeForKey:GRAPHIC_ATTRIBUTE_POI_ID];
+//        [facilityLabelDict setObject:fLabel forKey:poiID];
+//    }
+//    
+//    [self addGraphics:allGraphics];
+//}
+
+- (void)loadContents:(AGSFeatureSet *)set
 {
-//    NSLog(@"addFacilityContents");
     [self removeAllGraphics];
     
     [groupedFacilityLabelDict removeAllObjects];
     [facilityLabelDict removeAllObjects];
-    
-    NSError *error = nil;
-    NSString *fullPath = [TYMapFileManager getFacilityLayerPath:info];
-//    NSString *jsonString = [NSString stringWithContentsOfFile:fullPath encoding:NSUTF8StringEncoding error:&error];
-//    if ([TYMapEnvironment useEncryption]) {
-//        jsonString = [TYEncryption decryptString:jsonString];
-//    }
-    NSString *jsonString;
-    
-    if ([TYMapEnvironment useEncryption]) {
-        jsonString = [TYEncryption descriptFile:fullPath];
-    } else {
-        jsonString = [NSString stringWithContentsOfFile:fullPath encoding:NSUTF8StringEncoding error:&error];
-    }
-    
-    AGSSBJsonParser *parser = [[AGSSBJsonParser alloc] init];
-    NSDictionary *dict = [parser objectWithString:jsonString];
-    
-    AGSFeatureSet *set = [[AGSFeatureSet alloc] initWithJSON:dict];
+
     NSArray *allGraphics = set.features;
     
     for (AGSGraphic *graphic in allGraphics) {
@@ -181,6 +216,7 @@
     
     [self addGraphics:allGraphics];
 }
+
 
 - (void)showFacilityWithCategory:(int)categoryID
 {

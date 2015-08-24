@@ -45,32 +45,40 @@
     self.renderer = floorRender;
 }
 
-- (void)loadContentsWithInfo:(TYMapInfo *)info
+//- (void)loadContentsWithInfo:(TYMapInfo *)info
+//{
+////    NSLog(@"addFloorContent");
+//    
+//    [self removeAllGraphics];
+//    
+//    NSError *error = nil;
+//    NSString *fullPath = [TYMapFileManager getFloorLayerPath:info];
+//    NSString *jsonString;
+//    
+//    if ([TYMapEnvironment useEncryption]) {
+//        jsonString = [TYEncryption descriptFile:fullPath];
+//    } else {
+//        jsonString = [NSString stringWithContentsOfFile:fullPath encoding:NSUTF8StringEncoding error:&error];
+//    }
+//        
+//    AGSSBJsonParser *parser = [[AGSSBJsonParser alloc] init];
+//    NSDictionary *dict = [parser objectWithString:jsonString];
+//    
+//    AGSFeatureSet *set = [[AGSFeatureSet alloc] initWithJSON:dict];
+//    NSArray *allGraphics = set.features;
+//    
+//    for (AGSGraphic *graphic in allGraphics) {
+//        [self addGraphic:graphic];
+//    }
+//    
+//}
+
+- (void)loadContents:(AGSFeatureSet *)set
 {
-//    NSLog(@"addFloorContent");
-    
     [self removeAllGraphics];
     
-    NSError *error = nil;
-    NSString *fullPath = [TYMapFileManager getFloorLayerPath:info];
-    NSString *jsonString;
-    
-    if ([TYMapEnvironment useEncryption]) {
-        jsonString = [TYEncryption descriptFile:fullPath];
-    } else {
-        jsonString = [NSString stringWithContentsOfFile:fullPath encoding:NSUTF8StringEncoding error:&error];
-    }
-        
-    AGSSBJsonParser *parser = [[AGSSBJsonParser alloc] init];
-    NSDictionary *dict = [parser objectWithString:jsonString];
-    
-    AGSFeatureSet *set = [[AGSFeatureSet alloc] initWithJSON:dict];
     NSArray *allGraphics = set.features;
-    
-    for (AGSGraphic *graphic in allGraphics) {
-        [self addGraphic:graphic];
-    }
-    
+    [self addGraphics:allGraphics];
 }
 
 @end

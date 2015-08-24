@@ -28,6 +28,9 @@
 #define FILE_LAYER_PATH_ASSET @"%@_ASSET.json"
 #define FILE_LAYER_PATH_FACILITY @"%@_FACILITY.json"
 #define FILE_LAYER_PATH_LABEL @"%@_LABEL.json"
+
+#define FILE_MAP_DATA_PATH @"%@.data"
+
 #define FILE_LAYER_PATH_LANDMARK @"%@_LANDMARK.json"
 
 #endif

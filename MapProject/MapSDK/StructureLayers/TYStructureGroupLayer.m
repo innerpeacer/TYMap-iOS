@@ -26,7 +26,7 @@
         _roomLayer = [TYRoomLayer roomLayerWithRenderingScheme:aRenderingScheme SpatialReference:sr];
         _roomLayer.selectionSymbol = aRenderingScheme.defaultHighlightFillSymbol;
         
-        _asserLayer = [TYAssetLayer assetLayerWithRenderingScheme:aRenderingScheme SpatialReference:sr];
+        _assetLayer = [TYAssetLayer assetLayerWithRenderingScheme:aRenderingScheme SpatialReference:sr];
 
     }
     return self;
@@ -36,18 +36,29 @@
 {
     [_floorLayer setRenderingScheme:rs];
     [_roomLayer setRenderingScheme:rs];
-    [_asserLayer setRenderingScheme:rs];
+    [_assetLayer setRenderingScheme:rs];
 }
 
-- (void)loadContentsWithInfo:(TYMapInfo *)info
+//- (void)loadContentsWithInfo:(TYMapInfo *)info
+//{
+//    [_floorLayer removeAllGraphics];
+//    [_roomLayer removeAllGraphics];
+//    [_asserLayer removeAllGraphics];
+//    
+//    [_floorLayer loadContentsWithInfo:info];
+//    [_roomLayer loadContentsWithInfo:info];
+//    [_asserLayer loadContentsWithInfo:info];
+//}
+
+- (void)loadContents:(NSDictionary *)mapData
 {
     [_floorLayer removeAllGraphics];
     [_roomLayer removeAllGraphics];
-    [_asserLayer removeAllGraphics];
+    [_assetLayer removeAllGraphics];
     
-    [_floorLayer loadContentsWithInfo:info];
-    [_roomLayer loadContentsWithInfo:info];
-    [_asserLayer loadContentsWithInfo:info];
+    [_floorLayer loadContents:mapData[@"floor"]];
+    [_roomLayer loadContents:mapData[@"room"]];
+    [_assetLayer loadContents:mapData[@"asset"]];
 }
 
 - (TYPoi *)getRoomPoiWithPoiID:(NSString *)pid

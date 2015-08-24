@@ -16,18 +16,18 @@ static NSString *PASSWORD_FOR_CONTENT = @"innerpeacer-content";
 
 + (void)encryptFile:(NSString *)originalPath toFile:(NSString *)encryptedFile
 {
-    NSString *originalString = [NSString stringWithContentsOfFile:originalPath encoding:NSUTF8StringEncoding error:nil];
-    NSString *encryptedString = [TYEncryption encryptString:originalString];
-    [encryptedString writeToFile:encryptedFile atomically:YES encoding:NSUTF8StringEncoding error:nil];
-//    encryptFile([originalPath UTF8String], [encryptedFile UTF8String]);
+//    NSString *originalString = [NSString stringWithContentsOfFile:originalPath encoding:NSUTF8StringEncoding error:nil];
+//    NSString *encryptedString = [TYEncryption encryptString:originalString];
+//    [encryptedString writeToFile:encryptedFile atomically:YES encoding:NSUTF8StringEncoding error:nil];
+    encryptFile([originalPath UTF8String], [encryptedFile UTF8String]);
 }
 
 + (NSString *)descriptFile:(NSString *)file
 {
-    NSString *encryptedString = [NSString stringWithContentsOfFile:file encoding:NSUTF8StringEncoding error:nil];
-    return [TYEncryption encryptString:encryptedString];
+//    NSString *encryptedString = [NSString stringWithContentsOfFile:file encoding:NSUTF8StringEncoding error:nil];
+//    return [TYEncryption encryptString:encryptedString];
     
-//    return [NSString stringWithUTF8String:decryptFile([file UTF8String]).c_str()];
+    return [NSString stringWithUTF8String:decryptFile([file UTF8String]).c_str()];
 }
 
 + (void)decryptFile:(NSString *)encryptedFile toFile:(NSString *)decryptedFile

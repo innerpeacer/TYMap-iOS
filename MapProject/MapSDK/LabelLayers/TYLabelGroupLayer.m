@@ -44,14 +44,23 @@
     [_facilityLayer setRenderingScheme:rs];
 }
 
-- (void)loadContentsWithInfo:(TYMapInfo *)info
+- (void)loadContents:(NSDictionary *)mapData
 {
     [_labelLayer removeAllGraphics];
     [_facilityLayer removeAllGraphics];
-
-    [_labelLayer loadContentsWithInfo:info];
-    [_facilityLayer loadContentsWithInfo:info];
+    
+    [_labelLayer loadContents:mapData[@"label"]];
+    [_facilityLayer loadContents:mapData[@"facility"]];
 }
+
+//- (void)loadContentsWithInfo:(TYMapInfo *)info
+//{
+//    [_labelLayer removeAllGraphics];
+//    [_facilityLayer removeAllGraphics];
+//
+//    [_labelLayer loadContentsWithInfo:info];
+//    [_facilityLayer loadContentsWithInfo:info];
+//}
 
 - (void)clearSelection
 {

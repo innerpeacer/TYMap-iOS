@@ -17,12 +17,13 @@
 
 + (NSString *)getMapInfoJsonPath:(NSString *)cityID buildingID:(NSString *)buildingID;
 
++ (NSString *)getMapDataPath:(TYMapInfo *)info;
 
-+ (NSString *)getFloorLayerPath:(TYMapInfo *)info;
-+ (NSString *)getRoomLayerPath:(TYMapInfo *)info;
-+ (NSString *)getAssetLayerPath:(TYMapInfo *)info;
-+ (NSString *)getFacilityLayerPath:(TYMapInfo *)info;
-+ (NSString *)getLabelLayerPath:(TYMapInfo *)info;
+//+ (NSString *)getFloorLayerPath:(TYMapInfo *)info;
+//+ (NSString *)getRoomLayerPath:(TYMapInfo *)info;
+//+ (NSString *)getAssetLayerPath:(TYMapInfo *)info;
+//+ (NSString *)getFacilityLayerPath:(TYMapInfo *)info;
+//+ (NSString *)getLabelLayerPath:(TYMapInfo *)info;
 + (NSString *)getLandmarkJsonPath:(TYMapInfo *)info;
 
 + (NSString *)getBrandJsonPath:(TYBuilding *)building;
