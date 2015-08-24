@@ -12,6 +12,7 @@
 		570928281B70646D00410B8C /* MD5Utils.mm in Sources */ = {isa = PBXBuildFile; fileRef = 570928241B70646D00410B8C /* MD5Utils.mm */; };
 		570928291B70646D00410B8C /* TYEncryption.mm in Sources */ = {isa = PBXBuildFile; fileRef = 570928261B70646D00410B8C /* TYEncryption.mm */; };
 		571AC4711B55FED900E9FF7D /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 571AC4701B55FED900E9FF7D /* AppDelegate.mm */; };
+		5720E6621B8AE3B90037A86A /* 00210100F10.data in Resources */ = {isa = PBXBuildFile; fileRef = 5720E6611B8AE3B90037A86A /* 00210100F10.data */; };
 		574319161B70588D00234A63 /* IPEncryption.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 574319141B70588D00234A63 /* IPEncryption.cpp */; };
 		57494DDA1B61DAE7000B6F2C /* BaseControllerTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 57494DD31B61DAE7000B6F2C /* BaseControllerTableVC.m */; };
 		57494DDB1B61DAE7000B6F2C /* BaseLogVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 57494DD51B61DAE7000B6F2C /* BaseLogVC.m */; };
@@ -128,6 +129,7 @@
 		570928261B70646D00410B8C /* TYEncryption.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TYEncryption.mm; sourceTree = "<group>"; };
 		571AC46F1B55FED900E9FF7D /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		571AC4701B55FED900E9FF7D /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
+		5720E6611B8AE3B90037A86A /* 00210100F10.data */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 00210100F10.data; sourceTree = "<group>"; };
 		574319141B70588D00234A63 /* IPEncryption.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IPEncryption.cpp; sourceTree = "<group>"; };
 		574319151B70588D00234A63 /* IPEncryption.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = IPEncryption.hpp; sourceTree = "<group>"; };
 		57494DD21B61DAE7000B6F2C /* BaseControllerTableVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseControllerTableVC.h; sourceTree = "<group>"; };
@@ -360,6 +362,7 @@
 		571AC46E1B55FED900E9FF7D /* MapProject */ = {
 			isa = PBXGroup;
 			children = (
+				5720E6611B8AE3B90037A86A /* 00210100F10.data */,
 				571AC46F1B55FED900E9FF7D /* AppDelegate.h */,
 				571AC4701B55FED900E9FF7D /* AppDelegate.mm */,
 				57672D5A1B55FF9800DAD219 /* GlobalSettings */,
@@ -838,6 +841,7 @@
 				57672E371B55FFF900DAD219 /* beacon-jz.db in Resources */,
 				57672E351B55FFF900DAD219 /* AOI.json in Resources */,
 				57672EFF1B56046300DAD219 /* MapResource in Resources */,
+				5720E6621B8AE3B90037A86A /* 00210100F10.data in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

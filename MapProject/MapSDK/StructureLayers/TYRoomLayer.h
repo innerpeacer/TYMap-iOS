@@ -24,4 +24,6 @@
 
 - (AGSFeatureSet *)getFeatureSet;
 
+- (void)setRenderingScheme:(TYRenderingScheme *)rs;
+
 @end

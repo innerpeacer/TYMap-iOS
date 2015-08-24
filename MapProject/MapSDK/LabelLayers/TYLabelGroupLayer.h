@@ -24,6 +24,8 @@
 
 - (void)loadContentsWithInfo:(TYMapInfo *)info;
 
+- (void)setRenderingScheme:(TYRenderingScheme *)rs;
+
 - (void)clearSelection;
 
 - (NSArray *)getAllFacilityCategoryIDOnCurrentFloor;

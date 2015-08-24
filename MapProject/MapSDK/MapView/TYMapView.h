@@ -283,6 +283,9 @@ typedef enum {
  */
 - (void)initMapViewWithBuilding:(TYBuilding *)buidling;
 
+- (void)switchBuilding:(TYBuilding *)b;
+
+
 /**
  *  移动地图将特定坐标限定在特定屏幕范围内
  *

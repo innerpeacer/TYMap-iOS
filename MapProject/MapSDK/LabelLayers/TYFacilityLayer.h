@@ -36,4 +36,6 @@
 
 - (void)updateLabels:(NSMutableArray *)array;
 
+- (void)setRenderingScheme:(TYRenderingScheme *)rs;
+
 @end

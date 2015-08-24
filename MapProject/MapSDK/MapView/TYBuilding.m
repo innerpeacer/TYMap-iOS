@@ -66,7 +66,6 @@
             
             NSNumber *staNumber = [dict objectForKey:KEY_BUILDING_STATUS];
             
-            
             building = [[TYBuilding alloc] initWithCityID:city.cityID BuildingID:mid Name:name Lon:lonNumber.doubleValue Lat:latNumber.doubleValue Address:address InitAngle:initStr.doubleValue RouteURL:url Offset:offset];
             building.status = staNumber.intValue;
             break;

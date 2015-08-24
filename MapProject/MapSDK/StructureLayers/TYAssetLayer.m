@@ -37,6 +37,13 @@
     return self;
 }
 
+- (void)setRenderingScheme:(TYRenderingScheme *)rs
+{
+    renderingScheme = rs;
+    assetRender = [self createAssetRender];
+    self.renderer = assetRender;
+}
+
 - (AGSRenderer *)createAssetRender
 {
     AGSUniqueValueRenderer *render = [[AGSUniqueValueRenderer alloc] init];

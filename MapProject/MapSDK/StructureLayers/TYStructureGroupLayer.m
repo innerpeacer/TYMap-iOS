@@ -32,6 +32,13 @@
     return self;
 }
 
+- (void)setRenderingScheme:(TYRenderingScheme *)rs
+{
+    [_floorLayer setRenderingScheme:rs];
+    [_roomLayer setRenderingScheme:rs];
+    [_asserLayer setRenderingScheme:rs];
+}
+
 - (void)loadContentsWithInfo:(TYMapInfo *)info
 {
     [_floorLayer removeAllGraphics];
@@ -62,11 +69,6 @@
 {
     [_roomLayer clearSelection];
 //    [assetLayer clearSelection];
-}
-
-- (void)setRenderingScheme:(TYRenderingScheme *)rs
-{
-    
 }
 
 - (void)setRoomSelected:(BOOL)selected forGraphic:(AGSGraphic *)graphic

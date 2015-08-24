@@ -19,6 +19,8 @@
 @property (nonatomic, strong) TYAssetLayer *asserLayer;
 
 + (TYStructureGroupLayer *)structureLayerWithRenderingScheme:(TYRenderingScheme *)aRenderingScheme SpatialReference:(AGSSpatialReference *)sr;
+- (void)setRenderingScheme:(TYRenderingScheme *)rs;
+
 
 - (void)loadContentsWithInfo:(TYMapInfo *)info;
 
@@ -29,8 +31,6 @@
 - (void)clearSelection;
 
 - (void)setRoomSelected:(BOOL)selected forGraphic:(AGSGraphic *)graphic;
-
-- (void)setRenderingScheme:(TYRenderingScheme *)rs;
 
 - (BOOL)updateRoomPOI:(NSString *)pid WithName:(NSString *)name;
 

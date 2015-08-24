@@ -37,6 +37,14 @@
     return self;
 }
 
+- (void)setRenderingScheme:(TYRenderingScheme *)rs
+{
+    renderingScheme = rs;
+    AGSSimpleFillSymbol *floorSymbol = renderingScheme.defaultFillSymbol;
+    floorRender = [[AGSSimpleRenderer alloc] initWithSymbol:floorSymbol];
+    self.renderer = floorRender;
+}
+
 - (void)loadContentsWithInfo:(TYMapInfo *)info
 {
 //    NSLog(@"addFloorContent");

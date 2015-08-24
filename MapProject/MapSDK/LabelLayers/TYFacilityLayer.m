@@ -53,6 +53,15 @@
     return self;
 }
 
+- (void)setRenderingScheme:(TYRenderingScheme *)rs
+{
+    renderingScheme = rs;
+    
+    allFacilitySymbols = [[NSMutableDictionary alloc] init];
+    allHighlightFacilitySymbols = [[NSMutableDictionary alloc] init];
+    [self getFacilitySymbols];
+}
+
 - (void)getFacilitySymbols
 {
     NSDictionary *iconDict = renderingScheme.iconSymbolDictionary;

@@ -42,6 +42,13 @@
     return self;
 }
 
+- (void)setRenderingScheme:(TYRenderingScheme *)rs
+{
+    renderingScheme = rs;
+    roomRender = [self createRoomRender];
+    self.renderer = roomRender;
+}
+
 - (AGSRenderer *)createRoomRender
 {
     AGSUniqueValueRenderer *render = [[AGSUniqueValueRenderer alloc] init];

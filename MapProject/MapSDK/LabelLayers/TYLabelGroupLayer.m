@@ -39,6 +39,11 @@
     return self;
 }
 
+- (void)setRenderingScheme:(TYRenderingScheme *)rs
+{
+    [_facilityLayer setRenderingScheme:rs];
+}
+
 - (void)loadContentsWithInfo:(TYMapInfo *)info
 {
     [_labelLayer removeAllGraphics];

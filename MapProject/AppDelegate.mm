@@ -13,8 +13,6 @@
 #import "TYPoi.h"
 #import "EnviromentManager.h"
 
-
-
 #import "IPEncryption.hpp"
 #import "TYEncryption.h"
 #import "IPMemery.h"
@@ -32,8 +30,34 @@
     [self copyMapFilesIfNeeded];
 //    [self setDefaultPlaceIfNeeded];
     
+    [self testJson];
+    
     return YES;
 }
+
+- (void)testJson
+{
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"00210100F10" ofType:@"data"];
+    NSError *error = nil;
+    NSString *jsonString = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&error];
+    if (error) {
+        NSLog(@"%@", error.localizedDescription);
+        return;
+    }
+
+    AGSSBJsonParser *parser = [[AGSSBJsonParser alloc] init];
+    NSDictionary *dict = [parser objectWithString:jsonString];
+//    NSLog(@"%@", dict);
+    
+    AGSFeatureSet *set = [[AGSFeatureSet alloc] initWithJSON:[dict objectForKey:@"room"]];
+    NSLog(@"%@", set);
+    NSArray *allGraphics = set.features;
+    for (AGSGraphic *graphic in allGraphics) {
+        NSLog(@"%@", graphic);
+    }
+
+}
+
 - (void)setDefaultPlaceIfNeeded
 {
     [TYUserDefaults setDefaultCity:@"0021"];

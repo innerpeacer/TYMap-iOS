@@ -16,5 +16,7 @@
 
 - (void)loadContentsWithInfo:(TYMapInfo *)info;
 
+- (void)setRenderingScheme:(TYRenderingScheme *)rs;
+
 @end
 
