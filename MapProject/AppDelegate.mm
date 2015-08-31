@@ -17,6 +17,7 @@
 #import "TYEncryption.h"
 #import "IPMemory.h"
 #import "MD5Utils.h"
+#import "MD5.hpp"
 
 @implementation AppDelegate
 
@@ -25,26 +26,17 @@
 {
     NSString *documentDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     NSLog(@"%@", documentDirectory);
-
-    [TYMapEnvironment initMapEnvironment];
     
+    [TYMapEnvironment initMapEnvironment];
+    [EnviromentManager switchToOriginal];
+
     [self copyMapFilesIfNeeded];
     [self setDefaultPlaceIfNeeded];
-    
-    [self testEncryption];
     
     return YES;
 }
 
-- (void)testEncryption
-{
 
-    NSString *str = @"Hello World!你好";
-    NSLog(@"%@", str);
-    NSLog(@"%@", [MD5Utils md5:str]);
-    
-    
-}
 
 - (void)setDefaultPlaceIfNeeded
 {
@@ -52,32 +44,76 @@
         [TYUserDefaults setDefaultCity:@"0021"];
         [TYUserDefaults setDefaultBuilding:@"00210100"];
     }
-    
 }
+
+//- (void)copyMapFiles
+//{
+//    NSFileManager *fileManager = [NSFileManager defaultManager];
+//    
+//    NSString *targetRootDir = [TYMapEnvironment getRootDirectoryForMapFiles];
+//    NSString *sourceRootDir = [[NSBundle mainBundle] pathForResource:DEFAULT_MAP_ROOT ofType:nil];
+//    
+//    NSDirectoryEnumerator *enumerator;
+//    enumerator = [fileManager enumeratorAtPath:sourceRootDir];
+//    NSString *name;
+//    while (name= [enumerator nextObject]) {
+//        NSString *sourcePath = [sourceRootDir stringByAppendingPathComponent:name];
+//        NSString *targetPath = [targetRootDir stringByAppendingPathComponent:name];
+//        NSString *pathExtension = sourcePath.pathExtension;
+//        
+//        if (pathExtension.length > 0) {
+//            [fileManager copyItemAtPath:sourcePath toPath:targetPath error:nil];
+//        } else {
+//            [fileManager createDirectoryAtPath:targetPath withIntermediateDirectories:YES attributes:nil error:nil];
+//        }
+//    }
+//}
 
 - (void)copyMapFilesIfNeeded
 {
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    
-    [EnviromentManager switchToOriginal];
     NSString *targetRootDir = [TYMapEnvironment getRootDirectoryForMapFiles];
     NSString *sourceRootDir = [[NSBundle mainBundle] pathForResource:DEFAULT_MAP_ROOT ofType:nil];
     
-    NSDirectoryEnumerator *enumerator;
-    enumerator = [fileManager enumeratorAtPath:sourceRootDir];
-    NSString *name;
-    while (name= [enumerator nextObject]) {
-        NSString *sourcePath = [sourceRootDir stringByAppendingPathComponent:name];
-        NSString *targetPath = [targetRootDir stringByAppendingPathComponent:name];
-        NSString *pathExtension = sourcePath.pathExtension;
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *md5 = [defaults objectForKey:@"md5"];
+    
+    NSString *currentMD5 = [MD5Utils md5ForDirectory:sourceRootDir];
+    
+    NSLog(@"MD5 Defaults: %@", md5);
+    NSLog(@"MD5 Files: %@", currentMD5);
+    
+    if (md5 != nil && [md5 isEqualToString:currentMD5]) {
+        NSLog(@"File Not Changed");
+    } else {
+        [defaults setObject:currentMD5 forKey:@"md5"];
         
-        if (pathExtension.length > 0) {
-            [fileManager copyItemAtPath:sourcePath toPath:targetPath error:nil];
-        } else {
-            [fileManager createDirectoryAtPath:targetPath withIntermediateDirectories:YES attributes:nil error:nil];
+        NSFileManager *fileManager = [NSFileManager defaultManager];
+        NSError *error;
+        [fileManager removeItemAtPath:targetRootDir error:&error];
+        if (error) {
+            NSLog(@"Error: %@", [error localizedDescription]);
         }
+        
+        NSDirectoryEnumerator *enumerator;
+        enumerator = [fileManager enumeratorAtPath:sourceRootDir];
+        NSString *name;
+        while (name= [enumerator nextObject]) {
+            NSString *sourcePath = [sourceRootDir stringByAppendingPathComponent:name];
+            NSString *targetPath = [targetRootDir stringByAppendingPathComponent:name];
+            NSString *pathExtension = sourcePath.pathExtension;
+            
+            if (pathExtension.length > 0) {
+                [fileManager copyItemAtPath:sourcePath toPath:targetPath error:nil];
+            } else {
+                [fileManager createDirectoryAtPath:targetPath withIntermediateDirectories:YES attributes:nil error:nil];
+            }
+        }
+
+        
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"地图文件发生改变" message:@"删除旧文件并重新拷贝地图文件" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        [alert show];
+        NSLog(@"File Changed");
     }
 }
 
 @end
-

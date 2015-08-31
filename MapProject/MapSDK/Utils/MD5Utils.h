@@ -14,4 +14,6 @@
 
 + (NSString *)md5ForFile:(NSString *)path;
 
++ (NSString *)md5ForDirectory:(NSString *)dir;
+
 @end

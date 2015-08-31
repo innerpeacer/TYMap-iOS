@@ -19,7 +19,28 @@
 
 + (NSString *)md5ForFile:(NSString *)path
 {
-    return nil;
+    std::ifstream in([path UTF8String], std::ios::in|std::ios::binary);
+    MD5 md5(in);
+    
+    return [NSString stringWithUTF8String:md5.toString().c_str()];
+}
+
++ (NSString *)md5ForDirectory:(NSString *)dir
+{
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSDirectoryEnumerator *enumerator;
+    enumerator = [fileManager enumeratorAtPath:dir];
+
+    NSString *name;
+    MD5 fileMD5;
+
+    while (name = [enumerator nextObject]) {
+        NSString *sourcePath = [dir stringByAppendingPathComponent:name];
+        std::ifstream in([sourcePath UTF8String], std::ios::in|std::ios::binary);
+        fileMD5.update(in);
+    }
+    
+    return [NSString stringWithUTF8String:fileMD5.toString().c_str()];
 }
 
 @end
