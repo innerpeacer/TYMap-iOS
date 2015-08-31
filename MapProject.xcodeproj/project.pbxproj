@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5709281E1B705A0A00410B8C /* IPMemery.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5709281D1B705A0A00410B8C /* IPMemery.cpp */; };
+		5709281E1B705A0A00410B8C /* IPMemory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5709281D1B705A0A00410B8C /* IPMemory.cpp */; };
 		570928271B70646D00410B8C /* MD5.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 570928211B70646D00410B8C /* MD5.cpp */; };
 		570928281B70646D00410B8C /* MD5Utils.mm in Sources */ = {isa = PBXBuildFile; fileRef = 570928241B70646D00410B8C /* MD5Utils.mm */; };
 		570928291B70646D00410B8C /* TYEncryption.mm in Sources */ = {isa = PBXBuildFile; fileRef = 570928261B70646D00410B8C /* TYEncryption.mm */; };
@@ -46,6 +46,7 @@
 		576AEEAB1B61D97100D55CA4 /* MapDevVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 576AEEA11B61D97100D55CA4 /* MapDevVC.m */; };
 		576AEEAC1B61D97100D55CA4 /* MapVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 576AEEA31B61D97100D55CA4 /* MapVC.m */; };
 		576AEEB21B61D9E400D55CA4 /* CustomCalloutVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 576AEEB01B61D9E400D55CA4 /* CustomCalloutVC.m */; };
+		579323851B9436890073438D /* GenerateEncryptionSourceVC.mm in Sources */ = {isa = PBXBuildFile; fileRef = 579323841B9436890073438D /* GenerateEncryptionSourceVC.mm */; };
 		5794C0C11B560558002DCE9F /* TYCallout.m in Sources */ = {isa = PBXBuildFile; fileRef = 5794C0511B560558002DCE9F /* TYCallout.m */; };
 		5794C0C21B560558002DCE9F /* TYCredential.m in Sources */ = {isa = PBXBuildFile; fileRef = 5794C0531B560558002DCE9F /* TYCredential.m */; };
 		5794C0C31B560558002DCE9F /* TYEnvelope.m in Sources */ = {isa = PBXBuildFile; fileRef = 5794C0551B560558002DCE9F /* TYEnvelope.m */; };
@@ -119,8 +120,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5709281C1B705A0A00410B8C /* IPMemery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPMemery.h; sourceTree = "<group>"; };
-		5709281D1B705A0A00410B8C /* IPMemery.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IPMemery.cpp; sourceTree = "<group>"; };
+		5709281C1B705A0A00410B8C /* IPMemory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPMemory.h; sourceTree = "<group>"; };
+		5709281D1B705A0A00410B8C /* IPMemory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IPMemory.cpp; sourceTree = "<group>"; };
 		570928211B70646D00410B8C /* MD5.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MD5.cpp; sourceTree = "<group>"; };
 		570928221B70646D00410B8C /* MD5.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MD5.hpp; sourceTree = "<group>"; };
 		570928231B70646D00410B8C /* MD5Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MD5Utils.h; sourceTree = "<group>"; };
@@ -185,6 +186,8 @@
 		576AEEA31B61D97100D55CA4 /* MapVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapVC.m; sourceTree = "<group>"; };
 		576AEEAF1B61D9E400D55CA4 /* CustomCalloutVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCalloutVC.h; sourceTree = "<group>"; };
 		576AEEB01B61D9E400D55CA4 /* CustomCalloutVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCalloutVC.m; sourceTree = "<group>"; };
+		579323831B9436890073438D /* GenerateEncryptionSourceVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenerateEncryptionSourceVC.h; sourceTree = "<group>"; };
+		579323841B9436890073438D /* GenerateEncryptionSourceVC.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GenerateEncryptionSourceVC.mm; sourceTree = "<group>"; };
 		5794C0501B560558002DCE9F /* TYCallout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYCallout.h; sourceTree = "<group>"; };
 		5794C0511B560558002DCE9F /* TYCallout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYCallout.m; sourceTree = "<group>"; };
 		5794C0521B560558002DCE9F /* TYCredential.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYCredential.h; sourceTree = "<group>"; };
@@ -351,8 +354,8 @@
 				570928241B70646D00410B8C /* MD5Utils.mm */,
 				570928251B70646D00410B8C /* TYEncryption.h */,
 				570928261B70646D00410B8C /* TYEncryption.mm */,
-				5709281C1B705A0A00410B8C /* IPMemery.h */,
-				5709281D1B705A0A00410B8C /* IPMemery.cpp */,
+				5709281C1B705A0A00410B8C /* IPMemory.h */,
+				5709281D1B705A0A00410B8C /* IPMemory.cpp */,
 				574319151B70588D00234A63 /* IPEncryption.hpp */,
 				574319141B70588D00234A63 /* IPEncryption.cpp */,
 			);
@@ -459,7 +462,6 @@
 				57672EFE1B56046300DAD219 /* MapResource */,
 				57672D6B1B55FFF900DAD219 /* ArcGIS.bundle */,
 				57672D6C1B55FFF900DAD219 /* MapFiles */,
-				57672D711B55FFF900DAD219 /* MapTool */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -473,13 +475,6 @@
 				57672D701B55FFF900DAD219 /* beacon-of.db */,
 			);
 			path = MapFiles;
-			sourceTree = "<group>";
-		};
-		57672D711B55FFF900DAD219 /* MapTool */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = MapTool;
 			sourceTree = "<group>";
 		};
 		57672EE81B56002900DAD219 /* Base.lproj */ = {
@@ -532,6 +527,8 @@
 				576AEEA31B61D97100D55CA4 /* MapVC.m */,
 				57EE3E921B74788100977049 /* SelectBuildingVC.h */,
 				57EE3E931B74788100977049 /* SelectBuildingVC.m */,
+				579323831B9436890073438D /* GenerateEncryptionSourceVC.h */,
+				579323841B9436890073438D /* GenerateEncryptionSourceVC.mm */,
 			);
 			path = MapDevelopment;
 			sourceTree = "<group>";
@@ -907,6 +904,7 @@
 				5794C0D71B560558002DCE9F /* Vector2.m in Sources */,
 				57EB45771B73D2B50050956F /* RATreeView+Enums.m in Sources */,
 				57494DF51B61E730000B6F2C /* EnviromentManager.m in Sources */,
+				579323851B9436890073438D /* GenerateEncryptionSourceVC.mm in Sources */,
 				57EB45751B73D2B50050956F /* RATreeNodeInfo+Private.m in Sources */,
 				5794C0E61B560558002DCE9F /* TYMapView.m in Sources */,
 				5794C0E31B560558002DCE9F /* TYMapEnviroment.m in Sources */,
@@ -928,7 +926,7 @@
 				57EE3E941B74788100977049 /* SelectBuildingVC.m in Sources */,
 				570928281B70646D00410B8C /* MD5Utils.mm in Sources */,
 				5794C0CA1B560558002DCE9F /* TYPictureMarkerSymbol.m in Sources */,
-				5709281E1B705A0A00410B8C /* IPMemery.cpp in Sources */,
+				5709281E1B705A0A00410B8C /* IPMemory.cpp in Sources */,
 				57672EF51B56006700DAD219 /* main.m in Sources */,
 				57494DE31B61DB17000B6F2C /* OriginalCityVC.m in Sources */,
 				5794C0D21B560558002DCE9F /* TYAnimatedRouteArrowLayer.m in Sources */,

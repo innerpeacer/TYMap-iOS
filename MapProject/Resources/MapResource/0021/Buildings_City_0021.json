@@ -15,13 +15,26 @@
                   },
                   {
                   "cityID": "0021",
-                  "id": "00210004",
+                  "id": "00210003",
                   "name": "K11",
                   "longitude": "116.362551",
                   "latitude": "39.958951",
                   "address": "上海市黄浦区淮海中路300号",
                   "initAngle": "0.0",
                   "routeURL": "http://123.56.41.94:6080/arcgis/rest/services/21000003/NAServer/Route",
+                  "offsetX": "150",
+                  "offsetY": "0",
+                  "status": "0"
+                  },
+                  {
+                  "cityID": "0021",
+                  "id": "00210004",
+                  "name": "四行仓库",
+                  "longitude": "116.362551",
+                  "latitude": "39.958951",
+                  "address": "光复路1号老四行创意园",
+                  "initAngle": "0.0",
+                  "routeURL": "http://123.56.41.94:6080/arcgis/rest/services/00210004/NAServer/Route",
                   "offsetX": "150",
                   "offsetY": "0",
                   "status": "0"
@@ -62,6 +75,19 @@
                   "initAngle": "180.0",
                   "routeURL": "",
                   "offsetX": "0",
+                  "offsetY": "0",
+                  "status": "0"
+                  },
+                  {
+                  "cityID": "0021",
+                  "id": "00210011",
+                  "name": "周浦绿地",
+                  "longitude": "116.362551",
+                  "latitude": "39.958951",
+                  "address": "浦东新区周浦年家浜路",
+                  "initAngle": "70.0",
+                  "routeURL": "http://123.56.41.94:6080/arcgis/rest/services/00210100/NAServer/Route",
+                  "offsetX": "100",
                   "offsetY": "0",
                   "status": "0"
                   },

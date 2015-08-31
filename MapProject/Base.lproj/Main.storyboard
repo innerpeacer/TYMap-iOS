@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="zRT-Uo-nPH">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="zRT-Uo-nPH">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
@@ -594,6 +594,41 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x53-Wm-hPB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="477" y="3892"/>
+        </scene>
+        <!--Generate Encryption SourceVC-->
+        <scene sceneID="pMx-zm-pyY">
+            <objects>
+                <viewController storyboardIdentifier="GenerateEncryptionSourceVC" id="kHz-ye-tIP" customClass="GenerateEncryptionSourceVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dDN-1y-4qo"/>
+                        <viewControllerLayoutGuide type="bottom" id="LGe-U4-XAR"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="nGq-wb-Pro">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qx2-zP-3Na">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Qx2-zP-3Na" firstAttribute="top" secondItem="nGq-wb-Pro" secondAttribute="top" id="Cyf-28-6cB"/>
+                            <constraint firstAttribute="trailing" secondItem="Qx2-zP-3Na" secondAttribute="trailing" id="RAN-zW-UEM"/>
+                            <constraint firstItem="Qx2-zP-3Na" firstAttribute="leading" secondItem="nGq-wb-Pro" secondAttribute="leading" id="UFH-mr-gua"/>
+                            <constraint firstItem="LGe-U4-XAR" firstAttribute="top" secondItem="Qx2-zP-3Na" secondAttribute="bottom" id="dk5-B4-AcS"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="logView" destination="Qx2-zP-3Na" id="xJc-EC-YcS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="F4X-xY-gfD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5015" y="900"/>
         </scene>
     </scenes>
     <resources>

@@ -7,7 +7,7 @@
 //
 
 #include "IPEncryption.hpp"
-#include "IPMemery.h"
+#include "IPMemory.h"
 
 const char *KEY = "6^)(9-p35@%3#4S!4S0)$Y%%^&5(j.&^&o(*0)$Y%!#O@*GpG@=+@j.&6^)(0-=+";
 const char *PASSWORD_FOR_CONTENT = "innerpeacer-content";

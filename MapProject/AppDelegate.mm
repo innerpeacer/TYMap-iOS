@@ -15,7 +15,8 @@
 
 #import "IPEncryption.hpp"
 #import "TYEncryption.h"
-#import "IPMemery.h"
+#import "IPMemory.h"
+#import "MD5Utils.h"
 
 @implementation AppDelegate
 
@@ -30,32 +31,19 @@
     [self copyMapFilesIfNeeded];
     [self setDefaultPlaceIfNeeded];
     
-//    [self testJson];
+    [self testEncryption];
     
     return YES;
 }
 
-- (void)testJson
+- (void)testEncryption
 {
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"00210100F10" ofType:@"data"];
-    NSError *error = nil;
-    NSString *jsonString = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&error];
-    if (error) {
-        NSLog(@"%@", error.localizedDescription);
-        return;
-    }
 
-    AGSSBJsonParser *parser = [[AGSSBJsonParser alloc] init];
-    NSDictionary *dict = [parser objectWithString:jsonString];
-//    NSLog(@"%@", dict);
+    NSString *str = @"Hello World!你好";
+    NSLog(@"%@", str);
+    NSLog(@"%@", [MD5Utils md5:str]);
     
-    AGSFeatureSet *set = [[AGSFeatureSet alloc] initWithJSON:[dict objectForKey:@"room"]];
-    NSLog(@"%@", set);
-    NSArray *allGraphics = set.features;
-    for (AGSGraphic *graphic in allGraphics) {
-        NSLog(@"%@", graphic);
-    }
-
+    
 }
 
 - (void)setDefaultPlaceIfNeeded
@@ -64,35 +52,6 @@
         [TYUserDefaults setDefaultCity:@"0021"];
         [TYUserDefaults setDefaultBuilding:@"00210100"];
     }
-    
-//    [TYUserDefaults setDefaultCity:@"0021"];
-//    [TYUserDefaults setDefaultBuilding:@"002100001"];
-//    [TYUserDefaults setDefaultBuilding:@"002100002"];
-//    [TYUserDefaults setDefaultBuilding:@"002100004"];
-//    [TYUserDefaults setDefaultBuilding:@"002100005"];
-//        [TYUserDefaults setDefaultBuilding:@"002100006"];
-//            [TYUserDefaults setDefaultBuilding:@"00210100"];
-
-    
-    //    [TYUserDefaults setDefaultBuilding:@"002188888"];
-    //    [TYUserDefaults setDefaultBuilding:@"002199999"];
-    //
-//        [TYUserDefaults setDefaultCity:@"H852"];
-//        [TYUserDefaults setDefaultBuilding:@"H85200001"];
-    //
-    //    [TYUserDefaults setDefaultCity:@"H852"];
-    //    [TYUserDefaults setDefaultBuilding:@"H85200001"];
-    //
-//            [TYUserDefaults setDefaultCity:@"0755"];
-//            [TYUserDefaults setDefaultBuilding:@"075500001"];
-    
-    
-//    [TYUserDefaults setDefaultCity:@"0452"];
-//    [TYUserDefaults setDefaultBuilding:@"04520001"];
-    
-//    [TYUserDefaults setDefaultCity:@"0571"];
-//    [TYUserDefaults setDefaultBuilding:@"05710001"];
-    
     
 }
 

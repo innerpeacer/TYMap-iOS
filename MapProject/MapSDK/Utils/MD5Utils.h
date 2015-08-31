@@ -12,4 +12,6 @@
 
 + (NSString *)md5:(NSString *)str;
 
++ (NSString *)md5ForFile:(NSString *)path;
+
 @end

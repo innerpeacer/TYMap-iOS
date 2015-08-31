@@ -6,7 +6,7 @@
 //  Copyright (c) 2015年 innerpeacer. All rights reserved.
 //
 
-#include "IPMemery.h"
+#include "IPMemory.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>

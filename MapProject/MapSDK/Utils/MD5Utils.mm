@@ -17,4 +17,9 @@
     return [NSString stringWithUTF8String:md5.toString().c_str()];
 }
 
++ (NSString *)md5ForFile:(NSString *)path
+{
+    return nil;
+}
+
 @end

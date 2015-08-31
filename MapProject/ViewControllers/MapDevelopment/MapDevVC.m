@@ -50,7 +50,12 @@
     [self.objects addObject:@"加密地图文件"];
     [self.controllerDict setObject:@"mapEncryptionController" forKey:@"加密地图文件"];
     
-//    [self tableView:self.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:4 inSection:0]];
+    [self.objects addObject:@"生成加密地图资源"];
+    [self.controllerDict setObject:@"GenerateEncryptionSourceVC" forKey:@"生成加密地图资源"];
+    
+    
+    
+//    [self tableView:self.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:5 inSection:0]];
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"设置" style:UIBarButtonItemStyleBordered target:self action:@selector(choosingPlace:)];
     
