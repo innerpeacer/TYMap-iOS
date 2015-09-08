@@ -11,8 +11,8 @@
 
 #import "TYMapFileContants.h"
 
-#import "TYBuilding.h"
-#import "TYCity.h"
+#import <TYMapData/TYMapData.h>
+
 #import "MD5Utils.h"
 
 @implementation TYMapFileManager

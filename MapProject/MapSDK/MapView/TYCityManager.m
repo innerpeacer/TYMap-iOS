@@ -1,4 +1,12 @@
-#import "TYCity.h"
+//
+//  TYCityManager.m
+//  MapProject
+//
+//  Created by innerpeacer on 15/9/8.
+//  Copyright (c) 2015年 innerpeacer. All rights reserved.
+//
+
+#import "TYCityManager.h"
 #import "TYMapFileManager.h"
 
 #define KEY_CITIES @"Cities"
@@ -9,25 +17,12 @@
 #define KEY_CITY_LATITUDE @"latitude"
 #define KEY_CITY_STATUS @"status"
 
-@implementation TYCity
-
-- (id)initWithCityID:(NSString *)cityId Name:(NSString *)name SName:(NSString *)sname Lon:(double)lon Lat:(double)lat
-{
-    self = [super init];
-    if (self) {
-        _cityID = cityId;
-        _name = name;
-        _sname = sname;
-        _longitude = lon;
-        _latitude = lat;
-    }
-    return self;
-}
+@implementation TYCityManager
 
 + (NSArray *)parseAllCities
 {
     NSMutableArray *toReturn = [[NSMutableArray alloc] init];
-
+    
     NSError *error = nil;
     NSString *fullPath = [TYMapFileManager getCityJsonPath];
     NSData *data = [NSData dataWithContentsOfFile:fullPath];
@@ -41,7 +36,7 @@
         NSNumber *lonNumber = [dict objectForKey:KEY_CITY_LONGITUDE];
         NSNumber *latNumber = [dict objectForKey:KEY_CITY_LATITUDE];
         NSNumber *satNumber = [dict objectForKey:KEY_CITY_STATUS];
-            
+        
         TYCity *city = [[TYCity alloc] initWithCityID:cid Name:name SName:sname Lon:lonNumber.doubleValue Lat:latNumber.doubleValue];
         city.status = satNumber.intValue;
         [toReturn addObject:city];
@@ -80,12 +75,6 @@
     }
     
     return city;
-}
-
-- (NSString *)description
-{
-    return [NSString stringWithFormat:@"%@: %@", _name, _cityID];
-
 }
 
 @end

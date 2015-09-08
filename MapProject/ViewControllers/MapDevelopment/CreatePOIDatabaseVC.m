@@ -12,7 +12,7 @@
 #import "TYMapInfo.h"
 #import <ArcGIS/ArcGIS.h>
 #import "TYPoi.h"
-#import "TYBuilding.h"
+#import <TYMapData/TYMapData.h>
 #import "TYMapFileManager.h"
 
 @interface CreatePOIDatabaseVC()

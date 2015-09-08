@@ -8,7 +8,7 @@
 
 #import "TYMapInfo.h"
 #import "TYMapFileManager.h"
-#import "TYBuilding.h"
+#import <TYMapData/TYMapData.h>
 
 #define KEY_MAPINFOS @"MapInfo"
 

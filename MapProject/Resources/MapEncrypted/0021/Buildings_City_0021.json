@@ -8,7 +8,7 @@
                   "latitude": "39.958951",
                   "address": "上海黄埔区淮海中路98号",
                   "initAngle": "70.0",
-                  "routeURL": "http://123.56.41.94:6080/arcgis/rest/services/002100002/NAServer/Route",
+                  "routeURL": "http://123.56.41.94:6080/arcgis/rest/services/00210002/NAServer/Route",
                   "offsetX": "200",
                   "offsetY": "0",
                   "status": "0"
@@ -35,7 +35,7 @@
                   "address": "光复路1号老四行创意园",
                   "initAngle": "0.0",
                   "routeURL": "http://123.56.41.94:6080/arcgis/rest/services/00210004/NAServer/Route",
-                  "offsetX": "150",
+                  "offsetX": "100",
                   "offsetY": "0",
                   "status": "0"
                   },
@@ -68,10 +68,10 @@
                   {
                   "cityID": "0021",
                   "id": "002199999",
-                  "name": "宿舍",
+                  "name": "成山路",
                   "longitude": "116.362551",
                   "latitude": "39.958951",
-                  "address": "浦东新区成山路350号",
+                  "address": "浦东新区成山路",
                   "initAngle": "180.0",
                   "routeURL": "",
                   "offsetX": "0",

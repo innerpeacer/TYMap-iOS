@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import "TYBuilding.h"
+#import <TYMapData/TYMapData.h>
 
 @interface TYBrand : NSObject
 

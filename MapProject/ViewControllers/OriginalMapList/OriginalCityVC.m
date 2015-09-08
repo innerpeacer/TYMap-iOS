@@ -15,6 +15,9 @@
 #import "RATreeView.h"
 #import "RADataObject.h"
 
+#import "TYBuildingManager.h"
+#import "TYCityManager.h"
+
 @interface OriginalCityVC () <CityBuildingTableVCDelegate>
 
 @end
@@ -26,10 +29,10 @@
     self.title = @"地图列表";
     [EnviromentManager switchToOriginal];
 
-    self.cityArray = [TYCity parseAllCities];
+    self.cityArray = [TYCityManager parseAllCities];
     NSMutableArray *array = [NSMutableArray array];
     for (TYCity *city in self.cityArray) {
-        NSArray *bArray = [TYBuilding parseAllBuildings:city];
+        NSArray *bArray = [TYBuildingManager parseAllBuildings:city];
         [array addObject:bArray];
     }
     self.buildingArray = [NSArray arrayWithArray:array];

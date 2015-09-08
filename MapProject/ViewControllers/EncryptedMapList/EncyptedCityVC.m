@@ -15,6 +15,9 @@
 #import "RATreeView.h"
 #import "RADataObject.h"
 
+#import "TYCityManager.h"
+#import "TYBuildingManager.h"
+
 @interface EncyptedCityVC () <CityBuildingTableVCDelegate>
 
 @end
@@ -27,10 +30,10 @@
     self.title = @"加密地图";
     [EnviromentManager switchToEncrypted];
     
-    self.cityArray = [TYCity parseAllCities];
+    self.cityArray = [TYCityManager parseAllCities];
     NSMutableArray *array = [NSMutableArray array];
     for (TYCity *city in self.cityArray) {
-        NSArray *bArray = [TYBuilding parseAllBuildings:city];
+        NSArray *bArray = [TYBuildingManager parseAllBuildings:city];
         [array addObject:bArray];
     }
     self.buildingArray = [NSArray arrayWithArray:array];

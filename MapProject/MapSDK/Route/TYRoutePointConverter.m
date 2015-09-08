@@ -12,14 +12,14 @@
 @interface TYRoutePointConverter()
 {
     MapExtent baseExtent;
-    MapSize baseOffset;
+    OffsetSize baseOffset;
 }
 
 @end
 
 @implementation TYRoutePointConverter
 
-- (id)initWithBaseMapExtent:(MapExtent)extent Offset:(MapSize)offset
+- (id)initWithBaseMapExtent:(MapExtent)extent Offset:(OffsetSize)offset
 {
     self = [super init];
     if (self) {

@@ -8,7 +8,7 @@
 
 #import "TYRouteManager.h"
 #import "TYRoutePointConverter.h"
-#import "TYBuilding.h"
+#import <TYMapData/TYMapData.h>
 #import "TYRoutePart.h"
 
 @interface TYRouteManager() <AGSRouteTaskDelegate>

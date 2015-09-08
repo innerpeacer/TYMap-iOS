@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TYCity.h"
-#import "TYBuilding.h"
+#import <TYMapData/TYMapData.h>
+
 
 @protocol CityBuildingTableVCDelegate <NSObject>
 

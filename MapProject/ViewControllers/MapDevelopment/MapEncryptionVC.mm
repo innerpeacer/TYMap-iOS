@@ -13,6 +13,7 @@
 #import "TYMapEnviroment.h"
 #import "TYUserDefaults.h"
 
+#import "TYMapInfo.h"
 #import "TYMapFileContants.h"
 
 @interface MapEncryptionVC ()

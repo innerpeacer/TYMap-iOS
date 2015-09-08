@@ -7,8 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "TYBuilding.h"
-#import "TYCity.h"
+#import <TYMapData/TYMapData.h>
 
 #define DEFAULT_MAP_ROOT @"MapResource"
 #define DEFAULT_MAP_ENCRPTION_ROOT @"MapEncrypted"

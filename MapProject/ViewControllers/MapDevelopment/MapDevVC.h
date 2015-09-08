@@ -8,8 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "BaseControllerTableVC.h"
-#import "TYCity.h"
-#import "TYBuilding.h"
+#import <TYMapData/TYMapData.h>
 
 @interface MapDevVC : BaseControllerTableVC
 

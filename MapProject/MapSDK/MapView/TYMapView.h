@@ -23,7 +23,7 @@
 
 #import <TYMapData/TYMapData.h>
 
-#import "TYBuilding.h"
+#import <TYMapData/TYMapData.h>
 
 /**
     地图模式类型：默认模式和跟随模式

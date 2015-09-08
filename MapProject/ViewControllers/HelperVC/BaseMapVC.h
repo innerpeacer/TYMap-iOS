@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "TYMapView.h"
-#include "TYBuilding.h"
-#include "TYCity.h"
+#import <TYMapData/TYMapData.h>
+
 
 @interface BaseMapVC : UIViewController <TYMapViewDelegate>
 

@@ -12,6 +12,10 @@
 #import "MD5.hpp"
 #import "TYEncryption.h"
 
+#import "TYMapInfo.h"
+#import "TYCityManager.h"
+#import "TYBuildingManager.h"
+
 @interface GenerateEncryptionSourceVC()
 {
     NSString *targetRootDir;
@@ -74,7 +78,7 @@
         }
     }
     
-    NSArray *allCities = [TYCity parseAllCities];
+    NSArray *allCities = [TYCityManager parseAllCities];
     for (TYCity *city in allCities) {
         currentIndentString = @"\t";
         
@@ -98,7 +102,7 @@
             }
         }
         
-        NSArray *allBuildings = [TYBuilding parseAllBuildings:city];
+        NSArray *allBuildings = [TYBuildingManager parseAllBuildings:city];
         for (TYBuilding *building in allBuildings) {
             currentIndentString = @"\t\t";
             NSString *buildingID = building.buildingID;

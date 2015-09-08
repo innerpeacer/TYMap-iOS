@@ -1,4 +1,12 @@
-#import "TYBuilding.h"
+//
+//  TYBuildingManager.m
+//  MapProject
+//
+//  Created by innerpeacer on 15/9/8.
+//  Copyright (c) 2015年 innerpeacer. All rights reserved.
+//
+
+#import "TYBuildingManager.h"
 #import "TYMapFileManager.h"
 
 #define KEY_BUILDINGS @"Buildings"
@@ -15,24 +23,7 @@
 
 #define KEY_BUILDING_STATUS @"status"
 
-@implementation TYBuilding
-
-- (id)initWithCityID:(NSString *)cityID BuildingID:(NSString *)buildingID Name:(NSString *)name Lon:(double)lon Lat:(double)lat Address:(NSString *)address InitAngle:(double)initAngle RouteURL:(NSString *)url Offset:(MapSize)offset
-{
-    self = [super init];
-    if (self) {
-        _cityID = cityID;
-        _buildingID = buildingID;
-        _name = name;
-        _longitude = lon;
-        _latitude = lat;
-        _address = address;
-        _initAngle = initAngle;
-        _routeURL = url;
-        _offset = offset;
-    }
-    return self;
-}
+@implementation TYBuildingManager
 
 + (TYBuilding *)parseBuilding:(NSString *)buildingID InCity:(TYCity *)city
 {
@@ -62,7 +53,7 @@
             
             NSNumber *offsetX = [dict objectForKey:KEY_BUILDING_OFFSET_X];
             NSNumber *offsetY = [dict objectForKey:KEY_BUILDING_OFFSET_Y];
-            MapSize offset = { offsetX.doubleValue, offsetY.doubleValue };
+            OffsetSize offset = { offsetX.doubleValue, offsetY.doubleValue };
             
             NSNumber *staNumber = [dict objectForKey:KEY_BUILDING_STATUS];
             
@@ -105,9 +96,9 @@
             
             NSNumber *offsetX = [dict objectForKey:KEY_BUILDING_OFFSET_X];
             NSNumber *offsetY = [dict objectForKey:KEY_BUILDING_OFFSET_Y];
-            MapSize offset = { offsetX.doubleValue, offsetY.doubleValue };
+            OffsetSize offset = { offsetX.doubleValue, offsetY.doubleValue };
             
-
+            
             NSNumber *staNumber = [dict objectForKey:KEY_BUILDING_STATUS];
             
             TYBuilding *building = [[TYBuilding alloc] initWithCityID:city.cityID BuildingID:mid Name:name Lon:lonNumber.doubleValue Lat:latNumber.doubleValue Address:address InitAngle:initStr.doubleValue RouteURL:url Offset:offset];
@@ -117,11 +108,6 @@
         }
     }
     return toReturn;
-}
-
-- (NSString *)description
-{
-    return [NSString stringWithFormat:@"%@: %@", _name, _buildingID];
 }
 
 @end

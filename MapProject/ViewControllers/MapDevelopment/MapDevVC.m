@@ -10,6 +10,8 @@
 #import "EnviromentManager.h"
 #import "SelectBuildingVC.h"
 #import "TYUserDefaults.h"
+#import "TYBuildingManager.h"
+#import "TYCityManager.h"
 
 #define USE_ENCRYPTION_MAP 0
 
@@ -108,10 +110,10 @@
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     SelectBuildingVC *controller = [storyboard instantiateViewControllerWithIdentifier:@"selectBuildingController"];
     
-    controller.cityArray = [TYCity parseAllCities];
+    controller.cityArray = [TYCityManager parseAllCities];
     NSMutableArray *array = [NSMutableArray array];
     for (TYCity *city in controller.cityArray) {
-        NSArray *bArray = [TYBuilding parseAllBuildings:city];
+        NSArray *bArray = [TYBuildingManager parseAllBuildings:city];
         [array addObject:bArray];
     }
     controller.buildingArray = [NSArray arrayWithArray:array];

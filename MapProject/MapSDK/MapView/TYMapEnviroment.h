@@ -9,7 +9,7 @@
 #import <ArcGIS/ArcGIS.h>
 #import "TYCredential.h"
 #import "TYSpatialReference.h"
-#import "TYBuilding.h"
+#import <TYMapData/TYMapData.h>
 
 /**
     地图显示的语言类型

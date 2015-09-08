@@ -36,20 +36,7 @@
  */
 @property (assign) int status;
 
-/**
- *  解析所有城市信息列表
- *
- *  @return 所有城市信息数组
- */
-+ (NSArray *)parseAllCities;
+- (id)initWithCityID:(NSString *)cityId Name:(NSString *)name SName:(NSString *)sname Lon:(double)lon Lat:(double)lat;
 
-/**
- *  解析目标城市信息
- *
- *  @param cityID 目标城市ID
- *
- *  @return 目标城市信息
- */
-+ (TYCity *)parseCity:(NSString *)cityID;
 
 @end

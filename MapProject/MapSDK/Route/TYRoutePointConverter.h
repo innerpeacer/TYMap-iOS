@@ -24,7 +24,7 @@
  *
  *  @return 导航点转换类实例
  */
-- (id)initWithBaseMapExtent:(MapExtent)extent Offset:(MapSize)offset;
+- (id)initWithBaseMapExtent:(MapExtent)extent Offset:(OffsetSize)offset;
 
 /**
  *  将实际坐标点转换成导航坐标点

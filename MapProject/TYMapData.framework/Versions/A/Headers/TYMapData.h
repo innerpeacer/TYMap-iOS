@@ -7,4 +7,6 @@
 //
 
 #import <TYMapData/TYLocalPoint.h>
+#import <TYMapData/TYCity.h>
+#import <TYMapData/TYBuilding.h>
 
