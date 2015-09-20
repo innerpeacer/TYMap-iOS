@@ -1,0 +1,17 @@
+{
+    "Buildings": [
+                  {
+                  "cityID": "0512",
+                  "id": "05120001",
+                  "name": "苏州寻息电子",
+                  "longitude": "116.362551",
+                  "latitude": "39.958951",
+                  "address": "苏州市星湖街328号",
+                  "initAngle": "-70.0",
+                  "routeURL": "http://123.56.41.94:6080/arcgis/rest/services/04520001/NAServer/Route",
+                  "offsetX": "100",
+                  "offsetY": "0",
+                  "status": "0"
+                  }
+                  ]
+}

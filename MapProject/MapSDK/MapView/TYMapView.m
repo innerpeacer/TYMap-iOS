@@ -136,23 +136,23 @@
 - (void)setFloorWithInfo:(TYMapInfo *)info
 {
     
-    NSString* invalidDateString = @"20160120";
+    NSString* invalidDateString = @"20171011";
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyyMMdd"];
     NSDate* invalidDate = [dateFormatter dateFromString:invalidDateString];
     NSTimeInterval interval = [invalidDate timeIntervalSinceDate:[NSDate date]];
     if (interval < 0) {
-        NSLog(@"抱歉，SDK已过期");
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"错误！" message:@"抱歉，SDK已过期，请联系开发者。" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-        [alert show];
+//        NSLog(@"抱歉，SDK已过期");
+//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"错误！" message:@"抱歉，SDK已过期，请联系开发者。" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+//        [alert show];
         return;
     }
     
     
-//    if (![info.buildingID isEqualToString:@"002100005"] && ![info.buildingID isEqualToString:@"002100004"] && ![info.buildingID isEqualToString:@"04520001"]) {
-//        NSLog(@"抱歉，当前SDK不支持此建筑，请联系开发者");
-//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"错误！" message:@"抱歉，当前SDK不支持此建筑，请联系开发者" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-//        [alert show];
+//    if (![info.buildingID isEqualToString:@"00210004"]) {
+////        NSLog(@"抱歉，当前SDK不支持此建筑，请联系开发者");
+////        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"错误！" message:@"抱歉，当前SDK不支持此建筑，请联系开发者" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+////        [alert show];
 //        return;
 //    }
     

@@ -1,0 +1,81 @@
+{
+    "BeaconRegion": [
+                     {
+                     "cityID": "0021",
+                     "buildingID": "00210100",
+                     "name": "联通国际大厦",
+                     "uuid": "FDA50693-A4E2-4FB1-AFCF-C6EB07647825",
+                     "major": 10011
+                     },
+                     {
+                     "cityID": "0021",
+                     "buildingID": "002100002",
+                     "name": "金钟广场",
+                     "uuid": "A640BA53-68A6-4A9B-80AE-6F3E8E59D31F",
+                     "major": 1
+                     },
+                     {
+                     "cityID": "0021",
+                     "buildingID": "00210006",
+                     "name": "天易",
+                     "uuid": "E5430ADC-59EC-4815-90E1-9A19970B9F16",
+                     "major": 1
+                     },
+                     {
+                     "cityID": "0021",
+                     "buildingID": "00210005",
+                     "name": "汇纳",
+                     "uuid": "9195B3AD-A9D0-4500-85FF-9FB0F65A5200",
+                     "major": 1
+                     },
+                     {
+                     "cityID": "H852",
+                     "buildingID": "H85200001",
+                     "name": "香港机场",
+                     "uuid": "E2879308-4FA3-4F30-AC22-19ECDCB0D8C8",
+                     "major": 7
+                     },
+                     {
+                     "cityID": "0452",
+                     "buildingID": "04520001",
+                     "name": "齐齐哈尔百货大楼",
+                     "uuid": "4A280348-E1B1-4901-9DC0-17203C8000B4",
+                     "major": null
+                     },
+                     {
+                     "cityID": "0512",
+                     "buildingID": "05120001",
+                     "name": "苏州寻息",
+                     "uuid": "FDA50693-A4E2-4FB1-AFCF-C6EB07647825",
+                     "major": null
+                     },
+                     {
+                     "cityID": "0519",
+                     "buildingID": "05190001",
+                     "name": "场景信息科技",
+                     "uuid": "FDA50693-A4E2-4FB1-AFCF-C6EB07647825",
+                     "major": 10018
+                     },
+                     {
+                     "cityID": "0021",
+                     "buildingID": "00210011",
+                     "name": "周浦绿地",
+                     "uuid": "E2C56DB5-DFFB-48D2-B060-D0F5A71096E0",
+                     "major": 2015
+                     },
+                     {
+                     "cityID": "0021",
+                     "buildingID": "00210004",
+                     "name": "四行仓库",
+                     "uuid": "058285BF-8FC5-46FC-81AB-915E9508B0D7",
+                     "major": 1
+                     },
+                     {
+                     "cityID": "0021",
+                     "buildingID": "002199999",
+                     "name": "成山路",
+                     "uuid": "FDA50693-A4E2-4FB1-AFCF-C6EB07647825",
+                     "major": null
+                     }
+                     ]
+}

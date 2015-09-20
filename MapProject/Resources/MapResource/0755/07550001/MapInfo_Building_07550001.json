@@ -1,0 +1,19 @@
+{
+    "MapInfo": [
+                {
+                "cityID":"0755",
+                "buildingID":"07550001",
+                "mapID":"07550001F01",
+                "floorName":"F1",
+                "floorIndex":"1",
+                "size_x":"41",
+                "size_y":"17",
+                "xmax":"12697835",
+                "xmin":"12697794",
+                "ymax":"2563486",
+                "ymin":"2563469"
+                }
+                
+                ]
+
+}

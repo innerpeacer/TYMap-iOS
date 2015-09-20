@@ -1,0 +1,17 @@
+{
+    "Buildings": [
+                  {
+                  "cityID": "0025",
+                  "id": "00250001",
+                  "name": "华侨大厦",
+                  "longitude": "116.362551",
+                  "latitude": "39.958951",
+                  "address": "鼓楼区中山北路241号",
+                  "initAngle": "70.0",
+                  "routeURL": "http://123.56.41.94:6080/arcgis/rest/services/002100002/NAServer/Route",
+                  "offsetX": "100",
+                  "offsetY": "0",
+                  "status": "0"
+                  }
+                  ]
+}
