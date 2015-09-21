@@ -33,6 +33,8 @@
     [self copyMapFilesIfNeeded];
     [self setDefaultPlaceIfNeeded];
     
+    NSLog(@"MD5 For Hello: %@", [MD5Utils md5:@"Hello"]);
+    
     return YES;
 }
 

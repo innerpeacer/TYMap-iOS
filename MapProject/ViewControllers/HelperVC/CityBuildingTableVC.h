@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <TYMapData/TYMapData.h>
-
+#import "RATreeView.h"
 
 @protocol CityBuildingTableVCDelegate <NSObject>
 
@@ -22,5 +22,6 @@
 @property (nonatomic, strong) NSArray *buildingArray;
 
 @property (nonatomic, weak) id<CityBuildingTableVCDelegate> delegate;
+@property (nonatomic, weak) IBOutlet RATreeView *treeView;
 
 @end

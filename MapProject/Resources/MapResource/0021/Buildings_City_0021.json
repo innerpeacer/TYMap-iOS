@@ -67,6 +67,32 @@
                   },
                   {
                   "cityID": "0021",
+                  "id": "00210008",
+                  "name": "上海聚玩网络科技",
+                  "longitude": "116.362551",
+                  "latitude": "39.958951",
+                  "address": "闸北区延长中路801号新华文化科技园B座",
+                  "initAngle": "-70.0",
+                  "routeURL": "http://123.56.41.94:6080/arcgis/rest/services/00210008/NAServer/Route",
+                  "offsetX": "150",
+                  "offsetY": "0",
+                  "status": "0"
+                  },
+                  {
+                  "cityID": "0021",
+                  "id": "00210009",
+                  "name": "外滩金融中心·BFC",
+                  "longitude": "116.362551",
+                  "latitude": "39.958951",
+                  "address": "上海市黄浦区中山东二路600号",
+                  "initAngle": "-70.0",
+                  "routeURL": "http://123.56.41.94:6080/arcgis/rest/services/00210009/NAServer/Route",
+                  "offsetX": "60",
+                  "offsetY": "0",
+                  "status": "0"
+                  },
+                  {
+                  "cityID": "0021",
                   "id": "002199999",
                   "name": "成山路",
                   "longitude": "116.362551",
@@ -86,7 +112,7 @@
                   "latitude": "39.958951",
                   "address": "浦东新区周浦年家浜路",
                   "initAngle": "70.0",
-                  "routeURL": "http://123.56.41.94:6080/arcgis/rest/services/00210100/NAServer/Route",
+                  "routeURL": "http://123.56.41.94:6080/arcgis/rest/services/00210011/NAServer/Route",
                   "offsetX": "100",
                   "offsetY": "0",
                   "status": "0"
