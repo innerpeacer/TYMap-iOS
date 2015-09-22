@@ -23,8 +23,6 @@
 
 #import <TYMapData/TYMapData.h>
 
-#import <TYMapData/TYMapData.h>
-
 /**
     地图模式类型：默认模式和跟随模式
  */
@@ -42,7 +40,7 @@ typedef enum {
 
 @optional
 /**
- *  地图点选事件回调方xxxx法
+ *  地图点选事件回调方法
  *
  *  @param mapView  地图视图
  *  @param screen   点击事件的屏幕坐标
@@ -277,11 +275,21 @@ typedef enum {
 /**
  *  地图初始化方法
  *
- *  @param buidling 地图显示的目标建筑
+ *  @param b       地图显示的目标建筑
+ *  @param uID     SDK的用户ID
+ *  @param license 目标建筑的License
  */
 - (void)initMapViewWithBuilding:(TYBuilding *)b UserID:(NSString *)uID License:(NSString *)license;
 
+/**
+ *  切换建筑方法，将地图切换到目标建筑
+ *
+ *  @param b       切换的目标建筑
+ *  @param uID     SDK的用户ID
+ *  @param license 目标建筑的License
+ */
 - (void)switchBuilding:(TYBuilding *)b UserID:(NSString *)uID License:(NSString *)license;
+
 /**
  *  移动地图将特定坐标限定在特定屏幕范围内
  *

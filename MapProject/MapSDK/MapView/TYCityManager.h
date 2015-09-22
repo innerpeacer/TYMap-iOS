@@ -9,6 +9,9 @@
 #import <Foundation/Foundation.h>
 #import <TYMapData/TYMapData.h>
 
+/**
+ *  城市管理类，用于管理城市数据
+ */
 @interface TYCityManager : NSObject
 
 /**

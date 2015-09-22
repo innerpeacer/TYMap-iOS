@@ -12,16 +12,15 @@
 #import <TYMapData/TYMapData.h>
 
 /**
-    地图显示的语言类型
+    地图显示的语言类型: 简体中文、繁体中文、英语
  */
 typedef enum {
     TYSimplifiedChinese, TYTraditionalChinese, TYEnglish
 } TYMapLanguage;
 
 
-
 /**
- *  地图环境
+ *  地图运行环境
  */
 @interface TYMapEnvironment : NSObject
 
@@ -36,7 +35,7 @@ typedef enum {
 /**
  *  访问地图服务的默认用户验证
  *
- *  @return [user:password] --> ["arcgis":"666666"]
+ *  @return [user:password]
  */
 + (TYCredential *)defaultCredential;
 
@@ -49,18 +48,24 @@ typedef enum {
 /**
  *  设置当前地图文件的根目录
  *
- *  @param dir 文件根目录
+ *  @param dir 地图文件根目录
  */
 + (void)setRootDirectoryForMapFiles:(NSString *)dir;
 
 /**
  *  获取当前地图文件的根目录
  *
- *  @return 根目录字符串
+ *  @return 根目录路径
  */
 + (NSString *)getRootDirectoryForMapFiles;
 
-
+/**
+ *  获取目标建筑的目录路径
+ *
+ *  @param building 目标建筑
+ *
+ *  @return 目标建筑的文件路径
+ */
 + (NSString *)getBuildingDirectory:(TYBuilding *)building;
 
 /**

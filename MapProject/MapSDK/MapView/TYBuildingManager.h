@@ -9,6 +9,9 @@
 #import <Foundation/Foundation.h>
 #import <TYMapData/TYMapData.h>
 
+/**
+ *  建筑管理类，用于管理建筑数据
+ */
 @interface TYBuildingManager : NSObject
 
 /**

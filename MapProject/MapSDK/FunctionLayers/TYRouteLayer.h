@@ -16,9 +16,8 @@
 
 @class TYLocalPoint;
 
-/**
- *  路径导航层，用于显示导航路径
- */
+
+// *  路径导航层，用于显示导航路径
 @interface TYRouteLayer : AGSGraphicsLayer
 
 @property (nonatomic, weak) TYMapView *mapView;
@@ -32,13 +31,13 @@
 @property (nonatomic, strong) TYPictureMarkerSymbol *endSymbol;
 @property (nonatomic, strong) TYPictureMarkerSymbol *switchSymbol;
 
-/**
- *  路径导航层的静态实例化方法
- *
- *  @param sr 坐标系空间参考
- *
- *  @return 路径导航层
- */
+
+// *  路径导航层的静态实例化方法
+// *
+// *  @param sr 坐标系空间参考
+// *
+// *  @return 路径导航层
+
 + (TYRouteLayer *)routeLayerWithSpatialReference:(TYSpatialReference *)sr;
 
 - (NSArray *)showRouteResultOnFloor:(int)floor;
