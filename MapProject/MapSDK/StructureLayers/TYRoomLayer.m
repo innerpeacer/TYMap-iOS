@@ -72,36 +72,6 @@
     return render;
 }
 
-//- (void)loadContentsWithInfo:(TYMapInfo *)info
-//{
-////    NSLog(@"addRoomContents");
-//    [self removeAllGraphics];
-//    [roomDict removeAllObjects];
-//    
-//    NSError *error = nil;
-//    NSString *fullPath = [TYMapFileManager getRoomLayerPath:info];
-//    NSString *jsonString;
-//    
-//    if ([TYMapEnvironment useEncryption]) {
-//        jsonString = [TYEncryption descriptFile:fullPath];
-//    } else {
-//        jsonString = [NSString stringWithContentsOfFile:fullPath encoding:NSUTF8StringEncoding error:&error];
-//    }
-//    
-//    AGSSBJsonParser *parser = [[AGSSBJsonParser alloc] init];
-//    NSDictionary *dict = [parser objectWithString:jsonString];
-//    
-//    AGSFeatureSet *set = [[AGSFeatureSet alloc] initWithJSON:dict];
-//    NSArray *allGraphics = set.features;
-//        
-//    for (AGSGraphic *g in allGraphics) {
-//        NSString *poiID = [g attributeForKey:GRAPHIC_ATTRIBUTE_POI_ID];
-//        [roomDict setObject:g forKey:poiID];
-//    }
-//    
-//    [self addGraphics:allGraphics];
-//}
-
 - (void)loadContents:(AGSFeatureSet *)set
 {
     [self removeAllGraphics];

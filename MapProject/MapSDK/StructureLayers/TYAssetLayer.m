@@ -66,39 +66,6 @@
     return render;
 }
 
-//- (void)loadContentsWithInfo:(TYMapInfo *)info
-//{
-////    NSLog(@"addShopContents");
-//    [self removeAllGraphics];
-//    
-//    NSError *error = nil;
-//    NSString *fullPath = [TYMapFileManager getAssetLayerPath:info];
-////    NSString *jsonString = [NSString stringWithContentsOfFile:fullPath encoding:NSUTF8StringEncoding error:&error];
-////    if ([TYMapEnvironment useEncryption]) {
-////        jsonString = [TYEncryption decryptString:jsonString];
-////    }
-//    
-//    if (![[NSFileManager defaultManager] fileExistsAtPath:fullPath]) {
-//        return;
-//    }
-//    
-//    NSString *jsonString;
-//    
-//    if ([TYMapEnvironment useEncryption]) {
-//        jsonString = [TYEncryption descriptFile:fullPath];
-//    } else {
-//        jsonString = [NSString stringWithContentsOfFile:fullPath encoding:NSUTF8StringEncoding error:&error];
-//    }
-//    
-//    AGSSBJsonParser *parser = [[AGSSBJsonParser alloc] init];
-//    NSDictionary *dict = [parser objectWithString:jsonString];
-//    
-//    AGSFeatureSet *set = [[AGSFeatureSet alloc] initWithJSON:dict];
-//    NSArray *allGraphics = set.features;
-//    
-//    [self addGraphics:allGraphics];
-//}
-
 - (void)loadContents:(AGSFeatureSet *)set
 {
     [self removeAllGraphics];
