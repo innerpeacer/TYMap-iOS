@@ -248,7 +248,7 @@
     
     [self setAllowRotationByPinching:YES];
     
-    self.backgroundColor = [UIColor lightGrayColor];
+    self.backgroundColor = [UIColor whiteColor];
     self.gridLineWidth = 0.0;
     
     mapViewMode = TYMapViewModeDefault;
