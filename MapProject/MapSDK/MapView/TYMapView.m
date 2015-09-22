@@ -24,6 +24,7 @@
 #import "TYBrand.h"
 
 #import "TYEncryption.h"
+#import "TYLicenseValidation.h"
 
 @interface TYMapView() <AGSMapViewTouchDelegate, AGSMapViewLayerDelegate, AGSCalloutDelegate>
 {
@@ -47,6 +48,9 @@
     NSDictionary *allBrandDict;
     
     NSDictionary *mapDataDict;
+    
+    NSString *userID;
+    NSString *mapLicense;
 }
 
 @end
@@ -135,26 +139,38 @@
 
 - (void)setFloorWithInfo:(TYMapInfo *)info
 {
+    {
+        NSString* SDKInvalidDate = @"20170101";
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"yyyyMMdd"];
+        NSDate* invalidDate = [dateFormatter dateFromString:SDKInvalidDate];
+        NSTimeInterval SDKInterval = [invalidDate timeIntervalSinceDate:[NSDate date]];
+        if (SDKInterval < 0) {
+            NSLog(@"SDK Expired");
+            return;
+        }
+    }
     
-    NSString* invalidDateString = @"20171011";
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyyMMdd"];
-    NSDate* invalidDate = [dateFormatter dateFromString:invalidDateString];
-    NSTimeInterval interval = [invalidDate timeIntervalSinceDate:[NSDate date]];
-    if (interval < 0) {
-//        NSLog(@"抱歉，SDK已过期");
-//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"错误！" message:@"抱歉，SDK已过期，请联系开发者。" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-//        [alert show];
+    BOOL licenseValidity = [TYLicenseValidation checkValidityWithUserID:userID License:mapLicense Building:_building];
+    if (!licenseValidity) {
+        NSLog(@"Invalid License!");
         return;
     }
     
+    NSDate *expiredDate = [TYLicenseValidation evaluateLicenseWithUserID:userID License:mapLicense Building:_building];
+    if (expiredDate == nil) {
+        NSLog(@"Invalid License for Current Building!");
+        return;
+    }
     
-//    if (![info.buildingID isEqualToString:@"00210004"]) {
-////        NSLog(@"抱歉，当前SDK不支持此建筑，请联系开发者");
-////        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"错误！" message:@"抱歉，当前SDK不支持此建筑，请联系开发者" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-////        [alert show];
-//        return;
-//    }
+    NSTimeInterval interval = [expiredDate timeIntervalSinceDate:[NSDate date]];
+    if (interval < 0) {
+        NSLog(@"License for Current Building is Expired!");
+        NSLog(@"Expired Date: %@", expiredDate);
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"错误！" message:@"抱歉，当前建筑的License已经过期！" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        [alert show];
+        return;
+    }
     
     if ([info.mapID isEqualToString:_currentMapInfo.mapID]) {
         return;
@@ -194,9 +210,12 @@
     }
 }
 
-- (void)switchBuilding:(TYBuilding *)b
+- (void)switchBuilding:(TYBuilding *)b UserID:(NSString *)uID License:(NSString *)license
 {
     _building = b;
+    userID = uID;
+    mapLicense = license;
+    
     NSString *renderingSchemePath = [TYMapFileManager getRenderingScheme:_building];
     renderingScheme = [[TYRenderingScheme alloc] initWithPath:(NSString *)renderingSchemePath];
 
@@ -211,9 +230,12 @@
     [labelGroupLayer setRenderingScheme:renderingScheme];
 }
 
-- (void)initMapViewWithBuilding:(TYBuilding *)b
+- (void)initMapViewWithBuilding:(TYBuilding *)b UserID:(NSString *)uID License:(NSString *)license
 {
     _building = b;
+    userID = uID;
+    mapLicense = license;
+    
     NSString *renderingSchemePath = [TYMapFileManager getRenderingScheme:_building];
     renderingScheme = [[TYRenderingScheme alloc] initWithPath:(NSString *)renderingSchemePath];
     

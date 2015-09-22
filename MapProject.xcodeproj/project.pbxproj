@@ -113,13 +113,16 @@
 		57EB457F1B73D3690050956F /* RADataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 57EB457E1B73D3690050956F /* RADataObject.m */; };
 		57EE3E911B7471CC00977049 /* CityBuildingTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 57EE3E901B7471CC00977049 /* CityBuildingTableVC.m */; };
 		57EE3E941B74788100977049 /* SelectBuildingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 57EE3E931B74788100977049 /* SelectBuildingVC.m */; };
-		57F4229A1BB0370F0064D30B /* TYLicenseManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 57F422991BB0370F0064D30B /* TYLicenseManager.mm */; };
-		57F4229D1BB0373D0064D30B /* IPLicenseManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57F4229B1BB0373D0064D30B /* IPLicenseManager.cpp */; };
 		57F422A01BB038730064D30B /* LicenseGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F4229F1BB038730064D30B /* LicenseGenerator.m */; };
 		57F8789F1B9E871B00D27CE4 /* TYCityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F8789E1B9E871B00D27CE4 /* TYCityManager.m */; };
 		57F878AC1B9E87C600D27CE4 /* TYBuildingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F878AB1B9E87C600D27CE4 /* TYBuildingManager.m */; };
 		57F878AE1B9E898A00D27CE4 /* TYMapData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57F878AD1B9E898A00D27CE4 /* TYMapData.framework */; };
 		57F8DE5F1B74553100143739 /* OriginalMapVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F8DE5E1B74553100143739 /* OriginalMapVC.m */; };
+		57FC97A11BB1216C006D6D00 /* GenerateLicensesVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 57FC97A01BB1216C006D6D00 /* GenerateLicensesVC.m */; };
+		57FC97A31BB125D6006D6D00 /* Licenses.json in Resources */ = {isa = PBXBuildFile; fileRef = 57FC97A21BB125D6006D6D00 /* Licenses.json */; };
+		57FC97A61BB1278B006D6D00 /* IPLicenseValidation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57FC97A41BB1278B006D6D00 /* IPLicenseValidation.cpp */; };
+		57FC97A91BB127DE006D6D00 /* TYLicenseValidation.mm in Sources */ = {isa = PBXBuildFile; fileRef = 57FC97A81BB127DE006D6D00 /* TYLicenseValidation.mm */; };
+		57FC97AC1BB1285F006D6D00 /* LicenseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 57FC97AB1BB1285F006D6D00 /* LicenseManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -326,10 +329,6 @@
 		57EE3E921B74788100977049 /* SelectBuildingVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectBuildingVC.h; sourceTree = "<group>"; };
 		57EE3E931B74788100977049 /* SelectBuildingVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectBuildingVC.m; sourceTree = "<group>"; };
 		57F06C1D1A87BC7500B9511F /* MapProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MapProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		57F422981BB0370F0064D30B /* TYLicenseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TYLicenseManager.h; path = ../../TYLicenseManager.h; sourceTree = "<group>"; };
-		57F422991BB0370F0064D30B /* TYLicenseManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = TYLicenseManager.mm; path = ../../TYLicenseManager.mm; sourceTree = "<group>"; };
-		57F4229B1BB0373D0064D30B /* IPLicenseManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IPLicenseManager.cpp; sourceTree = "<group>"; };
-		57F4229C1BB0373D0064D30B /* IPLicenseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPLicenseManager.h; sourceTree = "<group>"; };
 		57F4229E1BB038730064D30B /* LicenseGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LicenseGenerator.h; sourceTree = "<group>"; };
 		57F4229F1BB038730064D30B /* LicenseGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LicenseGenerator.m; sourceTree = "<group>"; };
 		57F8789D1B9E871B00D27CE4 /* TYCityManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYCityManager.h; sourceTree = "<group>"; };
@@ -339,6 +338,15 @@
 		57F878AD1B9E898A00D27CE4 /* TYMapData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TYMapData.framework; sourceTree = "<group>"; };
 		57F8DE5D1B74553100143739 /* OriginalMapVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OriginalMapVC.h; sourceTree = "<group>"; };
 		57F8DE5E1B74553100143739 /* OriginalMapVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OriginalMapVC.m; sourceTree = "<group>"; };
+		57FC979F1BB1216C006D6D00 /* GenerateLicensesVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenerateLicensesVC.h; sourceTree = "<group>"; };
+		57FC97A01BB1216C006D6D00 /* GenerateLicensesVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenerateLicensesVC.m; sourceTree = "<group>"; };
+		57FC97A21BB125D6006D6D00 /* Licenses.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Licenses.json; sourceTree = "<group>"; };
+		57FC97A41BB1278B006D6D00 /* IPLicenseValidation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IPLicenseValidation.cpp; sourceTree = "<group>"; };
+		57FC97A51BB1278B006D6D00 /* IPLicenseValidation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPLicenseValidation.h; sourceTree = "<group>"; };
+		57FC97A71BB127DE006D6D00 /* TYLicenseValidation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYLicenseValidation.h; sourceTree = "<group>"; };
+		57FC97A81BB127DE006D6D00 /* TYLicenseValidation.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TYLicenseValidation.mm; sourceTree = "<group>"; };
+		57FC97AA1BB1285F006D6D00 /* LicenseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LicenseManager.h; sourceTree = "<group>"; };
+		57FC97AB1BB1285F006D6D00 /* LicenseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LicenseManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -357,10 +365,6 @@
 		5709281B1B70584100410B8C /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				57F422981BB0370F0064D30B /* TYLicenseManager.h */,
-				57F422991BB0370F0064D30B /* TYLicenseManager.mm */,
-				57F4229C1BB0373D0064D30B /* IPLicenseManager.h */,
-				57F4229B1BB0373D0064D30B /* IPLicenseManager.cpp */,
 				570928221B70646D00410B8C /* MD5.hpp */,
 				570928211B70646D00410B8C /* MD5.cpp */,
 				570928231B70646D00410B8C /* MD5Utils.h */,
@@ -371,6 +375,10 @@
 				5709281D1B705A0A00410B8C /* IPMemory.cpp */,
 				574319151B70588D00234A63 /* IPEncryption.hpp */,
 				574319141B70588D00234A63 /* IPEncryption.cpp */,
+				57FC97A51BB1278B006D6D00 /* IPLicenseValidation.h */,
+				57FC97A41BB1278B006D6D00 /* IPLicenseValidation.cpp */,
+				57FC97A71BB127DE006D6D00 /* TYLicenseValidation.h */,
+				57FC97A81BB127DE006D6D00 /* TYLicenseValidation.mm */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -381,6 +389,7 @@
 				5720E6611B8AE3B90037A86A /* 00210100F10.data */,
 				571AC46F1B55FED900E9FF7D /* AppDelegate.h */,
 				571AC4701B55FED900E9FF7D /* AppDelegate.mm */,
+				57FC97A21BB125D6006D6D00 /* Licenses.json */,
 				57672D5A1B55FF9800DAD219 /* GlobalSettings */,
 				57672D3E1B55FF8000DAD219 /* ViewControllers */,
 				57672C8F1B55FF4A00DAD219 /* MapTools */,
@@ -441,6 +450,8 @@
 				57672D5C1B55FF9900DAD219 /* TYUserDefaults.m */,
 				57494DF31B61E730000B6F2C /* EnviromentManager.h */,
 				57494DF41B61E730000B6F2C /* EnviromentManager.m */,
+				57FC97AA1BB1285F006D6D00 /* LicenseManager.h */,
+				57FC97AB1BB1285F006D6D00 /* LicenseManager.m */,
 			);
 			path = GlobalSettings;
 			sourceTree = "<group>";
@@ -544,6 +555,8 @@
 				57EE3E931B74788100977049 /* SelectBuildingVC.m */,
 				579323831B9436890073438D /* GenerateEncryptionSourceVC.h */,
 				579323841B9436890073438D /* GenerateEncryptionSourceVC.mm */,
+				57FC979F1BB1216C006D6D00 /* GenerateLicensesVC.h */,
+				57FC97A01BB1216C006D6D00 /* GenerateLicensesVC.m */,
 			);
 			path = MapDevelopment;
 			sourceTree = "<group>";
@@ -845,6 +858,7 @@
 				57672EFD1B5600B900DAD219 /* Default-568h@2x.png in Resources */,
 				575442A61B5DF11900EA3A1F /* MapEncrypted in Resources */,
 				57672EEF1B56002900DAD219 /* Main.storyboard in Resources */,
+				57FC97A31BB125D6006D6D00 /* Licenses.json in Resources */,
 				57672E381B55FFF900DAD219 /* beacon-of.db in Resources */,
 				579B587B1B74F31B00F05206 /* Images.xcassets in Resources */,
 				574EE2C71B723C30005A6482 /* Launch Screen.xib in Resources */,
@@ -864,7 +878,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57FC97AC1BB1285F006D6D00 /* LicenseManager.m in Sources */,
 				5794C0E91B560558002DCE9F /* TYBrand.m in Sources */,
+				57FC97A91BB127DE006D6D00 /* TYLicenseValidation.mm in Sources */,
 				5794C0F31B560558002DCE9F /* TYFloorLayer.m in Sources */,
 				5794C0C41B560558002DCE9F /* TYGeometry.m in Sources */,
 				57EB457C1B73D2B50050956F /* RATreeView.m in Sources */,
@@ -874,7 +890,6 @@
 				5794C0C11B560558002DCE9F /* TYCallout.m in Sources */,
 				57672E321B55FFF900DAD219 /* FMDatabaseQueue.m in Sources */,
 				57494DDB1B61DAE7000B6F2C /* BaseLogVC.m in Sources */,
-				57F4229A1BB0370F0064D30B /* TYLicenseManager.mm in Sources */,
 				5794C0DF1B560558002DCE9F /* TYArcGISDrawer.m in Sources */,
 				5794C0C91B560558002DCE9F /* TYMarkerSymbol.m in Sources */,
 				57672E2F1B55FFF900DAD219 /* FMDatabase.m in Sources */,
@@ -901,6 +916,7 @@
 				570928291B70646D00410B8C /* TYEncryption.mm in Sources */,
 				574319161B70588D00234A63 /* IPEncryption.cpp in Sources */,
 				57EB457A1B73D2B50050956F /* RATreeView+TableViewDelegate.m in Sources */,
+				57FC97A11BB1216C006D6D00 /* GenerateLicensesVC.m in Sources */,
 				57672E311B55FFF900DAD219 /* FMDatabasePool.m in Sources */,
 				57EB45741B73D2B50050956F /* RATreeNodeCollectionController.m in Sources */,
 				5794C0D11B560558002DCE9F /* TYSpatialReference.m in Sources */,
@@ -912,6 +928,7 @@
 				57EB45761B73D2B50050956F /* RATreeNodeInfo.m in Sources */,
 				57EB457F1B73D3690050956F /* RADataObject.m in Sources */,
 				5794C0C31B560558002DCE9F /* TYEnvelope.m in Sources */,
+				57FC97A61BB1278B006D6D00 /* IPLicenseValidation.cpp in Sources */,
 				5794C0DB1B560558002DCE9F /* TYLabelBorderCalculator.m in Sources */,
 				5794C0F01B560558002DCE9F /* TYRoutePointConverter.m in Sources */,
 				570928271B70646D00410B8C /* MD5.cpp in Sources */,
@@ -923,7 +940,6 @@
 				5794C0E61B560558002DCE9F /* TYMapView.m in Sources */,
 				57F878AC1B9E87C600D27CE4 /* TYBuildingManager.m in Sources */,
 				57F422A01BB038730064D30B /* LicenseGenerator.m in Sources */,
-				57F4229D1BB0373D0064D30B /* IPLicenseManager.cpp in Sources */,
 				5794C0E31B560558002DCE9F /* TYMapEnviroment.m in Sources */,
 				5794C0DC1B560558002DCE9F /* TYLabelGroupLayer.m in Sources */,
 				57C03F5A1B61E19800490179 /* BaseMapVC.m in Sources */,

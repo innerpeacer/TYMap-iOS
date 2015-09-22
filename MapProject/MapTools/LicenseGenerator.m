@@ -37,7 +37,7 @@
     NSString *encryptedBuildingID = [TYEncryption encryptString:[building substringWithRange:NSMakeRange(0, 8)] withKey:key1];
     NSString *encryptedExpiredDate = [TYEncryption encryptString:expiredDate withKey:key2];
     NSString *md5ForBuildingID = [MD5Utils md5:encryptedBuildingID];
-    NSString *originalMD5 = [NSString stringWithFormat:@"%@%@", encryptedBuildingID, encryptedExpiredDate];
+    NSString *originalMD5 = [NSString stringWithFormat:@"MAP%@%@", encryptedBuildingID, encryptedExpiredDate];
     
     NSString *md5String = [MD5Utils md5:originalMD5];
     NSString *license = [NSString stringWithFormat:@"%@%@%@%@", [md5String substringWithRange:NSMakeRange(0, 8)], [TYEncryption encryptString:encryptedBuildingID withKey:md5ForBuildingID], [TYEncryption encryptString:encryptedExpiredDate withKey:md5ForBuildingID], [md5String substringWithRange:NSMakeRange(24, 8)]];

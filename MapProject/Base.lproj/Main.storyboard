@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="zRT-Uo-nPH">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="zRT-Uo-nPH">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -98,7 +98,7 @@
                                     <action selector="createPOIDatabase:" destination="8mN-uC-DTa" eventType="touchUpInside" id="KPB-rq-p5l"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1aA-d3-XUD">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1aA-d3-XUD">
                                 <rect key="frame" x="16" y="28" width="568" height="406"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -449,8 +449,8 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="kvU-O3-Y3z" secondAttribute="trailing" constant="-20" id="MR0-Ag-FXQ"/>
-                            <constraint firstItem="kvU-O3-Y3z" firstAttribute="leading" secondItem="T2q-QI-5cO" secondAttribute="leadingMargin" constant="-20" id="NGW-Lg-HXm"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="kvU-O3-Y3z" secondAttribute="trailing" constant="-16" id="MR0-Ag-FXQ"/>
+                            <constraint firstItem="kvU-O3-Y3z" firstAttribute="leading" secondItem="T2q-QI-5cO" secondAttribute="leadingMargin" constant="-16" id="NGW-Lg-HXm"/>
                             <constraint firstItem="kvU-O3-Y3z" firstAttribute="top" secondItem="T2q-QI-5cO" secondAttribute="topMargin" id="g1P-N3-p5G"/>
                             <constraint firstItem="kvU-O3-Y3z" firstAttribute="bottom" secondItem="T2q-QI-5cO" secondAttribute="bottomMargin" id="x7e-TN-oWA"/>
                         </constraints>
@@ -560,9 +560,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="k1b-em-QQN" firstAttribute="bottom" secondItem="tOa-GZ-sHs" secondAttribute="bottomMargin" id="20k-31-9xJ"/>
-                            <constraint firstItem="k1b-em-QQN" firstAttribute="leading" secondItem="tOa-GZ-sHs" secondAttribute="leadingMargin" constant="-20" id="H3G-Z2-5h5"/>
+                            <constraint firstItem="k1b-em-QQN" firstAttribute="leading" secondItem="tOa-GZ-sHs" secondAttribute="leadingMargin" constant="-16" id="H3G-Z2-5h5"/>
                             <constraint firstItem="k1b-em-QQN" firstAttribute="top" secondItem="tOa-GZ-sHs" secondAttribute="topMargin" id="Jz4-4C-wjZ"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="k1b-em-QQN" secondAttribute="trailing" constant="-20" id="TTc-K3-BJZ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="k1b-em-QQN" secondAttribute="trailing" constant="-16" id="TTc-K3-BJZ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="3cm-yE-Jqu"/>
@@ -628,8 +628,8 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="ClC-WM-F0t" firstAttribute="top" secondItem="xeI-Xj-Oie" secondAttribute="topMargin" id="BsP-1W-a1M"/>
-                            <constraint firstItem="ClC-WM-F0t" firstAttribute="leading" secondItem="xeI-Xj-Oie" secondAttribute="leadingMargin" constant="-20" id="Chm-Gx-AAl"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="ClC-WM-F0t" secondAttribute="trailing" constant="-20" id="ZF1-SP-Oq8"/>
+                            <constraint firstItem="ClC-WM-F0t" firstAttribute="leading" secondItem="xeI-Xj-Oie" secondAttribute="leadingMargin" constant="-16" id="Chm-Gx-AAl"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ClC-WM-F0t" secondAttribute="trailing" constant="-16" id="ZF1-SP-Oq8"/>
                             <constraint firstItem="BN2-tg-MCF" firstAttribute="top" secondItem="ClC-WM-F0t" secondAttribute="bottom" id="sHC-YS-Oot"/>
                         </constraints>
                     </view>
@@ -674,6 +674,41 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F4X-xY-gfD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5015" y="900"/>
+        </scene>
+        <!--Generate LicensesVC-->
+        <scene sceneID="deG-yO-r5P">
+            <objects>
+                <viewController storyboardIdentifier="GenerateLicensesVC" id="eJ6-iO-wBa" customClass="GenerateLicensesVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Z2f-0x-3lY"/>
+                        <viewControllerLayoutGuide type="bottom" id="tNd-sm-FHY"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gn8-BR-ENR">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Try-ll-ITr">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Try-ll-ITr" secondAttribute="trailing" id="3YQ-GX-BJb"/>
+                            <constraint firstItem="tNd-sm-FHY" firstAttribute="top" secondItem="Try-ll-ITr" secondAttribute="bottom" id="Nkp-Xa-vKb"/>
+                            <constraint firstItem="Try-ll-ITr" firstAttribute="top" secondItem="gn8-BR-ENR" secondAttribute="top" id="arQ-km-tPe"/>
+                            <constraint firstItem="Try-ll-ITr" firstAttribute="leading" secondItem="gn8-BR-ENR" secondAttribute="leading" id="uah-fh-Tsv"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="logView" destination="Try-ll-ITr" id="KV6-47-QdQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="g6o-JK-4cB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5015" y="900"/>
         </scene>

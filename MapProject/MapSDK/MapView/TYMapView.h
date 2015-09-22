@@ -279,11 +279,9 @@ typedef enum {
  *
  *  @param buidling 地图显示的目标建筑
  */
-- (void)initMapViewWithBuilding:(TYBuilding *)buidling;
+- (void)initMapViewWithBuilding:(TYBuilding *)b UserID:(NSString *)uID License:(NSString *)license;
 
-- (void)switchBuilding:(TYBuilding *)b;
-
-
+- (void)switchBuilding:(TYBuilding *)b UserID:(NSString *)uID License:(NSString *)license;
 /**
  *  移动地图将特定坐标限定在特定屏幕范围内
  *

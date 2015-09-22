@@ -55,6 +55,8 @@
     [self.objects addObject:@"生成加密地图资源"];
     [self.controllerDict setObject:@"GenerateEncryptionSourceVC" forKey:@"生成加密地图资源"];
     
+    [self.objects addObject:@"生成License"];
+    [self.controllerDict setObject:@"GenerateLicensesVC" forKey:@"生成License"];
     
     
 //    [self tableView:self.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:5 inSection:0]];

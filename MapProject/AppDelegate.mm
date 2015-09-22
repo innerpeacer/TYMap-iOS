@@ -20,16 +20,10 @@
 #import "MD5.hpp"
 
 #import "LicenseGenerator.h"
-#import "TYLicenseManager.h"
+#import "TYLicenseValidation.h"
+#import "LicenseManager.h"
 
 @implementation AppDelegate
-
-NSArray *DataArray = @[
-  @{@"userID": @"4e13f85911a44a75adccaccf8eb96c9c", @"buildingID": @"00210001", @"key": @"2ca52346ef70cke47afoaf5a8996bf4f"},
-  @{@"userID": @"4e13f85911a44a75adccaccf8eb96c9c", @"buildingID": @"00210002", @"key": @"e5123655dae138656f4n15fcdca50176"},
-   @{@"userID": @"4e13f85911a44a75adccaccf8eb96c9c", @"buildingID": @"00210003", @"key": @"eb28552e94gj5:27k36577b`59f7a434"},
-  ];
-
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -42,46 +36,7 @@ NSArray *DataArray = @[
     [self copyMapFilesIfNeeded];
     [self setDefaultPlaceIfNeeded];
     
-//    NSLog(@"==================================");
-    [self generateLicenses];
-//    NSLog(@"==================================");
-    [self checkLicenses];
-    
     return YES;
-}
-
-- (void)checkLicenses
-{
-    for (NSDictionary *dict in DataArray) {
-        NSString *userID = [dict objectForKey:@"userID"];
-        NSString *buildingID = [dict objectForKey:@"buildingID"];
-        NSString *license = [dict objectForKey:@"key"];
-        
-//        NSLog(@"%@, %@, %@", userID, buildingID, license);
-        
-        TYBuilding *building = [[TYBuilding alloc] init];
-        building.buildingID = buildingID;
-        
-        NSDate *date = [TYLicenseManager evaluateLicenseWithUserID:userID License:license Building:building];
-        if ([TYLicenseManager checkValidityWithUserID:userID License:license Building:building]) {
-//            NSLog(@"Valid License");
-        } else {
-//            NSLog(@"Not Valid License");
-        }
-//        NSLog(@"Date: %@", date);
-        break;
-    }
-}
-
-- (void)generateLicenses
-{
-    NSString *userID = @"4e13f85911a44a75adccaccf8eb96c9c";
-    NSString *buildingID = @"00210001";
-    NSString *expiredDate = @"20170101";
-    
-    [LicenseGenerator generateLicenseForUserID:userID Building:buildingID ExpiredDate:expiredDate];
-    [LicenseGenerator generateLicenseForUserID:userID Building:@"00210002" ExpiredDate:expiredDate];
-    [LicenseGenerator generateLicenseForUserID:userID Building:@"00210003" ExpiredDate:expiredDate];
 }
 
 - (void)setDefaultPlaceIfNeeded
