@@ -10,15 +10,18 @@
 #define IPEncryption_hpp
 
 #include <stdio.h>
-
 #include <string>
 
 std::string decryptString(std::string str);
+std::string decryptString(std::string str, std::string key);
+
 std::string encryptString(std::string str);
+std::string encryptString(std::string originalString, std::string key);
 
 void encryptFile(const char *originalPath, const char *encryptedFile);
-void decryptFile(const char *encryptedFile, const char *decryptedFile);
+void encryptFile(const char *originalPath, const char *encryptedFile, const char *key);
 
 std::string decryptFile(const char *file);
+std::string decryptFile(const char *file, const char *key);
 
 #endif /* IPEncryption_hpp */

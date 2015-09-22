@@ -40,9 +40,7 @@ typedef enum {
  */
 @protocol TYMapViewDelegate <NSObject>
 
-
 @optional
-
 /**
  *  地图点选事件回调方xxxx法
  *

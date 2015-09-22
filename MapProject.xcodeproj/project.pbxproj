@@ -113,6 +113,9 @@
 		57EB457F1B73D3690050956F /* RADataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 57EB457E1B73D3690050956F /* RADataObject.m */; };
 		57EE3E911B7471CC00977049 /* CityBuildingTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 57EE3E901B7471CC00977049 /* CityBuildingTableVC.m */; };
 		57EE3E941B74788100977049 /* SelectBuildingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 57EE3E931B74788100977049 /* SelectBuildingVC.m */; };
+		57F4229A1BB0370F0064D30B /* TYLicenseManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 57F422991BB0370F0064D30B /* TYLicenseManager.mm */; };
+		57F4229D1BB0373D0064D30B /* IPLicenseManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57F4229B1BB0373D0064D30B /* IPLicenseManager.cpp */; };
+		57F422A01BB038730064D30B /* LicenseGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F4229F1BB038730064D30B /* LicenseGenerator.m */; };
 		57F8789F1B9E871B00D27CE4 /* TYCityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F8789E1B9E871B00D27CE4 /* TYCityManager.m */; };
 		57F878AC1B9E87C600D27CE4 /* TYBuildingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F878AB1B9E87C600D27CE4 /* TYBuildingManager.m */; };
 		57F878AE1B9E898A00D27CE4 /* TYMapData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57F878AD1B9E898A00D27CE4 /* TYMapData.framework */; };
@@ -323,6 +326,12 @@
 		57EE3E921B74788100977049 /* SelectBuildingVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectBuildingVC.h; sourceTree = "<group>"; };
 		57EE3E931B74788100977049 /* SelectBuildingVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectBuildingVC.m; sourceTree = "<group>"; };
 		57F06C1D1A87BC7500B9511F /* MapProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MapProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		57F422981BB0370F0064D30B /* TYLicenseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TYLicenseManager.h; path = ../../TYLicenseManager.h; sourceTree = "<group>"; };
+		57F422991BB0370F0064D30B /* TYLicenseManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = TYLicenseManager.mm; path = ../../TYLicenseManager.mm; sourceTree = "<group>"; };
+		57F4229B1BB0373D0064D30B /* IPLicenseManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IPLicenseManager.cpp; sourceTree = "<group>"; };
+		57F4229C1BB0373D0064D30B /* IPLicenseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPLicenseManager.h; sourceTree = "<group>"; };
+		57F4229E1BB038730064D30B /* LicenseGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LicenseGenerator.h; sourceTree = "<group>"; };
+		57F4229F1BB038730064D30B /* LicenseGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LicenseGenerator.m; sourceTree = "<group>"; };
 		57F8789D1B9E871B00D27CE4 /* TYCityManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYCityManager.h; sourceTree = "<group>"; };
 		57F8789E1B9E871B00D27CE4 /* TYCityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYCityManager.m; sourceTree = "<group>"; };
 		57F878AA1B9E87C600D27CE4 /* TYBuildingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYBuildingManager.h; sourceTree = "<group>"; };
@@ -348,6 +357,10 @@
 		5709281B1B70584100410B8C /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				57F422981BB0370F0064D30B /* TYLicenseManager.h */,
+				57F422991BB0370F0064D30B /* TYLicenseManager.mm */,
+				57F4229C1BB0373D0064D30B /* IPLicenseManager.h */,
+				57F4229B1BB0373D0064D30B /* IPLicenseManager.cpp */,
 				570928221B70646D00410B8C /* MD5.hpp */,
 				570928211B70646D00410B8C /* MD5.cpp */,
 				570928231B70646D00410B8C /* MD5Utils.h */,
@@ -403,6 +416,8 @@
 				57672C911B55FF4A00DAD219 /* CreatingPOIDBAdapter.m */,
 				57672C921B55FF4A00DAD219 /* TYPoiDBAdapter.h */,
 				57672C931B55FF4A00DAD219 /* TYPoiDBAdapter.m */,
+				57F4229E1BB038730064D30B /* LicenseGenerator.h */,
+				57F4229F1BB038730064D30B /* LicenseGenerator.m */,
 			);
 			path = MapTools;
 			sourceTree = "<group>";
@@ -859,6 +874,7 @@
 				5794C0C11B560558002DCE9F /* TYCallout.m in Sources */,
 				57672E321B55FFF900DAD219 /* FMDatabaseQueue.m in Sources */,
 				57494DDB1B61DAE7000B6F2C /* BaseLogVC.m in Sources */,
+				57F4229A1BB0370F0064D30B /* TYLicenseManager.mm in Sources */,
 				5794C0DF1B560558002DCE9F /* TYArcGISDrawer.m in Sources */,
 				5794C0C91B560558002DCE9F /* TYMarkerSymbol.m in Sources */,
 				57672E2F1B55FFF900DAD219 /* FMDatabase.m in Sources */,
@@ -906,6 +922,8 @@
 				57EB45751B73D2B50050956F /* RATreeNodeInfo+Private.m in Sources */,
 				5794C0E61B560558002DCE9F /* TYMapView.m in Sources */,
 				57F878AC1B9E87C600D27CE4 /* TYBuildingManager.m in Sources */,
+				57F422A01BB038730064D30B /* LicenseGenerator.m in Sources */,
+				57F4229D1BB0373D0064D30B /* IPLicenseManager.cpp in Sources */,
 				5794C0E31B560558002DCE9F /* TYMapEnviroment.m in Sources */,
 				5794C0DC1B560558002DCE9F /* TYLabelGroupLayer.m in Sources */,
 				57C03F5A1B61E19800490179 /* BaseMapVC.m in Sources */,
@@ -1063,7 +1081,7 @@
 				);
 				GCC_PREFIX_HEADER = MapProject/PrefixHeader.pch;
 				INFOPLIST_FILE = MapProject/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -1095,7 +1113,7 @@
 				);
 				GCC_PREFIX_HEADER = MapProject/PrefixHeader.pch;
 				INFOPLIST_FILE = MapProject/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"-ObjC",
