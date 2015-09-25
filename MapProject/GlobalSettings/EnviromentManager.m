@@ -14,8 +14,9 @@
 
 + (void)switchToEncrypted
 {
-    NSString *pathMapEncrypted = [[NSBundle mainBundle] pathForResource:DEFAULT_MAP_ENCRPTION_ROOT ofType:nil];
-    [TYMapEnvironment setRootDirectoryForMapFiles:pathMapEncrypted];
+//    NSString *pathMapEncrypted = [[NSBundle mainBundle] pathForResource:DEFAULT_MAP_ENCRPTION_ROOT ofType:nil];
+    NSString *documentDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    [TYMapEnvironment setRootDirectoryForMapFiles:[documentDirectory stringByAppendingPathComponent:DEFAULT_MAP_ENCRPTION_ROOT]];
     [TYMapEnvironment setEncryptionEnabled:YES];
 }
 

@@ -24,4 +24,6 @@
 @property (nonatomic, weak) id<CityBuildingTableVCDelegate> delegate;
 @property (nonatomic, weak) IBOutlet RATreeView *treeView;
 
+- (void)reloadData;
+
 @end

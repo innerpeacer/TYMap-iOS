@@ -32,6 +32,12 @@
     [self prepareTreeView];
 }
 
+- (void)reloadData
+{
+    [self prepareData];
+    [self prepareTreeView];
+}
+
 - (void)prepareTreeView
 {
 //    RATreeView *treeView = [[RATreeView alloc] initWithFrame:self.view.frame];

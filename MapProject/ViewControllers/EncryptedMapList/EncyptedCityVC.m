@@ -26,20 +26,24 @@
 @implementation EncyptedCityVC
 
 - (void)viewDidLoad {
+    [super viewDidLoad];
 
     self.title = @"加密地图";
     [EnviromentManager switchToEncrypted];
-    
-    self.cityArray = [TYCityManager parseAllCities];
-    NSMutableArray *array = [NSMutableArray array];
-    for (TYCity *city in self.cityArray) {
-        NSArray *bArray = [TYBuildingManager parseAllBuildings:city];
-        [array addObject:bArray];
-    }
-    self.buildingArray = [NSArray arrayWithArray:array];
-    
-    [super viewDidLoad];
     self.delegate = self;
+}
+
+- (void)loadMapContent
+{
+    if ([[NSFileManager defaultManager] fileExistsAtPath:[[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:DEFAULT_MAP_ENCRPTION_ROOT]]) {
+        self.cityArray = [TYCityManager parseAllCities];
+        NSMutableArray *array = [NSMutableArray array];
+        for (TYCity *city in self.cityArray) {
+            NSArray *bArray = [TYBuildingManager parseAllBuildings:city];
+            [array addObject:bArray];
+        }
+        self.buildingArray = [NSArray arrayWithArray:array];
+    }
 }
 
 - (void)didSelectBuilding:(TYBuilding *)building City:(TYCity *)city
@@ -59,6 +63,9 @@
     NSLog(@"%@: %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
     [EnviromentManager switchToEncrypted];
     NSLog(@"[EnviromentManager switchToEncrypted]");
+    
+    [self loadMapContent];
+    [self reloadData];
 }
 
 @end
