@@ -13,6 +13,15 @@
 
 @implementation Vector2
 
+- (id)init
+{
+    self = [super init];
+    if (self) {
+        
+    }
+    return self;
+}
+
 - (double)getAngle
 {
     if (_y == 0 && _x >= 0) {

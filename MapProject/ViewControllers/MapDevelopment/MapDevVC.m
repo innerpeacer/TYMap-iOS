@@ -26,6 +26,8 @@
 
 - (void)viewDidLoad
 {
+    [super viewDidLoad];
+    
 #if USE_ENCRYPTION_MAP
     [EnviromentManager switchToEncrypted];
 #else
@@ -141,6 +143,8 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
+    [super viewDidAppear:animated];
+    
 //    NSLog(@"%@: %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 #if USE_ENCRYPTION_MAP
     [EnviromentManager switchToEncrypted];
