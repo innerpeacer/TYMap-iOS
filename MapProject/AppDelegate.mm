@@ -94,7 +94,7 @@
         NSError *error;
         [fileManager removeItemAtPath:targetRootDir error:&error];
         if (error) {
-            NSLog(@"Error: %@", [error localizedDescription]);
+//            NSLog(@"Error: %@", [error localizedDescription]);
         }
         
         NSDirectoryEnumerator *enumerator;
