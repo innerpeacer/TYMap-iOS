@@ -60,6 +60,10 @@
     [self.objects addObject:@"生成License"];
     [self.controllerDict setObject:@"GenerateLicensesVC" forKey:@"生成License"];
     
+    [self.objects addObject:@"构建网络数据集"];
+    [self.controllerDict setObject:@"BuildRouteNetworkDatasetVC" forKey:@"构建网络数据集"];
+    
+    
     
 //    [self tableView:self.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:5 inSection:0]];
     
