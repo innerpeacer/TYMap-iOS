@@ -152,10 +152,79 @@
                        {
                        "colorID": 8,
                        "fillColor": "#FFBED2FF",
-                       "outlineColor": "#FFBED2FF",
+                       "outlineColor": "#FFFFFFFF",
                        "lineWidth": 1
                        }
-                       
+                       ,
+                       {
+                       "colorID": 10,
+                       "fillColor": "#FF0A0A0A",
+                       "outlineColor": "#FFFFFFFF",
+                       "lineWidth": 1
+                       }
+                       ,
+                       {
+                       "colorID": 11,
+                       "fillColor": "#FF979797",
+                       "outlineColor": "#FFFFFFFF",
+                       "lineWidth": 1
+                       }
+                       ,
+                       {
+                       "colorID": 12,
+                       "fillColor": "#FFC5C5C5",
+                       "outlineColor": "#FFFFFFFF",
+                       "lineWidth": 1
+                       }
+                       ,
+                       {
+                       "colorID": 13,
+                       "fillColor": "#FFBFC962",
+                       "outlineColor": "#FFFFFFFF",
+                       "lineWidth": 1
+                       }
+                       ,
+                       {
+                       "colorID": 14,
+                       "fillColor": "#FFC28E4C",
+                       "outlineColor": "#FFFFFFFF",
+                       "lineWidth": 1
+                       }
+                       ,
+                       {
+                       "colorID": 15,
+                       "fillColor": "#FF7480B7",
+                       "outlineColor": "#FFFFFFFF",
+                       "lineWidth": 1
+                       }
+                       ,
+                       {
+                       "colorID": 16,
+                       "fillColor": "#FF826C9D",
+                       "outlineColor": "#FFFFFFFF",
+                       "lineWidth": 1
+                       }
+                       ,
+                       {
+                       "colorID": 17,
+                       "fillColor": "#FFC07477",
+                       "outlineColor": "#FFFFFFFF",
+                       "lineWidth": 1
+                       }
+                       ,
+                       {
+                       "colorID": 18,
+                       "fillColor": "#FF5097A8",
+                       "outlineColor": "#FFFFFFFF",
+                       "lineWidth": 1
+                       }
+                       ,
+                       {
+                       "colorID": 19,
+                       "fillColor": "#FFAE844A",
+                       "outlineColor": "#FFFFFFFF",
+                       "lineWidth": 1
+                       }
                        ],
         
         "IconSymbol": [

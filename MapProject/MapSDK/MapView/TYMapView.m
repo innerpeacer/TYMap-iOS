@@ -53,10 +53,22 @@
     NSString *mapLicense;
 }
 
+@property (nonatomic, assign) BOOL autoCenterEnabled;
+
 @end
 
 
 @implementation TYMapView
+
+- (void)enableAutoCenter
+{
+    _autoCenterEnabled = YES;
+}
+
+- (void)disableAutoCenter
+{
+    _autoCenterEnabled = NO;
+}
 
 - (void)reloadMapView
 {
@@ -232,6 +244,8 @@
 
 - (void)initMapViewWithBuilding:(TYBuilding *)b UserID:(NSString *)uID License:(NSString *)license
 {
+    _autoCenterEnabled = YES;
+    
     _building = b;
     userID = uID;
     mapLicense = license;
@@ -656,8 +670,6 @@
     }
 }
 
-
-
 - (void)showRouteHintForDirectionHint:(TYDirectionalHint *)ds Centered:(BOOL)isCentered
 {
     TYRouteResult *routeResult = routeLayer.routeResult;
@@ -754,20 +766,21 @@
 - (void)respondToPanning:(NSNotification *)notification
 {
     //    NSLog(@"respondToPanning: %f, %f", self.mapAnchor.x, self.mapAnchor.y);
-    
-    AGSPoint *center = self.mapAnchor;
-    
-    double x = center.x;
-    double y = center.y;
-    
-    if (x <= _currentMapInfo.mapExtent.xmax && x >= _currentMapInfo.mapExtent.xmin && y <= _currentMapInfo.mapExtent.ymax && y >= _currentMapInfo.mapExtent.ymin) {
-        return;
+    if (_autoCenterEnabled) {
+        AGSPoint *center = self.mapAnchor;
+        
+        double x = center.x;
+        double y = center.y;
+        
+        if (x <= _currentMapInfo.mapExtent.xmax && x >= _currentMapInfo.mapExtent.xmin && y <= _currentMapInfo.mapExtent.ymax && y >= _currentMapInfo.mapExtent.ymin) {
+            return;
+        }
+        
+        x = (x > _currentMapInfo.mapExtent.xmax) ? _currentMapInfo.mapExtent.xmax : ((x < _currentMapInfo.mapExtent.xmin) ? _currentMapInfo.mapExtent.xmin : x);
+        y = (y > _currentMapInfo.mapExtent.ymax) ? _currentMapInfo.mapExtent.ymax : ((y < _currentMapInfo.mapExtent.ymin) ? _currentMapInfo.mapExtent.ymin : y);
+        
+        [self centerAtPoint:[AGSPoint pointWithX:x y:y spatialReference:self.spatialReference] animated:YES];
     }
-    
-    x = (x > _currentMapInfo.mapExtent.xmax) ? _currentMapInfo.mapExtent.xmax : ((x < _currentMapInfo.mapExtent.xmin) ? _currentMapInfo.mapExtent.xmin : x);
-    y = (y > _currentMapInfo.mapExtent.ymax) ? _currentMapInfo.mapExtent.ymax : ((y < _currentMapInfo.mapExtent.ymin) ? _currentMapInfo.mapExtent.ymin : y);
-    
-    [self centerAtPoint:[AGSPoint pointWithX:x y:y spatialReference:self.spatialReference] animated:YES];
 }
 
 - (TYPoi *)extractRoomPoiOnCurrentFloorWithX:(double)x Y:(double)y

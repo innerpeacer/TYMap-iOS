@@ -63,6 +63,9 @@
     [self.objects addObject:@"构建网络数据集"];
     [self.controllerDict setObject:@"BuildRouteNetworkDatasetVC" forKey:@"构建网络数据集"];
     
+    [self.objects addObject:@"测试网络数据集"];
+    [self.controllerDict setObject:@"TestRouteNetworkVC" forKey:@"测试网络数据集"];
+    
     
     
 //    [self tableView:self.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:5 inSection:0]];
