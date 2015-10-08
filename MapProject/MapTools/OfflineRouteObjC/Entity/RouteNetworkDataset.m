@@ -11,18 +11,28 @@
 
 @interface RouteNetworkDataset()
 {
-    NSMutableArray *replacedStartNodeArray;
-    NSMutableArray *replacedStartLinkArray;
-
-    NSMutableArray *replacedEndNodeArray;
-    NSMutableArray *replacedEndLinkArray;
-    
+    AGSGeometryEngine *engine;
     
     NSMutableArray *tempStartNodeArray;
     NSMutableArray *tempStartLinkArray;
-
+    NSMutableArray *replacedStartLinkArray;
+    
+    
     NSMutableArray *tempEndNodeArray;
+    
+    
+    //    NSMutableArray *replacedStartNodeArray;
+    
+    //    NSMutableArray *replacedEndNodeArray;
+    NSMutableArray *replacedEndLinkArray;
+    
+    
+    
     NSMutableArray *tempEndLinkArray;
+    
+    int tempNodeID;
+    int tempLinkID;
+    
 }
 
 @end
@@ -33,10 +43,15 @@
 {
     self = [super init];
     if (self) {
-        replacedStartNodeArray = [NSMutableArray array];
+        engine = [AGSGeometryEngine defaultGeometryEngine];
+        
+        tempNodeID = 60000;
+        tempLinkID = 80000;
+        
+        //        replacedStartNodeArray = [NSMutableArray array];
         replacedStartLinkArray = [NSMutableArray array];
         
-        replacedEndNodeArray = [NSMutableArray array];
+        //        replacedEndNodeArray = [NSMutableArray array];
         replacedEndLinkArray = [NSMutableArray array];
         
         tempStartNodeArray = [NSMutableArray array];
@@ -53,7 +68,6 @@
         for (TYLink *link in _linkArray) {
             [allLinkLines addObject:link.line];
         }
-        
         _unionLine = (AGSPolyline *)[[AGSGeometryEngine defaultGeometryEngine] unionGeometries:allLinkLines];
     }
     return self;
@@ -105,7 +119,8 @@
             reverseLink.currentNodeID = record.endNode;
             reverseLink.nextNodeID = record.headNode;
             reverseLink.length = record.length;
-            reverseLink.line = record.line;
+            //            reverseLink.line = record.line;
+            reverseLink.line = [self reverseFirstPath:record.line];
             NSString *reverseLinkKey = [NSString stringWithFormat:@"%d%d", reverseLink.currentNodeID, reverseLink.nextNodeID];
             [_allLinkDict setObject:reverseLink forKey:reverseLinkKey];
             
@@ -116,6 +131,16 @@
             }
         }
     }
+}
+
+- (AGSPolyline *)reverseFirstPath:(AGSPolyline *)line
+{
+    AGSMutablePolyline *reverseLine = [[AGSMutablePolyline alloc] init];
+    [reverseLine addPathToPolyline];
+    for (int i = (int)[line numPointsInPath:0] - 1; i >= 0; --i) {
+        [reverseLine addPointToPath:[line pointOnPath:0 atIndex:i]];
+    }
+    return reverseLine;
 }
 
 - (void)processNodesAndLinks
@@ -129,49 +154,48 @@
 
 - (AGSPoint *)getNearestPoint:(AGSPoint *)point
 {
-    AGSGeometryEngine *engine = [AGSGeometryEngine defaultGeometryEngine];
     AGSProximityResult *result = [engine nearestCoordinateInGeometry:_unionLine toPoint:point];
     return result.point;
 }
 
-- (NSArray *)getNearestNodes:(AGSPoint *)point
-{
-    NSMutableArray *nodeArray = [NSMutableArray array];
-    AGSGeometryEngine *engine = [AGSGeometryEngine defaultGeometryEngine];
-    AGSPoint *np = [self getNearestPoint:point];
-
-    for (TYNode *node in _nodeArray) {
-        if ([engine geometry:node.pos withinGeometry:np]) {
-            [nodeArray addObject:node];
-            break;
-        }
-    }
-    
-    if (nodeArray.count == 0) {
-        NSArray *linkArray = [self getNearestLinks:point];
-        for (TYLink *link in linkArray) {
-            [nodeArray addObject:link.nextNode];
-        }
-    }
-    
-//    NSLog(@"NearestNodes: %d", (int)nodeArray.count);
-    return nodeArray;
-}
-
-- (NSArray *)getNearestLinks:(AGSPoint *)point
-{
-    NSMutableArray *linkArray = [NSMutableArray array];
-    AGSGeometryEngine *engine = [AGSGeometryEngine defaultGeometryEngine];
-    AGSPoint *np = [self getNearestPoint:point];
-    for (TYLink *link in _linkArray) {
-        if ([engine geometry:link.line containsGeometry:np]) {
-//        if ([engine geometry:np touchesGeometry:link.line]) {
-            [linkArray addObject:link];
-        }
-    }
-//    NSLog(@"NearestLinks: %d", (int)linkArray.count);
-    return linkArray;
-}
+//- (NSArray *)getNearestNodes:(AGSPoint *)point
+//{
+//    NSMutableArray *nodeArray = [NSMutableArray array];
+//    AGSGeometryEngine *engine = [AGSGeometryEngine defaultGeometryEngine];
+//    AGSPoint *np = [self getNearestPoint:point];
+//
+//    for (TYNode *node in _nodeArray) {
+//        if ([engine geometry:node.pos withinGeometry:np]) {
+//            [nodeArray addObject:node];
+//            break;
+//        }
+//    }
+//
+//    if (nodeArray.count == 0) {
+//        NSArray *linkArray = [self getNearestLinks:point];
+//        for (TYLink *link in linkArray) {
+//            [nodeArray addObject:link.nextNode];
+//        }
+//    }
+//
+////    NSLog(@"NearestNodes: %d", (int)nodeArray.count);
+//    return nodeArray;
+//}
+//
+//- (NSArray *)getNearestLinks:(AGSPoint *)point
+//{
+//    NSMutableArray *linkArray = [NSMutableArray array];
+//    AGSGeometryEngine *engine = [AGSGeometryEngine defaultGeometryEngine];
+//    AGSPoint *np = [self getNearestPoint:point];
+//    for (TYLink *link in _linkArray) {
+//        if ([engine geometry:link.line containsGeometry:np]) {
+////        if ([engine geometry:np touchesGeometry:link.line]) {
+//            [linkArray addObject:link];
+//        }
+//    }
+////    NSLog(@"NearestLinks: %d", (int)linkArray.count);
+//    return linkArray;
+//}
 
 - (void)computePaths:(TYNode *)source
 {
@@ -212,42 +236,40 @@
 
 - (AGSPolyline *)getShorestPathTo:(TYNode *)target
 {
-    AGSGeometryEngine *engine = [AGSGeometryEngine defaultGeometryEngine];
-    
     NSMutableArray *array = [NSMutableArray array];
     for (TYNode *node = target; node != nil; node = node.previousNode) {
         [array addObject:node];
     }
     NSArray *reverseArray = [[array reverseObjectEnumerator] allObjects];
     
-//    AGSMutablePolyline *resultLine = [[AGSMutablePolyline alloc] init];
-//    [resultLine addPathToPolyline];
-//
-////    AGSPolyline *resultLine = [[AGSPolyline alloc] init];
-//    for (TYNode *node in reverseArray) {
-//        if (node && node.previousNode) {
-//            NSString *key = [NSString stringWithFormat:@"%d%d", node.nodeID, node.previousNode.nodeID];
-//            TYLink *link = [_allLinkDict objectForKey:key];
-//            for (int i = 0; i < [link.line numPointsInPath:0]; ++i) {
-//                [resultLine addPointToPath:[link.line pointOnPath:0 atIndex:i]];
-//            }
-////            resultLine = (AGSPolyline *)[engine unionGeometries:@[resultLine, link.line]];
-//        }
-//    }
-//    NSLog(@"Primitive Points: %d", (int)resultLine.numPoints);
-//    AGSPolyline *result = (AGSPolyline *)[[AGSGeometryEngine defaultGeometryEngine] simplifyGeometry:resultLine];
-////    AGSPolyline *result = resultLine;
-//
-//    NSLog(@"Simplified Points: %d", (int)result.numPoints);
-
-        NSMutableArray *pathArray = [NSMutableArray array];
-        for (TYNode *node in reverseArray) {
-            if (node && node.previousNode) {
-                NSString *key = [NSString stringWithFormat:@"%d%d", node.nodeID, node.previousNode.nodeID];
-                TYLink *link = [_allLinkDict objectForKey:key];
-                [pathArray addObject:link.line];
-            }
+    //    AGSMutablePolyline *resultLine = [[AGSMutablePolyline alloc] init];
+    //    [resultLine addPathToPolyline];
+    //
+    ////    AGSPolyline *resultLine = [[AGSPolyline alloc] init];
+    //    for (TYNode *node in reverseArray) {
+    //        if (node && node.previousNode) {
+    //            NSString *key = [NSString stringWithFormat:@"%d%d", node.nodeID, node.previousNode.nodeID];
+    //            TYLink *link = [_allLinkDict objectForKey:key];
+    //            for (int i = 0; i < [link.line numPointsInPath:0]; ++i) {
+    //                [resultLine addPointToPath:[link.line pointOnPath:0 atIndex:i]];
+    //            }
+    ////            resultLine = (AGSPolyline *)[engine unionGeometries:@[resultLine, link.line]];
+    //        }
+    //    }
+    //    NSLog(@"Primitive Points: %d", (int)resultLine.numPoints);
+    //    AGSPolyline *result = (AGSPolyline *)[[AGSGeometryEngine defaultGeometryEngine] simplifyGeometry:resultLine];
+    ////    AGSPolyline *result = resultLine;
+    //
+    //    NSLog(@"Simplified Points: %d", (int)result.numPoints);
+    
+    NSMutableArray *pathArray = [NSMutableArray array];
+    for (TYNode *node in reverseArray) {
+        if (node && node.previousNode) {
+            NSString *key = [NSString stringWithFormat:@"%d%d", node.nodeID, node.previousNode.nodeID];
+            TYLink *link = [_allLinkDict objectForKey:key];
+            [pathArray addObject:link.line];
         }
+    }
     AGSPolyline *result = (AGSPolyline *)[engine unionGeometries:pathArray];
     
     if (result && result.numPoints > 0) {
@@ -258,10 +280,6 @@
 
 - (void)reset
 {
-//    for (TYNode *node in _allNodeArray) {
-//        [node reset];
-//    }
-    
     for (TYNode *node in _nodeArray) {
         [node reset];
     }
@@ -271,75 +289,449 @@
     }
 }
 
-- (AGSPolyline *)getShorestPathFrom:(AGSPoint *)start To:(AGSPoint *)end
+- (TYNode *)processTempNodeForStart:(AGSPoint *)startPoint
 {
-    AGSGeometryEngine *engine = [AGSGeometryEngine defaultGeometryEngine];
+    [tempStartLinkArray removeAllObjects];
+    [tempStartNodeArray removeAllObjects];
     
-    NSArray *startNodeArray = [self getNearestNodes:start];
-    NSArray *endNodeArray = [self getNearestNodes:end];
+    [replacedStartLinkArray removeAllObjects];
+    //    [replacedStartNodeArray removeAllObjects];
     
-    NSLog(@"%d startNodes, %d endNodes", (int)startNodeArray.count, (int)endNodeArray.count);
-    
-    AGSPolyline *result = nil;
-    double minLength = 1000000000;
-    
-    int computationTimes = 0;
-
-    for (TYNode *startNode in startNodeArray) {
-        for (TYNode *endNode in endNodeArray) {
-            computationTimes++;
-            
-            [self reset];
-            [self computePaths:startNode];
-            AGSPolyline *path = [self getShorestPathTo:endNode];
-            
-            if (path) {
-                AGSPoint *firstPoint = [path pointOnPath:0 atIndex:0];
-                double headDistance = [engine distanceFromGeometry:firstPoint toGeometry:start];
-                double endDistance = [engine distanceFromGeometry:firstPoint toGeometry:end];
-                
-                if (headDistance > endDistance) {
-                    AGSMutablePolyline *reversedPath = [[AGSMutablePolyline alloc] init];
-                    [reversedPath addPathToPolyline];
-                    for (int i = (int)[path numPointsInPath:0] - 1; i >= 0; --i) {
-                        [reversedPath addPointToPath:[path pointOnPath:0 atIndex:i]];
-                    }
-                    path = reversedPath;
-                }
-            }
-
-            if(path) {
-                AGSMutablePolyline *totalLine = [[AGSMutablePolyline alloc] init];
-                [totalLine addPathToPolyline];
-                for (int i = 0; i < [path numPointsInPath:0]; ++i) {
-                    [totalLine addPointToPath:[path pointOnPath:0 atIndex:i]];
-                }
-                
-                if (![engine geometry:path touchesGeometry:start]) {
-                    AGSPoint *nearestStartPoint = [self getNearestPoint:start];
-                    [totalLine insertPoint:nearestStartPoint onPath:0 atIndex:0];
-                    [totalLine insertPoint:start onPath:0 atIndex:0];
-                }
-                
-                if (![engine geometry:path touchesGeometry:end]) {
-                    AGSPoint *nearestEndPoint = [self getNearestPoint:end];
-                    [totalLine addPoint:nearestEndPoint toPath:0];
-                    [totalLine addPoint:end toPath:0];
-                }
-
-                double length = [[AGSGeometryEngine defaultGeometryEngine] lengthOfGeometry:totalLine];
-                
-                if (length < minLength) {
-                    minLength = length;
-                    result = totalLine;
-                }
-            }
+    AGSProximityResult *result = [engine nearestCoordinateInGeometry:_unionLine toPoint:startPoint];
+    AGSPoint *np = result.point;
+    for (TYNode *node in _nodeArray) {
+        if ([engine geometry:np withinGeometry:node.pos]) {
+            NSLog(@"Point Equal to One of the Nodes!");
+            return node;
         }
     }
     
-    NSLog(@"%d computations", computationTimes);
+    // Add New Temp Nodes
+    TYNode *newTempNode = [[TYNode alloc] initWithNodeID:tempNodeID isVirtual:NO];
+    tempNodeID++;
+    newTempNode.pos = np;
+    [tempStartNodeArray addObject:newTempNode];
     
-    return result;
+    // Add New Temp Links
+    for (TYLink *link in _linkArray) {
+        result = [engine nearestCoordinateInGeometry:link.line toPoint:np];
+        int index = (int)result.pointIndex;
+        
+        if ([engine geometry:link.line containsGeometry:np]) {
+            AGSMutablePolyline *firstPartPolyline = [[AGSMutablePolyline alloc] init];
+            [firstPartPolyline addPathToPolyline];
+            AGSMutablePolyline *secondPartPolyline = [[AGSMutablePolyline alloc] init];
+            [secondPartPolyline addPathToPolyline];
+            
+            for (int i = 0; i < [link.line numPointsInPath:0]; ++i) {
+                AGSPoint *p = [link.line pointOnPath:0 atIndex:i];
+                if (i <= index) {
+                    [firstPartPolyline addPointToPath:p];
+                } else {
+                    [secondPartPolyline addPointToPath:p];
+                }
+            }
+            [firstPartPolyline addPointToPath:np];
+            [secondPartPolyline insertPoint:np onPath:0 atIndex:0];
+            
+            TYLink *firstPartLink = [[TYLink alloc] initWithLinkID:tempLinkID isVirtual:NO];
+            firstPartLink.currentNodeID = link.currentNodeID;
+            firstPartLink.nextNodeID = newTempNode.nodeID;
+            firstPartLink.length = [engine lengthOfGeometry:firstPartPolyline];
+            firstPartLink.line = firstPartPolyline;
+            
+            TYLink *secondPartLink = [[TYLink alloc] initWithLinkID:tempLinkID isVirtual:NO];
+            secondPartLink.currentNodeID = newTempNode.nodeID;
+            secondPartLink.nextNodeID = link.nextNodeID;
+            secondPartLink.length = [engine lengthOfGeometry:secondPartPolyline];
+            secondPartLink.line = secondPartPolyline;
+            tempLinkID++;
+            
+            [tempStartLinkArray addObject:firstPartLink];
+            [tempStartLinkArray addObject:secondPartLink];
+            [replacedStartLinkArray addObject:link];
+        }
+    }
+    
+    for (TYNode *newNode in tempStartNodeArray) {
+        [_allNodeDict setObject:newNode forKey:@(newTempNode.nodeID)];
+    }
+    
+    for (TYLink *newLink in tempStartLinkArray) {
+        TYNode *headNode = [_allNodeDict objectForKey:@(newLink.currentNodeID)];
+        [headNode addLink:newLink];
+        newLink.nextNode = [_allNodeDict objectForKey:@(newLink.nextNodeID)];
+        
+        NSString *newLinkKey = [NSString stringWithFormat:@"%d%d", newLink.currentNodeID, newLink.nextNodeID];
+        [_allLinkDict setObject:newLink forKey:newLinkKey];
+        
+        [_linkArray addObject:newLink];
+    }
+    
+    for (TYLink *replacedLink in replacedStartLinkArray) {
+        TYNode *headNode = [_allNodeDict objectForKey:@(replacedLink.currentNodeID)];
+        [headNode removeLink:replacedLink];
+        
+        NSString *replacedLinkKey = [NSString stringWithFormat:@"%d%d", replacedLink.currentNodeID, replacedLink.nextNodeID];
+        [_allLinkDict removeObjectForKey:replacedLinkKey];
+        [_linkArray removeObject:replacedLink];
+        
+    }
+    
+    return newTempNode;
+}
+
+
+- (TYNode *)processTempNodeForEnd:(AGSPoint *)endPoint
+{
+    [tempEndLinkArray removeAllObjects];
+    [tempEndNodeArray removeAllObjects];
+    [replacedEndLinkArray removeAllObjects];
+    
+    AGSProximityResult *result = [engine nearestCoordinateInGeometry:_unionLine toPoint:endPoint];
+    AGSPoint *np = result.point;
+    for (TYNode *node in _nodeArray) {
+        if ([engine geometry:np withinGeometry:node.pos]) {
+            NSLog(@"Point Equal to One of the Nodes!");
+            return node;
+        }
+    }
+    
+    // Add New Temp Nodes
+    TYNode *newTempNode = [[TYNode alloc] initWithNodeID:tempNodeID isVirtual:NO];
+    tempNodeID++;
+    newTempNode.pos = np;
+    [tempEndNodeArray addObject:newTempNode];
+    
+    // Add New Temp Links
+    for (TYLink *link in _linkArray) {
+        result = [engine nearestCoordinateInGeometry:link.line toPoint:np];
+        int index = (int)result.pointIndex;
+        
+        if ([engine geometry:link.line containsGeometry:np]) {
+            AGSMutablePolyline *firstPartPolyline = [[AGSMutablePolyline alloc] init];
+            [firstPartPolyline addPathToPolyline];
+            AGSMutablePolyline *secondPartPolyline = [[AGSMutablePolyline alloc] init];
+            [secondPartPolyline addPathToPolyline];
+            
+            for (int i = 0; i < [link.line numPointsInPath:0]; ++i) {
+                AGSPoint *p = [link.line pointOnPath:0 atIndex:i];
+                if (i <= index) {
+                    [firstPartPolyline addPointToPath:p];
+                } else {
+                    [secondPartPolyline addPointToPath:p];
+                }
+            }
+            [firstPartPolyline addPointToPath:np];
+            [secondPartPolyline insertPoint:np onPath:0 atIndex:0];
+            
+            TYLink *firstPartLink = [[TYLink alloc] initWithLinkID:tempLinkID isVirtual:NO];
+            firstPartLink.currentNodeID = link.currentNodeID;
+            firstPartLink.nextNodeID = newTempNode.nodeID;
+            firstPartLink.length = [engine lengthOfGeometry:firstPartPolyline];
+            firstPartLink.line = firstPartPolyline;
+            
+            TYLink *secondPartLink = [[TYLink alloc] initWithLinkID:tempLinkID isVirtual:NO];
+            secondPartLink.currentNodeID = newTempNode.nodeID;
+            secondPartLink.nextNodeID = link.nextNodeID;
+            secondPartLink.length = [engine lengthOfGeometry:secondPartPolyline];
+            secondPartLink.line = secondPartPolyline;
+            tempLinkID++;
+            
+            [tempEndLinkArray addObject:firstPartLink];
+            [tempEndLinkArray addObject:secondPartLink];
+            [replacedEndLinkArray addObject:link];
+        }
+    }
+    
+    for (TYNode *newNode in tempEndNodeArray) {
+        [_allNodeDict setObject:newNode forKey:@(newTempNode.nodeID)];
+    }
+    
+    for (TYLink *newLink in tempEndLinkArray) {
+        TYNode *headNode = [_allNodeDict objectForKey:@(newLink.currentNodeID)];
+        [headNode addLink:newLink];
+        newLink.nextNode = [_allNodeDict objectForKey:@(newLink.nextNodeID)];
+        
+        NSString *newLinkKey = [NSString stringWithFormat:@"%d%d", newLink.currentNodeID, newLink.nextNodeID];
+        [_allLinkDict setObject:newLink forKey:newLinkKey];
+        
+        [_linkArray addObject:newLink];
+    }
+    
+    for (TYLink *replacedLink in replacedEndLinkArray) {
+        TYNode *headNode = [_allNodeDict objectForKey:@(replacedLink.currentNodeID)];
+        [headNode removeLink:replacedLink];
+        
+        NSString *replacedLinkKey = [NSString stringWithFormat:@"%d%d", replacedLink.currentNodeID, replacedLink.nextNodeID];
+        [_allLinkDict removeObjectForKey:replacedLinkKey];
+        [_linkArray removeObject:replacedLink];
+    }
+    
+    return newTempNode;
+}
+
+- (void)resetTempNodeForStart
+{
+    for (TYLink *replacedLink in replacedStartLinkArray) {
+        TYNode *headNode = [_allNodeDict objectForKey:@(replacedLink.currentNodeID)];
+        [headNode addLink:replacedLink];
+        
+        NSString *replacedLinkKey = [NSString stringWithFormat:@"%d%d", replacedLink.currentNodeID, replacedLink.nextNodeID];
+        [_allLinkDict setObject:replacedLink forKey:replacedLinkKey];
+        [_linkArray addObject:replacedLink];
+    }
+    
+    for (TYLink *newLink in tempStartLinkArray) {
+        TYNode *headNode = [_allNodeDict objectForKey:@(newLink.currentNodeID)];
+        [headNode removeLink:newLink];
+        newLink.nextNode = nil;
+        
+        NSString *newLinkKey = [NSString stringWithFormat:@"%d%d", newLink.currentNodeID, newLink.nextNodeID];
+        [_allLinkDict removeObjectForKey:newLinkKey];
+        [_linkArray removeObject:newLink];
+    }
+    
+    for (TYNode *newNode in tempStartNodeArray) {
+        [_allNodeDict removeObjectForKey:@(newNode.nodeID)];
+    }
+    
+    [replacedStartLinkArray removeAllObjects];
+    [tempStartLinkArray removeAllObjects];
+    [tempStartNodeArray removeAllObjects];
+}
+
+- (void)resetTempNodeForEnd
+{
+    for (TYLink *replacedLink in replacedEndLinkArray) {
+        TYNode *headNode = [_allNodeDict objectForKey:@(replacedLink.currentNodeID)];
+        [headNode addLink:replacedLink];
+        
+        NSString *replacedLinkKey = [NSString stringWithFormat:@"%d%d", replacedLink.currentNodeID, replacedLink.nextNodeID];
+        [_allLinkDict setObject:replacedLink forKey:replacedLinkKey];
+        [_linkArray addObject:replacedLink];
+    }
+    
+    for (TYLink *newLink in tempEndLinkArray) {
+        TYNode *headNode = [_allNodeDict objectForKey:@(newLink.currentNodeID)];
+        [headNode removeLink:newLink];
+        newLink.nextNode = nil;
+        
+        NSString *newLinkKey = [NSString stringWithFormat:@"%d%d", newLink.currentNodeID, newLink.nextNodeID];
+        [_allLinkDict removeObjectForKey:newLinkKey];
+        [_linkArray removeObject:newLink];
+    }
+    
+    for (TYNode *newNode in tempEndNodeArray) {
+        [_allNodeDict removeObjectForKey:@(newNode.nodeID)];
+    }
+    
+    [replacedEndLinkArray removeAllObjects];
+    [tempEndLinkArray removeAllObjects];
+    [tempEndNodeArray removeAllObjects];
+}
+
+- (TYNode *)getTempNode:(AGSPoint *)point
+{
+    AGSProximityResult *result = [engine nearestCoordinateInGeometry:_unionLine toPoint:point];
+    AGSPoint *np = result.point;
+    for (TYNode *node in _nodeArray) {
+        if ([engine geometry:np withinGeometry:node.pos]) {
+            //            NSLog(@"Existing Node");
+            return node;
+        }
+    }
+    
+    TYNode *newTempNode = [[TYNode alloc] initWithNodeID:tempNodeID++ isVirtual:NO];
+    newTempNode.pos = np;
+    //    NSLog(@"New Temp Node");
+    return newTempNode;
+}
+
+- (NSArray *)getTempLinks:(AGSPoint *)point
+{
+    AGSProximityResult *result = [engine nearestCoordinateInGeometry:_unionLine toPoint:point];
+    AGSPoint *np = result.point;
+    
+    for (TYNode *node in _nodeArray) {
+        if ([engine geometry:np withinGeometry:node.pos]) {
+            NSLog(@"Existing Links: %d", (int)node.adjacencies.count);
+            return node.adjacencies;
+        }
+    }
+    
+    NSMutableArray *tempLinkArray = [NSMutableArray array];
+    for (TYLink *link in _linkArray) {
+        result = [engine nearestCoordinateInGeometry:link.line toPoint:np];
+        int index = (int)result.pointIndex;
+        
+        if ([engine geometry:link.line containsGeometry:np]) {
+            AGSMutablePolyline *firstPartPolyline = [[AGSMutablePolyline alloc] init];
+            [firstPartPolyline addPathToPolyline];
+            AGSMutablePolyline *secondPartPolyline = [[AGSMutablePolyline alloc] init];
+            [secondPartPolyline addPathToPolyline];
+            
+            for (int i = 0; i < [link.line numPointsInPath:0]; ++i) {
+                AGSPoint *p = [link.line pointOnPath:0 atIndex:i];
+                if (i <= index) {
+                    [firstPartPolyline addPointToPath:p];
+                } else {
+                    [secondPartPolyline addPointToPath:p];
+                }
+            }
+            
+            [firstPartPolyline addPointToPath:np];
+            [secondPartPolyline insertPoint:np onPath:0 atIndex:0];
+            
+            TYLink *firstPartLink = [[TYLink alloc] initWithLinkID:tempLinkID isVirtual:NO];
+            TYLink *secondPartLink = [[TYLink alloc] initWithLinkID:tempLinkID isVirtual:NO];
+            
+            firstPartLink.line = firstPartPolyline;
+            secondPartLink.line = secondPartPolyline;
+            
+            tempLinkID++;
+            
+            [tempLinkArray addObject:firstPartLink];
+            [tempLinkArray addObject:secondPartLink];
+            
+        }
+    }
+    NSLog(@"New Temp Links: %d", (int)tempLinkArray.count);
+    return tempLinkArray;
+}
+
+- (AGSPolyline *)getShorestPathFrom:(AGSPoint *)start To:(AGSPoint *)end
+{
+    [self reset];
+    
+    TYNode *startNode = [self processTempNodeForStart:start];
+    TYNode *endNode = [self processTempNodeForEnd:end];
+    
+    [self computePaths:startNode];
+    AGSPolyline *nodePath = [self getShorestPathTo:endNode];
+    
+    [self resetTempNodeForEnd];
+    [self resetTempNodeForStart];
+    
+    
+    //    if (path) {
+    //        AGSPoint *firstPoint = [path pointOnPath:0 atIndex:0];
+    //        double headDistance = [engine distanceFromGeometry:firstPoint toGeometry:start];
+    //        double endDistance = [engine distanceFromGeometry:firstPoint toGeometry:end];
+    //
+    //        if (headDistance > endDistance) {
+    //            AGSMutablePolyline *reversedPath = [[AGSMutablePolyline alloc] init];
+    //            [reversedPath addPathToPolyline];
+    //            for (int i = (int)[path numPointsInPath:0] - 1; i >= 0; --i) {
+    //                [reversedPath addPointToPath:[path pointOnPath:0 atIndex:i]];
+    //            }
+    //            path = reversedPath;
+    //        }
+    //    }
+    
+    if (nodePath) {
+        AGSPoint *firstPoint = [nodePath pointOnPath:0 atIndex:0];
+        double headDistance = [engine distanceFromGeometry:firstPoint toGeometry:start];
+        double endDistance = [engine distanceFromGeometry:firstPoint toGeometry:end];
+        
+        if (headDistance > endDistance) {
+            AGSMutablePolyline *reversedPath = [[AGSMutablePolyline alloc] init];
+            [reversedPath addPathToPolyline];
+            for (int i = (int)[nodePath numPointsInPath:0] - 1; i >= 0; --i) {
+                [reversedPath addPointToPath:[nodePath pointOnPath:0 atIndex:i]];
+            }
+            nodePath = reversedPath;
+        }
+    }
+    
+    AGSMutablePolyline *path = [[AGSMutablePolyline alloc] init];
+    [path addPathToPolyline];
+
+    for (int i = 0; i < [nodePath numPointsInPath:0]; ++i) {
+        [path addPointToPath:[nodePath pointOnPath:0 atIndex:i]];
+    }
+    
+    if ([engine distanceFromGeometry:start toGeometry:startNode.pos] > 0) {
+        [path insertPoint:start onPath:0 atIndex:0];
+        NSLog(@"Insert Start");
+    }
+    
+    if ([engine distanceFromGeometry:end toGeometry:endNode.pos] > 0) {
+        [path addPointToPath:end];
+        NSLog(@"Add End");
+    }
+        
+    return path;
+    
+    //    AGSGeometryEngine *engine = [AGSGeometryEngine defaultGeometryEngine];
+    //
+    //    NSArray *startNodeArray = [self getNearestNodes:start];
+    //    NSArray *endNodeArray = [self getNearestNodes:end];
+    //
+    //    NSLog(@"%d startNodes, %d endNodes", (int)startNodeArray.count, (int)endNodeArray.count);
+    //
+    //    AGSPolyline *result = nil;
+    //    double minLength = 1000000000;
+    //
+    //    int computationTimes = 0;
+    //
+    //    for (TYNode *startNode in startNodeArray) {
+    //        for (TYNode *endNode in endNodeArray) {
+    //            computationTimes++;
+    //
+    //            [self reset];
+    //            [self computePaths:startNode];
+    //            AGSPolyline *path = [self getShorestPathTo:endNode];
+    //
+    //            if (path) {
+    //                AGSPoint *firstPoint = [path pointOnPath:0 atIndex:0];
+    //                double headDistance = [engine distanceFromGeometry:firstPoint toGeometry:start];
+    //                double endDistance = [engine distanceFromGeometry:firstPoint toGeometry:end];
+    //
+    //                if (headDistance > endDistance) {
+    //                    AGSMutablePolyline *reversedPath = [[AGSMutablePolyline alloc] init];
+    //                    [reversedPath addPathToPolyline];
+    //                    for (int i = (int)[path numPointsInPath:0] - 1; i >= 0; --i) {
+    //                        [reversedPath addPointToPath:[path pointOnPath:0 atIndex:i]];
+    //                    }
+    //                    path = reversedPath;
+    //                }
+    //            }
+    //
+    //            if(path) {
+    //                AGSMutablePolyline *totalLine = [[AGSMutablePolyline alloc] init];
+    //                [totalLine addPathToPolyline];
+    //                for (int i = 0; i < [path numPointsInPath:0]; ++i) {
+    //                    [totalLine addPointToPath:[path pointOnPath:0 atIndex:i]];
+    //                }
+    //
+    //                if (![engine geometry:path touchesGeometry:start]) {
+    //                    AGSPoint *nearestStartPoint = [self getNearestPoint:start];
+    //                    [totalLine insertPoint:nearestStartPoint onPath:0 atIndex:0];
+    //                    [totalLine insertPoint:start onPath:0 atIndex:0];
+    //                }
+    //
+    //                if (![engine geometry:path touchesGeometry:end]) {
+    //                    AGSPoint *nearestEndPoint = [self getNearestPoint:end];
+    //                    [totalLine addPoint:nearestEndPoint toPath:0];
+    //                    [totalLine addPoint:end toPath:0];
+    //                }
+    //
+    //                double length = [[AGSGeometryEngine defaultGeometryEngine] lengthOfGeometry:totalLine];
+    //
+    //                if (length < minLength) {
+    //                    minLength = length;
+    //                    result = totalLine;
+    //                }
+    //            }
+    //        }
+    //    }
+    //
+    //    NSLog(@"%d computations", computationTimes);
+    //
+    //    return result;
+    
+    return nil;
 }
 
 - (NSString *)description

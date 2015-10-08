@@ -24,6 +24,7 @@
 
 - (id)initWithNodeID:(int)nodeID isVirtual:(BOOL)isVir;
 - (void)addLink:(TYLink *)link;
+- (void)removeLink:(TYLink *)link;
 
 - (void)reset;
 

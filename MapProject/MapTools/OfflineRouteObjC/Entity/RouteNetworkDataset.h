@@ -23,18 +23,16 @@
 
 @property (nonatomic, readonly) AGSPolyline *unionLine;
 
-//@property (nonatomic, strong) NSArray *allNodeArray;
-//@property (nonatomic, strong) NSArray *allLinkArray;
 @property (nonatomic, strong) NSMutableDictionary *allNodeDict;
 @property (nonatomic, strong) NSMutableDictionary *allLinkDict;
 
-
-- (AGSPoint *)getNearestPoint:(AGSPoint *)point;
-- (NSArray *)getNearestLinks:(AGSPoint *)point;
-- (NSArray *)getNearestNodes:(AGSPoint *)point;
+//- (AGSPoint *)getNearestPoint:(AGSPoint *)point;
+//- (NSArray *)getNearestLinks:(AGSPoint *)point;
+//- (NSArray *)getNearestNodes:(AGSPoint *)point;
+- (TYNode *)getTempNode:(AGSPoint *)point;
+- (NSArray *)getTempLinks:(AGSPoint *)point;
 
 - (void)computePaths:(TYNode *)source;
-//- (NSArray *)getShorestPathTo:(TYNode *)target;
 - (AGSPolyline *)getShorestPathTo:(TYNode *)target;
 
 - (void)reset;

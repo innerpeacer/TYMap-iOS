@@ -69,6 +69,9 @@
     hintLayer = [AGSGraphicsLayer graphicsLayer];
     [self.mapView addMapLayer:hintLayer];
     
+    
+//    [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(testOfflineRoute) userInfo:nil repeats:YES];
+
 
 }
 
@@ -164,23 +167,6 @@ int TestIndex = 0;
         }
 
     }
-    
-    
-//    [testLayer addGraphic:[AGSGraphic graphicWithGeometry:[routeNetwork getNearestPoint:mappoint] symbol:[AGSSimpleMarkerSymbol simpleMarkerSymbolWithColor:[UIColor redColor]] attributes:nil]];
-//    NSArray *nearestNodeArray = [routeNetwork getNearestNodes:mappoint];
-//    for (TYNode *node in nearestNodeArray) {
-//        [testLayer addGraphic:[AGSGraphic graphicWithGeometry:node.pos symbol:[AGSSimpleMarkerSymbol simpleMarkerSymbolWithColor:[UIColor redColor]] attributes:nil]];
-//    }
-    
-    
-//    NSArray *nearestArray = [routeNetwork getNearestLinks:mappoint];
-//    for (TYLink *link in nearestArray) {
-//        [testLayer addGraphic:[AGSGraphic graphicWithGeometry:link.line symbol:symbolgroup.testSimpleLineSymbol attributes:nil]];
-//    }
-    
-    
-    
-    
 }
 
 - (void)testOfflineRoute
@@ -200,17 +186,19 @@ int TestIndex = 0;
 //    [routeNetwork computePaths:start];
 //    AGSPolyline *line = [routeNetwork getShorestPathTo:end];
 
-    AGSPolyline *line = [routeNetwork getShorestPathFrom:start.pos To:end.pos];
+    startPoint = [AGSPoint pointWithX:start.pos.x + arc4random() % 5 y:start.pos.y + arc4random()%5 spatialReference:start.pos.spatialReference];
+    endPoint = [AGSPoint pointWithX:end.pos.x + arc4random() % 5 y:end.pos.y + arc4random() % 5 spatialReference:end.pos.spatialReference];
+    AGSPolyline *line = [routeNetwork getShorestPathFrom:startPoint To:endPoint];
     
     NSDate *endDate = [NSDate date];
     NSLog(@"导航用时：%f", [endDate timeIntervalSinceDate:now]);
     
     [testLayer removeAllGraphics];
-    [testLayer addGraphic:[AGSGraphic graphicWithGeometry:start.pos symbol:symbolgroup.testSimpleMarkerSymbol attributes:nil]];
-    [testLayer addGraphic:[AGSGraphic graphicWithGeometry:end.pos symbol:symbolgroup.testSimpleMarkerSymbol attributes:nil]];
+    [testLayer addGraphic:[AGSGraphic graphicWithGeometry:startPoint symbol:symbolgroup.testSimpleMarkerSymbol attributes:nil]];
+    [testLayer addGraphic:[AGSGraphic graphicWithGeometry:endPoint symbol:symbolgroup.testSimpleMarkerSymbol attributes:nil]];
     
-    [testLayer addGraphic:[AGSGraphic graphicWithGeometry:start.pos symbol:symbolgroup.startSymbol attributes:nil]];
-    [testLayer addGraphic:[AGSGraphic graphicWithGeometry:end.pos symbol:symbolgroup.endSymbol attributes:nil]];
+    [testLayer addGraphic:[AGSGraphic graphicWithGeometry:startPoint symbol:symbolgroup.startSymbol attributes:nil]];
+    [testLayer addGraphic:[AGSGraphic graphicWithGeometry:endPoint symbol:symbolgroup.endSymbol attributes:nil]];
     
     [testLayer addGraphic:[AGSGraphic graphicWithGeometry:line symbol:symbolgroup.testSimpleLineSymbol attributes:nil]];
     

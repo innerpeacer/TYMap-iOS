@@ -29,6 +29,11 @@
     [_adjacencies addObject:link];
 }
 
+- (void)removeLink:(TYLink *)link
+{
+    [_adjacencies removeObject:link];
+}
+
 - (void)reset
 {
     _minDistance = LARGE_DISTANCE;
