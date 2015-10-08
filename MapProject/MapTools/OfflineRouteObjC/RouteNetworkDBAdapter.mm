@@ -33,6 +33,11 @@ using namespace std;
     NSMutableDictionary *nodeDictionary;
     NSMutableDictionary *linkDictionary;
     NSMutableDictionary *nodeLinkDictionary;
+    
+    NSMutableArray *linkArray;
+    NSMutableArray *virtualLinkArray;
+    NSMutableArray *nodeArray;
+    NSMutableArray *virtualNodeArray;
 }
 
 @end
@@ -50,6 +55,11 @@ using namespace std;
         nodeDictionary = [NSMutableDictionary dictionary];
         linkDictionary = [NSMutableDictionary dictionary];
         nodeLinkDictionary = [NSMutableDictionary dictionary];
+        
+        linkArray = [NSMutableArray array];
+        virtualLinkArray = [NSMutableArray array];
+        nodeArray = [NSMutableArray array];
+        virtualNodeArray = [NSMutableArray array];
     }
     return self;
 }
@@ -60,14 +70,20 @@ using namespace std;
     [linkDictionary removeAllObjects];
     [nodeLinkDictionary removeAllObjects];
     
+    [linkArray removeAllObjects];
+    [virtualLinkArray removeAllObjects];
+    [nodeArray removeAllObjects];
+    [virtualNodeArray removeAllObjects];
+
+    
     [self getLinks];
     [self getNodes];
     [self processNodesAndLinks];
     
-    RouteNetworkDataset *dataset = [[RouteNetworkDataset alloc] init];
-    dataset.allNodeArray = nodeDictionary.allValues;
+    RouteNetworkDataset *dataset = [[RouteNetworkDataset alloc] initWithNodes:nodeArray VirtualNodes:virtualNodeArray Links:linkArray VirtualLinks:virtualLinkArray];
+//    dataset.allNodeArray = nodeDictionary.allValues;
     dataset.allNodeDict = nodeDictionary;
-    dataset.allLinkArray = linkDictionary.allValues;
+//    dataset.allLinkArray = linkDictionary.allValues;
     dataset.allLinkDict = linkDictionary;
     
     return dataset;
@@ -126,6 +142,12 @@ using namespace std;
         NSString *forwardLinkKey = [NSString stringWithFormat:@"%d%d", forwardLink.currentNodeID, forwardLink.nextNodeID];
         [linkDictionary setObject:forwardLink forKey:forwardLinkKey];
         
+        if (isVirtual) {
+            [virtualLinkArray addObject:forwardLink];
+        } else {
+            [linkArray addObject:forwardLink];
+        }
+        
         if (!isOneWay) {
             TYLink *reverseLink = [[TYLink alloc] initWithLinkID:linkID isVirtual:isVirtual];
             reverseLink.currentNodeID = endNode;
@@ -134,6 +156,13 @@ using namespace std;
             reverseLink.line = line;
             NSString *reverseLinkKey = [NSString stringWithFormat:@"%d%d", reverseLink.currentNodeID, reverseLink.nextNodeID];
             [linkDictionary setObject:reverseLink forKey:reverseLinkKey];
+            
+            if (isVirtual) {
+                [virtualLinkArray addObject:reverseLink];
+            } else {
+                [linkArray addObject:reverseLink];
+            }
+
         }
     }
 }
@@ -159,6 +188,12 @@ using namespace std;
         
         [nodeDictionary setObject:node forKey:@(nodeID)];
         [nodeLinkDictionary setObject:linksString forKey:@(nodeID)];
+        
+        if (isVirtual) {
+            [virtualNodeArray addObject:node];
+        } else {
+            [nodeArray addObject:node];
+        }
     }
 }
 

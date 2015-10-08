@@ -24,6 +24,10 @@
     
     AGSGraphicsLayer *testLayer;
     AGSGraphicsLayer *hintLayer;
+    
+    
+    AGSPoint *startPoint;
+    AGSPoint *endPoint;
 }
 
 @end
@@ -45,7 +49,7 @@
         objc_msgSend(self.mapView, method);
     }
     [self zoomToAllExtent];
-    
+    self.mapView.backgroundColor = [UIColor lightGrayColor];
     
     RouteNetworkDBAdapter *db = [[RouteNetworkDBAdapter alloc] initWithBuilding:self.currentBuilding];
     [db open];
@@ -70,27 +74,10 @@
 
 - (void)showNodesAndLinks
 {
-    NSMutableArray *linkArray = [NSMutableArray array];
-    NSMutableArray *virtualLinkArray = [NSMutableArray array];
-    NSMutableArray *nodeArray = [NSMutableArray array];
-    NSMutableArray *virtualNodeArray = [NSMutableArray array];
-
-    
-    for (TYLink *link in routeNetwork.allLinkArray) {
-        if (link.isVirtual) {
-            [virtualLinkArray addObject:link];
-        } else {
-            [linkArray addObject:link];
-        }
-    }
-    
-    for (TYNode *node in routeNetwork.allNodeArray) {
-        if (node.isVirtual) {
-            [virtualNodeArray addObject:node];
-        } else {
-            [nodeArray addObject:node];
-        }
-    }
+    NSArray *linkArray = routeNetwork.linkArray;
+    NSArray *virtualLinkArray = routeNetwork.virtualLinkArray;
+    NSArray *nodeArray = routeNetwork.nodeArray;
+    NSArray *virtualNodeArray = routeNetwork.virtualNodeArray;
     
     for (TYLink *link in linkArray) {
         [layergroup.linkLayer addGraphic:[AGSGraphic graphicWithGeometry:link.line symbol:nil attributes:nil]];
@@ -99,6 +86,8 @@
     for (TYLink *link in virtualLinkArray) {
         [layergroup.virtualLinkLayer addGraphic:[AGSGraphic graphicWithGeometry:link.line symbol:nil attributes:nil]];
     }
+    
+    [layergroup.unionLineLayer addGraphic:[AGSGraphic graphicWithGeometry:routeNetwork.unionLine symbol:nil attributes:nil]];
     
     for (TYNode *node in nodeArray) {
         [layergroup.nodeLayer addGraphic:[AGSGraphic graphicWithGeometry:node.pos symbol:nil attributes:nil]];
@@ -139,36 +128,82 @@
 int TestIndex = 0;
 - (void)TYMapView:(TYMapView *)mapView didClickAtPoint:(CGPoint)screen mapPoint:(TYPoint *)mappoint
 {
-    [self testOfflineRoute];
+    BOOL testOffline = YES;
+    
+    testOffline = NO;
+    
+    if (testOffline) {
+        [self testOfflineRoute];
+    } else {
+        startPoint = endPoint;
+        endPoint = mappoint;
+        if (startPoint && endPoint) {
+            NSDate *now = [NSDate date];
+            
+            [testLayer removeAllGraphics];
+            [testLayer addGraphic:[AGSGraphic graphicWithGeometry:startPoint symbol:symbolgroup.testSimpleMarkerSymbol attributes:nil]];
+            [testLayer addGraphic:[AGSGraphic graphicWithGeometry:endPoint symbol:symbolgroup.testSimpleMarkerSymbol attributes:nil]];
+            
+            [testLayer addGraphic:[AGSGraphic graphicWithGeometry:startPoint symbol:symbolgroup.startSymbol attributes:nil]];
+            [testLayer addGraphic:[AGSGraphic graphicWithGeometry:endPoint symbol:symbolgroup.endSymbol attributes:nil]];
+            
+            AGSPolyline *line = [routeNetwork getShorestPathFrom:startPoint To:endPoint];
+            [testLayer addGraphic:[AGSGraphic graphicWithGeometry:line symbol:symbolgroup.testSimpleLineSymbol attributes:nil]];
+            
+            NSDate *endDate = [NSDate date];
+            NSLog(@"导航用时：%f", [endDate timeIntervalSinceDate:now]);
+            
+            for (int i = 0; i < line.numPoints; ++i) {
+                AGSTextSymbol *ts = [AGSTextSymbol textSymbolWithText:[NSString stringWithFormat:@"%d", i] color:[UIColor redColor]];
+                ts.offset = CGPointMake(0, 5);
+                ts.fontSize = 10;
+                
+                
+                [testLayer addGraphic:[AGSGraphic graphicWithGeometry:[line pointOnPath:0 atIndex:i] symbol:ts attributes:nil]];
+            }
+        }
+
+    }
+    
+    
+//    [testLayer addGraphic:[AGSGraphic graphicWithGeometry:[routeNetwork getNearestPoint:mappoint] symbol:[AGSSimpleMarkerSymbol simpleMarkerSymbolWithColor:[UIColor redColor]] attributes:nil]];
+//    NSArray *nearestNodeArray = [routeNetwork getNearestNodes:mappoint];
+//    for (TYNode *node in nearestNodeArray) {
+//        [testLayer addGraphic:[AGSGraphic graphicWithGeometry:node.pos symbol:[AGSSimpleMarkerSymbol simpleMarkerSymbolWithColor:[UIColor redColor]] attributes:nil]];
+//    }
+    
+    
+//    NSArray *nearestArray = [routeNetwork getNearestLinks:mappoint];
+//    for (TYLink *link in nearestArray) {
+//        [testLayer addGraphic:[AGSGraphic graphicWithGeometry:link.line symbol:symbolgroup.testSimpleLineSymbol attributes:nil]];
+//    }
+    
+    
+    
+    
 }
 
 - (void)testOfflineRoute
 {
-    if (++TestIndex >= routeNetwork.allNodeArray.count) {
+    if (++TestIndex >= routeNetwork.nodeArray.count) {
         TestIndex = 0;
     }
     
+    int randomStart = (int)arc4random()%routeNetwork.nodeArray.count;
+    int randomEnd = (int)arc4random()%routeNetwork.nodeArray.count;
+    TYNode *start = routeNetwork.nodeArray[randomStart];
+    TYNode *end = routeNetwork.nodeArray[randomEnd];
     
-    //    int randomStart = (int)arc4random()%routeManager.routeNetworkDataset.allNodeArray.count;
-    //    int randomEnd = (int)arc4random()%routeManager.routeNetworkDataset.allNodeArray.count;
-    //    TYNode *start = routeManager.routeNetworkDataset.allNodeArray[randomStart];
-    //    TYNode *end = routeManager.routeNetworkDataset.allNodeArray[randomEnd];
+    NSDate *now = [NSDate date];
     
-    int randomStart = (int)arc4random()%routeNetwork.allNodeArray.count;
-    int randomEnd = (int)arc4random()%routeNetwork.allNodeArray.count;
-    TYNode *start = routeNetwork.allNodeArray[randomStart];
-    TYNode *end = routeNetwork.allNodeArray[randomEnd];
+//    [routeNetwork reset];
+//    [routeNetwork computePaths:start];
+//    AGSPolyline *line = [routeNetwork getShorestPathTo:end];
+
+    AGSPolyline *line = [routeNetwork getShorestPathFrom:start.pos To:end.pos];
     
-    //    NSDate *now = [NSDate date];
-    //    NSArray *path = [routeManager solvePathFrom:start To:end];
-    
-    [routeNetwork reset];
-    [routeNetwork computePaths:start];
-    NSArray *path = [routeNetwork getShorestPathTo:end];
-    
-    
-    //    NSDate *endDate = [NSDate date];
-    //    NSLog(@"导航用时：%f", [endDate timeIntervalSinceDate:now]);
+    NSDate *endDate = [NSDate date];
+    NSLog(@"导航用时：%f", [endDate timeIntervalSinceDate:now]);
     
     [testLayer removeAllGraphics];
     [testLayer addGraphic:[AGSGraphic graphicWithGeometry:start.pos symbol:symbolgroup.testSimpleMarkerSymbol attributes:nil]];
@@ -177,21 +212,8 @@ int TestIndex = 0;
     [testLayer addGraphic:[AGSGraphic graphicWithGeometry:start.pos symbol:symbolgroup.startSymbol attributes:nil]];
     [testLayer addGraphic:[AGSGraphic graphicWithGeometry:end.pos symbol:symbolgroup.endSymbol attributes:nil]];
     
-    int count = 0;
-    NSMutableArray *lineArray = [NSMutableArray array];
-    for (TYNode *node in path) {
-        if (node && node.previousNode) {
-            NSString *key = [NSString stringWithFormat:@"%d%d", node.nodeID, node.previousNode.nodeID];
-            TYLink *link = [routeNetwork.allLinkDict objectForKey:key];
-            //            [testLayer addGraphic:[AGSGraphic graphicWithGeometry:link.line symbol:symbolgroup.testSimpleLineSymbol attributes:nil]];
-            [lineArray addObject:link.line];
-            //            NSLog(@"Points: %d", (int)link.line.numPoints);
-            count += link.line.numPoints;
-        }
-    }
-    
-    AGSPolyline *line = (AGSPolyline *)[[AGSGeometryEngine defaultGeometryEngine] unionGeometries:lineArray];
     [testLayer addGraphic:[AGSGraphic graphicWithGeometry:line symbol:symbolgroup.testSimpleLineSymbol attributes:nil]];
+    
 }
 
 

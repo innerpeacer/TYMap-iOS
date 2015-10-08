@@ -19,6 +19,7 @@
 
 @property (nonatomic, strong) AGSGraphicsLayer *linkLayer;
 @property (nonatomic, strong) AGSGraphicsLayer *virtualLinkLayer;
+@property (nonatomic, strong) AGSGraphicsLayer *unionLineLayer;
 
 - (void)addToMap:(TYMapView *)mapView;
 
