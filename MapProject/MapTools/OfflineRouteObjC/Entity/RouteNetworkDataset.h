@@ -14,20 +14,19 @@
 
 @interface RouteNetworkDataset : NSObject
 
-- (id)initWithNodes:(NSArray *)nodes VirtualNodes:(NSArray *)virtualNods Links:(NSArray *)links VirtualLinks:(NSArray *)virtualLinks;
+- (id)initWithNodes:(NSArray *)nodes Links:(NSArray *)links;
 
-
-@property (nonatomic, strong) NSArray *linkArray;
-@property (nonatomic, strong) NSArray *virtualLinkArray;
-@property (nonatomic, strong) NSArray *nodeArray;
-@property (nonatomic, strong) NSArray *virtualNodeArray;
+@property (nonatomic, strong) NSMutableArray *linkArray;
+@property (nonatomic, strong) NSMutableArray *virtualLinkArray;
+@property (nonatomic, strong) NSMutableArray *nodeArray;
+@property (nonatomic, strong) NSMutableArray *virtualNodeArray;
 
 @property (nonatomic, readonly) AGSPolyline *unionLine;
 
 //@property (nonatomic, strong) NSArray *allNodeArray;
 //@property (nonatomic, strong) NSArray *allLinkArray;
-@property (nonatomic, strong) NSDictionary *allNodeDict;
-@property (nonatomic, strong) NSDictionary *allLinkDict;
+@property (nonatomic, strong) NSMutableDictionary *allNodeDict;
+@property (nonatomic, strong) NSMutableDictionary *allLinkDict;
 
 
 - (AGSPoint *)getNearestPoint:(AGSPoint *)point;

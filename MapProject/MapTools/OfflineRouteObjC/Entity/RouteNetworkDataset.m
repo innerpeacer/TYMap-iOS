@@ -7,31 +7,124 @@
 //
 
 #import "RouteNetworkDataset.h"
+#import "RouteNetworkDBEntity.h"
+
+@interface RouteNetworkDataset()
+{
+    NSMutableArray *replacedStartNodeArray;
+    NSMutableArray *replacedStartLinkArray;
+
+    NSMutableArray *replacedEndNodeArray;
+    NSMutableArray *replacedEndLinkArray;
+    
+    
+    NSMutableArray *tempStartNodeArray;
+    NSMutableArray *tempStartLinkArray;
+
+    NSMutableArray *tempEndNodeArray;
+    NSMutableArray *tempEndLinkArray;
+}
+
+@end
 
 @implementation RouteNetworkDataset
 
-- (id)initWithNodes:(NSArray *)nodes VirtualNodes:(NSArray *)virtualNods Links:(NSArray *)links VirtualLinks:(NSArray *)virtualLinks
+- (id)initWithNodes:(NSArray *)nodes Links:(NSArray *)links
 {
     self = [super init];
     if (self) {
-        _nodeArray = [NSArray arrayWithArray:nodes];
-        _virtualNodeArray = [NSArray arrayWithArray:virtualNods];
-        _linkArray = [NSArray arrayWithArray:links];
-        _virtualLinkArray = [NSArray arrayWithArray:virtualLinks];
+        replacedStartNodeArray = [NSMutableArray array];
+        replacedStartLinkArray = [NSMutableArray array];
         
+        replacedEndNodeArray = [NSMutableArray array];
+        replacedEndLinkArray = [NSMutableArray array];
+        
+        tempStartNodeArray = [NSMutableArray array];
+        tempStartLinkArray = [NSMutableArray array];
+        
+        tempEndNodeArray = [NSMutableArray array];
+        tempEndLinkArray = [NSMutableArray array];
+        
+        [self extractNodes:nodes];
+        [self extractLinks:links];
+        [self processNodesAndLinks];
         
         NSMutableArray *allLinkLines = [NSMutableArray array];
         for (TYLink *link in _linkArray) {
             [allLinkLines addObject:link.line];
         }
         
-        for (TYLink *link in _virtualLinkArray) {
-            [allLinkLines addObject:link.line];
-        }
         _unionLine = (AGSPolyline *)[[AGSGeometryEngine defaultGeometryEngine] unionGeometries:allLinkLines];
-        
     }
     return self;
+}
+
+- (void)extractNodes:(NSArray *)nodes
+{
+    _nodeArray = [NSMutableArray array];
+    _virtualNodeArray = [NSMutableArray array];
+    _allNodeDict = [NSMutableDictionary dictionary];
+    
+    for (NodeRecord *record in nodes) {
+        TYNode *node = [[TYNode alloc] initWithNodeID:record.nodeID isVirtual:record.isVirtual];
+        node.pos = record.pos;
+        
+        [_allNodeDict setObject:node forKey:@(record.nodeID)];
+        
+        if (record.isVirtual) {
+            [_virtualNodeArray addObject:node];
+        } else {
+            [_nodeArray addObject:node];
+        }
+    }
+}
+
+- (void)extractLinks:(NSArray *)links
+{
+    _linkArray = [NSMutableArray array];
+    _virtualLinkArray = [NSMutableArray array];
+    _allLinkDict = [NSMutableDictionary dictionary];
+    
+    for (LinkRecord *record in links) {
+        TYLink *forwardLink = [[TYLink alloc] initWithLinkID:record.linkID isVirtual:record.isVirtual];
+        forwardLink.currentNodeID = record.headNode;
+        forwardLink.nextNodeID = record.endNode;
+        forwardLink.length = record.length;
+        forwardLink.line = record.line;
+        NSString *forwardLinkKey = [NSString stringWithFormat:@"%d%d", forwardLink.currentNodeID, forwardLink.nextNodeID];
+        [_allLinkDict setObject:forwardLink forKey:forwardLinkKey];
+        
+        if (record.isVirtual) {
+            [_virtualLinkArray addObject:forwardLink];
+        } else {
+            [_linkArray addObject:forwardLink];
+        }
+        
+        if (!record.isOneWay) {
+            TYLink *reverseLink = [[TYLink alloc] initWithLinkID:record.linkID isVirtual:record.isVirtual];
+            reverseLink.currentNodeID = record.endNode;
+            reverseLink.nextNodeID = record.headNode;
+            reverseLink.length = record.length;
+            reverseLink.line = record.line;
+            NSString *reverseLinkKey = [NSString stringWithFormat:@"%d%d", reverseLink.currentNodeID, reverseLink.nextNodeID];
+            [_allLinkDict setObject:reverseLink forKey:reverseLinkKey];
+            
+            if (record.isVirtual) {
+                [_virtualLinkArray addObject:reverseLink];
+            } else {
+                [_linkArray addObject:reverseLink];
+            }
+        }
+    }
+}
+
+- (void)processNodesAndLinks
+{
+    for (TYLink *link in _allLinkDict.allValues) {
+        TYNode *headNode = [_allNodeDict objectForKey:@(link.currentNodeID)];
+        [headNode addLink:link];
+        link.nextNode = [_allNodeDict objectForKey:@(link.nextNodeID)];
+    }
 }
 
 - (AGSPoint *)getNearestPoint:(AGSPoint *)point

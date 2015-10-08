@@ -125,6 +125,7 @@
 		57EE3E911B7471CC00977049 /* CityBuildingTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 57EE3E901B7471CC00977049 /* CityBuildingTableVC.m */; };
 		57EE3E941B74788100977049 /* SelectBuildingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 57EE3E931B74788100977049 /* SelectBuildingVC.m */; };
 		57F422A01BB038730064D30B /* LicenseGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F4229F1BB038730064D30B /* LicenseGenerator.m */; };
+		57F5383E1BC6AF0C00692692 /* RouteNetworkDBEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F5383D1BC6AF0C00692692 /* RouteNetworkDBEntity.m */; settings = {ASSET_TAGS = (); }; };
 		57F8789F1B9E871B00D27CE4 /* TYCityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F8789E1B9E871B00D27CE4 /* TYCityManager.m */; };
 		57F878AC1B9E87C600D27CE4 /* TYBuildingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F878AB1B9E87C600D27CE4 /* TYBuildingManager.m */; };
 		57F8DE5F1B74553100143739 /* OriginalMapVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F8DE5E1B74553100143739 /* OriginalMapVC.m */; };
@@ -369,6 +370,8 @@
 		57F06C1D1A87BC7500B9511F /* MapProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MapProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		57F4229E1BB038730064D30B /* LicenseGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LicenseGenerator.h; sourceTree = "<group>"; };
 		57F4229F1BB038730064D30B /* LicenseGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LicenseGenerator.m; sourceTree = "<group>"; };
+		57F5383C1BC6AF0C00692692 /* RouteNetworkDBEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RouteNetworkDBEntity.h; sourceTree = "<group>"; };
+		57F5383D1BC6AF0C00692692 /* RouteNetworkDBEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RouteNetworkDBEntity.m; sourceTree = "<group>"; };
 		57F8789D1B9E871B00D27CE4 /* TYCityManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYCityManager.h; sourceTree = "<group>"; };
 		57F8789E1B9E871B00D27CE4 /* TYCityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYCityManager.m; sourceTree = "<group>"; };
 		57F878AA1B9E87C600D27CE4 /* TYBuildingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYBuildingManager.h; sourceTree = "<group>"; };
@@ -627,6 +630,8 @@
 		5787711C1BBB90D700F90D7B /* OfflineRouteObjC */ = {
 			isa = PBXGroup;
 			children = (
+				57F5383C1BC6AF0C00692692 /* RouteNetworkDBEntity.h */,
+				57F5383D1BC6AF0C00692692 /* RouteNetworkDBEntity.m */,
 				578771201BBB911400F90D7B /* RouteNetworkDBAdapter.h */,
 				578771211BBB911400F90D7B /* RouteNetworkDBAdapter.mm */,
 				578771261BBB914700F90D7B /* Entity */,
@@ -1007,6 +1012,7 @@
 				57FC97A91BB127DE006D6D00 /* TYLicenseValidation.mm in Sources */,
 				5794C0F31B560558002DCE9F /* TYFloorLayer.m in Sources */,
 				5794C0C41B560558002DCE9F /* TYGeometry.m in Sources */,
+				57F5383E1BC6AF0C00692692 /* RouteNetworkDBEntity.m in Sources */,
 				57EB457C1B73D2B50050956F /* RATreeView.m in Sources */,
 				57672D5D1B55FF9900DAD219 /* TYUserDefaults.m in Sources */,
 				5794C0CD1B560558002DCE9F /* TYPolyline.m in Sources */,

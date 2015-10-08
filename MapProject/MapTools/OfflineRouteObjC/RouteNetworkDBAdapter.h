@@ -18,5 +18,9 @@
 - (BOOL)close;
 
 - (RouteNetworkDataset *)readRouteNetworkDataset;
+- (NSArray *)getLinks;
+- (NSArray *)getNodes;
 
 @end
+
+
