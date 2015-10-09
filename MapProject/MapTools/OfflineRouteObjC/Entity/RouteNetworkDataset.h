@@ -39,4 +39,6 @@
 
 - (AGSPolyline *)getShorestPathFrom:(AGSPoint *)start To:(AGSPoint *)end;
 
+
+- (NSArray *)getShorestNodeArrayFrom:(AGSPoint *)start To:(AGSPoint *)end;
 @end

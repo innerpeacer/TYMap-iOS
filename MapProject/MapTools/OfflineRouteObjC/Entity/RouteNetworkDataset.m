@@ -272,6 +272,9 @@
             [pathArray addObject:link.line];
             
             NSLog(@"%d ==> NodeID: %d, LinkID: %d", index++, node.nodeID, link.linkID);
+            NSLog(@"%@", node);
+            NSLog(@"%@", link);
+
         }
     }
     AGSPolyline *result = (AGSPolyline *)[engine unionGeometries:pathArray];
@@ -656,5 +659,34 @@
 {
     return [NSString stringWithFormat:@"%d Links and %d Nodes", (int)(_linkArray.count + _virtualLinkArray.count), (int)(_nodeArray.count + _virtualNodeArray.count)];
 }
+
+#pragma mark Debug Method
+
+- (NSArray *)getShorestNodeArrayTo:(TYNode *)target
+{
+    NSMutableArray *array = [NSMutableArray array];
+    for (TYNode *node = target; node != nil; node = node.previousNode) {
+        [array addObject:node];
+    }
+    NSArray *reverseArray = [[array reverseObjectEnumerator] allObjects];
+    return reverseArray;
+}
+
+- (NSArray *)getShorestNodeArrayFrom:(AGSPoint *)start To:(AGSPoint *)end
+{
+    [self reset];
+    
+    TYNode *startNode = [self processTempNodeForStart:start];
+    TYNode *endNode = [self processTempNodeForEnd:end];
+    
+    [self computePaths:startNode];
+    NSArray *nodeArray = [self getShorestNodeArrayTo:endNode];
+    
+    [self resetTempNodeForEnd];
+    [self resetTempNodeForStart];
+    
+    return nodeArray;
+}
+
 
 @end
