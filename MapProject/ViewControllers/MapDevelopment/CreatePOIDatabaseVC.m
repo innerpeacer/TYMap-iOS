@@ -87,37 +87,43 @@
         }
         [self addToLog:[NSString stringWithFormat:@"End %@: Insert %d Room POI", info.mapID, (int)roomArray.count]];
 
-        
-//        NSArray *facilityArray = [self loadFacilitiesWithInfo:info];
-        AGSFeatureSet *facilityFeatureSet = [[AGSFeatureSet alloc] initWithJSON:allMapData[@"facility"]];
-        NSArray *facilityArray = facilityFeatureSet.features;
-        [self addToLog:[NSString stringWithFormat:@"Begin %@", info.mapID]];
-        
-        for (AGSGraphic *graphic in facilityArray) {
+        NSLog(@"%@", allMapData[@"facility"]);
+        if ([allMapData[@"facility"] isKindOfClass:[NSString class]]) {
+            continue;
+        } else {
+            AGSFeatureSet *facilityFeatureSet = [[AGSFeatureSet alloc] initWithJSON:allMapData[@"facility"]];
             
-            NSString *name = [graphic attributeForKey:@"NAME"];
-            if (name != nil && [name isKindOfClass:[NSString class]]) {
+            NSArray *facilityArray = facilityFeatureSet.features;
+            [self addToLog:[NSString stringWithFormat:@"Begin %@", info.mapID]];
+            
+            for (AGSGraphic *graphic in facilityArray) {
                 
-            } else {
-                continue;
+                NSString *name = [graphic attributeForKey:@"NAME"];
+                if (name != nil && [name isKindOfClass:[NSString class]]) {
+                    
+                } else {
+                    continue;
+                }
+                
+                NSString *gid = [graphic attributeForKey:@"GEO_ID"];
+                NSString *pid = [graphic attributeForKey:@"POI_ID"];
+                NSString *bid = [graphic attributeForKey:@"BUILDING_ID"];
+                NSString *fid = [graphic attributeForKey:@"FLOOR_ID"];
+                NSNumber *cid = [graphic attributeForKey:@"CATEGORY_ID"];
+                
+                AGSPoint *pos = (AGSPoint *)graphic.geometry;
+                
+                NSNumber *color = [graphic attributeForKey:@"COLOR"];
+                NSNumber *fIndex = [graphic attributeForKey:@"FLOOR_INDEX"];
+                NSString *fName = [graphic attributeForKey:@"FLOOR_NAME"];
+                NSNumber *layer = @(POI_FACILITY);
+                
+                [db insertPOIWithGeoID:gid poiID:pid buildingID:bid floorID:fid name:name categoryID:cid labelX:@(pos.x) labelY:@(pos.y) color:color floorIndex:fIndex floorName:fName layer:layer];
             }
-            
-            NSString *gid = [graphic attributeForKey:@"GEO_ID"];
-            NSString *pid = [graphic attributeForKey:@"POI_ID"];
-            NSString *bid = [graphic attributeForKey:@"BUILDING_ID"];
-            NSString *fid = [graphic attributeForKey:@"FLOOR_ID"];
-            NSNumber *cid = [graphic attributeForKey:@"CATEGORY_ID"];
-            
-            AGSPoint *pos = (AGSPoint *)graphic.geometry;
-            
-            NSNumber *color = [graphic attributeForKey:@"COLOR"];
-            NSNumber *fIndex = [graphic attributeForKey:@"FLOOR_INDEX"];
-            NSString *fName = [graphic attributeForKey:@"FLOOR_NAME"];
-            NSNumber *layer = @(POI_FACILITY);
-            
-            [db insertPOIWithGeoID:gid poiID:pid buildingID:bid floorID:fid name:name categoryID:cid labelX:@(pos.x) labelY:@(pos.y) color:color floorIndex:fIndex floorName:fName layer:layer];
+            [self addToLog:[NSString stringWithFormat:@"End %@: Insert %d Facility POI", info.mapID, (int)facilityArray.count]];
         }
-        [self addToLog:[NSString stringWithFormat:@"End %@: Insert %d Facility POI", info.mapID, (int)facilityArray.count]];
+
+
     }
     [db close];
 }
