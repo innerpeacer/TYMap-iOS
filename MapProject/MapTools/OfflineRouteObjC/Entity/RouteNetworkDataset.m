@@ -263,11 +263,15 @@
     //    NSLog(@"Simplified Points: %d", (int)result.numPoints);
     
     NSMutableArray *pathArray = [NSMutableArray array];
+    
+    int index = 0;
     for (TYNode *node in reverseArray) {
         if (node && node.previousNode) {
             NSString *key = [NSString stringWithFormat:@"%d%d", node.nodeID, node.previousNode.nodeID];
             TYLink *link = [_allLinkDict objectForKey:key];
             [pathArray addObject:link.line];
+            
+            NSLog(@"%d ==> NodeID: %d, LinkID: %d", index++, node.nodeID, link.linkID);
         }
     }
     AGSPolyline *result = (AGSPolyline *)[engine unionGeometries:pathArray];
@@ -613,22 +617,6 @@
     [self resetTempNodeForEnd];
     [self resetTempNodeForStart];
     
-    
-    //    if (path) {
-    //        AGSPoint *firstPoint = [path pointOnPath:0 atIndex:0];
-    //        double headDistance = [engine distanceFromGeometry:firstPoint toGeometry:start];
-    //        double endDistance = [engine distanceFromGeometry:firstPoint toGeometry:end];
-    //
-    //        if (headDistance > endDistance) {
-    //            AGSMutablePolyline *reversedPath = [[AGSMutablePolyline alloc] init];
-    //            [reversedPath addPathToPolyline];
-    //            for (int i = (int)[path numPointsInPath:0] - 1; i >= 0; --i) {
-    //                [reversedPath addPointToPath:[path pointOnPath:0 atIndex:i]];
-    //            }
-    //            path = reversedPath;
-    //        }
-    //    }
-    
     if (nodePath) {
         AGSPoint *firstPoint = [nodePath pointOnPath:0 atIndex:0];
         double headDistance = [engine distanceFromGeometry:firstPoint toGeometry:start];
@@ -662,76 +650,6 @@
     }
         
     return path;
-    
-    //    AGSGeometryEngine *engine = [AGSGeometryEngine defaultGeometryEngine];
-    //
-    //    NSArray *startNodeArray = [self getNearestNodes:start];
-    //    NSArray *endNodeArray = [self getNearestNodes:end];
-    //
-    //    NSLog(@"%d startNodes, %d endNodes", (int)startNodeArray.count, (int)endNodeArray.count);
-    //
-    //    AGSPolyline *result = nil;
-    //    double minLength = 1000000000;
-    //
-    //    int computationTimes = 0;
-    //
-    //    for (TYNode *startNode in startNodeArray) {
-    //        for (TYNode *endNode in endNodeArray) {
-    //            computationTimes++;
-    //
-    //            [self reset];
-    //            [self computePaths:startNode];
-    //            AGSPolyline *path = [self getShorestPathTo:endNode];
-    //
-    //            if (path) {
-    //                AGSPoint *firstPoint = [path pointOnPath:0 atIndex:0];
-    //                double headDistance = [engine distanceFromGeometry:firstPoint toGeometry:start];
-    //                double endDistance = [engine distanceFromGeometry:firstPoint toGeometry:end];
-    //
-    //                if (headDistance > endDistance) {
-    //                    AGSMutablePolyline *reversedPath = [[AGSMutablePolyline alloc] init];
-    //                    [reversedPath addPathToPolyline];
-    //                    for (int i = (int)[path numPointsInPath:0] - 1; i >= 0; --i) {
-    //                        [reversedPath addPointToPath:[path pointOnPath:0 atIndex:i]];
-    //                    }
-    //                    path = reversedPath;
-    //                }
-    //            }
-    //
-    //            if(path) {
-    //                AGSMutablePolyline *totalLine = [[AGSMutablePolyline alloc] init];
-    //                [totalLine addPathToPolyline];
-    //                for (int i = 0; i < [path numPointsInPath:0]; ++i) {
-    //                    [totalLine addPointToPath:[path pointOnPath:0 atIndex:i]];
-    //                }
-    //
-    //                if (![engine geometry:path touchesGeometry:start]) {
-    //                    AGSPoint *nearestStartPoint = [self getNearestPoint:start];
-    //                    [totalLine insertPoint:nearestStartPoint onPath:0 atIndex:0];
-    //                    [totalLine insertPoint:start onPath:0 atIndex:0];
-    //                }
-    //
-    //                if (![engine geometry:path touchesGeometry:end]) {
-    //                    AGSPoint *nearestEndPoint = [self getNearestPoint:end];
-    //                    [totalLine addPoint:nearestEndPoint toPath:0];
-    //                    [totalLine addPoint:end toPath:0];
-    //                }
-    //
-    //                double length = [[AGSGeometryEngine defaultGeometryEngine] lengthOfGeometry:totalLine];
-    //
-    //                if (length < minLength) {
-    //                    minLength = length;
-    //                    result = totalLine;
-    //                }
-    //            }
-    //        }
-    //    }
-    //
-    //    NSLog(@"%d computations", computationTimes);
-    //
-    //    return result;
-    
-    return nil;
 }
 
 - (NSString *)description

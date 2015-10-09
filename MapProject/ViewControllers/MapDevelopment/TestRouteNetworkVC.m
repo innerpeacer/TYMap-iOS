@@ -182,10 +182,6 @@ int TestIndex = 0;
     
     NSDate *now = [NSDate date];
     
-//    [routeNetwork reset];
-//    [routeNetwork computePaths:start];
-//    AGSPolyline *line = [routeNetwork getShorestPathTo:end];
-
     startPoint = [AGSPoint pointWithX:start.pos.x + arc4random() % 5 y:start.pos.y + arc4random()%5 spatialReference:start.pos.spatialReference];
     endPoint = [AGSPoint pointWithX:end.pos.x + arc4random() % 5 y:end.pos.y + arc4random() % 5 spatialReference:end.pos.spatialReference];
     AGSPolyline *line = [routeNetwork getShorestPathFrom:startPoint To:endPoint];
