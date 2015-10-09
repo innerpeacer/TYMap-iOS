@@ -70,9 +70,7 @@
     [self.mapView addMapLayer:hintLayer];
     
     
-//    [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(testOfflineRoute) userInfo:nil repeats:YES];
-
-
+    [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(testOfflineRoute) userInfo:nil repeats:YES];
 }
 
 - (void)showNodesAndLinks
@@ -143,6 +141,8 @@ int TestIndex = 0;
         if (startPoint && endPoint) {
             NSDate *now = [NSDate date];
             
+            
+            
             [testLayer removeAllGraphics];
             [testLayer addGraphic:[AGSGraphic graphicWithGeometry:startPoint symbol:symbolgroup.testSimpleMarkerSymbol attributes:nil]];
             [testLayer addGraphic:[AGSGraphic graphicWithGeometry:endPoint symbol:symbolgroup.testSimpleMarkerSymbol attributes:nil]];
@@ -150,33 +150,18 @@ int TestIndex = 0;
             [testLayer addGraphic:[AGSGraphic graphicWithGeometry:startPoint symbol:symbolgroup.startSymbol attributes:nil]];
             [testLayer addGraphic:[AGSGraphic graphicWithGeometry:endPoint symbol:symbolgroup.endSymbol attributes:nil]];
             
-//            AGSPolyline *line = [routeNetwork getShorestPathFrom:startPoint To:endPoint];
-//            [testLayer addGraphic:[AGSGraphic graphicWithGeometry:line symbol:symbolgroup.testSimpleLineSymbol attributes:nil]];
-            
-            int i = 0;
-            NSArray *nodeArray = [routeNetwork getShorestNodeArrayFrom:startPoint To:endPoint];
-            for (TYNode *node in nodeArray) {
-                [testLayer addGraphic:[AGSGraphic graphicWithGeometry:node.pos symbol:symbolgroup.testSimpleMarkerSymbol attributes:nil]];
-
-                AGSTextSymbol *ts = [AGSTextSymbol textSymbolWithText:[NSString stringWithFormat:@"%d", i++] color:[UIColor redColor]];
+            AGSPolyline *line = [routeNetwork getShorestPathFrom:startPoint To:endPoint];
+            [testLayer addGraphic:[AGSGraphic graphicWithGeometry:line symbol:symbolgroup.testSimpleLineSymbol attributes:nil]];
+            for (int i = 0; i < line.numPoints; ++i) {
+                AGSTextSymbol *ts = [AGSTextSymbol textSymbolWithText:[NSString stringWithFormat:@"%d", i] color:[UIColor redColor]];
                 ts.offset = CGPointMake(0, 5);
                 ts.fontSize = 10;
                 
-                
-                [testLayer addGraphic:[AGSGraphic graphicWithGeometry:node.pos symbol:ts attributes:nil]];
+                [testLayer addGraphic:[AGSGraphic graphicWithGeometry:[line pointOnPath:0 atIndex:i] symbol:ts attributes:nil]];
             }
             
             NSDate *endDate = [NSDate date];
             NSLog(@"导航用时：%f", [endDate timeIntervalSinceDate:now]);
-            
-//            for (int i = 0; i < line.numPoints; ++i) {
-//                AGSTextSymbol *ts = [AGSTextSymbol textSymbolWithText:[NSString stringWithFormat:@"%d", i] color:[UIColor redColor]];
-//                ts.offset = CGPointMake(0, 5);
-//                ts.fontSize = 10;
-//                
-//                
-//                [testLayer addGraphic:[AGSGraphic graphicWithGeometry:[line pointOnPath:0 atIndex:i] symbol:ts attributes:nil]];
-//            }
         }
 
     }

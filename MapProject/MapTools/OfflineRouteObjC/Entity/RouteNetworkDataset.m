@@ -234,6 +234,57 @@
     //    NSLog(@"Computing Time: %f", [endComputation timeIntervalSinceDate:now]);
 }
 
+//- (AGSPolyline *)getShorestPathTo:(TYNode *)target
+//{
+//    NSMutableArray *array = [NSMutableArray array];
+//    for (TYNode *node = target; node != nil; node = node.previousNode) {
+//        [array addObject:node];
+//    }
+//    NSArray *reverseArray = [[array reverseObjectEnumerator] allObjects];
+//
+//    //    AGSMutablePolyline *resultLine = [[AGSMutablePolyline alloc] init];
+//    //    [resultLine addPathToPolyline];
+//    //
+//    ////    AGSPolyline *resultLine = [[AGSPolyline alloc] init];
+//    //    for (TYNode *node in reverseArray) {
+//    //        if (node && node.previousNode) {
+//    //            NSString *key = [NSString stringWithFormat:@"%d%d", node.nodeID, node.previousNode.nodeID];
+//    //            TYLink *link = [_allLinkDict objectForKey:key];
+//    //            for (int i = 0; i < [link.line numPointsInPath:0]; ++i) {
+//    //                [resultLine addPointToPath:[link.line pointOnPath:0 atIndex:i]];
+//    //            }
+//    ////            resultLine = (AGSPolyline *)[engine unionGeometries:@[resultLine, link.line]];
+//    //        }
+//    //    }
+//    //    NSLog(@"Primitive Points: %d", (int)resultLine.numPoints);
+//    //    AGSPolyline *result = (AGSPolyline *)[[AGSGeometryEngine defaultGeometryEngine] simplifyGeometry:resultLine];
+//    ////    AGSPolyline *result = resultLine;
+//    //
+//    //    NSLog(@"Simplified Points: %d", (int)result.numPoints);
+//
+//    NSMutableArray *pathArray = [NSMutableArray array];
+//
+//    int index = 0;
+//    for (TYNode *node in reverseArray) {
+//        if (node && node.previousNode) {
+//            NSString *key = [NSString stringWithFormat:@"%d%d", node.nodeID, node.previousNode.nodeID];
+//            TYLink *link = [_allLinkDict objectForKey:key];
+//            [pathArray addObject:link.line];
+//
+//            NSLog(@"%d ==> NodeID: %d, LinkID: %d", index++, node.nodeID, link.linkID);
+//            NSLog(@"%@", node);
+//            NSLog(@"%@", link);
+//
+//        }
+//    }
+//    AGSPolyline *result = (AGSPolyline *)[engine unionGeometries:pathArray];
+//
+//    if (result && result.numPoints > 0) {
+//        return result;
+//    }
+//    return nil;
+//}
+
 - (AGSPolyline *)getShorestPathTo:(TYNode *)target
 {
     NSMutableArray *array = [NSMutableArray array];
@@ -242,47 +293,22 @@
     }
     NSArray *reverseArray = [[array reverseObjectEnumerator] allObjects];
     
-    //    AGSMutablePolyline *resultLine = [[AGSMutablePolyline alloc] init];
-    //    [resultLine addPathToPolyline];
-    //
-    ////    AGSPolyline *resultLine = [[AGSPolyline alloc] init];
-    //    for (TYNode *node in reverseArray) {
-    //        if (node && node.previousNode) {
-    //            NSString *key = [NSString stringWithFormat:@"%d%d", node.nodeID, node.previousNode.nodeID];
-    //            TYLink *link = [_allLinkDict objectForKey:key];
-    //            for (int i = 0; i < [link.line numPointsInPath:0]; ++i) {
-    //                [resultLine addPointToPath:[link.line pointOnPath:0 atIndex:i]];
-    //            }
-    ////            resultLine = (AGSPolyline *)[engine unionGeometries:@[resultLine, link.line]];
-    //        }
-    //    }
-    //    NSLog(@"Primitive Points: %d", (int)resultLine.numPoints);
-    //    AGSPolyline *result = (AGSPolyline *)[[AGSGeometryEngine defaultGeometryEngine] simplifyGeometry:resultLine];
-    ////    AGSPolyline *result = resultLine;
-    //
-    //    NSLog(@"Simplified Points: %d", (int)result.numPoints);
     
-    NSMutableArray *pathArray = [NSMutableArray array];
+    AGSMutablePolyline *resultLine = [[AGSMutablePolyline alloc] init];
+    [resultLine addPathToPolyline];
     
-    int index = 0;
     for (TYNode *node in reverseArray) {
         if (node && node.previousNode) {
-            NSString *key = [NSString stringWithFormat:@"%d%d", node.nodeID, node.previousNode.nodeID];
+            NSString *key = [NSString stringWithFormat:@"%d%d", node.previousNode.nodeID, node.nodeID];
             TYLink *link = [_allLinkDict objectForKey:key];
-            [pathArray addObject:link.line];
-            
-            NSLog(@"%d ==> NodeID: %d, LinkID: %d", index++, node.nodeID, link.linkID);
-            NSLog(@"%@", node);
-            NSLog(@"%@", link);
-
+            for (int i = 0; i < [link.line numPointsInPath:0]; ++i) {
+                [resultLine addPointToPath:[link.line pointOnPath:0 atIndex:i]];
+            }
         }
     }
-    AGSPolyline *result = (AGSPolyline *)[engine unionGeometries:pathArray];
+    AGSPolyline *result = (AGSPolyline *)[[AGSGeometryEngine defaultGeometryEngine] simplifyGeometry:resultLine];
     
-    if (result && result.numPoints > 0) {
-        return result;
-    }
-    return nil;
+    return result;
 }
 
 - (void)reset
@@ -620,24 +646,24 @@
     [self resetTempNodeForEnd];
     [self resetTempNodeForStart];
     
-    if (nodePath) {
-        AGSPoint *firstPoint = [nodePath pointOnPath:0 atIndex:0];
-        double headDistance = [engine distanceFromGeometry:firstPoint toGeometry:start];
-        double endDistance = [engine distanceFromGeometry:firstPoint toGeometry:end];
-        
-        if (headDistance > endDistance) {
-            AGSMutablePolyline *reversedPath = [[AGSMutablePolyline alloc] init];
-            [reversedPath addPathToPolyline];
-            for (int i = (int)[nodePath numPointsInPath:0] - 1; i >= 0; --i) {
-                [reversedPath addPointToPath:[nodePath pointOnPath:0 atIndex:i]];
-            }
-            nodePath = reversedPath;
-        }
-    }
+//    if (nodePath) {
+//        AGSPoint *firstPoint = [nodePath pointOnPath:0 atIndex:0];
+//        double headDistance = [engine distanceFromGeometry:firstPoint toGeometry:start];
+//        double endDistance = [engine distanceFromGeometry:firstPoint toGeometry:end];
+//        
+//        if (headDistance > endDistance) {
+//            AGSMutablePolyline *reversedPath = [[AGSMutablePolyline alloc] init];
+//            [reversedPath addPathToPolyline];
+//            for (int i = (int)[nodePath numPointsInPath:0] - 1; i >= 0; --i) {
+//                [reversedPath addPointToPath:[nodePath pointOnPath:0 atIndex:i]];
+//            }
+//            nodePath = reversedPath;
+//        }
+//    }
     
     AGSMutablePolyline *path = [[AGSMutablePolyline alloc] init];
     [path addPathToPolyline];
-
+    
     for (int i = 0; i < [nodePath numPointsInPath:0]; ++i) {
         [path addPointToPath:[nodePath pointOnPath:0 atIndex:i]];
     }
@@ -651,7 +677,7 @@
         [path addPointToPath:end];
         NSLog(@"Add End");
     }
-        
+    
     return path;
 }
 
