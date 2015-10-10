@@ -92,7 +92,7 @@
 
 - (BOOL)createRouteNodeTable
 {
-    NSString *sql = [NSString stringWithFormat:@"create table %@ (%@, %@, %@, %@, %@)", TABLE_ROUTE_NODE, @"_id integer primary key autoincrement", @"nodeID integer not null", @"Geometry blob not null", @"links text", @"virtual bool not null"];
+    NSString *sql = [NSString stringWithFormat:@"create table %@ (%@, %@, %@, %@)", TABLE_ROUTE_NODE, @"_id integer primary key autoincrement", @"nodeID integer not null", @"Geometry blob not null", @"virtual bool not null"];
     if ([_database executeUpdate:sql]) {
         return YES;
     }
@@ -111,17 +111,16 @@
     return [_database executeUpdate:sql];
 }
 
-- (BOOL)insertNodeWithID:(int)nodeID Geometry:(NSData *)geometry Virtual:(BOOL)isVirtual Links:(NSString *)links
+- (BOOL)insertNodeWithID:(int)nodeID Geometry:(NSData *)geometry Virtual:(BOOL)isVirtual
 {
     NSMutableString *sql = [NSMutableString stringWithFormat:@"Insert into %@", TABLE_ROUTE_NODE];
     NSMutableArray *arguments = [[NSMutableArray alloc] init];
     
-    NSString *fields = [NSString stringWithFormat:@" (nodeID, Geometry, links, virtual) "];
-    NSString *values = @" (?, ?, ?, ?)";
+    NSString *fields = [NSString stringWithFormat:@" (nodeID, Geometry, virtual) "];
+    NSString *values = @" (?, ?, ?)";
     
     [arguments addObject:@(nodeID)];
     [arguments addObject:geometry];
-    [arguments addObject:links];
     [arguments addObject:@(isVirtual)];
     
     [sql appendFormat:@" %@ VALUES %@", fields, values];
@@ -150,16 +149,7 @@
 
 - (BOOL)insertNode:(TYBuildingNode *)node
 {
-    NSMutableString *linkString = [NSMutableString string];
-    for (int i = 0; i < node.adjacencies.count; ++i) {
-        TYBuildingLink *link = node.adjacencies[i];
-        if (i == node.adjacencies.count - 1) {
-            [linkString appendFormat:@"%d", link.linkID];
-        } else {
-            [linkString appendFormat:@"%d,", link.linkID];
-        }
-    }
-    return [self insertNodeWithID:node.nodeID Geometry:node.geometryData Virtual:node.isVirtual Links:linkString];
+    return [self insertNodeWithID:node.nodeID Geometry:node.geometryData Virtual:node.isVirtual];
 }
 
 - (BOOL)insertLink:(TYBuildingLink *)link

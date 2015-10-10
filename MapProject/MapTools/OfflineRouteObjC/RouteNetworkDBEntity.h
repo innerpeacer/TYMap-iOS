@@ -27,7 +27,6 @@
 @property (nonatomic, assign) int nodeID;
 @property (nonatomic, strong) NSData *geometryData;
 @property (nonatomic, strong) AGSPoint *pos;
-@property (nonatomic, strong) NSString *linksString;
 @property (nonatomic, assign) BOOL isVirtual;
 
 @end

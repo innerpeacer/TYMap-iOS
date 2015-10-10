@@ -106,7 +106,7 @@ using namespace std;
     stringstream s;
     WKBReader reader;
     
-    NSMutableString *sql = [NSMutableString stringWithFormat:@"select nodeID, Geometry, links, virtual from %@", TABLE_ROUTE_NODE];
+    NSMutableString *sql = [NSMutableString stringWithFormat:@"select nodeID, Geometry, virtual from %@", TABLE_ROUTE_NODE];
     FMResultSet *rs = [_database executeQuery:sql];
     while ([rs next]) {
         NodeRecord *record = [[NodeRecord alloc] init];
@@ -116,7 +116,6 @@ using namespace std;
         s.clear();
         s.write((const char *)[record.geometryData bytes], [record.geometryData length]);
         record.pos = (AGSPoint *)[Geos2AgsConverter agsgeometryFromGeosGeometry:reader.read(s)];
-        record.linksString = [rs stringForColumn:@"links"];
         record.isVirtual = [rs boolForColumn:@"virtual"];
         
         [resultArray addObject:record];
