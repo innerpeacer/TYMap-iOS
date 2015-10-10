@@ -13,6 +13,8 @@
 		570928281B70646D00410B8C /* MD5Utils.mm in Sources */ = {isa = PBXBuildFile; fileRef = 570928241B70646D00410B8C /* MD5Utils.mm */; };
 		570928291B70646D00410B8C /* TYEncryption.mm in Sources */ = {isa = PBXBuildFile; fileRef = 570928261B70646D00410B8C /* TYEncryption.mm */; };
 		571AC4711B55FED900E9FF7D /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 571AC4701B55FED900E9FF7D /* AppDelegate.mm */; };
+		573F900A1BC8E68F00F836B5 /* OfflineRouteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 573F90091BC8E68F00F836B5 /* OfflineRouteManager.m */; settings = {ASSET_TAGS = (); }; };
+		573F900D1BC8EA6300F836B5 /* OfflineMapRouteVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 573F900C1BC8EA6300F836B5 /* OfflineMapRouteVC.m */; settings = {ASSET_TAGS = (); }; };
 		574319161B70588D00234A63 /* IPEncryption.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 574319141B70588D00234A63 /* IPEncryption.cpp */; };
 		57494DDA1B61DAE7000B6F2C /* BaseControllerTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 57494DD31B61DAE7000B6F2C /* BaseControllerTableVC.m */; };
 		57494DDB1B61DAE7000B6F2C /* BaseLogVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 57494DD51B61DAE7000B6F2C /* BaseLogVC.m */; };
@@ -153,6 +155,10 @@
 		570928261B70646D00410B8C /* TYEncryption.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TYEncryption.mm; sourceTree = "<group>"; };
 		571AC46F1B55FED900E9FF7D /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		571AC4701B55FED900E9FF7D /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
+		573F90081BC8E68F00F836B5 /* OfflineRouteManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OfflineRouteManager.h; sourceTree = "<group>"; };
+		573F90091BC8E68F00F836B5 /* OfflineRouteManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OfflineRouteManager.m; sourceTree = "<group>"; };
+		573F900B1BC8EA6300F836B5 /* OfflineMapRouteVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OfflineMapRouteVC.h; sourceTree = "<group>"; };
+		573F900C1BC8EA6300F836B5 /* OfflineMapRouteVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OfflineMapRouteVC.m; sourceTree = "<group>"; };
 		574319141B70588D00234A63 /* IPEncryption.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IPEncryption.cpp; sourceTree = "<group>"; };
 		574319151B70588D00234A63 /* IPEncryption.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = IPEncryption.hpp; sourceTree = "<group>"; };
 		57494DD21B61DAE7000B6F2C /* BaseControllerTableVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseControllerTableVC.h; sourceTree = "<group>"; };
@@ -598,6 +604,8 @@
 				576AEE9D1B61D97100D55CA4 /* MapEncryptionVC.mm */,
 				576AEE9E1B61D97100D55CA4 /* MapRouteVC.h */,
 				576AEE9F1B61D97100D55CA4 /* MapRouteVC.m */,
+				573F900B1BC8EA6300F836B5 /* OfflineMapRouteVC.h */,
+				573F900C1BC8EA6300F836B5 /* OfflineMapRouteVC.m */,
 				576AEEA01B61D97100D55CA4 /* MapDevVC.h */,
 				576AEEA11B61D97100D55CA4 /* MapDevVC.m */,
 				576AEEA21B61D97100D55CA4 /* MapVC.h */,
@@ -630,6 +638,8 @@
 		5787711C1BBB90D700F90D7B /* OfflineRouteObjC */ = {
 			isa = PBXGroup;
 			children = (
+				573F90081BC8E68F00F836B5 /* OfflineRouteManager.h */,
+				573F90091BC8E68F00F836B5 /* OfflineRouteManager.m */,
 				57F5383C1BC6AF0C00692692 /* RouteNetworkDBEntity.h */,
 				57F5383D1BC6AF0C00692692 /* RouteNetworkDBEntity.m */,
 				578771201BBB911400F90D7B /* RouteNetworkDBAdapter.h */,
@@ -1022,6 +1032,7 @@
 				57672E321B55FFF900DAD219 /* FMDatabaseQueue.m in Sources */,
 				57494DDB1B61DAE7000B6F2C /* BaseLogVC.m in Sources */,
 				5794C0DF1B560558002DCE9F /* TYArcGISDrawer.m in Sources */,
+				573F900D1BC8EA6300F836B5 /* OfflineMapRouteVC.m in Sources */,
 				578771291BBB914700F90D7B /* TYLink.m in Sources */,
 				5794C0C91B560558002DCE9F /* TYMarkerSymbol.m in Sources */,
 				57672E2F1B55FFF900DAD219 /* FMDatabase.m in Sources */,
@@ -1052,6 +1063,7 @@
 				570928291B70646D00410B8C /* TYEncryption.mm in Sources */,
 				574319161B70588D00234A63 /* IPEncryption.cpp in Sources */,
 				57EB457A1B73D2B50050956F /* RATreeView+TableViewDelegate.m in Sources */,
+				573F900A1BC8E68F00F836B5 /* OfflineRouteManager.m in Sources */,
 				57FC97A11BB1216C006D6D00 /* GenerateLicensesVC.m in Sources */,
 				57672E311B55FFF900DAD219 /* FMDatabasePool.m in Sources */,
 				57EB45741B73D2B50050956F /* RATreeNodeCollectionController.m in Sources */,

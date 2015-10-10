@@ -70,7 +70,7 @@
     [self.mapView addMapLayer:hintLayer];
     
     
-    [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(testOfflineRoute) userInfo:nil repeats:YES];
+//    [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(testOfflineRoute) userInfo:nil repeats:YES];
 }
 
 - (void)showNodesAndLinks

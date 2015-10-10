@@ -45,6 +45,9 @@
     [self.objects addObject:@"地图导航 Demo"];
     [self.controllerDict setObject:@"mapRouteController" forKey:@"地图导航 Demo"];
     
+    [self.objects addObject:@"地图离线导航 Demo"];
+    [self.controllerDict setObject:@"OfflineMapRouteVC" forKey:@"地图离线导航 Demo"];
+        
     [self.objects addObject:@"地图Callout Demo"];
     [self.controllerDict setObject:@"mapCalloutController" forKey:@"地图Callout Demo"];
     
