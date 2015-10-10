@@ -14,8 +14,6 @@
 
 @interface RouteNetworkDataset : NSObject
 
-- (id)initWithNodes:(NSArray *)nodes Links:(NSArray *)links;
-
 @property (nonatomic, strong) NSMutableArray *linkArray;
 @property (nonatomic, strong) NSMutableArray *virtualLinkArray;
 @property (nonatomic, strong) NSMutableArray *nodeArray;
@@ -26,19 +24,8 @@
 @property (nonatomic, strong) NSMutableDictionary *allNodeDict;
 @property (nonatomic, strong) NSMutableDictionary *allLinkDict;
 
-//- (AGSPoint *)getNearestPoint:(AGSPoint *)point;
-//- (NSArray *)getNearestLinks:(AGSPoint *)point;
-//- (NSArray *)getNearestNodes:(AGSPoint *)point;
-- (TYNode *)getTempNode:(AGSPoint *)point;
-- (NSArray *)getTempLinks:(AGSPoint *)point;
-
-- (void)computePaths:(TYNode *)source;
-- (AGSPolyline *)getShorestPathTo:(TYNode *)target;
-
-- (void)reset;
-
+- (id)initWithNodes:(NSArray *)nodes Links:(NSArray *)links;
 - (AGSPolyline *)getShorestPathFrom:(AGSPoint *)start To:(AGSPoint *)end;
 
 
-- (NSArray *)getShorestNodeArrayFrom:(AGSPoint *)start To:(AGSPoint *)end;
 @end

@@ -17,18 +17,9 @@
     NSMutableArray *tempStartLinkArray;
     NSMutableArray *replacedStartLinkArray;
     
-    
     NSMutableArray *tempEndNodeArray;
-    
-    
-    //    NSMutableArray *replacedStartNodeArray;
-    
-    //    NSMutableArray *replacedEndNodeArray;
-    NSMutableArray *replacedEndLinkArray;
-    
-    
-    
     NSMutableArray *tempEndLinkArray;
+    NSMutableArray *replacedEndLinkArray;
     
     int tempNodeID;
     int tempLinkID;
@@ -48,10 +39,7 @@
         tempNodeID = 60000;
         tempLinkID = 80000;
         
-        //        replacedStartNodeArray = [NSMutableArray array];
         replacedStartLinkArray = [NSMutableArray array];
-        
-        //        replacedEndNodeArray = [NSMutableArray array];
         replacedEndLinkArray = [NSMutableArray array];
         
         tempStartNodeArray = [NSMutableArray array];
@@ -152,51 +140,6 @@
     }
 }
 
-- (AGSPoint *)getNearestPoint:(AGSPoint *)point
-{
-    AGSProximityResult *result = [engine nearestCoordinateInGeometry:_unionLine toPoint:point];
-    return result.point;
-}
-
-//- (NSArray *)getNearestNodes:(AGSPoint *)point
-//{
-//    NSMutableArray *nodeArray = [NSMutableArray array];
-//    AGSGeometryEngine *engine = [AGSGeometryEngine defaultGeometryEngine];
-//    AGSPoint *np = [self getNearestPoint:point];
-//
-//    for (TYNode *node in _nodeArray) {
-//        if ([engine geometry:node.pos withinGeometry:np]) {
-//            [nodeArray addObject:node];
-//            break;
-//        }
-//    }
-//
-//    if (nodeArray.count == 0) {
-//        NSArray *linkArray = [self getNearestLinks:point];
-//        for (TYLink *link in linkArray) {
-//            [nodeArray addObject:link.nextNode];
-//        }
-//    }
-//
-////    NSLog(@"NearestNodes: %d", (int)nodeArray.count);
-//    return nodeArray;
-//}
-//
-//- (NSArray *)getNearestLinks:(AGSPoint *)point
-//{
-//    NSMutableArray *linkArray = [NSMutableArray array];
-//    AGSGeometryEngine *engine = [AGSGeometryEngine defaultGeometryEngine];
-//    AGSPoint *np = [self getNearestPoint:point];
-//    for (TYLink *link in _linkArray) {
-//        if ([engine geometry:link.line containsGeometry:np]) {
-////        if ([engine geometry:np touchesGeometry:link.line]) {
-//            [linkArray addObject:link];
-//        }
-//    }
-////    NSLog(@"NearestLinks: %d", (int)linkArray.count);
-//    return linkArray;
-//}
-
 - (void)computePaths:(TYNode *)source
 {
     //    NSDate *now = [NSDate date];
@@ -233,57 +176,6 @@
     //    NSDate *endComputation = [NSDate date];
     //    NSLog(@"Computing Time: %f", [endComputation timeIntervalSinceDate:now]);
 }
-
-//- (AGSPolyline *)getShorestPathTo:(TYNode *)target
-//{
-//    NSMutableArray *array = [NSMutableArray array];
-//    for (TYNode *node = target; node != nil; node = node.previousNode) {
-//        [array addObject:node];
-//    }
-//    NSArray *reverseArray = [[array reverseObjectEnumerator] allObjects];
-//
-//    //    AGSMutablePolyline *resultLine = [[AGSMutablePolyline alloc] init];
-//    //    [resultLine addPathToPolyline];
-//    //
-//    ////    AGSPolyline *resultLine = [[AGSPolyline alloc] init];
-//    //    for (TYNode *node in reverseArray) {
-//    //        if (node && node.previousNode) {
-//    //            NSString *key = [NSString stringWithFormat:@"%d%d", node.nodeID, node.previousNode.nodeID];
-//    //            TYLink *link = [_allLinkDict objectForKey:key];
-//    //            for (int i = 0; i < [link.line numPointsInPath:0]; ++i) {
-//    //                [resultLine addPointToPath:[link.line pointOnPath:0 atIndex:i]];
-//    //            }
-//    ////            resultLine = (AGSPolyline *)[engine unionGeometries:@[resultLine, link.line]];
-//    //        }
-//    //    }
-//    //    NSLog(@"Primitive Points: %d", (int)resultLine.numPoints);
-//    //    AGSPolyline *result = (AGSPolyline *)[[AGSGeometryEngine defaultGeometryEngine] simplifyGeometry:resultLine];
-//    ////    AGSPolyline *result = resultLine;
-//    //
-//    //    NSLog(@"Simplified Points: %d", (int)result.numPoints);
-//
-//    NSMutableArray *pathArray = [NSMutableArray array];
-//
-//    int index = 0;
-//    for (TYNode *node in reverseArray) {
-//        if (node && node.previousNode) {
-//            NSString *key = [NSString stringWithFormat:@"%d%d", node.nodeID, node.previousNode.nodeID];
-//            TYLink *link = [_allLinkDict objectForKey:key];
-//            [pathArray addObject:link.line];
-//
-//            NSLog(@"%d ==> NodeID: %d, LinkID: %d", index++, node.nodeID, link.linkID);
-//            NSLog(@"%@", node);
-//            NSLog(@"%@", link);
-//
-//        }
-//    }
-//    AGSPolyline *result = (AGSPolyline *)[engine unionGeometries:pathArray];
-//
-//    if (result && result.numPoints > 0) {
-//        return result;
-//    }
-//    return nil;
-//}
 
 - (AGSPolyline *)getShorestPathTo:(TYNode *)target
 {
@@ -675,33 +567,32 @@
     return [NSString stringWithFormat:@"%d Links and %d Nodes", (int)(_linkArray.count + _virtualLinkArray.count), (int)(_nodeArray.count + _virtualNodeArray.count)];
 }
 
-#pragma mark Debug Method
-
-- (NSArray *)getShorestNodeArrayTo:(TYNode *)target
-{
-    NSMutableArray *array = [NSMutableArray array];
-    for (TYNode *node = target; node != nil; node = node.previousNode) {
-        [array addObject:node];
-    }
-    NSArray *reverseArray = [[array reverseObjectEnumerator] allObjects];
-    return reverseArray;
-}
-
-- (NSArray *)getShorestNodeArrayFrom:(AGSPoint *)start To:(AGSPoint *)end
-{
-    [self reset];
-    
-    TYNode *startNode = [self processTempNodeForStart:start];
-    TYNode *endNode = [self processTempNodeForEnd:end];
-    
-    [self computePaths:startNode];
-    NSArray *nodeArray = [self getShorestNodeArrayTo:endNode];
-    
-    [self resetTempNodeForEnd];
-    [self resetTempNodeForStart];
-    
-    return nodeArray;
-}
-
+//#pragma mark Debug Method
+//
+//- (NSArray *)getShorestNodeArrayTo:(TYNode *)target
+//{
+//    NSMutableArray *array = [NSMutableArray array];
+//    for (TYNode *node = target; node != nil; node = node.previousNode) {
+//        [array addObject:node];
+//    }
+//    NSArray *reverseArray = [[array reverseObjectEnumerator] allObjects];
+//    return reverseArray;
+//}
+//
+//- (NSArray *)getShorestNodeArrayFrom:(AGSPoint *)start To:(AGSPoint *)end
+//{
+//    [self reset];
+//    
+//    TYNode *startNode = [self processTempNodeForStart:start];
+//    TYNode *endNode = [self processTempNodeForEnd:end];
+//    
+//    [self computePaths:startNode];
+//    NSArray *nodeArray = [self getShorestNodeArrayTo:endNode];
+//    
+//    [self resetTempNodeForEnd];
+//    [self resetTempNodeForStart];
+//    
+//    return nodeArray;
+//}
 
 @end
