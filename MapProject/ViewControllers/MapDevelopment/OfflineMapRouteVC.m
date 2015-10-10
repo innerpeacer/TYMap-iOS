@@ -130,7 +130,7 @@
     routeResult = rs;
     
 //    NSLog(@"route part: %d", (int)routeResult.allRoutePartArray.count);
-    TYRoutePart *rp = [routeResult.allRoutePartArray objectAtIndex:0];
+//    TYRoutePart *rp = [routeResult.allRoutePartArray objectAtIndex:0];
 //    NSLog(@"point: %d", (int)rp.route.numPoints);
     
     [self.mapView setRouteResult:rs];

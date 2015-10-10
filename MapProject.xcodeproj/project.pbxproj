@@ -69,6 +69,13 @@
 		572407C41BC9A8A10050BA41 /* TYRoomLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5724078F1BC9A8A10050BA41 /* TYRoomLayer.m */; settings = {ASSET_TAGS = (); }; };
 		572407C51BC9A8A10050BA41 /* TYStructureGroupLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 572407911BC9A8A10050BA41 /* TYStructureGroupLayer.m */; settings = {ASSET_TAGS = (); }; };
 		572407C91BC9A8E60050BA41 /* MD5Utils.mm in Sources */ = {isa = PBXBuildFile; fileRef = 572407C81BC9A8E60050BA41 /* MD5Utils.mm */; settings = {ASSET_TAGS = (); }; };
+		572408CC1BC9AE190050BA41 /* IPXLink.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 572408CA1BC9AE190050BA41 /* IPXLink.cpp */; settings = {ASSET_TAGS = (); }; };
+		572408CF1BC9AE2D0050BA41 /* IPXNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 572408CD1BC9AE2D0050BA41 /* IPXNode.cpp */; settings = {ASSET_TAGS = (); }; };
+		572408D21BC9AE3D0050BA41 /* IPXRouteNetworkDataset.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 572408D01BC9AE3D0050BA41 /* IPXRouteNetworkDataset.cpp */; settings = {ASSET_TAGS = (); }; };
+		572408D51BC9B2E70050BA41 /* IPXRouteNetworkDBAdapter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 572408D31BC9B2E70050BA41 /* IPXRouteNetworkDBAdapter.cpp */; settings = {ASSET_TAGS = (); }; };
+		572408D81BC9B3080050BA41 /* IPXLinkRecord.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 572408D61BC9B3080050BA41 /* IPXLinkRecord.cpp */; settings = {ASSET_TAGS = (); }; };
+		572408DB1BC9B3140050BA41 /* IPXNodeRecord.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 572408D91BC9B3140050BA41 /* IPXNodeRecord.cpp */; settings = {ASSET_TAGS = (); }; };
+		572408DE1BC9B3370050BA41 /* TYOfflineRouteManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 572408DD1BC9B3370050BA41 /* TYOfflineRouteManager.mm */; settings = {ASSET_TAGS = (); }; };
 		573F900A1BC8E68F00F836B5 /* OfflineRouteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 573F90091BC8E68F00F836B5 /* OfflineRouteManager.m */; settings = {ASSET_TAGS = (); }; };
 		573F900D1BC8EA6300F836B5 /* OfflineMapRouteVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 573F900C1BC8EA6300F836B5 /* OfflineMapRouteVC.m */; settings = {ASSET_TAGS = (); }; };
 		57494DDA1B61DAE7000B6F2C /* BaseControllerTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 57494DD31B61DAE7000B6F2C /* BaseControllerTableVC.m */; };
@@ -269,6 +276,20 @@
 		572407911BC9A8A10050BA41 /* TYStructureGroupLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYStructureGroupLayer.m; sourceTree = "<group>"; };
 		572407C71BC9A8E60050BA41 /* MD5Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MD5Utils.h; sourceTree = "<group>"; };
 		572407C81BC9A8E60050BA41 /* MD5Utils.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MD5Utils.mm; sourceTree = "<group>"; };
+		572408CA1BC9AE190050BA41 /* IPXLink.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IPXLink.cpp; sourceTree = "<group>"; };
+		572408CB1BC9AE190050BA41 /* IPXLink.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = IPXLink.hpp; sourceTree = "<group>"; };
+		572408CD1BC9AE2D0050BA41 /* IPXNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IPXNode.cpp; sourceTree = "<group>"; };
+		572408CE1BC9AE2D0050BA41 /* IPXNode.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = IPXNode.hpp; sourceTree = "<group>"; };
+		572408D01BC9AE3D0050BA41 /* IPXRouteNetworkDataset.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IPXRouteNetworkDataset.cpp; sourceTree = "<group>"; };
+		572408D11BC9AE3D0050BA41 /* IPXRouteNetworkDataset.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = IPXRouteNetworkDataset.hpp; sourceTree = "<group>"; };
+		572408D31BC9B2E70050BA41 /* IPXRouteNetworkDBAdapter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IPXRouteNetworkDBAdapter.cpp; sourceTree = "<group>"; };
+		572408D41BC9B2E70050BA41 /* IPXRouteNetworkDBAdapter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = IPXRouteNetworkDBAdapter.hpp; sourceTree = "<group>"; };
+		572408D61BC9B3080050BA41 /* IPXLinkRecord.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IPXLinkRecord.cpp; sourceTree = "<group>"; };
+		572408D71BC9B3080050BA41 /* IPXLinkRecord.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = IPXLinkRecord.hpp; sourceTree = "<group>"; };
+		572408D91BC9B3140050BA41 /* IPXNodeRecord.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IPXNodeRecord.cpp; sourceTree = "<group>"; };
+		572408DA1BC9B3140050BA41 /* IPXNodeRecord.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = IPXNodeRecord.hpp; sourceTree = "<group>"; };
+		572408DC1BC9B3370050BA41 /* TYOfflineRouteManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYOfflineRouteManager.h; sourceTree = "<group>"; };
+		572408DD1BC9B3370050BA41 /* TYOfflineRouteManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TYOfflineRouteManager.mm; sourceTree = "<group>"; };
 		573F90081BC8E68F00F836B5 /* OfflineRouteManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OfflineRouteManager.h; sourceTree = "<group>"; };
 		573F90091BC8E68F00F836B5 /* OfflineRouteManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OfflineRouteManager.m; sourceTree = "<group>"; };
 		573F900B1BC8EA6300F836B5 /* OfflineMapRouteVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OfflineMapRouteVC.h; sourceTree = "<group>"; };
@@ -621,6 +642,8 @@
 				572407801BC9A8A10050BA41 /* TYLandmarkManager.m */,
 				572407811BC9A8A10050BA41 /* TYRouteManager.h */,
 				572407821BC9A8A10050BA41 /* TYRouteManager.m */,
+				572408DC1BC9B3370050BA41 /* TYOfflineRouteManager.h */,
+				572408DD1BC9B3370050BA41 /* TYOfflineRouteManager.mm */,
 				572407831BC9A8A10050BA41 /* TYRoutePart.h */,
 				572407841BC9A8A10050BA41 /* TYRoutePart.m */,
 				572407851BC9A8A10050BA41 /* TYRoutePointConverter.h */,
@@ -649,6 +672,18 @@
 		572407C61BC9A8B60050BA41 /* RouteNetwork */ = {
 			isa = PBXGroup;
 			children = (
+				572408CA1BC9AE190050BA41 /* IPXLink.cpp */,
+				572408CB1BC9AE190050BA41 /* IPXLink.hpp */,
+				572408CD1BC9AE2D0050BA41 /* IPXNode.cpp */,
+				572408CE1BC9AE2D0050BA41 /* IPXNode.hpp */,
+				572408D01BC9AE3D0050BA41 /* IPXRouteNetworkDataset.cpp */,
+				572408D11BC9AE3D0050BA41 /* IPXRouteNetworkDataset.hpp */,
+				572408D31BC9B2E70050BA41 /* IPXRouteNetworkDBAdapter.cpp */,
+				572408D41BC9B2E70050BA41 /* IPXRouteNetworkDBAdapter.hpp */,
+				572408D61BC9B3080050BA41 /* IPXLinkRecord.cpp */,
+				572408D71BC9B3080050BA41 /* IPXLinkRecord.hpp */,
+				572408D91BC9B3140050BA41 /* IPXNodeRecord.cpp */,
+				572408DA1BC9B3140050BA41 /* IPXNodeRecord.hpp */,
 			);
 			path = RouteNetwork;
 			sourceTree = "<group>";
@@ -1066,6 +1101,8 @@
 				573F900D1BC8EA6300F836B5 /* OfflineMapRouteVC.m in Sources */,
 				572407A41BC9A8A10050BA41 /* TYLocationLayer.m in Sources */,
 				572407991BC9A8A10050BA41 /* TYLocationDisplay.m in Sources */,
+				572408CF1BC9AE2D0050BA41 /* IPXNode.cpp in Sources */,
+				572408D81BC9B3080050BA41 /* IPXLinkRecord.cpp in Sources */,
 				578771291BBB914700F90D7B /* TYLink.m in Sources */,
 				572407BB1BC9A8A10050BA41 /* TYDirectionalHint.m in Sources */,
 				57672E2F1B55FFF900DAD219 /* FMDatabase.m in Sources */,
@@ -1093,6 +1130,7 @@
 				5724079B1BC9A8A10050BA41 /* TYPictureMarkerSymbol.m in Sources */,
 				576C02621BC63D4700BCD87D /* SymbolGroup.m in Sources */,
 				57EB457A1B73D2B50050956F /* RATreeView+TableViewDelegate.m in Sources */,
+				572408DB1BC9B3140050BA41 /* IPXNodeRecord.cpp in Sources */,
 				572407B41BC9A8A10050BA41 /* TYMapEnviroment.m in Sources */,
 				572407B61BC9A8A10050BA41 /* TYMapInfo.m in Sources */,
 				573F900A1BC8E68F00F836B5 /* OfflineRouteManager.m in Sources */,
@@ -1102,6 +1140,7 @@
 				5724079E1BC9A8A10050BA41 /* TYPolyline.m in Sources */,
 				57EB45741B73D2B50050956F /* RATreeNodeCollectionController.m in Sources */,
 				572407151BC9A84B0050BA41 /* MD5.cpp in Sources */,
+				572408D51BC9B2E70050BA41 /* IPXRouteNetworkDBAdapter.cpp in Sources */,
 				57672E301B55FFF900DAD219 /* FMDatabaseAdditions.m in Sources */,
 				57672D071B55FF4A00DAD219 /* CreatingPOIDBAdapter.m in Sources */,
 				576AEEB21B61D9E400D55CA4 /* CustomCalloutVC.m in Sources */,
@@ -1112,6 +1151,7 @@
 				5724071F1BC9A8520050BA41 /* TYLicenseValidation.mm in Sources */,
 				57EB45771B73D2B50050956F /* RATreeView+Enums.m in Sources */,
 				57EB85731BC2105200D8EB5B /* LayerGroup.m in Sources */,
+				572408D21BC9AE3D0050BA41 /* IPXRouteNetworkDataset.cpp in Sources */,
 				572407A81BC9A8A10050BA41 /* Vector2.m in Sources */,
 				57494DF51B61E730000B6F2C /* EnviromentManager.m in Sources */,
 				572407C01BC9A8A10050BA41 /* TYRoutePointConverter.m in Sources */,
@@ -1135,6 +1175,7 @@
 				57494DDA1B61DAE7000B6F2C /* BaseControllerTableVC.m in Sources */,
 				57EB457B1B73D2B50050956F /* RATreeView+UIScrollView.m in Sources */,
 				57F8F08B1BBA944D00FE8637 /* ShpRouteDBAdapter.mm in Sources */,
+				572408DE1BC9B3370050BA41 /* TYOfflineRouteManager.mm in Sources */,
 				572407B91BC9A8A10050BA41 /* TYBrand.m in Sources */,
 				57F8DE5F1B74553100143739 /* OriginalMapVC.m in Sources */,
 				578771221BBB911400F90D7B /* RouteNetworkDBAdapter.mm in Sources */,
@@ -1168,6 +1209,7 @@
 				57D1678B1BBA4242004BE6B9 /* BuildRouteNetworkDatasetVC.m in Sources */,
 				57F8F0881BBA939300FE8637 /* ShpRouteDataGroup.mm in Sources */,
 				576AEEA71B61D97100D55CA4 /* CreatePOIDatabaseVC.m in Sources */,
+				572408CC1BC9AE190050BA41 /* IPXLink.cpp in Sources */,
 				572407931BC9A8A10050BA41 /* TYCredential.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
