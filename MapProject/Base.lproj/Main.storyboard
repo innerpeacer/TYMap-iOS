@@ -914,6 +914,41 @@
             </objects>
             <point key="canvasLocation" x="1365" y="3868"/>
         </scene>
+        <!--Cpp Offline Map RouteVC-->
+        <scene sceneID="RMT-nS-S6Z">
+            <objects>
+                <viewController storyboardIdentifier="CppOfflineMapRouteVC" id="UN6-Km-LWm" customClass="CppOfflineMapRouteVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="XH0-3D-2We"/>
+                        <viewControllerLayoutGuide type="bottom" id="lU6-Ob-A50"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="mFg-fH-oun">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8cb-CZ-I5S" customClass="TYMapView">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="8cb-CZ-I5S" secondAttribute="trailing" id="Ag7-jv-0M1"/>
+                            <constraint firstItem="8cb-CZ-I5S" firstAttribute="top" secondItem="mFg-fH-oun" secondAttribute="top" id="RBZ-Ww-2a4"/>
+                            <constraint firstItem="lU6-Ob-A50" firstAttribute="top" secondItem="8cb-CZ-I5S" secondAttribute="bottom" id="Wn0-60-kFJ"/>
+                            <constraint firstItem="8cb-CZ-I5S" firstAttribute="leading" secondItem="mFg-fH-oun" secondAttribute="leading" id="XAk-JW-pFY"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="8cb-CZ-I5S" id="h0Y-BT-Vfi"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jlo-OO-bh8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3435" y="-1518"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Lock" width="30" height="30"/>
