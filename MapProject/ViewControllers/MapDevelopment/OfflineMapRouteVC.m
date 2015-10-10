@@ -113,6 +113,7 @@
 {
     NSLog(@"routeManager:routeManager didFailSolveRouteWithError:");
     
+    
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error!" message:error.localizedDescription delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
     [alert show];
 }
@@ -126,9 +127,9 @@
     
     routeResult = rs;
     
-    NSLog(@"route part: %d", (int)routeResult.allRoutePartArray.count);
+//    NSLog(@"route part: %d", (int)routeResult.allRoutePartArray.count);
     TYRoutePart *rp = [routeResult.allRoutePartArray objectAtIndex:0];
-    NSLog(@"point: %d", (int)rp.route.numPoints);
+//    NSLog(@"point: %d", (int)rp.route.numPoints);
     
     [self.mapView setRouteResult:rs];
     

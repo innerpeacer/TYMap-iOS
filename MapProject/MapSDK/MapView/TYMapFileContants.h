@@ -15,6 +15,8 @@
 
 #define FILE_MAPINFO @"MapInfo_Building_%@.json"
 
+#define FILE_ROUTE_DB @"%@_Route.db"
+
 #define FILE_BRANDS @"Brands_Building_%@.json"
 
 

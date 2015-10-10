@@ -16,6 +16,7 @@
 
 @property (nonatomic, strong) NSData *geometryData;
 @property (nonatomic, assign) int geometryID;
+@property (nonatomic, assign) BOOL oneWay;
 
 - (geos::geom::Geometry *)getGeosGeometry;
 - (AGSGeometry *)getAgsGeometry;

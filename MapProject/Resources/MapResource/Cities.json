@@ -1,17 +1,17 @@
 {
     "Cities": [
                {
-               "id":"0021",
-               "name":"上海市",
-               "sname":"上海",
+               "id":"0020",
+               "name":"广州市",
+               "sname":"广州",
                "longitude":"121.490774",
                "latitude":"31.245087",
                "status":"1"
                },
                {
-               "id":"0020",
-               "name":"广州市",
-               "sname":"广州",
+               "id":"0021",
+               "name":"上海市",
+               "sname":"上海",
                "longitude":"121.490774",
                "latitude":"31.245087",
                "status":"1"
@@ -24,25 +24,6 @@
                "latitude":"39.915156",
                "status":"0"
                },
-               
-               {
-               "id":"H852",
-               "name":"香港市",
-               "sname":"香港",
-               "longitude":"116.407143",
-               "latitude":"39.915156",
-               "status":"0"
-               },
-               
-               {
-               "id":"0755",
-               "name":"深圳市",
-               "sname":"深圳",
-               "longitude":"116.407143",
-               "latitude":"39.915156",
-               "status":"0"
-               },
-               
                {
                "id":"0452",
                "name":"齐齐哈尔市",
@@ -60,17 +41,17 @@
                "status":"0"
                },
                {
-               "id":"0571",
-               "name":"杭州市",
-               "sname":"杭州",
+               "id":"0519",
+               "name":"常州市",
+               "sname":"常州",
                "longitude":"116.407143",
                "latitude":"39.915156",
                "status":"0"
                },
                {
-               "id":"0519",
-               "name":"常州市",
-               "sname":"常州",
+               "id":"0571",
+               "name":"杭州市",
+               "sname":"杭州",
                "longitude":"116.407143",
                "latitude":"39.915156",
                "status":"0"
@@ -82,7 +63,22 @@
                "longitude":"116.407143",
                "latitude":"39.915156",
                "status":"0"
+               },
+               {
+               "id":"H852",
+               "name":"香港市",
+               "sname":"香港",
+               "longitude":"116.407143",
+               "latitude":"39.915156",
+               "status":"0"
+               },
+               {
+               "id":"0755",
+               "name":"深圳市",
+               "sname":"深圳",
+               "longitude":"116.407143",
+               "latitude":"39.915156",
+               "status":"0"
                }
-               
                ]
 }

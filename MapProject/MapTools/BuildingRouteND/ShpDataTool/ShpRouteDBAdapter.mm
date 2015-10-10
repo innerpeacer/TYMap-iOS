@@ -42,7 +42,7 @@
     return [_database close];
 }
 
-- (NSArray *)readAllShpRouteRecords:(NSString *)table
+- (NSArray *)readAllNodeShpRouteRecords:(NSString *)table
 {
     NSMutableArray *resultArray = [NSMutableArray array];
     
@@ -56,4 +56,35 @@
     }
     return resultArray;
 }
+
+- (NSArray *)readAllLinkShpRouteRecords:(NSString *)table
+{
+    NSMutableArray *resultArray = [NSMutableArray array];
+    
+    NSMutableString *sql = [NSMutableString stringWithFormat:@"select GEOMETRY, objectid, oneway from %@", table];
+    FMResultSet *rs = [_database executeQuery:sql];
+    while ([rs next]) {
+        ShpRouteDBRecord *record = [[ShpRouteDBRecord alloc] init];
+        record.geometryData = [rs dataForColumn:@"GEOMETRY"];
+        record.geometryID = [rs intForColumn:@"objectid"];
+        record.oneWay = [rs boolForColumn:@"oneway"];
+        [resultArray addObject:record];
+    }
+    return resultArray;
+}
+
+//- (NSArray *)readAllShpRouteRecords:(NSString *)table
+//{
+//    NSMutableArray *resultArray = [NSMutableArray array];
+//    
+//    NSMutableString *sql = [NSMutableString stringWithFormat:@"select GEOMETRY, objectid from %@", table];
+//    FMResultSet *rs = [_database executeQuery:sql];
+//    while ([rs next]) {
+//        ShpRouteDBRecord *record = [[ShpRouteDBRecord alloc] init];
+//        record.geometryData = [rs dataForColumn:@"GEOMETRY"];
+//        record.geometryID = [rs intForColumn:@"objectid"];
+//        [resultArray addObject:record];
+//    }
+//    return resultArray;
+//}
 @end

@@ -136,6 +136,19 @@
                 }
             }
             
+            // Building_Route.db
+            {
+                NSString *routeDBFile = [NSString stringWithFormat:@"%@_Route.db", buildingID];
+                NSString *sourceRouteDBFile = [sourceBuildingDir stringByAppendingPathComponent:routeDBFile];
+                NSString *targetRouteDBFile = [targetBuildingDir stringByAppendingPathComponent:routeDBFile];
+                if ([fileManager fileExistsAtPath:sourceRouteDBFile]) {
+                    [fileManager copyItemAtPath:sourceRouteDBFile toPath:targetRouteDBFile error:nil];
+                    [self addToLog:[NSString stringWithFormat:@"%@Copy %@", currentIndentString, routeDBFile]];
+                } else {
+                    [self addToLog:[NSString stringWithFormat:@"%@%@ not exist", currentIndentString, routeDBFile]];
+                }
+            }
+            
             // Building_RenderingScheme.json
             {
                 NSString *renderingSchemeFile = [NSString stringWithFormat:@"%@_RenderingScheme.json", buildingID];

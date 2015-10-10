@@ -54,62 +54,50 @@
 
 - (void)encryptMapFiles
 {
-    NSError *errer = nil;
+    NSError *error = nil;
     
     NSString *renderingSchemeFile = [NSString stringWithFormat:FILE_RENDERING_SCHEME, currentBuilding.buildingID];
     NSString *sourceRenderSchemeFile = [sourceBuildingDir stringByAppendingPathComponent:renderingSchemeFile];
     if ([[NSFileManager defaultManager] fileExistsAtPath:sourceRenderSchemeFile isDirectory:nil]) {
-        [[NSFileManager defaultManager] copyItemAtPath:sourceRenderSchemeFile toPath:[targetBuildingDir stringByAppendingPathComponent:renderingSchemeFile] error:&errer];
-        if (errer) {
-            NSLog(@"%@", [errer description]);
+        [[NSFileManager defaultManager] copyItemAtPath:sourceRenderSchemeFile toPath:[targetBuildingDir stringByAppendingPathComponent:renderingSchemeFile] error:&error];
+        if (error) {
+            NSLog(@"%@", [error description]);
         }
         
         [self addToLog:[NSString stringWithFormat:@"\tCopy RenderingScheme: %@", renderingSchemeFile]];
     }
     
     NSString *mapInfoFile = [NSString stringWithFormat:FILE_MAPINFO, currentBuilding.buildingID];
-    [[NSFileManager defaultManager] copyItemAtPath:[sourceBuildingDir stringByAppendingPathComponent:mapInfoFile] toPath:[targetBuildingDir stringByAppendingPathComponent:mapInfoFile] error:&errer];
-    if (errer) {
-        NSLog(@"%@", [errer description]);
+    [[NSFileManager defaultManager] copyItemAtPath:[sourceBuildingDir stringByAppendingPathComponent:mapInfoFile] toPath:[targetBuildingDir stringByAppendingPathComponent:mapInfoFile] error:&error];
+    if (error) {
+        NSLog(@"%@", [error description]);
     }
     [self addToLog:[NSString stringWithFormat:@"\tCopy MapInfo: %@", mapInfoFile]];
     
     NSString *poiDBFile = [NSString stringWithFormat:FILE_POI_DB, currentBuilding.buildingID];
     NSString *sourcePoiDBFile = [sourceBuildingDir stringByAppendingPathComponent:poiDBFile];
     if ([[NSFileManager defaultManager] fileExistsAtPath:sourcePoiDBFile isDirectory:nil]) {
-        [[NSFileManager defaultManager] copyItemAtPath:sourcePoiDBFile toPath:[targetBuildingDir stringByAppendingPathComponent:poiDBFile] error:&errer];
-        if (errer) {
-            NSLog(@"%@", [errer description]);
+        [[NSFileManager defaultManager] copyItemAtPath:sourcePoiDBFile toPath:[targetBuildingDir stringByAppendingPathComponent:poiDBFile] error:&error];
+        if (error) {
+            NSLog(@"%@", [error description]);
         }
-        
         [self addToLog:[NSString stringWithFormat:@"\tCopy POI database: %@", poiDBFile]];
     }
+
     
+    NSString *routeDBFile = [NSString stringWithFormat:FILE_ROUTE_DB, currentBuilding.buildingID];
+    NSString *sourceRouteDBFile = [sourceBuildingDir stringByAppendingPathComponent:routeDBFile];
+    if ([[NSFileManager defaultManager] fileExistsAtPath:sourceRouteDBFile isDirectory:nil]) {
+        [[NSFileManager defaultManager] copyItemAtPath:sourceRouteDBFile toPath:[targetBuildingDir stringByAppendingPathComponent:routeDBFile] error:&error];
+        if (error) {
+            NSLog(@"%@", [error description]);
+        }
+        [self addToLog:[NSString stringWithFormat:@"\tCopy Route database: %@", routeDBFile]];
+    }
+
     
     NSLog(@"MapInfo: %d", (int)allMapInfos.count);
     MD5 fileMd5;
-    
-    //    for(TYMapInfo *info in allMapInfos) {
-    //        for (int layerIndex = 0; layerIndex < layerArray.count; layerIndex++) {
-    //            NSString *fileName = [NSString stringWithFormat:@"%@_%@.json", info.mapID, layerArray[layerIndex]];
-    //            NSString *originalFile = [sourceBuildingDir stringByAppendingPathComponent:fileName];
-    //
-    //            if (![[NSFileManager defaultManager] fileExistsAtPath:originalFile]) {
-    //                continue;
-    //            }
-    //
-    //            fileMd5.reset();
-    //            fileMd5.update([fileName UTF8String]);
-    //            NSString *encryptedFileName = [NSString stringWithUTF8String:fileMd5.toString().c_str()];
-    //            encryptedFileName = [NSString stringWithFormat:@"%@.tymap", encryptedFileName];
-    //
-    //            NSString *encryptedFile = [targetBuildingDir stringByAppendingPathComponent:encryptedFileName];
-    //
-    //            [TYEncryption encryptFile:originalFile toFile:encryptedFile];
-    //
-    //            [self addToLog:[NSString stringWithFormat:@"\tEncrypt: %@ ==> %@", fileName, encryptedFileName]];
-    //        }
-    //    }
     
     for(TYMapInfo *info in allMapInfos) {
         NSString *fileName = [NSString stringWithFormat:FILE_MAP_DATA_PATH, info.mapID];

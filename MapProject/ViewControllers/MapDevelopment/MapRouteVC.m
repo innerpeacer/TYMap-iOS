@@ -124,9 +124,9 @@
     
     routeResult = rs;
     
-    NSLog(@"route part: %d", (int)routeResult.allRoutePartArray.count);
+//    NSLog(@"route part: %d", (int)routeResult.allRoutePartArray.count);
     TYRoutePart *rp = [routeResult.allRoutePartArray objectAtIndex:0];
-    NSLog(@"point: %d", (int)rp.route.numPoints);
+//    NSLog(@"point: %d", (int)rp.route.numPoints);
     
     AGSGraphicsLayer *testLayer = [AGSGraphicsLayer graphicsLayer];
     [self.mapView addMapLayer:testLayer];

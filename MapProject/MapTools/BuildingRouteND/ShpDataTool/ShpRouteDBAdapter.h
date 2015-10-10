@@ -15,6 +15,10 @@
 - (BOOL)open;
 - (BOOL)close;
 
-- (NSArray *)readAllShpRouteRecords:(NSString *)table;
+//- (NSArray *)readAllShpRouteRecords:(NSString *)table;
+
+- (NSArray *)readAllLinkShpRouteRecords:(NSString *)table;
+- (NSArray *)readAllNodeShpRouteRecords:(NSString *)table;
+
 
 @end

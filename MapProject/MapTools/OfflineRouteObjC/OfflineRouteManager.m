@@ -11,6 +11,12 @@
 #import "TYRoutePointConverter.h"
 #import "RouteNetworkDBAdapter.h"
 #import "TYMapEnviroment.h"
+
+#define TYMapSDKRouteErrorDomain @"com.ty.mapsdk"
+typedef enum {
+    SolvingRouteFailed = 1000,
+} RouteErrorFailed;
+
 @interface OfflineRouteManager()
 {
     RouteNetworkDataset *networkDataset;
@@ -68,8 +74,11 @@
             [self.delegate routeManager:self didSolveRouteWithResult:result OriginalLine:line];
         }
     } else {
+        NSDictionary *userInfo = [NSDictionary dictionaryWithObject:@"没有从起点到终点的路径！"                                                                     forKey:NSLocalizedDescriptionKey];
+        NSError *error = [NSError errorWithDomain:TYMapSDKRouteErrorDomain code:SolvingRouteFailed userInfo:userInfo];
+        
         if (self.delegate != nil && [self.delegate respondsToSelector:@selector(routeManager:didFailSolveRouteWithError:)]) {
-            [self.delegate routeManager:self didFailSolveRouteWithError:nil];
+            [self.delegate routeManager:self didFailSolveRouteWithError:error];
         }
     }
 }
@@ -94,7 +103,7 @@
                 
                 if (lp.floor != currentFloor) {
                     currentFloor = lp.floor;
-                    NSLog(@"process currentFloor: %d", currentFloor);
+//                    NSLog(@"process currentFloor: %d", currentFloor);
                     
                     currentArray = [[NSMutableArray alloc] init];
                     [pointArray addObject:currentArray];

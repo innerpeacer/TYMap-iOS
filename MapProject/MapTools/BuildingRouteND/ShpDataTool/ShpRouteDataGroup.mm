@@ -73,21 +73,18 @@
     NSMutableArray *resultArray = [[NSMutableArray alloc] init];
     int offsetForID = [self getOffset:index];
     
-    NSArray *shpRecords = [self readShpRouteRecords:index];
+//    NSArray *shpRecords = [self readShpRouteRecords:index];
+    NSArray *shpRecords = [self readLinkShpRouteRecords:index];
     for (ShpRouteDBRecord *record in shpRecords) {
         AGSPolyline *line = (AGSPolyline *)[record getAgsGeometry];
         int gid = record.geometryID + offsetForID;
         double length = [record getGeosGeometry]->getLength();
         
-//        TYLink *l = [[TYLink alloc] initWithLinkID:gid isVirtual:isVirtual];
-//        l.line = line;
-//        l.length = length;
-//        l.geometryData = record.geometryData;
-//        [resultArray addObject:l];
-        TYBuildingLink *l = [[TYBuildingLink alloc] initWithLinkID:gid isVirtual:isVirtual isOneWay:NO];
+        TYBuildingLink *l = [[TYBuildingLink alloc] initWithLinkID:gid isVirtual:isVirtual isOneWay:record.oneWay];
         l.line = line;
         l.length = length;
         l.geometryData = record.geometryData;
+        
         [resultArray addObject:l];
     }
     return resultArray;
@@ -99,15 +96,12 @@
     NSMutableArray *resultArray = [[NSMutableArray alloc] init];
     int offsetForID = [self getOffset:index];
     
-    NSArray *shpRecords = [self readShpRouteRecords:index];
+//    NSArray *shpRecords = [self readShpRouteRecords:index];
+    NSArray *shpRecords = [self readNodeShpRouteRecords:index];
     for (ShpRouteDBRecord *record in shpRecords) {
         AGSPoint *point = (AGSPoint *)[record getAgsGeometry];
         int gid = record.geometryID + offsetForID;
         
-//        TYNode *n = [[TYNode alloc] initWithNodeID:gid isVirtual:isVirtual];
-//        n.pos = point;
-//        n.geometryData = record.geometryData;
-//        [resultArray addObject:n];
         TYBuildingNode *n = [[TYBuildingNode alloc] initWithNodeID:gid isVirtual:isVirtual];
         n.pos = point;
         n.geometryData = record.geometryData;
@@ -116,12 +110,32 @@
     return resultArray;
 }
 
-- (NSArray *)readShpRouteRecords:(int)index
+//- (NSArray *)readShpRouteRecords:(int)index
+//{
+//    NSArray *result = nil;
+//    ShpRouteDBAdapter *db = [[ShpRouteDBAdapter alloc] initWithPath:[self getDBPath:index]];
+//    [db open];
+//    result = [db readAllShpRouteRecords:[self getTableName:index]];
+//    [db close];
+//    return result;
+//}
+
+- (NSArray *)readNodeShpRouteRecords:(int)index
 {
     NSArray *result = nil;
     ShpRouteDBAdapter *db = [[ShpRouteDBAdapter alloc] initWithPath:[self getDBPath:index]];
     [db open];
-    result = [db readAllShpRouteRecords:[self getTableName:index]];
+    result = [db readAllNodeShpRouteRecords:[self getTableName:index]];
+    [db close];
+    return result;
+}
+
+- (NSArray *)readLinkShpRouteRecords:(int)index
+{
+    NSArray *result = nil;
+    ShpRouteDBAdapter *db = [[ShpRouteDBAdapter alloc] initWithPath:[self getDBPath:index]];
+    [db open];
+    result = [db readAllLinkShpRouteRecords:[self getTableName:index]];
     [db close];
     return result;
 }

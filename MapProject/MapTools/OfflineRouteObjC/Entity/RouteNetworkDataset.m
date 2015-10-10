@@ -307,7 +307,7 @@
         }
     }
     AGSPolyline *result = (AGSPolyline *)[[AGSGeometryEngine defaultGeometryEngine] simplifyGeometry:resultLine];
-    
+//    NSLog(@"%d point in Path", (int)result.numPoints);
     return result;
 }
 
@@ -425,7 +425,7 @@
     AGSPoint *np = result.point;
     for (TYNode *node in _nodeArray) {
         if ([engine geometry:np withinGeometry:node.pos]) {
-            NSLog(@"Point Equal to One of the Nodes!");
+//            NSLog(@"Point Equal to One of the Nodes!");
             return node;
         }
     }
@@ -629,7 +629,7 @@
             
         }
     }
-    NSLog(@"New Temp Links: %d", (int)tempLinkArray.count);
+//    NSLog(@"New Temp Links: %d", (int)tempLinkArray.count);
     return tempLinkArray;
 }
 
@@ -646,20 +646,9 @@
     [self resetTempNodeForEnd];
     [self resetTempNodeForStart];
     
-//    if (nodePath) {
-//        AGSPoint *firstPoint = [nodePath pointOnPath:0 atIndex:0];
-//        double headDistance = [engine distanceFromGeometry:firstPoint toGeometry:start];
-//        double endDistance = [engine distanceFromGeometry:firstPoint toGeometry:end];
-//        
-//        if (headDistance > endDistance) {
-//            AGSMutablePolyline *reversedPath = [[AGSMutablePolyline alloc] init];
-//            [reversedPath addPathToPolyline];
-//            for (int i = (int)[nodePath numPointsInPath:0] - 1; i >= 0; --i) {
-//                [reversedPath addPointToPath:[nodePath pointOnPath:0 atIndex:i]];
-//            }
-//            nodePath = reversedPath;
-//        }
-//    }
+    if (nodePath.numPoints == 0) {
+        return nil;
+    }
     
     AGSMutablePolyline *path = [[AGSMutablePolyline alloc] init];
     [path addPathToPolyline];
@@ -670,12 +659,12 @@
     
     if ([engine distanceFromGeometry:start toGeometry:startNode.pos] > 0) {
         [path insertPoint:start onPath:0 atIndex:0];
-        NSLog(@"Insert Start");
+//        NSLog(@"Insert Start");
     }
     
     if ([engine distanceFromGeometry:end toGeometry:endNode.pos] > 0) {
         [path addPointToPath:end];
-        NSLog(@"Add End");
+//        NSLog(@"Add End");
     }
     
     return path;
