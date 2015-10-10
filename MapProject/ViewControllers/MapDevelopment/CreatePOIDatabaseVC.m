@@ -122,7 +122,7 @@
         
         // ============================================================
 
-        NSLog(@"%@", allMapData[@"facility"]);
+//        NSLog(@"%@", allMapData[@"facility"]);
         if ([allMapData[@"facility"] isKindOfClass:[NSString class]]) {
             continue;
         } else {

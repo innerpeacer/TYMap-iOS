@@ -24,6 +24,8 @@
 #import "TYRouteResult.h"
 #import "TYUserDefaults.h"
 
+#import <objc/message.h>
+
 @interface OfflineMapRouteVC() <OfflineRouteManagerDelegate>
 {
     // 路径管理器
@@ -180,6 +182,11 @@
     
     [hintLayer removeAllGraphics];
     [hintLayer addGraphic:[AGSGraphic graphicWithGeometry:mappoint symbol:sms attributes:nil]];
+ 
+    
+    startLocalPoint = endLocalPoint;
+    endLocalPoint = localPoint;
+    [self requtestRoute:nil];
     
 }
 
@@ -197,8 +204,8 @@
 - (IBAction)requtestRoute:(id)sender {
     
     if (startLocalPoint == nil || endLocalPoint == nil) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"需要两个点请求路径！" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-        [alert show];
+//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"需要两个点请求路径！" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+//        [alert show];
         return;
     }
     

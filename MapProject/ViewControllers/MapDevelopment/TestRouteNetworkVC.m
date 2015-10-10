@@ -16,6 +16,8 @@
 #import "SymbolGroup.h"
 #import "LayerGroup.h"
 
+#import <objc/message.h>
+
 @interface TestRouteNetworkVC()
 {
     RouteNetworkDataset *routeNetwork;
@@ -129,6 +131,7 @@
 int TestIndex = 0;
 - (void)TYMapView:(TYMapView *)mapView didClickAtPoint:(CGPoint)screen mapPoint:(TYPoint *)mappoint
 {
+    NSLog(@"X: %f", mappoint.x);
     BOOL testOffline = YES;
     
     testOffline = NO;
