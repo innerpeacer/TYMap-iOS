@@ -1,0 +1,17 @@
+{
+    "Buildings": [
+                  {
+                  "cityID": "0591",
+                  "id": "05910001",
+                  "name": "诺亚网络科技",
+                  "longitude": "116.362551",
+                  "latitude": "39.958951",
+                  "address": "福州市仓山区金工路1号",
+                  "initAngle": "-70.0",
+                  "routeURL": "http://123.56.41.94:6080/arcgis/rest/services/05910001/NAServer/Route",
+                  "offsetX": "30",
+                  "offsetY": "0",
+                  "status": "0"
+                  }
+                  ]
+}

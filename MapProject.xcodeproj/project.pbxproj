@@ -1269,7 +1269,7 @@
 					"-l",
 					"c++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "cn.nephogram.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = "cn.ty.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = MapProject;
 				PROVISIONING_PROFILE = "8412d76c-1806-4cc5-bdfd-33749130eaf3";
 				SDKROOT = iphoneos;
@@ -1302,7 +1302,7 @@
 					"-l",
 					"c++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "cn.nephogram.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = "cn.ty.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = MapProject;
 				PROVISIONING_PROFILE = "8412d76c-1806-4cc5-bdfd-33749130eaf3";
 				SDKROOT = iphoneos;
