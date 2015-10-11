@@ -34,6 +34,8 @@ namespace Innerpeacer {
             geos::geom::LineString *getLine() const;
             void setLine(geos::geom::LineString *line);
             
+            std::string toString() const;
+            
         private:
             int m_linkID;
             bool m_isVirtual;

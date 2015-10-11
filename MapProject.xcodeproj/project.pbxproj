@@ -293,8 +293,8 @@
 		572408DD1BC9B3370050BA41 /* TYOfflineRouteManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TYOfflineRouteManager.mm; sourceTree = "<group>"; };
 		572408E31BC9B9800050BA41 /* BuildRouteNetworkDatasetVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BuildRouteNetworkDatasetVC.h; path = RouteVC/BuildRouteNetworkDatasetVC.h; sourceTree = "<group>"; };
 		572408E41BC9B9800050BA41 /* BuildRouteNetworkDatasetVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BuildRouteNetworkDatasetVC.m; path = RouteVC/BuildRouteNetworkDatasetVC.m; sourceTree = "<group>"; };
-		572408E51BC9B9800050BA41 /* CppOfflineMapRouteVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CppOfflineMapRouteVC.h; path = RouteVC/CppOfflineMapRouteVC.h; sourceTree = "<group>"; };
-		572408E61BC9B9800050BA41 /* CppOfflineMapRouteVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CppOfflineMapRouteVC.m; path = RouteVC/CppOfflineMapRouteVC.m; sourceTree = "<group>"; };
+		572408E51BC9B9800050BA41 /* CppOfflineMapRouteVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CppOfflineMapRouteVC.h; path = ../../../ViewControllers/MapDevelopment/RouteVC/CppOfflineMapRouteVC.h; sourceTree = "<group>"; };
+		572408E61BC9B9800050BA41 /* CppOfflineMapRouteVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CppOfflineMapRouteVC.m; path = ../../../ViewControllers/MapDevelopment/RouteVC/CppOfflineMapRouteVC.m; sourceTree = "<group>"; };
 		572408E71BC9B9800050BA41 /* MapRouteVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapRouteVC.h; path = RouteVC/MapRouteVC.h; sourceTree = "<group>"; };
 		572408E81BC9B9800050BA41 /* MapRouteVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapRouteVC.m; path = RouteVC/MapRouteVC.m; sourceTree = "<group>"; };
 		572408E91BC9B9800050BA41 /* OfflineMapRouteVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OfflineMapRouteVC.h; path = RouteVC/OfflineMapRouteVC.h; sourceTree = "<group>"; };
@@ -637,6 +637,8 @@
 		5724077A1BC9A8A10050BA41 /* Route */ = {
 			isa = PBXGroup;
 			children = (
+				572408E51BC9B9800050BA41 /* CppOfflineMapRouteVC.h */,
+				572408E61BC9B9800050BA41 /* CppOfflineMapRouteVC.m */,
 				5724077B1BC9A8A10050BA41 /* TYDirectionalHint.h */,
 				5724077C1BC9A8A10050BA41 /* TYDirectionalHint.m */,
 				5724077D1BC9A8A10050BA41 /* TYLandmark.h */,
@@ -675,18 +677,18 @@
 		572407C61BC9A8B60050BA41 /* RouteNetwork */ = {
 			isa = PBXGroup;
 			children = (
-				572408CA1BC9AE190050BA41 /* IPXLink.cpp */,
 				572408CB1BC9AE190050BA41 /* IPXLink.hpp */,
-				572408CD1BC9AE2D0050BA41 /* IPXNode.cpp */,
+				572408CA1BC9AE190050BA41 /* IPXLink.cpp */,
 				572408CE1BC9AE2D0050BA41 /* IPXNode.hpp */,
-				572408D01BC9AE3D0050BA41 /* IPXRouteNetworkDataset.cpp */,
+				572408CD1BC9AE2D0050BA41 /* IPXNode.cpp */,
 				572408D11BC9AE3D0050BA41 /* IPXRouteNetworkDataset.hpp */,
-				572408D31BC9B2E70050BA41 /* IPXRouteNetworkDBAdapter.cpp */,
+				572408D01BC9AE3D0050BA41 /* IPXRouteNetworkDataset.cpp */,
 				572408D41BC9B2E70050BA41 /* IPXRouteNetworkDBAdapter.hpp */,
-				572408D61BC9B3080050BA41 /* IPXLinkRecord.cpp */,
+				572408D31BC9B2E70050BA41 /* IPXRouteNetworkDBAdapter.cpp */,
 				572408D71BC9B3080050BA41 /* IPXLinkRecord.hpp */,
-				572408D91BC9B3140050BA41 /* IPXNodeRecord.cpp */,
+				572408D61BC9B3080050BA41 /* IPXLinkRecord.cpp */,
 				572408DA1BC9B3140050BA41 /* IPXNodeRecord.hpp */,
+				572408D91BC9B3140050BA41 /* IPXNodeRecord.cpp */,
 			);
 			path = RouteNetwork;
 			sourceTree = "<group>";
@@ -696,8 +698,6 @@
 			children = (
 				572408E31BC9B9800050BA41 /* BuildRouteNetworkDatasetVC.h */,
 				572408E41BC9B9800050BA41 /* BuildRouteNetworkDatasetVC.m */,
-				572408E51BC9B9800050BA41 /* CppOfflineMapRouteVC.h */,
-				572408E61BC9B9800050BA41 /* CppOfflineMapRouteVC.m */,
 				572408E71BC9B9800050BA41 /* MapRouteVC.h */,
 				572408E81BC9B9800050BA41 /* MapRouteVC.m */,
 				572408E91BC9B9800050BA41 /* OfflineMapRouteVC.h */,

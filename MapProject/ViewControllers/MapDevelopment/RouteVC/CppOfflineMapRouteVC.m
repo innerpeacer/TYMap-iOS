@@ -9,6 +9,7 @@
 #import "CppOfflineMapRouteVC.h"
 
 #import "OfflineRouteManager.h"
+#import "TYOfflineRouteManager.h"
 
 #import "TYRouteLayer.h"
 #import "TYMapEnviroment.h"
@@ -24,10 +25,11 @@
 #import "TYRouteResult.h"
 #import "TYUserDefaults.h"
 
-@interface CppOfflineMapRouteVC()<OfflineRouteManagerDelegate>
+@interface CppOfflineMapRouteVC()<OfflineRouteManagerDelegate, TYOfflineRouteManagerDelegate>
 {
     // 路径管理器
     OfflineRouteManager *offlineRouteManager;
+    TYOfflineRouteManager *cppOfflineRouteManager;
     
     TYLocalPoint *startLocalPoint;
     TYLocalPoint *endLocalPoint;
@@ -65,34 +67,32 @@
     
     
     [self initSymbols];
-    
     hintLayer = [TYGraphicsLayer graphicsLayer];
     [self.mapView addMapLayer:hintLayer];
-    
     testLayer = [AGSGraphicsLayer graphicsLayer];
     [self.mapView addMapLayer:testLayer];
+    
+    
+    
     
     offlineRouteManager = [OfflineRouteManager routeManagerWithBuilding:self.currentBuilding MapInfos:self.allMapInfos];
     offlineRouteManager.delegate = self;
     
+    cppOfflineRouteManager = [TYOfflineRouteManager routeManagerWithBuilding:self.currentBuilding MapInfos:self.allMapInfos];
+    cppOfflineRouteManager.delegate = self;
+    
 }
 
-- (void)initSymbols
+
+
+- (void)offlineRouteManager:(TYOfflineRouteManager *)routeManager didFailSolveRouteWithError:(NSError *)error
 {
-    startSymbol = [TYPictureMarkerSymbol pictureMarkerSymbolWithImageNamed:@"start"];
-    startSymbol.offset = CGPointMake(0, 22);
-    
-    endSymbol = [TYPictureMarkerSymbol pictureMarkerSymbolWithImageNamed:@"end"];
-    endSymbol.offset = CGPointMake(0, 22);
-    
-    switchSymbol = [TYPictureMarkerSymbol pictureMarkerSymbolWithImageNamed:@"nav_exit"];
-    
-    markerSymbol = [TYSimpleMarkerSymbol simpleMarkerSymbolWithColor:[UIColor greenColor]];
-    markerSymbol.size = CGSizeMake(5, 5);
-    
-    [self.mapView setRouteStartSymbol:startSymbol];
-    [self.mapView setRouteEndSymbol:endSymbol];
-    [self.mapView setRouteSwitchSymbol:switchSymbol];
+    NSLog(@"%@", NSStringFromSelector(_cmd));
+}
+
+- (void)offlineRouteManager:(TYOfflineRouteManager *)routeManager didSolveRouteWithResult:(TYRouteResult *)routeResult OriginalLine:(AGSPolyline *)line
+{
+    NSLog(@"%@", NSStringFromSelector(_cmd));
 }
 
 - (void)routeManager:(OfflineRouteManager *)routeManager didFailSolveRouteWithError:(NSError *)error
@@ -166,6 +166,24 @@
     routeResult = nil;
     isRouting = YES;
     [offlineRouteManager requestRouteWithStart:startLocalPoint End:endLocalPoint];
+}
+
+- (void)initSymbols
+{
+    startSymbol = [TYPictureMarkerSymbol pictureMarkerSymbolWithImageNamed:@"start"];
+    startSymbol.offset = CGPointMake(0, 22);
+    
+    endSymbol = [TYPictureMarkerSymbol pictureMarkerSymbolWithImageNamed:@"end"];
+    endSymbol.offset = CGPointMake(0, 22);
+    
+    switchSymbol = [TYPictureMarkerSymbol pictureMarkerSymbolWithImageNamed:@"nav_exit"];
+    
+    markerSymbol = [TYSimpleMarkerSymbol simpleMarkerSymbolWithColor:[UIColor greenColor]];
+    markerSymbol.size = CGSizeMake(5, 5);
+    
+    [self.mapView setRouteStartSymbol:startSymbol];
+    [self.mapView setRouteEndSymbol:endSymbol];
+    [self.mapView setRouteSwitchSymbol:switchSymbol];
 }
 
 @end

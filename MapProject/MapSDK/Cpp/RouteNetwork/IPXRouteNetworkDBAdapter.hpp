@@ -11,6 +11,7 @@
 
 #include <stdio.h>
 #include <vector>
+#include <sqlite3.h>
 
 #include "IPXLinkRecord.hpp"
 #include "IPXNodeRecord.hpp"
@@ -22,7 +23,7 @@ namespace Innerpeacer {
         class IPXRouteNetworkDBAdapter {
             
         public:
-            IPXRouteNetworkDBAdapter(std::string dbPath);
+            IPXRouteNetworkDBAdapter(const char *dbPath);
             
             bool open();
             bool close();
@@ -33,6 +34,9 @@ namespace Innerpeacer {
         private:
             std::vector<IPXLinkRecord> getLinks();
             std::vector<IPXNodeRecord> getNodes();
+            
+            std::string m_path;
+            sqlite3 *m_database;
         };
         
     }

@@ -25,6 +25,8 @@ namespace Innerpeacer {
             double minDistance;
             IPXNode *previousNode;
             
+            std::vector<IPXLink *> adjacencies;
+
             IPXNode(int nodeID, bool isVir);
             ~IPXNode();
             
@@ -32,17 +34,17 @@ namespace Innerpeacer {
             void removeLink(IPXLink *link);
             void reset();
             
+            int getNodeID() const;
             geos::geom::Point *getPos() const;
             void setPos(geos::geom::Point *p);
             
+            std::string toString() const;
+
         private:
             int m_nodeID;
             bool m_isVirtual;
             
-            std::vector<IPXLink *> m_adjacencies;
             geos::geom::Point *m_pos;
-            
-            
         };
         
         

@@ -18,7 +18,7 @@ namespace Innerpeacer {
         struct IPXNodeRecord {
             int nodeID;
             geos::geom::Point *pos;
-            bool isVirtua;
+            bool isVirtual;
         };
     }
 }
