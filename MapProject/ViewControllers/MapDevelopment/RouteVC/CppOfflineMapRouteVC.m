@@ -90,9 +90,29 @@
     NSLog(@"%@", NSStringFromSelector(_cmd));
 }
 
-- (void)offlineRouteManager:(TYOfflineRouteManager *)routeManager didSolveRouteWithResult:(TYRouteResult *)routeResult OriginalLine:(AGSPolyline *)line
+- (void)offlineRouteManager:(TYOfflineRouteManager *)routeManager didSolveRouteWithResult:(TYRouteResult *)rs OriginalLine:(AGSPolyline *)line
 {
     NSLog(@"%@", NSStringFromSelector(_cmd));
+    
+    [hintLayer removeAllGraphics];
+    [testLayer removeAllGraphics];
+    
+    routeResult = rs;
+    
+    [self.mapView setRouteResult:rs];
+    [self.mapView setRouteStart:startLocalPoint];
+    [self.mapView setRouteEnd:endLocalPoint];
+    [self.mapView showRouteResultOnCurrentFloor];
+    
+    NSArray *routePartArray = [routeResult getRoutePartsOnFloor:self.currentMapInfo.floorNumber];
+    if (routePartArray && routePartArray.count > 0) {
+        currentRoutePart = [routePartArray objectAtIndex:0];
+    }
+    
+    if (currentRoutePart) {
+        routeGuides = [routeResult getRouteDirectionalHint:currentRoutePart];
+    }
+
 }
 
 - (void)routeManager:(OfflineRouteManager *)routeManager didFailSolveRouteWithError:(NSError *)error
@@ -106,26 +126,26 @@
 {
     NSLog(@"routeManager: didSolveRouteWithResult:");
     
-//    [hintLayer removeAllGraphics];
-//    [testLayer removeAllGraphics];
-//    
-//    routeResult = rs;
-//    
-//    [self.mapView setRouteResult:rs];
-//    [self.mapView setRouteStart:startLocalPoint];
-//    [self.mapView setRouteEnd:endLocalPoint];
-//    [self.mapView showRouteResultOnCurrentFloor];
-//    
-//    NSArray *routePartArray = [routeResult getRoutePartsOnFloor:self.currentMapInfo.floorNumber];
-//    if (routePartArray && routePartArray.count > 0) {
-//        currentRoutePart = [routePartArray objectAtIndex:0];
-//    }
-//    
-//    if (currentRoutePart) {
-//        routeGuides = [routeResult getRouteDirectionalHint:currentRoutePart];
-//    }
-//    
-//    //    [testLayer addGraphic:[AGSGraphic graphicWithGeometry:line symbol:[AGSSimpleLineSymbol simpleLineSymbolWithColor:[UIColor magentaColor] width:3] attributes:nil]];
+    [hintLayer removeAllGraphics];
+    [testLayer removeAllGraphics];
+    
+    routeResult = rs;
+    
+    [self.mapView setRouteResult:rs];
+    [self.mapView setRouteStart:startLocalPoint];
+    [self.mapView setRouteEnd:endLocalPoint];
+    [self.mapView showRouteResultOnCurrentFloor];
+    
+    NSArray *routePartArray = [routeResult getRoutePartsOnFloor:self.currentMapInfo.floorNumber];
+    if (routePartArray && routePartArray.count > 0) {
+        currentRoutePart = [routePartArray objectAtIndex:0];
+    }
+    
+    if (currentRoutePart) {
+        routeGuides = [routeResult getRouteDirectionalHint:currentRoutePart];
+    }
+    
+    //    [testLayer addGraphic:[AGSGraphic graphicWithGeometry:line symbol:[AGSSimpleLineSymbol simpleLineSymbolWithColor:[UIColor magentaColor] width:3] attributes:nil]];
 }
 
 
@@ -149,12 +169,12 @@
     NSLog(@"(%f, %f) in floor %d", mappoint.x, mappoint.y, self.currentMapInfo.floorNumber);
 
     
-//    [hintLayer removeAllGraphics];
-//    [hintLayer addGraphic:[AGSGraphic graphicWithGeometry:mappoint symbol:markerSymbol attributes:nil]];
-//    
-//    startLocalPoint = endLocalPoint;
-//    endLocalPoint = [TYLocalPoint pointWithX:mappoint.x Y:mappoint.y Floor:self.mapView.currentMapInfo.floorNumber];;
-//    [self requestRoute];
+    [hintLayer removeAllGraphics];
+    [hintLayer addGraphic:[AGSGraphic graphicWithGeometry:mappoint symbol:markerSymbol attributes:nil]];
+    
+    startLocalPoint = endLocalPoint;
+    endLocalPoint = [TYLocalPoint pointWithX:mappoint.x Y:mappoint.y Floor:self.mapView.currentMapInfo.floorNumber];;
+    [self requestRoute];
     
 }
 
@@ -165,7 +185,9 @@
     }
     routeResult = nil;
     isRouting = YES;
-    [offlineRouteManager requestRouteWithStart:startLocalPoint End:endLocalPoint];
+//    [offlineRouteManager requestRouteWithStart:startLocalPoint End:endLocalPoint];
+    
+    [cppOfflineRouteManager requestRouteWithStart:startLocalPoint End:endLocalPoint];
 }
 
 - (void)initSymbols

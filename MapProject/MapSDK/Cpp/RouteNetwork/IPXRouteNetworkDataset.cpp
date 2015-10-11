@@ -12,6 +12,9 @@
 #include <algorithm>
 
 #include <geos/operation/union/CascadedUnion.h>
+#include <geos/operation/distance/DistanceOp.h>
+#include <geos/linearref/LocationIndexOfPoint.h>
+#include <geos/linearref/LinearLocation.h>
 
 using namespace Innerpeacer::MapSDK;
 using namespace std;
@@ -26,71 +29,12 @@ int node_cmp(IPXNode *n1, IPXNode *n2)
 }
 
 //class IPXRouteNetworkDataset {
-//public:
-//    IPXRouteNetworkDataset(std::vector<IPXNodeRecord> &nodes, std::vector<IPXLinkRecord> &links);
-//    ~IPXRouteNetworkDataset();
-//    geos::geom::LineString *getShorestPath(geos::geom::Point start, geos::geom::Point end);
-//    std::string toString() const;
-//    
-//private:
-//    void extractNodes(std::vector<IPXNodeRecord> &nodes);
-//    void extractLinks(std::vector<IPXLinkRecord> &links);
-//    void processNodesAndLinks();
-//    
-//    void computePaths(IPXNode *source);
-//    geos::geom::LineString *getShorestPathToNode(IPXNode *target);
-//    void reset();
-//    
-//    IPXNode *processTempNodeForStart(geos::geom::Point startPoint);
-//    IPXNode *processTempNodeForEnd(geos::geom::Point endPoint);
-//    void resetTempNodeForStart();
-//    void resetTempNodeForEnd();
-//    IPXNode getTempNode(geos::geom::Point point);
-//    std::vector<IPXLink *>getTempLinks(geos::geom::Point point);
-//    
-//    geos::geom::LineString *reversePath(geos::geom::LineString *line);
-//    
-//private:
-//    std::vector<IPXLink *> m_linkArray;
-//    std::vector<IPXLink *> m_virtualLinkArray;
-//    std::vector<IPXNode *> m_nodeArray;
-//    std::vector<IPXNode *> m_virtualNodeArray;
-//    
-//    std::unordered_map<std::string, IPXLink *> m_allLinkDict;
-//    std::unordered_map<int, IPXNode *> m_allNodeDict;
-//    
-//    geos::geom::MultiLineString *m_unionLine;
-//    
-//    
-//private:
-//    //            GeometryEngine *engine;
-//    std::vector<IPXNode *> tempStartNodeArray;
-//    std::vector<IPXLink *> tempStartLinkArray;
-//    std::vector<IPXLink *> replacedStartLinkArray;
-//    
-//    std::vector<IPXNode *> tempEndNodeArray;
-//    std::vector<IPXLink *> tempEndLinkArray;
-//    std::vector<IPXLink *> replacedEndLinkArray;
-//};
 
-//class IPXRouteNetworkDataset {
-//
-//private:
-//    void computePaths(IPXNode *source);
-//    geos::geom::LineString *getShorestPathToNode(IPXNode *target);
-//    void reset();
 //
 //    IPXNode *processTempNodeForStart(geos::geom::Point startPoint);
 //    IPXNode *processTempNodeForEnd(geos::geom::Point endPoint);
 //    void resetTempNodeForStart();
 //    void resetTempNodeForEnd();
-//    IPXNode getTempNode(geos::geom::Point point);
-//    std::vector<IPXLink *>getTempLinks(geos::geom::Point point);
-//
-//private:
-//    geos::geom::MultiLineString *m_unionLine;
-//private:
-//    //            GeometryEngine *engine;
 //};
 
 IPXRouteNetworkDataset::IPXRouteNetworkDataset(std::vector<IPXNodeRecord> &nodes, std::vector<IPXLinkRecord> &links)
@@ -226,7 +170,6 @@ void IPXRouteNetworkDataset::processNodesAndLinks()
 }
 
 #pragma mark Dijkstra Algorithm
-
 void IPXRouteNetworkDataset::computePaths(IPXNode *source)
 {
     source->minDistance = 0;
@@ -309,10 +252,535 @@ void IPXRouteNetworkDataset::reset()
 }
 
 
-#pragma mark Public Method
-geos::geom::LineString *IPXRouteNetworkDataset::getShorestPath(geos::geom::Point start, geos::geom::Point end)
+#pragma mark Route Processing
+
+IPXNode *IPXRouteNetworkDataset::processTempNodeForStart(geos::geom::Point *startPoint)
 {
-    return NULL;
+    printf("  startPoint: %f, %f\n", startPoint->getX(), startPoint->getY());
+    
+    m_tempStartNodeArray.clear();
+    m_tempStartLinkArray.clear();
+    m_replacedStartLinkArray.clear();
+    
+    
+    // Add New Node If Needed
+    GeometryFactory factory;
+    CoordinateSequence *sequences = geos::operation::distance::DistanceOp::nearestPoints(m_unionLine, startPoint);
+    geos::geom::Point *np = NULL;
+    if (sequences->size() > 0) {
+        Coordinate coord;
+        coord.x = sequences->front().x;
+        coord.y = sequences->front().y;
+        np = factory.createPoint(coord);
+    }
+    delete sequences;
+    
+    
+    printf("nearestPoint: %f, %f\n", np->getX(), np->getY());
+
+    
+    vector<IPXNode *>::iterator iter;
+    for (iter = m_nodeArray.begin(); iter != m_nodeArray.end(); ++iter) {
+        if ((*iter)->getPos()->contains(np)) {
+            printf("Start Point Equal to One of the Nodes!\n");
+            delete np;
+            return (*iter);
+        }
+    }
+    
+    IPXNode *newTempNode = new IPXNode(m_tempNodeID, false);
+    m_tempNodeID++;
+    newTempNode->setPos(np);
+
+    m_tempStartNodeArray.push_back(newTempNode);
+    
+    
+    // Add New Links If Needed
+    vector<IPXLink *>::iterator linkIter;
+    for (linkIter = m_linkArray.begin(); linkIter != m_linkArray.end(); ++linkIter) {
+        IPXLink *link = (*linkIter);
+        
+        Coordinate coord;
+        coord.x = np->getX();
+        coord.y = np->getY();
+        
+        geos::linearref::LinearLocation location = geos::linearref::LocationIndexOfPoint::indexOf(link->getLine(), coord);
+        int index = location.getSegmentIndex();
+        
+        if (!location.isVertex()) {
+            
+            CoordinateArraySequence firstPartSequence;
+            CoordinateArraySequence secondPartSequence;
+            
+            secondPartSequence.add(coord);
+            for (int i = 0; i < link->getLine()->getNumPoints(); ++i) {
+                if (i <= index) {
+                    firstPartSequence.add(link->getLine()->getCoordinateN(i));
+                } else {
+                    secondPartSequence.add(link->getLine()->getCoordinateN(i));
+                }
+            }
+            firstPartSequence.add(coord);
+            
+            firstPartSequence.removeRepeatedPoints();
+            secondPartSequence.removeRepeatedPoints();
+            
+            LineString *firstPartLineString = factory.createLineString(firstPartSequence);
+            LineString *secondPartLineString = factory.createLineString(secondPartSequence);
+            
+            IPXLink *firstPartLink = new IPXLink(m_tempLinkID, false);
+            firstPartLink->currentNodeID = link->currentNodeID;
+            firstPartLink->nextNodeID = newTempNode->getNodeID();
+            firstPartLink->length = firstPartLineString->getLength();
+            firstPartLink->setLine(firstPartLineString);
+
+            IPXLink *secondPartLink = new IPXLink(m_tempLinkID, false);
+            secondPartLink->currentNodeID = newTempNode->getNodeID();
+            secondPartLink->nextNodeID = link->nextNodeID;
+            secondPartLink->length = secondPartLineString->getLength();
+            secondPartLink->setLine(secondPartLineString);
+            
+            m_tempLinkID++;
+            
+            m_tempStartLinkArray.push_back(firstPartLink);
+            m_tempStartLinkArray.push_back(secondPartLink);
+            m_replacedStartLinkArray.push_back(link);
+        }
+    }
+    
+    stringstream ostr;
+
+    for (vector<IPXNode *>::iterator nodeIter = m_tempStartNodeArray.begin(); nodeIter != m_tempStartNodeArray.end(); ++nodeIter) {
+        m_allNodeDict.insert(IPXNodeMap::value_type(newTempNode->getNodeID(), newTempNode));
+    }
+    
+    for (vector<IPXLink *>::iterator linkIter = m_tempStartLinkArray.begin(); linkIter != m_tempStartLinkArray.end(); ++linkIter) {
+        IPXLink *newLink = (*linkIter);
+        
+        IPXNode *headNode = m_allNodeDict.at(newLink->currentNodeID);
+        headNode->addLink(newLink);
+        newLink->nextNode = m_allNodeDict.at(newLink->nextNodeID);
+        
+        ostr.str("");
+        ostr << newLink->currentNodeID << newLink->nextNodeID;
+        string newLinkKey = ostr.str();
+        m_allLinkDict.insert(IPXLinkMap::value_type(newLinkKey, newLink));
+        
+        m_linkArray.push_back(newLink);
+    }
+    
+    for (vector<IPXLink *>::iterator linkIter = m_replacedStartLinkArray.begin(); linkIter != m_replacedStartLinkArray.end(); ++linkIter) {
+        IPXLink *replacedLink = (*linkIter);
+        
+        IPXNode *headNode = m_allNodeDict.at(replacedLink->currentNodeID);
+        headNode->removeLink(replacedLink);
+        
+        ostr.str("");
+        ostr << replacedLink->currentNodeID << replacedLink->nextNodeID;
+        string replacedLinkKey = ostr.str();
+        
+        m_allLinkDict.erase(replacedLinkKey);
+        for (vector<IPXLink *>::iterator rpIter = m_linkArray.begin(); rpIter != m_linkArray.end(); ++rpIter) {
+            if ((*rpIter) == replacedLink) {
+                m_linkArray.erase(rpIter);
+                break;
+            }
+        }
+    }
+    
+    return newTempNode;
+}
+
+IPXNode *IPXRouteNetworkDataset::processTempNodeForEnd(geos::geom::Point *endPoint)
+{
+    m_tempEndNodeArray.clear();
+    m_tempEndLinkArray.clear();
+    m_replacedEndLinkArray.clear();
+    
+    
+    // Add New Node If Needed
+    GeometryFactory factory;
+    CoordinateSequence *sequences = geos::operation::distance::DistanceOp::nearestPoints(m_unionLine, endPoint);
+    geos::geom::Point *np = NULL;
+    if (sequences->size() > 0) {
+        Coordinate coord;
+        coord.x = sequences->front().x;
+        coord.y = sequences->front().y;
+        np = factory.createPoint(coord);
+    }
+    delete sequences;
+    
+    vector<IPXNode *>::iterator iter;
+    for (iter = m_nodeArray.begin(); iter != m_nodeArray.end(); ++iter) {
+        if ((*iter)->getPos()->contains(np)) {
+            printf("End Point Equal to One of the Nodes!\n");
+            delete np;
+            return (*iter);
+        }
+    }
+    
+    IPXNode *newTempNode = new IPXNode(m_tempNodeID, false);
+    m_tempNodeID++;
+    newTempNode->setPos(np);
+    
+    m_tempEndNodeArray.push_back(newTempNode);
+    
+    
+    // Add New Links If Needed
+    vector<IPXLink *>::iterator linkIter;
+    for (linkIter = m_linkArray.begin(); linkIter != m_linkArray.end(); ++linkIter) {
+        IPXLink *link = (*linkIter);
+        
+        Coordinate coord;
+        coord.x = np->getX();
+        coord.y = np->getY();
+        
+        geos::linearref::LinearLocation location = geos::linearref::LocationIndexOfPoint::indexOf(link->getLine(), coord);
+        int index = location.getSegmentIndex();
+        
+        if (!location.isVertex()) {
+            
+            CoordinateArraySequence firstPartSequence;
+            CoordinateArraySequence secondPartSequence;
+            
+            secondPartSequence.add(coord);
+            for (int i = 0; i < link->getLine()->getNumPoints(); ++i) {
+                if (i <= index) {
+                    firstPartSequence.add(link->getLine()->getCoordinateN(i));
+                } else {
+                    secondPartSequence.add(link->getLine()->getCoordinateN(i));
+                }
+            }
+            firstPartSequence.add(coord);
+            
+            firstPartSequence.removeRepeatedPoints();
+            secondPartSequence.removeRepeatedPoints();
+            
+            LineString *firstPartLineString = factory.createLineString(firstPartSequence);
+            LineString *secondPartLineString = factory.createLineString(secondPartSequence);
+            
+            IPXLink *firstPartLink = new IPXLink(m_tempLinkID, false);
+            firstPartLink->currentNodeID = link->currentNodeID;
+            firstPartLink->nextNodeID = newTempNode->getNodeID();
+            firstPartLink->length = firstPartLineString->getLength();
+            firstPartLink->setLine(firstPartLineString);
+            
+            IPXLink *secondPartLink = new IPXLink(m_tempLinkID, false);
+            secondPartLink->currentNodeID = newTempNode->getNodeID();
+            secondPartLink->nextNodeID = link->nextNodeID;
+            secondPartLink->length = secondPartLineString->getLength();
+            secondPartLink->setLine(secondPartLineString);
+            
+            m_tempLinkID++;
+            
+            m_tempEndLinkArray.push_back(firstPartLink);
+            m_tempEndLinkArray.push_back(secondPartLink);
+            m_replacedEndLinkArray.push_back(link);
+        }
+    }
+    
+    stringstream ostr;
+    
+    for (vector<IPXNode *>::iterator nodeIter = m_tempEndNodeArray.begin(); nodeIter != m_tempEndNodeArray.end(); ++nodeIter) {
+        m_allNodeDict.insert(IPXNodeMap::value_type(newTempNode->getNodeID(), newTempNode));
+    }
+    
+    for (vector<IPXLink *>::iterator linkIter = m_tempEndLinkArray.begin(); linkIter != m_tempEndLinkArray.end(); ++linkIter) {
+        IPXLink *newLink = (*linkIter);
+        
+        IPXNode *headNode = m_allNodeDict.at(newLink->currentNodeID);
+        headNode->addLink(newLink);
+        newLink->nextNode = m_allNodeDict.at(newLink->nextNodeID);
+        
+        ostr.str("");
+        ostr << newLink->currentNodeID << newLink->nextNodeID;
+        string newLinkKey = ostr.str();
+        m_allLinkDict.insert(IPXLinkMap::value_type(newLinkKey, newLink));
+        
+        m_linkArray.push_back(newLink);
+    }
+    
+    for (vector<IPXLink *>::iterator linkIter = m_replacedEndLinkArray.begin(); linkIter != m_replacedEndLinkArray.end(); ++linkIter) {
+        IPXLink *replacedLink = (*linkIter);
+        
+        IPXNode *headNode = m_allNodeDict.at(replacedLink->currentNodeID);
+        headNode->removeLink(replacedLink);
+        
+        ostr.str("");
+        ostr << replacedLink->currentNodeID << replacedLink->nextNodeID;
+        string replacedLinkKey = ostr.str();
+        
+        m_allLinkDict.erase(replacedLinkKey);
+        for (vector<IPXLink *>::iterator rpIter = m_linkArray.begin(); rpIter != m_linkArray.end(); ++rpIter) {
+            if ((*rpIter) == replacedLink) {
+                m_linkArray.erase(rpIter);
+                break;
+            }
+        }
+    }
+    
+    return newTempNode;
+}
+
+
+void IPXRouteNetworkDataset::resetTempNodeForStart()
+{
+    stringstream ostr;
+    for (vector<IPXLink *>::iterator linkIter = m_replacedStartLinkArray.begin(); linkIter != m_replacedStartLinkArray.end(); ++linkIter) {
+        
+        IPXLink *replacedLink = (*linkIter);
+        IPXNode *headNode = m_allNodeDict.at(replacedLink->currentNodeID);
+        headNode->addLink(replacedLink);
+        
+        ostr.str("");
+        ostr << replacedLink->currentNodeID << replacedLink->nextNodeID;
+        string replacedLinkKey = ostr.str();
+        
+        m_allLinkDict.insert(IPXLinkMap::value_type(replacedLinkKey, replacedLink));
+        m_linkArray.push_back(replacedLink);
+    }
+    
+    for (vector<IPXLink *>::iterator linkIter = m_tempStartLinkArray.begin(); linkIter != m_tempStartLinkArray.end(); ++linkIter) {
+        
+        IPXLink *newLink = (*linkIter);
+        
+        IPXNode *headNode = m_allNodeDict.at(newLink->currentNodeID);
+        headNode->removeLink(newLink);
+        newLink->nextNode = NULL;
+        
+        
+        newLink->nextNode = m_allNodeDict.at(newLink->nextNodeID);
+        
+        ostr.str("");
+        ostr << newLink->currentNodeID << newLink->nextNodeID;
+        string newLinkKey = ostr.str();
+        
+        m_allLinkDict.erase(newLinkKey);
+        for (vector<IPXLink *>::iterator rpIter = m_linkArray.begin(); rpIter != m_linkArray.end(); ++rpIter) {
+            if ((*rpIter) == newLink) {
+                m_linkArray.erase(rpIter);
+                break;
+            }
+        }
+        
+        // 清理临时Link内存，避免内存泄漏
+        delete newLink;
+    }
+    
+    for (vector<IPXNode *>::iterator nodeIter = m_tempStartNodeArray.begin(); nodeIter != m_tempStartNodeArray.end(); ++nodeIter) {
+        m_allNodeDict.erase((*nodeIter)->getNodeID());
+        delete (*nodeIter);
+    }
+    
+    
+    m_replacedStartLinkArray.clear();
+    m_tempStartLinkArray.clear();
+    m_tempStartNodeArray.clear();
+
+}
+
+void IPXRouteNetworkDataset::resetTempNodeForEnd()
+{
+    stringstream ostr;
+    for (vector<IPXLink *>::iterator linkIter = m_replacedEndLinkArray.begin(); linkIter != m_replacedEndLinkArray.end(); ++linkIter) {
+        
+        IPXLink *replacedLink = (*linkIter);
+        IPXNode *headNode = m_allNodeDict.at(replacedLink->currentNodeID);
+        headNode->addLink(replacedLink);
+        
+        ostr.str("");
+        ostr << replacedLink->currentNodeID << replacedLink->nextNodeID;
+        string replacedLinkKey = ostr.str();
+        
+        m_allLinkDict.insert(IPXLinkMap::value_type(replacedLinkKey, replacedLink));
+        m_linkArray.push_back(replacedLink);
+    }
+    
+    for (vector<IPXLink *>::iterator linkIter = m_tempEndLinkArray.begin(); linkIter != m_tempEndLinkArray.end(); ++linkIter) {
+        
+        IPXLink *newLink = (*linkIter);
+        
+        IPXNode *headNode = m_allNodeDict.at(newLink->currentNodeID);
+        headNode->removeLink(newLink);
+        newLink->nextNode = NULL;
+        
+        
+        newLink->nextNode = m_allNodeDict.at(newLink->nextNodeID);
+        
+        ostr.str("");
+        ostr << newLink->currentNodeID << newLink->nextNodeID;
+        string newLinkKey = ostr.str();
+        
+        m_allLinkDict.erase(newLinkKey);
+        for (vector<IPXLink *>::iterator rpIter = m_linkArray.begin(); rpIter != m_linkArray.end(); ++rpIter) {
+            if ((*rpIter) == newLink) {
+                m_linkArray.erase(rpIter);
+                break;
+            }
+        }
+        
+        // 清理临时Link内存，避免内存泄漏
+        delete newLink;
+    }
+    
+    for (vector<IPXNode *>::iterator nodeIter = m_tempEndNodeArray.begin(); nodeIter != m_tempEndNodeArray.end(); ++nodeIter) {
+        m_allNodeDict.erase((*nodeIter)->getNodeID());
+        delete (*nodeIter);
+    }
+    
+    
+    m_replacedEndLinkArray.clear();
+    m_tempEndLinkArray.clear();
+    m_tempEndNodeArray.clear();
+}
+
+IPXNode *IPXRouteNetworkDataset::getTempNode(geos::geom::Point point)
+{
+    GeometryFactory factory;
+    CoordinateSequence *sequences = geos::operation::distance::DistanceOp::nearestPoints(m_unionLine, &point);
+    geos::geom::Point *np = NULL;
+    if (sequences->size() > 0) {
+        Coordinate coord;
+        coord.x = sequences->front().x;
+        coord.y = sequences->front().y;
+        np = factory.createPoint();
+    }
+    delete sequences;
+    
+    vector<IPXNode *>::iterator iter;
+    for (iter = m_nodeArray.begin(); iter != m_nodeArray.end(); ++iter) {
+        if ((*iter)->getPos()->contains(np)) {
+            printf("Existing Node\n");
+            delete np;
+            return (*iter);
+        }
+    }
+    
+    IPXNode *newTempNode = new IPXNode(m_tempNodeID, false);
+    m_tempNodeID++;
+    newTempNode->setPos(np);
+    return newTempNode;
+}
+
+std::vector<IPXLink *> IPXRouteNetworkDataset::getTempLinks(geos::geom::Point point)
+{
+    GeometryFactory factory;
+    CoordinateSequence *sequences = geos::operation::distance::DistanceOp::nearestPoints(m_unionLine, &point);
+    geos::geom::Point *np = NULL;
+    if (sequences->size() > 0) {
+        Coordinate coord;
+        coord.x = sequences->front().x;
+        coord.y = sequences->front().y;
+        np = factory.createPoint();
+    }
+    delete sequences;
+    
+    vector<IPXNode *>::iterator iter;
+    for (iter = m_nodeArray.begin(); iter != m_nodeArray.end(); ++iter) {
+        if ((*iter)->getPos()->contains(np)) {
+            printf("Existing Links: %d\n", (int)(*iter)->adjacencies.size());
+            delete np;
+            return (*iter)->adjacencies;
+        }
+    }
+    
+    vector<IPXLink *> tempLinkArray;
+    vector<IPXLink *>::iterator linkIter;
+    for (linkIter = m_linkArray.begin(); linkIter != m_linkArray.end(); ++linkIter) {
+        IPXLink *link = (*linkIter);
+        
+        Coordinate coord;
+        coord.x = np->getX();
+        coord.y = np->getY();
+        
+        geos::linearref::LinearLocation location = geos::linearref::LocationIndexOfPoint::indexOf(link->getLine(), coord);
+        int index = location.getSegmentIndex();
+        
+        if (!location.isVertex()) {
+            
+            CoordinateArraySequence firstPartSequence;
+            CoordinateArraySequence secondPartSequence;
+            
+            secondPartSequence.add(coord);
+            for (int i = 0; i < link->getLine()->getNumPoints(); ++i) {
+                if (i <= index) {
+                    firstPartSequence.add(link->getLine()->getCoordinateN(i));
+                } else {
+                    secondPartSequence.add(link->getLine()->getCoordinateN(i));
+                }
+            }
+            firstPartSequence.add(coord);
+            
+            firstPartSequence.removeRepeatedPoints();
+            secondPartSequence.removeRepeatedPoints();
+            
+            LineString *firstPartLineString = factory.createLineString(firstPartSequence);
+            LineString *secondPartLineString = factory.createLineString(secondPartSequence);
+            
+            IPXLink *firstPartLink = new IPXLink(m_tempLinkID, false);
+            IPXLink *secondPartLink = new IPXLink(m_tempLinkID, false);
+            
+            firstPartLink->setLine(firstPartLineString);
+            secondPartLink->setLine(secondPartLineString);
+            
+            m_tempLinkID++;
+            
+            tempLinkArray.push_back(firstPartLink);
+            tempLinkArray.push_back(secondPartLink);
+            
+        }
+    }
+
+    return tempLinkArray;
+}
+
+
+#pragma mark Public Method
+geos::geom::LineString *IPXRouteNetworkDataset::getShorestPath(geos::geom::Point *start, geos::geom::Point *end)
+{
+    GeometryFactory factory;
+    
+    reset();
+    
+    IPXNode *startNode = processTempNodeForStart(start);
+    IPXNode *endNode = processTempNodeForEnd(end);
+    
+    computePaths(startNode);
+    LineString *nodePath = getShorestPathToNode(endNode);
+    
+    if (nodePath->getNumPoints() == 0) {
+        delete nodePath;
+        return NULL;
+    }
+    
+    CoordinateArraySequence resultSequence;
+    
+    if (startNode->getPos()->distance(start) > 0) {
+        Coordinate startCoord;
+        startCoord.x = start->getX();
+        startCoord.y = start->getY();
+        resultSequence.add(startCoord);
+    }
+    
+    for (int i = 0; i < nodePath->getNumPoints(); ++i) {
+        resultSequence.add(nodePath->getCoordinateN(i));
+    }
+    
+    if (endNode->getPos()->distance(end) > 0) {
+        Coordinate endCoord;
+        endCoord.x = end->getX();
+        endCoord.y = end->getY();
+        resultSequence.add(endCoord);
+    }
+    delete nodePath;
+    
+    printf("%d points in result path\n", (int)resultSequence.getSize());
+    
+    resetTempNodeForEnd();
+    resetTempNodeForStart();
+    
+    return factory.createLineString(resultSequence);
+
 }
 
 std::string IPXRouteNetworkDataset::toString() const

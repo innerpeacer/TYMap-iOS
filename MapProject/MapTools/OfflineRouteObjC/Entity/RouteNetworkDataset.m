@@ -473,57 +473,57 @@
     return newTempNode;
 }
 
-- (NSArray *)getTempLinks:(AGSPoint *)point
-{
-    AGSProximityResult *result = [engine nearestCoordinateInGeometry:_unionLine toPoint:point];
-    AGSPoint *np = result.point;
-    
-    for (TYNode *node in _nodeArray) {
-        if ([engine geometry:np withinGeometry:node.pos]) {
-            NSLog(@"Existing Links: %d", (int)node.adjacencies.count);
-            return node.adjacencies;
-        }
-    }
-    
-    NSMutableArray *tempLinkArray = [NSMutableArray array];
-    for (TYLink *link in _linkArray) {
-        result = [engine nearestCoordinateInGeometry:link.line toPoint:np];
-        int index = (int)result.pointIndex;
-        
-        if ([engine geometry:link.line containsGeometry:np]) {
-            AGSMutablePolyline *firstPartPolyline = [[AGSMutablePolyline alloc] init];
-            [firstPartPolyline addPathToPolyline];
-            AGSMutablePolyline *secondPartPolyline = [[AGSMutablePolyline alloc] init];
-            [secondPartPolyline addPathToPolyline];
-            
-            for (int i = 0; i < [link.line numPointsInPath:0]; ++i) {
-                AGSPoint *p = [link.line pointOnPath:0 atIndex:i];
-                if (i <= index) {
-                    [firstPartPolyline addPointToPath:p];
-                } else {
-                    [secondPartPolyline addPointToPath:p];
-                }
-            }
-            
-            [firstPartPolyline addPointToPath:np];
-            [secondPartPolyline insertPoint:np onPath:0 atIndex:0];
-            
-            TYLink *firstPartLink = [[TYLink alloc] initWithLinkID:tempLinkID isVirtual:NO];
-            TYLink *secondPartLink = [[TYLink alloc] initWithLinkID:tempLinkID isVirtual:NO];
-            
-            firstPartLink.line = firstPartPolyline;
-            secondPartLink.line = secondPartPolyline;
-            
-            tempLinkID++;
-            
-            [tempLinkArray addObject:firstPartLink];
-            [tempLinkArray addObject:secondPartLink];
-            
-        }
-    }
-//    NSLog(@"New Temp Links: %d", (int)tempLinkArray.count);
-    return tempLinkArray;
-}
+//- (NSArray *)getTempLinks:(AGSPoint *)point
+//{
+//    AGSProximityResult *result = [engine nearestCoordinateInGeometry:_unionLine toPoint:point];
+//    AGSPoint *np = result.point;
+//    
+//    for (TYNode *node in _nodeArray) {
+//        if ([engine geometry:np withinGeometry:node.pos]) {
+//            NSLog(@"Existing Links: %d", (int)node.adjacencies.count);
+//            return node.adjacencies;
+//        }
+//    }
+//    
+//    NSMutableArray *tempLinkArray = [NSMutableArray array];
+//    for (TYLink *link in _linkArray) {
+//        result = [engine nearestCoordinateInGeometry:link.line toPoint:np];
+//        int index = (int)result.pointIndex;
+//        
+//        if ([engine geometry:link.line containsGeometry:np]) {
+//            AGSMutablePolyline *firstPartPolyline = [[AGSMutablePolyline alloc] init];
+//            [firstPartPolyline addPathToPolyline];
+//            AGSMutablePolyline *secondPartPolyline = [[AGSMutablePolyline alloc] init];
+//            [secondPartPolyline addPathToPolyline];
+//            
+//            for (int i = 0; i < [link.line numPointsInPath:0]; ++i) {
+//                AGSPoint *p = [link.line pointOnPath:0 atIndex:i];
+//                if (i <= index) {
+//                    [firstPartPolyline addPointToPath:p];
+//                } else {
+//                    [secondPartPolyline addPointToPath:p];
+//                }
+//            }
+//            
+//            [firstPartPolyline addPointToPath:np];
+//            [secondPartPolyline insertPoint:np onPath:0 atIndex:0];
+//            
+//            TYLink *firstPartLink = [[TYLink alloc] initWithLinkID:tempLinkID isVirtual:NO];
+//            TYLink *secondPartLink = [[TYLink alloc] initWithLinkID:tempLinkID isVirtual:NO];
+//            
+//            firstPartLink.line = firstPartPolyline;
+//            secondPartLink.line = secondPartPolyline;
+//            
+//            tempLinkID++;
+//            
+//            [tempLinkArray addObject:firstPartLink];
+//            [tempLinkArray addObject:secondPartLink];
+//            
+//        }
+//    }
+////    NSLog(@"New Temp Links: %d", (int)tempLinkArray.count);
+//    return tempLinkArray;
+//}
 
 - (AGSPolyline *)getShorestPathFrom:(AGSPoint *)start To:(AGSPoint *)end
 {

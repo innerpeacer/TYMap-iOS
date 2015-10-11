@@ -26,7 +26,7 @@ namespace Innerpeacer {
         public:
             IPXRouteNetworkDataset(std::vector<IPXNodeRecord> &nodes, std::vector<IPXLinkRecord> &links);
             ~IPXRouteNetworkDataset();
-            geos::geom::LineString *getShorestPath(geos::geom::Point start, geos::geom::Point end);
+            geos::geom::LineString *getShorestPath(geos::geom::Point *start, geos::geom::Point *end);
             std::string toString() const;
             
         private:
@@ -38,11 +38,11 @@ namespace Innerpeacer {
             geos::geom::LineString *getShorestPathToNode(IPXNode *target);
             void reset();
             
-            IPXNode *processTempNodeForStart(geos::geom::Point startPoint);
-            IPXNode *processTempNodeForEnd(geos::geom::Point endPoint);
+            IPXNode *processTempNodeForStart(geos::geom::Point *startPoint);
+            IPXNode *processTempNodeForEnd(geos::geom::Point *endPoint);
             void resetTempNodeForStart();
             void resetTempNodeForEnd();
-            IPXNode getTempNode(geos::geom::Point point);
+            IPXNode *getTempNode(geos::geom::Point point);
             std::vector<IPXLink *>getTempLinks(geos::geom::Point point);
                         
         private:
