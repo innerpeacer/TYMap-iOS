@@ -99,6 +99,8 @@
 
 - (void)viewDidUnload
 {
+    [super viewDidUnload];
+    
     self.mapView = nil;
 }
 

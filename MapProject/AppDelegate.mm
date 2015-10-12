@@ -113,9 +113,12 @@
         }
 
         
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"地图文件发生改变" message:@"删除旧文件并重新拷贝地图文件" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-        [alert show];
-        NSLog(@"File Changed");
+//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"地图文件发生改变" message:@"删除旧文件并重新拷贝地图文件" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+//        [alert show];
+//        NSLog(@"File Changed");
+        
+        NSLog(@"地图文件发生改变, 删除旧文件并重新拷贝地图文件");
+
     }
 }
 

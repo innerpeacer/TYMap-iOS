@@ -80,6 +80,7 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
+    [super viewDidAppear:animated];
 //    NSLog(@"%@: %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 //    [EnviromentManager switchToOriginal];
 //    NSLog(@"[EnviromentManager switchToOriginal]");

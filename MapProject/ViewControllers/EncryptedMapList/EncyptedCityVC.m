@@ -60,6 +60,8 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
+    [super viewDidAppear:animated];
+    
     NSLog(@"%@: %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
     [EnviromentManager switchToEncrypted];
     NSLog(@"[EnviromentManager switchToEncrypted]");

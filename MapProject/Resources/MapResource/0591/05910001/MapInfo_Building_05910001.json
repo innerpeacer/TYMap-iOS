@@ -1,0 +1,45 @@
+{
+    "MapInfo": [
+                {
+                "cityID":"0591",
+                "buildingID":"05910001",
+                "mapID":"05910001F01",
+                "floorName":"F1",
+                "floorIndex":"1",
+                "size_x":"27",
+                "size_y":"25",
+                "xmax":"13275994",
+                "xmin":"13275967",
+                "ymax":"2989091",
+                "ymin":"2989066"
+                },
+                {
+                "cityID":"0591",
+                "buildingID":"05910001",
+                "mapID":"05910001F02",
+                "floorName":"F2",
+                "floorIndex":"2",
+                "size_x":"27",
+                "size_y":"25",
+                "xmax":"13275994",
+                "xmin":"13275967",
+                "ymax":"2989091",
+                "ymin":"2989066"
+                },
+                {
+                "cityID":"0591",
+                "buildingID":"05910001",
+                "mapID":"05910001F03",
+                "floorName":"F3",
+                "floorIndex":"3",
+                "size_x":"27",
+                "size_y":"25",
+                "xmax":"13275994",
+                "xmin":"13275967",
+                "ymax":"2989091",
+                "ymin":"2989066"
+                }
+                
+                ]
+
+}

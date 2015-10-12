@@ -1,0 +1,17 @@
+{
+    "Buildings": [
+                  {
+                  "cityID": "0010",
+                  "id": "00100002",
+                  "name": "阳光100",
+                  "longitude": "116.362551",
+                  "latitude": "39.958951",
+                  "address": "北京市朝阳区光华路2号",
+                  "initAngle": "70.0",
+                  "routeURL": "http://123.56.41.94:6080/arcgis/rest/services/00100002/NAServer/Route",
+                  "offsetX": "200",
+                  "offsetY": "0",
+                  "status": "0"
+                  }
+                  ]
+}
