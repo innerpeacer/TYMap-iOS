@@ -912,7 +912,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wj3-p7-AfA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1365" y="3868"/>
+            <point key="canvasLocation" x="1381" y="3868"/>
         </scene>
         <!--Cpp Offline Map RouteVC-->
         <scene sceneID="RMT-nS-S6Z">
@@ -948,6 +948,42 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jlo-OO-bh8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3435" y="-1518"/>
+        </scene>
+        <!--Test Cpp Route NetworkVC-->
+        <scene sceneID="Sme-Wk-Qkn">
+            <objects>
+                <viewController storyboardIdentifier="TestCppRouteNetworkVC" id="SY3-Yw-bcR" customClass="TestCppRouteNetworkVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="4Jb-1p-ZYh"/>
+                        <viewControllerLayoutGuide type="bottom" id="Xo3-nN-yma"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="828-dQ-iaM">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h8O-kk-jxB" customClass="TYMapView">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="h8O-kk-jxB" firstAttribute="leading" secondItem="828-dQ-iaM" secondAttribute="leading" id="IA6-9D-P9a"/>
+                            <constraint firstItem="Xo3-nN-yma" firstAttribute="top" secondItem="h8O-kk-jxB" secondAttribute="bottom" id="JO5-nI-VGK"/>
+                            <constraint firstItem="h8O-kk-jxB" firstAttribute="top" secondItem="828-dQ-iaM" secondAttribute="top" id="P3s-o3-A0N"/>
+                            <constraint firstAttribute="trailing" secondItem="h8O-kk-jxB" secondAttribute="trailing" id="fMy-yV-9BA"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="V5z-g6-z8J"/>
+                    <connections>
+                        <outlet property="mapView" destination="h8O-kk-jxB" id="Ivk-Ei-KJg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iwf-No-BzN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2397" y="3860"/>
         </scene>
     </scenes>
     <resources>

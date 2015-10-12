@@ -29,6 +29,12 @@ namespace Innerpeacer {
             geos::geom::LineString *getShorestPath(geos::geom::Point *start, geos::geom::Point *end);
             std::string toString() const;
             
+            std::vector<IPXLink *> m_linkArray;
+            std::vector<IPXLink *> m_virtualLinkArray;
+            std::vector<IPXNode *> m_nodeArray;
+            std::vector<IPXNode *> m_virtualNodeArray;
+            geos::geom::MultiLineString *m_unionLine;
+
         private:
             void extractNodes(std::vector<IPXNodeRecord> &nodes);
             void extractLinks(std::vector<IPXLinkRecord> &links);
@@ -46,15 +52,15 @@ namespace Innerpeacer {
             std::vector<IPXLink *>getTempLinks(geos::geom::Point point);
                         
         private:
-            std::vector<IPXLink *> m_linkArray;
-            std::vector<IPXLink *> m_virtualLinkArray;
-            std::vector<IPXNode *> m_nodeArray;
-            std::vector<IPXNode *> m_virtualNodeArray;
+//            std::vector<IPXLink *> m_linkArray;
+//            std::vector<IPXLink *> m_virtualLinkArray;
+//            std::vector<IPXNode *> m_nodeArray;
+//            std::vector<IPXNode *> m_virtualNodeArray;
             
             std::unordered_map<std::string, IPXLink *> m_allLinkDict;
             std::unordered_map<int, IPXNode *> m_allNodeDict;
             
-            geos::geom::MultiLineString *m_unionLine;
+//            geos::geom::MultiLineString *m_unionLine;
             
         private:
 //            GeometryEngine *engine;
