@@ -42,8 +42,8 @@
     [self.objects addObject:@"地图 Demo"];
     [self.controllerDict setObject:@"mapController" forKey:@"地图 Demo"];
     
-    [self.objects addObject:@"地图导航 Demo"];
-    [self.controllerDict setObject:@"mapRouteController" forKey:@"地图导航 Demo"];
+//    [self.objects addObject:@"地图导航 Demo"];
+//    [self.controllerDict setObject:@"mapRouteController" forKey:@"地图导航 Demo"];
     
     [self.objects addObject:@"ObjC离线导航 Demo"];
     [self.controllerDict setObject:@"OfflineMapRouteVC" forKey:@"ObjC离线导航 Demo"];
@@ -72,18 +72,15 @@
     [self.objects addObject:@"测试网络数据集"];
     [self.controllerDict setObject:@"TestRouteNetworkVC" forKey:@"测试网络数据集"];
     
-    [self.objects addObject:@"测试Cpp网络数据集"];
-    [self.controllerDict setObject:@"TestCppRouteNetworkVC" forKey:@"测试Cpp网络数据集"];
+//    [self.objects addObject:@"测试Cpp网络数据集"];
+//    [self.controllerDict setObject:@"TestCppRouteNetworkVC" forKey:@"测试Cpp网络数据集"];
     
-    [self tableView:self.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:3 inSection:0]];
+//    [self tableView:self.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:3 inSection:0]];
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"设置" style:UIBarButtonItemStyleBordered target:self action:@selector(choosingPlace:)];
     
     [self updateTitle];
 }
-
-
-
 
 - (void)updateTitle
 {

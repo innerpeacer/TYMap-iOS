@@ -121,7 +121,7 @@
 		5787712F1BBB916B00F90D7B /* TYNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 5787712E1BBB916B00F90D7B /* TYNode.m */; settings = {ASSET_TAGS = (); }; };
 		579B587B1B74F31B00F05206 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 579B587A1B74F31B00F05206 /* Images.xcassets */; };
 		57C03F5A1B61E19800490179 /* BaseMapVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 57C03F591B61E19800490179 /* BaseMapVC.m */; };
-		57CC56D31BCB84B800B5EE0A /* TestCppRouteNetworkVC.mm in Sources */ = {isa = PBXBuildFile; fileRef = 57CC56D21BCB84B800B5EE0A /* TestCppRouteNetworkVC.mm */; settings = {ASSET_TAGS = (); }; };
+		57CC56D61BCBB11700B5EE0A /* TestCppRouteNetworkVC.mm in Sources */ = {isa = PBXBuildFile; fileRef = 57CC56D51BCBB11700B5EE0A /* TestCppRouteNetworkVC.mm */; settings = {ASSET_TAGS = (); }; };
 		57D167911BBA44FF004BE6B9 /* TYBuildingLink.m in Sources */ = {isa = PBXBuildFile; fileRef = 57D167901BBA44FF004BE6B9 /* TYBuildingLink.m */; settings = {ASSET_TAGS = (); }; };
 		57D167941BBA4508004BE6B9 /* TYBuildingNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 57D167931BBA4508004BE6B9 /* TYBuildingNode.m */; settings = {ASSET_TAGS = (); }; };
 		57D167971BBA47C1004BE6B9 /* ShpRouteDBRecord.mm in Sources */ = {isa = PBXBuildFile; fileRef = 57D167961BBA47C1004BE6B9 /* ShpRouteDBRecord.mm */; settings = {ASSET_TAGS = (); }; };
@@ -294,8 +294,8 @@
 		572408DD1BC9B3370050BA41 /* TYOfflineRouteManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TYOfflineRouteManager.mm; sourceTree = "<group>"; };
 		572408E31BC9B9800050BA41 /* BuildRouteNetworkDatasetVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BuildRouteNetworkDatasetVC.h; path = RouteVC/BuildRouteNetworkDatasetVC.h; sourceTree = "<group>"; };
 		572408E41BC9B9800050BA41 /* BuildRouteNetworkDatasetVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BuildRouteNetworkDatasetVC.m; path = RouteVC/BuildRouteNetworkDatasetVC.m; sourceTree = "<group>"; };
-		572408E51BC9B9800050BA41 /* CppOfflineMapRouteVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CppOfflineMapRouteVC.h; path = ../../../ViewControllers/MapDevelopment/RouteVC/CppOfflineMapRouteVC.h; sourceTree = "<group>"; };
-		572408E61BC9B9800050BA41 /* CppOfflineMapRouteVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CppOfflineMapRouteVC.m; path = ../../../ViewControllers/MapDevelopment/RouteVC/CppOfflineMapRouteVC.m; sourceTree = "<group>"; };
+		572408E51BC9B9800050BA41 /* CppOfflineMapRouteVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CppOfflineMapRouteVC.h; path = RouteVC/CppOfflineMapRouteVC.h; sourceTree = "<group>"; };
+		572408E61BC9B9800050BA41 /* CppOfflineMapRouteVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CppOfflineMapRouteVC.m; path = RouteVC/CppOfflineMapRouteVC.m; sourceTree = "<group>"; };
 		572408E71BC9B9800050BA41 /* MapRouteVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapRouteVC.h; path = RouteVC/MapRouteVC.h; sourceTree = "<group>"; };
 		572408E81BC9B9800050BA41 /* MapRouteVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapRouteVC.m; path = RouteVC/MapRouteVC.m; sourceTree = "<group>"; };
 		572408E91BC9B9800050BA41 /* OfflineMapRouteVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OfflineMapRouteVC.h; path = RouteVC/OfflineMapRouteVC.h; sourceTree = "<group>"; };
@@ -372,8 +372,8 @@
 		579B587A1B74F31B00F05206 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		57C03F581B61E19800490179 /* BaseMapVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseMapVC.h; sourceTree = "<group>"; };
 		57C03F591B61E19800490179 /* BaseMapVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseMapVC.m; sourceTree = "<group>"; };
-		57CC56D11BCB84B800B5EE0A /* TestCppRouteNetworkVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestCppRouteNetworkVC.h; sourceTree = "<group>"; };
-		57CC56D21BCB84B800B5EE0A /* TestCppRouteNetworkVC.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TestCppRouteNetworkVC.mm; sourceTree = "<group>"; };
+		57CC56D41BCBB11700B5EE0A /* TestCppRouteNetworkVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TestCppRouteNetworkVC.h; path = RouteVC/TestCppRouteNetworkVC.h; sourceTree = "<group>"; };
+		57CC56D51BCBB11700B5EE0A /* TestCppRouteNetworkVC.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = TestCppRouteNetworkVC.mm; path = RouteVC/TestCppRouteNetworkVC.mm; sourceTree = "<group>"; };
 		57D1678F1BBA44FF004BE6B9 /* TYBuildingLink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYBuildingLink.h; sourceTree = "<group>"; };
 		57D167901BBA44FF004BE6B9 /* TYBuildingLink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYBuildingLink.m; sourceTree = "<group>"; };
 		57D167921BBA4508004BE6B9 /* TYBuildingNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYBuildingNode.h; sourceTree = "<group>"; };
@@ -640,8 +640,6 @@
 		5724077A1BC9A8A10050BA41 /* Route */ = {
 			isa = PBXGroup;
 			children = (
-				572408E51BC9B9800050BA41 /* CppOfflineMapRouteVC.h */,
-				572408E61BC9B9800050BA41 /* CppOfflineMapRouteVC.m */,
 				5724077B1BC9A8A10050BA41 /* TYDirectionalHint.h */,
 				5724077C1BC9A8A10050BA41 /* TYDirectionalHint.m */,
 				5724077D1BC9A8A10050BA41 /* TYLandmark.h */,
@@ -699,6 +697,8 @@
 		572408E21BC9B9070050BA41 /* RouteVC */ = {
 			isa = PBXGroup;
 			children = (
+				57CC56D41BCBB11700B5EE0A /* TestCppRouteNetworkVC.h */,
+				57CC56D51BCBB11700B5EE0A /* TestCppRouteNetworkVC.mm */,
 				572408E31BC9B9800050BA41 /* BuildRouteNetworkDatasetVC.h */,
 				572408E41BC9B9800050BA41 /* BuildRouteNetworkDatasetVC.m */,
 				572408E71BC9B9800050BA41 /* MapRouteVC.h */,
@@ -707,8 +707,8 @@
 				572408EA1BC9B9800050BA41 /* OfflineMapRouteVC.m */,
 				572408EB1BC9B9800050BA41 /* TestRouteNetworkVC.h */,
 				572408EC1BC9B9800050BA41 /* TestRouteNetworkVC.m */,
-				57CC56D11BCB84B800B5EE0A /* TestCppRouteNetworkVC.h */,
-				57CC56D21BCB84B800B5EE0A /* TestCppRouteNetworkVC.mm */,
+				572408E51BC9B9800050BA41 /* CppOfflineMapRouteVC.h */,
+				572408E61BC9B9800050BA41 /* CppOfflineMapRouteVC.m */,
 			);
 			name = RouteVC;
 			sourceTree = "<group>";
@@ -1114,7 +1114,6 @@
 				57F5383E1BC6AF0C00692692 /* RouteNetworkDBEntity.m in Sources */,
 				57EB457C1B73D2B50050956F /* RATreeView.m in Sources */,
 				57672D5D1B55FF9900DAD219 /* TYUserDefaults.m in Sources */,
-				57CC56D31BCB84B800B5EE0A /* TestCppRouteNetworkVC.mm in Sources */,
 				57EB45731B73D2B50050956F /* RATreeNode.m in Sources */,
 				57D167971BBA47C1004BE6B9 /* ShpRouteDBRecord.mm in Sources */,
 				57672E321B55FFF900DAD219 /* FMDatabaseQueue.m in Sources */,
@@ -1195,6 +1194,7 @@
 				572407C11BC9A8A10050BA41 /* TYRouteResult.m in Sources */,
 				57F422A01BB038730064D30B /* LicenseGenerator.m in Sources */,
 				5787712C1BBB915E00F90D7B /* RouteNetworkDataset.m in Sources */,
+				57CC56D61BCBB11700B5EE0A /* TestCppRouteNetworkVC.mm in Sources */,
 				572407B31BC9A8A10050BA41 /* TYCityManager.m in Sources */,
 				57C03F5A1B61E19800490179 /* BaseMapVC.m in Sources */,
 				576AEEAC1B61D97100D55CA4 /* MapVC.m in Sources */,

@@ -8,7 +8,6 @@
 
 #import "CppOfflineMapRouteVC.h"
 
-#import "OfflineRouteManager.h"
 #import "TYOfflineRouteManager.h"
 
 #import "TYRouteLayer.h"
@@ -25,10 +24,9 @@
 #import "TYRouteResult.h"
 #import "TYUserDefaults.h"
 
-@interface CppOfflineMapRouteVC()<OfflineRouteManagerDelegate, TYOfflineRouteManagerDelegate>
+@interface CppOfflineMapRouteVC()<TYOfflineRouteManagerDelegate>
 {
     // 路径管理器
-    OfflineRouteManager *offlineRouteManager;
     TYOfflineRouteManager *cppOfflineRouteManager;
     
     TYLocalPoint *startLocalPoint;
@@ -51,6 +49,10 @@
     TYPictureMarkerSymbol *endSymbol;
     TYPictureMarkerSymbol *switchSymbol;
     TYSimpleMarkerSymbol *markerSymbol;
+    
+    
+    NSDate *startDate;
+    NSDate *endDate;
 }
 
 @end
@@ -72,18 +74,11 @@
     testLayer = [AGSGraphicsLayer graphicsLayer];
     [self.mapView addMapLayer:testLayer];
     
-    
-    
-    
-    offlineRouteManager = [OfflineRouteManager routeManagerWithBuilding:self.currentBuilding MapInfos:self.allMapInfos];
-//    offlineRouteManager.delegate = self;
-    
+    NSDate *now = [NSDate date];
     cppOfflineRouteManager = [TYOfflineRouteManager routeManagerWithBuilding:self.currentBuilding MapInfos:self.allMapInfos];
     cppOfflineRouteManager.delegate = self;
-    
+    NSLog(@"加载用时：%f", [[NSDate date] timeIntervalSinceDate:now]);
 }
-
-
 
 - (void)offlineRouteManager:(TYOfflineRouteManager *)routeManager didFailSolveRouteWithError:(NSError *)error
 {
@@ -94,37 +89,8 @@
 {
     NSLog(@"%@", NSStringFromSelector(_cmd));
     
-    [hintLayer removeAllGraphics];
-    [testLayer removeAllGraphics];
-    
-    routeResult = rs;
-    
-    [self.mapView setRouteResult:rs];
-    [self.mapView setRouteStart:startLocalPoint];
-    [self.mapView setRouteEnd:endLocalPoint];
-    [self.mapView showRouteResultOnCurrentFloor];
-    
-    NSArray *routePartArray = [routeResult getRoutePartsOnFloor:self.currentMapInfo.floorNumber];
-    if (routePartArray && routePartArray.count > 0) {
-        currentRoutePart = [routePartArray objectAtIndex:0];
-    }
-    
-    if (currentRoutePart) {
-        routeGuides = [routeResult getRouteDirectionalHint:currentRoutePart];
-    }
-
-}
-
-- (void)routeManager:(OfflineRouteManager *)routeManager didFailSolveRouteWithError:(NSError *)error
-{
-    NSLog(@"routeManager:routeManager didFailSolveRouteWithError:");
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error!" message:error.localizedDescription delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    [alert show];
-}
-
-- (void)routeManager:(OfflineRouteManager *)routeManager didSolveRouteWithResult:(TYRouteResult *)rs OriginalLine:(AGSPolyline *)line
-{
-    NSLog(@"routeManager: didSolveRouteWithResult:");
+    endDate = [NSDate date];
+    NSLog(@"导航用时：%f", [endDate timeIntervalSinceDate:startDate]);
     
     [hintLayer removeAllGraphics];
     [testLayer removeAllGraphics];
@@ -144,24 +110,22 @@
     if (currentRoutePart) {
         routeGuides = [routeResult getRouteDirectionalHint:currentRoutePart];
     }
-    
-    //    [testLayer addGraphic:[AGSGraphic graphicWithGeometry:line symbol:[AGSSimpleLineSymbol simpleLineSymbolWithColor:[UIColor magentaColor] width:3] attributes:nil]];
+
 }
 
+- (void)TYMapView:(TYMapView *)mapView didFinishLoadingFloor:(TYMapInfo *)mapInfo
+{
+    if (isRouting) {
+        [self.mapView showRouteResultOnCurrentFloor];
+    }
+}
 
-//- (void)TYMapView:(TYMapView *)mapView didFinishLoadingFloor:(TYMapInfo *)mapInfo
-//{
-//    if (isRouting) {
-//        [self.mapView showRouteResultOnCurrentFloor];
-//    }
-//}
-//
-//- (void)TYMapViewDidZoomed:(TYMapView *)mapView
-//{
-//    if (isRouting) {
-//        [self.mapView showRouteResultOnCurrentFloor];
-//    }
-//}
+- (void)TYMapViewDidZoomed:(TYMapView *)mapView
+{
+    if (isRouting) {
+        [self.mapView showRouteResultOnCurrentFloor];
+    }
+}
 
 
 - (void)TYMapView:(TYMapView *)mapView didClickAtPoint:(CGPoint)screen mapPoint:(TYPoint *)mappoint
@@ -185,7 +149,8 @@
     }
     routeResult = nil;
     isRouting = YES;
-    [offlineRouteManager requestRouteWithStart:startLocalPoint End:endLocalPoint];
+    
+    startDate = [NSDate date];
     [cppOfflineRouteManager requestRouteWithStart:startLocalPoint End:endLocalPoint];
 }
 
