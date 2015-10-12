@@ -76,7 +76,7 @@
     
     
     offlineRouteManager = [OfflineRouteManager routeManagerWithBuilding:self.currentBuilding MapInfos:self.allMapInfos];
-    offlineRouteManager.delegate = self;
+//    offlineRouteManager.delegate = self;
     
     cppOfflineRouteManager = [TYOfflineRouteManager routeManagerWithBuilding:self.currentBuilding MapInfos:self.allMapInfos];
     cppOfflineRouteManager.delegate = self;
@@ -185,8 +185,7 @@
     }
     routeResult = nil;
     isRouting = YES;
-//    [offlineRouteManager requestRouteWithStart:startLocalPoint End:endLocalPoint];
-    
+    [offlineRouteManager requestRouteWithStart:startLocalPoint End:endLocalPoint];
     [cppOfflineRouteManager requestRouteWithStart:startLocalPoint End:endLocalPoint];
 }
 

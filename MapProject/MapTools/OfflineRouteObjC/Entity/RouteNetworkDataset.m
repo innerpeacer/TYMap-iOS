@@ -30,6 +30,29 @@
 
 @implementation RouteNetworkDataset
 
+- (void)showNetworkStrucutue:(NSArray *)nodeArray
+{
+    NSArray *sortedNodeArray = [nodeArray sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+        TYNode *n1 = (TYNode *)obj1;
+        TYNode *n2 = (TYNode *)obj2;
+        return n1.nodeID > n2.nodeID;
+    }];
+    
+    for(TYNode *node in sortedNodeArray) {
+        printf("%d", node.nodeID);
+        [node.adjacencies sortUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+            TYLink *l1 = (TYLink *)obj1;
+            TYLink *l2 = (TYLink *)obj2;
+            return l1.linkID > l2.linkID;
+        }];
+        for (TYLink *link in node.adjacencies) {
+            printf("->%d",link.linkID);
+        }
+    }
+    printf("\n");
+
+}
+
 - (id)initWithNodes:(NSArray *)nodes Links:(NSArray *)links
 {
     self = [super init];
@@ -51,6 +74,13 @@
         [self extractNodes:nodes];
         [self extractLinks:links];
         [self processNodesAndLinks];
+        
+        
+//        // ============= Test Showing Network ====================
+//        printf("ObjC => Network\n");
+//        [self showNetworkStrucutue];
+//        // ============= Test Showing Network ====================
+
         
         NSMutableArray *allLinkLines = [NSMutableArray array];
         for (TYLink *link in _linkArray) {
@@ -183,14 +213,19 @@
     for (TYNode *node = target; node != nil; node = node.previousNode) {
         [array addObject:node];
     }
+//    printf("ObjC => Total %d nods in path\n", (int)array.count);
+
     NSArray *reverseArray = [[array reverseObjectEnumerator] allObjects];
     
     
     AGSMutablePolyline *resultLine = [[AGSMutablePolyline alloc] init];
     [resultLine addPathToPolyline];
     
+//    printf("ObjC => getShorestPathToNode\n");
     for (TYNode *node in reverseArray) {
         if (node && node.previousNode) {
+            printf(" -> %d(%d)", node.nodeID, (int)node.adjacencies.count);
+            
             NSString *key = [NSString stringWithFormat:@"%d%d", node.previousNode.nodeID, node.nodeID];
             TYLink *link = [_allLinkDict objectForKey:key];
             for (int i = 0; i < [link.line numPointsInPath:0]; ++i) {
@@ -198,6 +233,8 @@
             }
         }
     }
+    printf("\n");
+
     AGSPolyline *result = (AGSPolyline *)[[AGSGeometryEngine defaultGeometryEngine] simplifyGeometry:resultLine];
 //    NSLog(@"%d point in Path", (int)result.numPoints);
     return result;
@@ -220,7 +257,6 @@
     [tempStartNodeArray removeAllObjects];
     
     [replacedStartLinkArray removeAllObjects];
-    //    [replacedStartNodeArray removeAllObjects];
     
     AGSProximityResult *result = [engine nearestCoordinateInGeometry:_unionLine toPoint:startPoint];
     AGSPoint *np = result.point;
@@ -241,8 +277,10 @@
     for (TYLink *link in _linkArray) {
         result = [engine nearestCoordinateInGeometry:link.line toPoint:np];
         int index = (int)result.pointIndex;
-        
+
         if ([engine geometry:link.line containsGeometry:np]) {
+            printf("Index: %d Link: %d\n", index, link.linkID);
+
             AGSMutablePolyline *firstPartPolyline = [[AGSMutablePolyline alloc] init];
             [firstPartPolyline addPathToPolyline];
             AGSMutablePolyline *secondPartPolyline = [[AGSMutablePolyline alloc] init];
@@ -272,6 +310,9 @@
             secondPartLink.line = secondPartPolyline;
             tempLinkID++;
             
+            printf("Add Link: %d\n", firstPartLink.linkID);
+            printf("Add Link: %d\n", secondPartLink.linkID);
+            
             [tempStartLinkArray addObject:firstPartLink];
             [tempStartLinkArray addObject:secondPartLink];
             [replacedStartLinkArray addObject:link];
@@ -296,6 +337,8 @@
     for (TYLink *replacedLink in replacedStartLinkArray) {
         TYNode *headNode = [_allNodeDict objectForKey:@(replacedLink.currentNodeID)];
         [headNode removeLink:replacedLink];
+        
+        printf("Remove Link: %d\n", replacedLink.linkID);
         
         NSString *replacedLinkKey = [NSString stringWithFormat:@"%d%d", replacedLink.currentNodeID, replacedLink.nextNodeID];
         [_allLinkDict removeObjectForKey:replacedLinkKey];
@@ -334,6 +377,8 @@
         int index = (int)result.pointIndex;
         
         if ([engine geometry:link.line containsGeometry:np]) {
+            printf("Index: %d Link: %d\n", index, link.linkID);
+
             AGSMutablePolyline *firstPartPolyline = [[AGSMutablePolyline alloc] init];
             [firstPartPolyline addPathToPolyline];
             AGSMutablePolyline *secondPartPolyline = [[AGSMutablePolyline alloc] init];
@@ -363,6 +408,10 @@
             secondPartLink.line = secondPartPolyline;
             tempLinkID++;
             
+            printf("Add Link: %d\n", firstPartLink.linkID);
+            printf("Add Link: %d\n", secondPartLink.linkID);
+
+            
             [tempEndLinkArray addObject:firstPartLink];
             [tempEndLinkArray addObject:secondPartLink];
             [replacedEndLinkArray addObject:link];
@@ -387,6 +436,9 @@
     for (TYLink *replacedLink in replacedEndLinkArray) {
         TYNode *headNode = [_allNodeDict objectForKey:@(replacedLink.currentNodeID)];
         [headNode removeLink:replacedLink];
+
+        printf("Remove Link: %d\n", replacedLink.linkID);
+
         
         NSString *replacedLinkKey = [NSString stringWithFormat:@"%d%d", replacedLink.currentNodeID, replacedLink.nextNodeID];
         [_allLinkDict removeObjectForKey:replacedLinkKey];
@@ -530,13 +582,36 @@
     [self reset];
     
     TYNode *startNode = [self processTempNodeForStart:start];
+    
+    // ============= Test Showing Network ====================
+    printf("ObjC => After Process Start\n");
+    [self showNetworkStrucutue:tempStartNodeArray];
+    // ============= Test Showing Network ====================
+    
+    
     TYNode *endNode = [self processTempNodeForEnd:end];
+    // ============= Test Showing Network ====================
+    printf("ObjC => After Process End\n");
+    [self showNetworkStrucutue:tempEndNodeArray];
+    // ============= Test Showing Network ====================
+    
+//    printf("ObjC => Start Node: %d\n", (int)startNode.nodeID);
+//    printf("ObjC => End Node: %d\n", (int)endNode.nodeID);
     
     [self computePaths:startNode];
     AGSPolyline *nodePath = [self getShorestPathTo:endNode];
     
     [self resetTempNodeForEnd];
+    // ============= Test Showing Network ====================
+//    printf("ObjC => After Reset End\n");
+    [self showNetworkStrucutue:tempEndNodeArray];
+    // ============= Test Showing Network ====================
+    
     [self resetTempNodeForStart];
+    // ============= Test Showing Network ====================
+//    printf("ObjC => After Reset Start\n");
+    [self showNetworkStrucutue:tempStartNodeArray];
+    // ============= Test Showing Network ====================
     
     if (nodePath.numPoints == 0) {
         return nil;

@@ -80,34 +80,6 @@ typedef enum {
 
 - (void)requestRouteWithStart:(TYLocalPoint *)start End:(TYLocalPoint *)end
 {
-//    _startPoint = [routePointConverter routePointFromLocalPoint:start];
-//    _endPoint = [routePointConverter routePointFromLocalPoint:end];
-//    
-//    AGSPolyline *line = [networkDataset getShorestPathFrom:_startPoint To:_endPoint];
-//    
-//    BOOL solveSuccess = NO;
-//    TYRouteResult *result = nil;
-//    
-//    if (line && line.numPoints != 0) {
-//        result = [self processRouteResult:line];
-//        if (result) {
-//            solveSuccess = YES;
-//        }
-//    }
-//    
-//    if (solveSuccess) {
-//        if (self.delegate != nil || [self.delegate respondsToSelector:@selector(routeManager:didSolveRouteWithResult:OriginalLine:)]) {
-//            [self.delegate routeManager:self didSolveRouteWithResult:result OriginalLine:line];
-//        }
-//    } else {
-//        NSDictionary *userInfo = [NSDictionary dictionaryWithObject:@"没有从起点到终点的路径！"                                                                     forKey:NSLocalizedDescriptionKey];
-//        NSError *error = [NSError errorWithDomain:TYMapSDKRouteErrorDomain code:SolvingRouteFailed userInfo:userInfo];
-//        
-//        if (self.delegate != nil && [self.delegate respondsToSelector:@selector(routeManager:didFailSolveRouteWithError:)]) {
-//            [self.delegate routeManager:self didFailSolveRouteWithError:error];
-//        }
-//    }
-    
     GeometryFactory factory;
     
     _startPoint = [routePointConverter routePointFromLocalPoint:start];

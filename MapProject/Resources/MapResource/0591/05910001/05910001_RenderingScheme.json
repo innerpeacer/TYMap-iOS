@@ -160,6 +160,10 @@
         
         "IconSymbol": [
                        {
+                       "colorID": 160011,
+                       "icon": "icon_toilet"
+                       },
+                       {
                        "colorID": 150012,
                        "icon": "icon_stair"
                        },
