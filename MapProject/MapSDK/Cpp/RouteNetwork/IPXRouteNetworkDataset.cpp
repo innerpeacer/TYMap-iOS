@@ -56,7 +56,7 @@ void showNetworkStrucutue(vector<IPXNode *> nodeArray)
 
 IPXRouteNetworkDataset::IPXRouteNetworkDataset(std::vector<IPXNodeRecord> &nodes, std::vector<IPXLinkRecord> &links)
 {
-//    GeometryEngine *engine;
+    //    GeometryEngine *engine;
     m_tempNodeID = 60000;
     m_tempLinkID = 80000;
     
@@ -65,8 +65,8 @@ IPXRouteNetworkDataset::IPXRouteNetworkDataset(std::vector<IPXNodeRecord> &nodes
     processNodesAndLinks();
     
     // ============= Test Showing Network ====================
-//    printf("Cpp => Network\n");
-//    showNetworkStrucutue(m_nodeArray);
+    //    printf("Cpp => Network\n");
+    //    showNetworkStrucutue(m_nodeArray);
     // ============= Test Showing Network ====================
     
     
@@ -77,7 +77,7 @@ IPXRouteNetworkDataset::IPXRouteNetworkDataset(std::vector<IPXNodeRecord> &nodes
         linkLineVector.push_back(link->getLine());
     }
     m_unionLine = dynamic_cast<MultiLineString *>(geos::operation::geounion::CascadedUnion::Union(&linkLineVector));
-
+    
 }
 
 IPXRouteNetworkDataset::~IPXRouteNetworkDataset()
@@ -99,7 +99,7 @@ IPXRouteNetworkDataset::~IPXRouteNetworkDataset()
     for (linkIter = m_virtualLinkArray.begin(); linkIter != m_virtualLinkArray.end(); ++linkIter) {
         delete (*linkIter);
     }
-
+    
     if (m_unionLine) {
         delete m_unionLine;
     }
@@ -123,16 +123,16 @@ void IPXRouteNetworkDataset::extractNodes(std::vector<IPXNodeRecord> &nodes)
     }
     printf("Extract %d nodes and %d virtual nodes.\n", (int)m_nodeArray.size(), (int)m_virtualNodeArray.size());
     
-//    IPXNodeMap::iterator nodeIter;
-//    for (nodeIter = m_allNodeDict.begin() ; nodeIter != m_allNodeDict.end(); ++nodeIter) {
-//        printf("%d : %s\n", nodeIter->first, nodeIter->second->toString().c_str());
-//    }
+    //    IPXNodeMap::iterator nodeIter;
+    //    for (nodeIter = m_allNodeDict.begin() ; nodeIter != m_allNodeDict.end(); ++nodeIter) {
+    //        printf("%d : %s\n", nodeIter->first, nodeIter->second->toString().c_str());
+    //    }
 }
 
 void IPXRouteNetworkDataset::extractLinks(std::vector<IPXLinkRecord> &links)
 {
     stringstream ostr;
-
+    
     vector<IPXLinkRecord>::iterator iter;
     for (iter = links.begin(); iter != links.end(); ++iter) {
         IPXLink *forwardLink = new IPXLink(iter->linkID, iter->isVirtual);
@@ -172,10 +172,10 @@ void IPXRouteNetworkDataset::extractLinks(std::vector<IPXLinkRecord> &links)
     }
     printf("Extract %d links and %d virtual links.\n", (int)m_linkArray.size(), (int)m_virtualLinkArray.size());
     
-//    IPXLinkMap::iterator linkIter;
-//    for (linkIter = m_allLinkDict.begin(); linkIter != m_allLinkDict.end(); ++linkIter) {
-//        printf("%s : %s\n", linkIter->first.c_str(), linkIter->second->toString().c_str());
-//    }
+    //    IPXLinkMap::iterator linkIter;
+    //    for (linkIter = m_allLinkDict.begin(); linkIter != m_allLinkDict.end(); ++linkIter) {
+    //        printf("%s : %s\n", linkIter->first.c_str(), linkIter->second->toString().c_str());
+    //    }
 }
 
 void IPXRouteNetworkDataset::processNodesAndLinks()
@@ -235,14 +235,14 @@ geos::geom::LineString *IPXRouteNetworkDataset::getShorestPathToNode(IPXNode *ta
     for (IPXNode *node = target; node != NULL; node = node->previousNode) {
         nodeArray.push_back(node);
     }
-//    printf("CPP => Total %d nods in path\n", (int)nodeArray.size());
-
+    //    printf("CPP => Total %d nods in path\n", (int)nodeArray.size());
+    
     reverse(nodeArray.begin(), nodeArray.end());
     
     stringstream ostr;
     CoordinateArraySequence sequence;
     
-//    printf("CPP => getShorestPathToNode\n");
+    //    printf("CPP => getShorestPathToNode\n");
     for (vector<IPXNode *>::iterator iter = nodeArray.begin(); iter != nodeArray.end(); ++iter) {
         IPXNode *node = (*iter);
         
@@ -285,42 +285,36 @@ void IPXRouteNetworkDataset::reset()
 
 IPXNode *IPXRouteNetworkDataset::processTempNodeForStart(geos::geom::Point *startPoint)
 {
-//    printf("  startPoint: %f, %f\n", startPoint->getX(), startPoint->getY());
-    
     m_tempStartLinkArray.clear();
     m_tempStartNodeArray.clear();
     m_replacedStartLinkArray.clear();
     
-    
     // Add New Node If Needed
     GeometryFactory factory;
     CoordinateSequence *sequences = geos::operation::distance::DistanceOp::nearestPoints(m_unionLine, startPoint);
-    geos::geom::Point *np = NULL;
+    geos::geom::Point *npOnUnionLine = NULL;
     if (sequences->size() > 0) {
-        Coordinate coord;
-        coord.x = sequences->front().x;
-        coord.y = sequences->front().y;
-        np = factory.createPoint(coord);
+        Coordinate onUnionCoord;
+        onUnionCoord.x = sequences->front().x;
+        onUnionCoord.y = sequences->front().y;
+        npOnUnionLine = factory.createPoint(onUnionCoord);
     }
     delete sequences;
     
-    
-//    printf("nearestPoint: %f, %f\n", np->getX(), np->getY());
-//    printf("nearestPoint: %f, %f\n", np->getX(), np->getY());
-
-    
     vector<IPXNode *>::iterator iter;
     for (iter = m_nodeArray.begin(); iter != m_nodeArray.end(); ++iter) {
-        if ((*iter)->getPos()->contains(np)) {
+        double distance = (*iter)->getPos()->distance(npOnUnionLine);
+        if (distance == 0) {
+            //        if ((*iter)->getPos()->contains(np)) {
             printf("Start Point Equal to One of the Nodes!\n");
-            delete np;
+            delete npOnUnionLine;
             return (*iter);
         }
     }
     
     IPXNode *newTempNode = new IPXNode(m_tempNodeID, false);
     m_tempNodeID++;
-    newTempNode->setPos(np);
+    newTempNode->setPos(npOnUnionLine);
     m_tempStartNodeArray.push_back(newTempNode);
     
     
@@ -329,60 +323,82 @@ IPXNode *IPXRouteNetworkDataset::processTempNodeForStart(geos::geom::Point *star
     for (linkIter = m_linkArray.begin(); linkIter != m_linkArray.end(); ++linkIter) {
         IPXLink *link = (*linkIter);
         
+        if (link->getLine()->contains(npOnUnionLine)) {
+            //            printf("Contain\n");
+        } else {
+            double distance = link->getLine()->distance(npOnUnionLine);
+            if (distance < 0.001 && distance > 0) {
+                //                printf("Contain: %.10f", distance);
+            } else {
+                // npOnUnionLine is First or Last Vertex
+                continue;
+            }
+        }
+        
+        CoordinateSequence *sequences = geos::operation::distance::DistanceOp::nearestPoints(link->getLine(), npOnUnionLine);
+        geos::geom::Point *npOnLink = NULL;
+        if (sequences->size() > 0) {
+            Coordinate onLinkCoord;
+            onLinkCoord.x = sequences->front().x;
+            onLinkCoord.y = sequences->front().y;
+            npOnLink = factory.createPoint(onLinkCoord);
+        }
+        delete sequences;
+        
         Coordinate coord;
-        coord.x = np->getX();
-        coord.y = np->getY();
+        coord.x = npOnLink->getX();
+        coord.y = npOnLink->getY();
         
         geos::linearref::LinearLocation location = geos::linearref::LocationIndexOfPoint::indexOf(link->getLine(), coord);
         int index = location.getSegmentIndex();
         
-        if (!location.isVertex()) {
-            printf("Index: %d Link: %d\n", index, link->getLinkID());
-
-            CoordinateArraySequence firstPartSequence;
-            CoordinateArraySequence secondPartSequence;
-            
-            secondPartSequence.add(coord);
-            for (int i = 0; i < link->getLine()->getNumPoints(); ++i) {
-                if (i <= index) {
-                    firstPartSequence.add(link->getLine()->getCoordinateN(i));
-                } else {
-                    secondPartSequence.add(link->getLine()->getCoordinateN(i));
-                }
+        printf("Index: %d Link: %d\n", index, link->getLinkID());
+        
+        CoordinateArraySequence firstPartSequence;
+        CoordinateArraySequence secondPartSequence;
+        
+        secondPartSequence.add(coord);
+        for (int i = 0; i < link->getLine()->getNumPoints(); ++i) {
+            if (i <= index) {
+                firstPartSequence.add(link->getLine()->getCoordinateN(i));
+            } else {
+                secondPartSequence.add(link->getLine()->getCoordinateN(i));
             }
-            firstPartSequence.add(coord);
-            
-            firstPartSequence.removeRepeatedPoints();
-            secondPartSequence.removeRepeatedPoints();
-            
-            LineString *firstPartLineString = factory.createLineString(firstPartSequence);
-            LineString *secondPartLineString = factory.createLineString(secondPartSequence);
-            
-            IPXLink *firstPartLink = new IPXLink(m_tempLinkID, false);
-            firstPartLink->currentNodeID = link->currentNodeID;
-            firstPartLink->nextNodeID = newTempNode->getNodeID();
-            firstPartLink->length = firstPartLineString->getLength();
-            firstPartLink->setLine(firstPartLineString);
-
-            IPXLink *secondPartLink = new IPXLink(m_tempLinkID, false);
-            secondPartLink->currentNodeID = newTempNode->getNodeID();
-            secondPartLink->nextNodeID = link->nextNodeID;
-            secondPartLink->length = secondPartLineString->getLength();
-            secondPartLink->setLine(secondPartLineString);
-            
-            m_tempLinkID++;
-            
-            printf("Add Link: %d\n", firstPartLink->getLinkID());
-            printf("Add Link: %d\n", secondPartLink->getLinkID());
-
-            m_tempStartLinkArray.push_back(firstPartLink);
-            m_tempStartLinkArray.push_back(secondPartLink);
-            m_replacedStartLinkArray.push_back(link);
         }
+        firstPartSequence.add(coord);
+        
+        firstPartSequence.removeRepeatedPoints();
+        secondPartSequence.removeRepeatedPoints();
+        
+        LineString *firstPartLineString = factory.createLineString(firstPartSequence);
+        LineString *secondPartLineString = factory.createLineString(secondPartSequence);
+        
+        IPXLink *firstPartLink = new IPXLink(m_tempLinkID, false);
+        firstPartLink->currentNodeID = link->currentNodeID;
+        firstPartLink->nextNodeID = newTempNode->getNodeID();
+        firstPartLink->length = firstPartLineString->getLength();
+        firstPartLink->setLine(firstPartLineString);
+        
+        IPXLink *secondPartLink = new IPXLink(m_tempLinkID, false);
+        secondPartLink->currentNodeID = newTempNode->getNodeID();
+        secondPartLink->nextNodeID = link->nextNodeID;
+        secondPartLink->length = secondPartLineString->getLength();
+        secondPartLink->setLine(secondPartLineString);
+        
+        m_tempLinkID++;
+        
+        printf("Add Link: %d\n", firstPartLink->getLinkID());
+        printf("Add Link: %d\n", secondPartLink->getLinkID());
+        
+        m_tempStartLinkArray.push_back(firstPartLink);
+        m_tempStartLinkArray.push_back(secondPartLink);
+        m_replacedStartLinkArray.push_back(link);
+        
+        delete npOnLink;
     }
     
     stringstream ostr;
-
+    
     for (vector<IPXNode *>::iterator nodeIter = m_tempStartNodeArray.begin(); nodeIter != m_tempStartNodeArray.end(); ++nodeIter) {
         m_allNodeDict.insert(IPXNodeMap::value_type(newTempNode->getNodeID(), newTempNode));
     }
@@ -427,36 +443,36 @@ IPXNode *IPXRouteNetworkDataset::processTempNodeForStart(geos::geom::Point *star
 
 IPXNode *IPXRouteNetworkDataset::processTempNodeForEnd(geos::geom::Point *endPoint)
 {
-    m_tempEndNodeArray.clear();
     m_tempEndLinkArray.clear();
+    m_tempEndNodeArray.clear();
     m_replacedEndLinkArray.clear();
-    
     
     // Add New Node If Needed
     GeometryFactory factory;
     CoordinateSequence *sequences = geos::operation::distance::DistanceOp::nearestPoints(m_unionLine, endPoint);
-    geos::geom::Point *np = NULL;
+    geos::geom::Point *npOnUnionLine = NULL;
     if (sequences->size() > 0) {
-        Coordinate coord;
-        coord.x = sequences->front().x;
-        coord.y = sequences->front().y;
-        np = factory.createPoint(coord);
+        Coordinate onUnionCoord;
+        onUnionCoord.x = sequences->front().x;
+        onUnionCoord.y = sequences->front().y;
+        npOnUnionLine = factory.createPoint(onUnionCoord);
     }
     delete sequences;
     
     vector<IPXNode *>::iterator iter;
     for (iter = m_nodeArray.begin(); iter != m_nodeArray.end(); ++iter) {
-        if ((*iter)->getPos()->contains(np)) {
+        double distance = (*iter)->getPos()->distance(npOnUnionLine);
+        if (distance == 0) {
+            //        if ((*iter)->getPos()->contains(np)) {
             printf("End Point Equal to One of the Nodes!\n");
-            delete np;
+            delete npOnUnionLine;
             return (*iter);
         }
     }
     
     IPXNode *newTempNode = new IPXNode(m_tempNodeID, false);
     m_tempNodeID++;
-    newTempNode->setPos(np);
-    
+    newTempNode->setPos(npOnUnionLine);
     m_tempEndNodeArray.push_back(newTempNode);
     
     
@@ -464,58 +480,79 @@ IPXNode *IPXRouteNetworkDataset::processTempNodeForEnd(geos::geom::Point *endPoi
     vector<IPXLink *>::iterator linkIter;
     for (linkIter = m_linkArray.begin(); linkIter != m_linkArray.end(); ++linkIter) {
         IPXLink *link = (*linkIter);
-
+        
+        if (link->getLine()->contains(npOnUnionLine)) {
+            //            printf("Contain\n");
+        } else {
+            double distance = link->getLine()->distance(npOnUnionLine);
+            if (distance < 0.001 && distance > 0) {
+                //                printf("Contain: %.10f", distance);
+            } else {
+                // npOnUnionLine is First or Last Vertex
+                continue;
+            }
+        }
+        
+        CoordinateSequence *sequences = geos::operation::distance::DistanceOp::nearestPoints(link->getLine(), npOnUnionLine);
+        geos::geom::Point *npOnLink = NULL;
+        if (sequences->size() > 0) {
+            Coordinate onLinkCoord;
+            onLinkCoord.x = sequences->front().x;
+            onLinkCoord.y = sequences->front().y;
+            npOnLink = factory.createPoint(onLinkCoord);
+        }
+        delete sequences;
+        
         Coordinate coord;
-        coord.x = np->getX();
-        coord.y = np->getY();
+        coord.x = npOnLink->getX();
+        coord.y = npOnLink->getY();
         
         geos::linearref::LinearLocation location = geos::linearref::LocationIndexOfPoint::indexOf(link->getLine(), coord);
         int index = location.getSegmentIndex();
         
-        if (!location.isVertex()) {
-            printf("Index: %d Link: %d\n", index, link->getLinkID());
-
-            CoordinateArraySequence firstPartSequence;
-            CoordinateArraySequence secondPartSequence;
-            
-            secondPartSequence.add(coord);
-            for (int i = 0; i < link->getLine()->getNumPoints(); ++i) {
-                if (i <= index) {
-                    firstPartSequence.add(link->getLine()->getCoordinateN(i));
-                } else {
-                    secondPartSequence.add(link->getLine()->getCoordinateN(i));
-                }
+        printf("Index: %d Link: %d\n", index, link->getLinkID());
+        
+        CoordinateArraySequence firstPartSequence;
+        CoordinateArraySequence secondPartSequence;
+        
+        secondPartSequence.add(coord);
+        for (int i = 0; i < link->getLine()->getNumPoints(); ++i) {
+            if (i <= index) {
+                firstPartSequence.add(link->getLine()->getCoordinateN(i));
+            } else {
+                secondPartSequence.add(link->getLine()->getCoordinateN(i));
             }
-            firstPartSequence.add(coord);
-            
-            firstPartSequence.removeRepeatedPoints();
-            secondPartSequence.removeRepeatedPoints();
-            
-            LineString *firstPartLineString = factory.createLineString(firstPartSequence);
-            LineString *secondPartLineString = factory.createLineString(secondPartSequence);
-            
-            IPXLink *firstPartLink = new IPXLink(m_tempLinkID, false);
-            firstPartLink->currentNodeID = link->currentNodeID;
-            firstPartLink->nextNodeID = newTempNode->getNodeID();
-            firstPartLink->length = firstPartLineString->getLength();
-            firstPartLink->setLine(firstPartLineString);
-            
-            IPXLink *secondPartLink = new IPXLink(m_tempLinkID, false);
-            secondPartLink->currentNodeID = newTempNode->getNodeID();
-            secondPartLink->nextNodeID = link->nextNodeID;
-            secondPartLink->length = secondPartLineString->getLength();
-            secondPartLink->setLine(secondPartLineString);
-            
-            printf("Add Link: %d\n", firstPartLink->getLinkID());
-            printf("Add Link: %d\n", secondPartLink->getLinkID());
-
-            
-            m_tempLinkID++;
-            
-            m_tempEndLinkArray.push_back(firstPartLink);
-            m_tempEndLinkArray.push_back(secondPartLink);
-            m_replacedEndLinkArray.push_back(link);
         }
+        firstPartSequence.add(coord);
+        
+        firstPartSequence.removeRepeatedPoints();
+        secondPartSequence.removeRepeatedPoints();
+        
+        LineString *firstPartLineString = factory.createLineString(firstPartSequence);
+        LineString *secondPartLineString = factory.createLineString(secondPartSequence);
+        
+        IPXLink *firstPartLink = new IPXLink(m_tempLinkID, false);
+        firstPartLink->currentNodeID = link->currentNodeID;
+        firstPartLink->nextNodeID = newTempNode->getNodeID();
+        firstPartLink->length = firstPartLineString->getLength();
+        firstPartLink->setLine(firstPartLineString);
+        
+        IPXLink *secondPartLink = new IPXLink(m_tempLinkID, false);
+        secondPartLink->currentNodeID = newTempNode->getNodeID();
+        secondPartLink->nextNodeID = link->nextNodeID;
+        secondPartLink->length = secondPartLineString->getLength();
+        secondPartLink->setLine(secondPartLineString);
+        
+        m_tempLinkID++;
+        
+        printf("Add Link: %d\n", firstPartLink->getLinkID());
+        printf("Add Link: %d\n", secondPartLink->getLinkID());
+        
+        m_tempEndLinkArray.push_back(firstPartLink);
+        m_tempEndLinkArray.push_back(secondPartLink);
+        m_replacedEndLinkArray.push_back(link);
+        
+        delete npOnLink;
     }
     
     stringstream ostr;
@@ -616,7 +653,7 @@ void IPXRouteNetworkDataset::resetTempNodeForStart()
     m_replacedStartLinkArray.clear();
     m_tempStartLinkArray.clear();
     m_tempStartNodeArray.clear();
-
+    
 }
 
 void IPXRouteNetworkDataset::resetTempNodeForEnd()
@@ -770,7 +807,7 @@ std::vector<IPXLink *> IPXRouteNetworkDataset::getTempLinks(geos::geom::Point po
             
         }
     }
-
+    
     return tempLinkArray;
 }
 
@@ -787,9 +824,9 @@ geos::geom::LineString *IPXRouteNetworkDataset::getShorestPath(geos::geom::Point
     
     // ============= Test Showing Network ====================
     printf("Cpp => After Process Start\n");
-//    showNetworkStrucutue(m_nodeArray);
+    //    showNetworkStrucutue(m_nodeArray);
     showNetworkStrucutue(m_tempStartNodeArray);
-
+    
     
     // ============= Test Showing Network ====================
     IPXNode *endNode = processTempNodeForEnd(end);
@@ -801,14 +838,14 @@ geos::geom::LineString *IPXRouteNetworkDataset::getShorestPath(geos::geom::Point
     // ============= Test Showing Network ====================
     
     
-//    int ranStart = arc4random() % m_nodeArray.size();
-//    int ranEnd = arc4random() % m_nodeArray.size();
-//    IPXNode *startNode = m_nodeArray.at(ranStart);
-//    IPXNode *endNode = m_nodeArray.at(ranEnd);
+    //    int ranStart = arc4random() % m_nodeArray.size();
+    //    int ranEnd = arc4random() % m_nodeArray.size();
+    //    IPXNode *startNode = m_nodeArray.at(ranStart);
+    //    IPXNode *endNode = m_nodeArray.at(ranEnd);
     
-//    printf("CPP => Start Node: %d\n", startNode->getNodeID());
-//    printf("CPP => End Node: %d\n", endNode->getNodeID());
-
+    //    printf("CPP => Start Node: %d\n", startNode->getNodeID());
+    //    printf("CPP => End Node: %d\n", endNode->getNodeID());
+    
     computePaths(startNode);
     LineString *nodePath = getShorestPathToNode(endNode);
     
@@ -838,22 +875,22 @@ geos::geom::LineString *IPXRouteNetworkDataset::getShorestPath(geos::geom::Point
     }
     delete nodePath;
     
-//    printf("%d points in result path\n", (int)resultSequence.getSize());
+    //    printf("%d points in result path\n", (int)resultSequence.getSize());
     
     resetTempNodeForEnd();
     // ============= Test Showing Network ====================
-//    printf("Cpp => After Reset End\n");
-//    showNetworkStrucutue(m_nodeArray);
+    //    printf("Cpp => After Reset End\n");
+    //    showNetworkStrucutue(m_nodeArray);
     showNetworkStrucutue(m_tempEndNodeArray);
-
+    
     // ============= Test Showing Network ====================
     
     resetTempNodeForStart();
     // ============= Test Showing Network ====================
-//    printf("Cpp => After Reset Start\n");
-//    showNetworkStrucutue(m_nodeArray);
+    //    printf("Cpp => After Reset Start\n");
+    //    showNetworkStrucutue(m_nodeArray);
     showNetworkStrucutue(m_tempStartNodeArray);
-
+    
     // ============= Test Showing Network ====================
     
     return factory.createLineString(resultSequence);

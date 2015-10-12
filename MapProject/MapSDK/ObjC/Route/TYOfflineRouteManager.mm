@@ -103,16 +103,16 @@ typedef enum {
     
     BOOL solveSuccess = NO;
     
-    AGSPolyline *polyline = [self convertLineString:line];
+    AGSPolyline *polyline;
     TYRouteResult *result = nil;
     
     if (line != NULL && line->getNumPoints() != 0) {
+        polyline = [self convertLineString:line];
         result = [self processAgsPolyline:polyline];
         if (result) {
             solveSuccess = YES;
         }
     }
-    
     delete line;
     
     if (solveSuccess) {
