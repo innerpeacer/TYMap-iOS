@@ -23,6 +23,7 @@ typedef enum {
 } TYRouteErrorFailed;
 
 
+
 @interface TYOfflineRouteManager()
 {
     IPXRouteNetworkDataset *networkDataset;
@@ -59,8 +60,6 @@ typedef enum {
         
         db->close();
         delete db;
-
-        
     }
     return self;
 }
@@ -116,8 +115,8 @@ typedef enum {
     delete line;
     
     if (solveSuccess) {
-        if (self.delegate != nil || [self.delegate respondsToSelector:@selector(offlineRouteManager:didSolveRouteWithResult:OriginalLine:)]) {
-            [self.delegate offlineRouteManager:self didSolveRouteWithResult:result OriginalLine:polyline];
+        if (self.delegate != nil || [self.delegate respondsToSelector:@selector(offlineRouteManager:didSolveRouteWithResult:)]) {
+            [self.delegate offlineRouteManager:self didSolveRouteWithResult:result];
         }
     } else {
         NSDictionary *userInfo = [NSDictionary dictionaryWithObject:@"没有从起点到终点的路径！"                                                                     forKey:NSLocalizedDescriptionKey];

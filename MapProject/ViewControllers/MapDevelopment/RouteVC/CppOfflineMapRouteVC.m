@@ -85,7 +85,7 @@
     NSLog(@"%@", NSStringFromSelector(_cmd));
 }
 
-- (void)offlineRouteManager:(TYOfflineRouteManager *)routeManager didSolveRouteWithResult:(TYRouteResult *)rs OriginalLine:(AGSPolyline *)line
+- (void)offlineRouteManager:(TYOfflineRouteManager *)routeManager didSolveRouteWithResult:(TYRouteResult *)rs
 {
     NSLog(@"%@", NSStringFromSelector(_cmd));
     

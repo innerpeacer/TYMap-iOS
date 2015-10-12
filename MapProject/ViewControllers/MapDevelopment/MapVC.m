@@ -58,6 +58,7 @@ int tIndex = 0;
     
     TYPoi *poi = [self.mapView extractRoomPoiOnCurrentFloorWithX:mappoint.x Y:mappoint.y];
     NSLog(@"%@", poi);
+    
 }
 
 const int PIC_INITIAL = 0;
