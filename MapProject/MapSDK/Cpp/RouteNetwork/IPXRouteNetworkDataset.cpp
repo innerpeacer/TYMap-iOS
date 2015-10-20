@@ -251,7 +251,7 @@ IPXNode *IPXRouteNetworkDataset::processTempNodeForStart(geos::geom::Point *star
     m_tempStartNodeArray.clear();
     m_replacedStartLinkArray.clear();
     
-    printf("Start Point: %f, %f\n", startPoint->getX(), startPoint->getY());
+//    printf("Start Point: %f, %f\n", startPoint->getX(), startPoint->getY());
     
     // Add New Node If Needed
     GeometryFactory factory;
@@ -265,7 +265,7 @@ IPXNode *IPXRouteNetworkDataset::processTempNodeForStart(geos::geom::Point *star
     }
     delete sequences;
     
-    printf("npOnUnionLine Point: %f, %f\n", npOnUnionLine->getX(), npOnUnionLine->getY());
+//    printf("npOnUnionLine Point: %f, %f\n", npOnUnionLine->getX(), npOnUnionLine->getY());
 
     
     vector<IPXNode *>::iterator iter;
@@ -279,12 +279,11 @@ IPXNode *IPXRouteNetworkDataset::processTempNodeForStart(geos::geom::Point *star
         }
     }
     
-    printf("Create New Temp Node: %d\n", m_tempNodeID);
+//    printf("Create New Temp Node: %d\n", m_tempNodeID);
     IPXNode *newTempNode = new IPXNode(m_tempNodeID, false);
     m_tempNodeID++;
     newTempNode->setPos(npOnUnionLine);
     m_tempStartNodeArray.push_back(newTempNode);
-    
     
     // Add New Links If Needed
     vector<IPXLink *>::iterator linkIter;
@@ -292,13 +291,14 @@ IPXNode *IPXRouteNetworkDataset::processTempNodeForStart(geos::geom::Point *star
         IPXLink *link = (*linkIter);
         
         if (link->getLine()->contains(npOnUnionLine)) {
-                        printf("Contain\n");
+//printf("Contain\n");
         } else {
             double distance = link->getLine()->distance(npOnUnionLine);
             if (distance < 0.001 && distance > 0) {
-                                printf("Contain: %.10f\n", distance);
+//                printf("Contain: %.10f\n", distance);
             } else {
                 // npOnUnionLine is First or Last Vertex
+                // npOnUnionLine unrelated to Link
                 continue;
             }
         }
@@ -313,6 +313,11 @@ IPXNode *IPXRouteNetworkDataset::processTempNodeForStart(geos::geom::Point *star
         }
         delete sequences;
         
+        if (!link->getLine()->contains(npOnLink) && link->getLine()->distance(npOnLink) == 0) {
+//            printf("Wrong Link");
+            continue;
+        }
+        
         Coordinate coord;
         coord.x = npOnLink->getX();
         coord.y = npOnLink->getY();
@@ -324,10 +329,10 @@ IPXNode *IPXRouteNetworkDataset::processTempNodeForStart(geos::geom::Point *star
         CoordinateArraySequence secondPartSequence;
         
         secondPartSequence.add(coord);
-        printf("coord: %f, %f\n", coord.x, coord.y);
-        printf("link->getLine()->getNumPoints(): %d\n", (int)link->getLine()->getNumPoints());
+//        printf("coord: %f, %f\n", coord.x, coord.y);
+//        printf("link->getLine()->getNumPoints(): %d\n", (int)link->getLine()->getNumPoints());
         for (int i = 0; i < link->getLine()->getNumPoints(); ++i) {
-            printf("coord: %f, %f\n", link->getLine()->getCoordinateN(i).x, link->getLine()->getCoordinateN(i).y);
+//            printf("coord: %f, %f\n", link->getLine()->getCoordinateN(i).x, link->getLine()->getCoordinateN(i).y);
 
             if (i <= index) {
                 firstPartSequence.add(link->getLine()->getCoordinateN(i));
@@ -340,10 +345,10 @@ IPXNode *IPXRouteNetworkDataset::processTempNodeForStart(geos::geom::Point *star
         firstPartSequence.removeRepeatedPoints();
         secondPartSequence.removeRepeatedPoints();
         
-        printf("%d\n", (int)firstPartSequence.size());
-        printf("%d\n", (int)secondPartSequence.size());
+//        printf("%d\n", (int)firstPartSequence.size());
+//        printf("%d\n", (int)secondPartSequence.size());
         
-        printf("===================\n");
+//        printf("===================\n");
         
         LineString *firstPartLineString = factory.createLineString(firstPartSequence);
         LineString *secondPartLineString = factory.createLineString(secondPartSequence);
@@ -369,6 +374,10 @@ IPXNode *IPXRouteNetworkDataset::processTempNodeForStart(geos::geom::Point *star
         delete npOnLink;
     }
     
+//    printf("m_tempStartLinkArray: %d\n", (int)m_tempStartLinkArray.size());
+//    printf("m_replacedStartLinkArray: %d\n", (int)m_replacedStartLinkArray.size());
+//    printf("m_tempStartNodeArray: %d\n", (int)m_tempStartNodeArray.size());
+
     stringstream ostr;
     
     for (vector<IPXNode *>::iterator nodeIter = m_tempStartNodeArray.begin(); nodeIter != m_tempStartNodeArray.end(); ++nodeIter) {
@@ -473,6 +482,11 @@ IPXNode *IPXRouteNetworkDataset::processTempNodeForEnd(geos::geom::Point *endPoi
             npOnLink = factory.createPoint(onLinkCoord);
         }
         delete sequences;
+        
+        if (!link->getLine()->contains(npOnLink) && link->getLine()->distance(npOnLink) == 0) {
+            //            printf("Wrong Link");
+            continue;
+        }
         
         Coordinate coord;
         coord.x = npOnLink->getX();
