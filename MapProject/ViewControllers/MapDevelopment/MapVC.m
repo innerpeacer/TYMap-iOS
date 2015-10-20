@@ -47,7 +47,7 @@ int tIndex = 0;
 
 - (void)TYMapView:(TYMapView *)mapView didClickAtPoint:(CGPoint)screen mapPoint:(AGSPoint *)mappoint
 {
-//    NSLog(@"didClickAtPoint: %f, %f", mappoint.x, mappoint.y);
+    NSLog(@"didClickAtPoint: %f, %f", mappoint.x, mappoint.y);
     testLocation = mappoint;
     if (testTimer) {
         [testTimer invalidate];

@@ -151,6 +151,14 @@
     isRouting = YES;
     
     startDate = [NSDate date];
+    
+    startLocalPoint = [TYLocalPoint pointWithX:13275974.30287264 Y:2989071.967726886 Floor:3];
+    endLocalPoint = [TYLocalPoint pointWithX:13275987.1889 Y:2989087.670699999 Floor:3];
+    
+//    startPoint = new TYLocalPoint(13275974.30287264, 2989071.967726886, 3);
+//    endPoint = new TYLocalPoint(13275987.1889, 2989087.670699999, 3);
+    
+    
     [cppOfflineRouteManager requestRouteWithStart:startLocalPoint End:endLocalPoint];
 }
 

@@ -12,6 +12,19 @@
                   "offsetX": "200",
                   "offsetY": "0",
                   "status": "0"
+                  },
+                  {
+                  "cityID": "0010",
+                  "id": "00100003",
+                  "name": "中国联通大厦",
+                  "longitude": "116.362551",
+                  "latitude": "39.958951",
+                  "address": "北京市西城区金融街21号",
+                  "initAngle": "70.0",
+                  "routeURL": "http://123.56.41.94:6080/arcgis/rest/services/00100003/NAServer/Route",
+                  "offsetX": "20",
+                  "offsetY": "0",
+                  "status": "0"
                   }
                   ]
 }

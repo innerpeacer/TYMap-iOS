@@ -101,10 +101,6 @@
 		57672E321B55FFF900DAD219 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 57672D671B55FFF900DAD219 /* FMDatabaseQueue.m */; };
 		57672E331B55FFF900DAD219 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 57672D691B55FFF900DAD219 /* FMResultSet.m */; };
 		57672E341B55FFF900DAD219 /* ArcGIS.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 57672D6B1B55FFF900DAD219 /* ArcGIS.bundle */; };
-		57672E351B55FFF900DAD219 /* AOI.json in Resources */ = {isa = PBXBuildFile; fileRef = 57672D6D1B55FFF900DAD219 /* AOI.json */; };
-		57672E361B55FFF900DAD219 /* beacon-hm.db in Resources */ = {isa = PBXBuildFile; fileRef = 57672D6E1B55FFF900DAD219 /* beacon-hm.db */; };
-		57672E371B55FFF900DAD219 /* beacon-jz.db in Resources */ = {isa = PBXBuildFile; fileRef = 57672D6F1B55FFF900DAD219 /* beacon-jz.db */; };
-		57672E381B55FFF900DAD219 /* beacon-of.db in Resources */ = {isa = PBXBuildFile; fileRef = 57672D701B55FFF900DAD219 /* beacon-of.db */; };
 		57672EEF1B56002900DAD219 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57672EEB1B56002900DAD219 /* Main.storyboard */; };
 		57672EF51B56006700DAD219 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 57672EF21B56006700DAD219 /* main.m */; };
 		57672EF91B56009700DAD219 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 57672EF81B56009700DAD219 /* libsqlite3.0.dylib */; };
@@ -340,10 +336,6 @@
 		57672D681B55FFF900DAD219 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
 		57672D691B55FFF900DAD219 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
 		57672D6B1B55FFF900DAD219 /* ArcGIS.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ArcGIS.bundle; sourceTree = "<group>"; };
-		57672D6D1B55FFF900DAD219 /* AOI.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = AOI.json; sourceTree = "<group>"; };
-		57672D6E1B55FFF900DAD219 /* beacon-hm.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = "beacon-hm.db"; sourceTree = "<group>"; };
-		57672D6F1B55FFF900DAD219 /* beacon-jz.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = "beacon-jz.db"; sourceTree = "<group>"; };
-		57672D701B55FFF900DAD219 /* beacon-of.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = "beacon-of.db"; sourceTree = "<group>"; };
 		57672EEC1B56002900DAD219 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Main.storyboard; sourceTree = "<group>"; };
 		57672EF11B56006700DAD219 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		57672EF21B56006700DAD219 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -813,20 +805,8 @@
 			children = (
 				57672EFE1B56046300DAD219 /* MapResource */,
 				57672D6B1B55FFF900DAD219 /* ArcGIS.bundle */,
-				57672D6C1B55FFF900DAD219 /* MapFiles */,
 			);
 			path = Resources;
-			sourceTree = "<group>";
-		};
-		57672D6C1B55FFF900DAD219 /* MapFiles */ = {
-			isa = PBXGroup;
-			children = (
-				57672D6D1B55FFF900DAD219 /* AOI.json */,
-				57672D6E1B55FFF900DAD219 /* beacon-hm.db */,
-				57672D6F1B55FFF900DAD219 /* beacon-jz.db */,
-				57672D701B55FFF900DAD219 /* beacon-of.db */,
-			);
-			path = MapFiles;
 			sourceTree = "<group>";
 		};
 		57672EE81B56002900DAD219 /* Base.lproj */ = {
@@ -1092,13 +1072,9 @@
 				57672EFD1B5600B900DAD219 /* Default-568h@2x.png in Resources */,
 				57672EEF1B56002900DAD219 /* Main.storyboard in Resources */,
 				57FC97A31BB125D6006D6D00 /* Licenses.json in Resources */,
-				57672E381B55FFF900DAD219 /* beacon-of.db in Resources */,
 				579B587B1B74F31B00F05206 /* Images.xcassets in Resources */,
 				574EE2C71B723C30005A6482 /* Launch Screen.xib in Resources */,
 				57672E341B55FFF900DAD219 /* ArcGIS.bundle in Resources */,
-				57672E361B55FFF900DAD219 /* beacon-hm.db in Resources */,
-				57672E371B55FFF900DAD219 /* beacon-jz.db in Resources */,
-				57672E351B55FFF900DAD219 /* AOI.json in Resources */,
 				57672EFF1B56046300DAD219 /* MapResource in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
