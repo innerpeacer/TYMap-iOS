@@ -108,4 +108,7 @@ typedef struct mapextent {
  */
 + (TYMapInfo *)searchMapInfoFromArray:(NSArray *)array Floor:(int)floor;
 
+
++ (NSArray *)parseAllMapInfoFromFile:(NSString *)path;
+
 @end

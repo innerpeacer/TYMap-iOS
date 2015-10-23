@@ -29,4 +29,6 @@
 
 + (NSString *)getPrimitiveDBPath:(TYBuilding *)building;
 
++ (NSString *)getMapDBPath:(TYBuilding *)building;
+
 @end

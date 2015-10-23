@@ -121,4 +121,17 @@
     return [buildingDir stringByAppendingPathComponent:fileName];
 }
 
++ (NSString *)getMapDBPath:(TYBuilding *)building
+{
+    NSString *mapRootDir = [TYMapEnvironment getRootDirectoryForMapFiles];
+    NSString *cityDir = [mapRootDir stringByAppendingPathComponent:building.cityID];
+    NSString *buildingDir = [cityDir stringByAppendingPathComponent:building.buildingID];
+    NSString *fileName = [NSString stringWithFormat:FILE_MAP_DB_PATH, building.buildingID];
+    //    if ([TYMapEnvironment useEncryption]) {
+    //        fileName = [MD5Utils md5:fileName];
+    //        fileName = [NSString stringWithFormat:@"%@.tymap", fileName];
+    //    }
+    return [buildingDir stringByAppendingPathComponent:fileName];
+}
+
 @end

@@ -33,6 +33,9 @@
 
 #define FILE_MAP_DATA_PATH @"%@.data"
 
+#define FILE_MAP_DB_PATH @"%@.tymap"
+
+
 #define FILE_LAYER_PATH_LANDMARK @"%@_LANDMARK.json"
 
 #endif
