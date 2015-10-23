@@ -119,7 +119,7 @@
     [sql appendFormat:@"%@ text not null, ", MAP_CONTENT_FIELD_POI_ID];
     [sql appendFormat:@"%@ text not null, ", MAP_CONTENT_FIELD_FLOOR_ID];
     [sql appendFormat:@"%@ text not null, ", MAP_CONTENT_FIELD_BUILDING_ID];
-    [sql appendFormat:@"%@ integer not null, ", MAP_CONTENT_FIELD_CATEGORY_ID];
+    [sql appendFormat:@"%@ text not null, ", MAP_CONTENT_FIELD_CATEGORY_ID];
     [sql appendFormat:@"%@ text, ", MAP_CONTENT_FIELD_NAME];
     [sql appendFormat:@"%@ integer not null, ", MAP_CONTENT_FIELD_SYMBOL_ID];
     [sql appendFormat:@"%@ integer not null, ", MAP_CONTENT_FIELD_FLOOR_NUMBER];

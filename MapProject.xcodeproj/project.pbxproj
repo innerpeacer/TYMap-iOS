@@ -97,6 +97,9 @@
 		57494DE31B61DB17000B6F2C /* OriginalCityVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 57494DE21B61DB17000B6F2C /* OriginalCityVC.m */; };
 		57494DF51B61E730000B6F2C /* EnviromentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 57494DF41B61E730000B6F2C /* EnviromentManager.m */; };
 		574EE2C71B723C30005A6482 /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 574EE2C51B723C30005A6482 /* Launch Screen.xib */; };
+		574F5E3D1BDAAE07001967F6 /* IPXFeatureRecord.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 574F5E3B1BDAAE07001967F6 /* IPXFeatureRecord.cpp */; settings = {ASSET_TAGS = (); }; };
+		574F5E401BDAB2E5001967F6 /* IPXMapDataDBAdapter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 574F5E3E1BDAB2E5001967F6 /* IPXMapDataDBAdapter.cpp */; settings = {ASSET_TAGS = (); }; };
+		574F5E461BDAB9DB001967F6 /* TYMapFeatureData.mm in Sources */ = {isa = PBXBuildFile; fileRef = 574F5E451BDAB9DB001967F6 /* TYMapFeatureData.mm */; settings = {ASSET_TAGS = (); }; };
 		57672D071B55FF4A00DAD219 /* CreatingPOIDBAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 57672C911B55FF4A00DAD219 /* CreatingPOIDBAdapter.m */; };
 		57672D081B55FF4A00DAD219 /* TYPoiDBAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 57672C931B55FF4A00DAD219 /* TYPoiDBAdapter.m */; };
 		57672D5D1B55FF9900DAD219 /* TYUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 57672D5C1B55FF9900DAD219 /* TYUserDefaults.m */; };
@@ -335,6 +338,12 @@
 		57494DF31B61E730000B6F2C /* EnviromentManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnviromentManager.h; sourceTree = "<group>"; };
 		57494DF41B61E730000B6F2C /* EnviromentManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnviromentManager.m; sourceTree = "<group>"; };
 		574EE2C61B723C30005A6482 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = "Launch Screen.xib"; sourceTree = "<group>"; };
+		574F5E3B1BDAAE07001967F6 /* IPXFeatureRecord.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IPXFeatureRecord.cpp; sourceTree = "<group>"; };
+		574F5E3C1BDAAE07001967F6 /* IPXFeatureRecord.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = IPXFeatureRecord.hpp; sourceTree = "<group>"; };
+		574F5E3E1BDAB2E5001967F6 /* IPXMapDataDBAdapter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IPXMapDataDBAdapter.cpp; sourceTree = "<group>"; };
+		574F5E3F1BDAB2E5001967F6 /* IPXMapDataDBAdapter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = IPXMapDataDBAdapter.hpp; sourceTree = "<group>"; };
+		574F5E441BDAB9DB001967F6 /* TYMapFeatureData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYMapFeatureData.h; sourceTree = "<group>"; };
+		574F5E451BDAB9DB001967F6 /* TYMapFeatureData.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TYMapFeatureData.mm; sourceTree = "<group>"; };
 		57672C901B55FF4A00DAD219 /* CreatingPOIDBAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreatingPOIDBAdapter.h; sourceTree = "<group>"; };
 		57672C911B55FF4A00DAD219 /* CreatingPOIDBAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreatingPOIDBAdapter.m; sourceTree = "<group>"; };
 		57672C921B55FF4A00DAD219 /* TYPoiDBAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYPoiDBAdapter.h; sourceTree = "<group>"; };
@@ -475,6 +484,7 @@
 		572407081BC9A84B0050BA41 /* Cpp */ = {
 			isa = PBXGroup;
 			children = (
+				574F5E3A1BDAADDA001967F6 /* MapDB */,
 				572407C61BC9A8B60050BA41 /* RouteNetwork */,
 				572407091BC9A84B0050BA41 /* Utils */,
 			);
@@ -630,6 +640,8 @@
 				572407721BC9A8A10050BA41 /* TYMapView.m */,
 				572407731BC9A8A10050BA41 /* TYRenderingScheme.h */,
 				572407741BC9A8A10050BA41 /* TYRenderingScheme.m */,
+				574F5E441BDAB9DB001967F6 /* TYMapFeatureData.h */,
+				574F5E451BDAB9DB001967F6 /* TYMapFeatureData.mm */,
 			);
 			path = MapView;
 			sourceTree = "<group>";
@@ -772,6 +784,17 @@
 				57EE3E901B7471CC00977049 /* CityBuildingTableVC.m */,
 			);
 			path = HelperVC;
+			sourceTree = "<group>";
+		};
+		574F5E3A1BDAADDA001967F6 /* MapDB */ = {
+			isa = PBXGroup;
+			children = (
+				574F5E3C1BDAAE07001967F6 /* IPXFeatureRecord.hpp */,
+				574F5E3B1BDAAE07001967F6 /* IPXFeatureRecord.cpp */,
+				574F5E3F1BDAB2E5001967F6 /* IPXMapDataDBAdapter.hpp */,
+				574F5E3E1BDAB2E5001967F6 /* IPXMapDataDBAdapter.cpp */,
+			);
+			path = MapDB;
 			sourceTree = "<group>";
 		};
 		57672C8F1B55FF4A00DAD219 /* MapTools */ = {
@@ -1223,12 +1246,15 @@
 				576AEEAC1B61D97100D55CA4 /* MapVC.m in Sources */,
 				57EB45791B73D2B50050956F /* RATreeView+TableViewDataSource.m in Sources */,
 				572407AF1BC9A8A10050BA41 /* TYTextLabelLayer.m in Sources */,
+				574F5E401BDAB2E5001967F6 /* IPXMapDataDBAdapter.cpp in Sources */,
+				574F5E3D1BDAAE07001967F6 /* IPXFeatureRecord.cpp in Sources */,
 				57494DDA1B61DAE7000B6F2C /* BaseControllerTableVC.m in Sources */,
 				57EB457B1B73D2B50050956F /* RATreeView+UIScrollView.m in Sources */,
 				57F8F08B1BBA944D00FE8637 /* ShpRouteDBAdapter.mm in Sources */,
 				572408DE1BC9B3370050BA41 /* TYOfflineRouteManager.mm in Sources */,
 				572407B91BC9A8A10050BA41 /* TYBrand.m in Sources */,
 				57F8DE5F1B74553100143739 /* OriginalMapVC.m in Sources */,
+				574F5E461BDAB9DB001967F6 /* TYMapFeatureData.mm in Sources */,
 				578771221BBB911400F90D7B /* RouteNetworkDBAdapter.mm in Sources */,
 				572407971BC9A8A10050BA41 /* TYGraphic.m in Sources */,
 				572407AB1BC9A8A10050BA41 /* TYLabelBorder.m in Sources */,

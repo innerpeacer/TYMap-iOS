@@ -16,7 +16,7 @@
 @property (nonatomic, strong) NSString *poiID;
 @property (nonatomic, strong) NSString *floorID;
 @property (nonatomic, strong) NSString *buildingID;
-@property (nonatomic, strong) NSNumber *categoryID;
+@property (nonatomic, strong) NSString *categoryID;
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSNumber *symbolID;
 @property (nonatomic, strong) NSNumber *floorNumber;
