@@ -27,6 +27,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    NSString *bundleID = [[NSBundle mainBundle] bundleIdentifier];
+    NSLog(@"bundleID: %@", bundleID);
+    
     NSString *documentDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     NSLog(@"%@", documentDirectory);
     
@@ -36,6 +39,8 @@
     [self copyMapFilesIfNeeded];
     [self setDefaultPlaceIfNeeded];
     
+    
+    
     return YES;
 }
 
@@ -44,8 +49,8 @@
     if ([TYUserDefaults getDefaultBuilding] == nil) {
 //        [TYUserDefaults setDefaultCity:@"0021"];
 //        [TYUserDefaults setDefaultBuilding:@"00210100"];
-        [TYUserDefaults setDefaultCity:@"0020"];
-        [TYUserDefaults setDefaultBuilding:@"00200001"];
+        [TYUserDefaults setDefaultCity:@"0532"];
+        [TYUserDefaults setDefaultBuilding:@"05320001"];
     }
 }
 

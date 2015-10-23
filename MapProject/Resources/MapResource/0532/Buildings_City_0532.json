@@ -1,0 +1,17 @@
+{
+    "Buildings": [
+                  {
+                  "cityID": "0532",
+                  "id": "05320001",
+                  "name": "青岛宁夏路小学",
+                  "longitude": "116.362551",
+                  "latitude": "39.958951",
+                  "address": "宁夏路173号",
+                  "initAngle": "-70.0",
+                  "routeURL": "http://123.56.41.94:6080/arcgis/rest/services/05320001/NAServer/Route",
+                  "offsetX": "150",
+                  "offsetY": "0",
+                  "status": "0"
+                  }
+                  ]
+}

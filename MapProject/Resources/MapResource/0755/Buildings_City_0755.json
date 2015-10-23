@@ -25,6 +25,19 @@
                   "offsetX":"150",
                   "offsetY":"0",
                   "status":"0"
+                  },
+                  {
+                  "cityID":"0755",
+                  "id":"07550003",
+                  "name":"地铁国贸站",
+                  "longitude":"116.362551",
+                  "latitude":"39.958951",
+                  "address":"地铁1号线国贸站",
+                  "initAngle":"-70.0",
+                  "routeURL":"http://123.56.41.94:6080/arcgis/rest/services/75500003/NAServer/Route",
+                  "offsetX":"150",
+                  "offsetY":"0",
+                  "status":"0"
                   }
                   ]
 }
