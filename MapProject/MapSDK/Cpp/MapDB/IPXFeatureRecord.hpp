@@ -27,6 +27,9 @@ namespace Innerpeacer {
         class IPXFeatureRecord {
         public:
             geos::geom::Geometry *geometry;
+            geos::geom::Point *point;
+            geos::geom::Polygon *polygon;
+            
             std::string geoID;
             std::string poiID;
             std::string categoryID;
