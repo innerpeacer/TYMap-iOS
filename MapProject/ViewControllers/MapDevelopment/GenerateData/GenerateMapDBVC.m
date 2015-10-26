@@ -35,12 +35,13 @@
     currentCity = [TYUserDefaults getDefaultCity];
     currentBuilding = [TYUserDefaults getDefaultBuilding];
     self.title = currentBuilding.buildingID;
-    
-    NSString *bundlePath = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%@_shp", currentBuilding.buildingID] ofType:@"bundle"];
+
+    NSString *shpPath = [[NSBundle mainBundle] pathForResource:@"OriginalShpDB" ofType:nil];
+    NSString *bundlePath = [shpPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@_shp.bundle", currentBuilding.buildingID]];
     NSBundle *dbBundle = [[NSBundle alloc] initWithPath:bundlePath];
     NSString *mapInfoPath = [dbBundle pathForResource:[NSString stringWithFormat:@"MapInfo_Building_%@", currentBuilding.buildingID] ofType:@"json"];
     allMapInfos = [TYMapInfo parseAllMapInfoFromFile:mapInfoPath];
-    NSLog(@"%@", allMapInfos);
+//    NSLog(@"%@", allMapInfos);
     
     [self addToLog:[NSString stringWithFormat:@"Generate Map Database for %@", currentBuilding.buildingID]];
     

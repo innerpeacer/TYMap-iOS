@@ -38,7 +38,8 @@ using namespace geos::io;
         mapID = info.mapID;
         _dbType = type;
         
-        NSString *bundlePath = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%@_shp", info.buildingID] ofType:@"bundle"];
+        NSString *shpPath = [[NSBundle mainBundle] pathForResource:@"OriginalShpDB" ofType:nil];
+        NSString *bundlePath = [shpPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@_shp.bundle", info.buildingID]];
         NSBundle *dbBundle = [[NSBundle alloc] initWithPath:bundlePath];
         NSString *dbPath = [dbBundle pathForResource:[self getDBPathForType:_dbType] ofType:@"db"];
         
@@ -52,6 +53,10 @@ using namespace geos::io;
     NSMutableArray *resultArray = [[NSMutableArray alloc] init];
     
     NSString *tableName = [self getTableNameForType:_dbType];
+    if (![self existTable:tableName]) {
+        return resultArray;
+    }
+    
     NSMutableString *sql = [NSMutableString stringWithFormat:@"select distinct %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@ from %@", SHP_DB_FIELD_OBJECT_ID, SHP_DB_FIELD_GEOMETRY, SHP_DB_FIELD_GEO_ID, SHP_DB_FIELD_POI_ID, SHP_DB_FIELD_FLOOR_ID, SHP_DB_FIELD_BUILDING_ID, SHP_DB_FIELD_CATEGORY_ID, SHP_DB_FIELD_NAME, SHP_DB_FIELD_SYMBOL_ID, SHP_DB_FIELD_FLOOR_NUMBER, SHP_DB_FIELD_FLOOR_NAME, tableName];
     FMResultSet *rs = [db executeQuery:sql];
     
@@ -94,6 +99,10 @@ using namespace geos::io;
 {
     NSMutableArray *resultArray = [[NSMutableArray alloc] init];
     NSString *tableName = [self getTableNameForType:_dbType];
+    if (![self existTable:tableName]) {
+        return resultArray;
+    }
+    
     NSMutableString *sql = [NSMutableString stringWithFormat:@"select distinct %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@ from %@", SHP_DB_FIELD_OBJECT_ID, SHP_DB_FIELD_GEOMETRY, SHP_DB_FIELD_GEO_ID, SHP_DB_FIELD_POI_ID, SHP_DB_FIELD_FLOOR_ID, SHP_DB_FIELD_BUILDING_ID, SHP_DB_FIELD_CATEGORY_ID, SHP_DB_FIELD_NAME, SHP_DB_FIELD_SYMBOL_ID, SHP_DB_FIELD_FLOOR_NUMBER, SHP_DB_FIELD_FLOOR_NAME, SHP_DB_FIELD_SHAPE_LENGTH, SHP_DB_FIELD_SHAPE_AREA, tableName];
     FMResultSet *rs = [db executeQuery:sql];
     
@@ -216,6 +225,29 @@ using namespace geos::io;
     }
     return result;
 }
+
+- (BOOL)existTable:(NSString *)table
+{
+    if (!table) {
+        return NO;
+    }
+    
+    NSString *sql = [NSString stringWithFormat:@"select count(*) from sqlite_master where type ='table' and name = '%@'",table];
+    
+    FMResultSet *set = [db executeQuery:sql];
+    if([set next])
+    {
+        NSInteger count = [set intForColumnIndex:0];
+        if (count > 0) {
+            return YES;
+        } else {
+            return NO;
+        }
+    } else {
+        return NO;
+    }
+}
+
 
 - (BOOL)open
 {

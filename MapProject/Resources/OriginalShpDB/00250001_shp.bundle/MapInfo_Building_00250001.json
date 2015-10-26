@@ -1,0 +1,32 @@
+{
+    "MapInfo": [
+        {
+            "cityID": "0025",
+            "buildingID": "00250001",
+            "mapID": "00250001F02",
+            "floorName": "F2",
+            "floorIndex": "2",
+            "size_x": "100",
+            "size_y": "45",
+            "xmax": "13221202",
+            "xmin": "13221102",
+            "ymax": "3750150",
+            "ymin": "3750105"
+        },
+        {
+            "cityID": "0025",
+            "buildingID": "00250001",
+            "mapID": "00250001F03",
+            "floorName": "F3",
+            "floorIndex": "3",
+            "size_x": "100",
+            "size_y": "45",
+            "xmax": "13221202",
+            "xmin": "13221102",
+            "ymax": "3750150",
+            "ymin": "3750105"
+        }
+
+    ]
+
+}

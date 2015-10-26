@@ -209,13 +209,21 @@
     [animatedRouteArrowLayer stopShowingArrow];
     
     NSDate *now;
-//     now = [NSDate date];
-//    [self loadMapDataWithInfo:info];
-//    NSLog(@"Load Time For Json: %f", [[NSDate date] timeIntervalSinceDate:now]);
+    BOOL usMapDB = false;
+    usMapDB = true;
+    if (usMapDB) {
+        now = [NSDate date];
+        [self readMapDataFromDBWithInfo:info];
+        NSLog(@"Load Time For DB: %f", [[NSDate date] timeIntervalSinceDate:now]);
+    } else {
+        now = [NSDate date];
+        [self loadMapDataWithInfo:info];
+        NSLog(@"Load Time For Json: %f", [[NSDate date] timeIntervalSinceDate:now]);
+    }
     
-    now = [NSDate date];
-    [self readMapDataFromDBWithInfo:info];
-    NSLog(@"Load Time For DB: %f", [[NSDate date] timeIntervalSinceDate:now]);
+
+    
+
 
     [structureGroupLayer loadContents:mapDataDict];
     [labelGroupLayer loadContents:mapDataDict];
