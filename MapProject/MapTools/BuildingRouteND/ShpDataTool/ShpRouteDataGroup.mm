@@ -147,8 +147,14 @@
 
 - (NSString *)getDBPath:(int)index
 {
-    NSString *dbName = [NSString stringWithFormat:@"%@_%@.db", building.buildingID, dbArray[index - 1]];
-   return [[TYMapEnvironment getBuildingDirectory:building] stringByAppendingPathComponent:dbName];
+//    NSString *dbName = [NSString stringWithFormat:@"%@_%@.db", building.buildingID, dbArray[index - 1]];
+//   return [[TYMapEnvironment getBuildingDirectory:building] stringByAppendingPathComponent:dbName];
+    
+    NSString *shpPath = [[NSBundle mainBundle] pathForResource:@"OriginalShpDB" ofType:nil];
+    NSString *bundlePath = [shpPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@_shp.bundle", building.buildingID]];
+    NSBundle *dbBundle = [[NSBundle alloc] initWithPath:bundlePath];
+    NSString *dbName = [NSString stringWithFormat:@"%@_%@", building.buildingID, dbArray[index - 1]];
+    return [dbBundle pathForResource:dbName ofType:@"db"];
 }
 
 - (NSString *)getTableName:(int)index

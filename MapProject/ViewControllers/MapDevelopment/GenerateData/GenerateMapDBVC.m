@@ -12,6 +12,7 @@
 #import <ArcGIS/ArcGIS.h>
 #import "TYUserDefaults.h"
 #import "TYMapInfo.h"
+#import "TYMapInfoJsonParser.h"
 
 #import "MapGeneratorDBAdapter.h"
 #import "OriginalShpDBAdapter.h"
@@ -40,7 +41,7 @@
     NSString *bundlePath = [shpPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@_shp.bundle", currentBuilding.buildingID]];
     NSBundle *dbBundle = [[NSBundle alloc] initWithPath:bundlePath];
     NSString *mapInfoPath = [dbBundle pathForResource:[NSString stringWithFormat:@"MapInfo_Building_%@", currentBuilding.buildingID] ofType:@"json"];
-    allMapInfos = [TYMapInfo parseAllMapInfoFromFile:mapInfoPath];
+    allMapInfos = [TYMapInfoJsonParser parseAllMapInfoFromFile:mapInfoPath];
 //    NSLog(@"%@", allMapInfos);
     
     [self addToLog:[NSString stringWithFormat:@"Generate Map Database for %@", currentBuilding.buildingID]];

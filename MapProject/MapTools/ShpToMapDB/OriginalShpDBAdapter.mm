@@ -62,7 +62,7 @@ using namespace geos::io;
     
     WKBReader reader;
     stringstream s;
-    
+
     while ([rs next]) {
         OriginalShpRecord *record = [[OriginalShpRecord alloc] init];
         
@@ -88,6 +88,7 @@ using namespace geos::io;
         geos::geom::Point *p = dynamic_cast<geos::geom::Point *>(reader.read(s));
         record.labelX = @(p->getX());
         record.labelY = @(p->getY());
+        
         delete p;
     
         [resultArray addObject:record];

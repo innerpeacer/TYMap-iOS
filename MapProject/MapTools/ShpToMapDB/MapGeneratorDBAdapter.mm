@@ -33,7 +33,7 @@
     self = [super init];
     if (self) {
         building = b;
-        NSString *dbPath = [TYMapFileManager getMapDBPath:building];
+        NSString *dbPath = [TYMapFileManager getMapDataDBPath:building];
         db = [FMDatabase databaseWithPath:dbPath];
         [self checkDatabase];
     }

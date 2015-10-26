@@ -22,6 +22,8 @@
 #import "LicenseGenerator.h"
 #import "TYLicenseValidation.h"
 #import "LicenseManager.h"
+#import "TYMapDBAdapter.h"
+
 
 @implementation AppDelegate
 
@@ -38,8 +40,6 @@
 
     [self copyMapFilesIfNeeded];
     [self setDefaultPlaceIfNeeded];
-    
-    
     
     return YES;
 }
