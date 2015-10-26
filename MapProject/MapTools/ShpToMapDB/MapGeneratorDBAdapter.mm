@@ -16,6 +16,7 @@
 #import "TYMapEnviroment.h"
 
 #import "TYMapFileManager.h"
+#include "IPEncryption.hpp"
 
 @interface MapGeneratorDBAdapter()
 {
@@ -87,7 +88,20 @@
     NSString *values = @" ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ";
     
     [arguments addObject:record.objectID];
-    [arguments addObject:record.geometryData];
+    
+    // Encrypt Geometry Data
+    {
+        int geometryByteLength = (int)record.geometryData.length;
+        char originalBytes[geometryByteLength + 1];
+        [record.geometryData getBytes:originalBytes];
+        char encryptedBytes[geometryByteLength + 1];
+        encryptBytes(originalBytes, encryptedBytes, geometryByteLength);
+        NSData *encryptedData = [NSData dataWithBytes:encryptedBytes length:geometryByteLength];
+        [arguments addObject:encryptedData];
+    }
+//    [arguments addObject:record.geometryData];
+
+    
     [arguments addObject:record.geoID];
     [arguments addObject:record.poiID];
     [arguments addObject:record.floorID];
@@ -102,6 +116,38 @@
     [arguments addObject:record.labelX];
     [arguments addObject:record.labelY];
     [arguments addObject:record.layer];
+    
+//    if (record.layer.intValue == 5) {
+//        int geometryByteLength = (int)record.geometryData.length;
+//        char gBytes[geometryByteLength + 1];
+//        memset(gBytes, 0, sizeof(gBytes)/sizeof(char));
+//        
+//        [record.geometryData getBytes:gBytes];
+//        
+//        printf("Geometry Bytes: %d\n", geometryByteLength);
+//        for (int i = 0; i < geometryByteLength; ++i) {
+//            printf("%4d, ", gBytes[i]);
+//        }
+//        printf("\n");
+//        
+//        char encryptedBytes[geometryByteLength + 1];
+//        encryptBytes(gBytes, encryptedBytes, geometryByteLength);
+//        
+//        printf("Encrypted Bytes: %d\n", geometryByteLength);
+//        for (int i = 0; i < geometryByteLength; ++i) {
+//            printf("%4d, ", encryptedBytes[i]);
+//        }
+//        printf("\n");
+//        
+//        char backBytes[geometryByteLength + 1];
+//        decryptBytes(encryptedBytes, backBytes, geometryByteLength);
+//        
+//        printf("Decrypted Back Bytes: %d\n", geometryByteLength);
+//        for (int i = 0; i < geometryByteLength; ++i) {
+//            printf("%4d, ", backBytes[i]);
+//        }
+//        printf("\n\n");
+//    }
     
     [sql appendFormat:@" %@ VALUES %@", fields, values];
     return [db executeUpdate:sql withArgumentsInArray:arguments];

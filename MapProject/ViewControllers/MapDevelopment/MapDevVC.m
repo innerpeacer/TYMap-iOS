@@ -79,7 +79,7 @@
     [self.controllerDict setObject:@"GenerateMapDBVC" forKey:@"生成地图数据库"];
     
     
-    [self tableView:self.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+    [self tableView:self.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:10 inSection:0]];
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"设置" style:UIBarButtonItemStyleBordered target:self action:@selector(choosingPlace:)];
     

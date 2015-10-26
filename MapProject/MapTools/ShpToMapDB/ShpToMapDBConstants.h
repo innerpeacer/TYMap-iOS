@@ -30,7 +30,7 @@
 // ======================================
 #pragma mark Shp DB Field
 // ======================================
-#define SHP_DB_FIELD_OBJECT_ID @"objectid"
+#define SHP_DB_FIELD_OBJECT_ID @"OGC_FID"
 #define SHP_DB_FIELD_GEOMETRY @"GEOMETRY"
 #define SHP_DB_FIELD_GEO_ID @"geo_id"
 #define SHP_DB_FIELD_POI_ID @"poi_id"

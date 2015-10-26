@@ -7,99 +7,100 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5702D7891BB3A8E80098397D /* TYMapData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5702D7881BB3A8E80098397D /* TYMapData.framework */; settings = {ASSET_TAGS = (); }; };
+		5702D7891BB3A8E80098397D /* TYMapData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5702D7881BB3A8E80098397D /* TYMapData.framework */; };
 		571AC4711B55FED900E9FF7D /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 571AC4701B55FED900E9FF7D /* AppDelegate.mm */; };
-		572407121BC9A84B0050BA41 /* IPEncryption.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5724070A1BC9A84B0050BA41 /* IPEncryption.cpp */; settings = {ASSET_TAGS = (); }; };
-		572407131BC9A84B0050BA41 /* IPLicenseValidation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5724070C1BC9A84B0050BA41 /* IPLicenseValidation.cpp */; settings = {ASSET_TAGS = (); }; };
-		572407141BC9A84B0050BA41 /* IPMemory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5724070E1BC9A84B0050BA41 /* IPMemory.cpp */; settings = {ASSET_TAGS = (); }; };
-		572407151BC9A84B0050BA41 /* MD5.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 572407101BC9A84B0050BA41 /* MD5.cpp */; settings = {ASSET_TAGS = (); }; };
-		5724071E1BC9A8520050BA41 /* TYEncryption.mm in Sources */ = {isa = PBXBuildFile; fileRef = 572407191BC9A8520050BA41 /* TYEncryption.mm */; settings = {ASSET_TAGS = (); }; };
-		5724071F1BC9A8520050BA41 /* TYLicenseValidation.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5724071B1BC9A8520050BA41 /* TYLicenseValidation.mm */; settings = {ASSET_TAGS = (); }; };
-		572407201BC9A8520050BA41 /* TYPathCalibration.m in Sources */ = {isa = PBXBuildFile; fileRef = 5724071D1BC9A8520050BA41 /* TYPathCalibration.m */; settings = {ASSET_TAGS = (); }; };
-		572407921BC9A8A10050BA41 /* TYCallout.m in Sources */ = {isa = PBXBuildFile; fileRef = 572407231BC9A8A10050BA41 /* TYCallout.m */; settings = {ASSET_TAGS = (); }; };
-		572407931BC9A8A10050BA41 /* TYCredential.m in Sources */ = {isa = PBXBuildFile; fileRef = 572407251BC9A8A10050BA41 /* TYCredential.m */; settings = {ASSET_TAGS = (); }; };
-		572407941BC9A8A10050BA41 /* TYEnvelope.m in Sources */ = {isa = PBXBuildFile; fileRef = 572407271BC9A8A10050BA41 /* TYEnvelope.m */; settings = {ASSET_TAGS = (); }; };
-		572407951BC9A8A10050BA41 /* TYGeometry.m in Sources */ = {isa = PBXBuildFile; fileRef = 572407291BC9A8A10050BA41 /* TYGeometry.m */; settings = {ASSET_TAGS = (); }; };
-		572407961BC9A8A10050BA41 /* TYGeometryEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 5724072B1BC9A8A10050BA41 /* TYGeometryEngine.m */; settings = {ASSET_TAGS = (); }; };
-		572407971BC9A8A10050BA41 /* TYGraphic.m in Sources */ = {isa = PBXBuildFile; fileRef = 5724072D1BC9A8A10050BA41 /* TYGraphic.m */; settings = {ASSET_TAGS = (); }; };
-		572407981BC9A8A10050BA41 /* TYGraphicsLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5724072F1BC9A8A10050BA41 /* TYGraphicsLayer.m */; settings = {ASSET_TAGS = (); }; };
-		572407991BC9A8A10050BA41 /* TYLocationDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = 572407311BC9A8A10050BA41 /* TYLocationDisplay.m */; settings = {ASSET_TAGS = (); }; };
-		5724079A1BC9A8A10050BA41 /* TYMarkerSymbol.m in Sources */ = {isa = PBXBuildFile; fileRef = 572407331BC9A8A10050BA41 /* TYMarkerSymbol.m */; settings = {ASSET_TAGS = (); }; };
-		5724079B1BC9A8A10050BA41 /* TYPictureMarkerSymbol.m in Sources */ = {isa = PBXBuildFile; fileRef = 572407351BC9A8A10050BA41 /* TYPictureMarkerSymbol.m */; settings = {ASSET_TAGS = (); }; };
-		5724079C1BC9A8A10050BA41 /* TYPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 572407371BC9A8A10050BA41 /* TYPoint.m */; settings = {ASSET_TAGS = (); }; };
-		5724079D1BC9A8A10050BA41 /* TYPolygon.m in Sources */ = {isa = PBXBuildFile; fileRef = 572407391BC9A8A10050BA41 /* TYPolygon.m */; settings = {ASSET_TAGS = (); }; };
-		5724079E1BC9A8A10050BA41 /* TYPolyline.m in Sources */ = {isa = PBXBuildFile; fileRef = 5724073B1BC9A8A10050BA41 /* TYPolyline.m */; settings = {ASSET_TAGS = (); }; };
-		5724079F1BC9A8A10050BA41 /* TYSimpleFillSymbol.m in Sources */ = {isa = PBXBuildFile; fileRef = 5724073D1BC9A8A10050BA41 /* TYSimpleFillSymbol.m */; settings = {ASSET_TAGS = (); }; };
-		572407A01BC9A8A10050BA41 /* TYSimpleLineSymbol.m in Sources */ = {isa = PBXBuildFile; fileRef = 5724073F1BC9A8A10050BA41 /* TYSimpleLineSymbol.m */; settings = {ASSET_TAGS = (); }; };
-		572407A11BC9A8A10050BA41 /* TYSimpleMarkerSymbol.m in Sources */ = {isa = PBXBuildFile; fileRef = 572407411BC9A8A10050BA41 /* TYSimpleMarkerSymbol.m */; settings = {ASSET_TAGS = (); }; };
-		572407A21BC9A8A10050BA41 /* TYSpatialReference.m in Sources */ = {isa = PBXBuildFile; fileRef = 572407431BC9A8A10050BA41 /* TYSpatialReference.m */; settings = {ASSET_TAGS = (); }; };
-		572407A31BC9A8A10050BA41 /* TYAnimatedRouteArrowLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 572407461BC9A8A10050BA41 /* TYAnimatedRouteArrowLayer.m */; settings = {ASSET_TAGS = (); }; };
-		572407A41BC9A8A10050BA41 /* TYLocationLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 572407481BC9A8A10050BA41 /* TYLocationLayer.m */; settings = {ASSET_TAGS = (); }; };
-		572407A51BC9A8A10050BA41 /* TYRouteArrowLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5724074A1BC9A8A10050BA41 /* TYRouteArrowLayer.m */; settings = {ASSET_TAGS = (); }; };
-		572407A61BC9A8A10050BA41 /* TYRouteHintLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5724074C1BC9A8A10050BA41 /* TYRouteHintLayer.m */; settings = {ASSET_TAGS = (); }; };
-		572407A71BC9A8A10050BA41 /* TYRouteLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5724074E1BC9A8A10050BA41 /* TYRouteLayer.m */; settings = {ASSET_TAGS = (); }; };
-		572407A81BC9A8A10050BA41 /* Vector2.m in Sources */ = {isa = PBXBuildFile; fileRef = 572407501BC9A8A10050BA41 /* Vector2.m */; settings = {ASSET_TAGS = (); }; };
-		572407A91BC9A8A10050BA41 /* TYFacilityLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 572407531BC9A8A10050BA41 /* TYFacilityLabel.m */; settings = {ASSET_TAGS = (); }; };
-		572407AA1BC9A8A10050BA41 /* TYFacilityLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 572407551BC9A8A10050BA41 /* TYFacilityLayer.m */; settings = {ASSET_TAGS = (); }; };
-		572407AB1BC9A8A10050BA41 /* TYLabelBorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 572407571BC9A8A10050BA41 /* TYLabelBorder.m */; settings = {ASSET_TAGS = (); }; };
-		572407AC1BC9A8A10050BA41 /* TYLabelBorderCalculator.m in Sources */ = {isa = PBXBuildFile; fileRef = 572407591BC9A8A10050BA41 /* TYLabelBorderCalculator.m */; settings = {ASSET_TAGS = (); }; };
-		572407AD1BC9A8A10050BA41 /* TYLabelGroupLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5724075B1BC9A8A10050BA41 /* TYLabelGroupLayer.m */; settings = {ASSET_TAGS = (); }; };
-		572407AE1BC9A8A10050BA41 /* TYTextLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5724075D1BC9A8A10050BA41 /* TYTextLabel.m */; settings = {ASSET_TAGS = (); }; };
-		572407AF1BC9A8A10050BA41 /* TYTextLabelLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5724075F1BC9A8A10050BA41 /* TYTextLabelLayer.m */; settings = {ASSET_TAGS = (); }; };
-		572407B01BC9A8A10050BA41 /* TYArcGISDrawer.m in Sources */ = {isa = PBXBuildFile; fileRef = 572407621BC9A8A10050BA41 /* TYArcGISDrawer.m */; settings = {ASSET_TAGS = (); }; };
-		572407B11BC9A8A10050BA41 /* TYAreaAnalysis.m in Sources */ = {isa = PBXBuildFile; fileRef = 572407641BC9A8A10050BA41 /* TYAreaAnalysis.m */; settings = {ASSET_TAGS = (); }; };
-		572407B21BC9A8A10050BA41 /* TYBuildingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 572407661BC9A8A10050BA41 /* TYBuildingManager.m */; settings = {ASSET_TAGS = (); }; };
-		572407B31BC9A8A10050BA41 /* TYCityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 572407681BC9A8A10050BA41 /* TYCityManager.m */; settings = {ASSET_TAGS = (); }; };
-		572407B41BC9A8A10050BA41 /* TYMapEnviroment.m in Sources */ = {isa = PBXBuildFile; fileRef = 5724076A1BC9A8A10050BA41 /* TYMapEnviroment.m */; settings = {ASSET_TAGS = (); }; };
-		572407B51BC9A8A10050BA41 /* TYMapFileManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5724076D1BC9A8A10050BA41 /* TYMapFileManager.mm */; settings = {ASSET_TAGS = (); }; };
-		572407B61BC9A8A10050BA41 /* TYMapInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 5724076F1BC9A8A10050BA41 /* TYMapInfo.m */; settings = {ASSET_TAGS = (); }; };
-		572407B71BC9A8A10050BA41 /* TYMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 572407721BC9A8A10050BA41 /* TYMapView.m */; settings = {ASSET_TAGS = (); }; };
-		572407B81BC9A8A10050BA41 /* TYRenderingScheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 572407741BC9A8A10050BA41 /* TYRenderingScheme.m */; settings = {ASSET_TAGS = (); }; };
-		572407B91BC9A8A10050BA41 /* TYBrand.m in Sources */ = {isa = PBXBuildFile; fileRef = 572407771BC9A8A10050BA41 /* TYBrand.m */; settings = {ASSET_TAGS = (); }; };
-		572407BA1BC9A8A10050BA41 /* TYPoi.m in Sources */ = {isa = PBXBuildFile; fileRef = 572407791BC9A8A10050BA41 /* TYPoi.m */; settings = {ASSET_TAGS = (); }; };
-		572407BB1BC9A8A10050BA41 /* TYDirectionalHint.m in Sources */ = {isa = PBXBuildFile; fileRef = 5724077C1BC9A8A10050BA41 /* TYDirectionalHint.m */; settings = {ASSET_TAGS = (); }; };
-		572407BC1BC9A8A10050BA41 /* TYLandmark.m in Sources */ = {isa = PBXBuildFile; fileRef = 5724077E1BC9A8A10050BA41 /* TYLandmark.m */; settings = {ASSET_TAGS = (); }; };
-		572407BD1BC9A8A10050BA41 /* TYLandmarkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 572407801BC9A8A10050BA41 /* TYLandmarkManager.m */; settings = {ASSET_TAGS = (); }; };
-		572407BE1BC9A8A10050BA41 /* TYRouteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 572407821BC9A8A10050BA41 /* TYRouteManager.m */; settings = {ASSET_TAGS = (); }; };
-		572407BF1BC9A8A10050BA41 /* TYRoutePart.m in Sources */ = {isa = PBXBuildFile; fileRef = 572407841BC9A8A10050BA41 /* TYRoutePart.m */; settings = {ASSET_TAGS = (); }; };
-		572407C01BC9A8A10050BA41 /* TYRoutePointConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 572407861BC9A8A10050BA41 /* TYRoutePointConverter.m */; settings = {ASSET_TAGS = (); }; };
-		572407C11BC9A8A10050BA41 /* TYRouteResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 572407881BC9A8A10050BA41 /* TYRouteResult.m */; settings = {ASSET_TAGS = (); }; };
-		572407C21BC9A8A10050BA41 /* TYAssetLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5724078B1BC9A8A10050BA41 /* TYAssetLayer.m */; settings = {ASSET_TAGS = (); }; };
-		572407C31BC9A8A10050BA41 /* TYFloorLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5724078D1BC9A8A10050BA41 /* TYFloorLayer.m */; settings = {ASSET_TAGS = (); }; };
-		572407C41BC9A8A10050BA41 /* TYRoomLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5724078F1BC9A8A10050BA41 /* TYRoomLayer.m */; settings = {ASSET_TAGS = (); }; };
-		572407C51BC9A8A10050BA41 /* TYStructureGroupLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 572407911BC9A8A10050BA41 /* TYStructureGroupLayer.m */; settings = {ASSET_TAGS = (); }; };
-		572407C91BC9A8E60050BA41 /* MD5Utils.mm in Sources */ = {isa = PBXBuildFile; fileRef = 572407C81BC9A8E60050BA41 /* MD5Utils.mm */; settings = {ASSET_TAGS = (); }; };
-		572408CC1BC9AE190050BA41 /* IPXLink.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 572408CA1BC9AE190050BA41 /* IPXLink.cpp */; settings = {ASSET_TAGS = (); }; };
-		572408CF1BC9AE2D0050BA41 /* IPXNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 572408CD1BC9AE2D0050BA41 /* IPXNode.cpp */; settings = {ASSET_TAGS = (); }; };
-		572408D21BC9AE3D0050BA41 /* IPXRouteNetworkDataset.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 572408D01BC9AE3D0050BA41 /* IPXRouteNetworkDataset.cpp */; settings = {ASSET_TAGS = (); }; };
-		572408D51BC9B2E70050BA41 /* IPXRouteNetworkDBAdapter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 572408D31BC9B2E70050BA41 /* IPXRouteNetworkDBAdapter.cpp */; settings = {ASSET_TAGS = (); }; };
-		572408D81BC9B3080050BA41 /* IPXLinkRecord.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 572408D61BC9B3080050BA41 /* IPXLinkRecord.cpp */; settings = {ASSET_TAGS = (); }; };
-		572408DB1BC9B3140050BA41 /* IPXNodeRecord.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 572408D91BC9B3140050BA41 /* IPXNodeRecord.cpp */; settings = {ASSET_TAGS = (); }; };
-		572408DE1BC9B3370050BA41 /* TYOfflineRouteManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 572408DD1BC9B3370050BA41 /* TYOfflineRouteManager.mm */; settings = {ASSET_TAGS = (); }; };
-		572408ED1BC9B9800050BA41 /* BuildRouteNetworkDatasetVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 572408E41BC9B9800050BA41 /* BuildRouteNetworkDatasetVC.m */; settings = {ASSET_TAGS = (); }; };
-		572408EE1BC9B9800050BA41 /* CppOfflineMapRouteVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 572408E61BC9B9800050BA41 /* CppOfflineMapRouteVC.m */; settings = {ASSET_TAGS = (); }; };
-		572408EF1BC9B9800050BA41 /* MapRouteVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 572408E81BC9B9800050BA41 /* MapRouteVC.m */; settings = {ASSET_TAGS = (); }; };
-		572408F01BC9B9800050BA41 /* OfflineMapRouteVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 572408EA1BC9B9800050BA41 /* OfflineMapRouteVC.m */; settings = {ASSET_TAGS = (); }; };
-		572408F11BC9B9800050BA41 /* TestRouteNetworkVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 572408EC1BC9B9800050BA41 /* TestRouteNetworkVC.m */; settings = {ASSET_TAGS = (); }; };
-		572408FB1BC9B9D00050BA41 /* CreatePOIDatabaseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 572408F41BC9B9D00050BA41 /* CreatePOIDatabaseVC.m */; settings = {ASSET_TAGS = (); }; };
-		572408FC1BC9B9D00050BA41 /* GenerateEncryptionSourceVC.mm in Sources */ = {isa = PBXBuildFile; fileRef = 572408F61BC9B9D00050BA41 /* GenerateEncryptionSourceVC.mm */; settings = {ASSET_TAGS = (); }; };
-		572408FD1BC9B9D00050BA41 /* GenerateLicensesVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 572408F81BC9B9D00050BA41 /* GenerateLicensesVC.m */; settings = {ASSET_TAGS = (); }; };
-		572408FE1BC9B9D00050BA41 /* MapEncryptionVC.mm in Sources */ = {isa = PBXBuildFile; fileRef = 572408FA1BC9B9D00050BA41 /* MapEncryptionVC.mm */; settings = {ASSET_TAGS = (); }; };
-		572B98BD1BDA104200506A7E /* OriginalShpRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 572B98BC1BDA104200506A7E /* OriginalShpRecord.m */; settings = {ASSET_TAGS = (); }; };
-		572B98C11BDA115A00506A7E /* GenerateMapDBVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 572B98C01BDA115A00506A7E /* GenerateMapDBVC.m */; settings = {ASSET_TAGS = (); }; };
-		572B98C41BDA172100506A7E /* OriginalShpDBAdapter.mm in Sources */ = {isa = PBXBuildFile; fileRef = 572B98C31BDA172100506A7E /* OriginalShpDBAdapter.mm */; settings = {ASSET_TAGS = (); }; };
-		572B98C91BDA184300506A7E /* 05320001_shp.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 572B98C81BDA184300506A7E /* 05320001_shp.bundle */; settings = {ASSET_TAGS = (); }; };
-		572B98CC1BDA195500506A7E /* MapGeneratorDBAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 572B98CB1BDA195500506A7E /* MapGeneratorDBAdapter.m */; settings = {ASSET_TAGS = (); }; };
-		573F900A1BC8E68F00F836B5 /* OfflineRouteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 573F90091BC8E68F00F836B5 /* OfflineRouteManager.m */; settings = {ASSET_TAGS = (); }; };
+		572407121BC9A84B0050BA41 /* IPEncryption.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5724070A1BC9A84B0050BA41 /* IPEncryption.cpp */; };
+		572407131BC9A84B0050BA41 /* IPLicenseValidation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5724070C1BC9A84B0050BA41 /* IPLicenseValidation.cpp */; };
+		572407141BC9A84B0050BA41 /* IPMemory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5724070E1BC9A84B0050BA41 /* IPMemory.cpp */; };
+		572407151BC9A84B0050BA41 /* MD5.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 572407101BC9A84B0050BA41 /* MD5.cpp */; };
+		5724071E1BC9A8520050BA41 /* TYEncryption.mm in Sources */ = {isa = PBXBuildFile; fileRef = 572407191BC9A8520050BA41 /* TYEncryption.mm */; };
+		5724071F1BC9A8520050BA41 /* TYLicenseValidation.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5724071B1BC9A8520050BA41 /* TYLicenseValidation.mm */; };
+		572407201BC9A8520050BA41 /* TYPathCalibration.m in Sources */ = {isa = PBXBuildFile; fileRef = 5724071D1BC9A8520050BA41 /* TYPathCalibration.m */; };
+		572407921BC9A8A10050BA41 /* TYCallout.m in Sources */ = {isa = PBXBuildFile; fileRef = 572407231BC9A8A10050BA41 /* TYCallout.m */; };
+		572407931BC9A8A10050BA41 /* TYCredential.m in Sources */ = {isa = PBXBuildFile; fileRef = 572407251BC9A8A10050BA41 /* TYCredential.m */; };
+		572407941BC9A8A10050BA41 /* TYEnvelope.m in Sources */ = {isa = PBXBuildFile; fileRef = 572407271BC9A8A10050BA41 /* TYEnvelope.m */; };
+		572407951BC9A8A10050BA41 /* TYGeometry.m in Sources */ = {isa = PBXBuildFile; fileRef = 572407291BC9A8A10050BA41 /* TYGeometry.m */; };
+		572407961BC9A8A10050BA41 /* TYGeometryEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 5724072B1BC9A8A10050BA41 /* TYGeometryEngine.m */; };
+		572407971BC9A8A10050BA41 /* TYGraphic.m in Sources */ = {isa = PBXBuildFile; fileRef = 5724072D1BC9A8A10050BA41 /* TYGraphic.m */; };
+		572407981BC9A8A10050BA41 /* TYGraphicsLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5724072F1BC9A8A10050BA41 /* TYGraphicsLayer.m */; };
+		572407991BC9A8A10050BA41 /* TYLocationDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = 572407311BC9A8A10050BA41 /* TYLocationDisplay.m */; };
+		5724079A1BC9A8A10050BA41 /* TYMarkerSymbol.m in Sources */ = {isa = PBXBuildFile; fileRef = 572407331BC9A8A10050BA41 /* TYMarkerSymbol.m */; };
+		5724079B1BC9A8A10050BA41 /* TYPictureMarkerSymbol.m in Sources */ = {isa = PBXBuildFile; fileRef = 572407351BC9A8A10050BA41 /* TYPictureMarkerSymbol.m */; };
+		5724079C1BC9A8A10050BA41 /* TYPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 572407371BC9A8A10050BA41 /* TYPoint.m */; };
+		5724079D1BC9A8A10050BA41 /* TYPolygon.m in Sources */ = {isa = PBXBuildFile; fileRef = 572407391BC9A8A10050BA41 /* TYPolygon.m */; };
+		5724079E1BC9A8A10050BA41 /* TYPolyline.m in Sources */ = {isa = PBXBuildFile; fileRef = 5724073B1BC9A8A10050BA41 /* TYPolyline.m */; };
+		5724079F1BC9A8A10050BA41 /* TYSimpleFillSymbol.m in Sources */ = {isa = PBXBuildFile; fileRef = 5724073D1BC9A8A10050BA41 /* TYSimpleFillSymbol.m */; };
+		572407A01BC9A8A10050BA41 /* TYSimpleLineSymbol.m in Sources */ = {isa = PBXBuildFile; fileRef = 5724073F1BC9A8A10050BA41 /* TYSimpleLineSymbol.m */; };
+		572407A11BC9A8A10050BA41 /* TYSimpleMarkerSymbol.m in Sources */ = {isa = PBXBuildFile; fileRef = 572407411BC9A8A10050BA41 /* TYSimpleMarkerSymbol.m */; };
+		572407A21BC9A8A10050BA41 /* TYSpatialReference.m in Sources */ = {isa = PBXBuildFile; fileRef = 572407431BC9A8A10050BA41 /* TYSpatialReference.m */; };
+		572407A31BC9A8A10050BA41 /* TYAnimatedRouteArrowLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 572407461BC9A8A10050BA41 /* TYAnimatedRouteArrowLayer.m */; };
+		572407A41BC9A8A10050BA41 /* TYLocationLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 572407481BC9A8A10050BA41 /* TYLocationLayer.m */; };
+		572407A51BC9A8A10050BA41 /* TYRouteArrowLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5724074A1BC9A8A10050BA41 /* TYRouteArrowLayer.m */; };
+		572407A61BC9A8A10050BA41 /* TYRouteHintLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5724074C1BC9A8A10050BA41 /* TYRouteHintLayer.m */; };
+		572407A71BC9A8A10050BA41 /* TYRouteLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5724074E1BC9A8A10050BA41 /* TYRouteLayer.m */; };
+		572407A81BC9A8A10050BA41 /* Vector2.m in Sources */ = {isa = PBXBuildFile; fileRef = 572407501BC9A8A10050BA41 /* Vector2.m */; };
+		572407A91BC9A8A10050BA41 /* TYFacilityLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 572407531BC9A8A10050BA41 /* TYFacilityLabel.m */; };
+		572407AA1BC9A8A10050BA41 /* TYFacilityLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 572407551BC9A8A10050BA41 /* TYFacilityLayer.m */; };
+		572407AB1BC9A8A10050BA41 /* TYLabelBorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 572407571BC9A8A10050BA41 /* TYLabelBorder.m */; };
+		572407AC1BC9A8A10050BA41 /* TYLabelBorderCalculator.m in Sources */ = {isa = PBXBuildFile; fileRef = 572407591BC9A8A10050BA41 /* TYLabelBorderCalculator.m */; };
+		572407AD1BC9A8A10050BA41 /* TYLabelGroupLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5724075B1BC9A8A10050BA41 /* TYLabelGroupLayer.m */; };
+		572407AE1BC9A8A10050BA41 /* TYTextLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5724075D1BC9A8A10050BA41 /* TYTextLabel.m */; };
+		572407AF1BC9A8A10050BA41 /* TYTextLabelLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5724075F1BC9A8A10050BA41 /* TYTextLabelLayer.m */; };
+		572407B01BC9A8A10050BA41 /* TYArcGISDrawer.m in Sources */ = {isa = PBXBuildFile; fileRef = 572407621BC9A8A10050BA41 /* TYArcGISDrawer.m */; };
+		572407B11BC9A8A10050BA41 /* TYAreaAnalysis.m in Sources */ = {isa = PBXBuildFile; fileRef = 572407641BC9A8A10050BA41 /* TYAreaAnalysis.m */; };
+		572407B21BC9A8A10050BA41 /* TYBuildingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 572407661BC9A8A10050BA41 /* TYBuildingManager.m */; };
+		572407B31BC9A8A10050BA41 /* TYCityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 572407681BC9A8A10050BA41 /* TYCityManager.m */; };
+		572407B41BC9A8A10050BA41 /* TYMapEnviroment.m in Sources */ = {isa = PBXBuildFile; fileRef = 5724076A1BC9A8A10050BA41 /* TYMapEnviroment.m */; };
+		572407B51BC9A8A10050BA41 /* TYMapFileManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5724076D1BC9A8A10050BA41 /* TYMapFileManager.mm */; };
+		572407B61BC9A8A10050BA41 /* TYMapInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 5724076F1BC9A8A10050BA41 /* TYMapInfo.m */; };
+		572407B71BC9A8A10050BA41 /* TYMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 572407721BC9A8A10050BA41 /* TYMapView.m */; };
+		572407B81BC9A8A10050BA41 /* TYRenderingScheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 572407741BC9A8A10050BA41 /* TYRenderingScheme.m */; };
+		572407B91BC9A8A10050BA41 /* TYBrand.m in Sources */ = {isa = PBXBuildFile; fileRef = 572407771BC9A8A10050BA41 /* TYBrand.m */; };
+		572407BA1BC9A8A10050BA41 /* TYPoi.m in Sources */ = {isa = PBXBuildFile; fileRef = 572407791BC9A8A10050BA41 /* TYPoi.m */; };
+		572407BB1BC9A8A10050BA41 /* TYDirectionalHint.m in Sources */ = {isa = PBXBuildFile; fileRef = 5724077C1BC9A8A10050BA41 /* TYDirectionalHint.m */; };
+		572407BC1BC9A8A10050BA41 /* TYLandmark.m in Sources */ = {isa = PBXBuildFile; fileRef = 5724077E1BC9A8A10050BA41 /* TYLandmark.m */; };
+		572407BD1BC9A8A10050BA41 /* TYLandmarkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 572407801BC9A8A10050BA41 /* TYLandmarkManager.m */; };
+		572407BE1BC9A8A10050BA41 /* TYRouteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 572407821BC9A8A10050BA41 /* TYRouteManager.m */; };
+		572407BF1BC9A8A10050BA41 /* TYRoutePart.m in Sources */ = {isa = PBXBuildFile; fileRef = 572407841BC9A8A10050BA41 /* TYRoutePart.m */; };
+		572407C01BC9A8A10050BA41 /* TYRoutePointConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 572407861BC9A8A10050BA41 /* TYRoutePointConverter.m */; };
+		572407C11BC9A8A10050BA41 /* TYRouteResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 572407881BC9A8A10050BA41 /* TYRouteResult.m */; };
+		572407C21BC9A8A10050BA41 /* TYAssetLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5724078B1BC9A8A10050BA41 /* TYAssetLayer.m */; };
+		572407C31BC9A8A10050BA41 /* TYFloorLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5724078D1BC9A8A10050BA41 /* TYFloorLayer.m */; };
+		572407C41BC9A8A10050BA41 /* TYRoomLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5724078F1BC9A8A10050BA41 /* TYRoomLayer.m */; };
+		572407C51BC9A8A10050BA41 /* TYStructureGroupLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 572407911BC9A8A10050BA41 /* TYStructureGroupLayer.m */; };
+		572407C91BC9A8E60050BA41 /* MD5Utils.mm in Sources */ = {isa = PBXBuildFile; fileRef = 572407C81BC9A8E60050BA41 /* MD5Utils.mm */; };
+		572408CC1BC9AE190050BA41 /* IPXLink.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 572408CA1BC9AE190050BA41 /* IPXLink.cpp */; };
+		572408CF1BC9AE2D0050BA41 /* IPXNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 572408CD1BC9AE2D0050BA41 /* IPXNode.cpp */; };
+		572408D21BC9AE3D0050BA41 /* IPXRouteNetworkDataset.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 572408D01BC9AE3D0050BA41 /* IPXRouteNetworkDataset.cpp */; };
+		572408D51BC9B2E70050BA41 /* IPXRouteNetworkDBAdapter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 572408D31BC9B2E70050BA41 /* IPXRouteNetworkDBAdapter.cpp */; };
+		572408D81BC9B3080050BA41 /* IPXLinkRecord.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 572408D61BC9B3080050BA41 /* IPXLinkRecord.cpp */; };
+		572408DB1BC9B3140050BA41 /* IPXNodeRecord.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 572408D91BC9B3140050BA41 /* IPXNodeRecord.cpp */; };
+		572408DE1BC9B3370050BA41 /* TYOfflineRouteManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 572408DD1BC9B3370050BA41 /* TYOfflineRouteManager.mm */; };
+		572408ED1BC9B9800050BA41 /* BuildRouteNetworkDatasetVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 572408E41BC9B9800050BA41 /* BuildRouteNetworkDatasetVC.m */; };
+		572408EE1BC9B9800050BA41 /* CppOfflineMapRouteVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 572408E61BC9B9800050BA41 /* CppOfflineMapRouteVC.m */; };
+		572408EF1BC9B9800050BA41 /* MapRouteVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 572408E81BC9B9800050BA41 /* MapRouteVC.m */; };
+		572408F01BC9B9800050BA41 /* OfflineMapRouteVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 572408EA1BC9B9800050BA41 /* OfflineMapRouteVC.m */; };
+		572408F11BC9B9800050BA41 /* TestRouteNetworkVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 572408EC1BC9B9800050BA41 /* TestRouteNetworkVC.m */; };
+		572408FB1BC9B9D00050BA41 /* CreatePOIDatabaseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 572408F41BC9B9D00050BA41 /* CreatePOIDatabaseVC.m */; };
+		572408FC1BC9B9D00050BA41 /* GenerateEncryptionSourceVC.mm in Sources */ = {isa = PBXBuildFile; fileRef = 572408F61BC9B9D00050BA41 /* GenerateEncryptionSourceVC.mm */; };
+		572408FD1BC9B9D00050BA41 /* GenerateLicensesVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 572408F81BC9B9D00050BA41 /* GenerateLicensesVC.m */; };
+		572408FE1BC9B9D00050BA41 /* MapEncryptionVC.mm in Sources */ = {isa = PBXBuildFile; fileRef = 572408FA1BC9B9D00050BA41 /* MapEncryptionVC.mm */; };
+		572B98BD1BDA104200506A7E /* OriginalShpRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 572B98BC1BDA104200506A7E /* OriginalShpRecord.m */; };
+		572B98C11BDA115A00506A7E /* GenerateMapDBVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 572B98C01BDA115A00506A7E /* GenerateMapDBVC.m */; };
+		572B98C41BDA172100506A7E /* OriginalShpDBAdapter.mm in Sources */ = {isa = PBXBuildFile; fileRef = 572B98C31BDA172100506A7E /* OriginalShpDBAdapter.mm */; };
+		572B98C91BDA184300506A7E /* 05320001_shp.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 572B98C81BDA184300506A7E /* 05320001_shp.bundle */; };
+		572B98CC1BDA195500506A7E /* MapGeneratorDBAdapter.mm in Sources */ = {isa = PBXBuildFile; fileRef = 572B98CB1BDA195500506A7E /* MapGeneratorDBAdapter.mm */; };
+		5732A5B91BDD2FE000311FAC /* H85200001_shp.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5732A5B81BDD2FE000311FAC /* H85200001_shp.bundle */; };
+		573F900A1BC8E68F00F836B5 /* OfflineRouteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 573F90091BC8E68F00F836B5 /* OfflineRouteManager.m */; };
 		57494DDA1B61DAE7000B6F2C /* BaseControllerTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 57494DD31B61DAE7000B6F2C /* BaseControllerTableVC.m */; };
 		57494DDB1B61DAE7000B6F2C /* BaseLogVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 57494DD51B61DAE7000B6F2C /* BaseLogVC.m */; };
 		57494DE01B61DB08000B6F2C /* EncyptedCityVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 57494DDF1B61DB08000B6F2C /* EncyptedCityVC.m */; };
 		57494DE31B61DB17000B6F2C /* OriginalCityVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 57494DE21B61DB17000B6F2C /* OriginalCityVC.m */; };
 		57494DF51B61E730000B6F2C /* EnviromentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 57494DF41B61E730000B6F2C /* EnviromentManager.m */; };
 		574EE2C71B723C30005A6482 /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 574EE2C51B723C30005A6482 /* Launch Screen.xib */; };
-		574F5E3D1BDAAE07001967F6 /* IPXFeatureRecord.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 574F5E3B1BDAAE07001967F6 /* IPXFeatureRecord.cpp */; settings = {ASSET_TAGS = (); }; };
-		574F5E401BDAB2E5001967F6 /* IPXMapDataDBAdapter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 574F5E3E1BDAB2E5001967F6 /* IPXMapDataDBAdapter.cpp */; settings = {ASSET_TAGS = (); }; };
-		574F5E461BDAB9DB001967F6 /* TYMapFeatureData.mm in Sources */ = {isa = PBXBuildFile; fileRef = 574F5E451BDAB9DB001967F6 /* TYMapFeatureData.mm */; settings = {ASSET_TAGS = (); }; };
+		574F5E3D1BDAAE07001967F6 /* IPXFeatureRecord.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 574F5E3B1BDAAE07001967F6 /* IPXFeatureRecord.cpp */; };
+		574F5E401BDAB2E5001967F6 /* IPXMapDataDBAdapter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 574F5E3E1BDAB2E5001967F6 /* IPXMapDataDBAdapter.cpp */; };
+		574F5E461BDAB9DB001967F6 /* TYMapFeatureData.mm in Sources */ = {isa = PBXBuildFile; fileRef = 574F5E451BDAB9DB001967F6 /* TYMapFeatureData.mm */; };
 		57672D071B55FF4A00DAD219 /* CreatingPOIDBAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 57672C911B55FF4A00DAD219 /* CreatingPOIDBAdapter.m */; };
 		57672D081B55FF4A00DAD219 /* TYPoiDBAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 57672C931B55FF4A00DAD219 /* TYPoiDBAdapter.m */; };
 		57672D5D1B55FF9900DAD219 /* TYUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 57672D5C1B55FF9900DAD219 /* TYUserDefaults.m */; };
@@ -118,18 +119,19 @@
 		576AEEAB1B61D97100D55CA4 /* MapDevVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 576AEEA11B61D97100D55CA4 /* MapDevVC.m */; };
 		576AEEAC1B61D97100D55CA4 /* MapVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 576AEEA31B61D97100D55CA4 /* MapVC.m */; };
 		576AEEB21B61D9E400D55CA4 /* CustomCalloutVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 576AEEB01B61D9E400D55CA4 /* CustomCalloutVC.m */; };
-		576C02621BC63D4700BCD87D /* SymbolGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 576C02611BC63D4700BCD87D /* SymbolGroup.m */; settings = {ASSET_TAGS = (); }; };
-		578771221BBB911400F90D7B /* RouteNetworkDBAdapter.mm in Sources */ = {isa = PBXBuildFile; fileRef = 578771211BBB911400F90D7B /* RouteNetworkDBAdapter.mm */; settings = {ASSET_TAGS = (); }; };
-		578771291BBB914700F90D7B /* TYLink.m in Sources */ = {isa = PBXBuildFile; fileRef = 578771281BBB914700F90D7B /* TYLink.m */; settings = {ASSET_TAGS = (); }; };
-		5787712C1BBB915E00F90D7B /* RouteNetworkDataset.m in Sources */ = {isa = PBXBuildFile; fileRef = 5787712B1BBB915E00F90D7B /* RouteNetworkDataset.m */; settings = {ASSET_TAGS = (); }; };
-		5787712F1BBB916B00F90D7B /* TYNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 5787712E1BBB916B00F90D7B /* TYNode.m */; settings = {ASSET_TAGS = (); }; };
+		576C02621BC63D4700BCD87D /* SymbolGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 576C02611BC63D4700BCD87D /* SymbolGroup.m */; };
+		578771221BBB911400F90D7B /* RouteNetworkDBAdapter.mm in Sources */ = {isa = PBXBuildFile; fileRef = 578771211BBB911400F90D7B /* RouteNetworkDBAdapter.mm */; };
+		578771291BBB914700F90D7B /* TYLink.m in Sources */ = {isa = PBXBuildFile; fileRef = 578771281BBB914700F90D7B /* TYLink.m */; };
+		5787712C1BBB915E00F90D7B /* RouteNetworkDataset.m in Sources */ = {isa = PBXBuildFile; fileRef = 5787712B1BBB915E00F90D7B /* RouteNetworkDataset.m */; };
+		5787712F1BBB916B00F90D7B /* TYNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 5787712E1BBB916B00F90D7B /* TYNode.m */; };
 		579B587B1B74F31B00F05206 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 579B587A1B74F31B00F05206 /* Images.xcassets */; };
 		57C03F5A1B61E19800490179 /* BaseMapVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 57C03F591B61E19800490179 /* BaseMapVC.m */; };
-		57CC56D61BCBB11700B5EE0A /* TestCppRouteNetworkVC.mm in Sources */ = {isa = PBXBuildFile; fileRef = 57CC56D51BCBB11700B5EE0A /* TestCppRouteNetworkVC.mm */; settings = {ASSET_TAGS = (); }; };
-		57D167911BBA44FF004BE6B9 /* TYBuildingLink.m in Sources */ = {isa = PBXBuildFile; fileRef = 57D167901BBA44FF004BE6B9 /* TYBuildingLink.m */; settings = {ASSET_TAGS = (); }; };
-		57D167941BBA4508004BE6B9 /* TYBuildingNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 57D167931BBA4508004BE6B9 /* TYBuildingNode.m */; settings = {ASSET_TAGS = (); }; };
-		57D167971BBA47C1004BE6B9 /* ShpRouteDBRecord.mm in Sources */ = {isa = PBXBuildFile; fileRef = 57D167961BBA47C1004BE6B9 /* ShpRouteDBRecord.mm */; settings = {ASSET_TAGS = (); }; };
-		57D711E91BBB12BD00975CE5 /* RouteNDBuildingTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 57D711E81BBB12BD00975CE5 /* RouteNDBuildingTool.m */; settings = {ASSET_TAGS = (); }; };
+		57CC56D61BCBB11700B5EE0A /* TestCppRouteNetworkVC.mm in Sources */ = {isa = PBXBuildFile; fileRef = 57CC56D51BCBB11700B5EE0A /* TestCppRouteNetworkVC.mm */; };
+		57D167911BBA44FF004BE6B9 /* TYBuildingLink.m in Sources */ = {isa = PBXBuildFile; fileRef = 57D167901BBA44FF004BE6B9 /* TYBuildingLink.m */; };
+		57D167941BBA4508004BE6B9 /* TYBuildingNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 57D167931BBA4508004BE6B9 /* TYBuildingNode.m */; };
+		57D167971BBA47C1004BE6B9 /* ShpRouteDBRecord.mm in Sources */ = {isa = PBXBuildFile; fileRef = 57D167961BBA47C1004BE6B9 /* ShpRouteDBRecord.mm */; };
+		57D475DE1BDDCE7900DD8977 /* 05910002_shp.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 57D475DD1BDDCE7900DD8977 /* 05910002_shp.bundle */; };
+		57D711E91BBB12BD00975CE5 /* RouteNDBuildingTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 57D711E81BBB12BD00975CE5 /* RouteNDBuildingTool.m */; };
 		57EB45731B73D2B50050956F /* RATreeNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 57EB45601B73D2B50050956F /* RATreeNode.m */; };
 		57EB45741B73D2B50050956F /* RATreeNodeCollectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57EB45621B73D2B50050956F /* RATreeNodeCollectionController.m */; };
 		57EB45751B73D2B50050956F /* RATreeNodeInfo+Private.m in Sources */ = {isa = PBXBuildFile; fileRef = 57EB45641B73D2B50050956F /* RATreeNodeInfo+Private.m */; };
@@ -141,17 +143,17 @@
 		57EB457B1B73D2B50050956F /* RATreeView+UIScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 57EB45701B73D2B50050956F /* RATreeView+UIScrollView.m */; };
 		57EB457C1B73D2B50050956F /* RATreeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 57EB45721B73D2B50050956F /* RATreeView.m */; };
 		57EB457F1B73D3690050956F /* RADataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 57EB457E1B73D3690050956F /* RADataObject.m */; };
-		57EB85731BC2105200D8EB5B /* LayerGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 57EB85721BC2105200D8EB5B /* LayerGroup.m */; settings = {ASSET_TAGS = (); }; };
+		57EB85731BC2105200D8EB5B /* LayerGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 57EB85721BC2105200D8EB5B /* LayerGroup.m */; };
 		57EE3E911B7471CC00977049 /* CityBuildingTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 57EE3E901B7471CC00977049 /* CityBuildingTableVC.m */; };
 		57EE3E941B74788100977049 /* SelectBuildingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 57EE3E931B74788100977049 /* SelectBuildingVC.m */; };
 		57F422A01BB038730064D30B /* LicenseGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F4229F1BB038730064D30B /* LicenseGenerator.m */; };
-		57F5383E1BC6AF0C00692692 /* RouteNetworkDBEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F5383D1BC6AF0C00692692 /* RouteNetworkDBEntity.m */; settings = {ASSET_TAGS = (); }; };
+		57F5383E1BC6AF0C00692692 /* RouteNetworkDBEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F5383D1BC6AF0C00692692 /* RouteNetworkDBEntity.m */; };
 		57F8DE5F1B74553100143739 /* OriginalMapVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F8DE5E1B74553100143739 /* OriginalMapVC.m */; };
-		57F8F0881BBA939300FE8637 /* ShpRouteDataGroup.mm in Sources */ = {isa = PBXBuildFile; fileRef = 57F8F0871BBA939300FE8637 /* ShpRouteDataGroup.mm */; settings = {ASSET_TAGS = (); }; };
-		57F8F08B1BBA944D00FE8637 /* ShpRouteDBAdapter.mm in Sources */ = {isa = PBXBuildFile; fileRef = 57F8F08A1BBA944D00FE8637 /* ShpRouteDBAdapter.mm */; settings = {ASSET_TAGS = (); }; };
-		57F8F08F1BBA977200FE8637 /* Geos2AgsConverter.mm in Sources */ = {isa = PBXBuildFile; fileRef = 57F8F08E1BBA977200FE8637 /* Geos2AgsConverter.mm */; settings = {ASSET_TAGS = (); }; };
-		57F8F0911BBA9A7B00FE8637 /* libgeos.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 57F8F0901BBA9A7B00FE8637 /* libgeos.a */; settings = {ASSET_TAGS = (); }; };
-		57F8F0941BBA9ADB00FE8637 /* BuildingRouteDBAdapter.mm in Sources */ = {isa = PBXBuildFile; fileRef = 57F8F0931BBA9ADB00FE8637 /* BuildingRouteDBAdapter.mm */; settings = {ASSET_TAGS = (); }; };
+		57F8F0881BBA939300FE8637 /* ShpRouteDataGroup.mm in Sources */ = {isa = PBXBuildFile; fileRef = 57F8F0871BBA939300FE8637 /* ShpRouteDataGroup.mm */; };
+		57F8F08B1BBA944D00FE8637 /* ShpRouteDBAdapter.mm in Sources */ = {isa = PBXBuildFile; fileRef = 57F8F08A1BBA944D00FE8637 /* ShpRouteDBAdapter.mm */; };
+		57F8F08F1BBA977200FE8637 /* Geos2AgsConverter.mm in Sources */ = {isa = PBXBuildFile; fileRef = 57F8F08E1BBA977200FE8637 /* Geos2AgsConverter.mm */; };
+		57F8F0911BBA9A7B00FE8637 /* libgeos.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 57F8F0901BBA9A7B00FE8637 /* libgeos.a */; };
+		57F8F0941BBA9ADB00FE8637 /* BuildingRouteDBAdapter.mm in Sources */ = {isa = PBXBuildFile; fileRef = 57F8F0931BBA9ADB00FE8637 /* BuildingRouteDBAdapter.mm */; };
 		57FC97A31BB125D6006D6D00 /* Licenses.json in Resources */ = {isa = PBXBuildFile; fileRef = 57FC97A21BB125D6006D6D00 /* Licenses.json */; };
 		57FC97AC1BB1285F006D6D00 /* LicenseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 57FC97AB1BB1285F006D6D00 /* LicenseManager.m */; };
 /* End PBXBuildFile section */
@@ -323,8 +325,9 @@
 		572B98C31BDA172100506A7E /* OriginalShpDBAdapter.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = OriginalShpDBAdapter.mm; sourceTree = "<group>"; };
 		572B98C81BDA184300506A7E /* 05320001_shp.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = 05320001_shp.bundle; sourceTree = "<group>"; };
 		572B98CA1BDA195500506A7E /* MapGeneratorDBAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapGeneratorDBAdapter.h; sourceTree = "<group>"; };
-		572B98CB1BDA195500506A7E /* MapGeneratorDBAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapGeneratorDBAdapter.m; sourceTree = "<group>"; };
+		572B98CB1BDA195500506A7E /* MapGeneratorDBAdapter.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MapGeneratorDBAdapter.mm; sourceTree = "<group>"; };
 		572B98CD1BDA198D00506A7E /* MapDBConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapDBConstants.h; sourceTree = "<group>"; };
+		5732A5B81BDD2FE000311FAC /* H85200001_shp.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = H85200001_shp.bundle; sourceTree = "<group>"; };
 		573F90081BC8E68F00F836B5 /* OfflineRouteManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OfflineRouteManager.h; sourceTree = "<group>"; };
 		573F90091BC8E68F00F836B5 /* OfflineRouteManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OfflineRouteManager.m; sourceTree = "<group>"; };
 		57494DD21B61DAE7000B6F2C /* BaseControllerTableVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseControllerTableVC.h; sourceTree = "<group>"; };
@@ -397,6 +400,7 @@
 		57D167931BBA4508004BE6B9 /* TYBuildingNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYBuildingNode.m; sourceTree = "<group>"; };
 		57D167951BBA47C1004BE6B9 /* ShpRouteDBRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShpRouteDBRecord.h; sourceTree = "<group>"; };
 		57D167961BBA47C1004BE6B9 /* ShpRouteDBRecord.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ShpRouteDBRecord.mm; sourceTree = "<group>"; };
+		57D475DD1BDDCE7900DD8977 /* 05910002_shp.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = 05910002_shp.bundle; sourceTree = "<group>"; };
 		57D711E71BBB12BD00975CE5 /* RouteNDBuildingTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RouteNDBuildingTool.h; sourceTree = "<group>"; };
 		57D711E81BBB12BD00975CE5 /* RouteNDBuildingTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RouteNDBuildingTool.m; sourceTree = "<group>"; };
 		57EB455F1B73D2B50050956F /* RATreeNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RATreeNode.h; sourceTree = "<group>"; };
@@ -756,7 +760,7 @@
 				572B98C21BDA172100506A7E /* OriginalShpDBAdapter.h */,
 				572B98C31BDA172100506A7E /* OriginalShpDBAdapter.mm */,
 				572B98CA1BDA195500506A7E /* MapGeneratorDBAdapter.h */,
-				572B98CB1BDA195500506A7E /* MapGeneratorDBAdapter.m */,
+				572B98CB1BDA195500506A7E /* MapGeneratorDBAdapter.mm */,
 				572B98BE1BDA108C00506A7E /* ShpToMapDBConstants.h */,
 				572B98CD1BDA198D00506A7E /* MapDBConstants.h */,
 			);
@@ -766,6 +770,8 @@
 		572B98C51BDA179E00506A7E /* OriginalShpDB */ = {
 			isa = PBXGroup;
 			children = (
+				57D475DD1BDDCE7900DD8977 /* 05910002_shp.bundle */,
+				5732A5B81BDD2FE000311FAC /* H85200001_shp.bundle */,
 				572B98C81BDA184300506A7E /* 05320001_shp.bundle */,
 			);
 			path = OriginalShpDB;
@@ -1142,6 +1148,8 @@
 				579B587B1B74F31B00F05206 /* Images.xcassets in Resources */,
 				574EE2C71B723C30005A6482 /* Launch Screen.xib in Resources */,
 				57672E341B55FFF900DAD219 /* ArcGIS.bundle in Resources */,
+				5732A5B91BDD2FE000311FAC /* H85200001_shp.bundle in Resources */,
+				57D475DE1BDDCE7900DD8977 /* 05910002_shp.bundle in Resources */,
 				57672EFF1B56046300DAD219 /* MapResource in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1205,7 +1213,7 @@
 				57672E311B55FFF900DAD219 /* FMDatabasePool.m in Sources */,
 				5724079E1BC9A8A10050BA41 /* TYPolyline.m in Sources */,
 				572408EE1BC9B9800050BA41 /* CppOfflineMapRouteVC.m in Sources */,
-				572B98CC1BDA195500506A7E /* MapGeneratorDBAdapter.m in Sources */,
+				572B98CC1BDA195500506A7E /* MapGeneratorDBAdapter.mm in Sources */,
 				57EB45741B73D2B50050956F /* RATreeNodeCollectionController.m in Sources */,
 				572408F01BC9B9800050BA41 /* OfflineMapRouteVC.m in Sources */,
 				572407151BC9A84B0050BA41 /* MD5.cpp in Sources */,

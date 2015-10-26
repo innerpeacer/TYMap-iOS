@@ -15,6 +15,8 @@ using namespace Innerpeacer::MapSDK;
 #include <geos/io.h>
 #include <sstream>
 
+#include "IPEncryption.hpp"
+
 typedef vector<IPXFeatureRecord *> FeatureVector;
 
 IPXMapDataDBAdapter::IPXMapDataDBAdapter(const char *dbPath)
@@ -46,9 +48,15 @@ vector<IPXFeatureRecord *> IPXMapDataDBAdapter::getAllRecordsOnFloor(int floor)
     if (ret == SQLITE_OK) {
         while (sqlite3_step(stmt) == SQLITE_ROW) {
             IPXFeatureRecord *record = new IPXFeatureRecord();
-            
+
+//            s.write((const char *)sqlite3_column_blob(stmt, 0), sqlite3_column_bytes(stmt, 0));
+            const char *encryptedGeometryBytes = (const char *)sqlite3_column_blob(stmt, 0);
+            int encryptedGeometryByteLength = (int)sqlite3_column_bytes(stmt, 0);
+            char decryptedGeometryBytes[encryptedGeometryByteLength + 1];
+            decryptBytes(encryptedGeometryBytes, decryptedGeometryBytes, encryptedGeometryByteLength);
             s.clear();
-            s.write((const char *)sqlite3_column_blob(stmt, 0), sqlite3_column_bytes(stmt, 0));
+            s.write((const char *)decryptedGeometryBytes, encryptedGeometryByteLength);
+            
             record->geometry = reader.read(s);
             
             record->geoID = (const char *)sqlite3_column_text(stmt, 1);

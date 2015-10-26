@@ -206,6 +206,58 @@ void encryptFile(const char *originalPath, const char *encryptedFile, const char
     fclose(f);
 }
 
+void encryptBytes(const char *originalBytes, char *encryptedByte, int length)
+{
+    encryptBytes(originalBytes, encryptedByte, length, KEY);
+}
+
+void encryptBytes(const char *originalBytes, char *encryptedByte, int length, const char *key)
+{
+    int passLength = (int)strlen(PASSWORD_FOR_CONTENT);
+    int keyLength = (int)strlen(key);
+ 
+    char passValue[passLength];
+    memcpy(&passValue[0], PASSWORD_FOR_CONTENT, passLength);
+    
+    char keyValue[keyLength];
+    memcpy(&keyValue[0], key, keyLength);
+    
+    int pa_pos = 0;
+    for (int i = 0; i < keyLength; ++i) {
+        keyValue[i] ^= passValue[pa_pos];
+        pa_pos++;
+        
+        if (pa_pos == passLength) {
+            pa_pos = 0;
+        }
+    }
+    
+    int originalLength = length;
+//    printf("Length: %d\n", originalLength);
+    memcpy(&encryptedByte[0], originalBytes, originalLength);
+    
+    int key_pos = 0;
+    for (int i = 0; i < originalLength ; ++i) {
+        encryptedByte[i] ^= keyValue[key_pos];
+        key_pos++;
+        if (key_pos == keyLength) {
+            key_pos = 0;
+        }
+    }
+    encryptedByte[originalLength] = 0;
+
+}
+
+void decryptBytes(const char *encryptedBytes, char *originalBytes, int length)
+{
+    decryptBytes(encryptedBytes, originalBytes, length, KEY);
+}
+
+void decryptBytes(const char *encryptedBytes, char *originalBytes, int length, const char *key)
+{
+    encryptBytes(encryptedBytes, originalBytes, length, key);
+}
+
 //std::string decryptFile(const char *file)
 //{
 //    int passLength = (int)strlen(PASSWORD_FOR_CONTENT);

@@ -75,20 +75,9 @@ using namespace geos::io;
         record.floorName = [rs stringForColumn:SHP_DB_FIELD_FLOOR_NAME];
         record.shapeLength = @0;
         record.shapeArea = @0;
-        
         record.layer = @(_dbType);
         
-        
-        char gBytes[1000000];
-        //        memcpy(gBytes, record.geometryData.bytes, record.geometryData.length);
-        [record.geometryData getBytes:gBytes];
-        
-        printf("%s\n", (const char *)record.geometryData.bytes);
-        for (int i = 0; i < record.geometryData.length; ++i) {
-            printf("%d", gBytes[i]);
-        }
-        printf("\n%d\n", (int)record.geometryData.length);
-        
+    
         s.clear();
         s.write((const char *)record.geometryData.bytes, record.geometryData.length);
         geos::geom::Point *p = dynamic_cast<geos::geom::Point *>(reader.read(s));
@@ -129,19 +118,7 @@ using namespace geos::io;
         record.floorName = [rs stringForColumn:SHP_DB_FIELD_FLOOR_NAME];
         record.shapeLength = [NSNumber numberWithDouble:[rs doubleForColumn:SHP_DB_FIELD_SHAPE_LENGTH]];
         record.shapeArea = [NSNumber numberWithDouble:[rs doubleForColumn:SHP_DB_FIELD_SHAPE_AREA]];
-        
         record.layer = @(_dbType);
-        
-//        char gBytes[1000000];
-//        [record.geometryData getBytes:gBytes];
-//        
-//        printf("%s\n", (const char *)record.geometryData.bytes);
-//        printf("%d\n", gBytes[0]);
-//        for (int i = 0; i < record.geometryData.length; ++i) {
-//            printf("%d", gBytes[i]);
-//        }
-//        printf("%d\n", (int)record.geometryData.length);
-        
         
         s.clear();
         s.write((const char *)record.geometryData.bytes, record.geometryData.length);
