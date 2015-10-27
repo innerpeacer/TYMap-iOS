@@ -57,11 +57,11 @@
     [self.objects addObject:@"生成POI数据库"];
     [self.controllerDict setObject:@"CreatePOIDatabaseVC" forKey:@"生成POI数据库"];
  
-    [self.objects addObject:@"加密地图文件"];
-    [self.controllerDict setObject:@"mapEncryptionController" forKey:@"加密地图文件"];
-    
-    [self.objects addObject:@"生成加密地图资源"];
-    [self.controllerDict setObject:@"GenerateEncryptionSourceVC" forKey:@"生成加密地图资源"];
+//    [self.objects addObject:@"加密地图文件"];
+//    [self.controllerDict setObject:@"mapEncryptionController" forKey:@"加密地图文件"];
+//    
+//    [self.objects addObject:@"生成加密地图资源"];
+//    [self.controllerDict setObject:@"GenerateEncryptionSourceVC" forKey:@"生成加密地图资源"];
     
     [self.objects addObject:@"生成License"];
     [self.controllerDict setObject:@"GenerateLicensesVC" forKey:@"生成License"];
@@ -69,6 +69,9 @@
     [self.objects addObject:@"构建网络数据集"];
     [self.controllerDict setObject:@"BuildRouteNetworkDatasetVC" forKey:@"构建网络数据集"];
     
+    [self.objects addObject:@"构建所有网络数据集"];
+    [self.controllerDict setObject:@"BuildAllRouteNetworkVC" forKey:@"构建所有网络数据集"];
+
     [self.objects addObject:@"测试网络数据集"];
     [self.controllerDict setObject:@"TestRouteNetworkVC" forKey:@"测试网络数据集"];
     

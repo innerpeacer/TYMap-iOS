@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:/Users/innerpeacer/wsForIOS/TYMap/NephogramMapProject/MapProject.xcodeproj">
+      location = "self:">
    </FileRef>
 </Workspace>

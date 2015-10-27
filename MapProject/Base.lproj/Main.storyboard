@@ -86,10 +86,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oz9-fs-F0G">
-                                <rect key="frame" x="175.5" y="504" width="250" height="30"/>
+                                <rect key="frame" x="20" y="504" width="200" height="30"/>
                                 <animations/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="250" id="ENc-Z7-YjX"/>
+                                    <constraint firstAttribute="width" constant="200" id="ENc-Z7-YjX"/>
                                 </constraints>
                                 <state key="normal" title="生成POI数据库">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -105,15 +105,31 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iqx-HH-nB1">
+                                <rect key="frame" x="380" y="504" width="200" height="30"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="Uej-9Z-6nn"/>
+                                </constraints>
+                                <state key="normal" title="生成所有POI数据库">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="createAllPOIDatabase:" destination="8mN-uC-DTa" eventType="touchUpInside" id="no0-gr-Tag"/>
+                                    <action selector="createPOIDatabase:" destination="8mN-uC-DTa" eventType="touchUpInside" id="6GK-CK-cH7"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="1aA-d3-XUD" firstAttribute="trailing" secondItem="GAQ-ii-hyc" secondAttribute="trailingMargin" constant="4" id="3n2-o2-TLc"/>
+                            <constraint firstItem="Iqx-HH-nB1" firstAttribute="top" secondItem="1aA-d3-XUD" secondAttribute="bottom" constant="70" id="8zA-h7-J9f"/>
+                            <constraint firstItem="Iqx-HH-nB1" firstAttribute="trailing" secondItem="GAQ-ii-hyc" secondAttribute="trailingMargin" id="J3k-la-JUi"/>
                             <constraint firstItem="NlF-cI-JCQ" firstAttribute="top" secondItem="Oz9-fs-F0G" secondAttribute="bottom" constant="66" id="Ngy-wN-Pug"/>
                             <constraint firstItem="1aA-d3-XUD" firstAttribute="top" secondItem="Snq-As-21I" secondAttribute="bottom" constant="8" id="UE6-Cz-iDf"/>
+                            <constraint firstItem="Oz9-fs-F0G" firstAttribute="leading" secondItem="GAQ-ii-hyc" secondAttribute="leadingMargin" id="dui-J3-jVB"/>
                             <constraint firstItem="1aA-d3-XUD" firstAttribute="leading" secondItem="GAQ-ii-hyc" secondAttribute="leadingMargin" constant="-4" id="hxW-By-HcM"/>
-                            <constraint firstAttribute="centerX" secondItem="Oz9-fs-F0G" secondAttribute="centerX" id="lTR-Ho-c45"/>
                             <constraint firstItem="Oz9-fs-F0G" firstAttribute="top" secondItem="1aA-d3-XUD" secondAttribute="bottom" constant="70" id="sS2-n7-ANb"/>
                         </constraints>
                     </view>
@@ -876,6 +892,43 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bFV-9O-2AF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5015" y="900"/>
+        </scene>
+        <!--Build All Route NetworkVC-->
+        <scene sceneID="JrN-RT-cte">
+            <objects>
+                <viewController storyboardIdentifier="BuildAllRouteNetworkVC" id="Q5Y-ck-EF1" customClass="BuildAllRouteNetworkVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="kll-o3-BjF"/>
+                        <viewControllerLayoutGuide type="bottom" id="xpg-BL-lcg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="jDq-kl-XXM">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F3b-b6-s0j">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="F3b-b6-s0j" firstAttribute="leading" secondItem="jDq-kl-XXM" secondAttribute="leading" id="3Pv-FM-lf2"/>
+                            <constraint firstItem="F3b-b6-s0j" firstAttribute="top" secondItem="jDq-kl-XXM" secondAttribute="top" id="5xh-rQ-OJc"/>
+                            <constraint firstAttribute="trailing" secondItem="F3b-b6-s0j" secondAttribute="trailing" id="koi-Qg-WJT"/>
+                            <constraint firstItem="xpg-BL-lcg" firstAttribute="top" secondItem="F3b-b6-s0j" secondAttribute="bottom" id="yhw-mz-szE"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="logView" destination="F3b-b6-s0j" id="Tmg-ub-PWq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jIk-uJ-Ry4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5015" y="900"/>
         </scene>

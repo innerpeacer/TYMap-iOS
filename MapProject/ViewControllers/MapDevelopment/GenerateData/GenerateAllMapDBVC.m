@@ -34,11 +34,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-//    currentCity = [TYUserDefaults getDefaultCity];
-//    currentBuilding = [TYUserDefaults getDefaultBuilding];
-//    self.title = currentBuilding.buildingID;
-    
+
+    NSThread *thread = [[NSThread alloc] initWithTarget:self selector:@selector(generateAllMapDB) object:nil];
+    [thread start];
+}
+
+- (void)generateAllMapDB
+{
     NSArray *cityArray = [TYCityManager parseAllCities];
     
     for (TYCity *city in cityArray) {
@@ -50,13 +52,14 @@
             
             NSString *shpPath = [[NSBundle mainBundle] pathForResource:@"OriginalShpDB" ofType:nil];
             NSString *bundlePath = [shpPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@_shp.bundle", currentBuilding.buildingID]];
-//            NSString *bundlePath = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%@_shp", currentBuilding.buildingID] ofType:@"bundle"];
             NSBundle *dbBundle = [[NSBundle alloc] initWithPath:bundlePath];
             NSString *mapInfoPath = [dbBundle pathForResource:[NSString stringWithFormat:@"MapInfo_Building_%@", currentBuilding.buildingID] ofType:@"json"];
             allMapInfos = [TYMapInfoJsonParser parseAllMapInfoFromFile:mapInfoPath];
-//            NSLog(@"%@", allMapInfos);
             
-            [self addToLog:[NSString stringWithFormat:@"Generate Map Database for %@", currentBuilding.buildingID]];
+            NSString *log = @"================================================\n";
+            log = [NSString stringWithFormat:@"%@Generate Map Database for %@", log, currentBuilding.name];
+            [self performSelectorOnMainThread:@selector(updateUI:) withObject:log waitUntilDone:YES];
+
             
             MapGeneratorDBAdapter *mdb = [[MapGeneratorDBAdapter alloc] initWithBuilding:currentBuilding];
             [mdb open];
@@ -64,13 +67,9 @@
             [mdb insertMapInfos:allMapInfos];
             [mdb close];
             
-                [self insertMapFeatures];
-//            [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(insertMapFeatures) userInfo:nil repeats:NO];
+            [self insertMapFeatures];
         }
     }
-    
-    
-    
 }
 
 - (void)insertMapFeatures
@@ -91,12 +90,18 @@
             NSArray *allRecords = [db readAllRecords];
             [db close];
             [mdb insertMapData:allRecords];
-            [self addToLog:[NSString stringWithFormat:@"\t%d\t records in %@_%@\t Inserted...", (int)allRecords.count, info.mapID, name]];
+            
+            NSString *log = [NSString stringWithFormat:@"\t%d\t records in %@_%@\t Inserted...", (int)allRecords.count, info.mapID, name];
+            [self performSelectorOnMainThread:@selector(updateUI:) withObject:log waitUntilDone:YES];
         }
     }
     
     [mdb close];
 }
 
+- (void)updateUI:(NSString *)logString
+{
+    [self addToLog:logString];
+}
 
 @end

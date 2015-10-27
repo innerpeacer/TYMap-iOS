@@ -81,9 +81,7 @@ vector<IPXFeatureRecord *> IPXMapDataDBAdapter::getAllRecordsOnFloor(int floor)
             resultVector.push_back(record);
 //            printf("%d\n", (int)record->name.length());
         }
-    }
-    
-    printf("Read Over\n");
+    }    
     return resultVector;
 }
 

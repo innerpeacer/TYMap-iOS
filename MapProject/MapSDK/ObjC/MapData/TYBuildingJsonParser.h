@@ -13,5 +13,6 @@
 
 + (TYBuilding *)parseBuilding:(NSString *)buildingID InCity:(TYCity *)city;
 + (NSArray *)parseAllBuildings:(TYCity *)city;
++ (NSArray *)parseAllBuildingsFromFile:(NSString *)path;
 
 @end

@@ -16,7 +16,7 @@
 #define KEY_MAPINFO_MAPID @"mapID"
 
 #define KEY_MAPINFO_FLOOR @"floorName"
-#define KEY_MAPINFO_FLOOR_INDEX @"floorIndex"
+#define KEY_MAPINFO_FLOOR_INDEX @"floorNumber"
 
 
 #define KEY_MAPINFO_SIZEX @"size_x"
@@ -52,7 +52,7 @@
                 NSString *cityID = [infoDict objectForKey:KEY_MAPINFO_CITYID];
                 NSString *buildingID = [infoDict objectForKey:KEY_MAPINFO_BUILDINGID];
                 NSString *mapID = [infoDict objectForKey:KEY_MAPINFO_MAPID];
-                NSNumber *floorIndexStr = [infoDict objectForKey:KEY_MAPINFO_FLOOR_INDEX];
+                NSNumber *floorNumberStr = [infoDict objectForKey:KEY_MAPINFO_FLOOR_INDEX];
 
                 NSNumber *sizexStr = [infoDict objectForKey:KEY_MAPINFO_SIZEX];
                 NSNumber *sizeyStr = [infoDict objectForKey:KEY_MAPINFO_SIZEY];
@@ -62,7 +62,7 @@
                 NSNumber *yminStr = [infoDict objectForKey:KEY_MAPINFO_YMIN];
                 NSNumber *ymaxStr = [infoDict objectForKey:KEY_MAPINFO_YMAX];
 
-                info = [[TYMapInfo alloc] initWithCityID:cityID BuildingID:buildingID MapID:mapID Extent:TYMapExtentMake(xminStr.doubleValue, yminStr.doubleValue, xmaxStr.doubleValue, ymaxStr.doubleValue) Size:TYMapSizeMake(sizexStr.doubleValue, sizeyStr.doubleValue) Floor:floorStr FloorIndex:floorIndexStr.intValue];
+                info = [[TYMapInfo alloc] initWithCityID:cityID BuildingID:buildingID MapID:mapID Extent:TYMapExtentMake(xminStr.doubleValue, yminStr.doubleValue, xmaxStr.doubleValue, ymaxStr.doubleValue) Size:TYMapSizeMake(sizexStr.doubleValue, sizeyStr.doubleValue) Floor:floorStr FloorNumber:floorNumberStr.intValue];
                 break;
             }
         }
@@ -91,7 +91,7 @@
             NSString *buildingID = [infoDict objectForKey:KEY_MAPINFO_BUILDINGID];
             NSString *mapID = [infoDict objectForKey:KEY_MAPINFO_MAPID];
             NSString *floorStr = [infoDict objectForKey:KEY_MAPINFO_FLOOR];
-            NSNumber *floorIndexStr = [infoDict objectForKey:KEY_MAPINFO_FLOOR_INDEX];
+            NSNumber *floorNumberStr = [infoDict objectForKey:KEY_MAPINFO_FLOOR_INDEX];
 
             NSNumber *sizexStr = [infoDict objectForKey:KEY_MAPINFO_SIZEX];
             NSNumber *sizeyStr = [infoDict objectForKey:KEY_MAPINFO_SIZEY];
@@ -101,7 +101,7 @@
             NSNumber *yminStr = [infoDict objectForKey:KEY_MAPINFO_YMIN];
             NSNumber *ymaxStr = [infoDict objectForKey:KEY_MAPINFO_YMAX];
 
-            TYMapInfo *info = [[TYMapInfo alloc] initWithCityID:cityID BuildingID:buildingID MapID:mapID Extent:TYMapExtentMake(xminStr.doubleValue, yminStr.doubleValue, xmaxStr.doubleValue, ymaxStr.doubleValue) Size:TYMapSizeMake(sizexStr.doubleValue, sizeyStr.doubleValue) Floor:floorStr FloorIndex:floorIndexStr.intValue];
+            TYMapInfo *info = [[TYMapInfo alloc] initWithCityID:cityID BuildingID:buildingID MapID:mapID Extent:TYMapExtentMake(xminStr.doubleValue, yminStr.doubleValue, xmaxStr.doubleValue, ymaxStr.doubleValue) Size:TYMapSizeMake(sizexStr.doubleValue, sizeyStr.doubleValue) Floor:floorStr FloorNumber:floorNumberStr.intValue];
 
             [toReturn addObject:info];
         }
@@ -139,7 +139,7 @@
             NSNumber *yminStr = [infoDict objectForKey:KEY_MAPINFO_YMIN];
             NSNumber *ymaxStr = [infoDict objectForKey:KEY_MAPINFO_YMAX];
 
-            TYMapInfo *info = [[TYMapInfo alloc] initWithCityID:cityID BuildingID:buildingID MapID:mapID Extent:TYMapExtentMake(xminStr.doubleValue, yminStr.doubleValue, xmaxStr.doubleValue, ymaxStr.doubleValue) Size:TYMapSizeMake(sizexStr.doubleValue, sizeyStr.doubleValue) Floor:floorStr FloorIndex:floorIndexStr.intValue];
+            TYMapInfo *info = [[TYMapInfo alloc] initWithCityID:cityID BuildingID:buildingID MapID:mapID Extent:TYMapExtentMake(xminStr.doubleValue, yminStr.doubleValue, xmaxStr.doubleValue, ymaxStr.doubleValue) Size:TYMapSizeMake(sizexStr.doubleValue, sizeyStr.doubleValue) Floor:floorStr FloorNumber:floorIndexStr.intValue];
 
             [toReturn addObject:info];
         }

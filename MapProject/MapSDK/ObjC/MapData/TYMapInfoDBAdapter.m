@@ -52,7 +52,7 @@
             double xMax = sqlite3_column_double(statement, 9);
             double yMax = sqlite3_column_double(statement, 10);
             
-            TYMapInfo *info = [[TYMapInfo alloc] initWithCityID:cityID BuildingID:buildingID MapID:mapID Extent:TYMapExtentMake(xMin, yMin, xMax, yMax) Size:TYMapSizeMake(sizeX, sizeY) Floor:floorName FloorIndex:floorNumber];
+            TYMapInfo *info = [[TYMapInfo alloc] initWithCityID:cityID BuildingID:buildingID MapID:mapID Extent:TYMapExtentMake(xMin, yMin, xMax, yMax) Size:TYMapSizeMake(sizeX, sizeY) Floor:floorName FloorNumber:floorNumber];
             [mapInfoArray addObject:info];
         }
     }
@@ -84,7 +84,7 @@
             double xMax = sqlite3_column_double(statement, 9);
             double yMax = sqlite3_column_double(statement, 10);
             
-            mapInfo = [[TYMapInfo alloc] initWithCityID:cityID BuildingID:buildingID MapID:mapID Extent:TYMapExtentMake(xMin, yMin, xMax, yMax) Size:TYMapSizeMake(sizeX, sizeY) Floor:floorName FloorIndex:floorNumber];
+            mapInfo = [[TYMapInfo alloc] initWithCityID:cityID BuildingID:buildingID MapID:mapID Extent:TYMapExtentMake(xMin, yMin, xMax, yMax) Size:TYMapSizeMake(sizeX, sizeY) Floor:floorName FloorNumber:floorNumber];
         }
     }
     sqlite3_finalize(statement);
@@ -115,7 +115,7 @@
             double xMax = sqlite3_column_double(statement, 9);
             double yMax = sqlite3_column_double(statement, 10);
             
-            mapInfo = [[TYMapInfo alloc] initWithCityID:cityID BuildingID:buildingID MapID:mapID Extent:TYMapExtentMake(xMin, yMin, xMax, yMax) Size:TYMapSizeMake(sizeX, sizeY) Floor:floorName FloorIndex:floorNumber];
+            mapInfo = [[TYMapInfo alloc] initWithCityID:cityID BuildingID:buildingID MapID:mapID Extent:TYMapExtentMake(xMin, yMin, xMax, yMax) Size:TYMapSizeMake(sizeX, sizeY) Floor:floorName FloorNumber:floorNumber];
         }
     }
     sqlite3_finalize(statement);
@@ -146,7 +146,7 @@
             double xMax = sqlite3_column_double(statement, 9);
             double yMax = sqlite3_column_double(statement, 10);
             
-            mapInfo = [[TYMapInfo alloc] initWithCityID:cityID BuildingID:buildingID MapID:mapID Extent:TYMapExtentMake(xMin, yMin, xMax, yMax) Size:TYMapSizeMake(sizeX, sizeY) Floor:floorName FloorIndex:floorNumber];
+            mapInfo = [[TYMapInfo alloc] initWithCityID:cityID BuildingID:buildingID MapID:mapID Extent:TYMapExtentMake(xMin, yMin, xMax, yMax) Size:TYMapSizeMake(sizeX, sizeY) Floor:floorName FloorNumber:floorNumber];
         }
     }
     sqlite3_finalize(statement);

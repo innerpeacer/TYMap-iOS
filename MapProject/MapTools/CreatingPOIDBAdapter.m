@@ -35,26 +35,23 @@
 
 @implementation CreatingPOIDBAdapter
 
-static CreatingPOIDBAdapter *_sharedDBAdapter;
-static NSString *_currentBuildingID;
+//static CreatingPOIDBAdapter *_sharedDBAdapter;
+//static NSString *_currentBuildingID;
 
-+ (CreatingPOIDBAdapter *)sharedDBAdapter:(NSString *)buildingID
-{
-    if (_currentBuildingID == nil || ![_currentBuildingID isEqualToString:buildingID]) {
-        _sharedDBAdapter = [[CreatingPOIDBAdapter alloc] initWithDBFile:buildingID];
-        _currentBuildingID = buildingID;
-    }
-    return _sharedDBAdapter;
-}
+//+ (CreatingPOIDBAdapter *)sharedDBAdapter:(NSString *)buildingID
+//{
+//    if (_currentBuildingID == nil || ![_currentBuildingID isEqualToString:buildingID]) {
+//        _sharedDBAdapter = [[CreatingPOIDBAdapter alloc] initWithDBFile:buildingID];
+//        _currentBuildingID = buildingID;
+//    }
+//    return _sharedDBAdapter;
+//}
 
-- (id)initWithDBFile:(NSString *)buildingID
+- (id)initWithDBPath:(NSString *)path
 {
     self = [super init];
     if (self) {
-        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-        NSString *documentDirectory = [paths objectAtIndex:0];
-        NSString *dbPath = [documentDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@_%@", buildingID, @"POI.db"]];
-        database = [FMDatabase databaseWithPath:dbPath];
+        database = [FMDatabase databaseWithPath:path];
         [self checkDatabase];
     }
     return self;
@@ -67,9 +64,6 @@ static NSString *_currentBuildingID;
         [self createPOITable];
     }
 }
-
-
-
 
 - (BOOL)createPOITable
 {
@@ -103,7 +97,7 @@ static NSString *_currentBuildingID;
     }
 }
 
-- (BOOL)insertPOIWithGeoID:(NSString *)gid poiID:(NSString *)pid buildingID:(NSString *)bid floorID:(NSString *)fid name:(NSString *)name categoryID:(NSNumber *)cid labelX:(NSNumber *)x labelY:(NSNumber *)y color:(NSNumber *)color floorIndex:(NSNumber *)fIndex floorName:(NSString *)fName layer:(NSNumber *)layer
+- (BOOL)insertPOIWithGeoID:(NSString *)gid poiID:(NSString *)pid buildingID:(NSString *)bid floorID:(NSString *)fid name:(NSString *)name categoryID:(NSNumber *)cid labelX:(NSNumber *)x labelY:(NSNumber *)y color:(NSNumber *)color FloorNumber:(NSNumber *)fIndex floorName:(NSString *)fName layer:(NSNumber *)layer
 {
     NSMutableString *sql = [NSMutableString stringWithFormat:@"Insert into %@", TABLE_POI];
     

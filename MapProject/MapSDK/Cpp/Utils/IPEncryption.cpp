@@ -49,7 +49,8 @@ std::string encryptString(std::string originalString, std::string key)
     }
     
     int originalLength = (int)strlen(originalString.c_str());
-    char originalValue[originalLength + 1];
+//    char originalValue[originalLength + 1];
+    char *originalValue = new char[originalLength + 1];
     memcpy(&originalValue[0], originalString.c_str(), originalLength);
     
     int key_pos = 0;
@@ -62,7 +63,9 @@ std::string encryptString(std::string originalString, std::string key)
     }
     originalValue[originalLength] = 0;
     
-    return std::string(originalValue);
+    std::string result(originalValue);
+    delete originalValue;
+    return result;
 }
 
 
@@ -181,7 +184,8 @@ void encryptFile(const char *originalPath, const char *encryptedFile, const char
     
     IPMemory *memory = mOpen(originalPath);
     int originalLength = memory->size;
-    char originalValue[originalLength + 1];
+//    char originalValue[originalLength + 1];
+    char *originalValue = new char[originalLength + 1];
     memcpy(&originalValue[0], memory->buffer, originalLength);
     mClose(memory);
     
@@ -204,6 +208,7 @@ void encryptFile(const char *originalPath, const char *encryptedFile, const char
     
     fwrite(originalValue, originalLength, 1, f);
     fclose(f);
+    delete originalValue;
 }
 
 void encryptBytes(const char *originalBytes, char *encryptedByte, int length)
@@ -326,7 +331,8 @@ std::string decryptFile(const char *file, const char *key)
     
     IPMemory *memory = mOpen(file);
     int originalLength = memory->size;
-    char originalValue[originalLength + 1];
+//    char originalValue[originalLength + 1];
+    char *originalValue = new char[originalLength + 1];
     memcpy(&originalValue[0], memory->buffer, originalLength);
     mClose(memory);
     
@@ -339,6 +345,7 @@ std::string decryptFile(const char *file, const char *key)
         }
     }
     originalValue[originalLength] = 0;
-    
-    return originalValue;
+    std::string result(originalValue);
+    delete originalValue;
+    return result;
 }

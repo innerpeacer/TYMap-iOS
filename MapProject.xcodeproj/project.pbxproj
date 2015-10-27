@@ -93,6 +93,7 @@
 		572B98C41BDA172100506A7E /* OriginalShpDBAdapter.mm in Sources */ = {isa = PBXBuildFile; fileRef = 572B98C31BDA172100506A7E /* OriginalShpDBAdapter.mm */; };
 		572B98CC1BDA195500506A7E /* MapGeneratorDBAdapter.mm in Sources */ = {isa = PBXBuildFile; fileRef = 572B98CB1BDA195500506A7E /* MapGeneratorDBAdapter.mm */; };
 		573F900A1BC8E68F00F836B5 /* OfflineRouteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 573F90091BC8E68F00F836B5 /* OfflineRouteManager.m */; };
+		5740772A1BDF781C008D05CD /* BuildAllRouteNetworkVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 574077291BDF781C008D05CD /* BuildAllRouteNetworkVC.m */; };
 		57494DDA1B61DAE7000B6F2C /* BaseControllerTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 57494DD31B61DAE7000B6F2C /* BaseControllerTableVC.m */; };
 		57494DDB1B61DAE7000B6F2C /* BaseLogVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 57494DD51B61DAE7000B6F2C /* BaseLogVC.m */; };
 		57494DE01B61DB08000B6F2C /* EncyptedCityVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 57494DDF1B61DB08000B6F2C /* EncyptedCityVC.m */; };
@@ -341,6 +342,8 @@
 		572B98CD1BDA198D00506A7E /* MapDBConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapDBConstants.h; sourceTree = "<group>"; };
 		573F90081BC8E68F00F836B5 /* OfflineRouteManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OfflineRouteManager.h; sourceTree = "<group>"; };
 		573F90091BC8E68F00F836B5 /* OfflineRouteManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OfflineRouteManager.m; sourceTree = "<group>"; };
+		574077281BDF781C008D05CD /* BuildAllRouteNetworkVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BuildAllRouteNetworkVC.h; path = RouteVC/BuildAllRouteNetworkVC.h; sourceTree = "<group>"; };
+		574077291BDF781C008D05CD /* BuildAllRouteNetworkVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BuildAllRouteNetworkVC.m; path = RouteVC/BuildAllRouteNetworkVC.m; sourceTree = "<group>"; };
 		57494DD21B61DAE7000B6F2C /* BaseControllerTableVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseControllerTableVC.h; sourceTree = "<group>"; };
 		57494DD31B61DAE7000B6F2C /* BaseControllerTableVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseControllerTableVC.m; sourceTree = "<group>"; };
 		57494DD41B61DAE7000B6F2C /* BaseLogVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseLogVC.h; sourceTree = "<group>"; };
@@ -759,6 +762,8 @@
 		572408E21BC9B9070050BA41 /* RouteVC */ = {
 			isa = PBXGroup;
 			children = (
+				574077281BDF781C008D05CD /* BuildAllRouteNetworkVC.h */,
+				574077291BDF781C008D05CD /* BuildAllRouteNetworkVC.m */,
 				57CC56D41BCBB11700B5EE0A /* TestCppRouteNetworkVC.h */,
 				57CC56D51BCBB11700B5EE0A /* TestCppRouteNetworkVC.mm */,
 				572408E31BC9B9800050BA41 /* BuildRouteNetworkDatasetVC.h */,
@@ -1280,6 +1285,7 @@
 				572407C31BC9A8A10050BA41 /* TYFloorLayer.m in Sources */,
 				572408F11BC9B9800050BA41 /* TestRouteNetworkVC.m in Sources */,
 				572407C11BC9A8A10050BA41 /* TYRouteResult.m in Sources */,
+				5740772A1BDF781C008D05CD /* BuildAllRouteNetworkVC.m in Sources */,
 				57F422A01BB038730064D30B /* LicenseGenerator.m in Sources */,
 				572B98C41BDA172100506A7E /* OriginalShpDBAdapter.mm in Sources */,
 				5787712C1BBB915E00F90D7B /* RouteNetworkDataset.m in Sources */,

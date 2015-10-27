@@ -14,6 +14,10 @@
 #import "TYPoi.h"
 #import <TYMapData/TYMapData.h>
 #import "TYMapFileManager.h"
+#import "TYMapFeatureData.h"
+
+#import "TYCityManager.h"
+#import "TYBuildingManager.h"
 
 @interface CreatePOIDatabaseVC()
 {
@@ -27,6 +31,8 @@
 }
 
 - (IBAction)createPOIDatabase:(id)sender;
+- (IBAction)createAllPOIDatabase:(id)sender;
+
 @end
 
 @implementation CreatePOIDatabaseVC
@@ -40,127 +46,103 @@
 
     self.title = currentBuilding.buildingID;
 
-    
     allMapInfos = [TYMapInfo parseAllMapInfo:currentBuilding];
-    
     engine = [AGSGeometryEngine defaultGeometryEngine];
     
     NSLog(@"%@", allMapInfos);
 }
 
-- (IBAction)createPOIDatabase:(id)sender {
-    CreatingPOIDBAdapter *db = [CreatingPOIDBAdapter sharedDBAdapter:currentBuilding.buildingID];
+- (void)generatePOIDatabaseForBuilding:(TYBuilding *)building MapInfo:(NSArray *)mapInfoArray
+{
+    NSString *dbPath = [TYMapFileManager getPOIDBPath:building];
+    CreatingPOIDBAdapter *db = [[CreatingPOIDBAdapter alloc] initWithDBPath:dbPath];
     [db open];
-    
     [db erasePOITable];
     
-    for (TYMapInfo *info in allMapInfos) {
-//        NSArray *roomArray = [self loadRoomsWithInfo:info];
-        [self loadMapDataWithInfo:info];
-        
-        AGSFeatureSet *roomFeatureSet = [[AGSFeatureSet alloc] initWithJSON:allMapData[@"room"]];
-        NSArray *roomArray = roomFeatureSet.features;
-        [self addToLog:[NSString stringWithFormat:@"Begin %@", info.mapID]];
-        
-        for (AGSGraphic *graphic in roomArray) {
-            NSString *name = [graphic attributeForKey:@"NAME"];
-            if (name != nil && [name isKindOfClass:[NSString class]]) {
+    NSString *log = @"================================================\n";
+    log = [NSString stringWithFormat:@"%@Generate %@ POI", log, building.name];
+    [self performSelectorOnMainThread:@selector(updateUI:) withObject:log waitUntilDone:YES];
 
-            } else {
-                continue;
-            }
-
-            NSString *gid = [graphic attributeForKey:@"GEO_ID"];
-            NSString *pid = [graphic attributeForKey:@"POI_ID"];
-            NSString *bid = [graphic attributeForKey:@"BUILDING_ID"];
-            NSString *fid = [graphic attributeForKey:@"FLOOR_ID"];
-            NSNumber *cid = [graphic attributeForKey:@"CATEGORY_ID"];
-            
-            AGSPoint *pos = [engine labelPointForPolygon:(AGSPolygon *)graphic.geometry];
-            
-            NSNumber *color = [graphic attributeForKey:@"COLOR"];
-            NSNumber *fIndex = [graphic attributeForKey:@"FLOOR_INDEX"];
-            NSString *fName = [graphic attributeForKey:@"FLOOR_NAME"];
-            NSNumber *layer = @(POI_ROOM);
-
-            [db insertPOIWithGeoID:gid poiID:pid buildingID:bid floorID:fid name:name categoryID:cid labelX:@(pos.x) labelY:@(pos.y) color:color floorIndex:fIndex floorName:fName layer:layer];
-        }
-        [self addToLog:[NSString stringWithFormat:@"End %@: Insert %d Room POI", info.mapID, (int)roomArray.count]];
+    for (TYMapInfo *info in mapInfoArray) {
+        [self readMapDataFromDBForBuilding:building WithInfo:info];
         
-        // ============================================================
-        NSObject *assetObject = allMapData[@"asset"];
-        if (![assetObject isKindOfClass:[NSString class]]) {
-            AGSFeatureSet *assetFeatureSet = [[AGSFeatureSet alloc] initWithJSON:allMapData[@"asset"]];
-            NSArray *assetArray = assetFeatureSet.features;
-            [self addToLog:[NSString stringWithFormat:@"Begin %@", info.mapID]];
+        NSArray *layerNames = @[@"room", @"asset", @"facility"];
+        NSArray *layerIndexs = @[@(POI_ROOM), @(POI_ASSET), @(POI_FACILITY)];
+        NSArray *logNames = @[@"Room", @"Asset", @"Facility"];
+        
+        for (int i = 0; i < layerNames.count; ++i) {
+            NSString *layerName = layerNames[i];
+            NSNumber *layerIndex = layerIndexs[i];
             
-            for (AGSGraphic *graphic in assetArray) {
+            AGSFeatureSet *featureSet =  allMapData[layerName];
+            NSArray *graphicsArray = featureSet.features;
+//            NSLog(@"%d features", (int)graphicsArray.count);
+
+            for (AGSGraphic *graphic in graphicsArray) {
                 NSString *name = [graphic attributeForKey:@"NAME"];
-                if (name != nil && [name isKindOfClass:[NSString class]]) {
-                    
-                } else {
+                if (name == nil || ![name isKindOfClass:[NSString class]]) {
                     continue;
                 }
                 
                 NSString *gid = [graphic attributeForKey:@"GEO_ID"];
                 NSString *pid = [graphic attributeForKey:@"POI_ID"];
-                NSString *bid = [graphic attributeForKey:@"BUILDING_ID"];
-                NSString *fid = [graphic attributeForKey:@"FLOOR_ID"];
+                NSString *bid = info.buildingID;
+                NSString *fid = info.mapID;
                 NSNumber *cid = [graphic attributeForKey:@"CATEGORY_ID"];
                 
-                AGSPoint *pos = [engine labelPointForPolygon:(AGSPolygon *)graphic.geometry];
-                
-                NSNumber *color = [graphic attributeForKey:@"COLOR"];
-                NSNumber *fIndex = [graphic attributeForKey:@"FLOOR_INDEX"];
-                NSString *fName = [graphic attributeForKey:@"FLOOR_NAME"];
-                NSNumber *layer = @(POI_ASSET);
-                
-                [db insertPOIWithGeoID:gid poiID:pid buildingID:bid floorID:fid name:name categoryID:cid labelX:@(pos.x) labelY:@(pos.y) color:color floorIndex:fIndex floorName:fName layer:layer];
-            }
-            [self addToLog:[NSString stringWithFormat:@"End %@: Insert %d Asset POI", info.mapID, (int)assetArray.count]];
-        }
-        
-        // ============================================================
-
-//        NSLog(@"%@", allMapData[@"facility"]);
-        if ([allMapData[@"facility"] isKindOfClass:[NSString class]]) {
-            continue;
-        } else {
-            AGSFeatureSet *facilityFeatureSet = [[AGSFeatureSet alloc] initWithJSON:allMapData[@"facility"]];
-            
-            NSArray *facilityArray = facilityFeatureSet.features;
-            [self addToLog:[NSString stringWithFormat:@"Begin %@", info.mapID]];
-            
-            for (AGSGraphic *graphic in facilityArray) {
-                
-                NSString *name = [graphic attributeForKey:@"NAME"];
-                if (name != nil && [name isKindOfClass:[NSString class]]) {
-                    
+                AGSPoint *pos;
+                if ([graphic.geometry isKindOfClass:[AGSPoint class]]) {
+                    pos = (AGSPoint *)graphic.geometry;
                 } else {
-                    continue;
+                    pos = [engine labelPointForPolygon:(AGSPolygon *)graphic.geometry];
                 }
                 
-                NSString *gid = [graphic attributeForKey:@"GEO_ID"];
-                NSString *pid = [graphic attributeForKey:@"POI_ID"];
-                NSString *bid = [graphic attributeForKey:@"BUILDING_ID"];
-                NSString *fid = [graphic attributeForKey:@"FLOOR_ID"];
-                NSNumber *cid = [graphic attributeForKey:@"CATEGORY_ID"];
-                
-                AGSPoint *pos = (AGSPoint *)graphic.geometry;
-                
                 NSNumber *color = [graphic attributeForKey:@"COLOR"];
-                NSNumber *fIndex = [graphic attributeForKey:@"FLOOR_INDEX"];
-                NSString *fName = [graphic attributeForKey:@"FLOOR_NAME"];
-                NSNumber *layer = @(POI_FACILITY);
+                NSNumber *fIndex = @(info.floorNumber);
+                NSString *fName = info.floorName;
+                NSNumber *layer = layerIndex;
                 
-                [db insertPOIWithGeoID:gid poiID:pid buildingID:bid floorID:fid name:name categoryID:cid labelX:@(pos.x) labelY:@(pos.y) color:color floorIndex:fIndex floorName:fName layer:layer];
+                [db insertPOIWithGeoID:gid poiID:pid buildingID:bid floorID:fid name:name categoryID:cid labelX:@(pos.x) labelY:@(pos.y) color:color FloorNumber:fIndex floorName:fName layer:layer];
             }
-            [self addToLog:[NSString stringWithFormat:@"End %@: Insert %d Facility POI", info.mapID, (int)facilityArray.count]];
+            
+            log = [NSString stringWithFormat:@"\tInsert  %-7d\t %@\t POI in %@", (int)graphicsArray.count, logNames[i], info.mapID];
+            [self performSelectorOnMainThread:@selector(updateUI:) withObject:log waitUntilDone:YES];
         }
-
-
     }
     [db close];
+}
+
+- (IBAction)createPOIDatabase:(id)sender {
+    NSThread *thread = [[NSThread alloc] initWithTarget:self selector:@selector(createCurrentPOIData) object:nil];
+    [thread start];
+}
+
+- (IBAction)createAllPOIDatabase:(id)sender {
+    NSThread *thread = [[NSThread alloc] initWithTarget:self selector:@selector(createAllPOIData) object:nil];
+    [thread start];
+}
+
+- (void)createAllPOIData
+{
+    NSArray *cityArray = [TYCityManager parseAllCities];
+    for (TYCity *city in cityArray) {
+        NSArray *buildingArray = [TYBuildingManager parseAllBuildings:city];
+        for (TYBuilding *building in buildingArray) {
+            NSArray *mapInfoArray = [TYMapInfo parseAllMapInfo:building];
+            [self generatePOIDatabaseForBuilding:building MapInfo:mapInfoArray];
+        }
+    }
+}
+
+- (void)createCurrentPOIData
+{
+    [self generatePOIDatabaseForBuilding:currentBuilding MapInfo:allMapInfos];
+}
+
+- (void)readMapDataFromDBForBuilding:(TYBuilding *)building WithInfo:(TYMapInfo *)info
+{
+    TYMapFeatureData *featureData = [[TYMapFeatureData alloc] initWithBuilding:building];
+    allMapData = [featureData getAllMapDataOnFloor:info.floorNumber];
 }
 
 - (void)loadMapDataWithInfo:(TYMapInfo *)info
@@ -173,30 +155,10 @@
     allMapData = [parser objectWithString:jsonString];
 }
 
-//- (NSArray *)loadRoomsWithInfo:(TYMapInfo *)info
-//{
-//    NSError *error = nil;
-//    NSString *fullPath = [TYMapFileManager getRoomLayerPath:info];
-//    NSString *jsonString = [NSString stringWithContentsOfFile:fullPath encoding:NSUTF8StringEncoding error:&error];
-//    
-//    AGSSBJsonParser *parser = [[AGSSBJsonParser alloc] init];
-//    NSDictionary *dict = [parser objectWithString:jsonString];
-//    
-//    AGSFeatureSet *set = [[AGSFeatureSet alloc] initWithJSON:dict];
-//    return set.features;
-//}
-//
-//- (NSArray *)loadFacilitiesWithInfo:(TYMapInfo *)info
-//{
-//    NSError *error = nil;
-//    NSString *fullPath = [TYMapFileManager getFacilityLayerPath:info];
-//    NSString *jsonString = [NSString stringWithContentsOfFile:fullPath encoding:NSUTF8StringEncoding error:&error];
-//    
-//    AGSSBJsonParser *parser = [[AGSSBJsonParser alloc] init];
-//    NSDictionary *dict = [parser objectWithString:jsonString];
-//    
-//    AGSFeatureSet *set = [[AGSFeatureSet alloc] initWithJSON:dict];
-//    return set.features;
-//}
+
+- (void)updateUI:(NSString *)logString
+{
+    [self addToLog:logString];
+}
 
 @end

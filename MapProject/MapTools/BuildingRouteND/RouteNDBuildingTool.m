@@ -32,8 +32,6 @@
     self = [super init];
     if (self) {
         building = b;
-        shpDataGroup = [[ShpRouteDataGroup alloc] initWithBuilding:building];
-        
         allNodeArray = [[NSMutableArray alloc] init];
         allLinkArray = [[NSMutableArray alloc] init];
     }
@@ -43,6 +41,12 @@
 - (void)buildRouteNetworkDataset
 {
     NSLog(@"buildRouteNetworkDataset");
+ 
+    NSString *process = nil;
+    process = @"================================================\n";
+    process = [NSString stringWithFormat:@"%@Building Route Network Dataset: %@", process, building.name];
+    [self notifyDelegate:process];
+    shpDataGroup = [[ShpRouteDataGroup alloc] initWithBuilding:building];
     
     [allNodeArray removeAllObjects];
     [allNodeArray addObjectsFromArray:shpDataGroup.nodeArray];
@@ -53,6 +57,9 @@
     [allLinkArray addObjectsFromArray:shpDataGroup.linkArray];
     [allLinkArray addObjectsFromArray:shpDataGroup.virtualLinkArray];
     
+    process = [NSString stringWithFormat:@"\tReading Shp Data: %d Links, %d Nodes", (int)(allLinkArray.count), (int)allNodeArray.count];
+    [self notifyDelegate:process];
+
     AGSGeometryEngine *engine = [AGSGeometryEngine defaultGeometryEngine];
     for (TYBuildingLink *link in allLinkArray) {
         AGSPoint *linkHeadPoint = [link.line pointOnPath:0 atIndex:0];
@@ -92,6 +99,7 @@
         }
     }
     
+    [self notifyDelegate:@"\tWrite Route Network to Database"];
     [self writeNetworkDatasetToDatabase];
 }
 
@@ -112,6 +120,13 @@
     }
     
     [db close];
+}
+
+- (void)notifyDelegate:(NSString *)string
+{
+    if (self.delegate) {
+        [self.delegate RouteNDBuilingTool:self buildingProcess:string];
+    }
 }
 
 @end

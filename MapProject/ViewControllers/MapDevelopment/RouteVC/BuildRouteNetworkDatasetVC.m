@@ -13,7 +13,7 @@
 
 #import "RouteNDBuildingTool.h"
 
-@interface BuildRouteNetworkDatasetVC()
+@interface BuildRouteNetworkDatasetVC()<RouteNDBuildingToolDelegate>
 {
     RouteNDBuildingTool *buildingTool;
 }
@@ -30,14 +30,24 @@
     
     [super viewDidLoad];
     
+    [self zoomToAllExtent];
+    
+    NSThread *thread = [[NSThread alloc] initWithTarget:self selector:@selector(buildRouteNetwork) object:nil];
+    [thread start];
+}
+
+- (void)buildRouteNetwork
+{
     NSDate *now = [NSDate date];
     buildingTool = [[RouteNDBuildingTool alloc] initWithBuilding:self.currentBuilding];
+    buildingTool.delegate = self;
     [buildingTool buildRouteNetworkDataset];
     NSLog(@"Build Interval For Route Network Dataset: %f", [[NSDate date] timeIntervalSinceDate:now]);
-    
-    
-    [self zoomToAllExtent];
+}
 
+- (void)RouteNDBuilingTool:(RouteNDBuildingTool *)tool buildingProcess:(NSString *)process
+{
+    NSLog(@"%@", process);
 }
 
 - (void)zoomToAllExtent
@@ -50,12 +60,6 @@
     double ymax = firstInfo.mapExtent.ymax;
     double ymin = firstInfo.mapExtent.ymin;
     for (TYMapInfo *info in self.allMapInfos) {
-        //        xmax = info.mapExtent.xmax;
-        //        xmin = info.mapExtent.xmin;
-        //
-        //        ymin = info.mapExtent.ymin;
-        //        ymax = info.mapExtent.ymax;
-        
         if (info.floorNumber > maxFloor) {
             maxFloor = info.floorNumber;
             xmax = info.mapExtent.xmax + (maxFloor - 1) * self.currentBuilding.offset.x;

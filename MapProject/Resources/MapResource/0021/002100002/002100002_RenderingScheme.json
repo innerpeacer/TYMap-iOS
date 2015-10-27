@@ -144,7 +144,7 @@
                        ],
         "IconSymbol": [
                        {
-                       "colorID": 25134,
+                       "colorID": 2513,
                        "icon": "icon_stair"
                        },
                        {
@@ -152,11 +152,11 @@
                        "icon": "icon_lift"
                        },
                        {
-                       "colorID": 25075,
+                       "colorID": 2507,
                        "icon": "icon_mens_room"
                        },
                        {
-                       "colorID": 25133,
+                       "colorID": 2513,
                        "icon": "icon_womens_room"
                        },
                        {

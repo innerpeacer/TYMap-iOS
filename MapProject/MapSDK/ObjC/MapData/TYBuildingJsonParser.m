@@ -110,4 +110,43 @@
     return toReturn;
 }
 
++ (NSArray *)parseAllBuildingsFromFile:(NSString *)path
+{
+    NSMutableArray *toReturn = [[NSMutableArray alloc] init];
+    
+    NSError *error = nil;
+    
+    if ([[NSFileManager defaultManager] fileExistsAtPath:path]) {
+        NSData *data = [NSData dataWithContentsOfFile:path];
+        NSDictionary *buildingDict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:&error];
+        
+        NSArray *buildingArray = [buildingDict objectForKey:KEY_BUILDINGS];
+        for (NSDictionary *dict  in buildingArray) {
+            NSString *cityID = [dict objectForKey:KEY_BUILDING_CITY_ID];
+            NSString *mid = [dict objectForKey:KEY_BUILDING_ID];
+            NSString *name = [dict objectForKey:KEY_BUILDING_NAME];
+            NSNumber *lonNumber = [dict objectForKey:KEY_BUILDING_LONGITUDE];
+            NSNumber *latNumber = [dict objectForKey:KEY_BUILDING_LATITUDE];
+            NSString *address = [dict objectForKey:KEY_BUILDING_ADDRESS];
+            
+            NSNumber *initStr = [dict objectForKey:KEY_BUILDING_INIT_ANGLE];
+            
+            NSString *url = [dict objectForKey:KEY_BUILDING_ROUTE_URL];
+            
+            NSNumber *offsetX = [dict objectForKey:KEY_BUILDING_OFFSET_X];
+            NSNumber *offsetY = [dict objectForKey:KEY_BUILDING_OFFSET_Y];
+            OffsetSize offset = { offsetX.doubleValue, offsetY.doubleValue };
+            
+            
+            NSNumber *staNumber = [dict objectForKey:KEY_BUILDING_STATUS];
+            
+            TYBuilding *building = [[TYBuilding alloc] initWithCityID:cityID BuildingID:mid Name:name Lon:lonNumber.doubleValue Lat:latNumber.doubleValue Address:address InitAngle:initStr.doubleValue RouteURL:url Offset:offset];
+            building.status = staNumber.intValue;
+            
+            [toReturn addObject:building];
+        }
+    }
+    return toReturn;
+}
+
 @end

@@ -12,6 +12,7 @@
 @interface TYCityJsonParser : NSObject
 
 + (NSArray *)parseAllCities;
++ (NSArray *)parseAllCitiesFromFile:(NSString *)path;
 + (TYCity *)parseCity:(NSString *)cityID;
 
 @end

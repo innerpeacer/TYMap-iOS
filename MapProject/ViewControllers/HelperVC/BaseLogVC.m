@@ -20,14 +20,13 @@
     [super viewDidLoad];
     
     logString = [NSMutableString string];
-    
-
 }
 
 - (void)addToLog:(NSString *)str
 {
     [logString appendFormat:@"%@\n", str];
     [self.logView setText:logString];
+    [self.logView scrollRangeToVisible:NSMakeRange(self.logView.text.length, 1)];
 }
 
 

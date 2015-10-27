@@ -10,12 +10,12 @@
 
 @interface CreatingPOIDBAdapter : NSObject
 
-+ (CreatingPOIDBAdapter *)sharedDBAdapter:(NSString *)buildingID;
+- (id)initWithDBPath:(NSString *)path;
 
 - (BOOL)open;
 - (BOOL)close;
 
 - (BOOL)erasePOITable;
 
-- (BOOL)insertPOIWithGeoID:(NSString *)gid poiID:(NSString *)pid buildingID:(NSString *)bid floorID:(NSString *)fid name:(NSString *)name categoryID:(NSNumber *)cid labelX:(NSNumber *)x labelY:(NSNumber *)y color:(NSNumber *)color floorIndex:(NSNumber *)fIndex floorName:(NSString *)fName layer:(NSNumber *)layer;
+- (BOOL)insertPOIWithGeoID:(NSString *)gid poiID:(NSString *)pid buildingID:(NSString *)bid floorID:(NSString *)fid name:(NSString *)name categoryID:(NSNumber *)cid labelX:(NSNumber *)x labelY:(NSNumber *)y color:(NSNumber *)color FloorNumber:(NSNumber *)fIndex floorName:(NSString *)fName layer:(NSNumber *)layer;
 @end
