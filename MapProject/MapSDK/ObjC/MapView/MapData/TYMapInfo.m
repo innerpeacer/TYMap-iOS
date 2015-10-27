@@ -77,6 +77,8 @@ MapSize TYMapSizeMake(double x, double y)
     return mapInfoArray;
 }
 
+
+
 + (TYMapInfo *)searchMapInfoFromArray:(NSArray *)array Floor:(int)floor
 {
     for (TYMapInfo *info in array) {

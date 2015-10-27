@@ -1,0 +1,35 @@
+//
+//  TYMapDBConstants.h
+//  MapProject
+//
+//  Created by innerpeacer on 15/10/26.
+//  Copyright © 2015年 innerpeacer. All rights reserved.
+//
+
+#ifndef TYMapDBConstants_h
+#define TYMapDBConstants_h
+
+
+#define TABLE_CITY @"CITY"
+#define TABLE_BUILDING @"BUILDING"
+
+#define FIELD_CITY_ID @"CITY_ID"
+#define FIELD_CITY_NAME @"NAME"
+#define FIELD_CITY_SNAME @"SNAME"
+#define FIELD_CITY_LONGITUDE @"LONGITUDE"
+#define FIELD_CITY_LATITUDE @"LATITUDE"
+#define FIELD_CITY_STATUS @"STATUS"
+
+#define FIELD_BUILDING_CITY_ID @"CITY_ID"
+#define FIELD_BUILDING_ID @"BUILDING_ID"
+#define FIELD_BUILDING_NAME @"NAME"
+#define FIELD_BUILDING_LONGITUDE @"LONGITUDE"
+#define FIELD_BUILDING_LATITUDE @"LATITUDE"
+#define FIELD_BUILDING_ADDRESS @"ADDRESS"
+#define FIELD_BUILDING_INIT_ANGLE @"INIT_ANGLE"
+#define FIELD_BUILDING_ROUTE_URL @"ROUTE_URL"
+#define FIELD_BUILDING_OFFSET_X @"OFFSET_X"
+#define FIELD_BUILDING_OFFSET_Y @"OFFSET_Y"
+#define FIELD_BUILDING_STATUS @"STATUS"
+
+#endif /* TYMapDBConstants_h */

@@ -84,7 +84,7 @@
                        ],
         "IconSymbol": [
                        {
-                       "colorID": 25134,
+                       "colorID": 2513,
                        "icon": "icon_stair"
                        },
                        {
@@ -108,23 +108,15 @@
                        "icon": "icon_exit"
                        },
                        {
-                       "colorID": 1,
-                       "icon": "icon_exit"
-                       },
-                       {
-                       "colorID": 2,
-                       "icon": "icon_exit"
-                       },
-                       {
                        "colorID": 25135,
                        "icon": "icon_staircase"
                        },
                        {
-                       "colorID": 25118,
+                       "colorID": 2511,
                        "icon": "icon_toilet"
                        },
                        {
-                       "colorID": 25020,
+                       "colorID": 2502,
                        "icon": "icon_atm"
                        },
                        {
@@ -132,15 +124,15 @@
                        "icon": "icon_childroom"
                        },
                        {
-                       "colorID": 25015,
+                       "colorID": 2501,
                        "icon": "icon_sick"
                        },
                        {
-                       "colorID": 25065,
+                       "colorID": 2502,
                        "icon": "icon_consultant"
                        },
                        {
-                       "colorID": 25031,
+                       "colorID": 2503,
                        "icon": "icon_exchange_money"
                        }
                        ]
