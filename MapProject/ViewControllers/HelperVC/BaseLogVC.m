@@ -20,6 +20,7 @@
     [super viewDidLoad];
     
     logString = [NSMutableString string];
+    self.logView.textAlignment = NSTextAlignmentCenter;
 }
 
 - (void)addToLog:(NSString *)str

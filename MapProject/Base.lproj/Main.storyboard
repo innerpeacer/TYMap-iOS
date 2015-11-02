@@ -116,7 +116,6 @@
                                 </state>
                                 <connections>
                                     <action selector="createAllPOIDatabase:" destination="8mN-uC-DTa" eventType="touchUpInside" id="no0-gr-Tag"/>
-                                    <action selector="createPOIDatabase:" destination="8mN-uC-DTa" eventType="touchUpInside" id="6GK-CK-cH7"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -855,6 +854,80 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5xA-Ss-foA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5015" y="900"/>
+        </scene>
+        <!--Generate Web Map FileVC-->
+        <scene sceneID="irr-Op-UfU">
+            <objects>
+                <viewController storyboardIdentifier="GenerateWebMapFileVC" id="izW-go-M3h" customClass="GenerateWebMapFileVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="caq-45-V6t"/>
+                        <viewControllerLayoutGuide type="bottom" id="yCh-ax-sdb"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="qP9-ps-YPS">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DOz-t1-4oB">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="DOz-t1-4oB" firstAttribute="top" secondItem="qP9-ps-YPS" secondAttribute="top" id="1Hd-sm-duG"/>
+                            <constraint firstItem="yCh-ax-sdb" firstAttribute="top" secondItem="DOz-t1-4oB" secondAttribute="bottom" id="VDn-rK-c9W"/>
+                            <constraint firstAttribute="trailing" secondItem="DOz-t1-4oB" secondAttribute="trailing" id="aeo-j2-rdb"/>
+                            <constraint firstItem="DOz-t1-4oB" firstAttribute="leading" secondItem="qP9-ps-YPS" secondAttribute="leading" id="qMw-Vz-yQE"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="logView" destination="DOz-t1-4oB" id="DGW-fw-zfb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="d3U-ne-h57" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5015" y="900"/>
+        </scene>
+        <!--Generate All Web Map FileVC-->
+        <scene sceneID="2E4-L4-ty6">
+            <objects>
+                <viewController storyboardIdentifier="GenerateAllWebMapFileVC" id="WpT-Mp-dep" customClass="GenerateAllWebMapFileVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="aHE-rr-SL1"/>
+                        <viewControllerLayoutGuide type="bottom" id="AIl-EM-0ig"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="eCC-og-Ear">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YXL-CT-eFz">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="AIl-EM-0ig" firstAttribute="top" secondItem="YXL-CT-eFz" secondAttribute="bottom" id="9ej-0T-7Gh"/>
+                            <constraint firstItem="YXL-CT-eFz" firstAttribute="leading" secondItem="eCC-og-Ear" secondAttribute="leading" id="ESg-uG-9jR"/>
+                            <constraint firstItem="YXL-CT-eFz" firstAttribute="top" secondItem="eCC-og-Ear" secondAttribute="top" id="hZt-Sa-Dee"/>
+                            <constraint firstAttribute="trailing" secondItem="YXL-CT-eFz" secondAttribute="trailing" id="pUE-d0-UDw"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="logView" destination="YXL-CT-eFz" id="x2n-Pr-66B"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OAk-TE-2FY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5015" y="900"/>
         </scene>

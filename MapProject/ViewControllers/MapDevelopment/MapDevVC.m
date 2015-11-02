@@ -34,57 +34,41 @@
     [EnviromentManager switchToOriginal];
 #endif
     
-    self.objects = [[NSMutableArray alloc] init];
-    self.controllerDict = [[NSMutableDictionary alloc] init];
     
     self.title = @"地图开发";
     
-    [self.objects addObject:@"地图 Demo"];
-    [self.controllerDict setObject:@"mapController" forKey:@"地图 Demo"];
+    NSArray *viewControllers = @[
+                                 @[@"地图 Demo", @"mapController"],
+                                 //  @[@"地图导航 Demo", @"mapRouteController"],
+                                 @[@"ObjC离线导航 Demo", @"OfflineMapRouteVC"],
+                                 @[@"Cpp离线导航 Demo", @"CppOfflineMapRouteVC"],
+                                 @[@"地图Callout Demo", @"mapCalloutController"],
+                                 @[@"生成POI数据库",@"CreatePOIDatabaseVC" ],
+                                 //                                 @[@"加密地图文件",@"mapEncryptionController" ],
+                                 //                                 @[@"生成加密地图资源",@"GenerateEncryptionSourceVC" ],
+                                 @[@"生成License", @"GenerateLicensesVC"],
+                                 @[@"构建网络数据集", @"BuildRouteNetworkDatasetVC"],
+                                 @[@"构建所有网络数据集",@"BuildAllRouteNetworkVC"],
+                                 @[@"测试网络数据集", @"TestRouteNetworkVC"],
+                                 //                                 @[@"测试Cpp网络数据集",@"TestCppRouteNetworkVC"],
+                                 @[@"生成地图数据库",@"GenerateMapDBVC"],
+                                 @[@"生成所有地图数据库",@"GenerateAllMapDBVC"],
+                                 @[@"生成Web地图文件", @"GenerateWebMapFileVC"],
+                                 @[@"生成所有Web地图文件", @"GenerateAllWebMapFileVC"],
+                                 ];
+    self.objects = [[NSMutableArray alloc] init];
+    self.controllerDict = [[NSMutableDictionary alloc] init];
     
-//    [self.objects addObject:@"地图导航 Demo"];
-//    [self.controllerDict setObject:@"mapRouteController" forKey:@"地图导航 Demo"];
     
-    [self.objects addObject:@"ObjC离线导航 Demo"];
-    [self.controllerDict setObject:@"OfflineMapRouteVC" forKey:@"ObjC离线导航 Demo"];
+    for (int i = 0; i < viewControllers.count; ++i) {
+        NSArray *controller = viewControllers[i];
+        NSString *name = [NSString stringWithFormat:@"%d. %@",i+1, controller[0]];
+        NSString *storyboardID = controller[1];
+        [self.objects addObject:name];
+        [self.controllerDict setObject:storyboardID forKey:name];
+    }
     
-    [self.objects addObject:@"Cpp离线导航 Demo"];
-    [self.controllerDict setObject:@"CppOfflineMapRouteVC" forKey:@"Cpp离线导航 Demo"];
-    
-    [self.objects addObject:@"地图Callout Demo"];
-    [self.controllerDict setObject:@"mapCalloutController" forKey:@"地图Callout Demo"];
-    
-    [self.objects addObject:@"生成POI数据库"];
-    [self.controllerDict setObject:@"CreatePOIDatabaseVC" forKey:@"生成POI数据库"];
- 
-//    [self.objects addObject:@"加密地图文件"];
-//    [self.controllerDict setObject:@"mapEncryptionController" forKey:@"加密地图文件"];
-//    
-//    [self.objects addObject:@"生成加密地图资源"];
-//    [self.controllerDict setObject:@"GenerateEncryptionSourceVC" forKey:@"生成加密地图资源"];
-    
-    [self.objects addObject:@"生成License"];
-    [self.controllerDict setObject:@"GenerateLicensesVC" forKey:@"生成License"];
-    
-    [self.objects addObject:@"构建网络数据集"];
-    [self.controllerDict setObject:@"BuildRouteNetworkDatasetVC" forKey:@"构建网络数据集"];
-    
-    [self.objects addObject:@"构建所有网络数据集"];
-    [self.controllerDict setObject:@"BuildAllRouteNetworkVC" forKey:@"构建所有网络数据集"];
-
-    [self.objects addObject:@"测试网络数据集"];
-    [self.controllerDict setObject:@"TestRouteNetworkVC" forKey:@"测试网络数据集"];
-    
-//    [self.objects addObject:@"测试Cpp网络数据集"];
-//    [self.controllerDict setObject:@"TestCppRouteNetworkVC" forKey:@"测试Cpp网络数据集"];
-    
-    [self.objects addObject:@"生成地图数据库"];
-    [self.controllerDict setObject:@"GenerateMapDBVC" forKey:@"生成地图数据库"];
-    
-    [self.objects addObject:@"生成所有地图数据库"];
-    [self.controllerDict setObject:@"GenerateAllMapDBVC" forKey:@"生成所有地图数据库"];
-    
-//    [self tableView:self.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:10 inSection:0]];
+//    [self tableView:self.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:12 inSection:0]];
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"设置" style:UIBarButtonItemStyleBordered target:self action:@selector(choosingPlace:)];
     
@@ -97,20 +81,6 @@
         self.title = [NSString stringWithFormat:@"%@", self.currentBuilding.name];
     }
 }
-
-//- (void)didSelectBuilding:(TYBuilding *)building City:(TYCity *)city
-//{
-//    NSLog(@"Hello: didSelectBuilding: %@ - %@", building.name, city.name);
-//    [TYUserDefaults setDefaultBuilding:building.buildingID];
-//    [TYUserDefaults setDefaultCity:city.cityID];
-//    
-//    self.currentCity = city;
-//    self.currentBuilding = building;
-//    
-//    [self dismissViewControllerAnimated:YES completion:^{
-//        [self updateTitle];
-//    }];
-//}
 
 - (void)SelectBuildingVC:(SelectBuildingVC *)controller didSelectBuliding:(TYBuilding *)building City:(TYCity *)city
 {
@@ -157,6 +127,7 @@
         NSString *identifier = [self.controllerDict objectForKey:key];
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         UIViewController *controller = [storyboard instantiateViewControllerWithIdentifier:identifier];
+        controller.title = key;
         [self.navigationController pushViewController:controller animated:YES];
     }
 }

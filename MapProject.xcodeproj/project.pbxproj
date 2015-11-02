@@ -122,6 +122,8 @@
 		576AEEB21B61D9E400D55CA4 /* CustomCalloutVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 576AEEB01B61D9E400D55CA4 /* CustomCalloutVC.m */; };
 		576C02621BC63D4700BCD87D /* SymbolGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 576C02611BC63D4700BCD87D /* SymbolGroup.m */; };
 		5771BEC01BE7016E00026873 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5771BEBF1BE7016E00026873 /* libsqlite3.0.tbd */; };
+		5771BEC31BE7051E00026873 /* GenerateWebMapFileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5771BEC21BE7051E00026873 /* GenerateWebMapFileVC.m */; };
+		5771BEC81BE75CE600026873 /* GenerateAllWebMapFileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5771BEC71BE75CE600026873 /* GenerateAllWebMapFileVC.m */; };
 		578771221BBB911400F90D7B /* RouteNetworkDBAdapter.mm in Sources */ = {isa = PBXBuildFile; fileRef = 578771211BBB911400F90D7B /* RouteNetworkDBAdapter.mm */; };
 		578771291BBB914700F90D7B /* TYLink.m in Sources */ = {isa = PBXBuildFile; fileRef = 578771281BBB914700F90D7B /* TYLink.m */; };
 		5787712C1BBB915E00F90D7B /* RouteNetworkDataset.m in Sources */ = {isa = PBXBuildFile; fileRef = 5787712B1BBB915E00F90D7B /* RouteNetworkDataset.m */; };
@@ -393,6 +395,10 @@
 		576C02601BC63D4700BCD87D /* SymbolGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SymbolGroup.h; sourceTree = "<group>"; };
 		576C02611BC63D4700BCD87D /* SymbolGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SymbolGroup.m; sourceTree = "<group>"; };
 		5771BEBF1BE7016E00026873 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		5771BEC11BE7051E00026873 /* GenerateWebMapFileVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenerateWebMapFileVC.h; sourceTree = "<group>"; };
+		5771BEC21BE7051E00026873 /* GenerateWebMapFileVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenerateWebMapFileVC.m; sourceTree = "<group>"; };
+		5771BEC61BE75CE600026873 /* GenerateAllWebMapFileVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenerateAllWebMapFileVC.h; sourceTree = "<group>"; };
+		5771BEC71BE75CE600026873 /* GenerateAllWebMapFileVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenerateAllWebMapFileVC.m; sourceTree = "<group>"; };
 		578771201BBB911400F90D7B /* RouteNetworkDBAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RouteNetworkDBAdapter.h; sourceTree = "<group>"; };
 		578771211BBB911400F90D7B /* RouteNetworkDBAdapter.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RouteNetworkDBAdapter.mm; sourceTree = "<group>"; };
 		578771271BBB914700F90D7B /* TYLink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYLink.h; sourceTree = "<group>"; };
@@ -795,6 +801,10 @@
 				572B98C01BDA115A00506A7E /* GenerateMapDBVC.m */,
 				57B953371BDDFB0700D9D318 /* GenerateAllMapDBVC.h */,
 				57B953381BDDFB0700D9D318 /* GenerateAllMapDBVC.m */,
+				5771BEC11BE7051E00026873 /* GenerateWebMapFileVC.h */,
+				5771BEC21BE7051E00026873 /* GenerateWebMapFileVC.m */,
+				5771BEC61BE75CE600026873 /* GenerateAllWebMapFileVC.h */,
+				5771BEC71BE75CE600026873 /* GenerateAllWebMapFileVC.m */,
 			);
 			path = GenerateData;
 			sourceTree = "<group>";
@@ -1211,8 +1221,10 @@
 				57494DDB1B61DAE7000B6F2C /* BaseLogVC.m in Sources */,
 				572407941BC9A8A10050BA41 /* TYEnvelope.m in Sources */,
 				572407A41BC9A8A10050BA41 /* TYLocationLayer.m in Sources */,
+				5771BEC81BE75CE600026873 /* GenerateAllWebMapFileVC.m in Sources */,
 				572407991BC9A8A10050BA41 /* TYLocationDisplay.m in Sources */,
 				572408CF1BC9AE2D0050BA41 /* IPXNode.cpp in Sources */,
+				5771BEC31BE7051E00026873 /* GenerateWebMapFileVC.m in Sources */,
 				572408D81BC9B3080050BA41 /* IPXLinkRecord.cpp in Sources */,
 				578771291BBB914700F90D7B /* TYLink.m in Sources */,
 				572407BB1BC9A8A10050BA41 /* TYDirectionalHint.m in Sources */,

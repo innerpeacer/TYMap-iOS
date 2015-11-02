@@ -50,8 +50,9 @@
     allMapInfos = [TYMapInfoJsonParser parseAllMapInfoFromFile:mapInfoPath];
     //    NSLog(@"%@", allMapInfos);
     
-    NSString *log = @"================================================\n";
-    log = [NSString stringWithFormat:@"%@Generate Map Database for %@", log, currentBuilding.name];
+//    NSString *log = @"================================================\n";
+    NSString *log = [self logTitleForBuilding:currentBuilding];
+    log = [NSString stringWithFormat:@"%@\nGenerate Map Database for %@", log, currentBuilding.name];
     [self performSelectorOnMainThread:@selector(updateUI:) withObject:log waitUntilDone:YES];
     
     MapGeneratorDBAdapter *mdb = [[MapGeneratorDBAdapter alloc] initWithBuilding:currentBuilding];
@@ -93,6 +94,21 @@
 - (void)updateUI:(NSString *)logString
 {
     [self addToLog:logString];
+}
+
+- (NSString *)logTitleForBuilding:(TYBuilding *)b
+{
+    NSString *title = @"================================================";
+    int titleLength = (int)title.length;
+    int length = (int)b.name.length * 2 + 4;
+    
+    NSMutableString *result = [NSMutableString string];
+    [result appendString:[title substringToIndex:(titleLength-length)/2]];
+    [result appendString:@"  "];
+    [result appendString:b.name];
+    [result appendString:@"  "];
+    [result appendString:[title substringToIndex:(titleLength-length)/2]];
+    return result;
 }
 
 

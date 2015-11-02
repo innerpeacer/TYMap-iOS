@@ -59,9 +59,11 @@
     [db open];
     [db erasePOITable];
     
-    NSString *log = @"================================================\n";
-    log = [NSString stringWithFormat:@"%@Generate %@ POI", log, building.name];
-    [self performSelectorOnMainThread:@selector(updateUI:) withObject:log waitUntilDone:YES];
+//    NSString *log = @"================================================\n";
+//    log = [NSString stringWithFormat:@"%@Generate %@ POI", log, building.name];
+//    [self performSelectorOnMainThread:@selector(updateUI:) withObject:log waitUntilDone:YES];
+    NSString *log;
+    [self performSelectorOnMainThread:@selector(updateUI:) withObject:[self logTitleForBuilding:building] waitUntilDone:YES];
 
     for (TYMapInfo *info in mapInfoArray) {
         [self readMapDataFromDBForBuilding:building WithInfo:info];
@@ -158,7 +160,38 @@
 
 - (void)updateUI:(NSString *)logString
 {
+    NSLog(@"%@", logString);
     [self addToLog:logString];
+}
+
+- (NSString *)logTitleForCity:(TYCity *)city
+{
+    NSString *title = @"================================================";
+    int titleLength = (int)title.length;
+    int length = (int)city.name.length * 2 + 4;
+    
+    NSMutableString *result = [NSMutableString string];
+    [result appendString:[title substringToIndex:(titleLength-length)/2]];
+    [result appendString:@"  "];
+    [result appendString:city.name];
+    [result appendString:@"  "];
+    [result appendString:[title substringToIndex:(titleLength-length)/2]];
+    return result;
+}
+
+- (NSString *)logTitleForBuilding:(TYBuilding *)building
+{
+    NSString *title = @"================================================";
+    int titleLength = (int)title.length;
+    int length = (int)building.name.length * 2 + 4;
+    
+    NSMutableString *result = [NSMutableString string];
+    [result appendString:[title substringToIndex:(titleLength-length)/2]];
+    [result appendString:@"  "];
+    [result appendString:building.name];
+    [result appendString:@"  "];
+    [result appendString:[title substringToIndex:(titleLength-length)/2]];
+    return result;
 }
 
 @end

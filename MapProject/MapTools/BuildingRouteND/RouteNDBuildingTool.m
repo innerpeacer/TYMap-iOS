@@ -38,13 +38,30 @@
     return self;
 }
 
+
+- (NSString *)logTitleForBuilding:(TYBuilding *)b
+{
+    NSString *title = @"================================================";
+    int titleLength = (int)title.length;
+    int length = (int)b.name.length * 2 + 4;
+    
+    NSMutableString *result = [NSMutableString string];
+    [result appendString:[title substringToIndex:(titleLength-length)/2]];
+    [result appendString:@"  "];
+    [result appendString:b.name];
+    [result appendString:@"  "];
+    [result appendString:[title substringToIndex:(titleLength-length)/2]];
+    return result;
+}
+
 - (void)buildRouteNetworkDataset
 {
     NSLog(@"buildRouteNetworkDataset");
  
     NSString *process = nil;
-    process = @"================================================\n";
-    process = [NSString stringWithFormat:@"%@Building Route Network Dataset: %@", process, building.name];
+//    process = @"================================================\n";
+    process = [self logTitleForBuilding:building];
+    process = [NSString stringWithFormat:@"%@\nBuilding Route Network Dataset: %@", process, building.name];
     [self notifyDelegate:process];
     shpDataGroup = [[ShpRouteDataGroup alloc] initWithBuilding:building];
     

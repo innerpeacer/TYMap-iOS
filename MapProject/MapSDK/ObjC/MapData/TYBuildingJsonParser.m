@@ -20,7 +20,6 @@
 #define KEY_BUILDING_ROUTE_URL @"routeURL"
 #define KEY_BUILDING_OFFSET_X @"offsetX"
 #define KEY_BUILDING_OFFSET_Y @"offsetY"
-
 #define KEY_BUILDING_STATUS @"status"
 
 @implementation TYBuildingJsonParser
