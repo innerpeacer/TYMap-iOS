@@ -162,7 +162,6 @@
         }
     }
     sqlite3_finalize(statement);
-
     return building;
 }
 

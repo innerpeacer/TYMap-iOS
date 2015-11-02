@@ -57,6 +57,7 @@ std::vector<IPXLinkRecord> IPXRouteNetworkDBAdapter::getLinks()
         }
     }
 //    printf("%d links in route database\n", (int)linkRecordArray.size());
+    sqlite3_finalize(stmt);
 
     return linkRecordArray;
 }
@@ -86,7 +87,8 @@ std::vector<IPXNodeRecord> IPXRouteNetworkDBAdapter::getNodes()
         }
     }
 //    printf("%d nodes in route database\n", (int)nodeRecordArray.size());
-    
+    sqlite3_finalize(stmt);
+
     return nodeRecordArray;
 }
 

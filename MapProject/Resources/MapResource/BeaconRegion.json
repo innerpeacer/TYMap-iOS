@@ -57,6 +57,13 @@
                      "major": 10018
                      },
                      {
+                     "cityID": "0532",
+                     "buildingID": "05320001",
+                     "name": "青岛宁夏路小学",
+                     "uuid": "4A280348-E1B1-4901-9DC0-17203C8000B4",
+                     "major": 100
+                     },
+                     {
                      "cityID": "0021",
                      "buildingID": "00210011",
                      "name": "周浦绿地",
@@ -74,6 +81,20 @@
                      "cityID": "0021",
                      "buildingID": "002199999",
                      "name": "成山路",
+                     "uuid": "FDA50693-A4E2-4FB1-AFCF-C6EB07647825",
+                     "major": null
+                     },
+                     {
+                     "cityID": "0020",
+                     "buildingID": "00200001",
+                     "name": "高德汇",
+                     "uuid": "24AE132F-65E3-4769-8675-2B9DBD154262",
+                     "major": 1
+                     },
+                     {
+                     "cityID": "0591",
+                     "buildingID": "05910001",
+                     "name": "诺亚科技",
                      "uuid": "FDA50693-A4E2-4FB1-AFCF-C6EB07647825",
                      "major": null
                      }

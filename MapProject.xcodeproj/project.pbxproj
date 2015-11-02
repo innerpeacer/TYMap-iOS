@@ -113,7 +113,6 @@
 		57672E341B55FFF900DAD219 /* ArcGIS.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 57672D6B1B55FFF900DAD219 /* ArcGIS.bundle */; };
 		57672EEF1B56002900DAD219 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57672EEB1B56002900DAD219 /* Main.storyboard */; };
 		57672EF51B56006700DAD219 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 57672EF21B56006700DAD219 /* main.m */; };
-		57672EF91B56009700DAD219 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 57672EF81B56009700DAD219 /* libsqlite3.0.dylib */; };
 		57672EFD1B5600B900DAD219 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 57672EFC1B5600B900DAD219 /* Default-568h@2x.png */; };
 		57672EFF1B56046300DAD219 /* MapResource in Resources */ = {isa = PBXBuildFile; fileRef = 57672EFE1B56046300DAD219 /* MapResource */; };
 		576A2DE71BDE432C0096A1E2 /* TYMap.db in Resources */ = {isa = PBXBuildFile; fileRef = 576A2DE61BDE432C0096A1E2 /* TYMap.db */; };
@@ -122,6 +121,7 @@
 		576AEEAC1B61D97100D55CA4 /* MapVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 576AEEA31B61D97100D55CA4 /* MapVC.m */; };
 		576AEEB21B61D9E400D55CA4 /* CustomCalloutVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 576AEEB01B61D9E400D55CA4 /* CustomCalloutVC.m */; };
 		576C02621BC63D4700BCD87D /* SymbolGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 576C02611BC63D4700BCD87D /* SymbolGroup.m */; };
+		5771BEC01BE7016E00026873 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5771BEBF1BE7016E00026873 /* libsqlite3.0.tbd */; };
 		578771221BBB911400F90D7B /* RouteNetworkDBAdapter.mm in Sources */ = {isa = PBXBuildFile; fileRef = 578771211BBB911400F90D7B /* RouteNetworkDBAdapter.mm */; };
 		578771291BBB914700F90D7B /* TYLink.m in Sources */ = {isa = PBXBuildFile; fileRef = 578771281BBB914700F90D7B /* TYLink.m */; };
 		5787712C1BBB915E00F90D7B /* RouteNetworkDataset.m in Sources */ = {isa = PBXBuildFile; fileRef = 5787712B1BBB915E00F90D7B /* RouteNetworkDataset.m */; };
@@ -379,7 +379,6 @@
 		57672EEC1B56002900DAD219 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Main.storyboard; sourceTree = "<group>"; };
 		57672EF11B56006700DAD219 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		57672EF21B56006700DAD219 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		57672EF81B56009700DAD219 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		57672EFC1B5600B900DAD219 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		57672EFE1B56046300DAD219 /* MapResource */ = {isa = PBXFileReference; lastKnownFileType = folder; path = MapResource; sourceTree = "<group>"; };
 		576A2DE61BDE432C0096A1E2 /* TYMap.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = TYMap.db; sourceTree = "<group>"; };
@@ -393,6 +392,7 @@
 		576AEEB01B61D9E400D55CA4 /* CustomCalloutVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCalloutVC.m; sourceTree = "<group>"; };
 		576C02601BC63D4700BCD87D /* SymbolGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SymbolGroup.h; sourceTree = "<group>"; };
 		576C02611BC63D4700BCD87D /* SymbolGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SymbolGroup.m; sourceTree = "<group>"; };
+		5771BEBF1BE7016E00026873 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		578771201BBB911400F90D7B /* RouteNetworkDBAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RouteNetworkDBAdapter.h; sourceTree = "<group>"; };
 		578771211BBB911400F90D7B /* RouteNetworkDBAdapter.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RouteNetworkDBAdapter.mm; sourceTree = "<group>"; };
 		578771271BBB914700F90D7B /* TYLink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYLink.h; sourceTree = "<group>"; };
@@ -478,8 +478,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5771BEC01BE7016E00026873 /* libsqlite3.0.tbd in Frameworks */,
 				5702D7891BB3A8E80098397D /* TYMapData.framework in Frameworks */,
-				57672EF91B56009700DAD219 /* libsqlite3.0.dylib in Frameworks */,
 				57F8F0911BBA9A7B00FE8637 /* libgeos.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -932,7 +932,7 @@
 				57F8F0901BBA9A7B00FE8637 /* libgeos.a */,
 				5702D7881BB3A8E80098397D /* TYMapData.framework */,
 				57672EFC1B5600B900DAD219 /* Default-568h@2x.png */,
-				57672EF81B56009700DAD219 /* libsqlite3.0.dylib */,
+				5771BEBF1BE7016E00026873 /* libsqlite3.0.tbd */,
 				57672EF11B56006700DAD219 /* Info.plist */,
 				57672EF21B56006700DAD219 /* main.m */,
 				5794C0FA1B5613CC002DCE9F /* PrefixHeader.pch */,

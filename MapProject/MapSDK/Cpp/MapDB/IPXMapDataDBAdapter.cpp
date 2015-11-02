@@ -81,7 +81,8 @@ vector<IPXFeatureRecord *> IPXMapDataDBAdapter::getAllRecordsOnFloor(int floor)
             resultVector.push_back(record);
 //            printf("%d\n", (int)record->name.length());
         }
-    }    
+    }
+    sqlite3_finalize(stmt);
     return resultVector;
 }
 

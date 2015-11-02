@@ -29,5 +29,4 @@
     [self.logView scrollRangeToVisible:NSMakeRange(self.logView.text.length, 1)];
 }
 
-
 @end

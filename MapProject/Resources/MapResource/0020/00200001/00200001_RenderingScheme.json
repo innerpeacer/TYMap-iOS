@@ -31,52 +31,6 @@
         
         "FillSymbol": [
                        {
-                       "colorID": 1002,
-                       "fillColor": "#FFB4E164",
-                       "outlineColor": "#FFFFFFFF",
-                       "lineWidth": 1
-                       },
-                       {
-                       "colorID": 3000,
-                       "fillColor": "#FF7AB6F5",
-                       "outlineColor": "#FFFFFFFF",
-                       "lineWidth": 1
-                       }
-                       ,
-                       {
-                       "colorID": 25000,
-                       "fillColor": "#FFFFFFFF",
-                       "outlineColor": "#FFFFFFFF",
-                       "lineWidth": 1
-                       }
-                       ,
-                       {
-                       "colorID": 25001,
-                       "fillColor": "#FFFFFFFF",
-                       "outlineColor": "#FFFFFFFF",
-                       "lineWidth": 1
-                       }
-                       ,
-                       {
-                       "colorID": 12001,
-                       "fillColor": "#FF7AB6F5",
-                       "outlineColor": "#FFFFFFFF",
-                       "lineWidth": 1
-                       },
-                       
-                       {
-                       "colorID": "000200",
-                       "fillColor": "#FFCCCCCC",
-                       "outlineColor": "#FFFFFFFF",
-                       "lineWidth": 1
-                       },
-                       {
-                       "colorID": "000100",
-                       "fillColor": "#FFFFFFFF",
-                       "outlineColor": "#FFFFFFFF",
-                       "lineWidth": 1
-                       },
-                       {
                        "colorID": "000300",
                        "fillColor": "#FFE6E7E9",
                        "outlineColor": "#FFFFFFFF",

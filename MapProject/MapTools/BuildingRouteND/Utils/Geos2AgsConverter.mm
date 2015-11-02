@@ -110,6 +110,7 @@ static AGSSpatialReference *spatialReference = [AGSSpatialReference spatialRefer
         for (int i = 0; i < exteriorRing->getNumPoints(); ++i) {
             geos::geom::Point *point = exteriorRing->getPointN(i);
             [polygon addPointToRing:[AGSPoint pointWithX:point->getX() y:point->getY() spatialReference:nil]];
+            delete point;
         }
     }
     
@@ -119,10 +120,12 @@ static AGSSpatialReference *spatialReference = [AGSSpatialReference spatialRefer
         for (int k = 0; k < interiorRing->getNumPoints(); ++k) {
             geos::geom::Point *point = interiorRing->getPointN(k);
             [polygon addPointToRing:[AGSPoint pointWithX:point->getX() y:point->getY() spatialReference:nil]];
+            delete point;
         }
     }
     return polygon;
 }
+
 
 + (AGSPolygon *)agsPolygonFromGeosMultiPolygon:(geos::geom::MultiPolygon *)p
 {
