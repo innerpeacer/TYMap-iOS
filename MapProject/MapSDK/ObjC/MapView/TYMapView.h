@@ -18,7 +18,7 @@
 #import "TYMarkerSymbol.h"
 #import "TYPictureMarkerSymbol.h"
 #import "TYRouteResult.h"
-
+#import "TYParkingLayer.h"
 #import "TYDirectionalHint.h"
 
 #import <TYMapData/TYMapData.h>
@@ -128,6 +128,9 @@ typedef enum {
  *  当前建筑的当前楼层信息
  */
 @property (nonatomic, readonly) TYMapInfo *currentMapInfo;
+
+@property (nonatomic, readonly) TYParkingLayer *parkingLayer;
+- (NSArray *)getParkingSpacesOnCurrentFloor;
 
 /**
  *  在POI被点选时是否高亮显示，默认为NO

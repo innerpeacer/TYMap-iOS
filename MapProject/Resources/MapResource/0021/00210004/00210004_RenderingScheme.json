@@ -131,9 +131,9 @@
                        ,
                        {
                        "colorID": 11,
-                       "fillColor": "#FF979797",
+                       "fillColor": "#FFD40337",
                        "outlineColor": "#FFFFFFFF",
-                       "lineWidth": 1
+                       "lineWidth": 0
                        }
                        ,
                        {

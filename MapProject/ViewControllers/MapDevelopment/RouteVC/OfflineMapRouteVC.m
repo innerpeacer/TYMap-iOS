@@ -29,11 +29,9 @@
 @interface OfflineMapRouteVC() <OfflineRouteManagerDelegate>
 {
     // 路径管理器
-//    TYRouteManager *routeManager;
     OfflineRouteManager *offlineRouteManager;
     
     TYPoint *currentPoint;
-    
     TYLocalPoint *startLocalPoint;
     TYLocalPoint *endLocalPoint;
     
@@ -41,14 +39,11 @@
     
     // 路径规划结果
     TYRouteResult *routeResult;
-    
     TYRoutePart *currentRoutePart;
     NSArray *routeGuides;
-    
     TYGraphicsLayer *hintLayer;
     AGSGraphicsLayer *testLayer;
 
-    
     // 起点、终点、切换点标识符号
     TYPictureMarkerSymbol *startSymbol;
     TYPictureMarkerSymbol *endSymbol;
@@ -89,8 +84,6 @@
     [self.mapView addMapLayer:testLayer];
     
     // 初始化路径管理器，并设置代理
-//    routeManager = [TYRouteManager routeManagerWithBuilding:self.currentBuilding credential:[TYMapEnvironment defaultCredential] MapInfos:self.allMapInfos];
-//    routeManager.delegate = self;
     offlineRouteManager = [OfflineRouteManager routeManagerWithBuilding:self.currentBuilding MapInfos:self.allMapInfos];
     offlineRouteManager.delegate = self;
     

@@ -30,6 +30,20 @@
 #define LAYER_NAME_LABEL @"LabelLayer"
 #define LAYER_NAME_GROUP_LABEL @"LabelGroupLayer"
 
+#define LAYER_NAME_PARKING @"ParkingLayer"
+
 #define LAYER_NAME_LOCATION @"LocationLayer"
+
+
+// =========== Key For Layer ==================
+#define KEY_LAYER_FLOOR @"floor"
+#define KEY_LAYER_ROOM @"room"
+#define KEY_LAYER_ASSET @"asset"
+#define KEY_LAYER_FACILITY @"facility"
+#define KEY_LAYER_LABEL @"label"
+
+
+// ============================================
+#define CATEGORY_ID_FOR_PARKING_SPACE @"110601"
 
 #endif

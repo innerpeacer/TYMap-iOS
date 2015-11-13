@@ -1,0 +1,19 @@
+{
+    "MapInfo": [
+                {
+                "cityID":"M853",
+                "buildingID":"M8530001",
+                "mapID":"M8530001F04",
+                "floorName":"F4",
+                "floorNumber":"4",
+                "size_x":"29",
+                "size_y":"15",
+                "xmax":"12641933",
+                "xmin":"12641904",
+                "ymax":"2518911",
+                "ymin":"2518896"
+                }
+                
+                ]
+    
+}

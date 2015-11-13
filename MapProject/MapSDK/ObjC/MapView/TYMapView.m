@@ -33,6 +33,7 @@
     TYRenderingScheme *renderingScheme;
     
     TYStructureGroupLayer *structureGroupLayer;
+    
     TYLabelGroupLayer *labelGroupLayer;
     
     TYLocationLayer *locationLayer;
@@ -72,6 +73,19 @@
     _autoCenterEnabled = NO;
 }
 
+- (NSArray *)getParkingSpacesOnCurrentFloor
+{
+    AGSFeatureSet *featureSet = [mapDataDict objectForKey:KEY_LAYER_ROOM];
+    NSMutableArray *array = [NSMutableArray array];
+    for (AGSGraphic *g in featureSet.features) {
+        if ([[g attributeForKey:GRAPHIC_ATTRIBUTE_CATEGORY_ID] isEqualToString:CATEGORY_ID_FOR_PARKING_SPACE]) {
+            TYPoi *poi = [TYPoi poiWithGeoID:[g attributeForKey:GRAPHIC_ATTRIBUTE_GEO_ID] PoiID:[g attributeForKey:GRAPHIC_ATTRIBUTE_POI_ID] FloorID:[g attributeForKey:GRAPHIC_ATTRIBUTE_FLOOR_ID] BuildingID:[g attributeForKey:GRAPHIC_ATTRIBUTE_BUILDING_ID] Name:[g attributeForKey:GRAPHIC_ATTRIBUTE_NAME] Geometry:(TYGeometry *)g.geometry CategoryID:[[g attributeForKey:GRAPHIC_ATTRIBUTE_CATEGORY_ID] intValue] Layer:POI_ROOM];
+            [array addObject:poi];
+        }
+    }
+    return array;
+}
+
 - (void)reloadMapView
 {
     if (self.currentMapInfo) {
@@ -94,7 +108,6 @@
 {
     TYMapFeatureData *featureData = [[TYMapFeatureData alloc] initWithBuilding:_building];
     mapDataDict = [featureData getAllMapDataOnFloor:info.floorNumber];
-    
 }
 
 - (void)loadMapDataWithInfo:(TYMapInfo *)info
@@ -107,7 +120,6 @@
     } else {
         jsonString = [NSString stringWithContentsOfFile:dataPath encoding:NSUTF8StringEncoding error:&error];
     }
-    
     
     if (error) {
         NSLog(@"%@", error.localizedDescription);
@@ -122,39 +134,39 @@
     NSMutableDictionary *dataDict = [[NSMutableDictionary alloc] init];
     
     id object;
-    object = [dict objectForKey:@"floor"];
+    object = [dict objectForKey:KEY_LAYER_FLOOR];
     if ([object isKindOfClass:[NSString class]]) {
-        [dataDict setObject:[[AGSFeatureSet alloc] init] forKey:@"floor"];
+        [dataDict setObject:[[AGSFeatureSet alloc] init] forKey:KEY_LAYER_FLOOR];
     } else {
-        [dataDict setObject:[[AGSFeatureSet alloc] initWithJSON:[dict objectForKey:@"floor"]] forKey:@"floor"];
+        [dataDict setObject:[[AGSFeatureSet alloc] initWithJSON:[dict objectForKey:KEY_LAYER_FLOOR]] forKey:KEY_LAYER_FLOOR];
     }
     
-    object = [dict objectForKey:@"room"];
+    object = [dict objectForKey:KEY_LAYER_ROOM];
     if ([object isKindOfClass:[NSString class]]) {
-        [dataDict setObject:[[AGSFeatureSet alloc] init] forKey:@"room"];
+        [dataDict setObject:[[AGSFeatureSet alloc] init] forKey:KEY_LAYER_ROOM];
     } else {
-        [dataDict setObject:[[AGSFeatureSet alloc] initWithJSON:[dict objectForKey:@"room"]] forKey:@"room"];
+        [dataDict setObject:[[AGSFeatureSet alloc] initWithJSON:[dict objectForKey:KEY_LAYER_ROOM]] forKey:KEY_LAYER_ROOM];
     }
     
-    object = [dict objectForKey:@"asset"];
+    object = [dict objectForKey:KEY_LAYER_ASSET];
     if ([object isKindOfClass:[NSString class]]) {
-        [dataDict setObject:[[AGSFeatureSet alloc] init] forKey:@"asset"];
+        [dataDict setObject:[[AGSFeatureSet alloc] init] forKey:KEY_LAYER_ASSET];
     } else {
-        [dataDict setObject:[[AGSFeatureSet alloc] initWithJSON:[dict objectForKey:@"asset"]] forKey:@"asset"];
+        [dataDict setObject:[[AGSFeatureSet alloc] initWithJSON:[dict objectForKey:KEY_LAYER_ASSET]] forKey:KEY_LAYER_ASSET];
     }
     
-    object = [dict objectForKey:@"facility"];
+    object = [dict objectForKey:KEY_LAYER_FACILITY];
     if ([object isKindOfClass:[NSString class]]) {
-        [dataDict setObject:[[AGSFeatureSet alloc] init] forKey:@"facility"];
+        [dataDict setObject:[[AGSFeatureSet alloc] init] forKey:KEY_LAYER_FACILITY];
     } else {
-        [dataDict setObject:[[AGSFeatureSet alloc] initWithJSON:[dict objectForKey:@"facility"]] forKey:@"facility"];
+        [dataDict setObject:[[AGSFeatureSet alloc] initWithJSON:[dict objectForKey:KEY_LAYER_FACILITY]] forKey:KEY_LAYER_FACILITY];
     }
     
-    object = [dict objectForKey:@"label"];
+    object = [dict objectForKey:KEY_LAYER_LABEL];
     if ([object isKindOfClass:[NSString class]]) {
-        [dataDict setObject:[[AGSFeatureSet alloc] init] forKey:@"label"];
+        [dataDict setObject:[[AGSFeatureSet alloc] init] forKey:KEY_LAYER_LABEL];
     } else {
-        [dataDict setObject:[[AGSFeatureSet alloc] initWithJSON:[dict objectForKey:@"label"]] forKey:@"label"];
+        [dataDict setObject:[[AGSFeatureSet alloc] initWithJSON:[dict objectForKey:KEY_LAYER_LABEL]] forKey:KEY_LAYER_LABEL];
     }
     
     mapDataDict = [NSDictionary dictionaryWithDictionary:dataDict];
@@ -223,8 +235,7 @@
     
 
     
-
-
+    [_parkingLayer removeAllGraphics];
     [structureGroupLayer loadContents:mapDataDict];
     [labelGroupLayer loadContents:mapDataDict];
         
@@ -301,6 +312,9 @@
     [self addMapLayer:structureGroupLayer.floorLayer withName:LAYER_NAME_FLOOR];
     [self addMapLayer:structureGroupLayer.roomLayer withName:LAYER_NAME_ROOM];
     [self addMapLayer:structureGroupLayer.assetLayer withName:LAYER_NAME_ASSET];
+    
+    _parkingLayer = [AGSGraphicsLayer graphicsLayer];
+    [self addMapLayer:_parkingLayer withName:LAYER_NAME_PARKING];
     
     labelGroupLayer = [TYLabelGroupLayer labelGroupLayerWithRenderingScheme:renderingScheme SpatialReference:spatialReference];
     labelGroupLayer.mapView = self;
@@ -807,43 +821,6 @@
 - (TYPoi *)extractRoomPoiOnCurrentFloorWithX:(double)x Y:(double)y
 {
     return [structureGroupLayer extractRoomPoiOnCurrentFloorWithX:x Y:y];
-}
-
-
-//  更新ROOM层目标POI的名称信息
-//
-//  @param pid  目标POI的ID
-//  @param name 修改后的名称
-//
-//  @return 是否修改成功
-
-//- (BOOL)updateRoomPOI:(NSString *)pid WithName:(NSString *)name
-//{
-//    BOOL structureUpdated = [structureGroupLayer updateRoomPOI:pid WithName:name];
-//    BOOL labelUpdated = [labelGroupLayer updateRoomLabel:pid WithName:name];
-//    
-//    return (structureUpdated && labelUpdated);
-//}
-
-
-
-//将修改结果更新至地图文件中
-- (void)updateMapFiles
-{
-//    NSString *labelFilePath = [TYMapFileManager getLabelLayerPath:self.currentMapInfo];
-//    AGSFeatureSet *lableSet = [labelGroupLayer getTextFeatureSet];
-//    
-//    NSDictionary *labelJsonDict = [lableSet encodeToJSON];
-//    NSData *labelData = [NSJSONSerialization dataWithJSONObject:labelJsonDict options:NSJSONWritingPrettyPrinted error:nil];
-//    [labelData writeToFile:labelFilePath atomically:YES];
-//    
-//    
-//    NSString *roomFilePath = [TYMapFileManager getRoomLayerPath:self.currentMapInfo];
-//    AGSFeatureSet *roomSet = [structureGroupLayer getRoomFeatureSet];
-//    
-//    NSDictionary *roomJsonDict = [roomSet encodeToJSON];
-//    NSData *roomData = [NSJSONSerialization dataWithJSONObject:roomJsonDict options:NSJSONWritingPrettyPrinted error:nil];
-//    [roomData writeToFile:roomFilePath atomically:YES];
 }
 
 - (void)dealloc

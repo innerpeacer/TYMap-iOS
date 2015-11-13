@@ -112,30 +112,64 @@ using namespace std;
             return [TYMapFeatureData agsPolygonFromGeosPolygonRecord:record];
             break;
             
+        case geos::geom::GEOS_MULTIPOLYGON:
+            return [TYMapFeatureData agsPolygonFromGeosMultiPolygonRecord:record];
+            break;
+            
         default:
             break;
     }
     return nil;
 }
 
++ (AGSPolygon *)agsPolygonFromGeosMultiPolygonRecord:(IPXFeatureRecord *)record
+{
+    AGSMutablePolygon *polygon = [[AGSMutablePolygon alloc] init];
+    geos::geom::MultiPolygon *multiPolygon = record->getMultiPolygonIfSatisfied();
+
+    for (int l = 0; l < multiPolygon->getNumGeometries(); ++l) {
+        const geos::geom::Polygon *geosPolygon = getPolygonN(multiPolygon, l);
+
+        const LineString *exteriorRing = geosPolygon->getExteriorRing();
+        if (exteriorRing) {
+            [polygon addRingToPolygon];
+            for (int i = 0; i < exteriorRing->getNumPoints(); ++i) {
+                Coordinate c = exteriorRing->getCoordinateN(i);
+                [polygon addPointToRing:[AGSPoint pointWithX:c.x y:c.y spatialReference:nil]];
+            }
+        }
+        
+        for (int j = 0; j < geosPolygon->getNumInteriorRing(); ++j) {
+            const LineString *interiorRing = geosPolygon->getInteriorRingN(j);
+            [polygon addRingToPolygon];
+            for (int k = 0; k < interiorRing->getNumPoints(); ++k) {
+                Coordinate c = interiorRing->getCoordinateN(k);
+                [polygon addPointToRing:[AGSPoint pointWithX:c.x y:c.y spatialReference:nil]];
+            }
+        }
+    }
+    return polygon;
+}
+
 + (AGSPolygon *)agsPolygonFromGeosPolygonRecord:(IPXFeatureRecord *)record
 {
     AGSMutablePolygon *polygon = [[AGSMutablePolygon alloc] init];
-    const LineString *exteriorRing = record->polygon->getExteriorRing();
+    const LineString *exteriorRing = record->getPolygonIfSatisfied()->getExteriorRing();
+
     if (exteriorRing) {
         [polygon addRingToPolygon];
         for (int i = 0; i < exteriorRing->getNumPoints(); ++i) {
-            geos::geom::Point *point = exteriorRing->getPointN(i);
-            [polygon addPointToRing:[AGSPoint pointWithX:point->getX() y:point->getY() spatialReference:nil]];
+            Coordinate c = exteriorRing->getCoordinateN(i);
+            [polygon addPointToRing:[AGSPoint pointWithX:c.x y:c.y spatialReference:nil]];
         }
     }
     
-    for (int j = 0; j < record->polygon->getNumInteriorRing(); ++j) {
-        const LineString *interiorRing = record->polygon->getInteriorRingN(j);
+    for (int j = 0; j < record->getPolygonIfSatisfied()->getNumInteriorRing(); ++j) {
+        const LineString *interiorRing = record->getPolygonIfSatisfied()->getInteriorRingN(j);
         [polygon addRingToPolygon];
         for (int k = 0; k < interiorRing->getNumPoints(); ++k) {
-            geos::geom::Point *point = interiorRing->getPointN(k);
-            [polygon addPointToRing:[AGSPoint pointWithX:point->getX() y:point->getY() spatialReference:nil]];
+            Coordinate c = interiorRing->getCoordinateN(k);
+            [polygon addPointToRing:[AGSPoint pointWithX:c.x y:c.y spatialReference:nil]];
         }
     }
     return polygon;
@@ -143,7 +177,7 @@ using namespace std;
 
 + (AGSPoint *)agsPointFromGeosPointRecord:(IPXFeatureRecord *)record
 {
-    return [AGSPoint pointWithX:record->point->getX() y:record->point->getY() spatialReference:[TYMapEnvironment defaultSpatialReference]];
+    return [AGSPoint pointWithX:record->getPointIfSatisfied()->getX() y:record->getPointIfSatisfied()->getY() spatialReference:[TYMapEnvironment defaultSpatialReference]];
 }
 
 //+ (AGSGeometry *)agsgeometryFromGeosGeometry:(geos::geom::Geometry *)geometry
@@ -234,57 +268,5 @@ using namespace std;
 //    }
 //    return polyline;
 //}
-//
-//+ (AGSPolygon *)agsPolygonFromGeosPolygon:(geos::geom::Polygon *)p
-//{
-//    AGSMutablePolygon *polygon = [[AGSMutablePolygon alloc] init];
-//    const LineString *exteriorRing = p->getExteriorRing();
-//    if (exteriorRing) {
-//        [polygon addRingToPolygon];
-//        for (int i = 0; i < exteriorRing->getNumPoints(); ++i) {
-//            geos::geom::Point *point = exteriorRing->getPointN(i);
-//            [polygon addPointToRing:[AGSPoint pointWithX:point->getX() y:point->getY() spatialReference:nil]];
-//        }
-//    }
-//    
-//    for (int j = 0; j < p->getNumInteriorRing(); ++j) {
-//        const LineString *interiorRing = p->getInteriorRingN(j);
-//        [polygon addRingToPolygon];
-//        for (int k = 0; k < interiorRing->getNumPoints(); ++k) {
-//            geos::geom::Point *point = interiorRing->getPointN(k);
-//            [polygon addPointToRing:[AGSPoint pointWithX:point->getX() y:point->getY() spatialReference:nil]];
-//        }
-//    }
-//    return polygon;
-//}
-//
-//+ (AGSPolygon *)agsPolygonFromGeosMultiPolygon:(geos::geom::MultiPolygon *)p
-//{
-//    AGSMutablePolygon *polygon = [[AGSMutablePolygon alloc] init];
-//    
-//    for (int l = 0; l < p->getNumGeometries(); ++l) {
-//        const Polygon *simplePolygon = dynamic_cast<const Polygon *>(p->getGeometryN(l));
-//        
-//        const LineString *exteriorRing = simplePolygon->getExteriorRing();
-//        if (exteriorRing) {
-//            [polygon addRingToPolygon];
-//            for (int i = 0; i < exteriorRing->getNumPoints(); ++i) {
-//                geos::geom::Point *point = exteriorRing->getPointN(i);
-//                [polygon addPointToRing:[AGSPoint pointWithX:point->getX() y:point->getY() spatialReference:nil]];
-//            }
-//        }
-//        
-//        for (int j = 0; j < simplePolygon->getNumInteriorRing(); ++j) {
-//            const LineString *interiorRing = simplePolygon->getInteriorRingN(j);
-//            [polygon addRingToPolygon];
-//            for (int k = 0; k < interiorRing->getNumPoints(); ++k) {
-//                geos::geom::Point *point = interiorRing->getPointN(k);
-//                [polygon addPointToRing:[AGSPoint pointWithX:point->getX() y:point->getY() spatialReference:nil]];
-//            }
-//        }
-//    }
-//    return polygon;
-//}
-
 
 @end

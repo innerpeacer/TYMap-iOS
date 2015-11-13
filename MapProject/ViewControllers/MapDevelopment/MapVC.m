@@ -40,6 +40,25 @@
     
     testLayer = [AGSGraphicsLayer graphicsLayer];
     [self.mapView addMapLayer:testLayer];
+    
+}
+
+- (void)TYMapView:(TYMapView *)mapView didFinishLoadingFloor:(TYMapInfo *)mapInfo
+{
+//    NSArray *allParkingSpaces = [mapView getParkingSpacesOnCurrentFloor];
+//    
+//    AGSSimpleFillSymbol *emptySymbol = [AGSSimpleFillSymbol simpleFillSymbolWithColor:[UIColor greenColor] outlineColor:[UIColor whiteColor]];
+//    AGSSimpleFillSymbol *ocuupiedSymbol = [AGSSimpleFillSymbol simpleFillSymbolWithColor:[UIColor redColor] outlineColor:[UIColor whiteColor]];
+//    for (TYPoi *poi in allParkingSpaces) {
+//        int status = arc4random()%2;
+//        NSLog(@"%d", status);
+//        if (status == 0) {
+//            [mapView.parkingLayer addGraphic:[AGSGraphic graphicWithGeometry:poi.geometry symbol:emptySymbol attributes:nil]];
+//        } else {
+//            [mapView.parkingLayer addGraphic:[AGSGraphic graphicWithGeometry:poi.geometry symbol:ocuupiedSymbol attributes:nil]];
+//        }
+//    }
+
 }
 
 int count = 0;
