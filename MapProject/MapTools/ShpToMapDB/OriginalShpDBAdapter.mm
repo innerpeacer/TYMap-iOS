@@ -133,6 +133,7 @@ using namespace geos::io;
         s.clear();
         s.write((const char *)record.geometryData.bytes, record.geometryData.length);
         
+//        printf("%s\n", [record.geoID UTF8String]);
         geos::geom::Geometry *g = reader.read(s);
         AGSGeometry *polygon = [Geos2AgsConverter agsgeometryFromGeosGeometry:g];
         AGSPoint *p = [engine labelPointForPolygon:(AGSPolygon *)polygon];

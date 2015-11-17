@@ -1,0 +1,19 @@
+{
+    "MapInfo": [
+                {
+                "cityID":"0514",
+                "buildingID":"05140001",
+                "mapID":"05140001F01",
+                "floorName":"F1",
+                "floorNumber":"1",
+                "size_x":"587",
+                "size_y":"716",
+                "xmax":"13295374",
+                "xmin":"13294787",
+                "ymax":"3794780",
+                "ymin":"3794064"
+                }
+                
+                ]
+
+}
