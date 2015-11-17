@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Upload All City BuildingVC-->
+        <scene sceneID="jXI-Th-Jkg">
+            <objects>
+                <viewController storyboardIdentifier="UploadAllCityBuildingVC" id="TQm-5S-LZQ" customClass="UploadAllCityBuildingVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="HRP-Od-no0"/>
+                        <viewControllerLayoutGuide type="bottom" id="lyl-z3-IhF"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="0af-03-thQ">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xA1-Wq-f2m">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kSM-pL-vOP">
+                                <rect key="frame" x="20" y="530" width="258" height="30"/>
+                                <animations/>
+                                <state key="normal" title="上传城市-建筑数据"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xi7-78-Slb">
+                                <rect key="frame" x="322" y="530" width="258" height="30"/>
+                                <animations/>
+                                <state key="normal" title="获取数据"/>
+                            </button>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="lyl-z3-IhF" firstAttribute="top" secondItem="xi7-78-Slb" secondAttribute="bottom" constant="40" id="6Eq-bh-xPs"/>
+                            <constraint firstItem="lyl-z3-IhF" firstAttribute="top" secondItem="kSM-pL-vOP" secondAttribute="bottom" constant="40" id="GTk-Ve-P4d"/>
+                            <constraint firstItem="lyl-z3-IhF" firstAttribute="top" secondItem="xA1-Wq-f2m" secondAttribute="bottom" id="GWh-8g-dBu"/>
+                            <constraint firstItem="xi7-78-Slb" firstAttribute="width" secondItem="kSM-pL-vOP" secondAttribute="width" id="TwE-8i-zSJ"/>
+                            <constraint firstItem="xi7-78-Slb" firstAttribute="trailing" secondItem="0af-03-thQ" secondAttribute="trailingMargin" id="lcH-DF-AIY"/>
+                            <constraint firstItem="kSM-pL-vOP" firstAttribute="leading" secondItem="0af-03-thQ" secondAttribute="leadingMargin" id="rw7-IH-saT"/>
+                            <constraint firstItem="xA1-Wq-f2m" firstAttribute="top" secondItem="0af-03-thQ" secondAttribute="top" id="wh9-6e-bib"/>
+                            <constraint firstAttribute="trailing" secondItem="xA1-Wq-f2m" secondAttribute="trailing" id="wnb-68-aKq"/>
+                            <constraint firstItem="xi7-78-Slb" firstAttribute="leading" secondItem="kSM-pL-vOP" secondAttribute="trailing" constant="44" id="z0g-Aj-wKn"/>
+                            <constraint firstItem="xA1-Wq-f2m" firstAttribute="leading" secondItem="0af-03-thQ" secondAttribute="leading" id="z52-53-MWn"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="logView" destination="xA1-Wq-f2m" id="XIR-fw-7h1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qnm-13-chw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5015" y="899.99999999999989"/>
+        </scene>
+        <!--Add City Building Map InfoVC-->
+        <scene sceneID="YGz-lV-xPP">
+            <objects>
+                <viewController storyboardIdentifier="AddCityBuildingMapInfoVC" id="xlc-tx-7Tp" customClass="AddCityBuildingMapInfoVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="zKt-dj-6Nv"/>
+                        <viewControllerLayoutGuide type="bottom" id="4IO-Hj-b38"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gpF-Pr-VgW">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vdm-Y3-iso">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j0K-QH-9Tj">
+                                <rect key="frame" x="322" y="530" width="258" height="30"/>
+                                <animations/>
+                                <state key="normal" title="获取当前建筑数据"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pzd-N1-Sfu">
+                                <rect key="frame" x="20" y="530" width="258" height="30"/>
+                                <animations/>
+                                <state key="normal" title="上传当前建筑数据"/>
+                            </button>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="4IO-Hj-b38" firstAttribute="top" secondItem="Pzd-N1-Sfu" secondAttribute="bottom" constant="40" id="0fy-lG-QoH"/>
+                            <constraint firstItem="vdm-Y3-iso" firstAttribute="leading" secondItem="gpF-Pr-VgW" secondAttribute="leading" id="9T3-B2-0HN"/>
+                            <constraint firstItem="4IO-Hj-b38" firstAttribute="top" secondItem="vdm-Y3-iso" secondAttribute="bottom" id="IiF-aj-MjU"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="j0K-QH-9Tj" secondAttribute="trailing" id="NKY-KR-Sbw"/>
+                            <constraint firstItem="4IO-Hj-b38" firstAttribute="top" secondItem="j0K-QH-9Tj" secondAttribute="bottom" constant="40" id="hnp-mJ-BS6"/>
+                            <constraint firstAttribute="trailing" secondItem="vdm-Y3-iso" secondAttribute="trailing" id="iCZ-t9-LX9"/>
+                            <constraint firstItem="Pzd-N1-Sfu" firstAttribute="leading" secondItem="gpF-Pr-VgW" secondAttribute="leadingMargin" id="mwS-Ki-k5q"/>
+                            <constraint firstItem="vdm-Y3-iso" firstAttribute="top" secondItem="gpF-Pr-VgW" secondAttribute="top" id="uEX-8q-Pgk"/>
+                            <constraint firstItem="j0K-QH-9Tj" firstAttribute="width" secondItem="Pzd-N1-Sfu" secondAttribute="width" id="ujU-wS-csQ"/>
+                            <constraint firstItem="j0K-QH-9Tj" firstAttribute="leading" secondItem="Pzd-N1-Sfu" secondAttribute="trailing" constant="44" id="xQz-uH-ZOr"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="logView" destination="vdm-Y3-iso" id="sQe-bM-5Zs"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Olp-d4-E8a" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5015" y="899.99999999999989"/>
+        </scene>
+        <!--Upload Map DataVC-->
+        <scene sceneID="KA9-nc-gvq">
+            <objects>
+                <viewController storyboardIdentifier="UploadMapDataVC" id="ixx-RU-iY2" customClass="UploadMapDataVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="QcE-bT-rBI"/>
+                        <viewControllerLayoutGuide type="bottom" id="ATJ-xv-Qg8"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="pxU-iW-Tuo">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UBL-Tk-eX3">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pqg-bF-hjo">
+                                <rect key="frame" x="20" y="530" width="258" height="30"/>
+                                <animations/>
+                                <state key="normal" title="上传当前地图数据"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SD8-LJ-dBk">
+                                <rect key="frame" x="322" y="530" width="258" height="30"/>
+                                <animations/>
+                                <state key="normal" title="获取当前地图数据"/>
+                            </button>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="SD8-LJ-dBk" firstAttribute="width" secondItem="pqg-bF-hjo" secondAttribute="width" id="1BF-h5-VEE"/>
+                            <constraint firstItem="ATJ-xv-Qg8" firstAttribute="top" secondItem="pqg-bF-hjo" secondAttribute="bottom" constant="40" id="4TM-Pk-kcO"/>
+                            <constraint firstItem="ATJ-xv-Qg8" firstAttribute="top" secondItem="UBL-Tk-eX3" secondAttribute="bottom" id="DY7-BH-G8K"/>
+                            <constraint firstItem="UBL-Tk-eX3" firstAttribute="top" secondItem="pxU-iW-Tuo" secondAttribute="top" id="HA5-RW-lCw"/>
+                            <constraint firstItem="pqg-bF-hjo" firstAttribute="leading" secondItem="pxU-iW-Tuo" secondAttribute="leadingMargin" id="Qa3-tp-7LP"/>
+                            <constraint firstAttribute="trailing" secondItem="UBL-Tk-eX3" secondAttribute="trailing" id="c6x-u3-HLv"/>
+                            <constraint firstItem="ATJ-xv-Qg8" firstAttribute="top" secondItem="SD8-LJ-dBk" secondAttribute="bottom" constant="40" id="ecx-Nh-hga"/>
+                            <constraint firstItem="SD8-LJ-dBk" firstAttribute="trailing" secondItem="pxU-iW-Tuo" secondAttribute="trailingMargin" id="g2o-uP-Wrf"/>
+                            <constraint firstItem="UBL-Tk-eX3" firstAttribute="leading" secondItem="pxU-iW-Tuo" secondAttribute="leading" id="jTD-A3-I9q"/>
+                            <constraint firstItem="SD8-LJ-dBk" firstAttribute="leading" secondItem="pqg-bF-hjo" secondAttribute="trailing" constant="44" id="nhA-7k-mfi"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="logView" destination="UBL-Tk-eX3" id="VnD-qe-Vf7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PeB-cZ-zRf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5015" y="899"/>
+        </scene>
+        <!--Upload Route DataVC-->
+        <scene sceneID="ZmG-FR-hD7">
+            <objects>
+                <viewController storyboardIdentifier="UploadRouteDataVC" id="vXp-eF-C9O" customClass="UploadRouteDataVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="XSn-2X-nSZ"/>
+                        <viewControllerLayoutGuide type="bottom" id="rSw-QR-RS8"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="M93-7j-cGT">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3CR-7r-YQt">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xiu-dl-g3u">
+                                <rect key="frame" x="20" y="530" width="258" height="30"/>
+                                <animations/>
+                                <state key="normal" title="上传当前路网数据"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="swv-XK-9Ae">
+                                <rect key="frame" x="322" y="530" width="258" height="30"/>
+                                <animations/>
+                                <state key="normal" title="获取当前路网数据"/>
+                            </button>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="swv-XK-9Ae" firstAttribute="width" secondItem="Xiu-dl-g3u" secondAttribute="width" id="06g-NV-S1M"/>
+                            <constraint firstItem="Xiu-dl-g3u" firstAttribute="leading" secondItem="M93-7j-cGT" secondAttribute="leadingMargin" id="1uc-H7-fMf"/>
+                            <constraint firstItem="swv-XK-9Ae" firstAttribute="trailing" secondItem="M93-7j-cGT" secondAttribute="trailingMargin" id="JZL-sT-9ON"/>
+                            <constraint firstItem="3CR-7r-YQt" firstAttribute="top" secondItem="M93-7j-cGT" secondAttribute="top" id="PES-bh-Ngo"/>
+                            <constraint firstItem="rSw-QR-RS8" firstAttribute="top" secondItem="Xiu-dl-g3u" secondAttribute="bottom" constant="40" id="PYo-xZ-pad"/>
+                            <constraint firstItem="swv-XK-9Ae" firstAttribute="leading" secondItem="Xiu-dl-g3u" secondAttribute="trailing" constant="44" id="VoS-b5-S5M"/>
+                            <constraint firstItem="3CR-7r-YQt" firstAttribute="leading" secondItem="M93-7j-cGT" secondAttribute="leading" id="WYm-L6-cOG"/>
+                            <constraint firstItem="swv-XK-9Ae" firstAttribute="width" secondItem="Xiu-dl-g3u" secondAttribute="width" id="Y2V-ny-KRL"/>
+                            <constraint firstItem="swv-XK-9Ae" firstAttribute="leading" secondItem="Xiu-dl-g3u" secondAttribute="trailing" constant="44" id="b1Q-wL-knM"/>
+                            <constraint firstAttribute="trailing" secondItem="3CR-7r-YQt" secondAttribute="trailing" id="eaE-rB-Dr5"/>
+                            <constraint firstItem="rSw-QR-RS8" firstAttribute="top" secondItem="swv-XK-9Ae" secondAttribute="bottom" constant="40" id="p85-ct-IlH"/>
+                            <constraint firstItem="rSw-QR-RS8" firstAttribute="top" secondItem="3CR-7r-YQt" secondAttribute="bottom" id="yuR-3v-1Wz"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="logView" destination="3CR-7r-YQt" id="zYy-7S-Y3s"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sOp-Ce-s2G" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5015" y="899.99999999999989"/>
+        </scene>
+    </scenes>
+</document>

@@ -35,6 +35,8 @@
     NSString *documentDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     NSLog(@"%@", documentDirectory);
     
+//    NSLog(@"Encryption: %@", [TYEncryption encryptString:@"lfadjkjaobajflajfoivoahgafafbafahklfjadlfa;fdjl;fajjfal;jhadprhq9h489hvf9hf9qh98ehfpqafh"]);
+    
     [TYMapEnvironment initMapEnvironment];
     [EnviromentManager switchToOriginal];
 

@@ -1,18 +1,20 @@
 {
     "MapInfo": [
+                
                 {
-                "cityID":"0021",
-                "buildingID":"00210011",
-                "mapID":"00210011B01",
-                "floorName":"B1",
-                "floorNumber":"-1",
-                "size_x":"320",
-                "size_y":"170",
-                "xmax":"13535990",
-                "xmin":"13535670",
-                "ymax":"3625365",
-                "ymin":"3625195"
-                }                
+                "cityID": "0021",
+                "buildingID": "00210011",
+                "mapID": "00210011F01",
+                "floorName": "F1",
+                "floorNumber": "1",
+                "size_x": "115",
+                "size_y": "57",
+                "xmax": "13537516",
+                "xmin": "13537401",
+                "ymax": "3636846",
+                "ymin": "3636789"
+                }
+                
                 ]
-
+    
 }

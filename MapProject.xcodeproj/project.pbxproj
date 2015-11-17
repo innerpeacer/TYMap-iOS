@@ -8,6 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		5702D7891BB3A8E80098397D /* TYMapData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5702D7881BB3A8E80098397D /* TYMapData.framework */; };
+		570ABA6A1BF9DD650006BC30 /* CallingApiVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 570ABA631BF9DD650006BC30 /* CallingApiVC.m */; };
+		570ABA6B1BF9DD650006BC30 /* TYPointConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 570ABA651BF9DD650006BC30 /* TYPointConverter.m */; };
+		570ABA6C1BF9DD650006BC30 /* UploadMapDataVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 570ABA671BF9DD650006BC30 /* UploadMapDataVC.m */; };
+		570ABA6D1BF9DD650006BC30 /* UploadRouteDataVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 570ABA691BF9DD650006BC30 /* UploadRouteDataVC.m */; };
+		570ABA701BF9DD910006BC30 /* ServerSyncVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 570ABA6F1BF9DD910006BC30 /* ServerSyncVC.m */; };
+		570ABA741BF9E3670006BC30 /* UploadCityBuildingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 570ABA731BF9E3670006BC30 /* UploadCityBuildingVC.m */; };
+		570ABA771BF9E3AD0006BC30 /* AddCityBuildingMapInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 570ABA761BF9E3AD0006BC30 /* AddCityBuildingMapInfoVC.m */; };
+		570ABA7A1BF9E4040006BC30 /* ServerSync.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 570ABA781BF9E4040006BC30 /* ServerSync.storyboard */; };
 		570DF18F1BDE86490028E25F /* TYBuildingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 570DF17F1BDE86490028E25F /* TYBuildingManager.m */; };
 		570DF1901BDE86490028E25F /* TYCityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 570DF1811BDE86490028E25F /* TYCityManager.m */; };
 		570DF1911BDE86490028E25F /* TYMapDBAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 570DF1831BDE86490028E25F /* TYMapDBAdapter.m */; };
@@ -94,6 +102,7 @@
 		572B98CC1BDA195500506A7E /* MapGeneratorDBAdapter.mm in Sources */ = {isa = PBXBuildFile; fileRef = 572B98CB1BDA195500506A7E /* MapGeneratorDBAdapter.mm */; };
 		573F900A1BC8E68F00F836B5 /* OfflineRouteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 573F90091BC8E68F00F836B5 /* OfflineRouteManager.m */; };
 		5740772A1BDF781C008D05CD /* BuildAllRouteNetworkVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 574077291BDF781C008D05CD /* BuildAllRouteNetworkVC.m */; };
+		57410F7A1BF8EC5800D5405F /* MKNetworkKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57410F791BF8EC5800D5405F /* MKNetworkKit.framework */; };
 		57494DDA1B61DAE7000B6F2C /* BaseControllerTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 57494DD31B61DAE7000B6F2C /* BaseControllerTableVC.m */; };
 		57494DDB1B61DAE7000B6F2C /* BaseLogVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 57494DD51B61DAE7000B6F2C /* BaseLogVC.m */; };
 		57494DE01B61DB08000B6F2C /* EncyptedCityVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 57494DDF1B61DB08000B6F2C /* EncyptedCityVC.m */; };
@@ -124,6 +133,10 @@
 		5771BEC01BE7016E00026873 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5771BEBF1BE7016E00026873 /* libsqlite3.0.tbd */; };
 		5771BEC31BE7051E00026873 /* GenerateWebMapFileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5771BEC21BE7051E00026873 /* GenerateWebMapFileVC.m */; };
 		5771BEC81BE75CE600026873 /* GenerateAllWebMapFileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5771BEC71BE75CE600026873 /* GenerateAllWebMapFileVC.m */; };
+		57852A711BF7AD8E00C65D89 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57852A701BF7AD8E00C65D89 /* ImageIO.framework */; };
+		57852A731BF7AD9400C65D89 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57852A721BF7AD9400C65D89 /* Security.framework */; };
+		57852A751BF7AD9D00C65D89 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57852A741BF7AD9D00C65D89 /* SystemConfiguration.framework */; };
+		57852A771BF7ADA600C65D89 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57852A761BF7ADA600C65D89 /* CFNetwork.framework */; };
 		578771221BBB911400F90D7B /* RouteNetworkDBAdapter.mm in Sources */ = {isa = PBXBuildFile; fileRef = 578771211BBB911400F90D7B /* RouteNetworkDBAdapter.mm */; };
 		578771291BBB914700F90D7B /* TYLink.m in Sources */ = {isa = PBXBuildFile; fileRef = 578771281BBB914700F90D7B /* TYLink.m */; };
 		5787712C1BBB915E00F90D7B /* RouteNetworkDataset.m in Sources */ = {isa = PBXBuildFile; fileRef = 5787712B1BBB915E00F90D7B /* RouteNetworkDataset.m */; };
@@ -168,6 +181,21 @@
 
 /* Begin PBXFileReference section */
 		5702D7881BB3A8E80098397D /* TYMapData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TYMapData.framework; path = ../../../../TYMapData.framework; sourceTree = "<group>"; };
+		570ABA621BF9DD650006BC30 /* CallingApiVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CallingApiVC.h; sourceTree = "<group>"; };
+		570ABA631BF9DD650006BC30 /* CallingApiVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CallingApiVC.m; sourceTree = "<group>"; };
+		570ABA641BF9DD650006BC30 /* TYPointConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYPointConverter.h; sourceTree = "<group>"; };
+		570ABA651BF9DD650006BC30 /* TYPointConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYPointConverter.m; sourceTree = "<group>"; };
+		570ABA661BF9DD650006BC30 /* UploadMapDataVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadMapDataVC.h; sourceTree = "<group>"; };
+		570ABA671BF9DD650006BC30 /* UploadMapDataVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadMapDataVC.m; sourceTree = "<group>"; };
+		570ABA681BF9DD650006BC30 /* UploadRouteDataVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadRouteDataVC.h; sourceTree = "<group>"; };
+		570ABA691BF9DD650006BC30 /* UploadRouteDataVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadRouteDataVC.m; sourceTree = "<group>"; };
+		570ABA6E1BF9DD910006BC30 /* ServerSyncVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerSyncVC.h; sourceTree = "<group>"; };
+		570ABA6F1BF9DD910006BC30 /* ServerSyncVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerSyncVC.m; sourceTree = "<group>"; };
+		570ABA721BF9E3670006BC30 /* UploadCityBuildingVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadCityBuildingVC.h; sourceTree = "<group>"; };
+		570ABA731BF9E3670006BC30 /* UploadCityBuildingVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadCityBuildingVC.m; sourceTree = "<group>"; };
+		570ABA751BF9E3AD0006BC30 /* AddCityBuildingMapInfoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddCityBuildingMapInfoVC.h; sourceTree = "<group>"; };
+		570ABA761BF9E3AD0006BC30 /* AddCityBuildingMapInfoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddCityBuildingMapInfoVC.m; sourceTree = "<group>"; };
+		570ABA791BF9E4040006BC30 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = ServerSync.storyboard; sourceTree = "<group>"; };
 		570DF17E1BDE86490028E25F /* TYBuildingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYBuildingManager.h; sourceTree = "<group>"; };
 		570DF17F1BDE86490028E25F /* TYBuildingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYBuildingManager.m; sourceTree = "<group>"; };
 		570DF1801BDE86490028E25F /* TYCityManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYCityManager.h; sourceTree = "<group>"; };
@@ -346,6 +374,7 @@
 		573F90091BC8E68F00F836B5 /* OfflineRouteManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OfflineRouteManager.m; sourceTree = "<group>"; };
 		574077281BDF781C008D05CD /* BuildAllRouteNetworkVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BuildAllRouteNetworkVC.h; path = RouteVC/BuildAllRouteNetworkVC.h; sourceTree = "<group>"; };
 		574077291BDF781C008D05CD /* BuildAllRouteNetworkVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BuildAllRouteNetworkVC.m; path = RouteVC/BuildAllRouteNetworkVC.m; sourceTree = "<group>"; };
+		57410F791BF8EC5800D5405F /* MKNetworkKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MKNetworkKit.framework; path = ../../../../../MKNetworkKit.framework; sourceTree = "<group>"; };
 		57494DD21B61DAE7000B6F2C /* BaseControllerTableVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseControllerTableVC.h; sourceTree = "<group>"; };
 		57494DD31B61DAE7000B6F2C /* BaseControllerTableVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseControllerTableVC.m; sourceTree = "<group>"; };
 		57494DD41B61DAE7000B6F2C /* BaseLogVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseLogVC.h; sourceTree = "<group>"; };
@@ -400,6 +429,10 @@
 		5771BEC21BE7051E00026873 /* GenerateWebMapFileVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenerateWebMapFileVC.m; sourceTree = "<group>"; };
 		5771BEC61BE75CE600026873 /* GenerateAllWebMapFileVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenerateAllWebMapFileVC.h; sourceTree = "<group>"; };
 		5771BEC71BE75CE600026873 /* GenerateAllWebMapFileVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenerateAllWebMapFileVC.m; sourceTree = "<group>"; };
+		57852A701BF7AD8E00C65D89 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		57852A721BF7AD9400C65D89 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		57852A741BF7AD9D00C65D89 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		57852A761BF7ADA600C65D89 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		578771201BBB911400F90D7B /* RouteNetworkDBAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RouteNetworkDBAdapter.h; sourceTree = "<group>"; };
 		578771211BBB911400F90D7B /* RouteNetworkDBAdapter.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RouteNetworkDBAdapter.mm; sourceTree = "<group>"; };
 		578771271BBB914700F90D7B /* TYLink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYLink.h; sourceTree = "<group>"; };
@@ -485,6 +518,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57852A771BF7ADA600C65D89 /* CFNetwork.framework in Frameworks */,
+				57852A751BF7AD9D00C65D89 /* SystemConfiguration.framework in Frameworks */,
+				57852A731BF7AD9400C65D89 /* Security.framework in Frameworks */,
+				57852A711BF7AD8E00C65D89 /* ImageIO.framework in Frameworks */,
+				57410F7A1BF8EC5800D5405F /* MKNetworkKit.framework in Frameworks */,
 				5771BEC01BE7016E00026873 /* libsqlite3.0.tbd in Frameworks */,
 				5702D7891BB3A8E80098397D /* TYMapData.framework in Frameworks */,
 				57F8F0911BBA9A7B00FE8637 /* libgeos.a in Frameworks */,
@@ -494,6 +532,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		570ABA611BF9DD040006BC30 /* ServerSync */ = {
+			isa = PBXGroup;
+			children = (
+				570ABA621BF9DD650006BC30 /* CallingApiVC.h */,
+				570ABA631BF9DD650006BC30 /* CallingApiVC.m */,
+				570ABA641BF9DD650006BC30 /* TYPointConverter.h */,
+				570ABA651BF9DD650006BC30 /* TYPointConverter.m */,
+				570ABA661BF9DD650006BC30 /* UploadMapDataVC.h */,
+				570ABA671BF9DD650006BC30 /* UploadMapDataVC.m */,
+				570ABA681BF9DD650006BC30 /* UploadRouteDataVC.h */,
+				570ABA691BF9DD650006BC30 /* UploadRouteDataVC.m */,
+				570ABA6E1BF9DD910006BC30 /* ServerSyncVC.h */,
+				570ABA6F1BF9DD910006BC30 /* ServerSyncVC.m */,
+				570ABA721BF9E3670006BC30 /* UploadCityBuildingVC.h */,
+				570ABA731BF9E3670006BC30 /* UploadCityBuildingVC.m */,
+				570ABA751BF9E3AD0006BC30 /* AddCityBuildingMapInfoVC.h */,
+				570ABA761BF9E3AD0006BC30 /* AddCityBuildingMapInfoVC.m */,
+			);
+			path = ServerSync;
+			sourceTree = "<group>";
+		};
 		570DF17D1BDE86030028E25F /* MapData */ = {
 			isa = PBXGroup;
 			children = (
@@ -872,6 +931,7 @@
 		57672D3E1B55FF8000DAD219 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				570ABA611BF9DD040006BC30 /* ServerSync */,
 				57C777841B73439C0087CA14 /* UI */,
 				57494DD11B61DAE7000B6F2C /* HelperVC */,
 				576AEE971B61D97100D55CA4 /* MapDevelopment */,
@@ -897,6 +957,7 @@
 		57672D5E1B55FFF900DAD219 /* libs */ = {
 			isa = PBXGroup;
 			children = (
+				57410F791BF8EC5800D5405F /* MKNetworkKit.framework */,
 				57672D5F1B55FFF900DAD219 /* FMDB */,
 			);
 			path = libs;
@@ -934,6 +995,7 @@
 			children = (
 				57672EEB1B56002900DAD219 /* Main.storyboard */,
 				574EE2C51B723C30005A6482 /* Launch Screen.xib */,
+				570ABA781BF9E4040006BC30 /* ServerSync.storyboard */,
 			);
 			path = Base.lproj;
 			sourceTree = "<group>";
@@ -941,6 +1003,10 @@
 		57672EF71B56006E00DAD219 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				57852A761BF7ADA600C65D89 /* CFNetwork.framework */,
+				57852A741BF7AD9D00C65D89 /* SystemConfiguration.framework */,
+				57852A721BF7AD9400C65D89 /* Security.framework */,
+				57852A701BF7AD8E00C65D89 /* ImageIO.framework */,
 				57F8F0901BBA9A7B00FE8637 /* libgeos.a */,
 				5702D7881BB3A8E80098397D /* TYMapData.framework */,
 				57672EFC1B5600B900DAD219 /* Default-568h@2x.png */,
@@ -1197,6 +1263,7 @@
 				574EE2C71B723C30005A6482 /* Launch Screen.xib in Resources */,
 				57672E341B55FFF900DAD219 /* ArcGIS.bundle in Resources */,
 				57672EFF1B56046300DAD219 /* MapResource in Resources */,
+				570ABA7A1BF9E4040006BC30 /* ServerSync.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1232,11 +1299,13 @@
 				570DF1921BDE86490028E25F /* TYMapFeatureData.mm in Sources */,
 				57672E2F1B55FFF900DAD219 /* FMDatabase.m in Sources */,
 				572407951BC9A8A10050BA41 /* TYGeometry.m in Sources */,
+				570ABA6D1BF9DD650006BC30 /* UploadRouteDataVC.m in Sources */,
 				571AC4711B55FED900E9FF7D /* AppDelegate.mm in Sources */,
 				57D711E91BBB12BD00975CE5 /* RouteNDBuildingTool.m in Sources */,
 				572407C41BC9A8A10050BA41 /* TYRoomLayer.m in Sources */,
 				570DF1901BDE86490028E25F /* TYCityManager.m in Sources */,
 				57D167911BBA44FF004BE6B9 /* TYBuildingLink.m in Sources */,
+				570ABA701BF9DD910006BC30 /* ServerSyncVC.m in Sources */,
 				572407A71BC9A8A10050BA41 /* TYRouteLayer.m in Sources */,
 				574994431BEEF1140064F831 /* TYParkingLayer.m in Sources */,
 				579963281BDE956800CBDF8E /* TYBuildingJsonParser.m in Sources */,
@@ -1251,6 +1320,7 @@
 				572407C91BC9A8E60050BA41 /* MD5Utils.mm in Sources */,
 				572407A91BC9A8A10050BA41 /* TYFacilityLabel.m in Sources */,
 				57672E331B55FFF900DAD219 /* FMResultSet.m in Sources */,
+				570ABA741BF9E3670006BC30 /* UploadCityBuildingVC.m in Sources */,
 				57494DE01B61DB08000B6F2C /* EncyptedCityVC.m in Sources */,
 				57672D081B55FF4A00DAD219 /* TYPoiDBAdapter.m in Sources */,
 				572407B81BC9A8A10050BA41 /* TYRenderingScheme.m in Sources */,
@@ -1306,16 +1376,20 @@
 				57CC56D61BCBB11700B5EE0A /* TestCppRouteNetworkVC.mm in Sources */,
 				57C03F5A1B61E19800490179 /* BaseMapVC.m in Sources */,
 				576AEEAC1B61D97100D55CA4 /* MapVC.m in Sources */,
+				570ABA6C1BF9DD650006BC30 /* UploadMapDataVC.m in Sources */,
 				57EB45791B73D2B50050956F /* RATreeView+TableViewDataSource.m in Sources */,
 				572407AF1BC9A8A10050BA41 /* TYTextLabelLayer.m in Sources */,
 				574F5E401BDAB2E5001967F6 /* IPXMapDataDBAdapter.cpp in Sources */,
 				574F5E3D1BDAAE07001967F6 /* IPXFeatureRecord.cpp in Sources */,
+				570ABA6A1BF9DD650006BC30 /* CallingApiVC.m in Sources */,
+				570ABA6B1BF9DD650006BC30 /* TYPointConverter.m in Sources */,
 				57494DDA1B61DAE7000B6F2C /* BaseControllerTableVC.m in Sources */,
 				570DF18F1BDE86490028E25F /* TYBuildingManager.m in Sources */,
 				57B953391BDDFB0700D9D318 /* GenerateAllMapDBVC.m in Sources */,
 				57EB457B1B73D2B50050956F /* RATreeView+UIScrollView.m in Sources */,
 				57F8F08B1BBA944D00FE8637 /* ShpRouteDBAdapter.mm in Sources */,
 				572408DE1BC9B3370050BA41 /* TYOfflineRouteManager.mm in Sources */,
+				570ABA771BF9E3AD0006BC30 /* AddCityBuildingMapInfoVC.m in Sources */,
 				572407B91BC9A8A10050BA41 /* TYBrand.m in Sources */,
 				57F8DE5F1B74553100143739 /* OriginalMapVC.m in Sources */,
 				578771221BBB911400F90D7B /* RouteNetworkDBAdapter.mm in Sources */,
@@ -1359,6 +1433,14 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		570ABA781BF9E4040006BC30 /* ServerSync.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				570ABA791BF9E4040006BC30 /* Base */,
+			);
+			name = ServerSync.storyboard;
+			sourceTree = "<group>";
+		};
 		574EE2C51B723C30005A6482 /* Launch Screen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (

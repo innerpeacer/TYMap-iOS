@@ -55,9 +55,7 @@ typedef enum {
         IPXRouteNetworkDBAdapter *db = new IPXRouteNetworkDBAdapter([dbPath UTF8String]);
         db->open();
         networkDataset = db->readRouteNetworkDataset();
-        
         cout << networkDataset->toString() << endl;
-        
         db->close();
         delete db;
     }

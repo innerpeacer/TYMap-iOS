@@ -38,6 +38,38 @@
             </objects>
             <point key="canvasLocation" x="849" y="542"/>
         </scene>
+        <!--Root View Controller-->
+        <scene sceneID="17j-as-Skj">
+            <objects>
+                <tableViewController id="FCt-kL-YNU" customClass="ServerSyncVC" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Ueb-Zh-Feo">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="M4G-g7-z6p">
+                                <rect key="frame" x="0.0" y="86" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="M4G-g7-z6p" id="xex-bF-PJG">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <animations/>
+                                </tableViewCellContentView>
+                                <animations/>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="FCt-kL-YNU" id="wzi-hU-dux"/>
+                            <outlet property="delegate" destination="FCt-kL-YNU" id="IxH-bb-OQ3"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Root View Controller" id="ek2-Yh-zri"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="J4l-r6-Qfe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="863" y="-262"/>
+        </scene>
         <!--MapVC-->
         <scene sceneID="SIb-a9-MRP">
             <objects>
@@ -71,7 +103,42 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NlX-k3-m6J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2331" y="-342"/>
+            <point key="canvasLocation" x="3143" y="-342"/>
+        </scene>
+        <!--Calling ApiVC-->
+        <scene sceneID="5Bb-4H-aZy">
+            <objects>
+                <viewController storyboardIdentifier="CallingApiVC" id="x6H-DK-mU5" customClass="CallingApiVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="IaJ-PZ-XnI"/>
+                        <viewControllerLayoutGuide type="bottom" id="VsE-TE-67b"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="dMh-ff-BvS">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="47J-cp-cq0" customClass="TYMapView">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="47J-cp-cq0" secondAttribute="trailing" id="4YT-HA-0H9"/>
+                            <constraint firstItem="47J-cp-cq0" firstAttribute="leading" secondItem="dMh-ff-BvS" secondAttribute="leading" id="ECy-0s-Xgx"/>
+                            <constraint firstItem="VsE-TE-67b" firstAttribute="top" secondItem="47J-cp-cq0" secondAttribute="bottom" id="LfU-8a-PI2"/>
+                            <constraint firstItem="47J-cp-cq0" firstAttribute="top" secondItem="dMh-ff-BvS" secondAttribute="top" id="ahk-WD-fqi"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="47J-cp-cq0" id="s2L-mG-MAd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fKG-VN-xHz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3143" y="-342"/>
         </scene>
         <!--CreatePOI DatabaseVC-->
         <scene sceneID="Fkd-KF-7Nf">
@@ -138,7 +205,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mw4-cR-QMK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4247" y="74"/>
+            <point key="canvasLocation" x="5059" y="74"/>
         </scene>
         <!--Map EncryptionVC-->
         <scene sceneID="Zhw-8h-CYn">
@@ -293,7 +360,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dal-Qd-l4x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3435" y="74"/>
+            <point key="canvasLocation" x="4247" y="74"/>
         </scene>
         <!--Offline Map RouteVC-->
         <scene sceneID="vXl-Tz-svR">
@@ -411,7 +478,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Qc-Ix-Ml5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3435" y="-710"/>
+            <point key="canvasLocation" x="4247" y="-710"/>
         </scene>
         <!--Map CalloutVC-->
         <scene sceneID="jxj-cV-ieD">
@@ -554,6 +621,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
+                        <segue destination="SZ0-2D-9tA" kind="relationship" relationship="viewControllers" id="bkW-YS-Mqh"/>
                         <segue destination="5pT-8B-Y0o" kind="relationship" relationship="viewControllers" id="gvB-Bw-Ojd"/>
                         <segue destination="h62-JC-gVW" kind="relationship" relationship="viewControllers" id="A52-qu-wKi"/>
                         <segue destination="mic-8W-PPN" kind="relationship" relationship="viewControllers" id="8H2-WF-9PD"/>
@@ -1185,10 +1253,31 @@
             </objects>
             <point key="canvasLocation" x="2397" y="3860"/>
         </scene>
+        <!--地图同步-->
+        <scene sceneID="mtj-3w-07l">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="SZ0-2D-9tA" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="地图同步" image="server_sync" id="ApS-GW-wOj"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="tHL-J9-DPA">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="FCt-kL-YNU" kind="relationship" relationship="rootViewController" id="CV5-Jw-Vd1"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Vav-Ns-Hp2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="51" y="-262"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Lock" width="30" height="30"/>
         <image name="development" width="30" height="30"/>
         <image name="map" width="30" height="30"/>
+        <image name="server_sync" width="30" height="30"/>
     </resources>
 </document>

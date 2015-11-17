@@ -55,7 +55,10 @@
                                  @[@"生成所有地图数据库",@"GenerateAllMapDBVC"],
                                  @[@"生成Web地图文件", @"GenerateWebMapFileVC"],
                                  @[@"生成所有Web地图文件", @"GenerateAllWebMapFileVC"],
+                                 @[@"调用网络接口", @"CallingApiVC"]
+                                 
                                  ];
+    
     self.objects = [[NSMutableArray alloc] init];
     self.controllerDict = [[NSMutableDictionary alloc] init];
     
@@ -68,7 +71,7 @@
         [self.controllerDict setObject:storyboardID forKey:name];
     }
     
-//    [self tableView:self.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:12 inSection:0]];
+    [self tableView:self.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:13 inSection:0]];
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"设置" style:UIBarButtonItemStyleBordered target:self action:@selector(choosingPlace:)];
     
