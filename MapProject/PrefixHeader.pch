@@ -9,12 +9,21 @@
 #ifndef MapProject_PrefixHeader_pch
 #define MapProject_PrefixHeader_pch
 
+#import "TYApi.h"
+
 #define TRIAL_USER_ID @"ty4e13f85911a44a75"
 #define TRIAL_EXPRIED_DATE @"20160601"
-
 #define SUPER_USER_ID @"ty943b41bc48ed4aec"
 
-#define SERVER_HOST_NAME @"123.56.41.94"
-#define LOCAL_HOST_NAME @"localhost:8112"
+#define USE_REMOTE_HOST 0
+
+#if USE_REMOTE_HOST
+#define HOST_NAME @"123.56.41.94"
+#else
+#define HOST_NAME @"localhost:8112"
+#endif
+
+//#define SERVER_HOST_NAME @"123.56.41.94"
+//#define LOCAL_HOST_NAME @"localhost:8112"
 
 #endif

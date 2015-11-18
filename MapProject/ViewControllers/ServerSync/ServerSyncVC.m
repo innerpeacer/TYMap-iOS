@@ -25,8 +25,8 @@
     self.title = @"地图同步";
     
     NSArray *viewControllers = @[
-                                 @[@"上传城市建筑数据", @"UploadAllCityBuildingVC"],
-                                 @[@"上传城市-建筑-地图信息", @"AddCityBuildingMapInfoVC"],
+                                 @[@"上传所有城市建筑数据", @"UploadAllCityBuildingVC"],
+                                 @[@"上传当前城市-建筑-地图信息", @"AddCityBuildingMapInfoVC"],
                                  @[@"上传地图数据", @"UploadMapDataVC"],
                                  @[@"上传路网数据", @"UploadRouteDataVC"],
 //                                 @[@"生成POI数据库",@"CreatePOIDatabaseVC" ],
@@ -57,7 +57,7 @@
         [self.controllerDict setObject:storyboardID forKey:name];
     }
     
-//    [self tableView:self.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:13 inSection:0]];
+    [self tableView:self.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

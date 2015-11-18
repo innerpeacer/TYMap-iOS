@@ -8,13 +8,14 @@
 
 #import <Foundation/Foundation.h>
 #import <ArcGIS/ArcGIS.h>
+#import "TYMapInfo.h"
 
 @interface TYPathCalibration : NSObject
 
-- (id)initWithFloorID:(NSString *)floorID;
+//- (id)initWithFloorID:(NSString *)floorID;
+- (id)initWithMapInfo:(TYMapInfo *)mapInfo;
+- (void)setBufferWidth:(double)width;
 
 - (AGSPoint *)calibrationPoint:(AGSPoint *)point;
-
-- (void)setBufferWidth:(double)width;
 
 @end

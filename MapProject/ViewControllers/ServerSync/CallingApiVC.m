@@ -14,6 +14,8 @@
 #import "TYMapInfo.h"
 #import "LicenseGenerator.h"
 #import "TYArcGISDrawer.h"
+
+#import "TYApi.h"
 //#import "MKNetworkKit.h"
 #import <MKNetworkKit/MKNetworkKit.h>
 
@@ -58,9 +60,8 @@
     buildingID = self.currentBuilding.buildingID;
     license = [LicenseGenerator generateLicenseForUserID:userID Building:buildingID ExpiredDate:TRIAL_EXPRIED_DATE];
     
-    hostName = LOCAL_HOST_NAME;
-    hostName = SERVER_HOST_NAME;
-    apiPath = [[NSString alloc] initWithFormat:@"/TYMapServerManager/beacon/GetLocatingBeacons"];
+    hostName = HOST_NAME;
+    apiPath = TY_API_GET_LOCATING_BEACONS;
 
     [self testGetLocatingBeaconsUsingHttpPost];
 }

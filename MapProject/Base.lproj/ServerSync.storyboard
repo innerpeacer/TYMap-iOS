@@ -29,11 +29,17 @@
                                 <rect key="frame" x="20" y="530" width="258" height="30"/>
                                 <animations/>
                                 <state key="normal" title="上传城市-建筑数据"/>
+                                <connections>
+                                    <action selector="uploadCitiesAndBuildings:" destination="TQm-5S-LZQ" eventType="touchUpInside" id="psO-Se-uyW"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xi7-78-Slb">
                                 <rect key="frame" x="322" y="530" width="258" height="30"/>
                                 <animations/>
                                 <state key="normal" title="获取数据"/>
+                                <connections>
+                                    <action selector="getCitiesAndBuildings:" destination="TQm-5S-LZQ" eventType="touchUpInside" id="Ioa-3x-zxd"/>
+                                </connections>
                             </button>
                         </subviews>
                         <animations/>

@@ -152,9 +152,6 @@
     
     startDate = [NSDate date];
     
-    startLocalPoint = [TYLocalPoint pointWithX:13402386.8918 Y:4287405.314801339 Floor:1];
-    endLocalPoint = [TYLocalPoint pointWithX:13402418.04687074 Y:4287369.954955366 Floor:1];
-    
 //    startPoint = new TYLocalPoint(13275974.30287264, 2989071.967726886, 3);
 //    endPoint = new TYLocalPoint(13275987.1889, 2989087.670699999, 3);
     
