@@ -29,6 +29,10 @@
     
     AGSGraphicsLayer *pathLayer;
     AGSGraphicsLayer *hintLayer;
+    
+    NSArray *targetParkingSpaces;
+    NSMutableArray *occupiedParkingSpaces;
+    NSMutableArray *availableParkingSpaces;
 }
 
 
@@ -42,6 +46,22 @@
     self.currentBuilding = [TYUserDefaults getDefaultBuilding];
     self.allMapInfos = [TYMapInfo parseAllMapInfo:self.currentBuilding];
     
+    
+//    targetParkingSpaces = @[@"00100003B0310305", @"00100003B0310320", @"00100003B0310297", @"00100003B0310301", @"00100003B0310318", @"00100003B0310304", @"00100003B0310302", @"00100003B0310319", @"00100003B0310299", @"00100003B0310308", @"00100003B0310329", @"00100003B0310307", @"00100003B0310310", @"00100003B0310324", @"00100003B0310312", @"00100003B0310313", @"00100003B0310325", @"00100003B0310314"];
+    targetParkingSpaces = @[@"00100003B0210266", @"00100003B0210281", @"00100003B0210258", @"00100003B0210262", @"00100003B0210279", @"00100003B0210265", @"00100003B0210263", @"00100003B0210280", @"00100003B0210260", @"00100003B0210275", @"00100003B0210286", @"00100003B0210274", @"00100003B0210273", @"00100003B0210285", @"00100003B0210271", @"00100003B0210268", @"00100003B0210290", @"00100003B0210269"];
+    occupiedParkingSpaces = [NSMutableArray array];
+    availableParkingSpaces = [NSMutableArray array];
+    for (NSString *poiID in targetParkingSpaces) {
+        int status = arc4random()%2;
+        if (status == 0) {
+            [occupiedParkingSpaces addObject:poiID];
+        } else {
+            [availableParkingSpaces addObject:poiID];
+        }
+    }
+
+    
+    
     [super viewDidLoad];
     
     pathLayer = [AGSGraphicsLayer graphicsLayer];
@@ -53,26 +73,14 @@
     hintLayer = [AGSGraphicsLayer graphicsLayer];
     [self.mapView addMapLayer:hintLayer];
     
+
     
 }
 
 - (void)TYMapView:(TYMapView *)mapView didFinishLoadingFloor:(TYMapInfo *)mapInfo
 {
-    NSArray *allParkingSpaces = [mapView getParkingSpacesOnCurrentFloor];
-    
-    AGSSimpleFillSymbol *emptySymbol = [AGSSimpleFillSymbol simpleFillSymbolWithColor:[UIColor greenColor] outlineColor:[UIColor whiteColor]];
-    AGSSimpleFillSymbol *ocuupiedSymbol = [AGSSimpleFillSymbol simpleFillSymbolWithColor:[UIColor redColor] outlineColor:[UIColor whiteColor]];
-    for (TYPoi *poi in allParkingSpaces) {
-        int status = arc4random()%2;
-//        NSLog(@"%d", status);
-        if (status == 0) {
-            [mapView.parkingLayer addGraphic:[AGSGraphic graphicWithGeometry:poi.geometry symbol:emptySymbol attributes:nil]];
-        } else {
-            [mapView.parkingLayer addGraphic:[AGSGraphic graphicWithGeometry:poi.geometry symbol:ocuupiedSymbol attributes:nil]];
-        }
-    }
+    [self.mapView showOccupiedParkingSpaces:occupiedParkingSpaces AvailableParkingSpaces:availableParkingSpaces];
 
-    
     pathCalibration = [[TYPathCalibration alloc] initWithMapInfo:mapInfo];
     
     [pathLayer removeAllGraphics];

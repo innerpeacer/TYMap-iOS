@@ -8,6 +8,54 @@
 
 #import "TYParkingLayer.h"
 
+@interface TYParkingLayer()
+{
+    UIColor *occupiedColor;
+    UIColor *availableColor;
+    
+    AGSSimpleFillSymbol *occupiedFillSymbol;
+    AGSSimpleFillSymbol *availableFillSymbol;
+}
+
+@end
+
 @implementation TYParkingLayer
+
+- (id)initWithSpatialReference:(AGSSpatialReference *)sr
+{
+    self = [super initWithSpatialReference:sr];
+    if (self) {
+        occupiedColor = [UIColor redColor];
+        availableColor = [UIColor greenColor];
+        
+        occupiedFillSymbol = [AGSSimpleFillSymbol simpleFillSymbolWithColor:occupiedColor outlineColor:[UIColor whiteColor]];
+        availableFillSymbol = [AGSSimpleFillSymbol simpleFillSymbolWithColor:availableColor outlineColor:[UIColor whiteColor]];
+    }
+    return self;
+}
+
+- (void)setOccupiedParkingColor:(UIColor *)color
+{
+    occupiedColor = color;
+    occupiedFillSymbol = [AGSSimpleFillSymbol simpleFillSymbolWithColor:occupiedColor outlineColor:[UIColor whiteColor]];
+
+}
+
+- (void)setAvailableParkingColor:(UIColor *)color
+{
+    availableColor = color;
+    availableFillSymbol = [AGSSimpleFillSymbol simpleFillSymbolWithColor:availableColor outlineColor:[UIColor whiteColor]];
+}
+
+- (AGSSimpleFillSymbol *)getOccupiedParkingSymbol
+{
+    return occupiedFillSymbol;
+}
+
+- (AGSSimpleFillSymbol *)getAvailableParkingSymbol
+{
+    return availableFillSymbol;
+}
+
 
 @end

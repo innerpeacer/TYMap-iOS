@@ -36,7 +36,7 @@
     TYRenderingScheme *renderingScheme;
     
     TYStructureGroupLayer *structureGroupLayer;
-    
+    TYParkingLayer *parkingLayer;
     TYLabelGroupLayer *labelGroupLayer;
     
     TYLocationLayer *locationLayer;
@@ -71,6 +71,47 @@
 
 
 @implementation TYMapView
+
+
+- (void)setOccupiedColor:(UIColor *)color
+{
+    [parkingLayer setOccupiedParkingColor:color];
+}
+
+- (void)setAvailableColor:(UIColor *)color
+{
+    [parkingLayer setAvailableParkingColor:color];
+}
+
+- (void)showOccupiedParkingSpaces:(NSArray *)occupiedArray AvailableParkingSpaces:(NSArray *)availableArray
+{
+    [parkingLayer removeAllGraphics];
+    
+    NSLog(@"%d", (int)occupiedArray.count);
+    NSLog(@"%d", (int)availableArray.count);
+    
+    NSLog(@"%@", occupiedArray);
+    NSLog(@"%@", availableArray);
+
+    AGSFeatureSet *featureSet = [mapDataDict objectForKey:KEY_LAYER_ROOM];
+    for (AGSGraphic *g in featureSet.features) {
+        if ([[g attributeForKey:GRAPHIC_ATTRIBUTE_CATEGORY_ID] isEqualToString:CATEGORY_ID_FOR_PARKING_SPACE]) {
+            NSString *poiID = [g attributeForKey:GRAPHIC_ATTRIBUTE_POI_ID];
+            if ([occupiedArray containsObject:poiID]) {
+                [parkingLayer addGraphic:[AGSGraphic graphicWithGeometry:g.geometry symbol:[parkingLayer getOccupiedParkingSymbol] attributes:nil]];
+            }
+            
+            if ([availableArray containsObject:poiID]) {
+                [parkingLayer addGraphic:[AGSGraphic graphicWithGeometry:g.geometry symbol:[parkingLayer getAvailableParkingSymbol] attributes:nil]];
+            }
+        }
+    }
+}
+
+- (void)hideParkingSpaces
+{
+    [parkingLayer removeAllGraphics];
+}
 
 - (void)setPathCalibrationEnabled:(BOOL)enabled
 {
@@ -186,7 +227,7 @@
     [self readMapDataFromDBWithInfo:info];
 //    NSLog(@"Load Time For DB: %f", [[NSDate date] timeIntervalSinceDate:now]);
 
-    [_parkingLayer removeAllGraphics];
+    [parkingLayer removeAllGraphics];
     [structureGroupLayer loadContents:mapDataDict];
     [labelGroupLayer loadContents:mapDataDict];
     
@@ -274,10 +315,13 @@
     structureGroupLayer = [TYStructureGroupLayer structureLayerWithRenderingScheme:renderingScheme SpatialReference:spatialReference];
     [self addMapLayer:structureGroupLayer.floorLayer withName:LAYER_NAME_FLOOR];
     [self addMapLayer:structureGroupLayer.roomLayer withName:LAYER_NAME_ROOM];
+    
+    parkingLayer = [[TYParkingLayer alloc] initWithSpatialReference:spatialReference];
+    [self addMapLayer:parkingLayer withName:LAYER_NAME_PARKING];
+    
     [self addMapLayer:structureGroupLayer.assetLayer withName:LAYER_NAME_ASSET];
     
-    _parkingLayer = [AGSGraphicsLayer graphicsLayer];
-    [self addMapLayer:_parkingLayer withName:LAYER_NAME_PARKING];
+
     
     labelGroupLayer = [TYLabelGroupLayer labelGroupLayerWithRenderingScheme:renderingScheme SpatialReference:spatialReference];
     labelGroupLayer.mapView = self;

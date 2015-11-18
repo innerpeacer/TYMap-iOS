@@ -129,8 +129,8 @@ typedef enum {
  */
 @property (nonatomic, readonly) TYMapInfo *currentMapInfo;
 
-@property (nonatomic, readonly) TYParkingLayer *parkingLayer;
-- (NSArray *)getParkingSpacesOnCurrentFloor;
+//@property (nonatomic, readonly) TYParkingLayer *parkingLayer;
+//- (NSArray *)getParkingSpacesOnCurrentFloor;
 
 /**
  *  在POI被点选时是否高亮显示，默认为NO
@@ -371,10 +371,15 @@ typedef enum {
  */
 - (TYPoi *)extractRoomPoiOnCurrentFloorWithX:(double)x Y:(double)y;
 
-
 - (void)setPathCalibrationEnabled:(BOOL)enabled;
 - (void)setPathCalibrationBuffer:(double)bufferWidth;
 - (AGSPoint *)getCalibratedPoint:(AGSPoint *)point;
+
+
+- (void)setOccupiedColor:(UIColor *)color;
+- (void)setAvailableColor:(UIColor *)color;
+- (void)showOccupiedParkingSpaces:(NSArray *)occupiedArray AvailableParkingSpaces:(NSArray *)availableArray;
+- (void)hideParkingSpaces;
 
 @end
 

@@ -10,7 +10,10 @@
 
 @interface TYParkingLayer : AGSGraphicsLayer
 
-@property (nonatomic, strong) UIColor *ocuupiedColor;
-@property (nonatomic, strong) UIColor *availableColor;
+- (void)setOccupiedParkingColor:(UIColor *)color;
+- (void)setAvailableParkingColor:(UIColor *)color;
+
+- (AGSSimpleFillSymbol *)getOccupiedParkingSymbol;
+- (AGSSimpleFillSymbol *)getAvailableParkingSymbol;
 
 @end
