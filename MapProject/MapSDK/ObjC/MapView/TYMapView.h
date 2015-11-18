@@ -368,5 +368,10 @@ typedef enum {
  */
 - (TYPoi *)extractRoomPoiOnCurrentFloorWithX:(double)x Y:(double)y;
 
+
+- (void)setPathCalibrationEnabled:(BOOL)enabled;
+- (void)setPathCalibrationBuffer:(double)bufferWidth;
+- (AGSPoint *)getCalibratedPoint:(AGSPoint *)point;
+
 @end
 

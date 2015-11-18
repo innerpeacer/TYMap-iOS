@@ -27,6 +27,9 @@
 #import "TYLicenseValidation.h"
 
 #import "TYMapFeatureData.h"
+#import "TYPathCalibration.h"
+
+#define DEFAULT_BUFFER_WIDTH 2.0
 
 @interface TYMapView() <AGSMapViewTouchDelegate, AGSMapViewLayerDelegate, AGSCalloutDelegate>
 {
@@ -54,6 +57,12 @@
     
     NSString *userID;
     NSString *mapLicense;
+    
+    
+    // Path Calibration
+    BOOL isPathCalibrationEnabled;
+    double pathCalibrationBuffer;
+    TYPathCalibration *pathCalibration;
 }
 
 @property (nonatomic, assign) BOOL autoCenterEnabled;
@@ -62,6 +71,25 @@
 
 
 @implementation TYMapView
+
+- (void)setPathCalibrationEnabled:(BOOL)enabled
+{
+    isPathCalibrationEnabled = enabled;
+}
+
+- (void)setPathCalibrationBuffer:(double)bufferWidth
+{
+    pathCalibrationBuffer = bufferWidth;
+}
+
+- (AGSPoint *)getCalibratedPoint:(AGSPoint *)point
+{
+    if (isPathCalibrationEnabled) {
+        return [pathCalibration calibrationPoint:point];
+    } else {
+        return point;
+    }
+}
 
 - (void)enableAutoCenter
 {
@@ -89,14 +117,10 @@
 - (void)reloadMapView
 {
     if (self.currentMapInfo) {
-        [self loadMapDataWithInfo:self.currentMapInfo];
+        [self readMapDataFromDBWithInfo:self.currentMapInfo];
         
         [structureGroupLayer loadContents:mapDataDict];
         [labelGroupLayer loadContents:mapDataDict];
-        
-//        [structureGroupLayer loadContentsWithInfo:self.currentMapInfo];
-//        [labelGroupLayer loadContentsWithInfo:self.currentMapInfo];
-        
         if (self.mapDelegate && [self.mapDelegate respondsToSelector:@selector(TYMapView:didFinishLoadingFloor:)]) {
             [labelGroupLayer updateLabels];
             [self.mapDelegate TYMapView:self didFinishLoadingFloor:_currentMapInfo];
@@ -108,68 +132,6 @@
 {
     TYMapFeatureData *featureData = [[TYMapFeatureData alloc] initWithBuilding:_building];
     mapDataDict = [featureData getAllMapDataOnFloor:info.floorNumber];
-}
-
-- (void)loadMapDataWithInfo:(TYMapInfo *)info
-{
-    NSString *dataPath = [TYMapFileManager getMapDataPath:info];
-    NSError *error;
-    NSString *jsonString;
-    if ([TYMapEnvironment useEncryption]) {
-        jsonString = [TYEncryption descriptFile:dataPath];
-    } else {
-        jsonString = [NSString stringWithContentsOfFile:dataPath encoding:NSUTF8StringEncoding error:&error];
-    }
-    
-    if (error) {
-        NSLog(@"%@", error.localizedDescription);
-        //        return;
-    }
-    
-    NSDate *now = [NSDate date];
-    AGSSBJsonParser *parser = [[AGSSBJsonParser alloc] init];
-    NSDictionary *dict = [parser objectWithString:jsonString];
-    NSLog(@"Parse Time: %f", [[NSDate date] timeIntervalSinceDate:now]);
-    
-    NSMutableDictionary *dataDict = [[NSMutableDictionary alloc] init];
-    
-    id object;
-    object = [dict objectForKey:KEY_LAYER_FLOOR];
-    if ([object isKindOfClass:[NSString class]]) {
-        [dataDict setObject:[[AGSFeatureSet alloc] init] forKey:KEY_LAYER_FLOOR];
-    } else {
-        [dataDict setObject:[[AGSFeatureSet alloc] initWithJSON:[dict objectForKey:KEY_LAYER_FLOOR]] forKey:KEY_LAYER_FLOOR];
-    }
-    
-    object = [dict objectForKey:KEY_LAYER_ROOM];
-    if ([object isKindOfClass:[NSString class]]) {
-        [dataDict setObject:[[AGSFeatureSet alloc] init] forKey:KEY_LAYER_ROOM];
-    } else {
-        [dataDict setObject:[[AGSFeatureSet alloc] initWithJSON:[dict objectForKey:KEY_LAYER_ROOM]] forKey:KEY_LAYER_ROOM];
-    }
-    
-    object = [dict objectForKey:KEY_LAYER_ASSET];
-    if ([object isKindOfClass:[NSString class]]) {
-        [dataDict setObject:[[AGSFeatureSet alloc] init] forKey:KEY_LAYER_ASSET];
-    } else {
-        [dataDict setObject:[[AGSFeatureSet alloc] initWithJSON:[dict objectForKey:KEY_LAYER_ASSET]] forKey:KEY_LAYER_ASSET];
-    }
-    
-    object = [dict objectForKey:KEY_LAYER_FACILITY];
-    if ([object isKindOfClass:[NSString class]]) {
-        [dataDict setObject:[[AGSFeatureSet alloc] init] forKey:KEY_LAYER_FACILITY];
-    } else {
-        [dataDict setObject:[[AGSFeatureSet alloc] initWithJSON:[dict objectForKey:KEY_LAYER_FACILITY]] forKey:KEY_LAYER_FACILITY];
-    }
-    
-    object = [dict objectForKey:KEY_LAYER_LABEL];
-    if ([object isKindOfClass:[NSString class]]) {
-        [dataDict setObject:[[AGSFeatureSet alloc] init] forKey:KEY_LAYER_LABEL];
-    } else {
-        [dataDict setObject:[[AGSFeatureSet alloc] initWithJSON:[dict objectForKey:KEY_LAYER_LABEL]] forKey:KEY_LAYER_LABEL];
-    }
-    
-    mapDataDict = [NSDictionary dictionaryWithDictionary:dataDict];
 }
 
 - (void)setFloorWithInfo:(TYMapInfo *)info
@@ -220,24 +182,22 @@
     //    [routeArrowLayer removeAllGraphics];
     [animatedRouteArrowLayer stopShowingArrow];
     
-    NSDate *now;
-    BOOL usMapDB = false;
-    usMapDB = true;
-    if (usMapDB) {
-        now = [NSDate date];
-        [self readMapDataFromDBWithInfo:info];
-        NSLog(@"Load Time For DB: %f", [[NSDate date] timeIntervalSinceDate:now]);
-    } else {
-        now = [NSDate date];
-        [self loadMapDataWithInfo:info];
-        NSLog(@"Load Time For Json: %f", [[NSDate date] timeIntervalSinceDate:now]);
-    }
-    
+//    NSDate *now = [NSDate date];
+    [self readMapDataFromDBWithInfo:info];
+//    NSLog(@"Load Time For DB: %f", [[NSDate date] timeIntervalSinceDate:now]);
 
-    
     [_parkingLayer removeAllGraphics];
     [structureGroupLayer loadContents:mapDataDict];
     [labelGroupLayer loadContents:mapDataDict];
+    
+    
+    if (isPathCalibrationEnabled) {
+        pathCalibration = [[TYPathCalibration alloc] initWithMapInfo:_currentMapInfo];
+        [pathCalibration setBufferWidth:pathCalibrationBuffer];
+    } else {
+        pathCalibration = nil;
+    }
+
         
     if (initialEnvelope == nil) {
         initialEnvelope = [AGSEnvelope envelopeWithXmin:_currentMapInfo.mapExtent.xmin ymin:_currentMapInfo.mapExtent.ymin xmax:_currentMapInfo.mapExtent.xmax ymax:_currentMapInfo.mapExtent.ymax spatialReference:[TYMapEnvironment defaultSpatialReference]];
@@ -281,6 +241,9 @@
     _building = b;
     userID = uID;
     mapLicense = license;
+    
+    isPathCalibrationEnabled = NO;
+    pathCalibrationBuffer = DEFAULT_BUFFER_WIDTH;
     
     NSString *renderingSchemePath = [TYMapFileManager getRenderingScheme:_building];
     renderingScheme = [[TYRenderingScheme alloc] initWithPath:(NSString *)renderingSchemePath];

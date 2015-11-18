@@ -12,10 +12,12 @@
 
 @interface TYPathCalibration : NSObject
 
-//- (id)initWithFloorID:(NSString *)floorID;
 - (id)initWithMapInfo:(TYMapInfo *)mapInfo;
 - (void)setBufferWidth:(double)width;
 
 - (AGSPoint *)calibrationPoint:(AGSPoint *)point;
 
+
+- (AGSPolyline *)getUnionPath;
+- (AGSPolygon *)getUnionPolygon;
 @end

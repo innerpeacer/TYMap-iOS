@@ -11,6 +11,7 @@
 #import "TYMapEnviroment.h"
 #import "TYBrand.h"
 #import "TYUserDefaults.h"
+#import "TYPathCalibration.h"
 
 @interface MapVC()
 {
@@ -23,6 +24,11 @@
     AGSSimpleLineSymbol *testSimpleLineSymbol;
     int currentRadius;
     int picIndex;
+    
+    TYPathCalibration *pathCalibration;
+    
+    AGSGraphicsLayer *pathLayer;
+    AGSGraphicsLayer *hintLayer;
 }
 
 
@@ -38,36 +44,58 @@
     
     [super viewDidLoad];
     
+    pathLayer = [AGSGraphicsLayer graphicsLayer];
+    [self.mapView addMapLayer:pathLayer];
+    
     testLayer = [AGSGraphicsLayer graphicsLayer];
     [self.mapView addMapLayer:testLayer];
+    
+    hintLayer = [AGSGraphicsLayer graphicsLayer];
+    [self.mapView addMapLayer:hintLayer];
+    
     
 }
 
 - (void)TYMapView:(TYMapView *)mapView didFinishLoadingFloor:(TYMapInfo *)mapInfo
 {
-//    NSArray *allParkingSpaces = [mapView getParkingSpacesOnCurrentFloor];
-//    
-//    AGSSimpleFillSymbol *emptySymbol = [AGSSimpleFillSymbol simpleFillSymbolWithColor:[UIColor greenColor] outlineColor:[UIColor whiteColor]];
-//    AGSSimpleFillSymbol *ocuupiedSymbol = [AGSSimpleFillSymbol simpleFillSymbolWithColor:[UIColor redColor] outlineColor:[UIColor whiteColor]];
-//    for (TYPoi *poi in allParkingSpaces) {
-//        int status = arc4random()%2;
+    NSArray *allParkingSpaces = [mapView getParkingSpacesOnCurrentFloor];
+    
+    AGSSimpleFillSymbol *emptySymbol = [AGSSimpleFillSymbol simpleFillSymbolWithColor:[UIColor greenColor] outlineColor:[UIColor whiteColor]];
+    AGSSimpleFillSymbol *ocuupiedSymbol = [AGSSimpleFillSymbol simpleFillSymbolWithColor:[UIColor redColor] outlineColor:[UIColor whiteColor]];
+    for (TYPoi *poi in allParkingSpaces) {
+        int status = arc4random()%2;
 //        NSLog(@"%d", status);
-//        if (status == 0) {
-//            [mapView.parkingLayer addGraphic:[AGSGraphic graphicWithGeometry:poi.geometry symbol:emptySymbol attributes:nil]];
-//        } else {
-//            [mapView.parkingLayer addGraphic:[AGSGraphic graphicWithGeometry:poi.geometry symbol:ocuupiedSymbol attributes:nil]];
-//        }
-//    }
+        if (status == 0) {
+            [mapView.parkingLayer addGraphic:[AGSGraphic graphicWithGeometry:poi.geometry symbol:emptySymbol attributes:nil]];
+        } else {
+            [mapView.parkingLayer addGraphic:[AGSGraphic graphicWithGeometry:poi.geometry symbol:ocuupiedSymbol attributes:nil]];
+        }
+    }
 
+    
+    pathCalibration = [[TYPathCalibration alloc] initWithMapInfo:mapInfo];
+    
+    [pathLayer removeAllGraphics];
+    AGSSimpleFillSymbol *sfs = [AGSSimpleFillSymbol simpleFillSymbolWithColor:[UIColor colorWithRed:1 green:1 blue:0.0 alpha:1] outlineColor:[UIColor colorWithRed:1 green:1 blue:0.0 alpha:1]];
+    [pathLayer addGraphic:[AGSGraphic graphicWithGeometry:[pathCalibration getUnionPolygon] symbol:sfs attributes:nil]];
+    AGSSimpleLineSymbol *sls = [AGSSimpleLineSymbol simpleLineSymbolWithColor:[UIColor redColor]];
+    [pathLayer addGraphic:[AGSGraphic graphicWithGeometry:[pathCalibration getUnionPath] symbol:sls attributes:nil]];
 }
 
 int count = 0;
 int tIndex = 0;
-
 - (void)TYMapView:(TYMapView *)mapView didClickAtPoint:(CGPoint)screen mapPoint:(AGSPoint *)mappoint
 {
     NSLog(@"didClickAtPoint: %f, %f", mappoint.x, mappoint.y);
-    testLocation = mappoint;
+    
+    [hintLayer removeAllGraphics];
+    AGSSimpleMarkerSymbol *sms = [AGSSimpleMarkerSymbol simpleMarkerSymbolWithColor:[UIColor redColor]];
+    sms.size = CGSizeMake(5, 5);
+    [hintLayer addGraphic:[AGSGraphic graphicWithGeometry:mappoint symbol:sms attributes:nil]];
+    
+    
+//    testLocation = [pathCalibration calibrationPoint:mappoint];
+    testLocation = [self.mapView getCalibratedPoint:mappoint];
     if (testTimer) {
         [testTimer invalidate];
     }

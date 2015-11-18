@@ -10,4 +10,7 @@
 
 @interface TYParkingLayer : AGSGraphicsLayer
 
+@property (nonatomic, strong) UIColor *ocuupiedColor;
+@property (nonatomic, strong) UIColor *availableColor;
+
 @end
