@@ -652,9 +652,15 @@
 {
     NSArray *linesToShow = [routeLayer showRouteResultOnFloor:self.currentMapInfo.floorNumber];
     if (linesToShow && linesToShow.count > 0) {
-        //        [routeArrowLayer showRouteArrow:linesToShow];
         [animatedRouteArrowLayer showRouteArrow:linesToShow];
-        //        [animatedRouteArrowLayer showRouteArrow:linesToShow withTranslation:0.001];
+    }
+}
+
+- (void)showPassedAndRemainingRouteResultOnCurrentFloor:(TYLocalPoint *)lp
+{
+    NSArray *linesToShow = [routeLayer showPassedAndRemainingRouteResultOnFloor:self.currentMapInfo.floorNumber WithLocation:lp];
+    if (linesToShow && linesToShow.count > 0) {
+        [animatedRouteArrowLayer showRouteArrow:linesToShow];
     }
 }
 
@@ -662,9 +668,7 @@
 {
     NSArray *linesToShow = [routeLayer showRemainingRouteResultOnFloor:self.currentMapInfo.floorNumber WithLocation:lp];
     if (linesToShow && linesToShow.count > 0) {
-        //        [routeArrowLayer showRouteArrow:linesToShow];
         [animatedRouteArrowLayer showRouteArrow:linesToShow];
-        //        [animatedRouteArrowLayer showRouteArrow:linesToShow withTranslation:0.001];
     }
 }
 

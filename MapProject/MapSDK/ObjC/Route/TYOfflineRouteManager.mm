@@ -204,6 +204,7 @@ typedef enum {
     for (int i = 0; i < routePartNum; ++i) {
         
         TYRoutePart *p = routePartArray[i];
+        p.partIndex = i;
         if (i > 0) {
             p.previousPart = routePartArray[i-1];
         }

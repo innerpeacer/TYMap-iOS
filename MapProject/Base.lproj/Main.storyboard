@@ -383,11 +383,11 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mui-Cf-tDI">
                                                 <rect key="frame" x="330" y="10" width="240" height="30"/>
                                                 <animations/>
-                                                <state key="normal" title="设为终点">
+                                                <state key="normal" title="路线吸附">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="setEndPoint:" destination="mSj-N6-YQw" eventType="touchUpInside" id="n2L-J4-RCn"/>
+                                                    <action selector="clickToSnapRoute:" destination="mSj-N6-YQw" eventType="touchUpInside" id="Q9C-Re-fc4"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="owd-Yb-4Ii">
@@ -413,11 +413,11 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2qF-kL-6pC">
                                                 <rect key="frame" x="30" y="10" width="240" height="30"/>
                                                 <animations/>
-                                                <state key="normal" title="设为起点">
+                                                <state key="normal" title="导航选点">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="setStartPoint:" destination="mSj-N6-YQw" eventType="touchUpInside" id="539-BK-OGO"/>
+                                                    <action selector="clickToChoosePoint:" destination="mSj-N6-YQw" eventType="touchUpInside" id="Zfk-0l-hZE"/>
                                                 </connections>
                                             </button>
                                         </subviews>

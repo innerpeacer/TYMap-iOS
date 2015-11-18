@@ -41,7 +41,7 @@
 + (TYRouteLayer *)routeLayerWithSpatialReference:(TYSpatialReference *)sr;
 
 - (NSArray *)showRouteResultOnFloor:(int)floor;
-
+- (NSArray *)showPassedAndRemainingRouteResultOnFloor:(int)floor WithLocation:(TYLocalPoint *)location;
 - (NSArray *)showRemainingRouteResultOnFloor:(int)floor WithLocation:(TYLocalPoint *)location;
 - (TYRoutePart *)getNearestRoutePartWithLocation:(TYLocalPoint *)location;
 

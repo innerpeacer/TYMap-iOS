@@ -48,10 +48,13 @@
     TYPictureMarkerSymbol *startSymbol;
     TYPictureMarkerSymbol *endSymbol;
     TYPictureMarkerSymbol *switchSymbol;
+    
+    BOOL useClickForChoosingPoint;
+    BOOL useClickForSnapRoute;
 }
 
-- (IBAction)setStartPoint:(id)sender;
-- (IBAction)setEndPoint:(id)sender;
+- (IBAction)clickToChoosePoint:(id)sender;
+- (IBAction)clickToSnapRoute:(id)sender;
 - (IBAction)requtestRoute:(id)sender;
 - (IBAction)reset:(id)sender;
 
@@ -86,6 +89,9 @@
     // 初始化路径管理器，并设置代理
     offlineRouteManager = [OfflineRouteManager routeManagerWithBuilding:self.currentBuilding MapInfos:self.allMapInfos];
     offlineRouteManager.delegate = self;
+    
+    useClickForSnapRoute = NO;
+    useClickForChoosingPoint = YES;
     
 }
 
@@ -176,22 +182,30 @@
     [hintLayer removeAllGraphics];
     [hintLayer addGraphic:[AGSGraphic graphicWithGeometry:mappoint symbol:sms attributes:nil]];
  
+    if (useClickForChoosingPoint) {
+        startLocalPoint = endLocalPoint;
+        endLocalPoint = localPoint;
+        [self requtestRoute:nil];
+    }
     
-    startLocalPoint = endLocalPoint;
-    endLocalPoint = localPoint;
-    [self requtestRoute:nil];
+    if (useClickForSnapRoute) {
+//        [self.mapView showRemainingRouteResultOnCurrentFloor:localPoint];
+        [self.mapView showPassedAndRemainingRouteResultOnCurrentFloor:localPoint];
+    }
+
     
 }
 
-- (IBAction)setStartPoint:(id)sender {
-    startLocalPoint = [TYLocalPoint pointWithX:currentPoint.x Y:currentPoint.y Floor:self.mapView.currentMapInfo.floorNumber];
-    [self.mapView showRouteStartSymbolOnCurrentFloor:startLocalPoint];
-    
+- (IBAction)clickToChoosePoint:(id)sender
+{
+    useClickForChoosingPoint = YES;
+    useClickForSnapRoute = NO;
 }
 
-- (IBAction)setEndPoint:(id)sender {
-    endLocalPoint = [TYLocalPoint pointWithX:currentPoint.x Y:currentPoint.y Floor:self.mapView.currentMapInfo.floorNumber];
-    [self.mapView showRouteEndSymbolOnCurrentFloor:endLocalPoint];
+- (IBAction)clickToSnapRoute:(id)sender
+{
+    useClickForChoosingPoint = NO;
+    useClickForSnapRoute = YES;
 }
 
 - (IBAction)requtestRoute:(id)sender {

@@ -260,6 +260,9 @@ typedef enum {
  */
 - (void)showRouteResultOnCurrentFloor;
 
+- (void)showPassedAndRemainingRouteResultOnCurrentFloor:(TYLocalPoint *)lp;
+
+
 /**
  *  在地图显示当前楼层当前位置的剩余路径，结合定位结果，移除已经经过的路径部分
  *
