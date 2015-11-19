@@ -18,7 +18,6 @@
 #import "TYMarkerSymbol.h"
 #import "TYPictureMarkerSymbol.h"
 #import "TYRouteResult.h"
-#import "TYParkingLayer.h"
 #import "TYDirectionalHint.h"
 
 #import <TYMapData/TYMapData.h>
@@ -371,14 +370,55 @@ typedef enum {
  */
 - (TYPoi *)extractRoomPoiOnCurrentFloorWithX:(double)x Y:(double)y;
 
+/**
+ *  设置是否启用路线修正功能，需要添加额外的路线数据
+ *
+ *  @param enabled 是否启用
+ */
 - (void)setPathCalibrationEnabled:(BOOL)enabled;
+
+/**
+ *  设置路线修正的缓冲宽度
+ *
+ *  @param bufferWidth 缓冲宽度
+ */
 - (void)setPathCalibrationBuffer:(double)bufferWidth;
+
+/**
+ *  获取路径修正点。
+ *  若目标点落在路径缓冲区之外，则返回目标点。
+ *
+ *  @param point 目标点
+ *
+ *  @return 修正点
+ */
 - (AGSPoint *)getCalibratedPoint:(AGSPoint *)point;
 
+/**
+ *  设置被占用车位颜色
+ *
+ *  @param color 被占用车位颜色
+ */
+- (void)setOccupiedParkingColor:(UIColor *)color;
 
-- (void)setOccupiedColor:(UIColor *)color;
-- (void)setAvailableColor:(UIColor *)color;
+/**
+ *  设置空车位颜色
+ *
+ *  @param color 空车位颜色
+ */
+- (void)setAvailableParkingColor:(UIColor *)color;
+
+/**
+ *  显示车位状态
+ *
+ *  @param occupiedArray  被占用车位poiID数组
+ *  @param availableArray 空车位poiID数组
+ */
 - (void)showOccupiedParkingSpaces:(NSArray *)occupiedArray AvailableParkingSpaces:(NSArray *)availableArray;
+
+/**
+ *  隐藏车位状态
+ */
 - (void)hideParkingSpaces;
 
 @end

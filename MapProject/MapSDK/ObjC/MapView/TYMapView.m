@@ -28,6 +28,7 @@
 
 #import "TYMapFeatureData.h"
 #import "TYPathCalibration.h"
+#import "TYParkingLayer.h"
 
 #define DEFAULT_BUFFER_WIDTH 2.0
 
@@ -73,12 +74,12 @@
 @implementation TYMapView
 
 
-- (void)setOccupiedColor:(UIColor *)color
+- (void)setOccupiedParkingColor:(UIColor *)color
 {
     [parkingLayer setOccupiedParkingColor:color];
 }
 
-- (void)setAvailableColor:(UIColor *)color
+- (void)setAvailableParkingColor:(UIColor *)color
 {
     [parkingLayer setAvailableParkingColor:color];
 }
@@ -86,12 +87,6 @@
 - (void)showOccupiedParkingSpaces:(NSArray *)occupiedArray AvailableParkingSpaces:(NSArray *)availableArray
 {
     [parkingLayer removeAllGraphics];
-    
-    NSLog(@"%d", (int)occupiedArray.count);
-    NSLog(@"%d", (int)availableArray.count);
-    
-    NSLog(@"%@", occupiedArray);
-    NSLog(@"%@", availableArray);
 
     AGSFeatureSet *featureSet = [mapDataDict objectForKey:KEY_LAYER_ROOM];
     for (AGSGraphic *g in featureSet.features) {
