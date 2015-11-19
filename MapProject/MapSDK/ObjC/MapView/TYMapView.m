@@ -233,8 +233,7 @@
     } else {
         pathCalibration = nil;
     }
-
-        
+    
     if (initialEnvelope == nil) {
         initialEnvelope = [AGSEnvelope envelopeWithXmin:_currentMapInfo.mapExtent.xmin ymin:_currentMapInfo.mapExtent.ymin xmax:_currentMapInfo.mapExtent.xmax ymax:_currentMapInfo.mapExtent.ymax spatialReference:[TYMapEnvironment defaultSpatialReference]];
         [self zoomToEnvelope:initialEnvelope animated:NO];

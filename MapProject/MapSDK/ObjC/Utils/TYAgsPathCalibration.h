@@ -1,5 +1,5 @@
 //
-//  TYPathCalibration.h
+//  TYAgsPathCalibration.h
 //  MapProject
 //
 //  Created by innerpeacer on 15/11/19.
@@ -10,7 +10,7 @@
 #import <ArcGIS/ArcGIS.h>
 #import "TYMapInfo.h"
 
-@interface TYPathCalibration : NSObject
+@interface TYAgsPathCalibration : NSObject
 
 - (id)initWithMapInfo:(TYMapInfo *)mapInfo;
 - (void)setBufferWidth:(double)width;

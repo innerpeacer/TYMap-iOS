@@ -42,10 +42,10 @@ std::vector<geos::geom::LineString *> IPXPathDBAdapter::getAllPaths() const
 
 IPXPathDBAdapter::~IPXPathDBAdapter()
 {
-    std::vector<geos::geom::LineString *>::iterator iter;
-    for (iter = paths.begin(); iter != paths.end(); ++iter) {
-        delete (*iter);
-    }
+//    std::vector<geos::geom::LineString *>::iterator iter;
+//    for (iter = paths.begin(); iter != paths.end(); ++iter) {
+//        delete (*iter);
+//    }
 }
 
 

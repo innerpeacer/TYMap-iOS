@@ -24,6 +24,8 @@
 #import "TYRouteResult.h"
 #import "TYUserDefaults.h"
 
+#import "FMDatabase.h"
+
 @interface CppOfflineMapRouteVC()<TYOfflineRouteManagerDelegate>
 {
     // 路径管理器
@@ -78,6 +80,9 @@
     cppOfflineRouteManager = [TYOfflineRouteManager routeManagerWithBuilding:self.currentBuilding MapInfos:self.allMapInfos];
     cppOfflineRouteManager.delegate = self;
     NSLog(@"加载用时：%f", [[NSDate date] timeIntervalSinceDate:now]);
+    
+    
+//    [self test];
 }
 
 - (void)offlineRouteManager:(TYOfflineRouteManager *)routeManager didFailSolveRouteWithError:(NSError *)error
@@ -140,6 +145,36 @@
     endLocalPoint = [TYLocalPoint pointWithX:mappoint.x Y:mappoint.y Floor:self.mapView.currentMapInfo.floorNumber];;
     [self requestRoute];
     
+}
+
+- (void)test
+{
+    NSString *poiDBPath = [[TYMapEnvironment getBuildingDirectory:self.currentBuilding] stringByAppendingPathComponent:[NSString stringWithFormat:@"%@_POI.db", self.currentBuilding.buildingID]];
+    FMDatabase *db = [FMDatabase databaseWithPath:poiDBPath];
+    [db open];
+    
+    NSString *sql = @"select * from poi";
+    FMResultSet *rs = [db executeQuery:sql];
+    while ([rs next]) {
+        NSString *poiID = [rs stringForColumn:@"POI_ID"];
+        if ([poiID isEqualToString:@"053200001F0110053"]) {
+            double x = [rs doubleForColumn:@"LABEL_X"];
+            double y = [rs doubleForColumn:@"LABEL_Y"];
+            int floor = [rs intForColumn:@"FLOOR_INDEX"];
+            startLocalPoint = [TYLocalPoint pointWithX:x Y:y Floor:floor];
+        }
+        
+        if ([poiID isEqualToString:@"053200001F0110079"]) {
+            double x = [rs doubleForColumn:@"LABEL_X"];
+            double y = [rs doubleForColumn:@"LABEL_Y"];
+            int floor = [rs intForColumn:@"FLOOR_INDEX"];
+            endLocalPoint = [TYLocalPoint pointWithX:x Y:y Floor:floor];
+        }
+    }
+    
+    [db close];
+    
+    [self requestRoute];
 }
 
 - (void)requestRoute
