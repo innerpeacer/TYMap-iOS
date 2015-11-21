@@ -259,6 +259,12 @@ typedef enum {
  */
 - (void)showRouteResultOnCurrentFloor;
 
+
+/**
+ *  在地图上显示当前楼层目标位置已经过的路径和未经过的剩余路径
+ *
+ *  @param lp 目标位置
+ */
 - (void)showPassedAndRemainingRouteResultOnCurrentFloor:(TYLocalPoint *)lp;
 
 
