@@ -13,6 +13,8 @@
 #import "TYMapEnviroment.h"
 #import <ArcGIS/ArcGIS.h>
 
+#import "TYGeos2AgsConverter.h"
+
 using namespace Innerpeacer::MapSDK;
 using namespace std;
 
@@ -103,81 +105,7 @@ using namespace std;
 
 + (AGSGeometry *)agsGeometryFromRecord:(IPXFeatureRecord *)record
 {
-    switch (record->geometry->getGeometryTypeId()) {
-        case geos::geom::GEOS_POINT:
-            return [TYMapFeatureData agsPointFromGeosPointRecord:record];
-            break;
-            
-        case geos::geom::GEOS_POLYGON:
-            return [TYMapFeatureData agsPolygonFromGeosPolygonRecord:record];
-            break;
-            
-        case geos::geom::GEOS_MULTIPOLYGON:
-            return [TYMapFeatureData agsPolygonFromGeosMultiPolygonRecord:record];
-            break;
-            
-        default:
-            break;
-    }
-    return nil;
-}
-
-+ (AGSPolygon *)agsPolygonFromGeosMultiPolygonRecord:(IPXFeatureRecord *)record
-{
-    AGSMutablePolygon *polygon = [[AGSMutablePolygon alloc] init];
-    geos::geom::MultiPolygon *multiPolygon = record->getMultiPolygonIfSatisfied();
-
-    for (int l = 0; l < multiPolygon->getNumGeometries(); ++l) {
-        const geos::geom::Polygon *geosPolygon = getPolygonN(multiPolygon, l);
-
-        const LineString *exteriorRing = geosPolygon->getExteriorRing();
-        if (exteriorRing) {
-            [polygon addRingToPolygon];
-            for (int i = 0; i < exteriorRing->getNumPoints(); ++i) {
-                Coordinate c = exteriorRing->getCoordinateN(i);
-                [polygon addPointToRing:[AGSPoint pointWithX:c.x y:c.y spatialReference:nil]];
-            }
-        }
-        
-        for (int j = 0; j < geosPolygon->getNumInteriorRing(); ++j) {
-            const LineString *interiorRing = geosPolygon->getInteriorRingN(j);
-            [polygon addRingToPolygon];
-            for (int k = 0; k < interiorRing->getNumPoints(); ++k) {
-                Coordinate c = interiorRing->getCoordinateN(k);
-                [polygon addPointToRing:[AGSPoint pointWithX:c.x y:c.y spatialReference:nil]];
-            }
-        }
-    }
-    return polygon;
-}
-
-+ (AGSPolygon *)agsPolygonFromGeosPolygonRecord:(IPXFeatureRecord *)record
-{
-    AGSMutablePolygon *polygon = [[AGSMutablePolygon alloc] init];
-    const LineString *exteriorRing = record->getPolygonIfSatisfied()->getExteriorRing();
-
-    if (exteriorRing) {
-        [polygon addRingToPolygon];
-        for (int i = 0; i < exteriorRing->getNumPoints(); ++i) {
-            Coordinate c = exteriorRing->getCoordinateN(i);
-            [polygon addPointToRing:[AGSPoint pointWithX:c.x y:c.y spatialReference:nil]];
-        }
-    }
-    
-    for (int j = 0; j < record->getPolygonIfSatisfied()->getNumInteriorRing(); ++j) {
-        const LineString *interiorRing = record->getPolygonIfSatisfied()->getInteriorRingN(j);
-        [polygon addRingToPolygon];
-        for (int k = 0; k < interiorRing->getNumPoints(); ++k) {
-            Coordinate c = interiorRing->getCoordinateN(k);
-            [polygon addPointToRing:[AGSPoint pointWithX:c.x y:c.y spatialReference:nil]];
-        }
-    }
-    return polygon;
-}
-
-+ (AGSPoint *)agsPointFromGeosPointRecord:(IPXFeatureRecord *)record
-{
-    return [AGSPoint pointWithX:record->getPointIfSatisfied()->getX() y:record->getPointIfSatisfied()->getY() spatialReference:[TYMapEnvironment defaultSpatialReference]];
+    return [TYGeos2AgsConverter agsGeometryFromGeosGeometry:record->geometry];
 }
 
 @end

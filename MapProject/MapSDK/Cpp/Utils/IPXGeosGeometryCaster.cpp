@@ -43,3 +43,27 @@ geos::geom::MultiPolygon *Innerpeacer::MapSDK::GeosGeometryCaster::CastedMultiPo
 {
     return dynamic_cast<MultiPolygon *>(g);
 }
+
+const geos::geom::Point *Innerpeacer::MapSDK::GeosGeometryCaster::getPointN(geos::geom::MultiPoint *mp, std::size_t n)
+{
+    if (mp == NULL) {
+        return NULL;
+    }
+    return dynamic_cast<const geos::geom::Point *>(mp->getGeometryN(n));
+}
+
+const geos::geom::LineString *Innerpeacer::MapSDK::GeosGeometryCaster::getLineStringN(geos::geom::MultiLineString *ml, std::size_t n)
+{
+    if (ml == NULL) {
+        return NULL;
+    }
+    return dynamic_cast<const geos::geom::LineString *>(ml->getGeometryN(n));
+}
+
+const geos::geom::Polygon *Innerpeacer::MapSDK::GeosGeometryCaster::getPolygonN(geos::geom::MultiPolygon *mp, std::size_t n)
+{
+    if (mp == NULL) {
+        return NULL;
+    }
+    return dynamic_cast<const geos::geom::Polygon *>(mp->getGeometryN(n));
+}

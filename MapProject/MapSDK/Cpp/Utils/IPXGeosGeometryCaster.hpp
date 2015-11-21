@@ -22,6 +22,11 @@ namespace Innerpeacer {
             geos::geom::MultiLineString *CastedMultiLineString(geos::geom::Geometry *g);
             geos::geom::Polygon *CastedPolygon(geos::geom::Geometry *g);
             geos::geom::MultiPolygon *CastedMultiPolygon(geos::geom::Geometry *g);
+            
+            const geos::geom::Point *getPointN(geos::geom::MultiPoint *mp, std::size_t n);
+            const geos::geom::LineString *getLineStringN(geos::geom::MultiLineString *ml, std::size_t n);
+            const geos::geom::Polygon *getPolygonN(geos::geom::MultiPolygon *mp, std::size_t n);
+
         }
     }
 }

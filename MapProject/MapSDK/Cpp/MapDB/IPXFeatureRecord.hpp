@@ -24,21 +24,9 @@ namespace Innerpeacer {
             
         } MapLayer;
         
-        const geos::geom::Point *getPointN(geos::geom::MultiPoint *mp, std::size_t n);
-        const geos::geom::LineString *getLineStringN(geos::geom::MultiLineString *ml, std::size_t n);
-        const geos::geom::Polygon *getPolygonN(geos::geom::MultiPolygon *mp, std::size_t n);
-
         class IPXFeatureRecord {
         public:
             geos::geom::Geometry *geometry;
-            
-            geos::geom::Point *getPointIfSatisfied() const;
-            geos::geom::MultiPoint *getMultiPointIfSatisfied() const;
-            geos::geom::LineString *getLineStringIfSatisfied() const;
-            geos::geom::MultiLineString *getMultiLineStringIfSatisfied() const;
-            geos::geom::Polygon *getPolygonIfSatisfied() const;
-            geos::geom::MultiPolygon *getMultiPolygonIfSatisfied() const;
-            
             
             std::string geoID;
             std::string poiID;
