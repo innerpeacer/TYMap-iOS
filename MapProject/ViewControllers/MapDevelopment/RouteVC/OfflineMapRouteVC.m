@@ -192,8 +192,6 @@
 //        [self.mapView showRemainingRouteResultOnCurrentFloor:localPoint];
         [self.mapView showPassedAndRemainingRouteResultOnCurrentFloor:localPoint];
     }
-
-    
 }
 
 - (IBAction)clickToChoosePoint:(id)sender

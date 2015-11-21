@@ -172,18 +172,6 @@
 
 - (void)setFloorWithInfo:(TYMapInfo *)info
 {
-//    {
-//        NSString* SDKInvalidDate = @"20170101";
-//        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-//        [dateFormatter setDateFormat:@"yyyyMMdd"];
-//        NSDate* invalidDate = [dateFormatter dateFromString:SDKInvalidDate];
-//        NSTimeInterval SDKInterval = [invalidDate timeIntervalSinceDate:[NSDate date]];
-//        if (SDKInterval < 0) {
-//            NSLog(@"SDK Expired");
-//            return;
-//        }
-//    }
-    
     BOOL licenseValidity = [TYLicenseValidation checkValidityWithUserID:userID License:mapLicense Building:_building];
     if (!licenseValidity) {
         NSLog(@"Invalid License!");
@@ -215,13 +203,9 @@
     [routeLayer removeAllGraphics];
     [routeHintLayer removeAllGraphics];
     
-    //    [routeArrowLayer removeAllGraphics];
     [animatedRouteArrowLayer stopShowingArrow];
     
-//    NSDate *now = [NSDate date];
     [self readMapDataFromDBWithInfo:info];
-//    NSLog(@"Load Time For DB: %f", [[NSDate date] timeIntervalSinceDate:now]);
-
     [parkingLayer removeAllGraphics];
     [structureGroupLayer loadContents:mapDataDict];
     [labelGroupLayer loadContents:mapDataDict];

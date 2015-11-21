@@ -39,7 +39,8 @@
     
     NSArray *viewControllers = @[
                                  @[@"地图 Demo", @"mapController"],
-                                 //  @[@"地图导航 Demo", @"mapRouteController"],
+                                 @[@"路径修正", @"PathCalibrationVC"],
+//                                   @[@"地图导航 Demo", @"mapRouteController"],
                                  @[@"ObjC离线导航 Demo", @"OfflineMapRouteVC"],
                                  @[@"Cpp离线导航 Demo", @"CppOfflineMapRouteVC"],
                                  @[@"地图Callout Demo", @"mapCalloutController"],

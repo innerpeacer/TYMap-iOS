@@ -99,6 +99,21 @@ void IPXPathCalibration::setBufferWidth(double w)
 
 geos::geom::Geometry *IPXPathCalibration::createBufferedUnionGeometry()
 {
+//    std::vector<Polygon *> pathBufferVector;
+//    for (int i = 0; i < paths.size(); ++i) {
+//        LineString *ls = dynamic_cast<LineString *>(paths.at(i));
+//        Polygon *polygon = dynamic_cast<Polygon *>(BufferOp::bufferOp(ls, bufferWidth));
+//        pathBufferVector.push_back(polygon);
+//    }
+//    
+//    geos::geom::Geometry *result = geos::operation::geounion::CascadedPolygonUnion::Union(&pathBufferVector);
+//    
+//    for (int i = 0; i < pathBufferVector.size(); ++i) {
+//        Polygon *polygon = pathBufferVector.at(i);
+//        delete polygon;
+//    }
+//    return result;
+    
     std::vector<Polygon *> pathBufferVector;
     for (int i = 0; i < paths.size(); ++i) {
         LineString *ls = dynamic_cast<LineString *>(paths.at(i));

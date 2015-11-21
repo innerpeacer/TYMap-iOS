@@ -26,7 +26,7 @@ namespace Innerpeacer {
             ~IPXPathCalibration();
             
             void setBufferWidth(double w);
-            geos::geom::Coordinate calibratePoint(Coordinate c);
+            geos::geom::Coordinate calibratePoint(geos::geom::Coordinate c);
             int getPathCount() const;
             
             geos::geom::Geometry *getUnionPaths() const;

@@ -11,7 +11,7 @@
 #import "TYGeos2AgsConverter.h"
 #import "IPXPathCalibration.hpp"
 
-#define PATH_CALIBRATION_SOURCE_PATH @"%@_Path"
+#define PATH_CALIBRATION_SOURCE_PATH @"%@_Path.db"
 
 using namespace Innerpeacer::MapSDK;
 
@@ -35,7 +35,7 @@ using namespace Innerpeacer::MapSDK;
     self = [super init];
     if (self) {
         NSString *buildingDir = [[[TYMapEnvironment getRootDirectoryForMapFiles] stringByAppendingPathComponent:mapInfo.cityID] stringByAppendingPathComponent:mapInfo.buildingID];
-        NSString *pathDBName = [NSString stringWithFormat:@"%@_Path.db", mapInfo.mapID];
+        NSString *pathDBName = [NSString stringWithFormat:PATH_CALIBRATION_SOURCE_PATH, mapInfo.mapID];
         NSString *dbPath = [buildingDir stringByAppendingPathComponent:pathDBName];
         
         pathDBExist = [[NSFileManager defaultManager] fileExistsAtPath:dbPath];

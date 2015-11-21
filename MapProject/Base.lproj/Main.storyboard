@@ -105,6 +105,41 @@
             </objects>
             <point key="canvasLocation" x="3143" y="-342"/>
         </scene>
+        <!--Path CalibrationVC-->
+        <scene sceneID="ha7-T8-YbP">
+            <objects>
+                <viewController storyboardIdentifier="PathCalibrationVC" id="JN7-s3-Spa" customClass="PathCalibrationVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="pvl-WA-xvr"/>
+                        <viewControllerLayoutGuide type="bottom" id="5LG-fV-9Wo"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="aTa-Ao-A9a">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uH4-pp-MUc" customClass="TYMapView">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="uH4-pp-MUc" firstAttribute="top" secondItem="aTa-Ao-A9a" secondAttribute="top" id="Isc-3k-F7P"/>
+                            <constraint firstAttribute="trailing" secondItem="uH4-pp-MUc" secondAttribute="trailing" id="JJZ-hX-IPy"/>
+                            <constraint firstItem="5LG-fV-9Wo" firstAttribute="top" secondItem="uH4-pp-MUc" secondAttribute="bottom" id="cS4-CT-Yrb"/>
+                            <constraint firstItem="uH4-pp-MUc" firstAttribute="leading" secondItem="aTa-Ao-A9a" secondAttribute="leading" id="uCS-Ww-466"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="uH4-pp-MUc" id="CKm-OK-RRT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8je-4r-kvS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3143" y="-342"/>
+        </scene>
         <!--Calling ApiVC-->
         <scene sceneID="5Bb-4H-aZy">
             <objects>

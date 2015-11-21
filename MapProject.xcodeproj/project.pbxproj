@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		57012A921BFED73C0014CCEF /* IPXPathCalibration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57012A8E1BFED73C0014CCEF /* IPXPathCalibration.cpp */; };
+		57012A931BFED73C0014CCEF /* IPXPathDBAdapter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57012A901BFED73C0014CCEF /* IPXPathDBAdapter.cpp */; };
+		57012A991BFED7740014CCEF /* TYAgsPathCalibration.mm in Sources */ = {isa = PBXBuildFile; fileRef = 57012A961BFED7740014CCEF /* TYAgsPathCalibration.mm */; };
+		57012A9A1BFED7740014CCEF /* TYPathCalibration.mm in Sources */ = {isa = PBXBuildFile; fileRef = 57012A981BFED7740014CCEF /* TYPathCalibration.mm */; };
+		57012AAF1BFF02790014CCEF /* IPXGeosGeometryCaster.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57012AAD1BFF02790014CCEF /* IPXGeosGeometryCaster.cpp */; };
+		57012AB21BFF1DA30014CCEF /* PathCalibrationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 57012AB11BFF1DA30014CCEF /* PathCalibrationVC.m */; };
 		5702D7891BB3A8E80098397D /* TYMapData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5702D7881BB3A8E80098397D /* TYMapData.framework */; };
 		570ABA6A1BF9DD650006BC30 /* CallingApiVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 570ABA631BF9DD650006BC30 /* CallingApiVC.m */; };
 		570ABA6B1BF9DD650006BC30 /* TYPointConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 570ABA651BF9DD650006BC30 /* TYPointConverter.m */; };
@@ -108,12 +114,9 @@
 		57494DE31B61DB17000B6F2C /* OriginalCityVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 57494DE21B61DB17000B6F2C /* OriginalCityVC.m */; };
 		57494DF51B61E730000B6F2C /* EnviromentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 57494DF41B61E730000B6F2C /* EnviromentManager.m */; };
 		574994431BEEF1140064F831 /* TYParkingLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 574994421BEEF1140064F831 /* TYParkingLayer.m */; };
-		574D66FF1BFDD2F00027530C /* IPXPathCalibration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 574D66FD1BFDD2F00027530C /* IPXPathCalibration.cpp */; };
 		574EE2C71B723C30005A6482 /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 574EE2C51B723C30005A6482 /* Launch Screen.xib */; };
 		574F5E3D1BDAAE07001967F6 /* IPXFeatureRecord.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 574F5E3B1BDAAE07001967F6 /* IPXFeatureRecord.cpp */; };
 		574F5E401BDAB2E5001967F6 /* IPXMapDataDBAdapter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 574F5E3E1BDAB2E5001967F6 /* IPXMapDataDBAdapter.cpp */; };
-		576397F21BFE280E003FF7F3 /* TYAgsPathCalibration.mm in Sources */ = {isa = PBXBuildFile; fileRef = 576397F11BFE280E003FF7F3 /* TYAgsPathCalibration.mm */; };
-		576397F51BFE286A003FF7F3 /* TYPathCalibration.mm in Sources */ = {isa = PBXBuildFile; fileRef = 576397F41BFE286A003FF7F3 /* TYPathCalibration.mm */; };
 		57672D071B55FF4A00DAD219 /* CreatingPOIDBAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 57672C911B55FF4A00DAD219 /* CreatingPOIDBAdapter.m */; };
 		57672D081B55FF4A00DAD219 /* TYPoiDBAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 57672C931B55FF4A00DAD219 /* TYPoiDBAdapter.m */; };
 		57672D5D1B55FF9900DAD219 /* TYUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 57672D5C1B55FF9900DAD219 /* TYUserDefaults.m */; };
@@ -150,7 +153,6 @@
 		57B953391BDDFB0700D9D318 /* GenerateAllMapDBVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 57B953381BDDFB0700D9D318 /* GenerateAllMapDBVC.m */; };
 		57B9533D1BDE031500D9D318 /* OriginalShpDB in Resources */ = {isa = PBXBuildFile; fileRef = 57B9533C1BDE031500D9D318 /* OriginalShpDB */; };
 		57C03F5A1B61E19800490179 /* BaseMapVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 57C03F591B61E19800490179 /* BaseMapVC.m */; };
-		57C5B80B1BFC7BFE004102D2 /* IPXPathDBAdapter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57C5B8091BFC7BFE004102D2 /* IPXPathDBAdapter.cpp */; };
 		57C5B80E1BFC838D004102D2 /* TYGeos2AgsConverter.mm in Sources */ = {isa = PBXBuildFile; fileRef = 57C5B80D1BFC838D004102D2 /* TYGeos2AgsConverter.mm */; };
 		57CC56D61BCBB11700B5EE0A /* TestCppRouteNetworkVC.mm in Sources */ = {isa = PBXBuildFile; fileRef = 57CC56D51BCBB11700B5EE0A /* TestCppRouteNetworkVC.mm */; };
 		57D167911BBA44FF004BE6B9 /* TYBuildingLink.m in Sources */ = {isa = PBXBuildFile; fileRef = 57D167901BBA44FF004BE6B9 /* TYBuildingLink.m */; };
@@ -184,6 +186,18 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		57012A8E1BFED73C0014CCEF /* IPXPathCalibration.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IPXPathCalibration.cpp; sourceTree = "<group>"; };
+		57012A8F1BFED73C0014CCEF /* IPXPathCalibration.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = IPXPathCalibration.hpp; sourceTree = "<group>"; };
+		57012A901BFED73C0014CCEF /* IPXPathDBAdapter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IPXPathDBAdapter.cpp; sourceTree = "<group>"; };
+		57012A911BFED73C0014CCEF /* IPXPathDBAdapter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = IPXPathDBAdapter.hpp; sourceTree = "<group>"; };
+		57012A951BFED7740014CCEF /* TYAgsPathCalibration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYAgsPathCalibration.h; sourceTree = "<group>"; };
+		57012A961BFED7740014CCEF /* TYAgsPathCalibration.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TYAgsPathCalibration.mm; sourceTree = "<group>"; };
+		57012A971BFED7740014CCEF /* TYPathCalibration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYPathCalibration.h; sourceTree = "<group>"; };
+		57012A981BFED7740014CCEF /* TYPathCalibration.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TYPathCalibration.mm; sourceTree = "<group>"; };
+		57012AAD1BFF02790014CCEF /* IPXGeosGeometryCaster.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IPXGeosGeometryCaster.cpp; sourceTree = "<group>"; };
+		57012AAE1BFF02790014CCEF /* IPXGeosGeometryCaster.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = IPXGeosGeometryCaster.hpp; sourceTree = "<group>"; };
+		57012AB01BFF1DA30014CCEF /* PathCalibrationVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PathCalibrationVC.h; sourceTree = "<group>"; };
+		57012AB11BFF1DA30014CCEF /* PathCalibrationVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PathCalibrationVC.m; sourceTree = "<group>"; };
 		5702D7881BB3A8E80098397D /* TYMapData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TYMapData.framework; path = ../../../../TYMapData.framework; sourceTree = "<group>"; };
 		570ABA621BF9DD650006BC30 /* CallingApiVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CallingApiVC.h; sourceTree = "<group>"; };
 		570ABA631BF9DD650006BC30 /* CallingApiVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CallingApiVC.m; sourceTree = "<group>"; };
@@ -389,18 +403,12 @@
 		57494DF41B61E730000B6F2C /* EnviromentManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnviromentManager.m; sourceTree = "<group>"; };
 		574994411BEEF1140064F831 /* TYParkingLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYParkingLayer.h; sourceTree = "<group>"; };
 		574994421BEEF1140064F831 /* TYParkingLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYParkingLayer.m; sourceTree = "<group>"; };
-		574D66FD1BFDD2F00027530C /* IPXPathCalibration.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IPXPathCalibration.cpp; sourceTree = "<group>"; };
-		574D66FE1BFDD2F00027530C /* IPXPathCalibration.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = IPXPathCalibration.hpp; sourceTree = "<group>"; };
 		574EE2C61B723C30005A6482 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = "Launch Screen.xib"; sourceTree = "<group>"; };
 		574F5E3B1BDAAE07001967F6 /* IPXFeatureRecord.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IPXFeatureRecord.cpp; sourceTree = "<group>"; };
 		574F5E3C1BDAAE07001967F6 /* IPXFeatureRecord.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = IPXFeatureRecord.hpp; sourceTree = "<group>"; };
 		574F5E3E1BDAB2E5001967F6 /* IPXMapDataDBAdapter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IPXMapDataDBAdapter.cpp; sourceTree = "<group>"; };
 		574F5E3F1BDAB2E5001967F6 /* IPXMapDataDBAdapter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = IPXMapDataDBAdapter.hpp; sourceTree = "<group>"; };
 		5760BA841BFB77ED0053C46C /* TYApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYApi.h; sourceTree = "<group>"; };
-		576397F01BFE280E003FF7F3 /* TYAgsPathCalibration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYAgsPathCalibration.h; sourceTree = "<group>"; };
-		576397F11BFE280E003FF7F3 /* TYAgsPathCalibration.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TYAgsPathCalibration.mm; sourceTree = "<group>"; };
-		576397F31BFE286A003FF7F3 /* TYPathCalibration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYPathCalibration.h; sourceTree = "<group>"; };
-		576397F41BFE286A003FF7F3 /* TYPathCalibration.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TYPathCalibration.mm; sourceTree = "<group>"; };
 		57672C901B55FF4A00DAD219 /* CreatingPOIDBAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreatingPOIDBAdapter.h; sourceTree = "<group>"; };
 		57672C911B55FF4A00DAD219 /* CreatingPOIDBAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreatingPOIDBAdapter.m; sourceTree = "<group>"; };
 		57672C921B55FF4A00DAD219 /* TYPoiDBAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYPoiDBAdapter.h; sourceTree = "<group>"; };
@@ -463,8 +471,6 @@
 		57B9533C1BDE031500D9D318 /* OriginalShpDB */ = {isa = PBXFileReference; lastKnownFileType = folder; path = OriginalShpDB; sourceTree = "<group>"; };
 		57C03F581B61E19800490179 /* BaseMapVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseMapVC.h; sourceTree = "<group>"; };
 		57C03F591B61E19800490179 /* BaseMapVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseMapVC.m; sourceTree = "<group>"; };
-		57C5B8091BFC7BFE004102D2 /* IPXPathDBAdapter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IPXPathDBAdapter.cpp; sourceTree = "<group>"; };
-		57C5B80A1BFC7BFE004102D2 /* IPXPathDBAdapter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = IPXPathDBAdapter.hpp; sourceTree = "<group>"; };
 		57C5B80C1BFC838D004102D2 /* TYGeos2AgsConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYGeos2AgsConverter.h; sourceTree = "<group>"; };
 		57C5B80D1BFC838D004102D2 /* TYGeos2AgsConverter.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TYGeos2AgsConverter.mm; sourceTree = "<group>"; };
 		57CC56D41BCBB11700B5EE0A /* TestCppRouteNetworkVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TestCppRouteNetworkVC.h; path = RouteVC/TestCppRouteNetworkVC.h; sourceTree = "<group>"; };
@@ -545,6 +551,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		57012A8D1BFED73C0014CCEF /* PathCalibration */ = {
+			isa = PBXGroup;
+			children = (
+				57012A8E1BFED73C0014CCEF /* IPXPathCalibration.cpp */,
+				57012A8F1BFED73C0014CCEF /* IPXPathCalibration.hpp */,
+				57012A901BFED73C0014CCEF /* IPXPathDBAdapter.cpp */,
+				57012A911BFED73C0014CCEF /* IPXPathDBAdapter.hpp */,
+			);
+			path = PathCalibration;
+			sourceTree = "<group>";
+		};
+		57012A941BFED7740014CCEF /* PathCalibration */ = {
+			isa = PBXGroup;
+			children = (
+				57012A951BFED7740014CCEF /* TYAgsPathCalibration.h */,
+				57012A961BFED7740014CCEF /* TYAgsPathCalibration.mm */,
+				57012A971BFED7740014CCEF /* TYPathCalibration.h */,
+				57012A981BFED7740014CCEF /* TYPathCalibration.mm */,
+			);
+			path = PathCalibration;
+			sourceTree = "<group>";
+		};
 		570ABA611BF9DD040006BC30 /* ServerSync */ = {
 			isa = PBXGroup;
 			children = (
@@ -621,6 +649,7 @@
 		572407081BC9A84B0050BA41 /* Cpp */ = {
 			isa = PBXGroup;
 			children = (
+				57012A8D1BFED73C0014CCEF /* PathCalibration */,
 				574F5E3A1BDAADDA001967F6 /* MapDB */,
 				572407C61BC9A8B60050BA41 /* RouteNetwork */,
 				572407091BC9A84B0050BA41 /* Utils */,
@@ -639,10 +668,8 @@
 				5724070F1BC9A84B0050BA41 /* IPMemory.h */,
 				572407101BC9A84B0050BA41 /* MD5.cpp */,
 				572407111BC9A84B0050BA41 /* MD5.hpp */,
-				57C5B80A1BFC7BFE004102D2 /* IPXPathDBAdapter.hpp */,
-				57C5B8091BFC7BFE004102D2 /* IPXPathDBAdapter.cpp */,
-				574D66FE1BFDD2F00027530C /* IPXPathCalibration.hpp */,
-				574D66FD1BFDD2F00027530C /* IPXPathCalibration.cpp */,
+				57012AAE1BFF02790014CCEF /* IPXGeosGeometryCaster.hpp */,
+				57012AAD1BFF02790014CCEF /* IPXGeosGeometryCaster.cpp */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -650,6 +677,7 @@
 		572407161BC9A8520050BA41 /* ObjC */ = {
 			isa = PBXGroup;
 			children = (
+				57012A941BFED7740014CCEF /* PathCalibration */,
 				570DF17D1BDE86030028E25F /* MapData */,
 				572407211BC9A8A10050BA41 /* Entity */,
 				572407441BC9A8A10050BA41 /* FunctionLayers */,
@@ -672,10 +700,6 @@
 				572407191BC9A8520050BA41 /* TYEncryption.mm */,
 				5724071A1BC9A8520050BA41 /* TYLicenseValidation.h */,
 				5724071B1BC9A8520050BA41 /* TYLicenseValidation.mm */,
-				576397F01BFE280E003FF7F3 /* TYAgsPathCalibration.h */,
-				576397F11BFE280E003FF7F3 /* TYAgsPathCalibration.mm */,
-				576397F31BFE286A003FF7F3 /* TYPathCalibration.h */,
-				576397F41BFE286A003FF7F3 /* TYPathCalibration.mm */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1064,6 +1088,8 @@
 				576AEEA31B61D97100D55CA4 /* MapVC.m */,
 				57EE3E921B74788100977049 /* SelectBuildingVC.h */,
 				57EE3E931B74788100977049 /* SelectBuildingVC.m */,
+				57012AB01BFF1DA30014CCEF /* PathCalibrationVC.h */,
+				57012AB11BFF1DA30014CCEF /* PathCalibrationVC.m */,
 			);
 			path = MapDevelopment;
 			sourceTree = "<group>";
@@ -1316,6 +1342,7 @@
 				572407991BC9A8A10050BA41 /* TYLocationDisplay.m in Sources */,
 				572408CF1BC9AE2D0050BA41 /* IPXNode.cpp in Sources */,
 				5771BEC31BE7051E00026873 /* GenerateWebMapFileVC.m in Sources */,
+				57012A9A1BFED7740014CCEF /* TYPathCalibration.mm in Sources */,
 				572408D81BC9B3080050BA41 /* IPXLinkRecord.cpp in Sources */,
 				578771291BBB914700F90D7B /* TYLink.m in Sources */,
 				572407BB1BC9A8A10050BA41 /* TYDirectionalHint.m in Sources */,
@@ -1332,6 +1359,7 @@
 				572407A71BC9A8A10050BA41 /* TYRouteLayer.m in Sources */,
 				574994431BEEF1140064F831 /* TYParkingLayer.m in Sources */,
 				579963281BDE956800CBDF8E /* TYBuildingJsonParser.m in Sources */,
+				57012AB21BFF1DA30014CCEF /* PathCalibrationVC.m in Sources */,
 				576AEEAB1B61D97100D55CA4 /* MapDevVC.m in Sources */,
 				579963251BDE955D00CBDF8E /* TYCityJsonParser.m in Sources */,
 				57D167941BBA4508004BE6B9 /* TYBuildingNode.m in Sources */,
@@ -1352,7 +1380,6 @@
 				57EB457A1B73D2B50050956F /* RATreeView+TableViewDelegate.m in Sources */,
 				572408DB1BC9B3140050BA41 /* IPXNodeRecord.cpp in Sources */,
 				572407B41BC9A8A10050BA41 /* TYMapEnviroment.m in Sources */,
-				576397F21BFE280E003FF7F3 /* TYAgsPathCalibration.mm in Sources */,
 				572408FD1BC9B9D00050BA41 /* GenerateLicensesVC.m in Sources */,
 				573F900A1BC8E68F00F836B5 /* OfflineRouteManager.m in Sources */,
 				572407AD1BC9A8A10050BA41 /* TYLabelGroupLayer.m in Sources */,
@@ -1362,16 +1389,14 @@
 				572B98CC1BDA195500506A7E /* MapGeneratorDBAdapter.mm in Sources */,
 				57EB45741B73D2B50050956F /* RATreeNodeCollectionController.m in Sources */,
 				570DF1911BDE86490028E25F /* TYMapDBAdapter.m in Sources */,
-				57C5B80B1BFC7BFE004102D2 /* IPXPathDBAdapter.cpp in Sources */,
-				576397F51BFE286A003FF7F3 /* TYPathCalibration.mm in Sources */,
 				572408F01BC9B9800050BA41 /* OfflineMapRouteVC.m in Sources */,
 				572407151BC9A84B0050BA41 /* MD5.cpp in Sources */,
 				572408FB1BC9B9D00050BA41 /* CreatePOIDatabaseVC.m in Sources */,
 				572408D51BC9B2E70050BA41 /* IPXRouteNetworkDBAdapter.cpp in Sources */,
 				57672E301B55FFF900DAD219 /* FMDatabaseAdditions.m in Sources */,
 				57672D071B55FF4A00DAD219 /* CreatingPOIDBAdapter.m in Sources */,
+				57012A921BFED73C0014CCEF /* IPXPathCalibration.cpp in Sources */,
 				572B98BD1BDA104200506A7E /* OriginalShpRecord.m in Sources */,
-				574D66FF1BFDD2F00027530C /* IPXPathCalibration.cpp in Sources */,
 				576AEEB21B61D9E400D55CA4 /* CustomCalloutVC.m in Sources */,
 				572407B01BC9A8A10050BA41 /* TYArcGISDrawer.m in Sources */,
 				57EB45761B73D2B50050956F /* RATreeNodeInfo.m in Sources */,
@@ -1419,6 +1444,7 @@
 				570ABA771BF9E3AD0006BC30 /* AddCityBuildingMapInfoVC.m in Sources */,
 				572407B91BC9A8A10050BA41 /* TYBrand.m in Sources */,
 				57F8DE5F1B74553100143739 /* OriginalMapVC.m in Sources */,
+				57012AAF1BFF02790014CCEF /* IPXGeosGeometryCaster.cpp in Sources */,
 				578771221BBB911400F90D7B /* RouteNetworkDBAdapter.mm in Sources */,
 				572407971BC9A8A10050BA41 /* TYGraphic.m in Sources */,
 				572407AB1BC9A8A10050BA41 /* TYLabelBorder.m in Sources */,
@@ -1431,8 +1457,10 @@
 				572407A51BC9A8A10050BA41 /* TYRouteArrowLayer.m in Sources */,
 				57672EF51B56006700DAD219 /* main.m in Sources */,
 				572407981BC9A8A10050BA41 /* TYGraphicsLayer.m in Sources */,
+				57012A991BFED7740014CCEF /* TYAgsPathCalibration.mm in Sources */,
 				572407921BC9A8A10050BA41 /* TYCallout.m in Sources */,
 				57494DE31B61DB17000B6F2C /* OriginalCityVC.m in Sources */,
+				57012A931BFED73C0014CCEF /* IPXPathDBAdapter.cpp in Sources */,
 				572407BD1BC9A8A10050BA41 /* TYLandmarkManager.m in Sources */,
 				5787712F1BBB916B00F90D7B /* TYNode.m in Sources */,
 				572407BE1BC9A8A10050BA41 /* TYRouteManager.m in Sources */,
