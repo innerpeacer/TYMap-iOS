@@ -124,14 +124,14 @@
                        ,
                        {
                        "colorID": 10,
-                       "fillColor": "#FF0A0A0A",
+                       "fillColor": "#FF828282",
                        "outlineColor": "#FFFFFFFF",
                        "lineWidth": 1
                        }
                        ,
                        {
                        "colorID": 11,
-                       "fillColor": "#33D40337",
+                       "fillColor": "#4CD40337",
                        "outlineColor": "#FFFFFFFF",
                        "lineWidth": 0
                        }
