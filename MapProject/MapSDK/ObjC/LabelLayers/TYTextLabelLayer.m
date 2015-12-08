@@ -47,25 +47,30 @@
 
 - (void)calculateLabelBorders:(NSMutableArray *)array
 {
-    for (TYTextLabel *tl in allTextLabels) {
-        CGPoint screenPoint = [self.groupLayer.mapView toScreenPoint:tl.position];
-        TYLabelBorder *border = [TYLabelBorderCalculator getTextLabelBorder:tl Point:screenPoint];
-        
-        BOOL isOverlapping = NO;
-        for (TYLabelBorder *visiableBorder in array) {
-            if ([TYLabelBorder CheckIntersect:border WithBorder:visiableBorder]) {
-                isOverlapping = YES;
-                break;
+    if ([self.groupLayer.mapView isLabelOverlapDetectingEnabled]) {
+        for (TYTextLabel *tl in allTextLabels) {
+            CGPoint screenPoint = [self.groupLayer.mapView toScreenPoint:tl.position];
+            TYLabelBorder *border = [TYLabelBorderCalculator getTextLabelBorder:tl Point:screenPoint];
+            
+            BOOL isOverlapping = NO;
+            for (TYLabelBorder *visiableBorder in array) {
+                if ([TYLabelBorder CheckIntersect:border WithBorder:visiableBorder]) {
+                    isOverlapping = YES;
+                    break;
+                }
+            }
+            
+            if (isOverlapping) {
+                tl.isHidden = YES;
+            } else {
+                tl.isHidden = NO;
+                [array addObject:border];
             }
         }
-        
-        if (isOverlapping) {
-            tl.isHidden = YES;
-        } else {
+    } else {
+        for (TYTextLabel *tl in allTextLabels) {
             tl.isHidden = NO;
-            [array addObject:border];
         }
-        
     }
 }
 

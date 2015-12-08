@@ -62,6 +62,7 @@
     
     // Path Calibration
     BOOL isPathCalibrationEnabled;
+    BOOL isLabelOverlappingDetectingEnabled;
     double pathCalibrationBuffer;
     TYPathCalibration *pathCalibration;
 }
@@ -73,6 +74,15 @@
 
 @implementation TYMapView
 
+- (void)setLabelOverlapDetectingEnabled:(BOOL)enabled
+{
+    isLabelOverlappingDetectingEnabled = enabled;
+}
+
+- (BOOL)isLabelOverlapDetectingEnabled
+{
+    return  isLabelOverlappingDetectingEnabled;
+}
 
 - (void)setOccupiedParkingColor:(UIColor *)color
 {
@@ -261,6 +271,7 @@
     userID = uID;
     mapLicense = license;
     
+    isLabelOverlappingDetectingEnabled = YES;
     isPathCalibrationEnabled = NO;
     pathCalibrationBuffer = DEFAULT_BUFFER_WIDTH;
     

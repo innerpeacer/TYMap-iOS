@@ -92,23 +92,30 @@
 
 - (void)updateLabelBorders:(NSMutableArray *)array
 {
-    for (TYFacilityLabel *fl in facilityLabelDict.allValues) {
-        CGPoint screenPoint = [self.groupLayer.mapView toScreenPoint:fl.position];
-        TYLabelBorder *border = [TYLabelBorderCalculator getFacilityLabelBorder:screenPoint];
-        
-        BOOL isOverlapping = NO;
-        for (TYLabelBorder *visiableBorder in array) {
-            if ([TYLabelBorder CheckIntersect:border WithBorder:visiableBorder]) {
-                isOverlapping = YES;
-                break;
+    if ([self.groupLayer.mapView isLabelOverlapDetectingEnabled]) {
+        for (TYFacilityLabel *fl in facilityLabelDict.allValues) {
+            CGPoint screenPoint = [self.groupLayer.mapView toScreenPoint:fl.position];
+            TYLabelBorder *border = [TYLabelBorderCalculator getFacilityLabelBorder:screenPoint];
+            
+            BOOL isOverlapping = NO;
+            
+            for (TYLabelBorder *visiableBorder in array) {
+                if ([TYLabelBorder CheckIntersect:border WithBorder:visiableBorder]) {
+                    isOverlapping = YES;
+                    break;
+                }
+            }
+            
+            if (isOverlapping) {
+                fl.isHidden = YES;
+            } else {
+                fl.isHidden = NO;
+                [array addObject:border];
             }
         }
-        
-        if (isOverlapping) {
-            fl.isHidden = YES;
-        } else {
+    } else {
+        for (TYFacilityLabel *fl in facilityLabelDict.allValues) {
             fl.isHidden = NO;
-            [array addObject:border];
         }
     }
 }

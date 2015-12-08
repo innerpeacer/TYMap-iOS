@@ -58,11 +58,11 @@
             [availableParkingSpaces addObject:poiID];
         }
     }
-
-    
     
     [super viewDidLoad];
     
+    [self.mapView setLabelOverlapDetectingEnabled:NO];
+
     testLayer = [AGSGraphicsLayer graphicsLayer];
     [self.mapView addMapLayer:testLayer];
     

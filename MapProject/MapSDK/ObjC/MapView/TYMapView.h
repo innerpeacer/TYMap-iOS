@@ -427,5 +427,19 @@ typedef enum {
  */
 - (void)hideParkingSpaces;
 
+/**
+ *  设置是否启用标识重叠检测
+ *
+ *  @param enabled 是否启用
+ */
+- (void)setLabelOverlapDetectingEnabled:(BOOL)enabled;
+
+/**
+ *  当前是否启用标识重叠检测
+ *
+ *  @return 是否启用
+ */
+- (BOOL)isLabelOverlapDetectingEnabled;
+
 @end
 
