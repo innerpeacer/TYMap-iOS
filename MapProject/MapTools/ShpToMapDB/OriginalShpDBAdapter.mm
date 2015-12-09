@@ -206,23 +206,11 @@ using namespace geos::io;
     NSString *result = nil;
     switch (type) {
         case SHP_DB_FLOOR:
-            result = [NSString stringWithFormat:SHP_DB_FILE_FLOOR, mapID];
-            break;
-            
         case SHP_DB_ROOM:
-            result = [NSString stringWithFormat:SHP_DB_FILE_ROOM, mapID];
-            break;
-            
         case SHP_DB_ASSET:
-            result = [NSString stringWithFormat:SHP_DB_FILE_ASSET, mapID];
-            break;
-            
         case SHP_DB_FACILITY:
-            result = [NSString stringWithFormat:SHP_DB_FILE_FACILITY, mapID];
-            break;
-            
         case SHP_DB_LABEL:
-            result = [NSString stringWithFormat:SHP_DB_FILE_LABEL, mapID];
+            result = [NSString stringWithFormat:SHP_DB_FILE, mapID];
             break;
             
         default:

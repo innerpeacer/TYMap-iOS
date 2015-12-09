@@ -12,11 +12,13 @@
 // ======================================
 #pragma mark Shp DB File Name
 // ======================================
-#define SHP_DB_FILE_FLOOR @"%@_FLOOR"
-#define SHP_DB_FILE_ROOM @"%@_ROOM"
-#define SHP_DB_FILE_ASSET @"%@_ASSET"
-#define SHP_DB_FILE_FACILITY @"%@_FACILITY"
-#define SHP_DB_FILE_LABEL @"%@_LABEL"
+//#define SHP_DB_FILE_FLOOR @"%@_FLOOR"
+//#define SHP_DB_FILE_ROOM @"%@_ROOM"
+//#define SHP_DB_FILE_ASSET @"%@_ASSET"
+//#define SHP_DB_FILE_FACILITY @"%@_FACILITY"
+//#define SHP_DB_FILE_LABEL @"%@_LABEL"
+
+#define SHP_DB_FILE @"%@_SHP"
 
 // ======================================
 #pragma mark Shp DB Table

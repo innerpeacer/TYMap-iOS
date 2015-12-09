@@ -153,7 +153,8 @@
     NSString *shpPath = [[NSBundle mainBundle] pathForResource:@"OriginalShpDB" ofType:nil];
     NSString *bundlePath = [shpPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@_shp.bundle", building.buildingID]];
     NSBundle *dbBundle = [[NSBundle alloc] initWithPath:bundlePath];
-    NSString *dbName = [NSString stringWithFormat:@"%@_%@", building.buildingID, dbArray[index - 1]];
+//    NSString *dbName = [NSString stringWithFormat:@"%@_%@", building.buildingID, dbArray[index - 1]];
+    NSString *dbName = [NSString stringWithFormat:@"%@_ROUTE_SHP", building.buildingID];
     return [dbBundle pathForResource:dbName ofType:@"db"];
 }
 
