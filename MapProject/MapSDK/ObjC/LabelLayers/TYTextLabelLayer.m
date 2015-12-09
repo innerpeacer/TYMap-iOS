@@ -47,8 +47,16 @@
 
 - (void)calculateLabelBorders:(NSMutableArray *)array
 {
+    int currentLevel = [self.groupLayer.mapView getCurrentLevel];
+    
     if ([self.groupLayer.mapView isLabelOverlapDetectingEnabled]) {
         for (TYTextLabel *tl in allTextLabels) {
+            if (!(currentLevel <= tl.maxLevel && currentLevel >= tl.minLevel)) {
+                tl.isHidden = YES;
+                continue;
+            }
+            
+            
             CGPoint screenPoint = [self.groupLayer.mapView toScreenPoint:tl.position];
             TYLabelBorder *border = [TYLabelBorderCalculator getTextLabelBorder:tl Point:screenPoint];
             
@@ -69,7 +77,12 @@
         }
     } else {
         for (TYTextLabel *tl in allTextLabels) {
-            tl.isHidden = NO;
+            if (currentLevel <= tl.maxLevel && currentLevel >= tl.minLevel) {
+                tl.isHidden = NO;
+            } else {
+                tl.isHidden = YES;
+            }
+//            tl.isHidden = NO;
         }
     }
 }
@@ -124,11 +137,27 @@
         NSString *field = [self getNameFieldForLanguage:language];
         NSString *name = [graphic attributeForKey:field];
         
+        int maxLevel = [[graphic attributeForKey:GRAPHIC_ATTRIBUTE_LEVEL_MAX] intValue];
+        int minLevel = [[graphic attributeForKey:GRAPHIC_ATTRIBUTE_LEVEL_MIN] intValue];
+        
+//        NSLog(@"Max-Min: %d-%d", maxLevel, minLevel);
+
+
         if (name != nil && name != (id)[NSNull null]) {
             double x = ((AGSPoint *)graphic.geometry).x;
             double y = ((AGSPoint *)graphic.geometry).y;
             TYPoint *position = (TYPoint *)[AGSPoint pointWithX:x y:y spatialReference:sr];
             TYTextLabel *textLabel = [[TYTextLabel alloc] initWithName:name Position:position];
+            
+            if (maxLevel != 0) {
+                textLabel.maxLevel = maxLevel;
+            }
+            
+            if (minLevel != 0) {
+                textLabel.minLevel = minLevel;
+            }
+            
+//            NSLog(@"Max-Min: %d-%d", textLabel.maxLevel, textLabel.minLevel);
             
             NSString *poiID = [graphic attributeForKey:GRAPHIC_ATTRIBUTE_POI_ID];
             if ([self.brandDict.allKeys containsObject:poiID]) {

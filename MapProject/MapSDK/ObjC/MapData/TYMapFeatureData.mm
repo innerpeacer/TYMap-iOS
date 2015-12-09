@@ -58,10 +58,13 @@ using namespace std;
         [attributes setObject:[NSString stringWithCString:(*iter)->poiID.c_str() encoding:NSUTF8StringEncoding] forKey:@"POI_ID"];
         [attributes setObject:[NSString stringWithCString:(*iter)->categoryID.c_str() encoding:NSUTF8StringEncoding] forKey:@"CATEGORY_ID"];
         [attributes setObject:@((*iter)->symbolID) forKey:@"COLOR"];
-
+        
         if ((*iter)->name.length() > 0) {
             [attributes setObject:[NSString stringWithCString:(*iter)->name.c_str() encoding:NSUTF8StringEncoding] forKey:@"NAME"];
         }
+        
+        [attributes setObject:@((*iter)->levelMax) forKey:@"LEVEL_MAX"];
+        [attributes setObject:@((*iter)->levelMin) forKey:@"LEVEL_MIN"];
         
         AGSGeometry *geometry = [TYMapFeatureData agsGeometryFromRecord:(*iter)];
         AGSGraphic *graphic = [AGSGraphic graphicWithGeometry:geometry symbol:nil attributes:attributes];

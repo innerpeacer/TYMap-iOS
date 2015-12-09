@@ -28,6 +28,8 @@
     [result appendFormat:@"LabelX: %@,\t", _labelX];
     [result appendFormat:@"LabelY: %@,\t", _labelY];
     [result appendFormat:@"Layer: %@,\t", _layer];
+    [result appendFormat:@"Level Max: %@, \t", _levelMax];
+    [result appendFormat:@"Level Min: %@, \t", _levelMin];
     [result appendString:@"]"];
     
     return result;

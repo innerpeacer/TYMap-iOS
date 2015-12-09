@@ -441,5 +441,10 @@ typedef enum {
  */
 - (BOOL)isLabelOverlapDetectingEnabled;
 
+
+- (void)setScaleLevels:(NSDictionary *)dict;
+
+- (int)getCurrentLevel;
+
 @end
 

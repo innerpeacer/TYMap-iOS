@@ -26,5 +26,7 @@
 @property (nonatomic, strong) NSNumber *labelX;
 @property (nonatomic, strong) NSNumber *labelY;
 @property (nonatomic, strong) NSNumber *layer;
+@property (nonatomic, strong) NSNumber *levelMax;
+@property (nonatomic, strong) NSNumber *levelMin;
 
 @end

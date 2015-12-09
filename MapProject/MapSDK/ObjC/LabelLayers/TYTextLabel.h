@@ -21,6 +21,8 @@
 @property (nonatomic, strong) AGSSymbol *textSymbol;
 
 @property (nonatomic, assign) BOOL isHidden;
+@property (nonatomic, assign) int maxLevel;
+@property (nonatomic, assign) int minLevel;
 
 - (id)initWithName:(NSString *)name Position:(TYPoint *)pos;
 

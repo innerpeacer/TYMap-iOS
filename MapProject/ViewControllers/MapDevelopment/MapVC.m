@@ -62,6 +62,7 @@
     [super viewDidLoad];
     
 //    [self.mapView setLabelOverlapDetectingEnabled:NO];
+    [self.mapView setScaleLevels:@{@(1): @(800)}];
 
     testLayer = [AGSGraphicsLayer graphicsLayer];
     [self.mapView addMapLayer:testLayer];
@@ -78,6 +79,11 @@
 - (void)TYMapView:(TYMapView *)mapView didClickAtPoint:(CGPoint)screen mapPoint:(AGSPoint *)mappoint
 {
     NSLog(@"didClickAtPoint: %f, %f", mappoint.x, mappoint.y);
+    
+//    NSLog(@"Resolution: %f", self.mapView.resolution);
+    NSLog(@"MapScale: %f", self.mapView.mapScale);
+    
+    NSLog(@"Current Level: %d", [self.mapView getCurrentLevel]);
     
     [hintLayer removeAllGraphics];
     AGSSimpleMarkerSymbol *sms = [AGSSimpleMarkerSymbol simpleMarkerSymbolWithColor:[UIColor redColor]];

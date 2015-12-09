@@ -38,7 +38,7 @@ vector<IPXFeatureRecord *> IPXMapDataDBAdapter::getAllRecordsOnFloor(int floor)
     sqlite3_stmt *stmt = NULL;
     
     ostringstream ostr;
-    ostr << "select GEOMETRY, GEO_ID, POI_ID, CATEGORY_ID, NAME, SYMBOL_ID, LAYER from MAPDATA where FLOOR_NUMBER = " << floor;
+    ostr << "select GEOMETRY, GEO_ID, POI_ID, CATEGORY_ID, NAME, SYMBOL_ID, LAYER, LEVEL_MAX, LEVEL_MIN from MAPDATA where FLOOR_NUMBER = " << floor;
     string sql = ostr.str();
     
     stringstream s;
@@ -69,6 +69,8 @@ vector<IPXFeatureRecord *> IPXMapDataDBAdapter::getAllRecordsOnFloor(int floor)
             
             record->symbolID = sqlite3_column_int(stmt, 5);
             record->layer = sqlite3_column_int(stmt, 6);
+            record->levelMax = sqlite3_column_int(stmt, 7);
+            record->levelMin = sqlite3_column_int(stmt, 8);
             
             resultVector.push_back(record);
 //            printf("%d\n", (int)record->name.length());

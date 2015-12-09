@@ -43,5 +43,8 @@
 #define SHP_DB_FIELD_FLOOR_NAME @"floor_name"
 #define SHP_DB_FIELD_SHAPE_LENGTH @"shape_leng"
 #define SHP_DB_FIELD_SHAPE_AREA @"shape_area"
+#define SHP_DB_FIELD_LEVEL_MAX @"level_max"
+#define SHP_DB_FIELD_LEVEL_MIN @"level_min"
+
 
 #endif /* ShpToMapDBConstants_h */

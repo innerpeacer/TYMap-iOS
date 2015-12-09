@@ -8,6 +8,8 @@
 
 #import "TYTextLabel.h"
 
+#define DEFAULT_MAX_LEVEL 10000
+
 @interface TYTextLabel()
 {
     
@@ -45,6 +47,8 @@ static AGSSimpleMarkerSymbol *pointSymbol = nil;
         
         _text = name;
         _labelSize = [name sizeWithAttributes:@{NSFontAttributeName : [TYTextLabel getDefaultFont]}];
+        _maxLevel = DEFAULT_MAX_LEVEL;
+        _minLevel = -1;
     }
     return self;
 }

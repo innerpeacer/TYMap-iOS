@@ -84,8 +84,8 @@
     NSMutableString *sql = [NSMutableString stringWithFormat:@"insert into %@", TABLE_MAP_DATA];
     
     NSMutableArray *arguments = [[NSMutableArray alloc] init];
-    NSString *fields = [NSString stringWithFormat:@" (%@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@)", MAP_CONTENT_FIELD_OBJECT_ID, MAP_CONTENT_FIELD_GEOMETRY, MAP_CONTENT_FIELD_GEO_ID, MAP_CONTENT_FIELD_POI_ID, MAP_CONTENT_FIELD_FLOOR_ID, MAP_CONTENT_FIELD_BUILDING_ID, MAP_CONTENT_FIELD_CATEGORY_ID, MAP_CONTENT_FIELD_NAME, MAP_CONTENT_FIELD_SYMBOL_ID, MAP_CONTENT_FIELD_FLOOR_NUMBER, MAP_CONTENT_FIELD_FLOOR_NAME, MAP_CONTENT_FIELD_SHAPE_LENGTH, MAP_CONTENT_FIELD_SHAPE_AREA, MAP_CONTENT_FIELD_LABEL_X, MAP_CONTENT_FIELD_LABEL_Y, MAP_CONTENT_FIELD_LAYER];
-    NSString *values = @" ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ";
+    NSString *fields = [NSString stringWithFormat:@" (%@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@)", MAP_CONTENT_FIELD_OBJECT_ID, MAP_CONTENT_FIELD_GEOMETRY, MAP_CONTENT_FIELD_GEO_ID, MAP_CONTENT_FIELD_POI_ID, MAP_CONTENT_FIELD_FLOOR_ID, MAP_CONTENT_FIELD_BUILDING_ID, MAP_CONTENT_FIELD_CATEGORY_ID, MAP_CONTENT_FIELD_NAME, MAP_CONTENT_FIELD_SYMBOL_ID, MAP_CONTENT_FIELD_FLOOR_NUMBER, MAP_CONTENT_FIELD_FLOOR_NAME, MAP_CONTENT_FIELD_SHAPE_LENGTH, MAP_CONTENT_FIELD_SHAPE_AREA, MAP_CONTENT_FIELD_LABEL_X, MAP_CONTENT_FIELD_LABEL_Y, MAP_CONTENT_FIELD_LAYER, MAP_CONTENT_FIELD_LEVEL_MAX, MAP_CONTENT_FIELD_LEVEL_MIN];
+    NSString *values = @" ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ";
     
     [arguments addObject:record.objectID];
     
@@ -116,6 +116,8 @@
     [arguments addObject:record.labelX];
     [arguments addObject:record.labelY];
     [arguments addObject:record.layer];
+    [arguments addObject:record.levelMax];
+    [arguments addObject:record.levelMin];
     
 //    if (record.layer.intValue == 5) {
 //        int geometryByteLength = (int)record.geometryData.length;
@@ -174,7 +176,9 @@
     [sql appendFormat:@"%@ real not null, ", MAP_CONTENT_FIELD_SHAPE_AREA];
     [sql appendFormat:@"%@ real not null, ", MAP_CONTENT_FIELD_LABEL_X];
     [sql appendFormat:@"%@ real not null, ", MAP_CONTENT_FIELD_LABEL_Y];
-    [sql appendFormat:@"%@ integer not null ", MAP_CONTENT_FIELD_LAYER];
+    [sql appendFormat:@"%@ integer not null, ", MAP_CONTENT_FIELD_LAYER];
+    [sql appendFormat:@"%@ integer not null, ", MAP_CONTENT_FIELD_LEVEL_MAX];
+    [sql appendFormat:@"%@ integer not null", MAP_CONTENT_FIELD_LEVEL_MIN];
 
     [sql appendString:@" )"];
     

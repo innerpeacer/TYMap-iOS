@@ -60,6 +60,8 @@
     NSString *mapLicense;
     
     
+    NSMutableDictionary *scaleLevelDict;
+    
     // Path Calibration
     BOOL isPathCalibrationEnabled;
     BOOL isLabelOverlappingDetectingEnabled;
@@ -73,6 +75,39 @@
 
 
 @implementation TYMapView
+
+- (void)setScaleLevels:(NSDictionary *)dict
+{
+    [scaleLevelDict removeAllObjects];
+    [scaleLevelDict setValuesForKeysWithDictionary:dict];
+}
+
+- (int)getCurrentLevel
+{
+    int level = 0;
+    
+    double mapScale = self.mapScale;
+    
+    NSArray *allLevels = scaleLevelDict.allKeys;
+    allLevels = [allLevels sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+        NSNumber *n1 = obj1;
+        NSNumber *n2 = obj2;
+        int level1 = n1.intValue;
+        int level2 = n2.intValue;
+        return level1 > level2;
+    }];
+    
+    for (NSNumber *levelNumber in allLevels) {
+        double levelScale = [scaleLevelDict[levelNumber] doubleValue];
+        if (mapScale <= levelScale) {
+            level = [levelNumber intValue];
+        } else {
+            break;
+        }
+    }
+
+    return level;
+}
 
 - (void)setLabelOverlapDetectingEnabled:(BOOL)enabled
 {
@@ -274,6 +309,8 @@
     isLabelOverlappingDetectingEnabled = YES;
     isPathCalibrationEnabled = NO;
     pathCalibrationBuffer = DEFAULT_BUFFER_WIDTH;
+    
+    scaleLevelDict = [NSMutableDictionary dictionary];
     
     NSString *renderingSchemePath = [TYMapFileManager getRenderingScheme:_building];
     renderingScheme = [[TYRenderingScheme alloc] initWithPath:(NSString *)renderingSchemePath];
