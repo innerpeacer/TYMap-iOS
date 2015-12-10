@@ -441,9 +441,18 @@ typedef enum {
  */
 - (BOOL)isLabelOverlapDetectingEnabled;
 
-
+/**
+ *  设置地图的自定义放缩层级，用于按层级显示标签。
+ *
+ *  @param dict 自定义放缩层级，{Integer: Double} -> {Level : MapScale}
+ */
 - (void)setScaleLevels:(NSDictionary *)dict;
 
+/**
+ *  获取当前地图所处的自定义放缩层级
+ *
+ *  @return 当前所处的放缩层级
+ */
 - (int)getCurrentLevel;
 
 @end
