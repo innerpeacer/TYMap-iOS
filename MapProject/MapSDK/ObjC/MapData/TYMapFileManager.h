@@ -16,13 +16,13 @@
 
 
 
-+ (NSString *)getCityJsonPath;
+//+ (NSString *)getCityJsonPath;
+//
+//+ (NSString *)getBuildingJsonPath:(NSString *)cityID;
+//
+//+ (NSString *)getMapInfoJsonPath:(NSString *)cityID buildingID:(NSString *)buildingID;
 
-+ (NSString *)getBuildingJsonPath:(NSString *)cityID;
-
-+ (NSString *)getMapInfoJsonPath:(NSString *)cityID buildingID:(NSString *)buildingID;
-
-+ (NSString *)getMapDataPath:(TYMapInfo *)info;
+//+ (NSString *)getMapDataPath:(TYMapInfo *)info;
 
 + (NSString *)getLandmarkJsonPath:(TYMapInfo *)info;
 

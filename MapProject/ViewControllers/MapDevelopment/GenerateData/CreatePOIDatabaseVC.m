@@ -147,17 +147,6 @@
     allMapData = [featureData getAllMapDataOnFloor:info.floorNumber];
 }
 
-- (void)loadMapDataWithInfo:(TYMapInfo *)info
-{
-    NSError *error = nil;
-    NSString *fullPath = [TYMapFileManager getMapDataPath:info];
-    NSString *jsonString = [NSString stringWithContentsOfFile:fullPath encoding:NSUTF8StringEncoding error:&error];
-    
-    AGSSBJsonParser *parser = [[AGSSBJsonParser alloc] init];
-    allMapData = [parser objectWithString:jsonString];
-}
-
-
 - (void)updateUI:(NSString *)logString
 {
     NSLog(@"%@", logString);

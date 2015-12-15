@@ -1,5 +1,5 @@
 //
-//  TYCityJsonParser.h
+//  TYMapInfoJsonParser.h
 //  MapProject
 //
 //  Created by innerpeacer on 15/10/27.
@@ -7,12 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "TYMapInfo.h"
 #import <TYMapData/TYMapData.h>
 
-@interface TYCityJsonParser : NSObject
+@interface TYMapInfoJsonParser : NSObject
 
-+ (NSArray *)parseAllCities;
-+ (NSArray *)parseAllCitiesFromFile:(NSString *)path;
-+ (TYCity *)parseCity:(NSString *)cityID;
++ (NSArray *)parseAllMapInfoFromFile:(NSString *)path;
 
 @end
