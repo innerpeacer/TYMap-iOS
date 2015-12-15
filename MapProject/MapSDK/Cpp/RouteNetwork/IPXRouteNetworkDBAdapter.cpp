@@ -35,7 +35,7 @@ std::vector<IPXLinkRecord> IPXRouteNetworkDBAdapter::getLinks()
     std::vector<IPXLinkRecord> linkRecordArray;
     
     sqlite3_stmt *stmt = NULL;
-    string sql = "select linkID, Geometry, length, headNode, endNode, virtual, oneWay from RouteLink";
+    string sql = "select LINK_ID, GEOMETRY, LENGTH, HEAD_NODE, END_NODE, VIRTUAL, ONE_WAY from ROUTE_LINK";
     stringstream s;
     WKBReader reader;
     int ret = sqlite3_prepare_v2(m_database, sql.c_str(), (int)sql.length(), &stmt, NULL);
@@ -69,7 +69,7 @@ std::vector<IPXNodeRecord> IPXRouteNetworkDBAdapter::getNodes()
     std::vector<IPXNodeRecord> nodeRecordArray;
     
     sqlite3_stmt *stmt = NULL;
-    string sql = "select nodeID, Geometry, virtual from RouteNode";
+    string sql = "select NODE_ID, GEOMETRY, VIRTUAL from ROUTE_NODE";
     stringstream s;
     WKBReader reader;
     int ret = sqlite3_prepare_v2(m_database, sql.c_str(), (int)sql.length(), &stmt, NULL);

@@ -15,9 +15,8 @@
 #import "FMResultSet.h"
 
 #import "TYMapEnviroment.h"
-
-#define TABLE_ROUTE_NODE @"RouteNode"
-#define TABLE_ROUTE_LINK @"RouteLink"
+#import "TYMapFileManager.h"
+#import "TYMapDBConstants.h"
 
 @interface BuildingRouteDBAdapter()
 {
@@ -32,7 +31,7 @@
 {
     self = [super init];
     if (self) {
-        NSString *dbPath = [self getRouteDBPath:building];
+        NSString *dbPath = [TYMapFileManager getMapDataDBPath:building];
         _database = [FMDatabase databaseWithPath:dbPath];
         [self checkDatabase];
     }
@@ -47,12 +46,6 @@
 - (BOOL)close
 {
     return [_database close];
-}
-
-- (NSString *)getRouteDBPath:(TYBuilding *)building
-{
-    NSString *dbName = [NSString stringWithFormat:@"%@_Route.db", building.buildingID];
-    return [[TYMapEnvironment getBuildingDirectory:building] stringByAppendingPathComponent:dbName];
 }
 
 - (BOOL)existTable:(NSString *)table
@@ -83,7 +76,15 @@
 
 - (BOOL)createRouteLinkTable
 {
-    NSString *sql = [NSString stringWithFormat:@"create table %@ (%@, %@, %@, %@, %@, %@, %@, %@) ", TABLE_ROUTE_LINK, @"_id integer primary key autoincrement", @"linkID integer not null", @"Geometry blob not null", @"length real not null", @"headNode integer not null", @"endNode integer not null", @"virtual bool not null", @"oneWay bool not null"];
+    NSString *sql =  [NSString stringWithFormat:@"create table if not exists %@ (%@, %@, %@, %@, %@, %@, %@, %@)", TABLE_ROUTE_LINK,
+                      [NSString stringWithFormat:@"%@ integer primary key autoincrement", FIELD_ROUTE_LINK_0_PRIMARY_KEY],
+                      [NSString stringWithFormat:@"%@ integer not null", FIELD_ROUTE_LINK_1_LINK_ID],
+                      [NSString stringWithFormat:@"%@ blob not null", FIELD_ROUTE_LINK_2_GEOMETRY],
+                      [NSString stringWithFormat:@"%@ real not null", FIELD_ROUTE_LINK_3_LENGTH],
+                      [NSString stringWithFormat:@"%@ integer not null", FIELD_ROUTE_LINK_4_HEAD_NODE],
+                      [NSString stringWithFormat:@"%@ integer not null", FIELD_ROUTE_LINK_5_END_NODE],
+                      [NSString stringWithFormat:@"%@ bool not null", FIELD_ROUTE_LINK_6_VIRTUAL],
+                      [NSString stringWithFormat:@"%@ bool not null", FIELD_ROUTE_LINK_7_ONE_WAY]];
     if ([_database executeUpdate:sql]) {
         return YES;
     }
@@ -92,7 +93,11 @@
 
 - (BOOL)createRouteNodeTable
 {
-    NSString *sql = [NSString stringWithFormat:@"create table %@ (%@, %@, %@, %@)", TABLE_ROUTE_NODE, @"_id integer primary key autoincrement", @"nodeID integer not null", @"Geometry blob not null", @"virtual bool not null"];
+    NSString *sql = [NSString stringWithFormat:@"create table if not exists %@ (%@, %@, %@, %@)", TABLE_ROUTE_NODE,
+                     [NSString stringWithFormat:@"%@ integer primary key autoincrement", FIELD_ROUTE_NODE_0_PRIMARY_KEY],
+                     [NSString stringWithFormat:@"%@ integer not null", FIELD_ROUTE_NODE_1_NODE_ID],
+                     [NSString stringWithFormat:@"%@ blob not null", FIELD_ROUTE_NODE_2_GEOMETRY],
+                     [NSString stringWithFormat:@"%@ bool not null", FIELD_ROUTE_NODE_3_VIRTUAL]];
     if ([_database executeUpdate:sql]) {
         return YES;
     }
@@ -116,7 +121,7 @@
     NSMutableString *sql = [NSMutableString stringWithFormat:@"Insert into %@", TABLE_ROUTE_NODE];
     NSMutableArray *arguments = [[NSMutableArray alloc] init];
     
-    NSString *fields = [NSString stringWithFormat:@" (nodeID, Geometry, virtual) "];
+    NSString *fields = [NSString stringWithFormat:@" (%@, %@, %@) ", FIELD_ROUTE_NODE_1_NODE_ID, FIELD_ROUTE_NODE_2_GEOMETRY, FIELD_ROUTE_NODE_3_VIRTUAL];
     NSString *values = @" (?, ?, ?)";
     
     [arguments addObject:@(nodeID)];
@@ -132,7 +137,8 @@
     NSMutableString *sql = [NSMutableString stringWithFormat:@"Insert into %@", TABLE_ROUTE_LINK];
     NSMutableArray *arguments = [[NSMutableArray alloc] init];
     
-    NSString *fields = [NSString stringWithFormat:@" (linkID, Geometry, length, headNode, endNode, virtual, oneWay) "];
+    NSString *fields = [NSString stringWithFormat:@" (%@, %@, %@, %@, %@, %@, %@) ", FIELD_ROUTE_LINK_1_LINK_ID, FIELD_ROUTE_LINK_2_GEOMETRY, FIELD_ROUTE_LINK_3_LENGTH, FIELD_ROUTE_LINK_4_HEAD_NODE, FIELD_ROUTE_LINK_5_END_NODE, FIELD_ROUTE_LINK_6_VIRTUAL, FIELD_ROUTE_LINK_7_ONE_WAY];
+    
     NSString *values = @" (?, ?, ?, ?, ?, ?, ?)";
     
     [arguments addObject:@(linkID)];

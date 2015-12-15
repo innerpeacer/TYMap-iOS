@@ -12,7 +12,9 @@
 
 
 #define FILE_MAP_DATABASE @"TYMap.db"
-#define FILE_MAP_INFO_DATABASE @"%@.tymap"
+#define FILE_MAP_DB_PATH @"%@.tymap"
+
+//#define FILE_MAP_INFO_DATABASE @"%@.tymap"
 
 // ===============================================
 
@@ -40,7 +42,6 @@
 
 #define FILE_MAP_DATA_PATH @"%@.data"
 
-#define FILE_MAP_DB_PATH @"%@.tymap"
 
 
 #define FILE_LAYER_PATH_LANDMARK @"%@_LANDMARK.json"

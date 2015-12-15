@@ -12,8 +12,9 @@
 @interface TYMapFileManager : NSObject
 
 + (NSString *)getMapDBPath;
++ (NSString *)getMapDataDBPath:(TYBuilding *)building;
 
-+ (NSString *)getMapInfoDBPath:(TYBuilding *)building;
+
 
 + (NSString *)getCityJsonPath;
 
@@ -33,6 +34,5 @@
 
 + (NSString *)getPrimitiveDBPath:(TYBuilding *)building;
 
-+ (NSString *)getMapDataDBPath:(TYBuilding *)building;
 
 @end

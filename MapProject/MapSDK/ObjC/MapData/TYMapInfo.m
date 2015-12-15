@@ -48,7 +48,7 @@ MapSize TYMapSizeMake(double x, double y)
 + (TYMapInfo *)parseMapInfo:(NSString *)floor ForBuilding:(TYBuilding *)building
 {
     TYMapInfo *info = nil;
-    NSString *dbPath = [TYMapFileManager getMapInfoDBPath:building];
+    NSString *dbPath = [TYMapFileManager getMapDataDBPath:building];
     TYMapInfoDBAdapter *db = [[TYMapInfoDBAdapter alloc] initWithPath:dbPath];
     [db open];
     info = [db getMapInfoWithName:floor];
@@ -59,7 +59,7 @@ MapSize TYMapSizeMake(double x, double y)
 + (NSArray *)parseAllMapInfo:(TYBuilding *)building
 {
     NSArray *mapInfoArray = nil;
-    NSString *dbPath = [TYMapFileManager getMapInfoDBPath:building];
+    NSString *dbPath = [TYMapFileManager getMapDataDBPath:building];
     TYMapInfoDBAdapter *db = [[TYMapInfoDBAdapter alloc] initWithPath:dbPath];
     [db open];
     mapInfoArray = [db getAllMapInfos];

@@ -24,10 +24,12 @@
     return [mapRootDir stringByAppendingPathComponent:fileName];
 }
 
-+ (NSString *)getMapInfoDBPath:(TYBuilding *)building
++ (NSString *)getMapDataDBPath:(TYBuilding *)building
 {
-    NSString *buildingDir = [TYMapEnvironment getBuildingDirectory:building];
-    NSString *fileName = [NSString stringWithFormat:FILE_MAP_INFO_DATABASE, building.buildingID];
+    NSString *mapRootDir = [TYMapEnvironment getRootDirectoryForMapFiles];
+    NSString *cityDir = [mapRootDir stringByAppendingPathComponent:building.cityID];
+    NSString *buildingDir = [cityDir stringByAppendingPathComponent:building.buildingID];
+    NSString *fileName = [NSString stringWithFormat:FILE_MAP_DB_PATH, building.buildingID];
     return [buildingDir stringByAppendingPathComponent:fileName];
 }
 
@@ -135,17 +137,6 @@
     return [buildingDir stringByAppendingPathComponent:fileName];
 }
 
-+ (NSString *)getMapDataDBPath:(TYBuilding *)building
-{
-    NSString *mapRootDir = [TYMapEnvironment getRootDirectoryForMapFiles];
-    NSString *cityDir = [mapRootDir stringByAppendingPathComponent:building.cityID];
-    NSString *buildingDir = [cityDir stringByAppendingPathComponent:building.buildingID];
-    NSString *fileName = [NSString stringWithFormat:FILE_MAP_DB_PATH, building.buildingID];
-    //    if ([TYMapEnvironment useEncryption]) {
-    //        fileName = [MD5Utils md5:fileName];
-    //        fileName = [NSString stringWithFormat:@"%@.tymap", fileName];
-    //    }
-    return [buildingDir stringByAppendingPathComponent:fileName];
-}
+
 
 @end

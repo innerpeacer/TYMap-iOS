@@ -10,7 +10,7 @@
 
 #import "TYRoutePointConverter.h"
 #import "TYMapEnviroment.h"
-
+#import "TYMapFileManager.h"
 #import "IPXRouteNetworkDataset.hpp"
 #import "IPXRouteNetworkDBAdapter.hpp"
 
@@ -51,7 +51,7 @@ typedef enum {
         TYMapInfo *info = [allMapInfos objectAtIndex:0];
         routePointConverter = [[TYRoutePointConverter alloc] initWithBaseMapExtent:info.mapExtent Offset:building.offset];
         
-        NSString *dbPath = [self getRouteDBPath:building];
+        NSString *dbPath = [TYMapFileManager getMapDataDBPath:building];
         IPXRouteNetworkDBAdapter *db = new IPXRouteNetworkDBAdapter([dbPath UTF8String]);
         db->open();
         networkDataset = db->readRouteNetworkDataset();
@@ -60,12 +60,6 @@ typedef enum {
         delete db;
     }
     return self;
-}
-
-- (NSString *)getRouteDBPath:(TYBuilding *)building
-{
-    NSString *dbName = [NSString stringWithFormat:@"%@_Route.db", building.buildingID];
-    return [[TYMapEnvironment getBuildingDirectory:building] stringByAppendingPathComponent:dbName];
 }
 
 - (void)dealloc
