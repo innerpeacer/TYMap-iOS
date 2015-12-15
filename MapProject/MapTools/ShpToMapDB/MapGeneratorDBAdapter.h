@@ -20,6 +20,10 @@
 
 - (void)insertMapInfos:(NSArray *)mapInfoArray;
 - (void)insertMapData:(NSArray *)mapDataArray;
+
+- (void)insertFillSymbols:(NSArray *)symbolArray;
+- (void)insertIconSymbols:(NSArray *)symbolArray;
+
 //- (void)insertFloorRecords:(NSArray *)floorRecordArray;
 //- (void)insertRoomRecords:(NSArray *)roomRecordArray;
 //- (void)insertAssetRecords:(NSArray *)assetRecordArray;

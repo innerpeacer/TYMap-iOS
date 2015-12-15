@@ -284,8 +284,8 @@
     userID = uID;
     mapLicense = license;
     
-    NSString *renderingSchemePath = [TYMapFileManager getRenderingScheme:_building];
-    renderingScheme = [[TYRenderingScheme alloc] initWithPath:(NSString *)renderingSchemePath];
+    NSString *symbolDBPath = [TYMapFileManager getSymbolDBPath:_building];
+    renderingScheme = [[TYRenderingScheme alloc] initWithPath:symbolDBPath];
 
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
     NSArray *brandArray = [TYBrand parseAllBrands:b];
@@ -312,8 +312,8 @@
     
     scaleLevelDict = [NSMutableDictionary dictionary];
     
-    NSString *renderingSchemePath = [TYMapFileManager getRenderingScheme:_building];
-    renderingScheme = [[TYRenderingScheme alloc] initWithPath:(NSString *)renderingSchemePath];
+    NSString *symbolDBPath = [TYMapFileManager getSymbolDBPath:_building];
+    renderingScheme = [[TYRenderingScheme alloc] initWithPath:symbolDBPath];
     
     self.touchDelegate = self;
     self.layerDelegate = self;

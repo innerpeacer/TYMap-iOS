@@ -14,25 +14,10 @@
 + (NSString *)getMapDBPath;
 + (NSString *)getMapDataDBPath:(TYBuilding *)building;
 
-
-
-//+ (NSString *)getCityJsonPath;
-//
-//+ (NSString *)getBuildingJsonPath:(NSString *)cityID;
-//
-//+ (NSString *)getMapInfoJsonPath:(NSString *)cityID buildingID:(NSString *)buildingID;
-
-//+ (NSString *)getMapDataPath:(TYMapInfo *)info;
-
 + (NSString *)getLandmarkJsonPath:(TYMapInfo *)info;
-
 + (NSString *)getBrandJsonPath:(TYBuilding *)building;
-
-+ (NSString *)getRenderingScheme:(TYBuilding *)building;
-
 + (NSString *)getPOIDBPath:(TYBuilding *)building;
 
-+ (NSString *)getPrimitiveDBPath:(TYBuilding *)building;
-
++ (NSString *)getSymbolDBPath:(TYBuilding *)building;
 
 @end

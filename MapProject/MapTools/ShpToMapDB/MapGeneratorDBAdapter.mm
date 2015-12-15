@@ -10,13 +10,14 @@
 
 #import "FMDatabase.h"
 
-#import "MapDBConstants.h"
+#import "TYMapDBConstants.h"
 #import "TYMapInfo.h"
 #import "OriginalShpRecord.h"
 #import "TYMapEnviroment.h"
 
 #import "TYMapFileManager.h"
 #include "IPEncryption.hpp"
+#import "SymbolRecord.h"
 
 @interface MapGeneratorDBAdapter()
 {
@@ -40,12 +41,42 @@
     return self;
 }
 
+
+- (void)insertMapInfos:(NSArray *)mapInfoArray
+{
+    for (TYMapInfo *info in mapInfoArray) {
+        [self insertMapInfo:info];
+    }
+}
+
+- (void)insertMapData:(NSArray *)mapDataArray
+{
+    for (OriginalShpRecord *record in mapDataArray) {
+        [self insertShpRecord:record];
+    }
+}
+
+
+- (void)insertFillSymbols:(NSArray *)symbolArray
+{
+    for (FillSymbolRecord *record in symbolArray) {
+        [self insertFillSymbolRecord:record];
+    }
+}
+
+- (void)insertIconSymbols:(NSArray *)symbolArray
+{
+    for (IconSymbolRecord *record in symbolArray) {
+        [self insertIconSymbolRecord:record];
+    }
+}
+
 - (BOOL)insertMapInfo:(TYMapInfo *)info
 {
     NSMutableString *sql = [NSMutableString stringWithFormat:@"insert into %@ ", TABLE_MAPINFO];
     
     NSMutableArray *arguments = [[NSMutableArray alloc] init];
-    NSString *fields = [NSString stringWithFormat:@" (%@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@)", MAPINFO_FIELD_CITY_ID, MAPINFO_FIELD_BUILDING_ID, MAPINFO_FIELD_MAP_ID, MAPINFO_FIELD_FLOOR_NAME, MAPINFO_FIELD_FLOOR_NUMBER, MAPINFO_FIELD_SIZE_X, MAPINFO_FIELD_SIZE_Y, MAPINFO_FIELD_X_MIN, MAPINFO_FIELD_Y_MIN, MAPINFO_FIELD_X_MAX, MAPINFO_FIELD_Y_MAX];
+    NSString *fields = [NSString stringWithFormat:@" (%@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@)", FIELD_MAPINFO_1_CITY_ID, FIELD_MAPINFO_2_BUILDING_ID, FIELD_MAPINFO_3_MAP_ID, FIELD_MAPINFO_4_FLOOR_NAME, FIELD_MAPINFO_5_FLOOR_NUMBER, FIELD_MAPINFO_6_SIZE_X, FIELD_MAPINFO_7_SIZE_Y, FIELD_MAPINFO_8_XMIN, FIELD_MAPINFO_9_YMIN, FIELD_MAPINFO_10_XMAX, FIELD_MAPINFO_11_YMAX];
     NSString *values = @" (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ";
     
     [arguments addObject:info.cityID];
@@ -65,27 +96,14 @@
     return [db executeUpdate:sql withArgumentsInArray:arguments];
 }
 
-- (void)insertMapInfos:(NSArray *)mapInfoArray
-{
-    for (TYMapInfo *info in mapInfoArray) {
-        [self insertMapInfo:info];
-    }
-}
-
-- (void)insertMapData:(NSArray *)mapDataArray
-{
-    for (OriginalShpRecord *record in mapDataArray) {
-        [self insertShpRecord:record];
-    }
-}
-
 - (BOOL)insertShpRecord:(OriginalShpRecord *)record
 {
     NSMutableString *sql = [NSMutableString stringWithFormat:@"insert into %@", TABLE_MAP_DATA];
     
     NSMutableArray *arguments = [[NSMutableArray alloc] init];
-    NSString *fields = [NSString stringWithFormat:@" (%@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@)", MAP_CONTENT_FIELD_OBJECT_ID, MAP_CONTENT_FIELD_GEOMETRY, MAP_CONTENT_FIELD_GEO_ID, MAP_CONTENT_FIELD_POI_ID, MAP_CONTENT_FIELD_FLOOR_ID, MAP_CONTENT_FIELD_BUILDING_ID, MAP_CONTENT_FIELD_CATEGORY_ID, MAP_CONTENT_FIELD_NAME, MAP_CONTENT_FIELD_SYMBOL_ID, MAP_CONTENT_FIELD_FLOOR_NUMBER, MAP_CONTENT_FIELD_FLOOR_NAME, MAP_CONTENT_FIELD_SHAPE_LENGTH, MAP_CONTENT_FIELD_SHAPE_AREA, MAP_CONTENT_FIELD_LABEL_X, MAP_CONTENT_FIELD_LABEL_Y, MAP_CONTENT_FIELD_LAYER, MAP_CONTENT_FIELD_LEVEL_MAX, MAP_CONTENT_FIELD_LEVEL_MIN];
+    NSString *fields = [NSString stringWithFormat:@" (%@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@)", FIELD_MAP_DATA_1_OBJECT_ID, FIELD_MAP_DATA_2_GEOMETRY, FIELD_MAP_DATA_3_GEO_ID, FIELD_MAP_DATA_4_POI_ID, FIELD_MAP_DATA_5_FLOOR_ID, FIELD_MAP_DATA_6_BUILDING_ID, FIELD_MAP_DATA_7_CATEGORY_ID, FIELD_MAP_DATA_8_NAME, FIELD_MAP_DATA_9_SYMBOL_ID, FIELD_MAP_DATA_10_FLOOR_NUMBER, FIELD_MAP_DATA_11_FLOOR_NAME, FIELD_MAP_DATA_12_SHAPE_LENGTH, FIELD_MAP_DATA_13_SHAPE_AREA, FIELD_MAP_DATA_14_LABEL_X, FIELD_MAP_DATA_15_LABEL_Y, FIELD_MAP_DATA_16_LAYER, FIELD_MAP_DATA_17_LEVEL_MAX, FIELD_MAP_DATA_18_LEVEL_MIN];
     NSString *values = @" ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ";
+
     
     [arguments addObject:record.objectID];
     
@@ -119,37 +137,37 @@
     [arguments addObject:record.levelMax];
     [arguments addObject:record.levelMin];
     
-//    if (record.layer.intValue == 5) {
-//        int geometryByteLength = (int)record.geometryData.length;
-//        char gBytes[geometryByteLength + 1];
-//        memset(gBytes, 0, sizeof(gBytes)/sizeof(char));
-//        
-//        [record.geometryData getBytes:gBytes];
-//        
-//        printf("Geometry Bytes: %d\n", geometryByteLength);
-//        for (int i = 0; i < geometryByteLength; ++i) {
-//            printf("%4d, ", gBytes[i]);
-//        }
-//        printf("\n");
-//        
-//        char encryptedBytes[geometryByteLength + 1];
-//        encryptBytes(gBytes, encryptedBytes, geometryByteLength);
-//        
-//        printf("Encrypted Bytes: %d\n", geometryByteLength);
-//        for (int i = 0; i < geometryByteLength; ++i) {
-//            printf("%4d, ", encryptedBytes[i]);
-//        }
-//        printf("\n");
-//        
-//        char backBytes[geometryByteLength + 1];
-//        decryptBytes(encryptedBytes, backBytes, geometryByteLength);
-//        
-//        printf("Decrypted Back Bytes: %d\n", geometryByteLength);
-//        for (int i = 0; i < geometryByteLength; ++i) {
-//            printf("%4d, ", backBytes[i]);
-//        }
-//        printf("\n\n");
-//    }
+    [sql appendFormat:@" %@ VALUES %@", fields, values];
+    return [db executeUpdate:sql withArgumentsInArray:arguments];
+}
+
+- (BOOL)insertFillSymbolRecord:(FillSymbolRecord *)record
+{
+    NSMutableString *sql = [NSMutableString stringWithFormat:@"insert into %@ ", TABLE_MAP_SYMBOL_FILL_SYMBOL];
+    
+    NSMutableArray *arguments = [[NSMutableArray alloc] init];
+    NSString *fields = [NSString stringWithFormat:@" (%@, %@, %@, %@)", FIELD_MAP_SYMBOL_FILL_1_SYMBOL_ID, FIELD_MAP_SYMBOL_FILL_2_FILL_COLOR, FIELD_MAP_SYMBOL_FILL_3_OUTLINE_COLOR, FIELD_MAP_SYMBOL_FILL_4_LINE_WIDTH];
+    NSString *values = @" (?, ?, ?, ?) ";
+    
+    [arguments addObject:@(record.symbolID)];
+    [arguments addObject:record.fillColor];
+    [arguments addObject:record.outlineColor];
+    [arguments addObject:@(record.lineWidth)];
+    
+    [sql appendFormat:@" %@ VALUES %@", fields, values];
+    return [db executeUpdate:sql withArgumentsInArray:arguments];
+}
+
+- (BOOL)insertIconSymbolRecord:(IconSymbolRecord *)record
+{
+    NSMutableString *sql = [NSMutableString stringWithFormat:@"insert into %@ ", TABLE_MAP_SYMBOL_ICON_SYMBOL];
+    
+    NSMutableArray *arguments = [[NSMutableArray alloc] init];
+    NSString *fields = [NSString stringWithFormat:@" (%@, %@)", FIELD_MAP_SYMBOL_ICON_1_SYMBOL_ID, FIELD_MAP_SYMBOL_ICON_2_ICON];
+    NSString *values = @" (?, ?) ";
+    
+    [arguments addObject:@(record.symbolID)];
+    [arguments addObject:record.icon];
     
     [sql appendFormat:@" %@ VALUES %@", fields, values];
     return [db executeUpdate:sql withArgumentsInArray:arguments];
@@ -158,29 +176,26 @@
 
 - (BOOL)createMapDataTable
 {
-    NSMutableString *sql = [NSMutableString stringWithFormat:@"create table %@ ( ", TABLE_MAP_DATA];
-    
-    [sql appendFormat:@"%@ integer primary key autoincrement, ", MAP_CONTENT_FIELD_ID];
-    [sql appendFormat:@"%@ integer not null, ", MAP_CONTENT_FIELD_OBJECT_ID];
-    [sql appendFormat:@"%@ blob not null, ", MAP_CONTENT_FIELD_GEOMETRY];
-    [sql appendFormat:@"%@ text not null, ", MAP_CONTENT_FIELD_GEO_ID];
-    [sql appendFormat:@"%@ text not null, ", MAP_CONTENT_FIELD_POI_ID];
-    [sql appendFormat:@"%@ text not null, ", MAP_CONTENT_FIELD_FLOOR_ID];
-    [sql appendFormat:@"%@ text not null, ", MAP_CONTENT_FIELD_BUILDING_ID];
-    [sql appendFormat:@"%@ text not null, ", MAP_CONTENT_FIELD_CATEGORY_ID];
-    [sql appendFormat:@"%@ text, ", MAP_CONTENT_FIELD_NAME];
-    [sql appendFormat:@"%@ integer not null, ", MAP_CONTENT_FIELD_SYMBOL_ID];
-    [sql appendFormat:@"%@ integer not null, ", MAP_CONTENT_FIELD_FLOOR_NUMBER];
-    [sql appendFormat:@"%@ text not null, ", MAP_CONTENT_FIELD_FLOOR_NAME];
-    [sql appendFormat:@"%@ real not null, ", MAP_CONTENT_FIELD_SHAPE_LENGTH];
-    [sql appendFormat:@"%@ real not null, ", MAP_CONTENT_FIELD_SHAPE_AREA];
-    [sql appendFormat:@"%@ real not null, ", MAP_CONTENT_FIELD_LABEL_X];
-    [sql appendFormat:@"%@ real not null, ", MAP_CONTENT_FIELD_LABEL_Y];
-    [sql appendFormat:@"%@ integer not null, ", MAP_CONTENT_FIELD_LAYER];
-    [sql appendFormat:@"%@ integer not null, ", MAP_CONTENT_FIELD_LEVEL_MAX];
-    [sql appendFormat:@"%@ integer not null", MAP_CONTENT_FIELD_LEVEL_MIN];
-
-    [sql appendString:@" )"];
+    NSString *sql = [NSString stringWithFormat:@"create table if not exists %@ (%@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@) ", TABLE_MAP_DATA,
+                     [NSString stringWithFormat:@"%@ integer primary key autoincrement", FIELD_MAP_DATA_0_PRIMARY_KEY],
+                     [NSString stringWithFormat:@"%@ text not null", FIELD_MAP_DATA_1_OBJECT_ID],
+                     [NSString stringWithFormat:@"%@ blob not null", FIELD_MAP_DATA_2_GEOMETRY],
+                     [NSString stringWithFormat:@"%@ text not null", FIELD_MAP_DATA_3_GEO_ID],
+                     [NSString stringWithFormat:@"%@ text not null", FIELD_MAP_DATA_4_POI_ID],
+                     [NSString stringWithFormat:@"%@ text not null", FIELD_MAP_DATA_5_FLOOR_ID],
+                     [NSString stringWithFormat:@"%@ text not null", FIELD_MAP_DATA_6_BUILDING_ID],
+                     [NSString stringWithFormat:@"%@ text not null", FIELD_MAP_DATA_7_CATEGORY_ID],
+                     [NSString stringWithFormat:@"%@ text", FIELD_MAP_DATA_8_NAME],
+                     [NSString stringWithFormat:@"%@ integer not null", FIELD_MAP_DATA_9_SYMBOL_ID],
+                     [NSString stringWithFormat:@"%@ integer not null", FIELD_MAP_DATA_10_FLOOR_NUMBER],
+                     [NSString stringWithFormat:@"%@ text not null", FIELD_MAP_DATA_11_FLOOR_NAME],
+                     [NSString stringWithFormat:@"%@ real not null", FIELD_MAP_DATA_12_SHAPE_LENGTH],
+                     [NSString stringWithFormat:@"%@ real not null", FIELD_MAP_DATA_13_SHAPE_AREA],
+                     [NSString stringWithFormat:@"%@ real not null", FIELD_MAP_DATA_14_LABEL_X],
+                     [NSString stringWithFormat:@"%@ real not null", FIELD_MAP_DATA_15_LABEL_Y],
+                     [NSString stringWithFormat:@"%@ integer not null", FIELD_MAP_DATA_16_LAYER],
+                     [NSString stringWithFormat:@"%@ integer not null", FIELD_MAP_DATA_17_LEVEL_MAX],
+                     [NSString stringWithFormat:@"%@ integer not null", FIELD_MAP_DATA_18_LEVEL_MIN]];
     
     if ([db executeUpdate:sql]) {
         return YES;
@@ -192,29 +207,54 @@
 
 - (BOOL)createMapInfoTable
 {
-    NSMutableString *sql = [NSMutableString stringWithFormat:@"create table %@ ( ", TABLE_MAPINFO];
-    
-    [sql appendFormat:@"%@ integer primary key autoincrement, ", MAPINFO_FIELD_ID];
-    [sql appendFormat:@"%@ text not null, ", MAPINFO_FIELD_CITY_ID];
-    [sql appendFormat:@"%@ text not null, ", MAPINFO_FIELD_BUILDING_ID];
-    [sql appendFormat:@"%@ text not null, ", MAPINFO_FIELD_MAP_ID];
-    [sql appendFormat:@"%@ text not null, ", MAPINFO_FIELD_FLOOR_NAME];
-    [sql appendFormat:@"%@ integer not null, ", MAPINFO_FIELD_FLOOR_NUMBER];
-    [sql appendFormat:@"%@ real not null, ", MAPINFO_FIELD_SIZE_X];
-    [sql appendFormat:@"%@ real not null, ", MAPINFO_FIELD_SIZE_Y];
-    [sql appendFormat:@"%@ real not null, ", MAPINFO_FIELD_X_MIN];
-    [sql appendFormat:@"%@ real not null, ", MAPINFO_FIELD_Y_MIN];
-    [sql appendFormat:@"%@ real not null, ", MAPINFO_FIELD_X_MAX];
-    [sql appendFormat:@"%@ real not null ", MAPINFO_FIELD_Y_MAX];
-    
-    [sql appendString:@" )"];
-    
+    NSString *sql = [NSString stringWithFormat:@"create table if not exists %@ (%@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@)", TABLE_MAPINFO,
+                     [NSString stringWithFormat:@"%@ integer primary key autoincrement", FIELD_MAPINFO_0_PRIMARY_KEY],
+                     [NSString stringWithFormat:@"%@ text not null", FIELD_MAPINFO_1_CITY_ID],
+                     [NSString stringWithFormat:@"%@ text not null", FIELD_MAPINFO_2_BUILDING_ID],
+                     [NSString stringWithFormat:@"%@ text not null", FIELD_MAPINFO_3_MAP_ID],
+                     [NSString stringWithFormat:@"%@ text not null", FIELD_MAPINFO_4_FLOOR_NAME],
+                     [NSString stringWithFormat:@"%@ integer not null", FIELD_MAPINFO_5_FLOOR_NUMBER],
+                     [NSString stringWithFormat:@"%@ real not null", FIELD_MAPINFO_6_SIZE_X],
+                     [NSString stringWithFormat:@"%@ real not null", FIELD_MAPINFO_7_SIZE_Y],
+                     [NSString stringWithFormat:@"%@ real not null", FIELD_MAPINFO_8_XMIN],
+                     [NSString stringWithFormat:@"%@ real not null", FIELD_MAPINFO_9_YMIN],
+                     [NSString stringWithFormat:@"%@ real not null", FIELD_MAPINFO_10_XMAX],
+                     [NSString stringWithFormat:@"%@ real not null", FIELD_MAPINFO_11_YMAX]];
     if ([db executeUpdate:sql]) {
         return YES;
     } else {
         return NO;
     }
+}
 
+- (BOOL)createFillSymbolTable
+{
+    NSString *sql = [NSString stringWithFormat:@"create table if not exists %@ (%@, %@, %@, %@, %@) ", TABLE_MAP_SYMBOL_FILL_SYMBOL,
+                     [NSString stringWithFormat:@"%@ integer primary key autoincrement", FIELD_MAP_SYMBOL_FILL_0_PRIMARY_KEY],
+                     [NSString stringWithFormat:@"%@ integer not null", FIELD_MAP_SYMBOL_FILL_1_SYMBOL_ID],
+                     [NSString stringWithFormat:@"%@ text not null", FIELD_MAP_SYMBOL_FILL_2_FILL_COLOR],
+                     [NSString stringWithFormat:@"%@ text not null", FIELD_MAP_SYMBOL_FILL_3_OUTLINE_COLOR],
+                     [NSString stringWithFormat:@"%@ real not null", FIELD_MAP_SYMBOL_FILL_4_LINE_WIDTH]
+                     ];
+    if ([db executeUpdate:sql]) {
+        return YES;
+    } else {
+        return NO;
+    }
+}
+
+- (BOOL)createIconSymbolTable
+{
+    NSString *sql = [NSString stringWithFormat:@"create table if not exists %@ (%@, %@, %@) ", TABLE_MAP_SYMBOL_ICON_SYMBOL,
+                     [NSString stringWithFormat:@"%@ integer primary key autoincrement", FIELD_MAP_SYMBOL_ICON_0_PRIMARY_KEY],
+                     [NSString stringWithFormat:@"%@ integer not null", FIELD_MAP_SYMBOL_ICON_1_SYMBOL_ID],
+                     [NSString stringWithFormat:@"%@ text not null", FIELD_MAP_SYMBOL_ICON_2_ICON]
+                     ];
+    if ([db executeUpdate:sql]) {
+        return YES;
+    } else {
+        return NO;
+    }
 }
 
 - (void)eraseDatabase
@@ -223,6 +263,10 @@
     sql = [NSString stringWithFormat:@"delete from %@", TABLE_MAPINFO];
     [db executeUpdate:sql];
     sql = [NSString stringWithFormat:@"delete from %@", TABLE_MAP_DATA];
+    [db executeUpdate:sql];
+    sql = [NSString stringWithFormat:@"delete from %@", TABLE_MAP_SYMBOL_FILL_SYMBOL];
+    [db executeUpdate:sql];
+    sql = [NSString stringWithFormat:@"delete from %@", TABLE_MAP_SYMBOL_ICON_SYMBOL];
     [db executeUpdate:sql];
 }
 
@@ -236,6 +280,14 @@
     
     if (![self existTable:TABLE_MAP_DATA]) {
         [self createMapDataTable];
+    }
+    
+    if (![self existTable:TABLE_MAP_SYMBOL_FILL_SYMBOL]) {
+        [self createFillSymbolTable];
+    }
+    
+    if (![self existTable:TABLE_MAP_SYMBOL_ICON_SYMBOL]) {
+        [self createIconSymbolTable];
     }
 }
 

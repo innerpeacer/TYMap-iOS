@@ -8,7 +8,6 @@
 
 #import "OriginalMapVC.h"
 #import "TYUserDefaults.h"
-#import "MapEncryptionVC.h"
 
 @interface OriginalMapVC ()
 

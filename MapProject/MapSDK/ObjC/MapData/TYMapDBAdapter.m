@@ -35,11 +35,10 @@
 {
     NSMutableArray *resultArray = [NSMutableArray array];
     
-    NSMutableString *sql = [NSMutableString stringWithFormat:@"select distinct %@, %@, %@, %@, %@, %@ from %@", FIELD_CITY_ID, FIELD_CITY_NAME, FIELD_CITY_SNAME, FIELD_CITY_LONGITUDE, FIELD_CITY_LATITUDE, FIELD_CITY_STATUS, TABLE_CITY];
-    const char *selectSql = [sql UTF8String];
+    NSMutableString *sql = [NSMutableString stringWithFormat:@"select distinct %@, %@, %@, %@, %@, %@ from %@", FIELD_CITY_1_ID, FIELD_CITY_2_NAME, FIELD_CITY_3_SNAME, FIELD_CITY_4_LONGITUDE, FIELD_CITY_5_LATITUDE, FIELD_CITY_6_STATUS, TABLE_CITY];
     
     sqlite3_stmt *statement;
-    if (sqlite3_prepare_v2(_database, selectSql, -1, &statement, nil) == SQLITE_OK) {
+    if (sqlite3_prepare_v2(_database, [sql UTF8String], -1, &statement, nil) == SQLITE_OK) {
         while (sqlite3_step(statement) == SQLITE_ROW) {
             NSString *cityID = [[NSString alloc] initWithCString:(char *)sqlite3_column_text(statement, 0) encoding:NSUTF8StringEncoding];
             NSString *cityName = [[NSString alloc] initWithCString:(char *)sqlite3_column_text(statement, 1) encoding:NSUTF8StringEncoding];
@@ -66,12 +65,11 @@
         return resultCity;
     }
     
-    NSMutableString *sql = [NSMutableString stringWithFormat:@"select distinct %@, %@, %@, %@, %@, %@ from %@ ", FIELD_CITY_ID, FIELD_CITY_NAME, FIELD_CITY_SNAME, FIELD_CITY_LONGITUDE, FIELD_CITY_LATITUDE, FIELD_CITY_STATUS, TABLE_CITY];
-    [sql appendFormat:@" where %@ = '%@' ", FIELD_CITY_ID, cityID];
-    const char *selectSql = [sql UTF8String];
+    NSMutableString *sql = [NSMutableString stringWithFormat:@"select distinct %@, %@, %@, %@, %@, %@ from %@ ", FIELD_CITY_1_ID, FIELD_CITY_2_NAME, FIELD_CITY_3_SNAME, FIELD_CITY_4_LONGITUDE, FIELD_CITY_5_LATITUDE, FIELD_CITY_6_STATUS, TABLE_CITY];
+    [sql appendFormat:@" where %@ = '%@' ", FIELD_CITY_1_ID, cityID];
 
     sqlite3_stmt *statement;
-    if (sqlite3_prepare_v2(_database, selectSql, -1, &statement, nil) == SQLITE_OK) {
+    if (sqlite3_prepare_v2(_database, [sql UTF8String], -1, &statement, nil) == SQLITE_OK) {
         if (sqlite3_step(statement) == SQLITE_ROW) {
             NSString *cityID = [[NSString alloc] initWithCString:(char *)sqlite3_column_text(statement, 0) encoding:NSUTF8StringEncoding];
             NSString *cityName = [[NSString alloc] initWithCString:(char *)sqlite3_column_text(statement, 1) encoding:NSUTF8StringEncoding];
@@ -96,12 +94,11 @@
         return resultArray;
     }
     
-    NSMutableString *sql = [NSMutableString stringWithFormat:@"select distinct %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@ from %@ ", FIELD_BUILDING_CITY_ID,  FIELD_BUILDING_ID,  FIELD_BUILDING_NAME,  FIELD_BUILDING_LONGITUDE,  FIELD_BUILDING_LATITUDE,  FIELD_BUILDING_ADDRESS,  FIELD_BUILDING_INIT_ANGLE,  FIELD_BUILDING_ROUTE_URL,  FIELD_BUILDING_OFFSET_X,  FIELD_BUILDING_OFFSET_Y,  FIELD_BUILDING_STATUS, TABLE_BUILDING];
-    [sql appendFormat:@" where %@ = '%@' ", FIELD_BUILDING_CITY_ID, city.cityID];
-    const char *selectSql = [sql UTF8String];
+    NSMutableString *sql = [NSMutableString stringWithFormat:@"select distinct %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@ from %@ ", FIELD_BUILDING_1_CITY_ID,  FIELD_BUILDING_2_ID,  FIELD_BUILDING_3_NAME,  FIELD_BUILDING_4_LONGITUDE,  FIELD_BUILDING_5_LATITUDE,  FIELD_BUILDING_6_ADDRESS,  FIELD_BUILDING_7_INIT_ANGLE,  FIELD_BUILDING_8_ROUTE_URL,  FIELD_BUILDING_9_OFFSET_X,  FIELD_BUILDING_10_OFFSET_Y,  FIELD_BUILDING_11_STATUS, TABLE_BUILDING];
+    [sql appendFormat:@" where %@ = '%@' ", FIELD_BUILDING_1_CITY_ID, city.cityID];
     
     sqlite3_stmt *statement;
-    if (sqlite3_prepare_v2(_database, selectSql, -1, &statement, nil) == SQLITE_OK) {
+    if (sqlite3_prepare_v2(_database, [sql UTF8String], -1, &statement, nil) == SQLITE_OK) {
         while (sqlite3_step(statement) == SQLITE_ROW) {
             NSString *cityID = [[NSString alloc] initWithCString:(char *)sqlite3_column_text(statement, 0) encoding:NSUTF8StringEncoding];
             NSString *buildingID = [[NSString alloc] initWithCString:(char *)sqlite3_column_text(statement, 1) encoding:NSUTF8StringEncoding];
@@ -135,12 +132,11 @@
         return building;
     }
     
-    NSMutableString *sql = [NSMutableString stringWithFormat:@"select distinct %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@ from %@ ", FIELD_BUILDING_CITY_ID,  FIELD_BUILDING_ID,  FIELD_BUILDING_NAME,  FIELD_BUILDING_LONGITUDE,  FIELD_BUILDING_LATITUDE,  FIELD_BUILDING_ADDRESS,  FIELD_BUILDING_INIT_ANGLE,  FIELD_BUILDING_ROUTE_URL,  FIELD_BUILDING_OFFSET_X,  FIELD_BUILDING_OFFSET_Y,  FIELD_BUILDING_STATUS, TABLE_BUILDING];
-    [sql appendFormat:@" where %@ = '%@' and %@ = '%@' ", FIELD_BUILDING_CITY_ID, city.cityID, FIELD_BUILDING_ID, buildingID];
-    const char *selectSql = [sql UTF8String];
+    NSMutableString *sql = [NSMutableString stringWithFormat:@"select distinct %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@ from %@ ", FIELD_BUILDING_1_CITY_ID,  FIELD_BUILDING_2_ID,  FIELD_BUILDING_3_NAME,  FIELD_BUILDING_4_LONGITUDE,  FIELD_BUILDING_5_LATITUDE,  FIELD_BUILDING_6_ADDRESS,  FIELD_BUILDING_7_INIT_ANGLE,  FIELD_BUILDING_8_ROUTE_URL,  FIELD_BUILDING_9_OFFSET_X,  FIELD_BUILDING_10_OFFSET_Y,  FIELD_BUILDING_11_STATUS, TABLE_BUILDING];
+    [sql appendFormat:@" where %@ = '%@' and %@ = '%@' ", FIELD_BUILDING_1_CITY_ID, city.cityID, FIELD_BUILDING_2_ID, buildingID];
     
     sqlite3_stmt *statement;
-    if (sqlite3_prepare_v2(_database, selectSql, -1, &statement, nil) == SQLITE_OK) {
+    if (sqlite3_prepare_v2(_database, [sql UTF8String], -1, &statement, nil) == SQLITE_OK) {
         if (sqlite3_step(statement) == SQLITE_ROW) {
             NSString *cityID = [[NSString alloc] initWithCString:(char *)sqlite3_column_text(statement, 0) encoding:NSUTF8StringEncoding];
             NSString *buildingID = [[NSString alloc] initWithCString:(char *)sqlite3_column_text(statement, 1) encoding:NSUTF8StringEncoding];

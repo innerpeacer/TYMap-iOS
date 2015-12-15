@@ -16,6 +16,7 @@
 
 #import "MapGeneratorDBAdapter.h"
 #import "OriginalShpDBAdapter.h"
+#import "OriginalSymbolDBAdapter.h"
 
 @interface GenerateMapDBVC()
 {
@@ -62,6 +63,36 @@
     [mdb close];
     
     [self insertMapFeatures];
+    [self insertMapSymbols];
+}
+
+- (void)insertMapSymbols
+{
+    MapGeneratorDBAdapter *mdb = [[MapGeneratorDBAdapter alloc] initWithBuilding:currentBuilding];
+    [mdb open];
+    
+    NSString *shpPath = [[NSBundle mainBundle] pathForResource:@"OriginalShpDB" ofType:nil];
+    NSString *bundlePath = [shpPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@_shp.bundle", currentBuilding.buildingID]];
+    NSBundle *dbBundle = [[NSBundle alloc] initWithPath:bundlePath];
+    NSString *dbPath = [dbBundle pathForResource:[NSString stringWithFormat:@"%@_SYMBOL", currentBuilding.buildingID] ofType:@"db"];
+    OriginalSymbolDBAdapter *odb = [[OriginalSymbolDBAdapter alloc] initWithPath:dbPath];
+    
+    [odb open];
+    
+    NSString *log;
+    NSArray *fillArray = [odb getAllFillSymbols];
+    NSArray *iconArray = [odb getAllIconSymbols];
+    
+    [mdb insertFillSymbols:fillArray];
+    log = [NSString stringWithFormat:@"\t%d\t fill symbols \t Inserted...", (int)fillArray.count];
+    [self performSelectorOnMainThread:@selector(updateUI:) withObject:log waitUntilDone:YES];
+    
+    [mdb insertIconSymbols:iconArray];
+    log = [NSString stringWithFormat:@"\t%d\t icon symbols \t Inserted...", (int)iconArray.count];
+    [self performSelectorOnMainThread:@selector(updateUI:) withObject:log waitUntilDone:YES];
+    
+    [odb close];
+    [mdb close];
 }
 
 - (void)insertMapFeatures
@@ -110,6 +141,5 @@
     [result appendString:[title substringToIndex:(titleLength-length)/2]];
     return result;
 }
-
 
 @end

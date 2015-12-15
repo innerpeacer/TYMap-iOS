@@ -7,7 +7,7 @@
 //
 
 #import "TYMapInfoDBAdapter.h"
-#import "TYMapInfoDBConstants.h"
+#import "TYMapDBConstants.h"
 
 #import <sqlite3.h>
 
@@ -34,10 +34,9 @@
 {
     NSMutableArray *mapInfoArray = [[NSMutableArray alloc] init];
     
-    NSString *sql = [NSMutableString stringWithFormat:@"SELECT distinct %@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@  FROM %@ ", FIELD_MAPINFO_CITY_ID, FIELD_MAPINFO_BUILDING_ID, FIELD_MAPINFO_MAP_ID, FIELD_MAPINFO_FLOOR_NAME, FIELD_MAPINFO_FLOOR_NUMBER, FIELD_MAPINFO_SIZE_X, FIELD_MAPINFO_SIZE_Y, FIELD_MAPINFO_XMIN, FIELD_MAPINFO_YMIN, FIELD_MAPINFO_XMAX, FIELD_MAPINFO_YMAX, TABLE_MAPINFO];
-    const char *selectSql = [sql UTF8String];
+    NSString *sql = [NSMutableString stringWithFormat:@"SELECT distinct %@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@ FROM %@", FIELD_MAPINFO_1_CITY_ID, FIELD_MAPINFO_2_BUILDING_ID, FIELD_MAPINFO_3_MAP_ID, FIELD_MAPINFO_4_FLOOR_NAME, FIELD_MAPINFO_5_FLOOR_NUMBER, FIELD_MAPINFO_6_SIZE_X, FIELD_MAPINFO_7_SIZE_Y, FIELD_MAPINFO_8_XMIN, FIELD_MAPINFO_9_YMIN, FIELD_MAPINFO_10_XMAX, FIELD_MAPINFO_11_YMAX, TABLE_MAPINFO];
     sqlite3_stmt *statement;
-    if (sqlite3_prepare_v2(_database, selectSql, -1, &statement, nil) == SQLITE_OK) {
+    if (sqlite3_prepare_v2(_database, [sql UTF8String], -1, &statement, nil) == SQLITE_OK) {
         while (sqlite3_step(statement) == SQLITE_ROW) {
             NSString *cityID = [[NSString alloc] initWithCString:(char *)sqlite3_column_text(statement, 0) encoding:NSUTF8StringEncoding];
             NSString *buildingID = [[NSString alloc] initWithCString:(char *)sqlite3_column_text(statement, 1) encoding:NSUTF8StringEncoding];
@@ -64,12 +63,10 @@
 {
     TYMapInfo *mapInfo = nil;
     
-    NSMutableString *sql = [NSMutableString stringWithFormat:@"SELECT distinct %@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@  FROM %@ ", FIELD_MAPINFO_CITY_ID, FIELD_MAPINFO_BUILDING_ID, FIELD_MAPINFO_MAP_ID, FIELD_MAPINFO_FLOOR_NAME, FIELD_MAPINFO_FLOOR_NUMBER, FIELD_MAPINFO_SIZE_X, FIELD_MAPINFO_SIZE_Y, FIELD_MAPINFO_XMIN, FIELD_MAPINFO_YMIN, FIELD_MAPINFO_XMAX, FIELD_MAPINFO_YMAX, TABLE_MAPINFO];
-    [sql appendFormat:@" where %@ = %d ", FIELD_MAPINFO_FLOOR_NUMBER, floor];
-    
-    const char *selectSql = [sql UTF8String];
+    NSMutableString *sql = [NSMutableString stringWithFormat:@"SELECT distinct %@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@  FROM %@ ", FIELD_MAPINFO_1_CITY_ID, FIELD_MAPINFO_2_BUILDING_ID, FIELD_MAPINFO_3_MAP_ID, FIELD_MAPINFO_4_FLOOR_NAME, FIELD_MAPINFO_5_FLOOR_NUMBER, FIELD_MAPINFO_6_SIZE_X, FIELD_MAPINFO_7_SIZE_Y, FIELD_MAPINFO_8_XMIN, FIELD_MAPINFO_9_YMIN, FIELD_MAPINFO_10_XMAX, FIELD_MAPINFO_11_YMAX, TABLE_MAPINFO];
+    [sql appendFormat:@" where %@ = %d ", FIELD_MAPINFO_5_FLOOR_NUMBER, floor];
     sqlite3_stmt *statement;
-    if (sqlite3_prepare_v2(_database, selectSql, -1, &statement, nil) == SQLITE_OK) {
+    if (sqlite3_prepare_v2(_database, [sql UTF8String], -1, &statement, nil) == SQLITE_OK) {
         if (sqlite3_step(statement) == SQLITE_ROW) {
             NSString *cityID = [[NSString alloc] initWithCString:(char *)sqlite3_column_text(statement, 0) encoding:NSUTF8StringEncoding];
             NSString *buildingID = [[NSString alloc] initWithCString:(char *)sqlite3_column_text(statement, 1) encoding:NSUTF8StringEncoding];
@@ -95,12 +92,11 @@
 {
     TYMapInfo *mapInfo = nil;
     
-    NSMutableString *sql = [NSMutableString stringWithFormat:@"SELECT distinct %@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@  FROM %@ ", FIELD_MAPINFO_CITY_ID, FIELD_MAPINFO_BUILDING_ID, FIELD_MAPINFO_MAP_ID, FIELD_MAPINFO_FLOOR_NAME, FIELD_MAPINFO_FLOOR_NUMBER, FIELD_MAPINFO_SIZE_X, FIELD_MAPINFO_SIZE_Y, FIELD_MAPINFO_XMIN, FIELD_MAPINFO_YMIN, FIELD_MAPINFO_XMAX, FIELD_MAPINFO_YMAX, TABLE_MAPINFO];
-    [sql appendFormat:@" where %@ = '%@' ", FIELD_MAPINFO_MAP_ID, mapID];
+    NSMutableString *sql = [NSMutableString stringWithFormat:@"SELECT distinct %@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@  FROM %@ ", FIELD_MAPINFO_1_CITY_ID, FIELD_MAPINFO_2_BUILDING_ID, FIELD_MAPINFO_3_MAP_ID, FIELD_MAPINFO_4_FLOOR_NAME, FIELD_MAPINFO_5_FLOOR_NUMBER, FIELD_MAPINFO_6_SIZE_X, FIELD_MAPINFO_7_SIZE_Y, FIELD_MAPINFO_8_XMIN, FIELD_MAPINFO_9_YMIN, FIELD_MAPINFO_10_XMAX, FIELD_MAPINFO_11_YMAX, TABLE_MAPINFO];
+    [sql appendFormat:@" where %@ = '%@' ", FIELD_MAPINFO_3_MAP_ID, mapID];
     
-    const char *selectSql = [sql UTF8String];
     sqlite3_stmt *statement;
-    if (sqlite3_prepare_v2(_database, selectSql, -1, &statement, nil) == SQLITE_OK) {
+    if (sqlite3_prepare_v2(_database, [sql UTF8String], -1, &statement, nil) == SQLITE_OK) {
         if (sqlite3_step(statement) == SQLITE_ROW) {
             NSString *cityID = [[NSString alloc] initWithCString:(char *)sqlite3_column_text(statement, 0) encoding:NSUTF8StringEncoding];
             NSString *buildingID = [[NSString alloc] initWithCString:(char *)sqlite3_column_text(statement, 1) encoding:NSUTF8StringEncoding];
@@ -126,12 +122,10 @@
 {
     TYMapInfo *mapInfo = nil;
     
-    NSMutableString *sql = [NSMutableString stringWithFormat:@"SELECT distinct %@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@  FROM %@ ", FIELD_MAPINFO_CITY_ID, FIELD_MAPINFO_BUILDING_ID, FIELD_MAPINFO_MAP_ID, FIELD_MAPINFO_FLOOR_NAME, FIELD_MAPINFO_FLOOR_NUMBER, FIELD_MAPINFO_SIZE_X, FIELD_MAPINFO_SIZE_Y, FIELD_MAPINFO_XMIN, FIELD_MAPINFO_YMIN, FIELD_MAPINFO_XMAX, FIELD_MAPINFO_YMAX, TABLE_MAPINFO];
-    [sql appendFormat:@" where %@ = '%@' ", FIELD_MAPINFO_FLOOR_NAME, floorName];
-    
-    const char *selectSql = [sql UTF8String];
+    NSMutableString *sql = [NSMutableString stringWithFormat:@"SELECT distinct %@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@  FROM %@ ", FIELD_MAPINFO_1_CITY_ID, FIELD_MAPINFO_2_BUILDING_ID, FIELD_MAPINFO_3_MAP_ID, FIELD_MAPINFO_4_FLOOR_NAME, FIELD_MAPINFO_5_FLOOR_NUMBER, FIELD_MAPINFO_6_SIZE_X, FIELD_MAPINFO_7_SIZE_Y, FIELD_MAPINFO_8_XMIN, FIELD_MAPINFO_9_YMIN, FIELD_MAPINFO_10_XMAX, FIELD_MAPINFO_11_YMAX, TABLE_MAPINFO];
+    [sql appendFormat:@" where %@ = '%@' ", FIELD_MAPINFO_4_FLOOR_NAME, floorName];
     sqlite3_stmt *statement;
-    if (sqlite3_prepare_v2(_database, selectSql, -1, &statement, nil) == SQLITE_OK) {
+    if (sqlite3_prepare_v2(_database, [sql UTF8String], -1, &statement, nil) == SQLITE_OK) {
         if (sqlite3_step(statement) == SQLITE_ROW) {
             NSString *cityID = [[NSString alloc] initWithCString:(char *)sqlite3_column_text(statement, 0) encoding:NSUTF8StringEncoding];
             NSString *buildingID = [[NSString alloc] initWithCString:(char *)sqlite3_column_text(statement, 1) encoding:NSUTF8StringEncoding];
