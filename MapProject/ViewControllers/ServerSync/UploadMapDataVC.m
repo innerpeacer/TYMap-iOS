@@ -102,21 +102,6 @@
     [self addToLog:[NSString stringWithFormat:@"Get %d MapDataRecords From Server", (int)resultArray.count]];
 }
 
-//- (void)TYWebDownloaderDidFailedDownloading:(TYWebDownloader *)dataDownloader WithApi:(NSString *)api WithError:(NSError *)error
-//{
-//    NSLog(@"TYDataDownloaderDidFailedDownloading: %@", api);
-//    NSLog(@"Error: %@", [error localizedDescription]);
-//}
-//
-//- (void)TYWebDownloaderDidFinishDownloading:(TYWebDownloader *)dataDownloader WithApi:(NSString *)api WithResponseData:(NSData *)responseData ResponseString:(NSString *)responseString
-//{
-//    if ([api isEqualToString:TY_API_GET_TARGET_MAPDATA]) {
-//        NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:nil];
-//        NSArray *mapDataArray = [TYWebObjectConverter parseMapDataArray:dict[@"mapdatas"]];
-//        [self addToLog:[NSString stringWithFormat:@"Get %d MapDataRecords From Server", (int)mapDataArray.count]];
-//    }
-//}
-
 - (void)getAllMapData
 {
     [self addToLog:[NSString stringWithFormat:@"======= getMapData:\n%@%@", hostName, TY_API_GET_TARGET_MAPDATA]];

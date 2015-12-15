@@ -27,6 +27,8 @@
 @property (nonatomic, assign) double labelX;
 @property (nonatomic, assign) double labelY;
 @property (nonatomic, assign) int layer;
+@property (nonatomic, assign) int levelMax;
+@property (nonatomic, assign) int levelMin;
 
 + (TYSyncMapDataRecord *)parseMapDataRecord:(NSDictionary *)recordObject;
 + (NSDictionary *)buildMapDataObject:(TYSyncMapDataRecord *)record;

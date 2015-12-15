@@ -77,7 +77,7 @@
 - (BOOL)insertMapDataRecord:(TYSyncMapDataRecord *)record
 {
     NSString *errorString = @"Error: failed to insert mapdata into the database.";
-    NSString *sql = [NSString stringWithFormat:@"Insert into %@ (%@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@) values ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", TABLE_MAP_DATA, FIELD_MAP_DATA_1_OBJECT_ID, FIELD_MAP_DATA_2_GEOMETRY, FIELD_MAP_DATA_3_GEO_ID, FIELD_MAP_DATA_4_POI_ID, FIELD_MAP_DATA_5_FLOOR_ID, FIELD_MAP_DATA_6_BUILDING_ID, FIELD_MAP_DATA_7_CATEGORY_ID, FIELD_MAP_DATA_8_NAME, FIELD_MAP_DATA_9_SYMBOL_ID, FIELD_MAP_DATA_10_FLOOR_NUMBER, FIELD_MAP_DATA_11_FLOOR_NAME, FIELD_MAP_DATA_12_SHAPE_LENGTH, FIELD_MAP_DATA_13_SHAPE_AREA, FIELD_MAP_DATA_14_LABEL_X, FIELD_MAP_DATA_15_LABEL_Y, FIELD_MAP_DATA_16_LAYER];
+    NSString *sql = [NSString stringWithFormat:@"Insert into %@ (%@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@) values ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", TABLE_MAP_DATA, FIELD_MAP_DATA_1_OBJECT_ID, FIELD_MAP_DATA_2_GEOMETRY, FIELD_MAP_DATA_3_GEO_ID, FIELD_MAP_DATA_4_POI_ID, FIELD_MAP_DATA_5_FLOOR_ID, FIELD_MAP_DATA_6_BUILDING_ID, FIELD_MAP_DATA_7_CATEGORY_ID, FIELD_MAP_DATA_8_NAME, FIELD_MAP_DATA_9_SYMBOL_ID, FIELD_MAP_DATA_10_FLOOR_NUMBER, FIELD_MAP_DATA_11_FLOOR_NAME, FIELD_MAP_DATA_12_SHAPE_LENGTH, FIELD_MAP_DATA_13_SHAPE_AREA, FIELD_MAP_DATA_14_LABEL_X, FIELD_MAP_DATA_15_LABEL_Y, FIELD_MAP_DATA_16_LAYER, FIELD_MAP_DATA_17_LEVEL_MAX, FIELD_MAP_DATA_18_LEVEL_MIN];
     sqlite3_stmt *statement;
     int success = sqlite3_prepare_v2(_database, [sql UTF8String], -1, &statement, NULL);
     if (success != SQLITE_OK) {
@@ -105,7 +105,9 @@
     sqlite3_bind_double(statement, 14, record.labelX);
     sqlite3_bind_double(statement, 15, record.labelY);
     sqlite3_bind_int(statement, 16, record.layer);
-      
+    sqlite3_bind_int(statement, 17, record.levelMax);
+    sqlite3_bind_int(statement, 18, record.levelMin);
+
     success = sqlite3_step(statement);
     sqlite3_finalize(statement);
     
@@ -176,7 +178,7 @@
 - (BOOL)updateMapDataRecord:(TYSyncMapDataRecord *)record
 {
     NSString *errorString = @"Error: failed to update mapdata";
-    NSString *sql = [NSString stringWithFormat:@"update %@ set %@=?, %@=?, %@=?, %@=?, %@=?, %@=?, %@=?, %@=?, %@=?, %@=?, %@=?, %@=?, %@=?, %@=?, %@=?, %@=? where %@=?", TABLE_MAP_DATA, FIELD_MAP_DATA_1_OBJECT_ID, FIELD_MAP_DATA_2_GEOMETRY, FIELD_MAP_DATA_3_GEO_ID, FIELD_MAP_DATA_4_POI_ID, FIELD_MAP_DATA_5_FLOOR_ID, FIELD_MAP_DATA_6_BUILDING_ID, FIELD_MAP_DATA_7_CATEGORY_ID, FIELD_MAP_DATA_8_NAME, FIELD_MAP_DATA_9_SYMBOL_ID, FIELD_MAP_DATA_10_FLOOR_NUMBER, FIELD_MAP_DATA_11_FLOOR_NAME, FIELD_MAP_DATA_12_SHAPE_LENGTH, FIELD_MAP_DATA_13_SHAPE_AREA, FIELD_MAP_DATA_14_LABEL_X, FIELD_MAP_DATA_15_LABEL_Y, FIELD_MAP_DATA_16_LAYER, FIELD_MAP_DATA_3_GEO_ID];
+    NSString *sql = [NSString stringWithFormat:@"update %@ set %@=?, %@=?, %@=?, %@=?, %@=?, %@=?, %@=?, %@=?, %@=?, %@=?, %@=?, %@=?, %@=?, %@=?, %@=?, %@=?, %@=?, %@=? where %@=?", TABLE_MAP_DATA, FIELD_MAP_DATA_1_OBJECT_ID, FIELD_MAP_DATA_2_GEOMETRY, FIELD_MAP_DATA_3_GEO_ID, FIELD_MAP_DATA_4_POI_ID, FIELD_MAP_DATA_5_FLOOR_ID, FIELD_MAP_DATA_6_BUILDING_ID, FIELD_MAP_DATA_7_CATEGORY_ID, FIELD_MAP_DATA_8_NAME, FIELD_MAP_DATA_9_SYMBOL_ID, FIELD_MAP_DATA_10_FLOOR_NUMBER, FIELD_MAP_DATA_11_FLOOR_NAME, FIELD_MAP_DATA_12_SHAPE_LENGTH, FIELD_MAP_DATA_13_SHAPE_AREA, FIELD_MAP_DATA_14_LABEL_X, FIELD_MAP_DATA_15_LABEL_Y, FIELD_MAP_DATA_16_LAYER, FIELD_MAP_DATA_17_LEVEL_MAX, FIELD_MAP_DATA_18_LEVEL_MIN, FIELD_MAP_DATA_3_GEO_ID];
     //    NSLog(@"%@", sql);
     sqlite3_stmt *statement;
     
@@ -206,7 +208,10 @@
     sqlite3_bind_double(statement, 14, record.labelX);
     sqlite3_bind_double(statement, 15, record.labelY);
     sqlite3_bind_int(statement, 16, record.layer);
-    sqlite3_bind_text(statement, 17, [record.geoID UTF8String], -1, SQLITE_STATIC);
+    sqlite3_bind_int(statement, 17, record.levelMax);
+    sqlite3_bind_int(statement, 18, record.levelMin);
+    
+    sqlite3_bind_text(statement, 19, [record.geoID UTF8String], -1, SQLITE_STATIC);
 
     success = sqlite3_step(statement);
     sqlite3_finalize(statement);
@@ -353,7 +358,7 @@
 {
     NSMutableArray *array = [[NSMutableArray alloc] init];
     
-    NSString *sql = [NSString stringWithFormat:@"select OBJECT_ID, GEOMETRY, GEO_ID, POI_ID, FLOOR_ID, BUILDING_ID, CATEGORY_ID, NAME, SYMBOL_ID, FLOOR_NUMBER, FLOOR_NAME, SHAPE_LENGTH, SHAPE_AREA, LABEL_X, LABEL_Y, LAYER from MAPDATA"];
+    NSString *sql = [NSString stringWithFormat:@"select OBJECT_ID, GEOMETRY, GEO_ID, POI_ID, FLOOR_ID, BUILDING_ID, CATEGORY_ID, NAME, SYMBOL_ID, FLOOR_NUMBER, FLOOR_NAME, SHAPE_LENGTH, SHAPE_AREA, LABEL_X, LABEL_Y, LAYER, LEVEL_MAX, LEVEL_MIN from MAPDATA"];
     sqlite3_stmt *statement;
     if (sqlite3_prepare_v2(_database, [sql UTF8String], -1, &statement, nil) == SQLITE_OK) {
         while (sqlite3_step(statement) == SQLITE_ROW) {
@@ -380,6 +385,8 @@
             double labelX = sqlite3_column_double(statement, 13);
             double labelY = sqlite3_column_double(statement, 14);
             int layer = sqlite3_column_int(statement, 15);
+            int levelMax = sqlite3_column_int(statement, 16);
+            int levelMin = sqlite3_column_int(statement, 17);
             
             record.objectID = objectID;
             record.geometryData = geoData;
@@ -398,6 +405,8 @@
             record.labelX = labelX;
             record.labelY = labelY;
             record.layer = layer;
+            record.levelMax = levelMax;
+            record.levelMin = levelMin;
             
             [array addObject:record];
         }
@@ -435,7 +444,7 @@
     }
     
     {
-        NSString *mapDataSql = [NSString stringWithFormat:@"create table if not exists %@ (%@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@) ", TABLE_MAP_DATA,
+        NSString *mapDataSql = [NSString stringWithFormat:@"create table if not exists %@ (%@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@) ", TABLE_MAP_DATA,
                                 [NSString stringWithFormat:@"%@ integer primary key autoincrement", FIELD_MAP_DATA_0_PRIMARY_KEY],
                                 [NSString stringWithFormat:@"%@ text not null", FIELD_MAP_DATA_1_OBJECT_ID],
                                 [NSString stringWithFormat:@"%@ blob not null", FIELD_MAP_DATA_2_GEOMETRY],
@@ -452,7 +461,11 @@
                                 [NSString stringWithFormat:@"%@ real not null", FIELD_MAP_DATA_13_SHAPE_AREA],
                                 [NSString stringWithFormat:@"%@ real not null", FIELD_MAP_DATA_14_LABEL_X],
                                 [NSString stringWithFormat:@"%@ real not null", FIELD_MAP_DATA_15_LABEL_Y],
-                                [NSString stringWithFormat:@"%@ integer not null", FIELD_MAP_DATA_16_LAYER]];
+                                [NSString stringWithFormat:@"%@ integer not null", FIELD_MAP_DATA_16_LAYER],
+                                [NSString stringWithFormat:@"%@ integer not null", FIELD_MAP_DATA_17_LEVEL_MAX],
+                                [NSString stringWithFormat:@"%@ integer not null", FIELD_MAP_DATA_18_LEVEL_MIN]
+                                
+                                ];
         sqlite3_stmt *statement;
         NSInteger sqlReturn = sqlite3_prepare_v2(_database, [mapDataSql UTF8String], -1, &statement, nil);
         if (sqlReturn != SQLITE_OK) {

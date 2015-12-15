@@ -34,6 +34,8 @@
     record.labelX = [recordObject[FIELD_MAP_DATA_14_LABEL_X] doubleValue];
     record.labelY = [recordObject[FIELD_MAP_DATA_15_LABEL_Y] doubleValue];
     record.layer = [recordObject[FIELD_MAP_DATA_16_LAYER] intValue];
+    record.levelMax = [recordObject[FIELD_MAP_DATA_17_LEVEL_MAX] intValue];
+    record.levelMin = [recordObject[FIELD_MAP_DATA_18_LEVEL_MIN] intValue];
     
     return record;
 }
@@ -67,6 +69,8 @@
     [dataObject setObject:@(record.labelX) forKey:FIELD_MAP_DATA_14_LABEL_X];
     [dataObject setObject:@(record.labelY) forKey:FIELD_MAP_DATA_15_LABEL_Y];
     [dataObject setObject:@(record.layer) forKey:FIELD_MAP_DATA_16_LAYER];
+    [dataObject setObject:@(record.levelMax) forKey:FIELD_MAP_DATA_17_LEVEL_MAX];
+    [dataObject setObject:@(record.levelMin) forKey:FIELD_MAP_DATA_18_LEVEL_MIN];
     
     return dataObject;
 }
