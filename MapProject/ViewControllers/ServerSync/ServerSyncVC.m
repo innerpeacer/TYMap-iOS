@@ -7,7 +7,6 @@
 //
 
 #import "ServerSyncVC.h"
-#import "EnviromentManager.h"
 
 @interface ServerSyncVC()
 {

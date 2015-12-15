@@ -7,13 +7,10 @@
 //
 
 #import "MapDevVC.h"
-#import "EnviromentManager.h"
 #import "SelectBuildingVC.h"
 #import "TYUserDefaults.h"
 #import "TYBuildingManager.h"
 #import "TYCityManager.h"
-
-#define USE_ENCRYPTION_MAP 0
 
 @interface MapDevVC() <SelectBuildingVCDelegate>
 {
@@ -27,13 +24,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-#if USE_ENCRYPTION_MAP
-    [EnviromentManager switchToEncrypted];
-#else
-    [EnviromentManager switchToOriginal];
-#endif
-    
     
     self.title = @"地图开发";
     
@@ -134,20 +124,6 @@
         controller.title = key;
         [self.navigationController pushViewController:controller animated:YES];
     }
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    
-//    NSLog(@"%@: %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
-#if USE_ENCRYPTION_MAP
-    [EnviromentManager switchToEncrypted];
-//    NSLog(@"[EnviromentManager switchToEncrypted]");
-#else
-    [EnviromentManager switchToOriginal];
-//    NSLog(@"[EnviromentManager switchToOriginal]");
-#endif
 }
 
 @end

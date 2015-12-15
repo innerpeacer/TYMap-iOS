@@ -11,7 +11,6 @@
 
 #import "TYMapEnviroment.h"
 #import "TYPoi.h"
-#import "EnviromentManager.h"
 
 #import "IPEncryption.hpp"
 #import "TYEncryption.h"
@@ -34,11 +33,9 @@
     
     NSString *documentDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     NSLog(@"%@", documentDirectory);
-    
-//    NSLog(@"Encryption: %@", [TYEncryption encryptString:@"lfadjkjaobajflajfoivoahgafafbafahklfjadlfa;fdjl;fajjfal;jhadprhq9h489hvf9hf9qh98ehfpqafh"]);
-    
+        
     [TYMapEnvironment initMapEnvironment];
-    [EnviromentManager switchToOriginal];
+    [TYMapEnvironment setRootDirectoryForMapFiles:[documentDirectory stringByAppendingPathComponent:DEFAULT_MAP_ROOT]];
 
     [self copyMapFilesIfNeeded];
     [self setDefaultPlaceIfNeeded];

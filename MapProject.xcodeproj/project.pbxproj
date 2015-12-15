@@ -108,9 +108,7 @@
 		57410F7A1BF8EC5800D5405F /* MKNetworkKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57410F791BF8EC5800D5405F /* MKNetworkKit.framework */; };
 		57494DDA1B61DAE7000B6F2C /* BaseControllerTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 57494DD31B61DAE7000B6F2C /* BaseControllerTableVC.m */; };
 		57494DDB1B61DAE7000B6F2C /* BaseLogVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 57494DD51B61DAE7000B6F2C /* BaseLogVC.m */; };
-		57494DE01B61DB08000B6F2C /* EncyptedCityVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 57494DDF1B61DB08000B6F2C /* EncyptedCityVC.m */; };
 		57494DE31B61DB17000B6F2C /* OriginalCityVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 57494DE21B61DB17000B6F2C /* OriginalCityVC.m */; };
-		57494DF51B61E730000B6F2C /* EnviromentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 57494DF41B61E730000B6F2C /* EnviromentManager.m */; };
 		574994431BEEF1140064F831 /* TYParkingLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 574994421BEEF1140064F831 /* TYParkingLayer.m */; };
 		574EE2C71B723C30005A6482 /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 574EE2C51B723C30005A6482 /* Launch Screen.xib */; };
 		574F5E3D1BDAAE07001967F6 /* IPXFeatureRecord.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 574F5E3B1BDAAE07001967F6 /* IPXFeatureRecord.cpp */; };
@@ -388,12 +386,8 @@
 		57494DD31B61DAE7000B6F2C /* BaseControllerTableVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseControllerTableVC.m; sourceTree = "<group>"; };
 		57494DD41B61DAE7000B6F2C /* BaseLogVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseLogVC.h; sourceTree = "<group>"; };
 		57494DD51B61DAE7000B6F2C /* BaseLogVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseLogVC.m; sourceTree = "<group>"; };
-		57494DDE1B61DB08000B6F2C /* EncyptedCityVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EncyptedCityVC.h; sourceTree = "<group>"; };
-		57494DDF1B61DB08000B6F2C /* EncyptedCityVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EncyptedCityVC.m; sourceTree = "<group>"; };
 		57494DE11B61DB17000B6F2C /* OriginalCityVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OriginalCityVC.h; sourceTree = "<group>"; };
 		57494DE21B61DB17000B6F2C /* OriginalCityVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OriginalCityVC.m; sourceTree = "<group>"; };
-		57494DF31B61E730000B6F2C /* EnviromentManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnviromentManager.h; sourceTree = "<group>"; };
-		57494DF41B61E730000B6F2C /* EnviromentManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnviromentManager.m; sourceTree = "<group>"; };
 		574994411BEEF1140064F831 /* TYParkingLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYParkingLayer.h; sourceTree = "<group>"; };
 		574994421BEEF1140064F831 /* TYParkingLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYParkingLayer.m; sourceTree = "<group>"; };
 		574EE2C61B723C30005A6482 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = "Launch Screen.xib"; sourceTree = "<group>"; };
@@ -969,7 +963,6 @@
 				57C777841B73439C0087CA14 /* UI */,
 				57494DD11B61DAE7000B6F2C /* HelperVC */,
 				576AEE971B61D97100D55CA4 /* MapDevelopment */,
-				576AEE921B61D97100D55CA4 /* EncryptedMapList */,
 				576AEEA41B61D97100D55CA4 /* OriginalMapList */,
 			);
 			path = ViewControllers;
@@ -980,8 +973,6 @@
 			children = (
 				57672D5B1B55FF9900DAD219 /* TYUserDefaults.h */,
 				57672D5C1B55FF9900DAD219 /* TYUserDefaults.m */,
-				57494DF31B61E730000B6F2C /* EnviromentManager.h */,
-				57494DF41B61E730000B6F2C /* EnviromentManager.m */,
 				57FC97AA1BB1285F006D6D00 /* LicenseManager.h */,
 				57FC97AB1BB1285F006D6D00 /* LicenseManager.m */,
 			);
@@ -1050,15 +1041,6 @@
 				5794C0FA1B5613CC002DCE9F /* PrefixHeader.pch */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		576AEE921B61D97100D55CA4 /* EncryptedMapList */ = {
-			isa = PBXGroup;
-			children = (
-				57494DDE1B61DB08000B6F2C /* EncyptedCityVC.h */,
-				57494DDF1B61DB08000B6F2C /* EncyptedCityVC.m */,
-			);
-			path = EncryptedMapList;
 			sourceTree = "<group>";
 		};
 		576AEE971B61D97100D55CA4 /* MapDevelopment */ = {
@@ -1371,7 +1353,6 @@
 				572407A91BC9A8A10050BA41 /* TYFacilityLabel.m in Sources */,
 				57672E331B55FFF900DAD219 /* FMResultSet.m in Sources */,
 				570ABA741BF9E3670006BC30 /* UploadCityBuildingVC.m in Sources */,
-				57494DE01B61DB08000B6F2C /* EncyptedCityVC.m in Sources */,
 				57672D081B55FF4A00DAD219 /* TYPoiDBAdapter.m in Sources */,
 				572407B81BC9A8A10050BA41 /* TYRenderingScheme.m in Sources */,
 				5724079B1BC9A8A10050BA41 /* TYPictureMarkerSymbol.m in Sources */,
@@ -1407,7 +1388,6 @@
 				572408D21BC9AE3D0050BA41 /* IPXRouteNetworkDataset.cpp in Sources */,
 				572408ED1BC9B9800050BA41 /* BuildRouteNetworkDatasetVC.m in Sources */,
 				572407A81BC9A8A10050BA41 /* Vector2.m in Sources */,
-				57494DF51B61E730000B6F2C /* EnviromentManager.m in Sources */,
 				572407C01BC9A8A10050BA41 /* TYRoutePointConverter.m in Sources */,
 				572407A31BC9A8A10050BA41 /* TYAnimatedRouteArrowLayer.m in Sources */,
 				572407A61BC9A8A10050BA41 /* TYRouteHintLayer.m in Sources */,

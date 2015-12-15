@@ -9,7 +9,6 @@
 #import "OriginalCityVC.h"
 #import "TYUserDefaults.h"
 #import "TYMapEnviroment.h"
-#import "EnviromentManager.h"
 #import "BaseMapVC.h"
 
 #import "RATreeView.h"
@@ -27,7 +26,6 @@
 - (void)viewDidLoad
 {
     self.title = @"地图列表";
-    [EnviromentManager switchToOriginal];
 
     self.cityArray = [TYCityManager parseAllCities];
     NSMutableArray *array = [NSMutableArray array];
@@ -51,16 +49,6 @@
     controller.allMapInfos = [TYMapInfo parseAllMapInfo:controller.currentBuilding];
     
     [self.navigationController pushViewController:controller animated:YES];
-}
-
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    
-    NSLog(@"%@: %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
-    [EnviromentManager switchToOriginal];
-    NSLog(@"[EnviromentManager switchToOriginal]");
 }
 
 @end

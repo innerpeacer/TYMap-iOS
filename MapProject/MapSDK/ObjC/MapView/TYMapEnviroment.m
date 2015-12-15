@@ -74,15 +74,4 @@ static TYMapLanguage mapLanguage = TYSimplifiedChinese;
     return mapLanguage;
 }
 
-static BOOL useEncryption = YES;
-+ (void)setEncryptionEnabled:(BOOL)enable
-{
-    useEncryption = enable;
-}
-
-+ (BOOL)useEncryption
-{
-    return useEncryption;
-}
-
 @end
