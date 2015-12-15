@@ -7,7 +7,7 @@
 //
 
 #import "GenerateLicensesVC.h"
-#import "LicenseGenerator.h"
+#import "MapLicenseGenerator.h"
 #import "TYCityManager.h"
 #import "TYBuildingManager.h"
 
@@ -36,7 +36,7 @@
 
 - (void)generateLicenseForBuilding:(NSString *)buildingID
 {
-    NSString *license = [LicenseGenerator generateLicenseForUserID:userID Building:buildingID ExpiredDate:expiredDate];
+    NSString *license = [MapLicenseGenerator generateLicenseForUserID:userID Building:buildingID ExpiredDate:expiredDate];
     NSLog(@"%@", license);
 }
 
@@ -49,7 +49,7 @@
     for (TYCity *city in allCities) {
         NSArray *allBuildings = [TYBuildingManager parseAllBuildings:city];
         for (TYBuilding *building in allBuildings) {
-            NSString *license = [LicenseGenerator generateLicenseForUserID:userID Building:building.buildingID ExpiredDate:expiredDate];
+            NSString *license = [MapLicenseGenerator generateLicenseForUserID:userID Building:building.buildingID ExpiredDate:expiredDate];
             
             NSMutableDictionary *dict = [NSMutableDictionary dictionary];
             [dict setObject:userID forKeyedSubscript:@"UserID"];

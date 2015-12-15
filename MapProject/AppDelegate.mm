@@ -18,7 +18,7 @@
 #import "MD5Utils.h"
 #import "MD5.hpp"
 
-#import "LicenseGenerator.h"
+#import "MapLicenseGenerator.h"
 #import "TYLicenseValidation.h"
 #import "LicenseManager.h"
 #import "TYMapDBAdapter.h"
@@ -33,8 +33,10 @@
     
     NSString *documentDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     NSLog(@"%@", documentDirectory);
-        
+    
     [TYMapEnvironment initMapEnvironment];
+    [TYMapEnvironment setHostName:HOST_NAME];
+
     [TYMapEnvironment setRootDirectoryForMapFiles:[documentDirectory stringByAppendingPathComponent:DEFAULT_MAP_ROOT]];
 
     [self copyMapFilesIfNeeded];

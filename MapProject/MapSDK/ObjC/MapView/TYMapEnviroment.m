@@ -74,4 +74,16 @@ static TYMapLanguage mapLanguage = TYSimplifiedChinese;
     return mapLanguage;
 }
 
+
+static NSString *apiHostName;
++ (void)setHostName:(NSString *)hostName
+{
+    apiHostName = hostName;
+}
+
++ (NSString *)getHostName
+{
+    return apiHostName;
+}
+
 @end

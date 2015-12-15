@@ -6,11 +6,11 @@
 //  Copyright (c) 2015年 innerpeacer. All rights reserved.
 //
 
-#import "LicenseGenerator.h"
+#import "MapLicenseGenerator.h"
 #import "TYEncryption.h"
 #import "MD5Utils.h"
 
-@implementation LicenseGenerator
+@implementation MapLicenseGenerator
 
 + (NSString *)generateLicenseForUserID:(NSString *)userID Building:(NSString *)building ExpiredDate:(NSString *)expiredDate
 {

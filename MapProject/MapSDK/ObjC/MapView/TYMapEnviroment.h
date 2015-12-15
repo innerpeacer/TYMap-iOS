@@ -82,4 +82,18 @@ typedef enum {
  */
 + (TYMapLanguage)getMapLanguage;
 
+/**
+ *  设置地图服务网络接口主机名
+ *
+ *  @param hostName 主机名
+ */
++ (void)setHostName:(NSString *)hostName;
+
+/**
+ *  获取地图服务网络接口主机名
+ *
+ *  @return 主机名
+ */
++ (NSString *)getHostName;
+
 @end

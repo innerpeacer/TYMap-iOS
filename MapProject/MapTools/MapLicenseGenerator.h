@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <TYMapData/TYMapData.h>
 
-@interface LicenseGenerator : NSObject
+@interface MapLicenseGenerator : NSObject
 
 + (NSString *)generateLicenseForUserID:(NSString *)userID Building:(NSString *)building ExpiredDate:(NSString *)expiredDate;
 

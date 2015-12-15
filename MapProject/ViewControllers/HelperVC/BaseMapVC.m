@@ -12,7 +12,7 @@
 #import "TYRenderingScheme.h"
 #import "TYGeometryEngine.h"
 
-#import "LicenseGenerator.h"
+#import "MapLicenseGenerator.h"
 
 @interface BaseMapVC()
 {
@@ -88,7 +88,7 @@
 
 - (void)initMap
 {
-    [self.mapView initMapViewWithBuilding:_currentBuilding UserID:TRIAL_USER_ID License:[LicenseGenerator generateLicenseForUserID:TRIAL_USER_ID Building:_currentBuilding.buildingID ExpiredDate:TRIAL_EXPRIED_DATE]];
+    [self.mapView initMapViewWithBuilding:_currentBuilding UserID:TRIAL_USER_ID License:[MapLicenseGenerator generateLicenseForUserID:TRIAL_USER_ID Building:_currentBuilding.buildingID ExpiredDate:TRIAL_EXPRIED_DATE]];
 //    [self.mapView initMapViewWithBuilding:_currentBuilding UserID:TRIAL_USER_ID License:[LicenseGenerator generateLicenseForUserID:TRIAL_USER_ID Building:@"00210100" ExpiredDate:TRIAL_EXPRIED_DATE]];
 
     self.mapView.mapDelegate = self;

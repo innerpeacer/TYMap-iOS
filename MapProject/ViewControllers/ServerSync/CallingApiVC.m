@@ -12,7 +12,7 @@
 #import <ArcGIS/ArcGIS.h>
 #import "TYUserDefaults.h"
 #import "TYMapInfo.h"
-#import "LicenseGenerator.h"
+#import "MapLicenseGenerator.h"
 #import "TYArcGISDrawer.h"
 
 #import "TYApi.h"
@@ -58,7 +58,7 @@
     
     userID = TRIAL_USER_ID;
     buildingID = self.currentBuilding.buildingID;
-    license = [LicenseGenerator generateLicenseForUserID:userID Building:buildingID ExpiredDate:TRIAL_EXPRIED_DATE];
+    license = [MapLicenseGenerator generateLicenseForUserID:userID Building:buildingID ExpiredDate:TRIAL_EXPRIED_DATE];
     
     hostName = HOST_NAME;
     apiPath = TY_API_GET_LOCATING_BEACONS;

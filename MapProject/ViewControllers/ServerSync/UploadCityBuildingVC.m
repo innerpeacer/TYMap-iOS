@@ -9,14 +9,23 @@
 #import "UploadCityBuildingVC.h"
 #import "TYCityManager.h"
 #import "TYBuildingManager.h"
-
+#import "TYMapInfo.h"
 #import <MKNetworkKit/MKNetworkKit.h>
+#import "TYUserManager.h"
+#import "TYSyncMapDBAdapter.h"
+#import "TYCBMUploader.h"
+#import "TYCBMDownloader.h"
 
-@interface UploadAllCityBuildingVC()
+@interface UploadAllCityBuildingVC() <TYCBMUploaderDelegate, TYCBMDownloaderDelegate>
 {
     NSArray *allCities;
     NSArray *allBuildings;
+    NSArray *allMapInfos;
     
+    NSString *hostName;
+    
+    TYCBMUploader *webUploader;
+    TYCBMDownloader *webDownloader;
 }
 
 - (IBAction)uploadCitiesAndBuildings:(id)sender;
@@ -29,126 +38,135 @@
 {
     [super viewDidLoad];
     
+    hostName = HOST_NAME;
+    
+    
+    webUploader = [[TYCBMUploader alloc] initWithUser:[TYUserManager createSuperUser:@"00000000"]];
+    //    webUploader = [[TYCBMUploader alloc] initWithUser:[TYUserManager createTrialUser:@"00000000"]];
+    webUploader.delegate = self;
+    webDownloader = [[TYCBMDownloader alloc] initWithUser:[TYUserManager createSuperUser:@"00000000"]];
+    webDownloader.delegate = self;
+    
     allCities = [TYCityManager parseAllCities];
     NSMutableArray *buildingArray = [NSMutableArray array];
+    NSMutableArray *mapInfoArray = [NSMutableArray array];
     for (TYCity *city in allCities) {
         NSArray *buildings = [TYBuildingManager parseAllBuildings:city];
         [buildingArray addObjectsFromArray:buildings];
+        
+        for (TYBuilding *building in buildings) {
+            NSArray *mapInfos = [TYMapInfo parseAllMapInfo:building];
+            [mapInfoArray addObjectsFromArray:mapInfos];
+        }
     }
     allBuildings = buildingArray;
+    allMapInfos = mapInfoArray;
+}
+
+- (void)TYCBMUploader:(TYCBMUploader *)uploader DidFailedUploadingWithApi:(NSString *)api WithError:(NSError *)error
+{
+    NSLog(@"TYDataUploaderDidFailedUploading: %@", api);
+    NSLog(@"Error: %@", [error localizedDescription]);
+}
+
+- (void)TYCBMUploader:(TYCBMUploader *)uploader DidFinishUploadingWithApi:(NSString *)api WithDescription:(NSString *)responseString
+{
+    [self addToLog:responseString];
+}
+
+- (void)TYCBMDownloader:(TYCBMDownloader *)downloader DidFinishDownloadingWithApi:(NSString *)api WithResult:(NSArray *)resultArray Records:(int)records
+{
+    if ([api isEqualToString:TY_API_GET_ALL_CITIES]) {
+        [self addToLog:[NSString stringWithFormat:@"Records: %d", records]];
+        [self addToLog:[NSString stringWithFormat:@"Get %d Cities From Server", (int)resultArray.count]];
+        NSMutableString *cityString = [NSMutableString string];
+        [resultArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            TYCity *c = obj;
+            [cityString appendFormat:@"[%@] ", c.name];
+        }];
+        [self addToLog:cityString];
+    }
+    
+    if ([api isEqualToString:TY_API_GET_ALL_BUILDINGS]) {
+        [self addToLog:[NSString stringWithFormat:@"Records: %d", records]];
+        [self addToLog:[NSString stringWithFormat:@"Get %d Buildings From Server", (int)resultArray.count]];
+        NSMutableString *buildingString = [NSMutableString string];
+        [resultArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            TYBuilding *b = obj;
+            [buildingString appendFormat:@"[%@] ", b.name];
+        }];
+        [self addToLog:buildingString];
+    }
+    
+    if ([api isEqualToString:TY_API_GET_ALL_MAPINFOS]) {
+        [self addToLog:[NSString stringWithFormat:@"Records: %d", records]];
+        [self addToLog:[NSString stringWithFormat:@"Get %d MapInfos From Server", (int)resultArray.count]];
+        NSMutableString *mapInfoString = [NSMutableString string];
+        [resultArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            TYMapInfo *m = obj;
+            [mapInfoString appendFormat:@"[%@] ", m.mapID];
+        }];
+        [self addToLog:mapInfoString];
+    }
+    
+}
+
+- (void)TYCBMDownloader:(TYCBMDownloader *)downloader DidFailedDownloadingWithApi:(NSString *)api WithError:(NSError *)error
+{
+    NSLog(@"TYDataDownloaderDidFailedDownloading: %@", api);
+    NSLog(@"Error: %@", [error localizedDescription]);
 }
 
 - (void)uploadAllCities
 {
-    [self addToLog:@"uploadAllCities:"];
-    NSMutableDictionary *param = [[NSMutableDictionary alloc] init];
-    [param setValue:SUPER_USER_ID forKey:@"userID"];
-
-    NSArray *cityArray = [self prepareCityArray];
-    NSData *cityData = [NSJSONSerialization dataWithJSONObject:cityArray options:NSJSONWritingPrettyPrinted error:nil];
-    NSString *cityString = [NSString stringWithCString:cityData.bytes encoding:NSUTF8StringEncoding];
-    [param setValue:cityString forKey:@"cities"];
-//    NSLog(@"%@", cityString);
-
-    
-    MKNetworkEngine *engine = [[MKNetworkEngine alloc] initWithHostName:HOST_NAME];
-    MKNetworkOperation *op = [engine operationWithPath:TY_API_UPLOAD_ALL_CITIES params:param httpMethod:@"POST"];
-    
-    [self addToLog:[NSString stringWithFormat:@"%@%@", HOST_NAME, TY_API_UPLOAD_ALL_CITIES]];
-    
-    [op addCompletionHandler:^(MKNetworkOperation *operation) {
-        NSLog(@"ResponseData: %@", [operation responseString]);
-        [self addToLog:@"Response String:"];
-        [self addToLog:[operation responseString]];
-    } errorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
-        NSLog(@"Error: %@", [error localizedDescription]);
-    }];
-    
-    [engine enqueueOperation:op];
-    
+    [self addToLog:[NSString stringWithFormat:@"======= uploadAllCities:\n%@%@", hostName, TY_API_UPLOAD_ALL_CITIES]];
+    [webUploader uploadCities:allCities];
 }
 
 
 - (void)uploadAllBuildings
 {
-    [self addToLog:@"uploadAllCities"];
-    
-    NSMutableDictionary *param = [[NSMutableDictionary alloc] init];
-    [param setValue:SUPER_USER_ID forKey:@"userID"];
-    
-    NSArray *buildingArray = [self prepareBuildingArray];
-    NSData *buildingData = [NSJSONSerialization dataWithJSONObject:buildingArray options:NSJSONWritingPrettyPrinted error:nil];
-    NSString *buildingString = [NSString stringWithCString:buildingData.bytes encoding:NSUTF8StringEncoding];
-    [param setValue:buildingString forKey:@"buildings"];
-//    NSLog(@"%@", buildingString);
-
-    MKNetworkEngine *engine = [[MKNetworkEngine alloc] initWithHostName:HOST_NAME];
-    MKNetworkOperation *op = [engine operationWithPath:TY_API_UPLOAD_ALL_BUILDINGS params:param httpMethod:@"POST"];
-    
-    [self addToLog:[NSString stringWithFormat:@"%@%@", HOST_NAME, TY_API_UPLOAD_ALL_BUILDINGS]];
-    
-    [op addCompletionHandler:^(MKNetworkOperation *operation) {
-        NSLog(@"ResponseData: %@", [operation responseString]);
-        [self addToLog:@"Response String:"];
-        [self addToLog:[operation responseString]];
-    } errorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
-        NSLog(@"Error: %@", [error localizedDescription]);
-    }];
-    
-    [engine enqueueOperation:op];
+    [self addToLog:[NSString stringWithFormat:@"======= uploadAllBuildings:\n%@%@", hostName, TY_API_UPLOAD_ALL_BUILDINGS]];
+    [webUploader uploadBuildings:allBuildings];
 }
 
-- (NSArray *)prepareCityArray
+- (void)uploadAllMapInfos
 {
-    NSMutableArray *cityArray = [NSMutableArray array];
-    for (TYCity *city in allCities) {
-        NSMutableDictionary *cityObject = [NSMutableDictionary dictionary];
-        
-        [cityObject setObject:city.cityID forKey:@"CITY_ID"];
-        [cityObject setObject:city.name forKey:@"NAME"];
-        [cityObject setObject:city.sname forKey:@"SNAME"];
-        [cityObject setObject:@(city.longitude) forKey:@"LONGITUDE"];
-        [cityObject setObject:@(city.latitude) forKey:@"LATITUDE"];
-        [cityObject setObject:@(city.status) forKey:@"STATUS"];
-        
-        [cityArray addObject:cityObject];
-    }
-    return cityArray;
+    [self addToLog:[NSString stringWithFormat:@"======= uploadAllMapInfos:\n%@%@", hostName, TY_API_UPLOAD_ALL_MAPINFOS]];
+    [webUploader uploadMapInfos:allMapInfos];
 }
 
-- (NSArray *)prepareBuildingArray
+- (void)getAllCities
 {
-    NSMutableArray *buildingArray = [NSMutableArray array];
-    for (TYBuilding *building in allBuildings) {
-        NSMutableDictionary *buildingObject = [NSMutableDictionary dictionary];
-        
-        [buildingObject setObject:building.cityID forKey:@"CITY_ID"];
-        [buildingObject setObject:building.buildingID forKey:@"BUILDING_ID"];
-        [buildingObject setObject:building.name forKey:@"NAME"];
-        
-        [buildingObject setObject:@(building.longitude) forKey:@"LONGITUDE"];
-        [buildingObject setObject:@(building.latitude) forKey:@"LATITUDE"];
-        
-        [buildingObject setObject:building.address forKey:@"ADDRESS"];
-        [buildingObject setObject:@(building.initAngle) forKey:@"INIT_ANGLE"];
-        [buildingObject setObject:building.routeURL forKey:@"ROUTE_URL"];
+    [self addToLog:[NSString stringWithFormat:@"======= getAllCities:\n%@%@", hostName, TY_API_GET_ALL_CITIES]];
+    [webDownloader getAllCities];
+}
 
-        [buildingObject setObject:@(building.offset.x) forKey:@"OFFSET_X"];
-        [buildingObject setObject:@(building.offset.y) forKey:@"OFFSET_Y"];
-        [buildingObject setObject:@(building.status) forKey:@"STATUS"];
-        
-        [buildingArray addObject:buildingObject];
-    }
-    return buildingArray;
+- (void)getAllBuildings
+{
+    [self addToLog:[NSString stringWithFormat:@"======= getAllBuildings:\n%@%@", hostName, TY_API_GET_ALL_BUILDINGS]];
+    [webDownloader getAllBuildings];
+}
+
+- (void)getAllMapInfos
+{
+    [self addToLog:[NSString stringWithFormat:@"======= getAllMapInfos:\n%@%@", hostName, TY_API_GET_ALL_MAPINFOS]];
+    [webDownloader getAllMapInfos];
 }
 
 - (IBAction)uploadCitiesAndBuildings:(id)sender {
     NSLog(@"uploadCitiesAndBuildings");
     [self uploadAllCities];
     [self uploadAllBuildings];
+    [self uploadAllMapInfos];
 }
 
 - (IBAction)getCitiesAndBuildings:(id)sender {
     NSLog(@"getCitiesAndBuildings");
+    [self getAllCities];
+    [self getAllBuildings];
+    [self getAllMapInfos];
 }
+
+
 @end

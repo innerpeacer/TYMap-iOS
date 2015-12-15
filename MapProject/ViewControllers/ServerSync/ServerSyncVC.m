@@ -28,19 +28,8 @@
                                  @[@"上传当前城市-建筑-地图信息", @"AddCityBuildingMapInfoVC"],
                                  @[@"上传地图数据", @"UploadMapDataVC"],
                                  @[@"上传路网数据", @"UploadRouteDataVC"],
-//                                 @[@"生成POI数据库",@"CreatePOIDatabaseVC" ],
-//                                 //                                 @[@"加密地图文件",@"mapEncryptionController" ],
-//                                 //                                 @[@"生成加密地图资源",@"GenerateEncryptionSourceVC" ],
-//                                 @[@"生成License", @"GenerateLicensesVC"],
-//                                 @[@"构建网络数据集", @"BuildRouteNetworkDatasetVC"],
-//                                 @[@"构建所有网络数据集",@"BuildAllRouteNetworkVC"],
-//                                 @[@"测试网络数据集", @"TestRouteNetworkVC"],
-//                                 //                                 @[@"测试Cpp网络数据集",@"TestCppRouteNetworkVC"],
-//                                 @[@"生成地图数据库",@"GenerateMapDBVC"],
-//                                 @[@"生成所有地图数据库",@"GenerateAllMapDBVC"],
-//                                 @[@"生成Web地图文件", @"GenerateWebMapFileVC"],
-//                                 @[@"生成所有Web地图文件", @"GenerateAllWebMapFileVC"],
-//                                 @[@"调用网络接口", @"CallingApiVC"]
+                                 @[@"上传当前建筑的完整数据", @"UploadCompleteDataVC"],
+
                                  
                                  ];
     
@@ -56,7 +45,7 @@
         [self.controllerDict setObject:storyboardID forKey:name];
     }
     
-    [self tableView:self.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+//    [self tableView:self.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

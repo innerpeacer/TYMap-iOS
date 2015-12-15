@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -20,14 +20,12 @@
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xA1-Wq-f2m">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kSM-pL-vOP">
                                 <rect key="frame" x="20" y="530" width="258" height="30"/>
-                                <animations/>
                                 <state key="normal" title="上传城市-建筑数据"/>
                                 <connections>
                                     <action selector="uploadCitiesAndBuildings:" destination="TQm-5S-LZQ" eventType="touchUpInside" id="psO-Se-uyW"/>
@@ -35,14 +33,12 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xi7-78-Slb">
                                 <rect key="frame" x="322" y="530" width="258" height="30"/>
-                                <animations/>
                                 <state key="normal" title="获取数据"/>
                                 <connections>
                                     <action selector="getCitiesAndBuildings:" destination="TQm-5S-LZQ" eventType="touchUpInside" id="Ioa-3x-zxd"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="lyl-z3-IhF" firstAttribute="top" secondItem="xi7-78-Slb" secondAttribute="bottom" constant="40" id="6Eq-bh-xPs"/>
@@ -79,23 +75,25 @@
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vdm-Y3-iso">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j0K-QH-9Tj">
                                 <rect key="frame" x="322" y="530" width="258" height="30"/>
-                                <animations/>
                                 <state key="normal" title="获取当前建筑数据"/>
+                                <connections>
+                                    <action selector="getCurrentBuildingData:" destination="xlc-tx-7Tp" eventType="touchUpInside" id="t9F-mv-3zP"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pzd-N1-Sfu">
                                 <rect key="frame" x="20" y="530" width="258" height="30"/>
-                                <animations/>
                                 <state key="normal" title="上传当前建筑数据"/>
+                                <connections>
+                                    <action selector="uploadCurrentBuildingData:" destination="xlc-tx-7Tp" eventType="touchUpInside" id="MWE-jt-IJV"/>
+                                </connections>
                             </button>
                         </subviews>
-                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="4IO-Hj-b38" firstAttribute="top" secondItem="Pzd-N1-Sfu" secondAttribute="bottom" constant="40" id="0fy-lG-QoH"/>
@@ -132,23 +130,25 @@
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UBL-Tk-eX3">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pqg-bF-hjo">
                                 <rect key="frame" x="20" y="530" width="258" height="30"/>
-                                <animations/>
                                 <state key="normal" title="上传当前地图数据"/>
+                                <connections>
+                                    <action selector="uploadMapData:" destination="ixx-RU-iY2" eventType="touchUpInside" id="Xco-Mm-qjl"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SD8-LJ-dBk">
                                 <rect key="frame" x="322" y="530" width="258" height="30"/>
-                                <animations/>
                                 <state key="normal" title="获取当前地图数据"/>
+                                <connections>
+                                    <action selector="getMapData:" destination="ixx-RU-iY2" eventType="touchUpInside" id="jFc-1o-0eP"/>
+                                </connections>
                             </button>
                         </subviews>
-                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="SD8-LJ-dBk" firstAttribute="width" secondItem="pqg-bF-hjo" secondAttribute="width" id="1BF-h5-VEE"/>
@@ -185,23 +185,25 @@
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3CR-7r-YQt">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xiu-dl-g3u">
                                 <rect key="frame" x="20" y="530" width="258" height="30"/>
-                                <animations/>
                                 <state key="normal" title="上传当前路网数据"/>
+                                <connections>
+                                    <action selector="uploadRouteData:" destination="vXp-eF-C9O" eventType="touchUpInside" id="fgt-d0-i0F"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="swv-XK-9Ae">
                                 <rect key="frame" x="322" y="530" width="258" height="30"/>
-                                <animations/>
                                 <state key="normal" title="获取当前路网数据"/>
+                                <connections>
+                                    <action selector="getRouteData:" destination="vXp-eF-C9O" eventType="touchUpInside" id="18q-JO-Vy1"/>
+                                </connections>
                             </button>
                         </subviews>
-                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="swv-XK-9Ae" firstAttribute="width" secondItem="Xiu-dl-g3u" secondAttribute="width" id="06g-NV-S1M"/>
@@ -225,6 +227,63 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sOp-Ce-s2G" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5015" y="899.99999999999989"/>
+        </scene>
+        <!--Upload Complete DataVC-->
+        <scene sceneID="sfL-Zz-DuH">
+            <objects>
+                <viewController storyboardIdentifier="UploadCompleteDataVC" id="Rz1-c5-gRV" customClass="UploadCompleteDataVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="pcv-vA-pl5"/>
+                        <viewControllerLayoutGuide type="bottom" id="mLv-dc-6YT"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="J1a-9Q-eQU">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MvY-Ex-dSr">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VvH-QQ-dIU">
+                                <rect key="frame" x="20" y="530" width="258" height="30"/>
+                                <state key="normal" title="上传当前完整数据"/>
+                                <connections>
+                                    <action selector="uploadCompleteData:" destination="Rz1-c5-gRV" eventType="touchUpInside" id="mGJ-sJ-ioG"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B5k-4E-JOT">
+                                <rect key="frame" x="322" y="530" width="258" height="30"/>
+                                <state key="normal" title="获取当前完整数据"/>
+                                <connections>
+                                    <action selector="getCompleteData:" destination="Rz1-c5-gRV" eventType="touchUpInside" id="V05-cZ-JeJ"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="B5k-4E-JOT" firstAttribute="trailing" secondItem="J1a-9Q-eQU" secondAttribute="trailingMargin" id="1ee-DQ-uWc"/>
+                            <constraint firstItem="B5k-4E-JOT" firstAttribute="leading" secondItem="VvH-QQ-dIU" secondAttribute="trailing" constant="44" id="56B-yZ-uh1"/>
+                            <constraint firstItem="B5k-4E-JOT" firstAttribute="leading" secondItem="VvH-QQ-dIU" secondAttribute="trailing" constant="44" id="84m-TB-fcD"/>
+                            <constraint firstItem="VvH-QQ-dIU" firstAttribute="leading" secondItem="J1a-9Q-eQU" secondAttribute="leadingMargin" id="YMu-eg-Voh"/>
+                            <constraint firstItem="B5k-4E-JOT" firstAttribute="width" secondItem="VvH-QQ-dIU" secondAttribute="width" id="bJP-lh-ED7"/>
+                            <constraint firstItem="mLv-dc-6YT" firstAttribute="top" secondItem="MvY-Ex-dSr" secondAttribute="bottom" id="faF-1k-3u9"/>
+                            <constraint firstItem="mLv-dc-6YT" firstAttribute="top" secondItem="VvH-QQ-dIU" secondAttribute="bottom" constant="40" id="mVU-h1-5L7"/>
+                            <constraint firstAttribute="trailing" secondItem="MvY-Ex-dSr" secondAttribute="trailing" id="rS4-yy-Sz5"/>
+                            <constraint firstItem="B5k-4E-JOT" firstAttribute="width" secondItem="VvH-QQ-dIU" secondAttribute="width" id="reO-1a-jmK"/>
+                            <constraint firstItem="MvY-Ex-dSr" firstAttribute="leading" secondItem="J1a-9Q-eQU" secondAttribute="leading" id="uJk-LW-jNU"/>
+                            <constraint firstItem="mLv-dc-6YT" firstAttribute="top" secondItem="B5k-4E-JOT" secondAttribute="bottom" constant="40" id="ymz-Jn-otg"/>
+                            <constraint firstItem="MvY-Ex-dSr" firstAttribute="top" secondItem="J1a-9Q-eQU" secondAttribute="top" id="zbR-Y8-H8Q"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="logView" destination="MvY-Ex-dSr" id="WHc-o1-5WP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="n9y-Yp-N1v" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5743" y="899"/>
         </scene>
     </scenes>
 </document>

@@ -11,7 +11,7 @@
 #import <TYMapData/TYMapData.h>
 
 #import "TYMapInfoDBAdapter.h"
-
+#import "TYMapDBConstants.h"
 
 
 MapExtent TYMapExtentMake(double xmin, double ymin, double xmax, double ymax)
@@ -85,6 +85,33 @@ MapSize TYMapSizeMake(double x, double y)
         }
     }
     return nil;
+}
+
++ (TYMapInfo *)parseMapInfoObject:(NSDictionary *)mapInfoObject
+{
+    return [[TYMapInfo alloc] initWithCityID:mapInfoObject[FIELD_MAPINFO_1_CITY_ID] BuildingID:mapInfoObject[FIELD_MAPINFO_2_BUILDING_ID] MapID:mapInfoObject[FIELD_MAPINFO_3_MAP_ID] Extent:TYMapExtentMake([mapInfoObject[FIELD_MAPINFO_8_XMIN] doubleValue], [mapInfoObject[FIELD_MAPINFO_9_YMIN] doubleValue], [mapInfoObject[FIELD_MAPINFO_10_XMAX] doubleValue], [mapInfoObject[FIELD_MAPINFO_11_YMAX] doubleValue]) Size:TYMapSizeMake([mapInfoObject[FIELD_MAPINFO_6_SIZE_X] doubleValue], [mapInfoObject[FIELD_MAPINFO_7_SIZE_Y] doubleValue]) Floor:mapInfoObject[FIELD_MAPINFO_4_FLOOR_NAME] FloorNumber:[mapInfoObject[FIELD_MAPINFO_5_FLOOR_NUMBER] intValue]];
+}
+
++ (NSDictionary *)buildingMapInfoObject:(TYMapInfo *)mapInfo
+{
+    NSMutableDictionary *mapInfoObject = [NSMutableDictionary dictionary];
+    
+    [mapInfoObject setObject:mapInfo.cityID forKey:FIELD_MAPINFO_1_CITY_ID];
+    [mapInfoObject setObject:mapInfo.buildingID forKey:FIELD_MAPINFO_2_BUILDING_ID];
+    [mapInfoObject setObject:mapInfo.mapID forKey:FIELD_MAPINFO_3_MAP_ID];
+    
+    [mapInfoObject setObject:mapInfo.floorName forKey:FIELD_MAPINFO_4_FLOOR_NAME];
+    [mapInfoObject setObject:@(mapInfo.floorNumber) forKey:FIELD_MAPINFO_5_FLOOR_NUMBER];
+    
+    [mapInfoObject setObject:@(mapInfo.mapSize.x) forKey:FIELD_MAPINFO_6_SIZE_X];
+    [mapInfoObject setObject:@(mapInfo.mapSize.y) forKey:FIELD_MAPINFO_7_SIZE_Y];
+    
+    [mapInfoObject setObject:@(mapInfo.mapExtent.xmin) forKey:FIELD_MAPINFO_8_XMIN];
+    [mapInfoObject setObject:@(mapInfo.mapExtent.ymin) forKey:FIELD_MAPINFO_9_YMIN];
+    [mapInfoObject setObject:@(mapInfo.mapExtent.xmax) forKey:FIELD_MAPINFO_10_XMAX];
+    [mapInfoObject setObject:@(mapInfo.mapExtent.ymax) forKey:FIELD_MAPINFO_11_YMAX];
+    
+    return mapInfoObject;
 }
 
 - (NSString *)description
