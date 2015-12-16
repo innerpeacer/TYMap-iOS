@@ -11,7 +11,7 @@
 
 #define TY_API_GET_LOCATING_BEACONS @"/TYMapServerManager/beacon/GetLocatingBeacons"
 
-
+#pragma mark -
 #pragma mark Manager API
 #define TY_API_UPLOAD_ALL_CITIES @"/TYMapServerManager/manager/UploadAllCityData"
 #define TY_API_UPLOAD_ALL_BUILDINGS @"/TYMapServerManager/manager/UploadAllBuildingData"
@@ -24,8 +24,9 @@
 
 #define TY_API_UPLOAD_ROUTE_DATA @"/TYMapServerManager/manager/UploadRouteData"
 #define TY_API_UPLOAD_MAP_DATA @"/TYMapServerManager/manager/UploadMapData"
+#define TY_API_UPLOAD_SYMBOLS @"/TYMapServerManager/manager/UploadSymbols"
 
-
+#pragma mark -
 #pragma mark User API
 #define TY_API_GET_ALL_CITIES @"/TYMapServerManager/user/GetAllCities"
 #define TY_API_GET_ALL_BUILDINGS @"/TYMapServerManager/user/GetAllBuildings"
@@ -38,8 +39,10 @@
 
 #define TY_API_GET_TARGET_MAPDATA @"/TYMapServerManager/user/GetMapData"
 #define TY_API_GET_TARGET_ROUTE_DATA @"/TYMapServerManager/user/GetRouteData"
+#define TY_API_GET_TARGET_SYMBOLS @"/TYMapServerManager/user/GetSymbols"
 
-
+#pragma mark -
+#pragma mark Response
 #define TY_RESPONSE_STATUS @"success"
 #define TY_RESPONSE_DESCRIPTION @"description"
 #define TY_RESPONSE_RECORDS @"records"

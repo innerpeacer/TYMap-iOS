@@ -11,6 +11,7 @@
 #import "TYMapInfo.h"
 #import "TYSyncMapDataRecord.h"
 #import "TYSyncRouteRecord.h"
+#import "TYSyncSymbolRecord.h"
 
 @implementation TYWebObjectConverter
 
@@ -96,6 +97,47 @@
     }
     return mapInfoArray;
 }
+
++ (NSArray *)prepareFillSymbolObjectArray:(NSArray *)fillSymbolArray
+{
+    NSMutableArray *fillSymbolObjectArray = [NSMutableArray array];
+    for (TYSyncFillSymbolRecord *fillSymbol in fillSymbolArray) {
+        NSDictionary *fillSymbolObject = [TYSyncFillSymbolRecord buildFillSymbolObject:fillSymbol];
+        [fillSymbolObjectArray addObject:fillSymbolObject];
+    }
+    return fillSymbolObjectArray;
+}
+
++ (NSArray *)parseFillSymbolArray:(NSArray *)fillSymbolObjectArray
+{
+    NSMutableArray *fillSymbolArray = [NSMutableArray array];
+    for (NSDictionary *fillSymbolObject in fillSymbolObjectArray) {
+        TYSyncFillSymbolRecord *fillSymbol = [TYSyncFillSymbolRecord parseFillSymbolRecord:fillSymbolObject];
+        [fillSymbolArray addObject:fillSymbol];
+    }
+    return fillSymbolArray;
+}
+
++ (NSArray *)prepareIconSymbolObjectArray:(NSArray *)iconSymbolArray
+{
+    NSMutableArray *iconSymbolObjectArray = [NSMutableArray array];
+    for (TYSyncIconSymbolRecord *iconSymbol in iconSymbolArray) {
+        NSDictionary *iconSymbolObject = [TYSyncIconSymbolRecord buildIconSymbolObject:iconSymbol];
+        [iconSymbolObjectArray addObject:iconSymbolObject];
+    }
+    return iconSymbolObjectArray;
+}
+
++ (NSArray *)parseIconSymbolArray:(NSArray *)iconSymbolObjectArray
+{
+    NSMutableArray *iconSymbolArray = [NSMutableArray array];
+    for (NSDictionary *iconSymbolObject in iconSymbolObjectArray) {
+        TYSyncIconSymbolRecord *iconSymbol = [TYSyncIconSymbolRecord parseIconSymbolRecord:iconSymbolObject];
+        [iconSymbolArray addObject:iconSymbol];
+    }
+    return iconSymbolArray;
+}
+
 
 + (NSArray *)prepareMapDataObjectArray:(NSArray *)mapDataArray
 {

@@ -85,6 +85,15 @@
     [uploader uploadWithApi:TY_API_ADD_MAPINFOS Parameters:param];
 }
 
+- (void)uploadSymbolsWithFill:(NSArray *)fills Icons:(NSArray *)icons
+{
+    NSMutableDictionary *param = [[NSMutableDictionary alloc] init];
+    [param setValuesForKeysWithDictionary:[user buildDictionary]];
+    param[@"fill"] = [TYWebObjectConverter prepareJsonString:[TYWebObjectConverter prepareFillSymbolObjectArray:fills]];
+    param[@"icon"] = [TYWebObjectConverter prepareJsonString:[TYWebObjectConverter prepareIconSymbolObjectArray:icons]];
+    [uploader uploadWithApi:TY_API_UPLOAD_SYMBOLS Parameters:param];
+}
+
 - (void)addCompleteCBMWithCity:(TYCity *)city Building:(TYBuilding *)builing MapInfos:(NSArray *)mapInfos
 {
     NSMutableDictionary *param = [[NSMutableDictionary alloc] init];

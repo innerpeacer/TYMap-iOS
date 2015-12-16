@@ -16,9 +16,9 @@
 
 @optional
 - (void)TYCBMDownloader:(TYCBMDownloader *)downloader DidFinishDownloadingWithApi:(NSString *)api WithResult:(NSArray *)resultArray Records:(int)records;
+- (void)TYCBMDownloader:(TYCBMDownloader *)downloader DidFinishDownloadingSymbolsWithApi:(NSString *)api WithFillSymbols:(NSArray *)fillArray WithIconSymbols:(NSArray *)iconArray;
 - (void)TYCBMDownloader:(TYCBMDownloader *)downloader DidFinishDownloadingCBMWithApi:(NSString *)api WithCity:(TYCity *)city Building:(TYBuilding *)building MapInfos:(NSArray *)mapInfoArray;
 - (void)TYCBMDownloader:(TYCBMDownloader *)downloader DidFailedDownloadingWithApi:(NSString *)api WithError:(NSError *)error;
-
 @end
 
 @interface TYCBMDownloader : NSObject
@@ -34,6 +34,7 @@
 - (void)getCity:(NSString *)cityID;
 - (void)getBuildings;
 - (void)getMapInfos;
+- (void)getSymbols;
 - (void)getCBM;
 
 @end

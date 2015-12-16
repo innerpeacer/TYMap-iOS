@@ -22,6 +22,12 @@
 + (NSArray *)prepareMapInfoObjectArray:(NSArray *)mapInfoArray;
 + (NSArray *)parseMapInfoArray:(NSArray *)mapInfoObjectArray;
 
++ (NSArray *)prepareFillSymbolObjectArray:(NSArray *)fillSymbolArray;
++ (NSArray *)parseFillSymbolArray:(NSArray *)fillSymbolObjectArray;
+
++ (NSArray *)prepareIconSymbolObjectArray:(NSArray *)iconSymbolArray;
++ (NSArray *)parseIconSymbolArray:(NSArray *)iconSymbolObjectArray;
+
 + (NSArray *)prepareMapDataObjectArray:(NSArray *)mapDataArray;
 + (NSArray *)parseMapDataArray:(NSArray *)mapDataObjectArray;
 

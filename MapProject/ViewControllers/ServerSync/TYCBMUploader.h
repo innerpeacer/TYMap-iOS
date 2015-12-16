@@ -29,6 +29,8 @@
 - (void)addCities:(NSArray *)cities;
 - (void)addBuildings:(NSArray *)buildings;
 - (void)addMapInfos:(NSArray *)mapInfos;
+- (void)uploadSymbolsWithFill:(NSArray *)fills Icons:(NSArray *)icons;
+
 
 - (void)addCompleteCBMWithCity:(TYCity *)city Building:(TYBuilding *)builing MapInfos:(NSArray *)mapInfos;
 

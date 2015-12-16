@@ -17,15 +17,20 @@
 #import "TYUserManager.h"
 #import <MKNetworkKit/MKNetworkKit.h>
 #import "TYSyncMapDataDBAdapter.h"
+#import "TYSyncMapSymbolDBAdapter.h"
 
 #import "TYCBMUploader.h"
 #import "TYCBMDownloader.h"
+
+#import "TYMapFileManager.h"
 
 @interface AddCityBuildingMapInfoVC() <TYCBMUploaderDelegate, TYCBMDownloaderDelegate>
 {
     TYCity *currentCity;
     TYBuilding *currentBuilding;
     NSArray *allMapInfos;
+    NSArray *allFillSymbols;
+    NSArray *allIconSymbols;
     
     NSString *hostName;
     
@@ -48,6 +53,13 @@
     currentBuilding = [TYUserDefaults getDefaultBuilding];
     allMapInfos = [TYMapInfo parseAllMapInfo:currentBuilding];
     
+    NSString *symbolPath = [TYMapFileManager getSymbolDBPath:currentBuilding];
+    TYSyncMapSymbolDBAdapter *symbolDB = [[TYSyncMapSymbolDBAdapter alloc] initWithPath:symbolPath];
+    [symbolDB open];
+    allFillSymbols = [symbolDB getAllFillSymbols];
+    allIconSymbols = [symbolDB getAllIconSymbols];
+    [symbolDB close];
+    
     hostName = HOST_NAME;
     
     dataUploader = [[TYCBMUploader alloc] initWithUser:[TYUserManager createSuperUser:currentBuilding.buildingID]];
@@ -63,6 +75,7 @@
 
 - (void)TYCBMUploader:(TYCBMUploader *)uploader DidFinishUploadingWithApi:(NSString *)api WithDescription:(NSString *)description
 {
+    NSLog(@"%@", description);
     [self addToLog:description];
 }
 
@@ -112,7 +125,12 @@
         }];
         [self addToLog:mapInfoString];
     }
-    
+}
+
+- (void)TYCBMDownloader:(TYCBMDownloader *)downloader DidFinishDownloadingSymbolsWithApi:(NSString *)api WithFillSymbols:(NSArray *)fillArray WithIconSymbols:(NSArray *)iconArray
+{
+    [self addToLog:[NSString stringWithFormat:@"Records: %d", (int)(fillArray.count + iconArray.count)]];
+    [self addToLog:[NSString stringWithFormat:@"Get %d Symbols From Server", (int)(fillArray.count + iconArray.count)]];
 }
 
 - (void)addCities
@@ -133,6 +151,12 @@
     [dataUploader addMapInfos:allMapInfos];
 }
 
+- (void)addSymbols
+{
+    [self addToLog:[NSString stringWithFormat:@"======= addSymbols:\n%@%@", hostName, TY_API_UPLOAD_SYMBOLS]];
+    [dataUploader uploadSymbolsWithFill:allFillSymbols Icons:allIconSymbols];
+}
+
 - (void)getCities
 {
     [self addToLog:[NSString stringWithFormat:@"======= getCities:\n%@%@", hostName, TY_API_GET_TARGET_CITY]];
@@ -151,12 +175,19 @@
     [dataDownloader getMapInfos];
 }
 
+- (void)getSymbols
+{
+    [self addToLog:[NSString stringWithFormat:@"======= getSymbols:\n%@%@", hostName, TY_API_GET_TARGET_MAPINFO]];
+    [dataDownloader getSymbols];
+}
+
 
 - (IBAction)uploadCurrentBuildingData:(id)sender {
     NSLog(@"uploadCurrentBuildingData");
     [self addCities];
     [self addBuildings];
     [self addMapInfos];
+    [self addSymbols];
 }
 
 - (IBAction)getCurrentBuildingData:(id)sender {
@@ -164,5 +195,6 @@
     [self getCities];
     [self getBuildings];
     [self getMapInfos];
+    [self getSymbols];
 }
 @end

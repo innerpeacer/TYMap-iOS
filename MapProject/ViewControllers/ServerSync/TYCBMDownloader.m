@@ -71,6 +71,10 @@
     [downloader downloadWithApi:TY_API_GET_TARGET_MAPINFO Parameters:[user buildDictionary]];
 }
 
+- (void)getSymbols
+{
+    [downloader downloadWithApi:TY_API_GET_TARGET_SYMBOLS Parameters:[user buildDictionary]];
+}
 
 - (void)TYWebDownloaderDidFinishDownloading:(TYWebDownloader *)dataDownloader WithApi:(NSString *)api WithResponseData:(NSData *)responseData ResponseString:(NSString *)responseString
 {
@@ -99,6 +103,12 @@
         if ([api isEqualToString:TY_API_GET_TARGET_MAPINFO] || [api isEqualToString:TY_API_GET_ALL_MAPINFOS]) {
             NSArray *mapInfoArray = [TYWebObjectConverter parseMapInfoArray:resultDict[@"mapinfos"]];
             [self notifyDidFinishDownloadingWithApi:api WithResult:mapInfoArray Records:records];
+        }
+        
+        if ([api isEqualToString:TY_API_GET_TARGET_SYMBOLS]) {
+            NSArray *fillArray = [TYWebObjectConverter parseFillSymbolArray:resultDict[@"fill"]];
+            NSArray *iconArray = [TYWebObjectConverter parseIconSymbolArray:resultDict[@"icon"]];
+            [self notifyDidFinishDownloadingSymbolsWithApi:api WithFillSymbols:fillArray WithIconSymbols:iconArray];
         }
         
         if ([api isEqualToString:TY_API_GET_TARGET_CBM]) {
@@ -131,6 +141,13 @@
 - (void)TYWebDownloaderDidFailedDownloading:(TYWebDownloader *)dataDownloader WithApi:(NSString *)api WithError:(NSError *)error
 {
     [self notifyDidFailedDownloadingWithApi:api WithError:error];
+}
+
+- (void)notifyDidFinishDownloadingSymbolsWithApi:(NSString *)api WithFillSymbols:(NSArray *)fillArray WithIconSymbols:(NSArray *)iconArray
+{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(TYCBMDownloader:DidFinishDownloadingSymbolsWithApi:WithFillSymbols:WithIconSymbols:)]) {
+        [self.delegate TYCBMDownloader:self DidFinishDownloadingSymbolsWithApi:api WithFillSymbols:fillArray WithIconSymbols:iconArray];
+    }
 }
 
 - (void)notifyDidFinishDownloadingWithApi:(NSString *)api WithResult:(NSArray *)resultArray Records:(int)records
