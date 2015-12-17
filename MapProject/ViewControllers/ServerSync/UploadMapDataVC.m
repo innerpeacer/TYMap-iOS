@@ -10,15 +10,11 @@
 #import <TYMapData/TYMapData.h>
 #import "TYUserDefaults.h"
 #import "TYMapFileManager.h"
-#import "MapLicenseGenerator.h"
-#import "TYWebUploader.h"
-#import "TYWebDownloader.h"
 #import "TYSyncMapDataDBAdapter.h"
 #import "TYWebObjectConverter.h"
 #import "TYUserManager.h"
 #import <MKNetworkKit/MKNetworkKit.h>
 #import "TYSyncMapDataDBAdapter.h"
-#import "TYSyncMapRouteDBAdapter.h"
 #import "TYMapDataUploader.h"
 #import "TYMapDataDownloader.h"
 
@@ -34,7 +30,6 @@
     
     NSArray *allMapDataRecords;
     
-    //    TYWebDownloader *dataDownloader;
     TYMapDataUploader *mapUploader;
     TYMapDataDownloader *mapDownloader;
 }
@@ -55,8 +50,6 @@
     allMapInfos = [TYMapInfo parseAllMapInfo:currentBuilding];
     
     hostName = HOST_NAME;
-    //    dataDownloader = [[TYWebDownloader alloc] initWithHostName:hostName];
-    //    dataDownloader.delegate = self;
     
     mapUploader = [[TYMapDataUploader alloc] initWithUser:[TYUserManager createSuperUser:currentBuilding.buildingID]];
     mapUploader.delegate = self;

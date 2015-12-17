@@ -29,6 +29,8 @@
 		570DF1931BDE86490028E25F /* TYMapFileManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 570DF1891BDE86490028E25F /* TYMapFileManager.mm */; };
 		570DF1941BDE86490028E25F /* TYMapInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 570DF18B1BDE86490028E25F /* TYMapInfo.m */; };
 		570DF1951BDE86490028E25F /* TYMapInfoDBAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 570DF18D1BDE86490028E25F /* TYMapInfoDBAdapter.m */; };
+		5719D1D41C2292FE0003AA18 /* TYSyncUploadingTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 5719D1D31C2292FE0003AA18 /* TYSyncUploadingTask.m */; };
+		5719D1D71C2293580003AA18 /* TYSyncDownloadingTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 5719D1D61C2293580003AA18 /* TYSyncDownloadingTask.m */; };
 		571AC4711B55FED900E9FF7D /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 571AC4701B55FED900E9FF7D /* AppDelegate.mm */; };
 		572407121BC9A84B0050BA41 /* IPEncryption.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5724070A1BC9A84B0050BA41 /* IPEncryption.cpp */; };
 		572407131BC9A84B0050BA41 /* IPLicenseValidation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5724070C1BC9A84B0050BA41 /* IPLicenseValidation.cpp */; };
@@ -250,6 +252,10 @@
 		570DF18B1BDE86490028E25F /* TYMapInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYMapInfo.m; sourceTree = "<group>"; };
 		570DF18C1BDE86490028E25F /* TYMapInfoDBAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYMapInfoDBAdapter.h; sourceTree = "<group>"; };
 		570DF18D1BDE86490028E25F /* TYMapInfoDBAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYMapInfoDBAdapter.m; sourceTree = "<group>"; };
+		5719D1D21C2292FE0003AA18 /* TYSyncUploadingTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYSyncUploadingTask.h; sourceTree = "<group>"; };
+		5719D1D31C2292FE0003AA18 /* TYSyncUploadingTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYSyncUploadingTask.m; sourceTree = "<group>"; };
+		5719D1D51C2293580003AA18 /* TYSyncDownloadingTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYSyncDownloadingTask.h; sourceTree = "<group>"; };
+		5719D1D61C2293580003AA18 /* TYSyncDownloadingTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYSyncDownloadingTask.m; sourceTree = "<group>"; };
 		571AC46F1B55FED900E9FF7D /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		571AC4701B55FED900E9FF7D /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
 		5724070A1BC9A84B0050BA41 /* IPEncryption.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IPEncryption.cpp; sourceTree = "<group>"; };
@@ -1357,6 +1363,10 @@
 				57FF26451C1FF707009482B2 /* Entity */,
 				57FF264A1C1FF707009482B2 /* TYSyncDataManager.h */,
 				57FF264B1C1FF707009482B2 /* TYSyncDataManager.m */,
+				5719D1D21C2292FE0003AA18 /* TYSyncUploadingTask.h */,
+				5719D1D31C2292FE0003AA18 /* TYSyncUploadingTask.m */,
+				5719D1D51C2293580003AA18 /* TYSyncDownloadingTask.h */,
+				5719D1D61C2293580003AA18 /* TYSyncDownloadingTask.m */,
 			);
 			path = ServerSync;
 			sourceTree = "<group>";
@@ -1506,6 +1516,7 @@
 				572407C41BC9A8A10050BA41 /* TYRoomLayer.m in Sources */,
 				570DF1901BDE86490028E25F /* TYCityManager.m in Sources */,
 				57D167911BBA44FF004BE6B9 /* TYBuildingLink.m in Sources */,
+				5719D1D41C2292FE0003AA18 /* TYSyncUploadingTask.m in Sources */,
 				570ABA701BF9DD910006BC30 /* ServerSyncVC.m in Sources */,
 				572407A71BC9A8A10050BA41 /* TYRouteLayer.m in Sources */,
 				57FF26331C1FF672009482B2 /* TYMapDataDownloader.m in Sources */,
@@ -1579,6 +1590,7 @@
 				572407C11BC9A8A10050BA41 /* TYRouteResult.m in Sources */,
 				57FF265A1C1FF78F009482B2 /* MapLicenseGenerator.m in Sources */,
 				5740772A1BDF781C008D05CD /* BuildAllRouteNetworkVC.m in Sources */,
+				5719D1D71C2293580003AA18 /* TYSyncDownloadingTask.m in Sources */,
 				572B98C41BDA172100506A7E /* OriginalShpDBAdapter.mm in Sources */,
 				5787712C1BBB915E00F90D7B /* RouteNetworkDataset.m in Sources */,
 				57FF26301C1FF672009482B2 /* TYBase64Encoding.m in Sources */,

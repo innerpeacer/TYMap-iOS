@@ -147,7 +147,7 @@
         if (batchIndex < batchedRouteDataRecords.count) {
             [self uploadRouteRecordsWithIndex:batchIndex];
         } else {
-            NSString *finishUploading = @"完成路网数据上传完毕!";
+            NSString *finishUploading = @"路网数据上传完毕!";
             [self notifyDidFinishUploadingWithApi:api WithDescription:finishUploading];
         }
         

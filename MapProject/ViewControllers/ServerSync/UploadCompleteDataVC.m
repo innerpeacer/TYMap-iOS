@@ -15,21 +15,32 @@
 #import "TYWebObjectConverter.h"
 #import <MKNetworkKit/MKNetworkKit.h>
 #import "TYUserManager.h"
+#import "TYMapFileManager.h"
 
-#import "TYCBMUploader.h"
-#import "TYCBMDownloader.h"
-#import "TYWebDownloader.h"
+#import "TYSyncMapDataDBAdapter.h"
+#import "TYSyncMapRouteDBAdapter.h"
+#import "TYSyncMapSymbolDBAdapter.h"
 
-@interface UploadCompleteDataVC() <TYCBMUploaderDelegate, TYCBMDownloaderDelegate>
+#import "TYSyncUploadingTask.h"
+#import "TYSyncDownloadingTask.h"
+
+@interface UploadCompleteDataVC() <TYSyncUploadingTaskDelegate, TySyncDownloadingTaskDelegate>
 {
     TYCity *currentCity;
     TYBuilding *currentBuilding;
     NSArray *allMapInfos;
     
+    NSArray *allMapDataRecords;
+    NSArray *allRouteLinkRecords;
+    NSArray *allRouteNodeRecords;
+    
+    NSArray *allFillSymbols;
+    NSArray *allIconSymbols;
+    
     NSString *hostName;
     
-    TYCBMUploader *dataUploader;
-    TYCBMDownloader *dataDownloader;
+    TYSyncUploadingTask *uploadingTask;
+    TYSyncDownloadingTask *downloadingTask;
 }
 
 - (IBAction)uploadCompleteData:(id)sender;
@@ -37,67 +48,93 @@
 
 @end
 
-
-
 @implementation UploadCompleteDataVC
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    currentCity = [TYUserDefaults getDefaultCity];
-    currentBuilding = [TYUserDefaults getDefaultBuilding];
-    allMapInfos = [TYMapInfo parseAllMapInfo:currentBuilding];
-    
     hostName = HOST_NAME;
     
-    dataUploader = [[TYCBMUploader alloc] initWithUser:[TYUserManager createSuperUser:currentBuilding.buildingID]];
-    dataUploader.delegate = self;
+    [self prepareData];
+
+    uploadingTask = [[TYSyncUploadingTask alloc] initWithUser:[TYUserManager createSuperUser:currentBuilding.buildingID]];
+    uploadingTask.delegate = self;
     
-    dataDownloader = [[TYCBMDownloader alloc] initWithUser:[TYUserManager createTrialUser:currentBuilding.buildingID]];
-    dataDownloader.delegate = self;
+    downloadingTask = [[TYSyncDownloadingTask alloc] initWithUser:[TYUserManager createTrialUser:currentBuilding.buildingID]];
+    downloadingTask.delegate = self;
     
     NSLog(@"%@", currentCity);
     NSLog(@"%@", currentBuilding);
     NSLog(@"%@", allMapInfos);
 }
 
-- (void)TYCBMDownloader:(TYCBMDownloader *)downloader DidFailedDownloadingWithApi:(NSString *)api WithError:(NSError *)error
+- (void)TYUploadingTaskDidFailedUploading:(TYSyncUploadingTask *)task InStep:(int)step WithError:(NSError *)error
 {
-    NSLog(@"TYDataDownloaderDidFailedDownloading: %@", api);
-    NSLog(@"Error: %@", [error localizedDescription]);
+    
 }
 
-- (void)TYCBMDownloader:(TYCBMDownloader *)downloader DidFinishDownloadingCBMWithApi:(NSString *)api WithCity:(TYCity *)city Building:(TYBuilding *)building MapInfos:(NSArray *)mapInfoArray
+- (void)TYUploadingTaskDidFinished:(TYSyncUploadingTask *)task
 {
-    [self addToLog:[NSString stringWithFormat:@"Get City: %@", city.name]];
-    [self addToLog:[NSString stringWithFormat:@"Get Building: %@", building.name]];
-    [self addToLog:[NSString stringWithFormat:@"Get MapInfos: %d", (int)mapInfoArray.count]];
-
+    [self addToLog:@"Finish Uploading"];
 }
 
-- (void)TYCBMUploader:(TYCBMUploader *)uploader DidFailedUploadingWithApi:(NSString *)api WithError:(NSError *)error
+- (void)TYUploadingTaskDidUpdateUploadingProcess:(TYSyncUploadingTask *)task InStep:(int)step WithDescription:(NSString *)description
 {
-    NSLog(@"TYDataUploaderDidFailedUploading: %@", api);
-    NSLog(@"Error: %@", [error localizedDescription]);
-}
-
-- (void)TYCBMUploader:(TYCBMUploader *)uploader DidFinishUploadingWithApi:(NSString *)api WithDescription:(NSString *)description
-{
+    [self addToLog:[NSString stringWithFormat:@"Step %d:", step]];
     [self addToLog:description];
+}
+
+- (void)TYDownloadingTaskDidFailedDownloading:(TYSyncDownloadingTask *)task InStep:(int)step WithError:(NSError *)error
+{
+    
+}
+
+- (void)TYDownloadingTaskDidFinished:(TYSyncDownloadingTask *)task WithCity:(TYCity *)city Building:(TYBuilding *)building MapInfos:(NSArray *)mapInfoArray FillSymbols:(NSArray *)fillArray IconSymbols:(NSArray *)iconArray MapData:(NSArray *)mapDataArray RouteLinkData:(NSArray *)linkArray RouteNodeData:(NSArray *)nodeArray
+{
+    [self addToLog:@"Finish Downloading"];
+}
+
+- (void)TYDownloadingTaskDidUpdateDownloadingProcess:(TYSyncDownloadingTask *)task InStep:(int)step WithDescription:(NSString *)description
+{
+    [self addToLog:[NSString stringWithFormat:@"Step %d:", step]];
+    [self addToLog:description];
+}
+
+- (void)prepareData
+{
+    currentCity = [TYUserDefaults getDefaultCity];
+    currentBuilding = [TYUserDefaults getDefaultBuilding];
+    allMapInfos = [TYMapInfo parseAllMapInfo:currentBuilding];
+    
+    TYSyncMapDataDBAdapter *dataDB = [[TYSyncMapDataDBAdapter alloc] initWithPath:[TYMapFileManager getMapDataDBPath:currentBuilding]];
+    [dataDB open];
+    allMapDataRecords = [dataDB getAllRecords];
+    [dataDB close];
+    
+    
+    TYSyncMapRouteDBAdapter *routeDB = [[TYSyncMapRouteDBAdapter alloc] initWithPath:[TYMapFileManager getMapDataDBPath:currentBuilding]];
+    [routeDB open];
+    allRouteLinkRecords = [routeDB getAllRouteLinkRecords];
+    allRouteNodeRecords = [routeDB getAllRouteNodeRecords];
+    [routeDB close];
+
+    TYSyncMapSymbolDBAdapter *symbolDB = [[TYSyncMapSymbolDBAdapter alloc] initWithPath:[TYMapFileManager getSymbolDBPath:currentBuilding]];
+    [symbolDB open];
+    allFillSymbols = [symbolDB getAllFillSymbols];
+    allIconSymbols = [symbolDB getAllIconSymbols];
+    [symbolDB close];
 }
 
 - (IBAction)uploadCompleteData:(id)sender
 {
     NSLog(@"uploadCompleteData");
-    [self addToLog:[NSString stringWithFormat:@"======= uploadCompleteData:\n%@%@", hostName, TY_API_ADD_CBM]];
-    [dataUploader addCompleteCBMWithCity:currentCity Building:currentBuilding MapInfos:allMapInfos];
+    [uploadingTask uploadCity:currentCity Building:currentBuilding MapInfos:allMapInfos FillSymbols:allFillSymbols IconSymbols:allIconSymbols MapData:allMapDataRecords RouteLinkData:allRouteLinkRecords RouteNodeData:allRouteNodeRecords];
 }
 
 - (IBAction)getCompleteData:(id)sender
 {
     NSLog(@"getCompleteData");
-    [dataDownloader getCBM];
+    [downloadingTask featchData];
 }
 
 @end

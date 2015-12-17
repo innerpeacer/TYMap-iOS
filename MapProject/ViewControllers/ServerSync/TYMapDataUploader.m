@@ -116,7 +116,7 @@
         if (batchIndex < batchedMapDataRecords.count) {
             [self uploadMapDataWithIndex:batchIndex];
         } else {
-            NSString *finishUploading = @"完成地图数据上传完毕!";
+            NSString *finishUploading = @"地图数据上传完毕!";
             [self notifyDidFinishUploadingWithApi:api WithDescription:finishUploading];
         }
         
