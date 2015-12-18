@@ -84,7 +84,7 @@
 - (BOOL)insertFillSymbol:(TYSyncFillSymbolRecord *)fillRecord
 {
     NSString *errorString = @"Error: failed to insert Fill Symbol into the database.";
-    NSString *sql = [NSString stringWithFormat:@"Insert into %@ (%@, %@, %@, %@) value (?, ?, ?, ?)", TABLE_MAP_SYMBOL_FILL_SYMBOL, FIELD_MAP_SYMBOL_FILL_1_SYMBOL_ID, FIELD_MAP_SYMBOL_FILL_2_FILL_COLOR, FIELD_MAP_SYMBOL_FILL_3_OUTLINE_COLOR, FIELD_MAP_SYMBOL_FILL_4_LINE_WIDTH];
+    NSString *sql = [NSString stringWithFormat:@"Insert into %@ (%@, %@, %@, %@) values (?, ?, ?, ?)", TABLE_MAP_SYMBOL_FILL_SYMBOL, FIELD_MAP_SYMBOL_FILL_1_SYMBOL_ID, FIELD_MAP_SYMBOL_FILL_2_FILL_COLOR, FIELD_MAP_SYMBOL_FILL_3_OUTLINE_COLOR, FIELD_MAP_SYMBOL_FILL_4_LINE_WIDTH];
     
     sqlite3_stmt *statement;
     int success = sqlite3_prepare_v2(_database, [sql UTF8String], -1, &statement, NULL);
@@ -111,7 +111,7 @@
 - (BOOL)insertIconSymbol:(TYSyncIconSymbolRecord *)iconRecord
 {
     NSString *errorString = @"Error: failed to insert Icon Symbol into the database.";
-    NSString *sql = [NSString stringWithFormat:@"Insert into %@ (%@, %@) value (?, ?)", TABLE_MAP_SYMBOL_ICON_SYMBOL, FIELD_MAP_SYMBOL_ICON_1_SYMBOL_ID, FIELD_MAP_SYMBOL_ICON_2_ICON];
+    NSString *sql = [NSString stringWithFormat:@"Insert into %@ (%@, %@) values (?, ?)", TABLE_MAP_SYMBOL_ICON_SYMBOL, FIELD_MAP_SYMBOL_ICON_1_SYMBOL_ID, FIELD_MAP_SYMBOL_ICON_2_ICON];
     
     sqlite3_stmt *statement;
     int success = sqlite3_prepare_v2(_database, [sql UTF8String], -1, &statement, NULL);

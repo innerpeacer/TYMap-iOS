@@ -7,13 +7,32 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "TYMapUser.h"
+#import <TYMapData/TYMapData.h>
+
+@class TYSyncDataManager;
+
+@protocol TYSyncDataManagerDelegate <NSObject>
+
+- (void)TYSyncDataManagerDidFinishSyncData:(TYSyncDataManager *)manager;
+- (void)TYSyncDataManagerDidFailedSyncData:(TYSyncDataManager *)manager InStep:(int)step WithError:(NSError *)error;
+
+@end
 
 @interface TYSyncDataManager : NSObject
 
-+ (TYSyncDataManager *)managerWithRootDirectory:(NSString *)rootDir;
+@property (nonatomic, weak) id<TYSyncDataManagerDelegate> delegate;
 
-- (void)checkRootDir;
-- (void)checkCityDir:(NSString *)cityID;
-- (void)checkBuildingDir:(NSString *)buildingID;
+- (id)initWithUser:(TYMapUser *)user RootDirectory:(NSString *)root;
+- (void)fetchData;
+
+//- (void)checkDir;
+//+ (TYSyncDataManager *)managerWithRootDirectory:(NSString *)rootDir;
+
+//- (void)checkDir;
+
+//- (void)checkRootDir;
+//- (void)checkCityDir:(NSString *)cityID;
+//- (void)checkBuildingDir:(NSString *)buildingID;
 
 @end

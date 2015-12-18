@@ -29,6 +29,8 @@
                                  @[@"上传地图数据", @"UploadMapDataVC"],
                                  @[@"上传路网数据", @"UploadRouteDataVC"],
                                  @[@"上传当前建筑的完整数据", @"UploadCompleteDataVC"],
+                                 @[@"获取当前建筑的完整数据", @"FetchCompleteDataVC"],
+
 
                                  
                                  ];
@@ -45,7 +47,7 @@
         [self.controllerDict setObject:storyboardID forKey:name];
     }
     
-    [self tableView:self.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:4 inSection:0]];
+    [self tableView:self.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:5 inSection:0]];
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

@@ -39,7 +39,7 @@
 
     [TYMapEnvironment setRootDirectoryForMapFiles:[documentDirectory stringByAppendingPathComponent:DEFAULT_MAP_ROOT]];
 
-    [self copyMapFilesIfNeeded];
+//    [self copyMapFilesIfNeeded];
     [self setDefaultPlaceIfNeeded];
     
     return YES;
@@ -48,16 +48,8 @@
 - (void)setDefaultPlaceIfNeeded
 {
     if ([TYUserDefaults getDefaultBuilding] == nil) {
-//        [TYUserDefaults setDefaultCity:@"0021"];
-//        [TYUserDefaults setDefaultBuilding:@"00210100"];
-        [TYUserDefaults setDefaultCity:@"0532"];
-        [TYUserDefaults setDefaultBuilding:@"05320001"];
-        
-        [TYUserDefaults setDefaultCity:@"0755"];
-        [TYUserDefaults setDefaultBuilding:@"07550002"];
-        
-//        [TYUserDefaults setDefaultCity:@"0020"];
-//        [TYUserDefaults setDefaultBuilding:@"00200003"];
+        [TYUserDefaults setDefaultCity:@"0010"];
+        [TYUserDefaults setDefaultBuilding:@"00100003"];
     }
 }
 

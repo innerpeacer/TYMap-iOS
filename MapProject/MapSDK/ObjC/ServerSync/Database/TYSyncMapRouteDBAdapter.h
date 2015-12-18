@@ -18,7 +18,7 @@
 
 - (void)eraseRouteDataTable;
 
-- (BOOL)eraseRouteNodeTable;
+//- (BOOL)eraseRouteNodeTable;
 - (BOOL)insertRouteNodeRecord:(TYSyncRouteNodeRecord *)record;
 - (int)insertRouteNodeRecords:(NSArray *)records;
 - (BOOL)updateRouteNodeRecord:(TYSyncRouteNodeRecord *)record;
@@ -26,7 +26,7 @@
 - (BOOL)deleteRouteNodeRecord:(int)nodeID;
 - (NSArray *)getAllRouteNodeRecords;
 
-- (BOOL)eraseRouteLinkTable;
+//- (BOOL)eraseRouteLinkTable;
 - (BOOL)insertRouteLinkRecord:(TYSyncRouteLinkRecord *)record;
 - (int)insertRouteLinkRecords:(NSArray *)records;
 - (BOOL)updateRouteLinkRecord:(TYSyncRouteLinkRecord *)record;

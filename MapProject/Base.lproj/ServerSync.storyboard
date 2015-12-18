@@ -285,5 +285,52 @@
             </objects>
             <point key="canvasLocation" x="5743" y="899"/>
         </scene>
+        <!--Fetch Complete DataVC-->
+        <scene sceneID="9WZ-zW-Cok">
+            <objects>
+                <viewController storyboardIdentifier="FetchCompleteDataVC" id="jU1-yw-sAj" customClass="FetchCompleteDataVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="8Wv-2o-Ydy"/>
+                        <viewControllerLayoutGuide type="bottom" id="nwQ-WO-Fdq"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="WXM-5Z-1Ov">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rag-ef-Cs7">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xGy-vH-Qn1">
+                                <rect key="frame" x="175" y="516" width="250" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="Xsv-Oz-qPf"/>
+                                </constraints>
+                                <state key="normal" title="获取当前完整数据"/>
+                                <connections>
+                                    <action selector="fetchData:" destination="jU1-yw-sAj" eventType="touchUpInside" id="PwG-0m-eLt"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="nwQ-WO-Fdq" firstAttribute="top" secondItem="rag-ef-Cs7" secondAttribute="bottom" id="9am-vq-lwl"/>
+                            <constraint firstItem="rag-ef-Cs7" firstAttribute="leading" secondItem="WXM-5Z-1Ov" secondAttribute="leading" id="CWT-g2-DP2"/>
+                            <constraint firstItem="rag-ef-Cs7" firstAttribute="top" secondItem="WXM-5Z-1Ov" secondAttribute="top" id="Kpl-iS-wOW"/>
+                            <constraint firstItem="nwQ-WO-Fdq" firstAttribute="top" secondItem="xGy-vH-Qn1" secondAttribute="bottom" constant="54" id="LeU-1K-6ao"/>
+                            <constraint firstAttribute="trailing" secondItem="rag-ef-Cs7" secondAttribute="trailing" id="VUE-dJ-Vbt"/>
+                            <constraint firstItem="xGy-vH-Qn1" firstAttribute="centerX" secondItem="WXM-5Z-1Ov" secondAttribute="centerX" id="lsQ-xG-kl5"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="logView" destination="rag-ef-Cs7" id="B4n-rv-Sch"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Mph-BY-XzY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6438" y="899"/>
+        </scene>
     </scenes>
 </document>
