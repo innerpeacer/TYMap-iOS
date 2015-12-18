@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "TYMapUser.h"
+#import "TYMapCredential.h"
 #import <TYMapData/TYMapData.h>
 
 @class TYSyncUploadingTask;
@@ -23,7 +23,7 @@
 
 @property (nonatomic, weak) id<TYSyncUploadingTaskDelegate> delegate;
 
-- (id)initWithUser:(TYMapUser *)u;
+- (id)initWithUser:(TYMapCredential *)u;
 - (void)uploadCity:(TYCity *)city Building:(TYBuilding *)building MapInfos:(NSArray *)mapInfoArray FillSymbols:(NSArray *)fillArray IconSymbols:(NSArray *)iconArray MapData:(NSArray *)mapDataArray RouteLinkData:(NSArray *)linkArray RouteNodeData:(NSArray *)nodeArray;
 
 @end

@@ -10,10 +10,11 @@
 #import "TYMapEnviroment.h"
 #import "TYWebDownloader.h"
 #import "TYWebObjectConverter.h"
+#import "TYMapCredential_Private.h"
 
 @interface TYRouteDataDownloader() <TYWebDownloaderDelegate>
 {
-    TYMapUser *user;
+    TYMapCredential *user;
     TYWebDownloader *downloader;
 }
 
@@ -21,7 +22,7 @@
 
 @implementation TYRouteDataDownloader
 
-- (id)initWithUser:(TYMapUser *)u
+- (id)initWithUser:(TYMapCredential *)u
 {
     self = [super init];
     if (self) {

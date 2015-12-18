@@ -43,7 +43,7 @@
 
 @implementation TYSyncDownloadingTask
 
-- (id)initWithUser:(TYMapUser *)u
+- (id)initWithUser:(TYMapCredential *)u
 {
     self = [super init];
     if (self) {

@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <TYMapData/TYMapData.h>
-#import "TYMapUser.h"
+#import "TYMapCredential.h"
 
 @interface TYUserManager : NSObject
 
@@ -19,7 +19,7 @@
 + (NSDictionary *)getTrialUserDictionay:(TYBuilding *)building;
 + (NSDictionary *)getSuperUserDictionay:(TYBuilding *)building;
 
-+ (TYMapUser *)createSuperUser:(NSString *)buildingID;
-+ (TYMapUser *)createTrialUser:(NSString *)buildingID;
-+ (TYMapUser *)createWrongUser:(NSString *)buildingID;
++ (TYMapCredential *)createSuperUser:(NSString *)buildingID;
++ (TYMapCredential *)createTrialUser:(NSString *)buildingID;
++ (TYMapCredential *)createWrongUser:(NSString *)buildingID;
 @end

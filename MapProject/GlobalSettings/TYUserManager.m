@@ -48,19 +48,19 @@
     return dict;
 }
 
-+ (TYMapUser *)createSuperUser:(NSString *)buildingID
++ (TYMapCredential *)createSuperUser:(NSString *)buildingID
 {
-    return [TYMapUser userWithID:SUPER_USER_ID BuildingID:buildingID License:[MapLicenseGenerator generateLicenseForUserID:SUPER_USER_ID Building:buildingID ExpiredDate:TRIAL_EXPRIED_DATE]];
+    return [TYMapCredential userWithID:SUPER_USER_ID BuildingID:buildingID License:[MapLicenseGenerator generateLicenseForUserID:SUPER_USER_ID Building:buildingID ExpiredDate:TRIAL_EXPRIED_DATE]];
 }
 
-+ (TYMapUser *)createTrialUser:(NSString *)buildingID
++ (TYMapCredential *)createTrialUser:(NSString *)buildingID
 {
-    return [TYMapUser userWithID:TRIAL_USER_ID BuildingID:buildingID License:[MapLicenseGenerator generateLicenseForUserID:TRIAL_USER_ID Building:buildingID ExpiredDate:TRIAL_EXPRIED_DATE]];
+    return [TYMapCredential userWithID:TRIAL_USER_ID BuildingID:buildingID License:[MapLicenseGenerator generateLicenseForUserID:TRIAL_USER_ID Building:buildingID ExpiredDate:TRIAL_EXPRIED_DATE]];
 }
 
-+ (TYMapUser *)createWrongUser:(NSString *)buildingID
++ (TYMapCredential *)createWrongUser:(NSString *)buildingID
 {
-    return [TYMapUser userWithID:TRIAL_USER_ID BuildingID:@"00000000" License:@"088f90995f3dan0a25ga21207238faec"];
+    return [TYMapCredential userWithID:TRIAL_USER_ID BuildingID:@"00000000" License:@"088f90995f3dan0a25ga21207238faec"];
 }
 
 @end

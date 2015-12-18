@@ -10,12 +10,13 @@
 #import "TYWebUploader.h"
 #import "TYWebObjectConverter.h"
 #import "TYMapEnviroment.h"
+#import "TYMapCredential_Private.h"
 
 #define DEFAULT_RECORD_LIMIT_PER_UPLOAD 1500
 
 @interface TYMapDataUploader() <TYWebUploaderDelegate>
 {
-    TYMapUser *user;
+    TYMapCredential *user;
     TYWebUploader *uploader;
     
     NSMutableArray *batchedMapDataRecords;
@@ -26,7 +27,7 @@
 
 @implementation TYMapDataUploader
 
-- (id)initWithUser:(TYMapUser *)u
+- (id)initWithUser:(TYMapCredential *)u
 {
     self = [super init];
     if (self) {

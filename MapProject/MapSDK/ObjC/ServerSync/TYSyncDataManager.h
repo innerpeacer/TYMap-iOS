@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "TYMapUser.h"
+#import "TYMapCredential.h"
 #import <TYMapData/TYMapData.h>
 
 @class TYSyncDataManager;
@@ -15,6 +15,7 @@
 @protocol TYSyncDataManagerDelegate <NSObject>
 
 - (void)TYSyncDataManagerDidFinishSyncData:(TYSyncDataManager *)manager;
+- (void)TYSyncDataManagerDidFinishDownloadingSyncData:(TYSyncDataManager *)manager;
 - (void)TYSyncDataManagerDidFailedSyncData:(TYSyncDataManager *)manager InStep:(int)step WithError:(NSError *)error;
 
 @end
@@ -23,7 +24,7 @@
 
 @property (nonatomic, weak) id<TYSyncDataManagerDelegate> delegate;
 
-- (id)initWithUser:(TYMapUser *)user RootDirectory:(NSString *)root;
+- (id)initWithUser:(TYMapCredential *)user RootDirectory:(NSString *)root;
 - (void)fetchData;
 
 //- (void)checkDir;

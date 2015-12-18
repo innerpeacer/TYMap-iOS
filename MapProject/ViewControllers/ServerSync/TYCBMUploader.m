@@ -10,10 +10,11 @@
 #import "TYMapEnviroment.h"
 #import "TYWebUploader.h"
 #import "TYWebObjectConverter.h"
+#import "TYMapCredential_Private.h"
 
 @interface TYCBMUploader() <TYWebUploaderDelegate>
 {
-    TYMapUser *user;
+    TYMapCredential *user;
     TYWebUploader *uploader;
 }
 
@@ -21,7 +22,7 @@
 
 @implementation TYCBMUploader
 
-- (id)initWithUser:(TYMapUser *)u
+- (id)initWithUser:(TYMapCredential *)u
 {
     self = [super init];
     if (self) {

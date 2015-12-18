@@ -118,15 +118,65 @@
     return YES;
 }
 
+//- (int)insertMapDataRecords:(NSArray *)records
+//{
+//    int count = 0;
+//    for (TYSyncMapDataRecord *record in records) {
+//        BOOL success = [self insertMapDataRecord:record];
+//        if (success) {
+//            ++count;
+//        }
+//    }
+//    return count;
+//}
+
 - (int)insertMapDataRecords:(NSArray *)records
 {
     int count = 0;
+    sqlite3_exec(_database,"begin;",0,0,0);
+
+    NSString *errorString = @"Error: failed to insert mapdata into the database.";
+    NSString *sql = [NSString stringWithFormat:@"Insert into %@ (%@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@) values ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", TABLE_MAP_DATA, FIELD_MAP_DATA_1_OBJECT_ID, FIELD_MAP_DATA_2_GEOMETRY, FIELD_MAP_DATA_3_GEO_ID, FIELD_MAP_DATA_4_POI_ID, FIELD_MAP_DATA_5_FLOOR_ID, FIELD_MAP_DATA_6_BUILDING_ID, FIELD_MAP_DATA_7_CATEGORY_ID, FIELD_MAP_DATA_8_NAME, FIELD_MAP_DATA_9_SYMBOL_ID, FIELD_MAP_DATA_10_FLOOR_NUMBER, FIELD_MAP_DATA_11_FLOOR_NAME, FIELD_MAP_DATA_12_SHAPE_LENGTH, FIELD_MAP_DATA_13_SHAPE_AREA, FIELD_MAP_DATA_14_LABEL_X, FIELD_MAP_DATA_15_LABEL_Y, FIELD_MAP_DATA_16_LAYER, FIELD_MAP_DATA_17_LEVEL_MAX, FIELD_MAP_DATA_18_LEVEL_MIN];
+    sqlite3_stmt *statement;
+    int success = sqlite3_prepare_v2(_database, [sql UTF8String], -1, &statement, NULL);
+    if (success != SQLITE_OK) {
+        NSLog(@"%@", errorString);
+        return NO;
+    }
+    
     for (TYSyncMapDataRecord *record in records) {
-        BOOL success = [self insertMapDataRecord:record];
-        if (success) {
-            ++count;
+        sqlite3_reset(statement);
+        sqlite3_bind_text(statement, 1, [record.objectID UTF8String], -1, SQLITE_STATIC);
+        sqlite3_bind_blob(statement, 2, (const void *)[record.geometryData bytes], (int)[record.geometryData length], SQLITE_STATIC);
+        sqlite3_bind_text(statement, 3, [record.geoID UTF8String], -1, SQLITE_STATIC);
+        sqlite3_bind_text(statement, 4, [record.poiID UTF8String], -1, SQLITE_STATIC);
+        sqlite3_bind_text(statement, 5, [record.floorID UTF8String], -1, SQLITE_STATIC);
+        sqlite3_bind_text(statement, 6, [record.buildingID UTF8String], -1, SQLITE_STATIC);
+        sqlite3_bind_text(statement, 7, [record.categoryID UTF8String], -1, SQLITE_STATIC);
+        if (record.name == nil) {
+            sqlite3_bind_null(statement, 8);
+        } else {
+            sqlite3_bind_text(statement, 8, [record.name UTF8String], -1, SQLITE_STATIC);
+        }
+        sqlite3_bind_int(statement, 9, record.symbolID);
+        sqlite3_bind_int(statement, 10, record.floorNumber);
+        sqlite3_bind_text(statement, 11, [record.floorName UTF8String], -1, SQLITE_STATIC);
+        sqlite3_bind_double(statement, 12, record.shapeLength);
+        sqlite3_bind_double(statement, 13, record.shapeArea);
+        sqlite3_bind_double(statement, 14, record.labelX);
+        sqlite3_bind_double(statement, 15, record.labelY);
+        sqlite3_bind_int(statement, 16, record.layer);
+        sqlite3_bind_int(statement, 17, record.levelMax);
+        sqlite3_bind_int(statement, 18, record.levelMin);
+        
+        success = sqlite3_step(statement);        
+        if (success == SQLITE_ERROR) {
+            NSLog(@"%@", errorString);
+            return NO;
         }
     }
+    sqlite3_finalize(statement);
+    count =  sqlite3_exec(_database, "commit;",0,0,0);
     return count;
 }
 

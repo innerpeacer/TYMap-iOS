@@ -34,6 +34,7 @@
 
 //    NSString *testRoot = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:@"Test"];
 //    dataManager = [[TYSyncDataManager alloc] initWithUser:[TYUserManager createSuperUser:currentBuilding.buildingID] RootDirectory:testRoot];
+//    dataManager.delegate = self;
 
     dataManager = [[TYSyncDataManager alloc] initWithUser:[TYUserManager createSuperUser:@"00100003"] RootDirectory:[TYMapEnvironment getRootDirectoryForMapFiles]];
     dataManager.delegate = self;
@@ -50,9 +51,14 @@
     
 }
 
-- (void)TYSyncDataManagerDidFinishSyncData:(TYSyncDataManager *)manager
+- (void)TYSyncDataManagerDidFinishDownloadingSyncData:(TYSyncDataManager *)manager
 {
     [self addToLog:@"Finish Downloading"];
+}
+
+- (void)TYSyncDataManagerDidFinishSyncData:(TYSyncDataManager *)manager
+{
+    [self addToLog:@"Finish Fetch Data"];
 }
 
 @end

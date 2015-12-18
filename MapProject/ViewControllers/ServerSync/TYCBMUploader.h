@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "TYMapUser.h"
+#import "TYMapCredential.h"
 #import <TYMapData/TYMapData.h>
 
 @class TYCBMUploader;
@@ -19,7 +19,7 @@
 
 @interface TYCBMUploader : NSObject
 
-- (id)initWithUser:(TYMapUser *)user;
+- (id)initWithUser:(TYMapCredential *)user;
 @property (nonatomic, weak) id<TYCBMUploaderDelegate> delegate;
 
 - (void)uploadCities:(NSArray *)cities;

@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "TYMapUser.h"
+#import "TYMapCredential.h"
 
 @class TYMapDataDownloader;
 
@@ -20,7 +20,7 @@
 
 @interface TYMapDataDownloader : NSObject
 
-- (id)initWithUser:(TYMapUser *)user;
+- (id)initWithUser:(TYMapCredential *)user;
 
 @property (nonatomic, weak) id <TYMapDataDownloaderDelegate> delegate;
 

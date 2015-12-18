@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "TYMapUser.h"
+#import "TYMapCredential.h"
 
 @class TYMapDataUploader;
 @protocol TYMapDataUploaderDelegate <NSObject>
@@ -20,7 +20,7 @@
 
 @interface TYMapDataUploader : NSObject
 
-- (id)initWithUser:(TYMapUser *)user;
+- (id)initWithUser:(TYMapCredential *)user;
 @property (nonatomic, assign) int recordLimitPerUpload;
 @property (nonatomic, weak) id<TYMapDataUploaderDelegate> delegate;
 

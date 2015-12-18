@@ -1,20 +1,20 @@
 //
-//  TYMapUser.m
+//  TYMapCredential.m
 //  MapProject
 //
 //  Created by innerpeacer on 15/11/27.
 //  Copyright © 2015年 innerpeacer. All rights reserved.
 //
 
-#import "TYMapUser.h"
+#import "TYMapCredential.h"
+#import "TYMapCredential_Private.h"
 
 
+@implementation TYMapCredential
 
-@implementation TYMapUser
-
-+ (TYMapUser *)userWithID:(NSString *)uid BuildingID:(NSString *)bid License:(NSString *)l
++ (TYMapCredential *)userWithID:(NSString *)uid BuildingID:(NSString *)bid License:(NSString *)l
 {
-    return [[TYMapUser alloc] initWithUserID:uid BuildingID:bid License:l];
+    return [[TYMapCredential alloc] initWithUserID:uid BuildingID:bid License:l];
 }
 
 - (id)initWithUserID:(NSString *)uid BuildingID:(NSString *)bid License:(NSString *)l

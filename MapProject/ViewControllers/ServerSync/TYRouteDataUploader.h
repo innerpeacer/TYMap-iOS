@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "TYMapUser.h"
+#import "TYMapCredential.h"
 
 @class  TYRouteDataUploader;
 
@@ -21,7 +21,7 @@
 
 @interface TYRouteDataUploader : NSObject
 
-- (id)initWithUser:(TYMapUser *)user;
+- (id)initWithUser:(TYMapCredential *)user;
 @property (nonatomic, assign) int recordLimitPerUpload;
 @property (nonatomic, weak) id<TYRouteDataUploaderDelegate> delegate;
 

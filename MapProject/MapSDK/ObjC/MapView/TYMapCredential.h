@@ -1,5 +1,5 @@
 //
-//  TYMapUser.h
+//  TYMapCredential.h
 //  MapProject
 //
 //  Created by innerpeacer on 15/11/27.
@@ -8,13 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
-@interface TYMapUser : NSObject
+@interface TYMapCredential : NSObject
 
 @property (nonatomic, strong, readonly) NSString *userID;
 @property (nonatomic, strong, readonly) NSString *buildingID;
 @property (nonatomic, strong, readonly) NSString *license;
 
-+ (TYMapUser *)userWithID:(NSString *)uid BuildingID:(NSString *)bid License:(NSString *)l;
-- (NSDictionary *)buildDictionary;
++ (TYMapCredential *)userWithID:(NSString *)uid BuildingID:(NSString *)bid License:(NSString *)l;
 
 @end

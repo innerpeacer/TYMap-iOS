@@ -109,14 +109,52 @@
 - (int)insertRouteNodeRecords:(NSArray *)records
 {
     int count = 0;
+    sqlite3_exec(_database,"begin;",0,0,0);
+
+    NSString *errorString = @"Error: failed to insert mapdata into the database.";
+    NSString *sql = [NSString stringWithFormat:@"Insert into %@ (%@, %@, %@) values ( ?, ?, ?)", TABLE_ROUTE_NODE, FIELD_ROUTE_NODE_1_NODE_ID, FIELD_ROUTE_NODE_2_GEOMETRY, FIELD_ROUTE_NODE_3_VIRTUAL];
+    sqlite3_stmt *statement;
+    int success = sqlite3_prepare_v2(_database, [sql UTF8String], -1, &statement, NULL);
+    if (success != SQLITE_OK) {
+        NSLog(@"%@", errorString);
+        return NO;
+    }
+    
     for (TYSyncRouteNodeRecord *record in records) {
-        BOOL success = [self insertRouteNodeRecord:record];
-        if (success) {
-            ++count;
+        sqlite3_reset(statement);
+        sqlite3_bind_int(statement, 1, record.nodeID);
+        sqlite3_bind_blob(statement, 2, (const void *)[record.geometryData bytes], (int)[record.geometryData length], SQLITE_STATIC);
+        sqlite3_bind_int(statement, 3, record.isVirtual);
+        
+        success = sqlite3_step(statement);
+        if (success == SQLITE_ERROR) {
+            NSLog(@"%@", errorString);
+            continue;
+        } else {
+            count++;
         }
     }
+    
+    sqlite3_finalize(statement);
+    count =  sqlite3_exec(_database, "commit;",0,0,0);
+
     return count;
 }
+
+
+//- (int)insertRouteNodeRecords:(NSArray *)records
+//{
+//    int count = 0;
+//    for (TYSyncRouteNodeRecord *record in records) {
+//        BOOL success = [self insertRouteNodeRecord:record];
+//        if (success) {
+//            ++count;
+//        }
+//    }
+//    return count;
+//}
+
+
 
 - (BOOL)insertRouteLinkRecord:(TYSyncRouteLinkRecord *)record
 {
@@ -145,20 +183,56 @@
         return NO;
     }
     return YES;
-
 }
 
 - (int)insertRouteLinkRecords:(NSArray *)records
 {
     int count = 0;
+    sqlite3_exec(_database,"begin;",0,0,0);
+    NSString *errorString = @"Error: failed to insert route link into the database.";
+    NSString *sql = [NSString stringWithFormat:@"Insert into %@ (%@, %@, %@, %@, %@, %@, %@) values ( ?, ?, ?, ?, ?, ?, ?)", TABLE_ROUTE_LINK, FIELD_ROUTE_LINK_1_LINK_ID, FIELD_ROUTE_LINK_2_GEOMETRY, FIELD_ROUTE_LINK_3_LENGTH, FIELD_ROUTE_LINK_4_HEAD_NODE, FIELD_ROUTE_LINK_5_END_NODE, FIELD_ROUTE_LINK_6_VIRTUAL, FIELD_ROUTE_LINK_7_ONE_WAY];
+    sqlite3_stmt *statement;
+    int success = sqlite3_prepare_v2(_database, [sql UTF8String], -1, &statement, NULL);
+    if (success != SQLITE_OK) {
+        NSLog(@"%@", errorString);
+        return NO;
+    }
+    
     for (TYSyncRouteLinkRecord *record in records) {
-        BOOL success = [self insertRouteLinkRecord:record];
-        if (success) {
-            ++count;
+        sqlite3_reset(statement);
+        sqlite3_bind_int(statement, 1, record.linkID);
+        sqlite3_bind_blob(statement, 2, (const void *)[record.geometryData bytes], (int)[record.geometryData length], SQLITE_STATIC);
+        sqlite3_bind_double(statement, 3, record.length);
+        sqlite3_bind_int(statement, 4, record.headNode);
+        sqlite3_bind_int(statement, 5, record.endNode);
+        sqlite3_bind_int(statement, 6, record.isVirtual);
+        sqlite3_bind_int(statement, 7, record.isOneWay);
+        
+        success = sqlite3_step(statement);
+        if (success == SQLITE_ERROR) {
+            NSLog(@"%@", errorString);
+            continue;
+        } else {
+            count++;
         }
     }
+    sqlite3_finalize(statement);
+    count =  sqlite3_exec(_database, "commit;",0,0,0);
+    
     return count;
 }
+
+//- (int)insertRouteLinkRecords:(NSArray *)records
+//{
+//    int count = 0;
+//    for (TYSyncRouteLinkRecord *record in records) {
+//        BOOL success = [self insertRouteLinkRecord:record];
+//        if (success) {
+//            ++count;
+//        }
+//    }
+//    return count;
+//}
 
 - (BOOL)updateRouteNodeRecord:(TYSyncRouteNodeRecord *)record
 {

@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "TYMapUser.h"
+#import "TYMapCredential.h"
 #import <TYMapData/TYMapData.h>
 
 @class TYSyncDownloadingTask;
@@ -24,7 +24,7 @@
 
 @property (nonatomic, weak) id<TySyncDownloadingTaskDelegate> delegate;
 
-- (id)initWithUser:(TYMapUser *)u;
+- (id)initWithUser:(TYMapCredential *)u;
 - (void)featchData;
 
 @end

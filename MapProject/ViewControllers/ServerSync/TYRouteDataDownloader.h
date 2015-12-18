@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "TYMapUser.h"
+#import "TYMapCredential.h"
 
 @class TYRouteDataDownloader;
 
@@ -18,7 +18,7 @@
 
 @interface TYRouteDataDownloader : NSObject
 
-- (id)initWithUser:(TYMapUser *)user;
+- (id)initWithUser:(TYMapCredential *)user;
 @property (nonatomic, weak) id<TYRouteDataDownloaderDelegate> delegate;
 
 - (void)getAllRouteDataRecords;
