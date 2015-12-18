@@ -75,7 +75,7 @@
 
 - (void)TYDownloadingTaskDidFinished:(TYSyncDownloadingTask *)task WithCity:(TYCity *)city Building:(TYBuilding *)b MapInfos:(NSArray *)mapInfoArray FillSymbols:(NSArray *)fillArray IconSymbols:(NSArray *)iconArray MapData:(NSArray *)mapDataArray RouteLinkData:(NSArray *)linkArray RouteNodeData:(NSArray *)nodeArray
 {
-    NSLog(@"Finish Downloading");
+//    NSLog(@"Finish Downloading");
     
     [self checkDir:b];
     
@@ -108,6 +108,8 @@
     [routeDB insertRouteLinkRecords:linkArray];
     [routeDB insertRouteNodeRecords:nodeArray];
     [routeDB close];
+    
+    [self notifyFinishSyncData];
 
 }
 

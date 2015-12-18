@@ -13,7 +13,7 @@
 #import "TYUserDefaults.h"
 #import "TYMapEnviroment.h"
 
-@interface FetchCompleteDataVC()
+@interface FetchCompleteDataVC() <TYSyncDataManagerDelegate>
 {
     TYSyncDataManager *dataManager;
     TYBuilding *currentBuilding;
@@ -32,16 +32,27 @@
     
     currentBuilding = [TYUserDefaults getDefaultBuilding];
 
-    NSString *testRoot = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:@"Test"];
-    dataManager = [[TYSyncDataManager alloc] initWithUser:[TYUserManager createSuperUser:currentBuilding.buildingID] RootDirectory:testRoot];
+//    NSString *testRoot = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:@"Test"];
+//    dataManager = [[TYSyncDataManager alloc] initWithUser:[TYUserManager createSuperUser:currentBuilding.buildingID] RootDirectory:testRoot];
 
-//    dataManager = [[TYSyncDataManager alloc] initWithUser:[TYUserManager createSuperUser:@"00100003"] RootDirectory:[TYMapEnvironment getRootDirectoryForMapFiles]];
+    dataManager = [[TYSyncDataManager alloc] initWithUser:[TYUserManager createSuperUser:@"00100003"] RootDirectory:[TYMapEnvironment getRootDirectoryForMapFiles]];
+    dataManager.delegate = self;
 }
 
 - (IBAction)fetchData:(id)sender
 {
     NSLog(@"fetchData");
     [dataManager fetchData];
+}
+
+- (void)TYSyncDataManagerDidFailedSyncData:(TYSyncDataManager *)manager InStep:(int)step WithError:(NSError *)error
+{
+    
+}
+
+- (void)TYSyncDataManagerDidFinishSyncData:(TYSyncDataManager *)manager
+{
+    [self addToLog:@"Finish Downloading"];
 }
 
 @end
