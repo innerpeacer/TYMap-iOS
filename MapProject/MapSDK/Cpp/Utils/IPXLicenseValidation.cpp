@@ -1,18 +1,19 @@
 //
-//  IPLicenseValidation.cpp
+//  IPXLicenseValidation.cpp
 //  MapProject
 //
 //  Created by innerpeacer on 15/9/22.
 //  Copyright (c) 2015年 innerpeacer. All rights reserved.
 //
 
-#include "IPLicenseValidation.h"
-#include "IPEncryption.hpp"
-#include "MD5.hpp"
+#include "IPXLicenseValidation.h"
+#include "IPXEncryption.hpp"
+#include "IPXMD5.hpp"
 
 using namespace std;
+using namespace Innerpeacer::MapSDK;
 
-bool checkValidity(std::string userID, std::string license, std::string buildingID)
+bool Innerpeacer::MapSDK::checkValidity(std::string userID, std::string license, std::string buildingID)
 {
     if (userID.length() < 18) {
         printf("Invalid UserID.\n");
@@ -23,7 +24,7 @@ bool checkValidity(std::string userID, std::string license, std::string building
     std::string key2 = userID.substr(10, 8);
     std::string encryptedBuildingID = encryptString(buildingID.substr(0, 8), key1);
     
-    MD5 md5;
+    IPXMD5 md5;
     md5.update(encryptedBuildingID);
     std::string md5ForBuildingID = md5.toString();
     std::string encryptedExpiredDate = decryptString(license.substr(16, 8), md5ForBuildingID);
@@ -57,7 +58,7 @@ bool checkValidity(std::string userID, std::string license, std::string building
     }
 }
 
-std::string getExpiredDate(std::string userID, std::string license, std::string buildingID)
+std::string Innerpeacer::MapSDK::getExpiredDate(std::string userID, std::string license, std::string buildingID)
 {
     if (userID.length() < 18) {
         printf("Invalid UserID.\n");
@@ -67,7 +68,7 @@ std::string getExpiredDate(std::string userID, std::string license, std::string 
     std::string key1 = userID.substr(2, 8);
     std::string key2 = userID.substr(10, 8);
     std::string encryptedBuildingID = encryptString(buildingID.substr(0, 8), key1);
-    MD5 md5;
+    IPXMD5 md5;
     md5.update(encryptedBuildingID);
     std::string md5ForBuildingID = md5.toString();
     std::string encryptedExpiredDate = decryptString(license.substr(16, 8), md5ForBuildingID);

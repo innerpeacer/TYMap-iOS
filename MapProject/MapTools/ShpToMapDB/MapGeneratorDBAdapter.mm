@@ -16,8 +16,10 @@
 #import "TYMapEnviroment.h"
 
 #import "TYMapFileManager.h"
-#include "IPEncryption.hpp"
+#include "IPXEncryption.hpp"
 #import "SymbolRecord.h"
+
+using namespace Innerpeacer::MapSDK;
 
 @interface MapGeneratorDBAdapter()
 {

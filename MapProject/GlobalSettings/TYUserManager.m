@@ -50,17 +50,17 @@
 
 + (TYMapCredential *)createSuperUser:(NSString *)buildingID
 {
-    return [TYMapCredential userWithID:SUPER_USER_ID BuildingID:buildingID License:[MapLicenseGenerator generateLicenseForUserID:SUPER_USER_ID Building:buildingID ExpiredDate:TRIAL_EXPRIED_DATE]];
+    return [TYMapCredential credentialWithUserID:SUPER_USER_ID BuildingID:buildingID License:[MapLicenseGenerator generateLicenseForUserID:SUPER_USER_ID Building:buildingID ExpiredDate:TRIAL_EXPRIED_DATE]];
 }
 
 + (TYMapCredential *)createTrialUser:(NSString *)buildingID
 {
-    return [TYMapCredential userWithID:TRIAL_USER_ID BuildingID:buildingID License:[MapLicenseGenerator generateLicenseForUserID:TRIAL_USER_ID Building:buildingID ExpiredDate:TRIAL_EXPRIED_DATE]];
+    return [TYMapCredential credentialWithUserID:TRIAL_USER_ID BuildingID:buildingID License:[MapLicenseGenerator generateLicenseForUserID:TRIAL_USER_ID Building:buildingID ExpiredDate:TRIAL_EXPRIED_DATE]];
 }
 
 + (TYMapCredential *)createWrongUser:(NSString *)buildingID
 {
-    return [TYMapCredential userWithID:TRIAL_USER_ID BuildingID:@"00000000" License:@"088f90995f3dan0a25ga21207238faec"];
+    return [TYMapCredential credentialWithUserID:TRIAL_USER_ID BuildingID:@"00000000" License:@"088f90995f3dan0a25ga21207238faec"];
 }
 
 @end

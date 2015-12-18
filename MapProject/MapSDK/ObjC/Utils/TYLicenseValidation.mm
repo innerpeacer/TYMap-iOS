@@ -7,7 +7,9 @@
 //
 
 #import "TYLicenseValidation.h"
-#import "IPLicenseValidation.h"
+#import "IPXLicenseValidation.h"
+
+using namespace Innerpeacer::MapSDK;
 
 @implementation TYLicenseValidation
 

@@ -6,12 +6,14 @@
 //  Copyright (c) 2015年 innerpeacer. All rights reserved.
 //
 
-#include "IPMemory.h"
+#include "IPXMemory.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
 
-IPMemory *mOpen(const char *fName) {
+using namespace Innerpeacer::MapSDK;
+
+IPXMemory *Innerpeacer::MapSDK::mOpen(const char *fName) {
     FILE *f;
     f = fopen(fName, "rb");
     
@@ -19,7 +21,7 @@ IPMemory *mOpen(const char *fName) {
         return NULL;
     }
     
-    IPMemory *memory = (IPMemory *) calloc(1, sizeof(IPMemory));
+    IPXMemory *memory = (IPXMemory *) calloc(1, sizeof(IPXMemory));
     strcpy(memory->fileName, fName);
     
     fseek(f, 0, SEEK_END);
@@ -34,7 +36,7 @@ IPMemory *mOpen(const char *fName) {
     return memory;
 }
 
-IPMemory *mClose(IPMemory *memory) {
+IPXMemory *Innerpeacer::MapSDK::mClose(IPXMemory *memory) {
     if (memory->buffer) {
         free(memory->buffer);
     }
@@ -42,7 +44,7 @@ IPMemory *mClose(IPMemory *memory) {
     return NULL;
 }
 
-unsigned int mRead(IPMemory *memory, void *dst, unsigned int size) {
+unsigned int Innerpeacer::MapSDK::mRead(IPXMemory *memory, void *dst, unsigned int size) {
     if (memory->position + size > memory->size) {
         size = memory->size - memory->position;
     }
@@ -52,7 +54,7 @@ unsigned int mRead(IPMemory *memory, void *dst, unsigned int size) {
     return size;
 }
 
-void mInsert(IPMemory *memory, char *str, unsigned int position) {
+void Innerpeacer::MapSDK::mInsert(IPXMemory *memory, char *str, unsigned int position) {
     unsigned int s1 = (unsigned int) strlen(str);
     unsigned int s2 = memory->size + s1 + 1;
     

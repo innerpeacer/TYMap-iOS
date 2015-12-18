@@ -7,20 +7,20 @@
 //
 
 #import "MD5Utils.h"
-#include "MD5.hpp"
+#include "IPXMD5.hpp"
 
 @implementation MD5Utils
 
 + (NSString *)md5:(NSString *)str
 {
-    MD5 md5([str UTF8String]);
+    IPXMD5 md5([str UTF8String]);
     return [NSString stringWithUTF8String:md5.toString().c_str()];
 }
 
 + (NSString *)md5ForFile:(NSString *)path
 {
     std::ifstream in([path UTF8String], std::ios::in|std::ios::binary);
-    MD5 md5(in);
+    IPXMD5 md5(in);
     
     return [NSString stringWithUTF8String:md5.toString().c_str()];
 }
@@ -32,7 +32,7 @@
     enumerator = [fileManager enumeratorAtPath:dir];
 
     NSString *name;
-    MD5 fileMD5;
+    IPXMD5 fileMD5;
 
     while (name = [enumerator nextObject]) {
         NSString *sourcePath = [dir stringByAppendingPathComponent:name];

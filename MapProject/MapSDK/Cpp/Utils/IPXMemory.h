@@ -12,18 +12,24 @@
 #define MAX_PATH	256
 
 
+namespace Innerpeacer {
+    namespace MapSDK {
         typedef struct {
             char fileName[MAX_PATH];
             unsigned int size;
             unsigned int position;
             
             unsigned char *buffer;
-        } IPMemory;
+        } IPXMemory;
         
-        IPMemory *mOpen(const char *fName);
-        IPMemory *mClose(IPMemory *memory);
-        unsigned int mRead(IPMemory *memory, void *dst, unsigned int size);
-        void mInsert(IPMemory *memory, char *str, unsigned int position);
+        IPXMemory *mOpen(const char *fName);
+        IPXMemory *mClose(IPXMemory *memory);
+        unsigned int mRead(IPXMemory *memory, void *dst, unsigned int size);
+        void mInsert(IPXMemory *memory, char *str, unsigned int position);
+    }
+}
+
+
  
 
 #endif /* defined(__IPMapEngine__IPMemery__) */

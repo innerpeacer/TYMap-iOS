@@ -12,11 +12,11 @@
 #import "TYMapEnviroment.h"
 #import "TYPoi.h"
 
-#import "IPEncryption.hpp"
+#import "IPXEncryption.hpp"
 #import "TYEncryption.h"
-#import "IPMemory.h"
+#import "IPXMemory.h"
 #import "MD5Utils.h"
-#import "MD5.hpp"
+#import "IPXMD5.hpp"
 
 #import "MapLicenseGenerator.h"
 #import "TYLicenseValidation.h"

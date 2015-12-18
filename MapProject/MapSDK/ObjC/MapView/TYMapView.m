@@ -29,6 +29,7 @@
 #import "TYMapFeatureData.h"
 #import "TYPathCalibration.h"
 #import "TYParkingLayer.h"
+#import "TYMapCredential.h"
 
 #define DEFAULT_BUFFER_WIDTH 2.0
 
@@ -56,9 +57,9 @@
     
     NSDictionary *mapDataDict;
     
-    NSString *userID;
-    NSString *mapLicense;
-    
+//    NSString *userID;
+//    NSString *mapLicense;
+    TYMapCredential *mapCredential;
     
     NSMutableDictionary *scaleLevelDict;
     
@@ -217,13 +218,16 @@
 
 - (void)setFloorWithInfo:(TYMapInfo *)info
 {
-    BOOL licenseValidity = [TYLicenseValidation checkValidityWithUserID:userID License:mapLicense Building:_building];
+//    BOOL licenseValidity = [TYLicenseValidation checkValidityWithUserID:userID License:mapLicense Building:_building];
+    BOOL licenseValidity = [TYLicenseValidation checkValidityWithUserID:mapCredential.userID License:mapCredential.license Building:_building];
+
     if (!licenseValidity) {
         NSLog(@"Invalid License!");
         return;
     }
     
-    NSDate *expiredDate = [TYLicenseValidation evaluateLicenseWithUserID:userID License:mapLicense Building:_building];
+//    NSDate *expiredDate = [TYLicenseValidation evaluateLicenseWithUserID:userID License:mapLicense Building:_building];
+    NSDate *expiredDate = [TYLicenseValidation evaluateLicenseWithUserID:mapCredential.userID License:mapCredential.license Building:_building];
     if (expiredDate == nil) {
         NSLog(@"Invalid License for Current Building!");
         return;
@@ -281,8 +285,9 @@
 - (void)switchBuilding:(TYBuilding *)b UserID:(NSString *)uID License:(NSString *)license
 {
     _building = b;
-    userID = uID;
-    mapLicense = license;
+//    userID = uID;
+//    mapLicense = license;
+    mapCredential = [TYMapCredential credentialWithUserID:uID BuildingID:_building.buildingID License:license];
     
     NSString *symbolDBPath = [TYMapFileManager getSymbolDBPath:_building];
     renderingScheme = [[TYRenderingScheme alloc] initWithPath:symbolDBPath];
@@ -298,14 +303,17 @@
     [labelGroupLayer setRenderingScheme:renderingScheme];
 }
 
+
+
 - (void)initMapViewWithBuilding:(TYBuilding *)b UserID:(NSString *)uID License:(NSString *)license
 {
     _autoCenterEnabled = YES;
     
     _building = b;
-    userID = uID;
-    mapLicense = license;
-    
+//    userID = uID;
+//    mapLicense = license;
+    mapCredential = [TYMapCredential credentialWithUserID:uID BuildingID:_building.buildingID License:license];
+
     isLabelOverlappingDetectingEnabled = YES;
     isPathCalibrationEnabled = NO;
     pathCalibrationBuffer = DEFAULT_BUFFER_WIDTH;

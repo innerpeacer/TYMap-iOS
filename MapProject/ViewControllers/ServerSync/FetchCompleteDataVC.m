@@ -8,14 +8,14 @@
 //
 
 #import "FetchCompleteDataVC.h"
-#import "TYSyncDataManager.h"
+#import "TYMapDataManager.h"
 #import "TYUserManager.h"
 #import "TYUserDefaults.h"
 #import "TYMapEnviroment.h"
 
-@interface FetchCompleteDataVC() <TYSyncDataManagerDelegate>
+@interface FetchCompleteDataVC() <TYMapDataManagerDelegate>
 {
-    TYSyncDataManager *dataManager;
+    TYMapDataManager *dataManager;
     TYBuilding *currentBuilding;
 
 }
@@ -36,29 +36,42 @@
 //    dataManager = [[TYSyncDataManager alloc] initWithUser:[TYUserManager createSuperUser:currentBuilding.buildingID] RootDirectory:testRoot];
 //    dataManager.delegate = self;
 
-    dataManager = [[TYSyncDataManager alloc] initWithUser:[TYUserManager createSuperUser:@"00100003"] RootDirectory:[TYMapEnvironment getRootDirectoryForMapFiles]];
+//    dataManager = [[TYMapDataManager alloc] initWithUser:[TYUserManager createSuperUser:@"00100003"] RootDirectory:[TYMapEnvironment getRootDirectoryForMapFiles]];
+//    dataManager.delegate = self;
+    TYMapCredential *user = [TYUserManager createTrialUser:currentBuilding.buildingID];
+    dataManager = [[TYMapDataManager alloc] initWithUserID:user.userID BuildingID:currentBuilding.buildingID License:user.license];
     dataManager.delegate = self;
 }
 
 - (IBAction)fetchData:(id)sender
 {
     NSLog(@"fetchData");
-    [dataManager fetchData];
+    [dataManager fetchMapData];
 }
 
-- (void)TYSyncDataManagerDidFailedSyncData:(TYSyncDataManager *)manager InStep:(int)step WithError:(NSError *)error
+- (void)TYMapDataManagerDidFailedFetchingData:(TYMapDataManager *)manager WithError:(NSError *)error
 {
     
 }
 
-- (void)TYSyncDataManagerDidFinishDownloadingSyncData:(TYSyncDataManager *)manager
-{
-    [self addToLog:@"Finish Downloading"];
-}
-
-- (void)TYSyncDataManagerDidFinishSyncData:(TYSyncDataManager *)manager
+- (void)TYMapDataManagerDidFinishFetchingData:(TYMapDataManager *)manager
 {
     [self addToLog:@"Finish Fetch Data"];
 }
+
+//- (void)TYSyncDataManagerDidFailedSyncData:(TYSyncDataManager *)manager InStep:(int)step WithError:(NSError *)error
+//{
+//    
+//}
+//
+//- (void)TYSyncDataManagerDidFinishDownloadingSyncData:(TYSyncDataManager *)manager
+//{
+//    [self addToLog:@"Finish Downloading"];
+//}
+//
+//- (void)TYSyncDataManagerDidFinishSyncData:(TYSyncDataManager *)manager
+//{
+//    [self addToLog:@"Finish Fetch Data"];
+//}
 
 @end

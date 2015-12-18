@@ -15,7 +15,7 @@ using namespace Innerpeacer::MapSDK;
 #include <geos/io.h>
 #include <sstream>
 
-#include "IPEncryption.hpp"
+#include "IPXEncryption.hpp"
 
 typedef vector<IPXFeatureRecord *> FeatureVector;
 

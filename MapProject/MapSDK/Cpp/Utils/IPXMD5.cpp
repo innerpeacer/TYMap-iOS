@@ -1,12 +1,12 @@
 //
-//  MD5.cpp
+//  IPXMD5.cpp
 //  TYDecryption
 //
 //  Created by innerpeacer on 15/7/21.
 //  Copyright © 2015年 innerpeacer. All rights reserved.
 //
 
-#include "MD5.hpp"
+#include "IPXMD5.hpp"
 
 using namespace std;
 
@@ -65,8 +65,8 @@ using namespace std;
 }
 
 
-const byte MD5::PADDING[64] = { 0x80 };
-const char MD5::HEX[16] = {
+const byte IPXMD5::PADDING[64] = { 0x80 };
+const char IPXMD5::HEX[16] = {
     '0', '1', '2', '3',
     '4', '5', '6', '7',
     '8', '9', 'a', 'b',
@@ -74,30 +74,30 @@ const char MD5::HEX[16] = {
 };
 
 /* Default construct. */
-MD5::MD5() {
+IPXMD5::IPXMD5() {
     reset();
 }
 
 /* Construct a MD5 object with a input buffer. */
-MD5::MD5(const void *input, size_t length) {
+IPXMD5::IPXMD5(const void *input, size_t length) {
     reset();
     update(input, length);
 }
 
 /* Construct a MD5 object with a string. */
-MD5::MD5(const string &str) {
+IPXMD5::IPXMD5(const string &str) {
     reset();
     update(str);
 }
 
 /* Construct a MD5 object with a file. */
-MD5::MD5(ifstream &in) {
+IPXMD5::IPXMD5(ifstream &in) {
     reset();
     update(in);
 }
 
 /* Return the message-digest */
-const byte* MD5::digest() {
+const byte* IPXMD5::digest() {
     if (!_finished) {
         _finished = true;
         final();
@@ -106,7 +106,7 @@ const byte* MD5::digest() {
 }
 
 /* Reset the calculate state */
-void MD5::reset() {
+void IPXMD5::reset() {
     
     _finished = false;
     /* reset number of bits. */
@@ -119,17 +119,17 @@ void MD5::reset() {
 }
 
 /* Updating the context with a input buffer. */
-void MD5::update(const void *input, size_t length) {
+void IPXMD5::update(const void *input, size_t length) {
     update((const byte*)input, length);
 }
 
 /* Updating the context with a string. */
-void MD5::update(const string &str) {
+void IPXMD5::update(const string &str) {
     update((const byte*)str.c_str(), str.length());
 }
 
 /* Updating the context with a file. */
-void MD5::update(ifstream &in) {
+void IPXMD5::update(ifstream &in) {
     
     if (!in)
         return;
@@ -149,7 +149,7 @@ void MD5::update(ifstream &in) {
  operation, processing another message block, and updating the
  context.
  */
-void MD5::update(const byte *input, size_t length) {
+void IPXMD5::update(const byte *input, size_t length) {
     
     uint32 i, index, partLen;
     
@@ -186,7 +186,7 @@ void MD5::update(const byte *input, size_t length) {
 /* MD5 finalization. Ends an MD5 message-_digest operation, writing the
  the message _digest and zeroizing the context.
  */
-void MD5::final() {
+void IPXMD5::final() {
     
     byte bits[8];
     uint32 oldState[4];
@@ -217,7 +217,7 @@ void MD5::final() {
 }
 
 /* MD5 basic transformation. Transforms _state based on block. */
-void MD5::transform(const byte block[64]) {
+void IPXMD5::transform(const byte block[64]) {
     
     uint32 a = _state[0], b = _state[1], c = _state[2], d = _state[3], x[16];
     
@@ -304,7 +304,7 @@ void MD5::transform(const byte block[64]) {
 /* Encodes input (ulong) into output (byte). Assumes length is
  a multiple of 4.
  */
-void MD5::encode(const uint32 *input, byte *output, size_t length) {
+void IPXMD5::encode(const uint32 *input, byte *output, size_t length) {
     
     for(size_t i=0, j=0; j<length; i++, j+=4) {
         output[j]= (byte)(input[i] & 0xff);
@@ -317,7 +317,7 @@ void MD5::encode(const uint32 *input, byte *output, size_t length) {
 /* Decodes input (byte) into output (ulong). Assumes length is
  a multiple of 4.
  */
-void MD5::decode(const byte *input, uint32 *output, size_t length) {
+void IPXMD5::decode(const byte *input, uint32 *output, size_t length) {
     
     for(size_t i=0, j=0; j<length; i++, j+=4) {	
         output[i] = ((uint32)input[j]) | (((uint32)input[j+1]) << 8) |
@@ -326,7 +326,7 @@ void MD5::decode(const byte *input, uint32 *output, size_t length) {
 }
 
 /* Convert byte array to hex string. */
-string MD5::bytesToHexString(const byte *input, size_t length) {
+string IPXMD5::bytesToHexString(const byte *input, size_t length) {
     string str;
     str.reserve(length << 1);
     for(size_t i = 0; i < length; i++) {
@@ -340,6 +340,6 @@ string MD5::bytesToHexString(const byte *input, size_t length) {
 }
 
 /* Convert digest to string value */
-string MD5::toString() {
+string IPXMD5::toString() {
     return bytesToHexString(digest(), 16);
 }

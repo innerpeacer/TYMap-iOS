@@ -1,6 +1,5 @@
 //
-//  MD5.hpp
-//  TYDecryption
+//  IPXMD5.hpp
 //
 //  Created by innerpeacer on 15/7/21.
 //  Copyright © 2015年 innerpeacer. All rights reserved.
@@ -18,12 +17,20 @@ typedef unsigned int uint32;
 using std::string;
 using std::ifstream;
 
-class MD5 {
+
+namespace Innerpeacer {
+    namespace MapSDK {
+        
+        
+    }
+}
+
+class IPXMD5 {
 public:
-    MD5();
-    MD5(const void *input, size_t length);
-    MD5(const string &str);
-    MD5(ifstream &in);
+    IPXMD5();
+    IPXMD5(const void *input, size_t length);
+    IPXMD5(const string &str);
+    IPXMD5(ifstream &in);
     void update(const void *input, size_t length);
     void update(const string &str);
     void update(ifstream &in);
@@ -39,8 +46,8 @@ private:
     string bytesToHexString(const byte *input, size_t length);
     
     /* class uncopyable */
-    MD5(const MD5&);
-    MD5& operator=(const MD5&);
+    IPXMD5(const IPXMD5&);
+    IPXMD5& operator=(const IPXMD5&);
 private:
     uint32 _state[4];	/* state (ABCD) */
     uint32 _count[2];	/* number of bits, modulo 2^64 (low-order word first) */

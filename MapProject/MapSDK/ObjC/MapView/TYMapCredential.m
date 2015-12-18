@@ -12,7 +12,7 @@
 
 @implementation TYMapCredential
 
-+ (TYMapCredential *)userWithID:(NSString *)uid BuildingID:(NSString *)bid License:(NSString *)l
++ (TYMapCredential *)credentialWithUserID:(NSString *)uid BuildingID:(NSString *)bid License:(NSString *)l
 {
     return [[TYMapCredential alloc] initWithUserID:uid BuildingID:bid License:l];
 }

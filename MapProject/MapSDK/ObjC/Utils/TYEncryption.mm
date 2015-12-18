@@ -7,7 +7,9 @@
 //
 
 #import "TYEncryption.h"
-#import "IPEncryption.hpp"
+#import "IPXEncryption.hpp"
+
+using namespace Innerpeacer::MapSDK;
 
 @implementation TYEncryption
 
