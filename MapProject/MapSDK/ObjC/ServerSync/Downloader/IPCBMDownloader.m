@@ -11,6 +11,7 @@
 #import "IPWebDownloader.h"
 #import "IPWebObjectConverter.h"
 #import "TYMapCredential_Private.h"
+#import "IPApi.h"
 
 @interface IPCBMDownloader() <IPWebDownloaderDelegate>
 {

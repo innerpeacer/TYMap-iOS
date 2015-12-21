@@ -51,7 +51,6 @@ std::string Innerpeacer::MapSDK::encryptString(std::string originalString, std::
     }
     
     int originalLength = (int)strlen(originalString.c_str());
-//    char originalValue[originalLength + 1];
     char *originalValue = new char[originalLength + 1];
     memcpy(&originalValue[0], originalString.c_str(), originalLength);
     
@@ -69,94 +68,6 @@ std::string Innerpeacer::MapSDK::encryptString(std::string originalString, std::
     delete[] originalValue;
     return result;
 }
-
-
-
-//std::string encryptString(std::string originalString)
-//{
-//    int passLength = (int)strlen(PASSWORD_FOR_CONTENT);
-//    int keyLength = (int)strlen(KEY);
-//    
-//    char passValue[passLength];
-//    memcpy(&passValue[0], PASSWORD_FOR_CONTENT, passLength);
-//    
-//    char keyValue[keyLength];
-//    memcpy(&keyValue[0], KEY, keyLength);
-//    
-//    int pa_pos = 0;
-//    for (int i = 0; i < keyLength; ++i) {
-//        keyValue[i] ^= passValue[pa_pos];
-//        pa_pos++;
-//        
-//        if (pa_pos == passLength) {
-//            pa_pos = 0;
-//        }
-//    }
-//    
-//    int originalLength = (int)strlen(originalString.c_str());
-//    char originalValue[originalLength + 1];
-//    memcpy(&originalValue[0], originalString.c_str(), originalLength);
-//    
-//    int key_pos = 0;
-//    for (int i = 0; i < originalLength ; ++i) {
-//        originalValue[i] ^= keyValue[key_pos];
-//        key_pos++;
-//        if (key_pos == keyLength) {
-//            key_pos = 0;
-//        }
-//    }
-//    originalValue[originalLength] = 0;
-//    
-//    return std::string(originalValue);
-//}
-
-//void encryptFile(const char *originalPath, const char *encryptedFile)
-//{
-//    int passLength = (int)strlen(PASSWORD_FOR_CONTENT);
-//    int keyLength = (int)strlen(KEY);
-//    
-//    char passValue[passLength];
-//    memcpy(&passValue[0], PASSWORD_FOR_CONTENT, passLength);
-//    
-//    char keyValue[keyLength];
-//    memcpy(&keyValue[0], KEY, keyLength);
-//    
-//    int pa_pos = 0;
-//    for (int i = 0; i < keyLength; ++i) {
-//        keyValue[i] ^= passValue[pa_pos];
-//        pa_pos++;
-//        
-//        if (pa_pos == passLength) {
-//            pa_pos = 0;
-//        }
-//    }
-//    
-//    IPXMemory *memory = mOpen(originalPath);
-//    int originalLength = memory->size;
-//    char originalValue[originalLength + 1];
-//    memcpy(&originalValue[0], memory->buffer, originalLength);
-//    mClose(memory);
-//    
-//    int key_pos = 0;
-//    for (int i = 0; i < originalLength ; ++i) {
-//        originalValue[i] ^= keyValue[key_pos];
-//        key_pos++;
-//        if (key_pos == keyLength) {
-//            key_pos = 0;
-//        }
-//    }
-//    originalValue[originalLength] = 0;
-//    
-//    FILE *f;
-//    f = fopen(encryptedFile, "wb");
-//    
-//    if (!f) {
-//        return;
-//    }
-//    
-//    fwrite(originalValue, originalLength, 1, f);
-//    fclose(f);
-//}
 
 void Innerpeacer::MapSDK::encryptFile(const char *originalPath, const char *encryptedFile)
 {
@@ -186,7 +97,6 @@ void Innerpeacer::MapSDK::encryptFile(const char *originalPath, const char *encr
     
     IPXMemory *memory = mOpen(originalPath);
     int originalLength = memory->size;
-//    char originalValue[originalLength + 1];
     char *originalValue = new char[originalLength + 1];
     memcpy(&originalValue[0], memory->buffer, originalLength);
     mClose(memory);
@@ -266,46 +176,6 @@ void Innerpeacer::MapSDK::decryptBytes(const char *encryptedBytes, char *origina
     encryptBytes(encryptedBytes, originalBytes, length, key);
 }
 
-//std::string decryptFile(const char *file)
-//{
-//    int passLength = (int)strlen(PASSWORD_FOR_CONTENT);
-//    int keyLength = (int)strlen(KEY);
-//    
-//    char passValue[passLength];
-//    memcpy(&passValue[0], PASSWORD_FOR_CONTENT, passLength);
-//    
-//    char keyValue[keyLength];
-//    memcpy(&keyValue[0], KEY, keyLength);
-//    
-//    int pa_pos = 0;
-//    for (int i = 0; i < keyLength; ++i) {
-//        keyValue[i] ^= passValue[pa_pos];
-//        pa_pos++;
-//        
-//        if (pa_pos == passLength) {
-//            pa_pos = 0;
-//        }
-//    }
-//    
-//    IPXMemory *memory = mOpen(file);
-//    int originalLength = memory->size;
-//    char originalValue[originalLength + 1];
-//    memcpy(&originalValue[0], memory->buffer, originalLength);
-//    mClose(memory);
-//    
-//    int key_pos = 0;
-//    for (int i = 0; i < originalLength ; ++i) {
-//        originalValue[i] ^= keyValue[key_pos];
-//        key_pos++;
-//        if (key_pos == keyLength) {
-//            key_pos = 0;
-//        }
-//    }
-//    originalValue[originalLength] = 0;
-//    
-//    return originalValue;
-//}
-
 std::string Innerpeacer::MapSDK::decryptFile(const char *file)
 {
     return decryptFile(file, KEY);
@@ -334,7 +204,6 @@ std::string Innerpeacer::MapSDK::decryptFile(const char *file, const char *key)
     
     IPXMemory *memory = mOpen(file);
     int originalLength = memory->size;
-//    char originalValue[originalLength + 1];
     char *originalValue = new char[originalLength + 1];
     memcpy(&originalValue[0], memory->buffer, originalLength);
     mClose(memory);

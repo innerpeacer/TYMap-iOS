@@ -7,12 +7,12 @@
 //
 
 #import "IPSymbolDBAdapter.h"
-#import "FMDatabase.h"
 #import "IPMapDBConstants.h"
+#import <sqlite3.h>
 
 @interface IPSymbolDBAdapter()
 {
-    FMDatabase *db;
+    sqlite3 *_database;
     NSString *dbPath;
 }
 
@@ -25,7 +25,6 @@
     self = [super init];
     if (self) {
         dbPath = path;
-        db = [FMDatabase databaseWithPath:dbPath];
     }
     return self;
 }
@@ -34,13 +33,17 @@
 {
     NSMutableDictionary *resultDict = [NSMutableDictionary dictionary];
     NSMutableString *sql = [NSMutableString stringWithFormat:@"select distinct %@, %@ from %@", FIELD_MAP_SYMBOL_ICON_1_SYMBOL_ID, FIELD_MAP_SYMBOL_ICON_2_ICON, TABLE_MAP_SYMBOL_ICON_SYMBOL];
-    FMResultSet *rs = [db executeQuery:sql];
     
-    while ([rs next]) {
-        int symbolID = [rs intForColumn:FIELD_MAP_SYMBOL_ICON_1_SYMBOL_ID];
-        NSString *icon = [rs stringForColumn:FIELD_MAP_SYMBOL_ICON_2_ICON];
-        [resultDict setObject:icon forKey:@(symbolID)];
+    sqlite3_stmt *statement;
+    if (sqlite3_prepare_v2(_database, [sql UTF8String], -1, &statement, nil) == SQLITE_OK) {
+        while (sqlite3_step(statement) == SQLITE_ROW) {
+            int symbolID = sqlite3_column_int(statement, 0);
+            NSString *icon = [[NSString alloc] initWithCString:(char *)sqlite3_column_text(statement, 1) encoding:NSUTF8StringEncoding];
+            [resultDict setObject:icon forKey:@(symbolID)];
+        }
     }
+    sqlite3_finalize(statement);
+
     return resultDict;
 }
 
@@ -48,35 +51,45 @@
 {
     NSMutableDictionary *resultDict = [NSMutableDictionary dictionary];
     NSMutableString *sql = [NSMutableString stringWithFormat:@"select distinct %@, %@, %@, %@ from %@", FIELD_MAP_SYMBOL_FILL_1_SYMBOL_ID, FIELD_MAP_SYMBOL_FILL_2_FILL_COLOR, FIELD_MAP_SYMBOL_FILL_3_OUTLINE_COLOR, FIELD_MAP_SYMBOL_FILL_4_LINE_WIDTH, TABLE_MAP_SYMBOL_FILL_SYMBOL];
-    FMResultSet *rs = [db executeQuery:sql];
-    
-    while ([rs next]) {
-        int symbolID = [rs intForColumn:FIELD_MAP_SYMBOL_FILL_1_SYMBOL_ID];
-        NSString *fill = [rs stringForColumn:FIELD_MAP_SYMBOL_FILL_2_FILL_COLOR];
-        NSString *outline = [rs stringForColumn:FIELD_MAP_SYMBOL_FILL_3_OUTLINE_COLOR];
-        if (fill.length < 9 || outline.length < 9) {
-            continue;
+
+    sqlite3_stmt *statement;
+    if (sqlite3_prepare_v2(_database, [sql UTF8String], -1, &statement, nil) == SQLITE_OK) {
+        while (sqlite3_step(statement) == SQLITE_ROW) {
+            int symbolID = sqlite3_column_int(statement, 0);
+            NSString *fill = [[NSString alloc] initWithCString:(char *)sqlite3_column_text(statement, 1) encoding:NSUTF8StringEncoding];
+            NSString *outline = [[NSString alloc] initWithCString:(char *)sqlite3_column_text(statement, 2) encoding:NSUTF8StringEncoding];
+            if (fill.length < 9 || outline.length < 9) {
+                continue;
+            }
+            
+            UIColor *fillColor = [self parseColor:fill];
+            UIColor *outlineColor = [self parseColor:outline];
+            float lineWidth = sqlite3_column_double(statement, 3);
+            
+            AGSSimpleFillSymbol *sfs = [AGSSimpleFillSymbol simpleFillSymbolWithColor:fillColor outlineColor:outlineColor];
+            sfs.outline.width = lineWidth;
+            [resultDict setObject:sfs forKey:@(symbolID)];
         }
-        
-        UIColor *fillColor = [self parseColor:fill];
-        UIColor *outlineColor = [self parseColor:outline];
-        float lineWidth = [rs doubleForColumn:FIELD_MAP_SYMBOL_FILL_4_LINE_WIDTH];
-        
-        AGSSimpleFillSymbol *sfs = [AGSSimpleFillSymbol simpleFillSymbolWithColor:fillColor outlineColor:outlineColor];
-        sfs.outline.width = lineWidth;
-        [resultDict setObject:sfs forKey:@(symbolID)];
     }
+    sqlite3_finalize(statement);
+    
     return resultDict;
 }
 
 - (BOOL)open
 {
-    return [db open];
+    if (sqlite3_open([dbPath UTF8String], &_database) == SQLITE_OK) {
+        //        NSLog(@"db open success!");
+        return YES;
+    } else {
+        //        NSLog(@"db open failed!");
+        return NO;
+    }
 }
 
 - (BOOL)close
 {
-    return [db close];
+    return (sqlite3_close(_database) == SQLITE_OK);
 }
 
 /**
