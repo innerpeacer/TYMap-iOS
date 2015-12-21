@@ -15,7 +15,6 @@
 + (IPAssetLayer *)assetLayerWithRenderingScheme:(TYRenderingScheme *)aRenderingScheme SpatialReference:(AGSSpatialReference *)sr;
 
 - (void)loadContents:(AGSFeatureSet *)set;
-
 - (void)setRenderingScheme:(TYRenderingScheme *)rs;
 
 @end

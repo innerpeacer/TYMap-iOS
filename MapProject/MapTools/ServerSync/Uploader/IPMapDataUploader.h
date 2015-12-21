@@ -12,9 +12,9 @@
 @class IPMapDataUploader;
 @protocol IPMapDataUploaderDelegate <NSObject>
 
-- (void)TYMapDataUploader:(IPMapDataUploader *)uploader DidUpdateUploadingProgress:(int)batchIndex WithApi:(NSString *)api WithDescription:(NSString *)description;
-- (void)TYMapDataUploader:(IPMapDataUploader *)uploader DidFinishUploadingWithApi:(NSString *)api WithDescription:(NSString *)description;
-- (void)TYMapDataUploader:(IPMapDataUploader *)uploader DidFailedUploadingWithApi:(NSString *)api WithError:(NSError *)error;
+- (void)MapDataUploader:(IPMapDataUploader *)uploader DidUpdateUploadingProgress:(int)batchIndex WithApi:(NSString *)api WithDescription:(NSString *)description;
+- (void)MapDataUploader:(IPMapDataUploader *)uploader DidFinishUploadingWithApi:(NSString *)api WithDescription:(NSString *)description;
+- (void)MapDataUploader:(IPMapDataUploader *)uploader DidFailedUploadingWithApi:(NSString *)api WithError:(NSError *)error;
 
 @end
 

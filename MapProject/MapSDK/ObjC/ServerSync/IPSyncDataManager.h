@@ -14,9 +14,9 @@
 
 @protocol IPSyncDataManagerDelegate <NSObject>
 
-- (void)TYSyncDataManagerDidFinishSyncData:(IPSyncDataManager *)manager;
-- (void)TYSyncDataManagerDidFinishDownloadingSyncData:(IPSyncDataManager *)manager;
-- (void)TYSyncDataManagerDidFailedSyncData:(IPSyncDataManager *)manager InStep:(int)step WithError:(NSError *)error;
+- (void)SyncDataManagerDidFinishSyncData:(IPSyncDataManager *)manager;
+- (void)SyncDataManagerDidFinishDownloadingSyncData:(IPSyncDataManager *)manager;
+- (void)SyncDataManagerDidFailedSyncData:(IPSyncDataManager *)manager InStep:(int)step WithError:(NSError *)error;
 
 @end
 

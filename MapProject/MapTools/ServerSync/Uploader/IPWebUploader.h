@@ -12,8 +12,8 @@
 
 @protocol IPWebUploaderDelegate <NSObject>
 
-- (void)TYWebUploaderDidFinishUploading:(IPWebUploader *)uploader WithApi:(NSString *)api WithResponseData:(NSData *)responseData ResponseString:(NSString *)responseString;
-- (void)TYWebUploaderDidFailedUploading:(IPWebUploader *)uploader WithApi:(NSString *)api WithError:(NSError *)error;
+- (void)WebUploaderDidFinishUploading:(IPWebUploader *)uploader WithApi:(NSString *)api WithResponseData:(NSData *)responseData ResponseString:(NSString *)responseString;
+- (void)WebUploaderDidFailedUploading:(IPWebUploader *)uploader WithApi:(NSString *)api WithError:(NSError *)error;
 
 @end
 

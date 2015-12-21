@@ -66,7 +66,7 @@ std::string Innerpeacer::MapSDK::encryptString(std::string originalString, std::
     originalValue[originalLength] = 0;
     
     std::string result(originalValue);
-    delete originalValue;
+    delete[] originalValue;
     return result;
 }
 
@@ -205,12 +205,13 @@ void Innerpeacer::MapSDK::encryptFile(const char *originalPath, const char *encr
     f = fopen(encryptedFile, "wb");
     
     if (!f) {
+        delete[] originalValue;
         return;
     }
     
     fwrite(originalValue, originalLength, 1, f);
     fclose(f);
-    delete originalValue;
+    delete[] originalValue;
 }
 
 void Innerpeacer::MapSDK::encryptBytes(const char *originalBytes, char *encryptedByte, int length)
@@ -348,6 +349,6 @@ std::string Innerpeacer::MapSDK::decryptFile(const char *file, const char *key)
     }
     originalValue[originalLength] = 0;
     std::string result(originalValue);
-    delete originalValue;
+    delete[] originalValue;
     return result;
 }

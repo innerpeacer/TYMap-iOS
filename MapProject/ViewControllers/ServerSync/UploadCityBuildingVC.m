@@ -63,18 +63,18 @@
     allMapInfos = mapInfoArray;
 }
 
-- (void)TYCBMUploader:(IPCBMUploader *)uploader DidFailedUploadingWithApi:(NSString *)api WithError:(NSError *)error
+- (void)CBMUploader:(IPCBMUploader *)uploader DidFailedUploadingWithApi:(NSString *)api WithError:(NSError *)error
 {
     NSLog(@"TYDataUploaderDidFailedUploading: %@", api);
     NSLog(@"Error: %@", [error localizedDescription]);
 }
 
-- (void)TYCBMUploader:(IPCBMUploader *)uploader DidFinishUploadingWithApi:(NSString *)api WithDescription:(NSString *)responseString
+- (void)CBMUploader:(IPCBMUploader *)uploader DidFinishUploadingWithApi:(NSString *)api WithDescription:(NSString *)responseString
 {
     [self addToLog:responseString];
 }
 
-- (void)TYCBMDownloader:(IPCBMDownloader *)downloader DidFinishDownloadingWithApi:(NSString *)api WithResult:(NSArray *)resultArray Records:(int)records
+- (void)CBMDownloader:(IPCBMDownloader *)downloader DidFinishDownloadingWithApi:(NSString *)api WithResult:(NSArray *)resultArray Records:(int)records
 {
     if ([api isEqualToString:TY_API_GET_ALL_CITIES]) {
         [self addToLog:[NSString stringWithFormat:@"Records: %d", records]];
@@ -111,7 +111,7 @@
     
 }
 
-- (void)TYCBMDownloader:(IPCBMDownloader *)downloader DidFailedDownloadingWithApi:(NSString *)api WithError:(NSError *)error
+- (void)CBMDownloader:(IPCBMDownloader *)downloader DidFailedDownloadingWithApi:(NSString *)api WithError:(NSError *)error
 {
     NSLog(@"TYDataDownloaderDidFailedDownloading: %@", api);
     NSLog(@"Error: %@", [error localizedDescription]);

@@ -8,11 +8,6 @@
 
 #import "IPSyncUploadingTask.h"
 
-//#define TY_SYNC_UPLOADING_STEP_CBM @"City-Building-MapInfos"
-//#define TY_SYNC_UPLOADING_STEP_SYMBOLS @"Symbols"
-//#define TY_SYNC_UPLOADING_STEP_MAP_DATA @"MapData"
-//#define TY_SYNC_UPLOADING_STEP_ROUTE @"RouteData"
-
 #define TY_SYNC_UPLOADING_STEP_UNKNOWN 0
 #define TY_SYNC_UPLOADING_STEP_CBM 1
 #define TY_SYNC_UPLOADING_STEP_SYMBOLS 2
@@ -99,7 +94,7 @@
             
         case TY_SYNC_UPLOADING_STEP_ROUTE:
             uploadingStep = TY_SYNC_UPLOADING_STEP_FINISH;
-            [self notifyDidFinishUploading];
+            [self notifyFinishUploading];
             break;
             
         default:
@@ -134,69 +129,69 @@
 
 }
 
-- (void)notifyDidFinishUploading
+- (void)notifyFinishUploading
 {
-    if (self.delegate && [self.delegate respondsToSelector:@selector(TYUploadingTaskDidFinished:)]) {
-        [self.delegate TYUploadingTaskDidFinished:self];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(UploadingTaskDidFinished:)]) {
+        [self.delegate UploadingTaskDidFinished:self];
     }
 }
 
 - (void)notifyDidFailedUploading:(IPSyncUploadingTask *)task InStep:(int)step WithError:(NSError *)error
 {
-    if (self.delegate && [self.delegate respondsToSelector:@selector(TYUploadingTaskDidFailedUploading:InStep:WithError:)]) {
-        [self.delegate TYUploadingTaskDidFailedUploading:self InStep:step WithError:error];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(UploadingTaskDidFailedUploading:InStep:WithError:)]) {
+        [self.delegate UploadingTaskDidFailedUploading:self InStep:step WithError:error];
     }
     
 }
 
 - (void)notifyDidUpdateUploadingProcess:(IPSyncUploadingTask *)task InStep:(int)step WithDescription:(NSString *)description
 {
-    if (self.delegate && [self.delegate respondsToSelector:@selector(TYUploadingTaskDidUpdateUploadingProcess:InStep:WithDescription:)]) {
-        [self.delegate TYUploadingTaskDidUpdateUploadingProcess:self InStep:step WithDescription:description];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(UploadingTaskDidUpdateUploadingProcess:InStep:WithDescription:)]) {
+        [self.delegate UploadingTaskDidUpdateUploadingProcess:self InStep:step WithDescription:description];
     }
 }
 
 #pragma mark -
 #pragma mark Uploader Delegate
-- (void)TYCBMUploader:(IPCBMUploader *)uploader DidFailedUploadingWithApi:(NSString *)api WithError:(NSError *)error
+- (void)CBMUploader:(IPCBMUploader *)uploader DidFailedUploadingWithApi:(NSString *)api WithError:(NSError *)error
 {
     [self notifyDidFailedUploading:self InStep:uploadingStep WithError:error];
 }
 
-- (void)TYCBMUploader:(IPCBMUploader *)uploader DidFinishUploadingWithApi:(NSString *)api WithDescription:(NSString *)description
+- (void)CBMUploader:(IPCBMUploader *)uploader DidFinishUploadingWithApi:(NSString *)api WithDescription:(NSString *)description
 {
     [self notifyDidUpdateUploadingProcess:self InStep:uploadingStep WithDescription:description];
     [self finishUploadingStep];
 }
 
-- (void)TYMapDataUploader:(IPMapDataUploader *)uploader DidFinishUploadingWithApi:(NSString *)api WithDescription:(NSString *)description
+- (void)MapDataUploader:(IPMapDataUploader *)uploader DidFinishUploadingWithApi:(NSString *)api WithDescription:(NSString *)description
 {
     [self notifyDidUpdateUploadingProcess:self InStep:uploadingStep WithDescription:description];
     [self finishUploadingStep];
 }
 
-- (void)TYMapDataUploader:(IPMapDataUploader *)uploader DidFailedUploadingWithApi:(NSString *)api WithError:(NSError *)error
+- (void)MapDataUploader:(IPMapDataUploader *)uploader DidFailedUploadingWithApi:(NSString *)api WithError:(NSError *)error
 {
     [self notifyDidFailedUploading:self InStep:uploadingStep WithError:error];
 }
 
-- (void)TYMapDataUploader:(IPMapDataUploader *)uploader DidUpdateUploadingProgress:(int)batchIndex WithApi:(NSString *)api WithDescription:(NSString *)description
+- (void)MapDataUploader:(IPMapDataUploader *)uploader DidUpdateUploadingProgress:(int)batchIndex WithApi:(NSString *)api WithDescription:(NSString *)description
 {
 
 }
 
-- (void)TYRouteUploader:(IPRouteDataUploader *)uploader DidFinishUploadingWithApi:(NSString *)api WithDescription:(NSString *)description
+- (void)RouteUploader:(IPRouteDataUploader *)uploader DidFinishUploadingWithApi:(NSString *)api WithDescription:(NSString *)description
 {
     [self notifyDidUpdateUploadingProcess:self InStep:uploadingStep WithDescription:description];
     [self finishUploadingStep];
 }
 
-- (void)TYRouteUploader:(IPRouteDataUploader *)uploader DidUpdateUploadingProgress:(int)batchIndex WithApi:(NSString *)api WithDescription:(NSString *)description
+- (void)RouteUploader:(IPRouteDataUploader *)uploader DidUpdateUploadingProgress:(int)batchIndex WithApi:(NSString *)api WithDescription:(NSString *)description
 {
 
 }
 
-- (void)TYRouteUploader:(IPRouteDataUploader *)uploader DidFailedUploadingWithApi:(NSString *)api WithError:(NSError *)error
+- (void)RouteUploader:(IPRouteDataUploader *)uploader DidFailedUploadingWithApi:(NSString *)api WithError:(NSError *)error
 {
     [self notifyDidFailedUploading:self InStep:uploadingStep WithError:error];
 }

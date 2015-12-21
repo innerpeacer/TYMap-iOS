@@ -44,30 +44,30 @@
     [downloader downloadWithApi:TY_API_GET_TARGET_ROUTE_DATA Parameters:param];
 }
 
-- (void)TYWebDownloaderDidFailedDownloading:(IPWebDownloader *)downloader WithApi:(NSString *)api WithError:(NSError *)error
+- (void)WebDownloaderDidFailedDownloading:(IPWebDownloader *)downloader WithApi:(NSString *)api WithError:(NSError *)error
 {
-    [self notifyDidFailedDownloadingWithApi:api WithError:error];
+    [self notifyFailedDownloadingWithApi:api WithError:error];
 }
 
-- (void)TYWebDownloaderDidFinishDownloading:(IPWebDownloader *)downloader WithApi:(NSString *)api WithResponseData:(NSData *)responseData ResponseString:(NSString *)responseString
+- (void)WebDownloaderDidFinishDownloading:(IPWebDownloader *)downloader WithApi:(NSString *)api WithResponseData:(NSData *)responseData ResponseString:(NSString *)responseString
 {
     NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:nil];
     NSArray *routeLinkArray = [IPWebObjectConverter parseRouteLinkArray:dict[@"routedatas"][@"links"]];
     NSArray *routeNodeArray = [IPWebObjectConverter parseRouteNodeArray:dict[@"routedatas"][@"nodes"]];
-    [self notifyDidFinishDownloadingWithApi:api WithLinkResults:routeLinkArray WithNodeResults:routeNodeArray];
+    [self notifyDownloadingWithApi:api WithLinkResults:routeLinkArray WithNodeResults:routeNodeArray];
 }
 
-- (void)notifyDidFailedDownloadingWithApi:(NSString *)api WithError:(NSError *)error
+- (void)notifyFailedDownloadingWithApi:(NSString *)api WithError:(NSError *)error
 {
-    if (self.delegate && [self.delegate respondsToSelector:@selector(TYRouteDataDownloader:DidFailedDownloadingWithApi:WithError:)]) {
-        [self.delegate TYRouteDataDownloader:self DidFailedDownloadingWithApi:api WithError:error];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(RouteDataDownloader:DidFailedDownloadingWithApi:WithError:)]) {
+        [self.delegate RouteDataDownloader:self DidFailedDownloadingWithApi:api WithError:error];
     }
 }
 
-- (void)notifyDidFinishDownloadingWithApi:(NSString *)api WithLinkResults:(NSArray *)linkArray WithNodeResults:(NSArray *)nodeArray
+- (void)notifyDownloadingWithApi:(NSString *)api WithLinkResults:(NSArray *)linkArray WithNodeResults:(NSArray *)nodeArray
 {
-    if (self.delegate && [self.delegate respondsToSelector:@selector(TYRouteDataDownloader:DidFinishDownloadingWithApi:WithLinkResults:WithNodeResults:)]) {
-        [self.delegate TYRouteDataDownloader:self DidFinishDownloadingWithApi:api WithLinkResults:linkArray WithNodeResults:nodeArray];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(RouteDataDownloader:DidFinishDownloadingWithApi:WithLinkResults:WithNodeResults:)]) {
+        [self.delegate RouteDataDownloader:self DidFinishDownloadingWithApi:api WithLinkResults:linkArray WithNodeResults:nodeArray];
     }
 }
 

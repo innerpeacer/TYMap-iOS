@@ -33,12 +33,12 @@
     MKNetworkOperation *op = [engine operationWithPath:api params:params httpMethod:@"POST"];
     
     [op addCompletionHandler:^(MKNetworkOperation *operation) {
-        if (self.delegate && [self.delegate respondsToSelector:@selector(TYWebUploaderDidFinishUploading:WithApi:WithResponseData:ResponseString:)]) {
-            [self.delegate TYWebUploaderDidFinishUploading:self WithApi:api WithResponseData:[operation responseData] ResponseString:[operation responseString]];
+        if (self.delegate && [self.delegate respondsToSelector:@selector(WebUploaderDidFinishUploading:WithApi:WithResponseData:ResponseString:)]) {
+            [self.delegate WebUploaderDidFinishUploading:self WithApi:api WithResponseData:[operation responseData] ResponseString:[operation responseString]];
         }
     } errorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
-        if (self.delegate && [self.delegate respondsToSelector:@selector(TYWebUploaderDidFailedUploading:WithApi:WithError:)]) {
-            [self.delegate TYWebUploaderDidFailedUploading:self WithApi:api WithError:error];
+        if (self.delegate && [self.delegate respondsToSelector:@selector(WebUploaderDidFailedUploading:WithApi:WithError:)]) {
+            [self.delegate WebUploaderDidFailedUploading:self WithApi:api WithError:error];
         }
     }];
     [engine enqueueOperation:op];

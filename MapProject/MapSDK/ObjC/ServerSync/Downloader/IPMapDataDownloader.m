@@ -43,12 +43,12 @@
     [downloader downloadWithApi:TY_API_GET_TARGET_MAPDATA Parameters:param];
 }
 
-- (void)TYWebDownloaderDidFinishDownloading:(IPWebDownloader *)dataDownloader WithApi:(NSString *)api WithResponseData:(NSData *)responseData ResponseString:(NSString *)responseString
+- (void)WebDownloaderDidFinishDownloading:(IPWebDownloader *)dataDownloader WithApi:(NSString *)api WithResponseData:(NSData *)responseData ResponseString:(NSString *)responseString
 {
     NSError *error = nil;
     NSDictionary *resultDict = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:&error];
     if (error) {
-        [self notifyDidFailedDownloadingWithApi:api WithError:error];
+        [self notifyFailedDownloadingWithApi:api WithError:error];
         return;
     }
     
@@ -59,32 +59,32 @@
     
     if (success) {
         NSArray *mapDataArray = [IPWebObjectConverter parseMapDataArray:resultDict[@"mapdatas"]];
-        [self notifyDidFinishDownloadingWithApi:api WithResult:mapDataArray Records:records];
+        [self notifyDownloadingWithApi:api WithResult:mapDataArray Records:records];
     } else {
         NSDictionary *userInfo = [NSDictionary dictionaryWithObject:description                                                                     forKey:NSLocalizedDescriptionKey];
         error = [NSError errorWithDomain:@"com.ty.mapsdk" code:0 userInfo:userInfo];
-        [self notifyDidFailedDownloadingWithApi:api WithError:error];
+        [self notifyFailedDownloadingWithApi:api WithError:error];
     }
     
 
 }
 
-- (void)TYWebDownloaderDidFailedDownloading:(IPWebDownloader *)dataDownloader WithApi:(NSString *)api WithError:(NSError *)error
+- (void)WebDownloaderDidFailedDownloading:(IPWebDownloader *)dataDownloader WithApi:(NSString *)api WithError:(NSError *)error
 {
-    [self notifyDidFailedDownloadingWithApi:api WithError:error];
+    [self notifyFailedDownloadingWithApi:api WithError:error];
 }
 
-- (void)notifyDidFailedDownloadingWithApi:(NSString *)api WithError:(NSError *)error
+- (void)notifyFailedDownloadingWithApi:(NSString *)api WithError:(NSError *)error
 {
-    if (self.delegate && [self.delegate respondsToSelector:@selector(TYMapDataDownloader:DidFailedDownloadingWithApi:WithError:)]) {
-        [self.delegate TYMapDataDownloader:self DidFailedDownloadingWithApi:api WithError:error];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(MapDataDownloader:DidFailedDownloadingWithApi:WithError:)]) {
+        [self.delegate MapDataDownloader:self DidFailedDownloadingWithApi:api WithError:error];
     }
 }
 
-- (void)notifyDidFinishDownloadingWithApi:(NSString *)api WithResult:(NSArray *)resultArray Records:(int)records
+- (void)notifyDownloadingWithApi:(NSString *)api WithResult:(NSArray *)resultArray Records:(int)records
 {
-    if (self.delegate && [self.delegate respondsToSelector:@selector(TYMapDataDownloader:DidFinishDownloadingWithApi:WithResult:Records:)]) {
-        [self.delegate TYMapDataDownloader:self DidFinishDownloadingWithApi:api WithResult:resultArray Records:records];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(MapDataDownloader:DidFinishDownloadingWithApi:WithResult:Records:)]) {
+        [self.delegate MapDataDownloader:self DidFinishDownloadingWithApi:api WithResult:resultArray Records:records];
     }
 }
 

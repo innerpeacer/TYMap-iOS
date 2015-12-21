@@ -11,9 +11,7 @@
 @interface IPMD5Utils : NSObject
 
 + (NSString *)md5:(NSString *)str;
-
 + (NSString *)md5ForFile:(NSString *)path;
-
 + (NSString *)md5ForDirectory:(NSString *)dir;
 
 @end

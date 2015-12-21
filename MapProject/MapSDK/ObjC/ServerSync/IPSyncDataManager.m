@@ -68,12 +68,12 @@
     return [rootDir stringByAppendingPathComponent:@"TYMap.db"];
 }
 
-- (void)TYDownloadingTaskDidFailedDownloading:(IPSyncDownloadingTask *)task InStep:(int)step WithError:(NSError *)error
+- (void)DownloadingTaskDidFailedDownloading:(IPSyncDownloadingTask *)task InStep:(int)step WithError:(NSError *)error
 {
     [self notifyFailedInStep:step WithError:error];
 }
 
-- (void)TYDownloadingTaskDidFinished:(IPSyncDownloadingTask *)task WithCity:(TYCity *)city Building:(TYBuilding *)b MapInfos:(NSArray *)mapInfoArray FillSymbols:(NSArray *)fillArray IconSymbols:(NSArray *)iconArray MapData:(NSArray *)mapDataArray RouteLinkData:(NSArray *)linkArray RouteNodeData:(NSArray *)nodeArray
+- (void)DownloadingTaskDidFinished:(IPSyncDownloadingTask *)task WithCity:(TYCity *)city Building:(TYBuilding *)b MapInfos:(NSArray *)mapInfoArray FillSymbols:(NSArray *)fillArray IconSymbols:(NSArray *)iconArray MapData:(NSArray *)mapDataArray RouteLinkData:(NSArray *)linkArray RouteNodeData:(NSArray *)nodeArray
 {
     NSLog(@"Finish Downloading");
     
@@ -115,30 +115,30 @@
 
 }
 
-- (void)TYDownloadingTaskDidUpdateDownloadingProcess:(IPSyncDownloadingTask *)task InStep:(int)step WithDescription:(NSString *)description
+- (void)DownloadingTaskDidUpdateDownloadingProcess:(IPSyncDownloadingTask *)task InStep:(int)step WithDescription:(NSString *)description
 {
     NSLog(@"Step %d: %@", step, description);
 }
 
 - (void)notifyFinishSyncData
 {
-    if (self.delegate && [self.delegate respondsToSelector:@selector(TYSyncDataManagerDidFinishSyncData:)]) {
-        [self.delegate TYSyncDataManagerDidFinishSyncData:self];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(SyncDataManagerDidFinishSyncData:)]) {
+        [self.delegate SyncDataManagerDidFinishSyncData:self];
     }
 }
 
 - (void)notifyFinishDownloadingSyncData
 {
-    if (self.delegate && [self.delegate respondsToSelector:@selector(TYSyncDataManagerDidFinishDownloadingSyncData:)]) {
-        [self.delegate TYSyncDataManagerDidFinishDownloadingSyncData:self];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(SyncDataManagerDidFinishDownloadingSyncData:)]) {
+        [self.delegate SyncDataManagerDidFinishDownloadingSyncData:self];
     }
 }
 
 
 - (void)notifyFailedInStep:(int)step WithError:(NSError *)error
 {
-    if (self.delegate && [self.delegate respondsToSelector:@selector(TYSyncDataManagerDidFailedSyncData:InStep:WithError:)]) {
-        [self.delegate TYSyncDataManagerDidFailedSyncData:self InStep:step WithError:error];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(SyncDataManagerDidFailedSyncData:InStep:WithError:)]) {
+        [self.delegate SyncDataManagerDidFailedSyncData:self InStep:step WithError:error];
     }
 }
 

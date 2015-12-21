@@ -13,8 +13,8 @@
 @class IPCBMUploader;
 
 @protocol IPCBMUploaderDelegate <NSObject>
-- (void)TYCBMUploader:(IPCBMUploader *)uploader DidFinishUploadingWithApi:(NSString *)api WithDescription:(NSString *)description;
-- (void)TYCBMUploader:(IPCBMUploader *)uploader DidFailedUploadingWithApi:(NSString *)api WithError:(NSError *)error;
+- (void)CBMUploader:(IPCBMUploader *)uploader DidFinishUploadingWithApi:(NSString *)api WithDescription:(NSString *)description;
+- (void)CBMUploader:(IPCBMUploader *)uploader DidFailedUploadingWithApi:(NSString *)api WithError:(NSError *)error;
 @end
 
 @interface IPCBMUploader : NSObject

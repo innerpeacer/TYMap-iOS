@@ -34,12 +34,12 @@
     MKNetworkOperation *op = [engine operationWithPath:api params:params httpMethod:@"POST"];
     
     [op addCompletionHandler:^(MKNetworkOperation *operation) {
-        if (self.delegate && [self.delegate respondsToSelector:@selector(TYWebDownloaderDidFinishDownloading:WithApi:WithResponseData:ResponseString:)]) {
-            [self.delegate TYWebDownloaderDidFinishDownloading:self WithApi:api WithResponseData:[operation responseData] ResponseString:[operation responseString]];
+        if (self.delegate && [self.delegate respondsToSelector:@selector(WebDownloaderDidFinishDownloading:WithApi:WithResponseData:ResponseString:)]) {
+            [self.delegate WebDownloaderDidFinishDownloading:self WithApi:api WithResponseData:[operation responseData] ResponseString:[operation responseString]];
         }
     } errorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
-        if (self.delegate && [self.delegate respondsToSelector:@selector(TYWebDownloaderDidFailedDownloading:WithApi:WithError:)]) {
-            [self.delegate TYWebDownloaderDidFailedDownloading:self WithApi:api WithError:error];
+        if (self.delegate && [self.delegate respondsToSelector:@selector(WebDownloaderDidFailedDownloading:WithApi:WithError:)]) {
+            [self.delegate WebDownloaderDidFailedDownloading:self WithApi:api WithError:error];
         }
     }];
     [engine enqueueOperation:op];

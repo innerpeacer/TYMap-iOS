@@ -92,18 +92,18 @@
     [uploader uploadWithApi:TY_API_UPLOAD_MAP_DATA Parameters:param];
 }
 
-- (void)TYWebUploaderDidFailedUploading:(IPWebUploader *)uploader WithApi:(NSString *)api WithError:(NSError *)error
+- (void)WebUploaderDidFailedUploading:(IPWebUploader *)uploader WithApi:(NSString *)api WithError:(NSError *)error
 {
-    [self notifyDidFailedUploadingWithApi:api WithError:error];
+    [self notifyFailedUploadingWithApi:api WithError:error];
 }
 
-- (void)TYWebUploaderDidFinishUploading:(IPWebUploader *)uploader WithApi:(NSString *)api WithResponseData:(NSData *)responseData ResponseString:(NSString *)responseString
+- (void)WebUploaderDidFinishUploading:(IPWebUploader *)uploader WithApi:(NSString *)api WithResponseData:(NSData *)responseData ResponseString:(NSString *)responseString
 {
     NSError *error = nil;
     
     NSDictionary *resultDict = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:&error];
     if (error) {
-        [self notifyDidFailedUploadingWithApi:api WithError:error];
+        [self notifyFailedUploadingWithApi:api WithError:error];
         return;
     }
     
@@ -111,41 +111,41 @@
     NSString *description = resultDict[TY_RESPONSE_DESCRIPTION];
     
     if (success) {        
-        [self notifyDidUpdateUploadingProgress:batchIndex WithApi:api WithDescription:description];
+        [self notifyUploadingProgress:batchIndex WithApi:api WithDescription:description];
         
         batchIndex++;
         if (batchIndex < batchedMapDataRecords.count) {
             [self uploadMapDataWithIndex:batchIndex];
         } else {
             NSString *finishUploading = @"地图数据上传完毕!";
-            [self notifyDidFinishUploadingWithApi:api WithDescription:finishUploading];
+            [self notifyUploadingWithApi:api WithDescription:finishUploading];
         }
         
     } else {
         NSDictionary *userInfo = [NSDictionary dictionaryWithObject:description                                                                     forKey:NSLocalizedDescriptionKey];
         error = [NSError errorWithDomain:@"com.ty.mapsdk" code:0 userInfo:userInfo];
-        [self notifyDidFailedUploadingWithApi:api WithError:error];
+        [self notifyFailedUploadingWithApi:api WithError:error];
     }
 }
 
-- (void)notifyDidUpdateUploadingProgress:(int)progress WithApi:(NSString *)api WithDescription:(NSString *)responseString
+- (void)notifyUploadingProgress:(int)progress WithApi:(NSString *)api WithDescription:(NSString *)responseString
 {
-    if (self.delegate && [self.delegate respondsToSelector:@selector(TYMapDataUploader:DidUpdateUploadingProgress:WithApi:WithDescription:)]){
-        [self.delegate TYMapDataUploader:self DidUpdateUploadingProgress:batchIndex WithApi:api WithDescription:responseString];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(MapDataUploader:DidUpdateUploadingProgress:WithApi:WithDescription:)]){
+        [self.delegate MapDataUploader:self DidUpdateUploadingProgress:batchIndex WithApi:api WithDescription:responseString];
     }
 }
 
-- (void)notifyDidFailedUploadingWithApi:(NSString *)api WithError:(NSError *)error
+- (void)notifyFailedUploadingWithApi:(NSString *)api WithError:(NSError *)error
 {
-    if (self.delegate && [self.delegate respondsToSelector:@selector(TYMapDataUploader:DidFailedUploadingWithApi:WithError:)]) {
-        [self.delegate TYMapDataUploader:self DidFailedUploadingWithApi:api WithError:error];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(MapDataUploader:DidFailedUploadingWithApi:WithError:)]) {
+        [self.delegate MapDataUploader:self DidFailedUploadingWithApi:api WithError:error];
     }
 }
 
-- (void)notifyDidFinishUploadingWithApi:(NSString *)api WithDescription:(NSString *)responseString
+- (void)notifyUploadingWithApi:(NSString *)api WithDescription:(NSString *)responseString
 {
-    if (self.delegate && [self.delegate respondsToSelector:@selector(TYMapDataUploader:DidFinishUploadingWithApi:WithDescription:)]) {
-        [self.delegate TYMapDataUploader:self DidFinishUploadingWithApi:api WithDescription:responseString];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(MapDataUploader:DidFinishUploadingWithApi:WithDescription:)]) {
+        [self.delegate MapDataUploader:self DidFinishUploadingWithApi:api WithDescription:responseString];
     }
 }
 

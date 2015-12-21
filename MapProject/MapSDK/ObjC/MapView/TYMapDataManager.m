@@ -39,17 +39,17 @@
     [syncManager fetchData];
 }
 
-- (void)TYSyncDataManagerDidFailedSyncData:(IPSyncDataManager *)manager InStep:(int)step WithError:(NSError *)error
+- (void)SyncDataManagerDidFailedSyncData:(IPSyncDataManager *)manager InStep:(int)step WithError:(NSError *)error
 {
     [self notifyFailedFetchingData:error];
 }
 
-- (void)TYSyncDataManagerDidFinishDownloadingSyncData:(IPSyncDataManager *)manager
+- (void)SyncDataManagerDidFinishDownloadingSyncData:(IPSyncDataManager *)manager
 {
     
 }
 
-- (void)TYSyncDataManagerDidFinishSyncData:(IPSyncDataManager *)manager
+- (void)SyncDataManagerDidFinishSyncData:(IPSyncDataManager *)manager
 {
     [self notifyFinishFetchingData];
 }

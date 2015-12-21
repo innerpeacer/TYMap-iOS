@@ -13,9 +13,9 @@
 @class IPSyncUploadingTask;
 @protocol IPSyncUploadingTaskDelegate <NSObject>
 
-- (void)TYUploadingTaskDidFinished:(IPSyncUploadingTask *)task;
-- (void)TYUploadingTaskDidFailedUploading:(IPSyncUploadingTask *)task InStep:(int)step WithError:(NSError *)error;
-- (void)TYUploadingTaskDidUpdateUploadingProcess:(IPSyncUploadingTask *)task InStep:(int)step WithDescription:(NSString *)description;
+- (void)UploadingTaskDidFinished:(IPSyncUploadingTask *)task;
+- (void)UploadingTaskDidFailedUploading:(IPSyncUploadingTask *)task InStep:(int)step WithError:(NSError *)error;
+- (void)UploadingTaskDidUpdateUploadingProcess:(IPSyncUploadingTask *)task InStep:(int)step WithDescription:(NSString *)description;
 
 @end
 

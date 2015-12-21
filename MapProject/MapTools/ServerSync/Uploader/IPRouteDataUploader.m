@@ -123,18 +123,18 @@
     [uploader uploadWithApi:TY_API_UPLOAD_ROUTE_DATA Parameters:param];
 }
 
-- (void)TYWebUploaderDidFailedUploading:(IPWebUploader *)uploader WithApi:(NSString *)api WithError:(NSError *)error
+- (void)WebUploaderDidFailedUploading:(IPWebUploader *)uploader WithApi:(NSString *)api WithError:(NSError *)error
 {
-    [self notifyDidFailedUploadingWithApi:api WithError:error];
+    [self notifyFailedUploadingWithApi:api WithError:error];
 }
 
-- (void)TYWebUploaderDidFinishUploading:(IPWebUploader *)uploader WithApi:(NSString *)api WithResponseData:(NSData *)responseData ResponseString:(NSString *)responseString
+- (void)WebUploaderDidFinishUploading:(IPWebUploader *)uploader WithApi:(NSString *)api WithResponseData:(NSData *)responseData ResponseString:(NSString *)responseString
 {
     NSError *error = nil;
     
     NSDictionary *resultDict = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:&error];
     if (error) {
-        [self notifyDidFailedUploadingWithApi:api WithError:error];
+        [self notifyFailedUploadingWithApi:api WithError:error];
         return;
     }
     
@@ -142,41 +142,41 @@
     NSString *description = resultDict[TY_RESPONSE_DESCRIPTION];
     
     if (success) {
-        [self notifyDidUpdateUploadingProgress:batchIndex WithApi:api WithDescription:description];
+        [self notifyUploadingProgress:batchIndex WithApi:api WithDescription:description];
         
         batchIndex++;
         if (batchIndex < batchedRouteDataRecords.count) {
             [self uploadRouteRecordsWithIndex:batchIndex];
         } else {
             NSString *finishUploading = @"路网数据上传完毕!";
-            [self notifyDidFinishUploadingWithApi:api WithDescription:finishUploading];
+            [self notifyUploadingWithApi:api WithDescription:finishUploading];
         }
         
     } else {
         NSDictionary *userInfo = [NSDictionary dictionaryWithObject:description                                                                     forKey:NSLocalizedDescriptionKey];
         error = [NSError errorWithDomain:@"com.ty.mapsdk" code:0 userInfo:userInfo];
-        [self notifyDidFailedUploadingWithApi:api WithError:error];
+        [self notifyFailedUploadingWithApi:api WithError:error];
     }
 }
 
-- (void)notifyDidUpdateUploadingProgress:(int)progress WithApi:(NSString *)api WithDescription:(NSString *)description
+- (void)notifyUploadingProgress:(int)progress WithApi:(NSString *)api WithDescription:(NSString *)description
 {
-    if (self.delegate && [self.delegate respondsToSelector:@selector(TYRouteUploader:DidUpdateUploadingProgress:WithApi:WithDescription:)]){
-        [self.delegate TYRouteUploader:self DidUpdateUploadingProgress:progress WithApi:api WithDescription:description];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(RouteUploader:DidUpdateUploadingProgress:WithApi:WithDescription:)]){
+        [self.delegate RouteUploader:self DidUpdateUploadingProgress:progress WithApi:api WithDescription:description];
     }
 }
 
-- (void)notifyDidFailedUploadingWithApi:(NSString *)api WithError:(NSError *)error
+- (void)notifyFailedUploadingWithApi:(NSString *)api WithError:(NSError *)error
 {
-    if (self.delegate && [self.delegate respondsToSelector:@selector(TYRouteUploader:DidFailedUploadingWithApi:WithError:)]) {
-        [self.delegate TYRouteUploader:self DidFailedUploadingWithApi:api WithError:error];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(RouteUploader:DidFailedUploadingWithApi:WithError:)]) {
+        [self.delegate RouteUploader:self DidFailedUploadingWithApi:api WithError:error];
     }
 }
 
-- (void)notifyDidFinishUploadingWithApi:(NSString *)api WithDescription:(NSString *)description
+- (void)notifyUploadingWithApi:(NSString *)api WithDescription:(NSString *)description
 {
-    if (self.delegate && [self.delegate respondsToSelector:@selector(TYRouteUploader:DidFinishUploadingWithApi:WithDescription:)]) {
-        [self.delegate TYRouteUploader:self DidFinishUploadingWithApi:api WithDescription:description];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(RouteUploader:DidFinishUploadingWithApi:WithDescription:)]) {
+        [self.delegate RouteUploader:self DidFinishUploadingWithApi:api WithDescription:description];
     }
 }
 

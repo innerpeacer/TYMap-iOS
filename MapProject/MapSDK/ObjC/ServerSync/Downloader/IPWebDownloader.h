@@ -12,8 +12,8 @@
 
 @protocol IPWebDownloaderDelegate <NSObject>
 
-- (void)TYWebDownloaderDidFinishDownloading:(IPWebDownloader *)downloader WithApi:(NSString *)api WithResponseData:(NSData *)responseData ResponseString:(NSString *)responseString;
-- (void)TYWebDownloaderDidFailedDownloading:(IPWebDownloader *)downloader WithApi:(NSString *)api WithError:(NSError *)error;
+- (void)WebDownloaderDidFinishDownloading:(IPWebDownloader *)downloader WithApi:(NSString *)api WithResponseData:(NSData *)responseData ResponseString:(NSString *)responseString;
+- (void)WebDownloaderDidFailedDownloading:(IPWebDownloader *)downloader WithApi:(NSString *)api WithError:(NSError *)error;
 
 @end
 
@@ -22,7 +22,6 @@
 @property (nonatomic, weak) id<IPWebDownloaderDelegate> delegate;
 
 - (id)initWithHostName:(NSString *)hostName;
-
 - (void)downloadWithApi:(NSString *)api Parameters:(NSDictionary *)params;
 
 @end

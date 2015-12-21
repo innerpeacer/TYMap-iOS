@@ -68,33 +68,33 @@
     NSLog(@"%@", allMapInfos);
 }
 
-- (void)TYUploadingTaskDidFailedUploading:(IPSyncUploadingTask *)task InStep:(int)step WithError:(NSError *)error
+- (void)UploadingTaskDidFailedUploading:(IPSyncUploadingTask *)task InStep:(int)step WithError:(NSError *)error
 {
     
 }
 
-- (void)TYUploadingTaskDidFinished:(IPSyncUploadingTask *)task
+- (void)UploadingTaskDidFinished:(IPSyncUploadingTask *)task
 {
     [self addToLog:@"Finish Uploading"];
 }
 
-- (void)TYUploadingTaskDidUpdateUploadingProcess:(IPSyncUploadingTask *)task InStep:(int)step WithDescription:(NSString *)description
+- (void)UploadingTaskDidUpdateUploadingProcess:(IPSyncUploadingTask *)task InStep:(int)step WithDescription:(NSString *)description
 {
     [self addToLog:[NSString stringWithFormat:@"Step %d:", step]];
     [self addToLog:description];
 }
 
-- (void)TYDownloadingTaskDidFailedDownloading:(IPSyncDownloadingTask *)task InStep:(int)step WithError:(NSError *)error
+- (void)DownloadingTaskDidFailedDownloading:(IPSyncDownloadingTask *)task InStep:(int)step WithError:(NSError *)error
 {
     
 }
 
-- (void)TYDownloadingTaskDidFinished:(IPSyncDownloadingTask *)task WithCity:(TYCity *)city Building:(TYBuilding *)building MapInfos:(NSArray *)mapInfoArray FillSymbols:(NSArray *)fillArray IconSymbols:(NSArray *)iconArray MapData:(NSArray *)mapDataArray RouteLinkData:(NSArray *)linkArray RouteNodeData:(NSArray *)nodeArray
+- (void)DownloadingTaskDidFinished:(IPSyncDownloadingTask *)task WithCity:(TYCity *)city Building:(TYBuilding *)building MapInfos:(NSArray *)mapInfoArray FillSymbols:(NSArray *)fillArray IconSymbols:(NSArray *)iconArray MapData:(NSArray *)mapDataArray RouteLinkData:(NSArray *)linkArray RouteNodeData:(NSArray *)nodeArray
 {
     [self addToLog:@"Finish Downloading"];
 }
 
-- (void)TYDownloadingTaskDidUpdateDownloadingProcess:(IPSyncDownloadingTask *)task InStep:(int)step WithDescription:(NSString *)description
+- (void)DownloadingTaskDidUpdateDownloadingProcess:(IPSyncDownloadingTask *)task InStep:(int)step WithDescription:(NSString *)description
 {
     [self addToLog:[NSString stringWithFormat:@"Step %d:", step]];
     [self addToLog:description];

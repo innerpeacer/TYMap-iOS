@@ -105,18 +105,18 @@
     [uploader uploadWithApi:TY_API_ADD_CBM Parameters:param];
 }
 
-- (void)TYWebUploaderDidFailedUploading:(IPWebUploader *)uploader WithApi:(NSString *)api WithError:(NSError *)error
+- (void)WebUploaderDidFailedUploading:(IPWebUploader *)uploader WithApi:(NSString *)api WithError:(NSError *)error
 {
-    [self notifyDidFailedUploadingWithApi:api WithError:error];
+    [self notifyFailedUploadingWithApi:api WithError:error];
 }
 
-- (void)TYWebUploaderDidFinishUploading:(IPWebUploader *)uploader WithApi:(NSString *)api WithResponseData:(NSData *)responseData ResponseString:(NSString *)responseString
+- (void)WebUploaderDidFinishUploading:(IPWebUploader *)uploader WithApi:(NSString *)api WithResponseData:(NSData *)responseData ResponseString:(NSString *)responseString
 {
     NSError *error = nil;
     NSDictionary *resultDict = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:&error];
     if (error) {
         NSLog(@"Error: %@", [error localizedDescription]);
-        [self notifyDidFailedUploadingWithApi:api WithError:error];
+        [self notifyFailedUploadingWithApi:api WithError:error];
         return;
     }
     
@@ -126,25 +126,25 @@
     if (success) {
         int records = [resultDict[TY_RESPONSE_RECORDS] intValue];
         NSLog(@"Upload: %d", records);
-        [self notifyDidFinishUploadingWithApi:api WithDescription:description];
+        [self notifyUploadingWithApi:api WithDescription:description];
     } else {
         NSDictionary *userInfo = [NSDictionary dictionaryWithObject:description                                                                     forKey:NSLocalizedDescriptionKey];
         error = [NSError errorWithDomain:@"com.ty.mapsdk" code:0 userInfo:userInfo];
-        [self notifyDidFailedUploadingWithApi:api WithError:error];
+        [self notifyFailedUploadingWithApi:api WithError:error];
     }
 }
 
-- (void)notifyDidFinishUploadingWithApi:(NSString *)api WithDescription:(NSString *)description
+- (void)notifyUploadingWithApi:(NSString *)api WithDescription:(NSString *)description
 {
-    if (self.delegate && [self.delegate respondsToSelector:@selector(TYCBMUploader:DidFinishUploadingWithApi:WithDescription:)]) {
-        [self.delegate TYCBMUploader:self DidFinishUploadingWithApi:api WithDescription:description];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(CBMUploader:DidFinishUploadingWithApi:WithDescription:)]) {
+        [self.delegate CBMUploader:self DidFinishUploadingWithApi:api WithDescription:description];
     }
 }
 
-- (void)notifyDidFailedUploadingWithApi:(NSString *)api WithError:(NSError *)error
+- (void)notifyFailedUploadingWithApi:(NSString *)api WithError:(NSError *)error
 {
-    if (self.delegate && [self.delegate respondsToSelector:@selector(TYCBMUploader:DidFailedUploadingWithApi:WithError:)]) {
-        [self.delegate TYCBMUploader:self DidFailedUploadingWithApi:api WithError:error];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(CBMUploader:DidFailedUploadingWithApi:WithError:)]) {
+        [self.delegate CBMUploader:self DidFailedUploadingWithApi:api WithError:error];
     }
 }
 

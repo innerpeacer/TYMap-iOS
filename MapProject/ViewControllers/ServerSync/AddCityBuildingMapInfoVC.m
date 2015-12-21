@@ -73,25 +73,25 @@
     NSLog(@"%@", allMapInfos);
 }
 
-- (void)TYCBMUploader:(IPCBMUploader *)uploader DidFinishUploadingWithApi:(NSString *)api WithDescription:(NSString *)description
+- (void)CBMUploader:(IPCBMUploader *)uploader DidFinishUploadingWithApi:(NSString *)api WithDescription:(NSString *)description
 {
     NSLog(@"%@", description);
     [self addToLog:description];
 }
 
-- (void)TYCBMUploader:(IPCBMUploader *)uploader DidFailedUploadingWithApi:(NSString *)api WithError:(NSError *)error
+- (void)CBMUploader:(IPCBMUploader *)uploader DidFailedUploadingWithApi:(NSString *)api WithError:(NSError *)error
 {
     NSLog(@"TYDataUploaderDidFailedUploading: %@", api);
     NSLog(@"Error: %@", [error localizedDescription]);
 }
 
-- (void)TYCBMDownloader:(IPCBMDownloader *)downloader DidFailedDownloadingWithApi:(NSString *)api WithError:(NSError *)error
+- (void)CBMDownloader:(IPCBMDownloader *)downloader DidFailedDownloadingWithApi:(NSString *)api WithError:(NSError *)error
 {
     NSLog(@"TYDataDownloaderDidFailedDownloading: %@", api);
     NSLog(@"Error: %@", [error localizedDescription]);
 }
 
-- (void)TYCBMDownloader:(IPCBMDownloader *)downloader DidFinishDownloadingWithApi:(NSString *)api WithResult:(NSArray *)resultArray Records:(int)records
+- (void)CBMDownloader:(IPCBMDownloader *)downloader DidFinishDownloadingWithApi:(NSString *)api WithResult:(NSArray *)resultArray Records:(int)records
 {
     if ([api isEqualToString:TY_API_GET_TARGET_CITY]) {
         [self addToLog:[NSString stringWithFormat:@"Records: %d", records]];
@@ -127,7 +127,7 @@
     }
 }
 
-- (void)TYCBMDownloader:(IPCBMDownloader *)downloader DidFinishDownloadingSymbolsWithApi:(NSString *)api WithFillSymbols:(NSArray *)fillArray WithIconSymbols:(NSArray *)iconArray
+- (void)CBMDownloader:(IPCBMDownloader *)downloader DidFinishDownloadingSymbolsWithApi:(NSString *)api WithFillSymbols:(NSArray *)fillArray WithIconSymbols:(NSArray *)iconArray
 {
     [self addToLog:[NSString stringWithFormat:@"Records: %d", (int)(fillArray.count + iconArray.count)]];
     [self addToLog:[NSString stringWithFormat:@"Get %d Symbols From Server", (int)(fillArray.count + iconArray.count)]];
