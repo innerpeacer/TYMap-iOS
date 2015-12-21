@@ -15,7 +15,7 @@
 {
     AGSRouteTask *routeTask;
     AGSRouteTaskParameters *routeTaskParams;
-    TYCredential *credential;
+    AGSCredential *credential;
 
     NSArray *allMapInfos;
     
@@ -27,12 +27,12 @@
 @implementation TYRouteManager
 
 
-+ (TYRouteManager *)routeManagerWithBuilding:(TYBuilding *)building credential:(TYCredential *)credential MapInfos:(NSArray *)mapInfoArray
++ (TYRouteManager *)routeManagerWithBuilding:(TYBuilding *)building credential:(AGSCredential *)credential MapInfos:(NSArray *)mapInfoArray
 {
     return [[TYRouteManager alloc] initRouteTaskWithBuilding:building credential:credential MapInfos:mapInfoArray];
 }
 
-- (id)initRouteTaskWithBuilding:(TYBuilding *)building credential:(TYCredential *)cr  MapInfos:(NSArray *)mapInfoArray
+- (id)initRouteTaskWithBuilding:(TYBuilding *)building credential:(AGSCredential *)cr  MapInfos:(NSArray *)mapInfoArray
 {
     self = [super init];
     if (self) {
@@ -126,7 +126,7 @@
         int num = (int)[routeLine numPointsInPath:0];
         for (int i = 0; i < num; ++i) {
             
-            TYPoint *p = (TYPoint *)[routeLine pointOnPath:0 atIndex:i];
+            AGSPoint *p = (AGSPoint *)[routeLine pointOnPath:0 atIndex:i];
             TYLocalPoint *lp = [routePointConverter localPointFromRoutePoint:p];
             BOOL isValid = [routePointConverter checkPointValidity:lp];
             if (isValid) {

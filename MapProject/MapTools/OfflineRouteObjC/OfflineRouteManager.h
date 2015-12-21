@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "TYRouteResult.h"
 #import <TYMapData/TYMapData.h>
-#import "TYPoint.h"
 #import <ArcGIS/ArcGIS.h>
 
 @class OfflineRouteManager;
@@ -24,8 +23,8 @@
 
 @interface OfflineRouteManager : NSObject
 
-@property (nonatomic, strong, readonly) TYPoint *startPoint;
-@property (nonatomic, strong, readonly) TYPoint *endPoint;
+@property (nonatomic, strong, readonly) AGSPoint *startPoint;
+@property (nonatomic, strong, readonly) AGSPoint *endPoint;
 @property (nonatomic, weak) id<OfflineRouteManagerDelegate> delegate;
 
 

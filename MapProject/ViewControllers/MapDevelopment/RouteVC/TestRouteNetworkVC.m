@@ -129,7 +129,7 @@
 }
 
 int TestIndex = 0;
-- (void)TYMapView:(TYMapView *)mapView didClickAtPoint:(CGPoint)screen mapPoint:(TYPoint *)mappoint
+- (void)TYMapView:(TYMapView *)mapView didClickAtPoint:(CGPoint)screen mapPoint:(AGSPoint *)mappoint
 {
     NSLog(@"X: %f", mappoint.x);
     BOOL testOffline = YES;

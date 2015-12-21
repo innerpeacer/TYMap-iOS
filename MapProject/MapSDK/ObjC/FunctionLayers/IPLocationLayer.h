@@ -7,17 +7,15 @@
 //
 
 #import <ArcGIS/ArcGIS.h>
-#import "TYMarkerSymbol.h"
-#import "TYPoint.h"
 #import "TYMapView.h"
 
 @interface IPLocationLayer : AGSGraphicsLayer
 
-- (void)setLocationSymbol:(TYMarkerSymbol *)symbol;
+- (void)setLocationSymbol:(AGSMarkerSymbol *)symbol;
 
 - (void)updateDeviceHeading:(double)deviceHeading initAngle:(double)initAngle mapViewMode:(TYMapViewMode)mode;
 
-- (void)showLocation:(TYPoint *)location withDeviceHeading:(double)deviceHeading initAngle:(double)initAngle mapViewMode:(TYMapViewMode)mode;
+- (void)showLocation:(AGSPoint *)location withDeviceHeading:(double)deviceHeading initAngle:(double)initAngle mapViewMode:(TYMapViewMode)mode;
 
 - (void)removeLocation;
 

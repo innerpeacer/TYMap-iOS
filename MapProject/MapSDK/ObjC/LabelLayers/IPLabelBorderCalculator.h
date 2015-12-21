@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import "IPLabelBorder.h"
-#import "TYPoint.h"
 #import "IPTextLabel.h"
 #import "TYMapView.h"
 

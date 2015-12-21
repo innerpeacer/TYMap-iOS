@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import <ArcGIS/ArcGIS.h>
-#import "TYPictureMarkerSymbol.h"
 
 @interface SymbolGroup : NSObject
 
@@ -16,7 +15,7 @@
 @property (nonatomic, strong) AGSSimpleFillSymbol *testSimpleFillSymbol;
 @property (nonatomic, strong) AGSSimpleLineSymbol *testSimpleLineSymbol;
 
-@property (nonatomic, strong) TYPictureMarkerSymbol *startSymbol;
-@property (nonatomic, strong) TYPictureMarkerSymbol *endSymbol;
+@property (nonatomic, strong) AGSPictureMarkerSymbol *startSymbol;
+@property (nonatomic, strong) AGSPictureMarkerSymbol *endSymbol;
 
 @end

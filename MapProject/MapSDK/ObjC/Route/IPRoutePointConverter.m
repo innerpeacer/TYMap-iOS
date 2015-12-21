@@ -29,13 +29,13 @@
     return self;
 }
 
-- (TYPoint *)routePointFromLocalPoint:(TYLocalPoint *)localPoint
+- (AGSPoint *)routePointFromLocalPoint:(TYLocalPoint *)localPoint
 {
     double newX = localPoint.x + baseOffset.x * (localPoint.floor - 1);
-    return [TYPoint pointWithX:newX y:localPoint.y spatialReference:[TYMapEnvironment defaultSpatialReference]];
+    return [AGSPoint pointWithX:newX y:localPoint.y spatialReference:[TYMapEnvironment defaultSpatialReference]];
 }
 
-- (TYLocalPoint *)localPointFromRoutePoint:(TYPoint *)routePoint
+- (TYLocalPoint *)localPointFromRoutePoint:(AGSPoint *)routePoint
 {
     double xOffset = routePoint.x - baseExtent.xmin;
     

@@ -154,7 +154,7 @@ typedef enum {
         int num = (int)[routeLine numPointsInPath:0];
         for (int i = 0; i < num; ++i) {
             
-            TYPoint *p = (TYPoint *)[routeLine pointOnPath:0 atIndex:i];
+            AGSPoint *p = (AGSPoint *)[routeLine pointOnPath:0 atIndex:i];
             TYLocalPoint *lp = [routePointConverter localPointFromRoutePoint:p];
             BOOL isValid = [routePointConverter checkPointValidity:lp];
             if (isValid) {

@@ -13,12 +13,6 @@
 #import "IPRouteLayer.h"
 #import "TYMapEnviroment.h"
 #import "IPRoutePointConverter.h"
-#import "TYGraphicsLayer.h"
-#import "TYPictureMarkerSymbol.h"
-#import "TYCredential.h"
-#import "TYGraphic.h"
-#import "TYSimpleMarkerSymbol.h"
-#import "TYPoint.h"
 #import "TYDirectionalHint.h"
 
 #import "TYRouteResult.h"
@@ -31,7 +25,7 @@
     // 路径管理器
     OfflineRouteManager *offlineRouteManager;
     
-    TYPoint *currentPoint;
+    AGSPoint *currentPoint;
     TYLocalPoint *startLocalPoint;
     TYLocalPoint *endLocalPoint;
     
@@ -41,13 +35,13 @@
     TYRouteResult *routeResult;
     TYRoutePart *currentRoutePart;
     NSArray *routeGuides;
-    TYGraphicsLayer *hintLayer;
+    AGSGraphicsLayer *hintLayer;
     AGSGraphicsLayer *testLayer;
 
     // 起点、终点、切换点标识符号
-    TYPictureMarkerSymbol *startSymbol;
-    TYPictureMarkerSymbol *endSymbol;
-    TYPictureMarkerSymbol *switchSymbol;
+    AGSPictureMarkerSymbol *startSymbol;
+    AGSPictureMarkerSymbol *endSymbol;
+    AGSPictureMarkerSymbol *switchSymbol;
     
     BOOL useClickForChoosingPoint;
     BOOL useClickForSnapRoute;
@@ -80,7 +74,7 @@
     
     [self initSymbols];
     
-    hintLayer = [TYGraphicsLayer graphicsLayer];
+    hintLayer = [AGSGraphicsLayer graphicsLayer];
     [self.mapView addMapLayer:hintLayer];
     
     testLayer = [AGSGraphicsLayer graphicsLayer];
@@ -97,13 +91,13 @@
 
 - (void)initSymbols
 {
-    startSymbol = [TYPictureMarkerSymbol pictureMarkerSymbolWithImageNamed:@"start"];
+    startSymbol = [AGSPictureMarkerSymbol pictureMarkerSymbolWithImageNamed:@"start"];
     startSymbol.offset = CGPointMake(0, 22);
     
-    endSymbol = [TYPictureMarkerSymbol pictureMarkerSymbolWithImageNamed:@"end"];
+    endSymbol = [AGSPictureMarkerSymbol pictureMarkerSymbolWithImageNamed:@"end"];
     endSymbol.offset = CGPointMake(0, 22);
     
-    switchSymbol = [TYPictureMarkerSymbol pictureMarkerSymbolWithImageNamed:@"nav_exit"];
+    switchSymbol = [AGSPictureMarkerSymbol pictureMarkerSymbolWithImageNamed:@"nav_exit"];
     
     [self.mapView setRouteStartSymbol:startSymbol];
     [self.mapView setRouteEndSymbol:endSymbol];
@@ -168,7 +162,7 @@
 }
 
 
-- (void)TYMapView:(TYMapView *)mapView didClickAtPoint:(CGPoint)screen mapPoint:(TYPoint *)mappoint
+- (void)TYMapView:(TYMapView *)mapView didClickAtPoint:(CGPoint)screen mapPoint:(AGSPoint *)mappoint
 {
     NSLog(@"(%f, %f) in floor %d", mappoint.x, mappoint.y, self.currentMapInfo.floorNumber);
     //    NSLog(@"Map Scale: %f", self.mapView.mapScale);
@@ -176,7 +170,7 @@
     
     TYLocalPoint *localPoint = [TYLocalPoint pointWithX:mappoint.x Y:mappoint.y Floor:self.mapView.currentMapInfo.floorNumber];
     
-    TYSimpleMarkerSymbol *sms = [TYSimpleMarkerSymbol simpleMarkerSymbolWithColor:[UIColor greenColor]];
+    AGSSimpleMarkerSymbol *sms = [AGSSimpleMarkerSymbol simpleMarkerSymbolWithColor:[UIColor greenColor]];
     sms.size = CGSizeMake(5, 5);
     
     [hintLayer removeAllGraphics];

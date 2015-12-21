@@ -7,7 +7,6 @@
 //
 
 #import "IPRouteLayer.h"
-#import "TYGraphic.h"
 #import "TYMapView.h"
 #import "TYMapEnviroment.h"
 #import "IPVector2.h"
@@ -24,12 +23,12 @@
 
 @implementation IPRouteLayer
 
-+ (IPRouteLayer *)routeLayerWithSpatialReference:(TYSpatialReference *)sr
++ (IPRouteLayer *)routeLayerWithSpatialReference:(AGSSpatialReference *)sr
 {
     return [[IPRouteLayer alloc] initRouteLayerWithSpatialReference:sr];
 }
 
-- (id)initRouteLayerWithSpatialReference:(TYSpatialReference *)sr
+- (id)initRouteLayerWithSpatialReference:(AGSSpatialReference *)sr
 {
     self = [super initWithSpatialReference:sr];
     if (self) {
@@ -84,12 +83,12 @@
         if (routePartArray && routePartArray.count > 0) {
             for (TYRoutePart *rp in routePartArray) {
                 if ([rp isFirstPart] && ![rp isLastPart]) {
-                    [self addGraphic:[TYGraphic graphicWithGeometry:[rp getLastPoint] symbol:_switchSymbol attributes:nil]];
+                    [self addGraphic:[AGSGraphic graphicWithGeometry:[rp getLastPoint] symbol:_switchSymbol attributes:nil]];
                 } else if (![rp isFirstPart] && [rp isLastPart]) {
-                    [self addGraphic:[TYGraphic graphicWithGeometry:[rp getFirstPoint] symbol:_switchSymbol attributes:nil]];
+                    [self addGraphic:[AGSGraphic graphicWithGeometry:[rp getFirstPoint] symbol:_switchSymbol attributes:nil]];
                 } else if (![rp isFirstPart] && ![rp isLastPart]) {
-                    [self addGraphic:[TYGraphic graphicWithGeometry:[rp getFirstPoint] symbol:_switchSymbol attributes:nil]];
-                    [self addGraphic:[TYGraphic graphicWithGeometry:[rp getLastPoint] symbol:_switchSymbol attributes:nil]];
+                    [self addGraphic:[AGSGraphic graphicWithGeometry:[rp getFirstPoint] symbol:_switchSymbol attributes:nil]];
+                    [self addGraphic:[AGSGraphic graphicWithGeometry:[rp getLastPoint] symbol:_switchSymbol attributes:nil]];
                 }
             }
         }
@@ -102,7 +101,7 @@
         NSArray *routePartArray = [_routeResult getRoutePartsOnFloor:floor];
         if (routePartArray && routePartArray.count > 0) {
             for (TYRoutePart *rp in routePartArray) {
-                [self addGraphic:[TYGraphic graphicWithGeometry:rp.route symbol:nil attributes:nil]];
+                [self addGraphic:[AGSGraphic graphicWithGeometry:rp.route symbol:nil attributes:nil]];
                 [linesToReturn addObject:rp.route];
             }
         }
@@ -146,16 +145,16 @@
                     AGSPolyline *passedLine = [self getPassedLine:rp.route WithPoint:[AGSPoint pointWithX:location.x y:location.y spatialReference:[TYMapEnvironment defaultSpatialReference]]];
                     AGSPolyline *remainingLine = [self getRemainingLine:rp.route WithPoint:[AGSPoint pointWithX:location.x y:location.y spatialReference:[TYMapEnvironment defaultSpatialReference]]];
                     if (passedLine) {
-                        [self addGraphic:[TYGraphic graphicWithGeometry:passedLine symbol:passedSymbol attributes:nil]];
+                        [self addGraphic:[AGSGraphic graphicWithGeometry:passedLine symbol:passedSymbol attributes:nil]];
                     }
                     if (remainingLine) {
-                        [self addGraphic:[TYGraphic graphicWithGeometry:remainingLine symbol:nil attributes:nil]];
+                        [self addGraphic:[AGSGraphic graphicWithGeometry:remainingLine symbol:nil attributes:nil]];
                     }
                 } else {
                     if (rp.partIndex < nearestRoutePart.partIndex) {
-                        [self addGraphic:[TYGraphic graphicWithGeometry:rp.route symbol:passedSymbol attributes:nil]];
+                        [self addGraphic:[AGSGraphic graphicWithGeometry:rp.route symbol:passedSymbol attributes:nil]];
                     } else {
-                        [self addGraphic:[TYGraphic graphicWithGeometry:rp.route symbol:nil attributes:nil]];
+                        [self addGraphic:[AGSGraphic graphicWithGeometry:rp.route symbol:nil attributes:nil]];
                     }
                 }
                 [linesToReturn addObject:rp.route];
@@ -177,11 +176,11 @@
                 if (rp == nearestRoutePart) {
                     AGSPolyline *remainingLine = [self getRemainingLine:rp.route WithPoint:[AGSPoint pointWithX:location.x y:location.y spatialReference:[TYMapEnvironment defaultSpatialReference]]];
                     if (remainingLine) {
-                        [self addGraphic:[TYGraphic graphicWithGeometry:remainingLine symbol:nil attributes:nil]];
+                        [self addGraphic:[AGSGraphic graphicWithGeometry:remainingLine symbol:nil attributes:nil]];
                         [linesToReturn addObject:remainingLine];
                     }
                 } else {
-                    [self addGraphic:[TYGraphic graphicWithGeometry:rp.route symbol:nil attributes:nil]];
+                    [self addGraphic:[AGSGraphic graphicWithGeometry:rp.route symbol:nil attributes:nil]];
                     [linesToReturn addObject:rp.route];
                 }
             }
@@ -309,21 +308,21 @@
 - (void)showStartSymbol:(TYLocalPoint *)sp
 {
     if (sp && sp.floor == self.mapView.currentMapInfo.floorNumber) {
-        [self addGraphic:[TYGraphic graphicWithGeometry:[AGSPoint pointWithX:sp.x y:sp.y spatialReference:self.mapView.spatialReference] symbol:_startSymbol attributes:nil]];
+        [self addGraphic:[AGSGraphic graphicWithGeometry:[AGSPoint pointWithX:sp.x y:sp.y spatialReference:self.mapView.spatialReference] symbol:_startSymbol attributes:nil]];
     }
 }
 
 - (void)showEndSymbol:(TYLocalPoint *)ep
 {
     if (ep && ep.floor == self.mapView.currentMapInfo.floorNumber) {
-        [self addGraphic:[TYGraphic graphicWithGeometry:[AGSPoint pointWithX:ep.x y:ep.y spatialReference:self.mapView.spatialReference] symbol:_endSymbol attributes:nil]];
+        [self addGraphic:[AGSGraphic graphicWithGeometry:[AGSPoint pointWithX:ep.x y:ep.y spatialReference:self.mapView.spatialReference] symbol:_endSymbol attributes:nil]];
     }
 }
 
 - (void)showSwitchSymbol:(TYLocalPoint *)sp
 {
     if (sp && sp.floor == self.mapView.currentMapInfo.floorNumber) {
-        [self addGraphic:[TYGraphic graphicWithGeometry:[AGSPoint pointWithX:sp.x y:sp.y spatialReference:self.mapView.spatialReference] symbol:_switchSymbol attributes:nil]];
+        [self addGraphic:[AGSGraphic graphicWithGeometry:[AGSPoint pointWithX:sp.x y:sp.y spatialReference:self.mapView.spatialReference] symbol:_switchSymbol attributes:nil]];
     }
 }
 

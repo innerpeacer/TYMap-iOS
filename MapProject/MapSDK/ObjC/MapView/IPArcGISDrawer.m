@@ -10,7 +10,7 @@
 
 @implementation IPArcGISDrawer
 
-+ (void)drawPoint:(TYPoint *)p AtLayer:(TYGraphicsLayer *)layer WithColor:(UIColor *)color
++ (void)drawPoint:(AGSPoint *)p AtLayer:(AGSGraphicsLayer *)layer WithColor:(UIColor *)color
 {
     AGSSimpleMarkerSymbol *sms = [AGSSimpleMarkerSymbol simpleMarkerSymbolWithColor:color];
     sms.size = CGSizeMake(5, 5);
@@ -18,7 +18,7 @@
     [layer addGraphic:[AGSGraphic graphicWithGeometry:p symbol:sms attributes:nil]];
 }
 
-+ (void)drawPoint:(TYPoint *)p AtLayer:(TYGraphicsLayer *)layer WithColor:(UIColor *)color Size:(CGSize)size
++ (void)drawPoint:(AGSPoint *)p AtLayer:(AGSGraphicsLayer *)layer WithColor:(UIColor *)color Size:(CGSize)size
 {
     AGSSimpleMarkerSymbol *sms = [AGSSimpleMarkerSymbol simpleMarkerSymbolWithColor:color];
     sms.size = size;
@@ -27,7 +27,7 @@
     
 }
 
-+ (void)drawPoint:(TYPoint *)p AtLayer:(TYGraphicsLayer *)layer WithBuffer1:(double)buffer1 Buffer2:(double)buffer2
++ (void)drawPoint:(AGSPoint *)p AtLayer:(AGSGraphicsLayer *)layer WithBuffer1:(double)buffer1 Buffer2:(double)buffer2
 {
     AGSGeometryEngine *engine = [AGSGeometryEngine defaultGeometryEngine];
     
@@ -45,7 +45,7 @@
     [layer addGraphic:[AGSGraphic graphicWithGeometry:p symbol:sms attributes:nil]];
 }
 
-+ (void)drawLineFrom:(TYPoint *)start To:(TYPoint *)end AtLayer:(TYGraphicsLayer *)layer WithColor:(UIColor *)color Width:(CGFloat)width spatialReference:(TYSpatialReference *)spatialReference
++ (void)drawLineFrom:(AGSPoint *)start To:(AGSPoint *)end AtLayer:(AGSGraphicsLayer *)layer WithColor:(UIColor *)color Width:(CGFloat)width spatialReference:(AGSSpatialReference *)spatialReference
 {
     AGSMutablePolyline *polyline = [[AGSMutablePolyline alloc] initWithSpatialReference:spatialReference];
     [polyline addPathToPolyline];
@@ -58,13 +58,13 @@
     [layer addGraphic:[AGSGraphic graphicWithGeometry:polyline symbol:sls attributes:nil]];
 }
 
-+ (void)drawString:(NSString *)s Position:(TYPoint *)point AtLayer:(TYGraphicsLayer *)layer WithColor:(UIColor *)color
++ (void)drawString:(NSString *)s Position:(AGSPoint *)point AtLayer:(AGSGraphicsLayer *)layer WithColor:(UIColor *)color
 {
     AGSTextSymbol *ts = [AGSTextSymbol textSymbolWithText:s color:color];
     [layer addGraphic:[AGSGraphic graphicWithGeometry:point symbol:ts attributes:nil]];
 }
 
-+ (void)drawCircleCenterAt:(TYPoint *)center Radius:(double)r AtLayer:(TYGraphicsLayer *)layer WithColor:(UIColor *)color
++ (void)drawCircleCenterAt:(AGSPoint *)center Radius:(double)r AtLayer:(AGSGraphicsLayer *)layer WithColor:(UIColor *)color
 {
     AGSSimpleMarkerSymbol *sms = [AGSSimpleMarkerSymbol simpleMarkerSymbolWithColor:color];
     sms.outline = nil;
@@ -73,12 +73,12 @@
     [layer addGraphic:[AGSGraphic graphicWithGeometry:center symbol:sms attributes:nil]];
 }
 
-+ (void)drawPictureSymbol:(TYPictureMarkerSymbol *)pms At:(TYPoint *)point AtLayer:(TYGraphicsLayer *)layer
++ (void)drawPictureSymbol:(AGSPictureMarkerSymbol *)pms At:(AGSPoint *)point AtLayer:(AGSGraphicsLayer *)layer
 {
     [layer addGraphic:[AGSGraphic graphicWithGeometry:point symbol:pms attributes:nil]];
 }
 
-+ (void)drawPolygon:(NSArray *)points AtLayer:(TYGraphicsLayer *)layer Color:(UIColor *)color spatialReference:(TYSpatialReference *)spatialReference
++ (void)drawPolygon:(NSArray *)points AtLayer:(AGSGraphicsLayer *)layer Color:(UIColor *)color spatialReference:(AGSSpatialReference *)spatialReference
 {
     AGSMutablePolygon *polygon = [[AGSMutablePolygon alloc] initWithSpatialReference:spatialReference];
     [polygon addRingToPolygon];

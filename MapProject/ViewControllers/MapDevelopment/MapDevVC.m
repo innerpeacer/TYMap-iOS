@@ -46,8 +46,6 @@
                                  @[@"生成所有地图数据库",@"GenerateAllMapDBVC"],
                                  @[@"生成Web地图文件", @"GenerateWebMapFileVC"],
                                  @[@"生成所有Web地图文件", @"GenerateAllWebMapFileVC"],
-                                 @[@"调用网络接口", @"CallingApiVC"]
-                                 
                                  ];
     
     self.objects = [[NSMutableArray alloc] init];

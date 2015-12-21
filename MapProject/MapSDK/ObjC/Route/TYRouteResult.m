@@ -9,7 +9,6 @@
 #import "TYRouteResult.h"
 #import "TYLandmarkManager.h"
 #import "IPVector2.h"
-#import "TYPolyline.h"
 #import "TYMapEnviroment.h"
 
 @interface TYRouteResult()

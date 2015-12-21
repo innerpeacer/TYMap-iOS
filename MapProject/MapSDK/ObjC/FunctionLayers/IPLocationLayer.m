@@ -10,7 +10,7 @@
 
 @interface IPLocationLayer()
 {
-    TYMarkerSymbol *locationSymbol;
+    AGSMarkerSymbol *locationSymbol;
 }
 
 @end
@@ -31,14 +31,14 @@
     return self;
 }
 
-- (void)setLocationSymbol:(TYMarkerSymbol *)symbol
+- (void)setLocationSymbol:(AGSMarkerSymbol *)symbol
 {
     locationSymbol = [symbol copy];
     AGSSimpleRenderer *renderer = [AGSSimpleRenderer simpleRendererWithSymbol:locationSymbol];
     self.renderer = renderer;
 }
 
-//- (void)showLocation:(TYPoint *)location
+//- (void)showLocation:(AGSPoint *)location
 //{
 //    [self removeAllGraphics];
 //    [self addGraphic:[AGSGraphic graphicWithGeometry:location symbol:locationSymbol attributes:nil]];
@@ -49,7 +49,7 @@
     locationSymbol.angle = deviceHeading + initAngle;
 }
 
-- (void)showLocation:(TYPoint *)location withDeviceHeading:(double)deviceHeading initAngle:(double)initAngle mapViewMode:(TYMapViewMode)mode
+- (void)showLocation:(AGSPoint *)location withDeviceHeading:(double)deviceHeading initAngle:(double)initAngle mapViewMode:(TYMapViewMode)mode
 {
     [self removeAllGraphics];
 

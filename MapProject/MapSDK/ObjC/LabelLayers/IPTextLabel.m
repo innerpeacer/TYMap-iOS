@@ -24,7 +24,7 @@ static UIFont *font = nil;
 
 static AGSSimpleMarkerSymbol *pointSymbol = nil;
 
-//- (id)initWithGeoID:(NSString *)gid PoiID:(NSString *)pid Name:(NSString *)name Position:(TYPoint *)pos switchignWidth:(double)w
+//- (id)initWithGeoID:(NSString *)gid PoiID:(NSString *)pid Name:(NSString *)name Position:(AGSPoint *)pos switchignWidth:(double)w
 //{
 //    self = [super init];
 //    if (self) {
@@ -40,7 +40,7 @@ static AGSSimpleMarkerSymbol *pointSymbol = nil;
 //    return self;
 //}
 
-- (id)initWithName:(NSString *)name Position:(TYPoint *)pos
+- (id)initWithName:(NSString *)name Position:(AGSPoint *)pos
 {
     self = [super init];
     if (self) {

@@ -9,7 +9,6 @@
 #import <ArcGIS/ArcGIS.h>
 #import <TYMapData/TYMapData.h>
 #import "TYMapInfo.h"
-#import "TYPoint.h"
 
 
 //    导航点转换类
@@ -33,7 +32,7 @@
 // *
 // *  @return 相应的导航坐标点
 
-- (TYPoint *)routePointFromLocalPoint:(TYLocalPoint *)localPoint;
+- (AGSPoint *)routePointFromLocalPoint:(TYLocalPoint *)localPoint;
 
 
 // *  将导航坐标眯转换成实际坐标点
@@ -42,7 +41,7 @@
 // *
 // *  @return 相应的实际坐标点
 
-- (TYLocalPoint *)localPointFromRoutePoint:(TYPoint *)routePoint;
+- (TYLocalPoint *)localPointFromRoutePoint:(AGSPoint *)routePoint;
 
 
 // *  检测坐标点的有效性

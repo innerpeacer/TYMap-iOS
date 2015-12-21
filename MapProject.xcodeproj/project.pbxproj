@@ -58,23 +58,6 @@
 		572407151BC9A84B0050BA41 /* IPXMD5.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 572407101BC9A84B0050BA41 /* IPXMD5.cpp */; };
 		5724071E1BC9A8520050BA41 /* IPEncryption.mm in Sources */ = {isa = PBXBuildFile; fileRef = 572407191BC9A8520050BA41 /* IPEncryption.mm */; };
 		5724071F1BC9A8520050BA41 /* IPLicenseValidation.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5724071B1BC9A8520050BA41 /* IPLicenseValidation.mm */; };
-		572407921BC9A8A10050BA41 /* TYCallout.m in Sources */ = {isa = PBXBuildFile; fileRef = 572407231BC9A8A10050BA41 /* TYCallout.m */; };
-		572407931BC9A8A10050BA41 /* TYCredential.m in Sources */ = {isa = PBXBuildFile; fileRef = 572407251BC9A8A10050BA41 /* TYCredential.m */; };
-		572407941BC9A8A10050BA41 /* TYEnvelope.m in Sources */ = {isa = PBXBuildFile; fileRef = 572407271BC9A8A10050BA41 /* TYEnvelope.m */; };
-		572407951BC9A8A10050BA41 /* TYGeometry.m in Sources */ = {isa = PBXBuildFile; fileRef = 572407291BC9A8A10050BA41 /* TYGeometry.m */; };
-		572407961BC9A8A10050BA41 /* TYGeometryEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 5724072B1BC9A8A10050BA41 /* TYGeometryEngine.m */; };
-		572407971BC9A8A10050BA41 /* TYGraphic.m in Sources */ = {isa = PBXBuildFile; fileRef = 5724072D1BC9A8A10050BA41 /* TYGraphic.m */; };
-		572407981BC9A8A10050BA41 /* TYGraphicsLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5724072F1BC9A8A10050BA41 /* TYGraphicsLayer.m */; };
-		572407991BC9A8A10050BA41 /* TYLocationDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = 572407311BC9A8A10050BA41 /* TYLocationDisplay.m */; };
-		5724079A1BC9A8A10050BA41 /* TYMarkerSymbol.m in Sources */ = {isa = PBXBuildFile; fileRef = 572407331BC9A8A10050BA41 /* TYMarkerSymbol.m */; };
-		5724079B1BC9A8A10050BA41 /* TYPictureMarkerSymbol.m in Sources */ = {isa = PBXBuildFile; fileRef = 572407351BC9A8A10050BA41 /* TYPictureMarkerSymbol.m */; };
-		5724079C1BC9A8A10050BA41 /* TYPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 572407371BC9A8A10050BA41 /* TYPoint.m */; };
-		5724079D1BC9A8A10050BA41 /* TYPolygon.m in Sources */ = {isa = PBXBuildFile; fileRef = 572407391BC9A8A10050BA41 /* TYPolygon.m */; };
-		5724079E1BC9A8A10050BA41 /* TYPolyline.m in Sources */ = {isa = PBXBuildFile; fileRef = 5724073B1BC9A8A10050BA41 /* TYPolyline.m */; };
-		5724079F1BC9A8A10050BA41 /* TYSimpleFillSymbol.m in Sources */ = {isa = PBXBuildFile; fileRef = 5724073D1BC9A8A10050BA41 /* TYSimpleFillSymbol.m */; };
-		572407A01BC9A8A10050BA41 /* TYSimpleLineSymbol.m in Sources */ = {isa = PBXBuildFile; fileRef = 5724073F1BC9A8A10050BA41 /* TYSimpleLineSymbol.m */; };
-		572407A11BC9A8A10050BA41 /* TYSimpleMarkerSymbol.m in Sources */ = {isa = PBXBuildFile; fileRef = 572407411BC9A8A10050BA41 /* TYSimpleMarkerSymbol.m */; };
-		572407A21BC9A8A10050BA41 /* TYSpatialReference.m in Sources */ = {isa = PBXBuildFile; fileRef = 572407431BC9A8A10050BA41 /* TYSpatialReference.m */; };
 		572407A31BC9A8A10050BA41 /* IPAnimatedRouteArrowLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 572407461BC9A8A10050BA41 /* IPAnimatedRouteArrowLayer.m */; };
 		572407A41BC9A8A10050BA41 /* IPLocationLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 572407481BC9A8A10050BA41 /* IPLocationLayer.m */; };
 		572407A51BC9A8A10050BA41 /* IPRouteArrowLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5724074A1BC9A8A10050BA41 /* IPRouteArrowLayer.m */; };
@@ -311,40 +294,6 @@
 		572407191BC9A8520050BA41 /* IPEncryption.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IPEncryption.mm; sourceTree = "<group>"; };
 		5724071A1BC9A8520050BA41 /* IPLicenseValidation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPLicenseValidation.h; sourceTree = "<group>"; };
 		5724071B1BC9A8520050BA41 /* IPLicenseValidation.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IPLicenseValidation.mm; sourceTree = "<group>"; };
-		572407221BC9A8A10050BA41 /* TYCallout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYCallout.h; sourceTree = "<group>"; };
-		572407231BC9A8A10050BA41 /* TYCallout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYCallout.m; sourceTree = "<group>"; };
-		572407241BC9A8A10050BA41 /* TYCredential.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYCredential.h; sourceTree = "<group>"; };
-		572407251BC9A8A10050BA41 /* TYCredential.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYCredential.m; sourceTree = "<group>"; };
-		572407261BC9A8A10050BA41 /* TYEnvelope.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYEnvelope.h; sourceTree = "<group>"; };
-		572407271BC9A8A10050BA41 /* TYEnvelope.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYEnvelope.m; sourceTree = "<group>"; };
-		572407281BC9A8A10050BA41 /* TYGeometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYGeometry.h; sourceTree = "<group>"; };
-		572407291BC9A8A10050BA41 /* TYGeometry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYGeometry.m; sourceTree = "<group>"; };
-		5724072A1BC9A8A10050BA41 /* TYGeometryEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYGeometryEngine.h; sourceTree = "<group>"; };
-		5724072B1BC9A8A10050BA41 /* TYGeometryEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYGeometryEngine.m; sourceTree = "<group>"; };
-		5724072C1BC9A8A10050BA41 /* TYGraphic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYGraphic.h; sourceTree = "<group>"; };
-		5724072D1BC9A8A10050BA41 /* TYGraphic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYGraphic.m; sourceTree = "<group>"; };
-		5724072E1BC9A8A10050BA41 /* TYGraphicsLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYGraphicsLayer.h; sourceTree = "<group>"; };
-		5724072F1BC9A8A10050BA41 /* TYGraphicsLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYGraphicsLayer.m; sourceTree = "<group>"; };
-		572407301BC9A8A10050BA41 /* TYLocationDisplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYLocationDisplay.h; sourceTree = "<group>"; };
-		572407311BC9A8A10050BA41 /* TYLocationDisplay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYLocationDisplay.m; sourceTree = "<group>"; };
-		572407321BC9A8A10050BA41 /* TYMarkerSymbol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYMarkerSymbol.h; sourceTree = "<group>"; };
-		572407331BC9A8A10050BA41 /* TYMarkerSymbol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYMarkerSymbol.m; sourceTree = "<group>"; };
-		572407341BC9A8A10050BA41 /* TYPictureMarkerSymbol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYPictureMarkerSymbol.h; sourceTree = "<group>"; };
-		572407351BC9A8A10050BA41 /* TYPictureMarkerSymbol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYPictureMarkerSymbol.m; sourceTree = "<group>"; };
-		572407361BC9A8A10050BA41 /* TYPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYPoint.h; sourceTree = "<group>"; };
-		572407371BC9A8A10050BA41 /* TYPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYPoint.m; sourceTree = "<group>"; };
-		572407381BC9A8A10050BA41 /* TYPolygon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYPolygon.h; sourceTree = "<group>"; };
-		572407391BC9A8A10050BA41 /* TYPolygon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYPolygon.m; sourceTree = "<group>"; };
-		5724073A1BC9A8A10050BA41 /* TYPolyline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYPolyline.h; sourceTree = "<group>"; };
-		5724073B1BC9A8A10050BA41 /* TYPolyline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYPolyline.m; sourceTree = "<group>"; };
-		5724073C1BC9A8A10050BA41 /* TYSimpleFillSymbol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYSimpleFillSymbol.h; sourceTree = "<group>"; };
-		5724073D1BC9A8A10050BA41 /* TYSimpleFillSymbol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYSimpleFillSymbol.m; sourceTree = "<group>"; };
-		5724073E1BC9A8A10050BA41 /* TYSimpleLineSymbol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYSimpleLineSymbol.h; sourceTree = "<group>"; };
-		5724073F1BC9A8A10050BA41 /* TYSimpleLineSymbol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYSimpleLineSymbol.m; sourceTree = "<group>"; };
-		572407401BC9A8A10050BA41 /* TYSimpleMarkerSymbol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYSimpleMarkerSymbol.h; sourceTree = "<group>"; };
-		572407411BC9A8A10050BA41 /* TYSimpleMarkerSymbol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYSimpleMarkerSymbol.m; sourceTree = "<group>"; };
-		572407421BC9A8A10050BA41 /* TYSpatialReference.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYSpatialReference.h; sourceTree = "<group>"; };
-		572407431BC9A8A10050BA41 /* TYSpatialReference.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYSpatialReference.m; sourceTree = "<group>"; };
 		572407451BC9A8A10050BA41 /* IPAnimatedRouteArrowLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPAnimatedRouteArrowLayer.h; sourceTree = "<group>"; };
 		572407461BC9A8A10050BA41 /* IPAnimatedRouteArrowLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPAnimatedRouteArrowLayer.m; sourceTree = "<group>"; };
 		572407471BC9A8A10050BA41 /* IPLocationLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPLocationLayer.h; sourceTree = "<group>"; };
@@ -789,7 +738,6 @@
 				57FF263D1C1FF707009482B2 /* ServerSync */,
 				57012A941BFED7740014CCEF /* PathCalibration */,
 				570DF17D1BDE86030028E25F /* MapData */,
-				572407211BC9A8A10050BA41 /* Entity */,
 				572407441BC9A8A10050BA41 /* FunctionLayers */,
 				572407511BC9A8A10050BA41 /* LabelLayers */,
 				572407601BC9A8A10050BA41 /* MapView */,
@@ -812,47 +760,6 @@
 				5724071B1BC9A8520050BA41 /* IPLicenseValidation.mm */,
 			);
 			path = Utils;
-			sourceTree = "<group>";
-		};
-		572407211BC9A8A10050BA41 /* Entity */ = {
-			isa = PBXGroup;
-			children = (
-				572407221BC9A8A10050BA41 /* TYCallout.h */,
-				572407231BC9A8A10050BA41 /* TYCallout.m */,
-				572407241BC9A8A10050BA41 /* TYCredential.h */,
-				572407251BC9A8A10050BA41 /* TYCredential.m */,
-				572407261BC9A8A10050BA41 /* TYEnvelope.h */,
-				572407271BC9A8A10050BA41 /* TYEnvelope.m */,
-				572407281BC9A8A10050BA41 /* TYGeometry.h */,
-				572407291BC9A8A10050BA41 /* TYGeometry.m */,
-				5724072A1BC9A8A10050BA41 /* TYGeometryEngine.h */,
-				5724072B1BC9A8A10050BA41 /* TYGeometryEngine.m */,
-				5724072C1BC9A8A10050BA41 /* TYGraphic.h */,
-				5724072D1BC9A8A10050BA41 /* TYGraphic.m */,
-				5724072E1BC9A8A10050BA41 /* TYGraphicsLayer.h */,
-				5724072F1BC9A8A10050BA41 /* TYGraphicsLayer.m */,
-				572407301BC9A8A10050BA41 /* TYLocationDisplay.h */,
-				572407311BC9A8A10050BA41 /* TYLocationDisplay.m */,
-				572407321BC9A8A10050BA41 /* TYMarkerSymbol.h */,
-				572407331BC9A8A10050BA41 /* TYMarkerSymbol.m */,
-				572407341BC9A8A10050BA41 /* TYPictureMarkerSymbol.h */,
-				572407351BC9A8A10050BA41 /* TYPictureMarkerSymbol.m */,
-				572407361BC9A8A10050BA41 /* TYPoint.h */,
-				572407371BC9A8A10050BA41 /* TYPoint.m */,
-				572407381BC9A8A10050BA41 /* TYPolygon.h */,
-				572407391BC9A8A10050BA41 /* TYPolygon.m */,
-				5724073A1BC9A8A10050BA41 /* TYPolyline.h */,
-				5724073B1BC9A8A10050BA41 /* TYPolyline.m */,
-				5724073C1BC9A8A10050BA41 /* TYSimpleFillSymbol.h */,
-				5724073D1BC9A8A10050BA41 /* TYSimpleFillSymbol.m */,
-				5724073E1BC9A8A10050BA41 /* TYSimpleLineSymbol.h */,
-				5724073F1BC9A8A10050BA41 /* TYSimpleLineSymbol.m */,
-				572407401BC9A8A10050BA41 /* TYSimpleMarkerSymbol.h */,
-				572407411BC9A8A10050BA41 /* TYSimpleMarkerSymbol.m */,
-				572407421BC9A8A10050BA41 /* TYSpatialReference.h */,
-				572407431BC9A8A10050BA41 /* TYSpatialReference.m */,
-			);
-			path = Entity;
 			sourceTree = "<group>";
 		};
 		572407441BC9A8A10050BA41 /* FunctionLayers */ = {
@@ -1493,19 +1400,16 @@
 				57D167971BBA47C1004BE6B9 /* ShpRouteDBRecord.mm in Sources */,
 				57672E321B55FFF900DAD219 /* FMDatabaseQueue.m in Sources */,
 				572407AA1BC9A8A10050BA41 /* IPFacilityLayer.m in Sources */,
-				5724079C1BC9A8A10050BA41 /* TYPoint.m in Sources */,
 				572407B11BC9A8A10050BA41 /* IPAreaAnalysis.m in Sources */,
 				572C7A5C1C2115BB00AF14A7 /* IPSyncMapSymbolDBAdapter.m in Sources */,
 				57494DDB1B61DAE7000B6F2C /* BaseLogVC.m in Sources */,
 				57215D521C23ECD500B8B271 /* IPWebDownloader.m in Sources */,
 				57215D501C23ECD500B8B271 /* IPMapDataDownloader.m in Sources */,
 				57215D7F1C2406C900B8B271 /* IPWebUploader.m in Sources */,
-				572407941BC9A8A10050BA41 /* TYEnvelope.m in Sources */,
 				572407A41BC9A8A10050BA41 /* IPLocationLayer.m in Sources */,
 				57FF26541C1FF71F009482B2 /* TYUserManager.m in Sources */,
 				57215D621C2404A200B8B271 /* TYMapDataManager.m in Sources */,
 				5771BEC81BE75CE600026873 /* GenerateAllWebMapFileVC.m in Sources */,
-				572407991BC9A8A10050BA41 /* TYLocationDisplay.m in Sources */,
 				572408CF1BC9AE2D0050BA41 /* IPXNode.cpp in Sources */,
 				5771BEC31BE7051E00026873 /* GenerateWebMapFileVC.m in Sources */,
 				57012A9A1BFED7740014CCEF /* IPPathCalibration.mm in Sources */,
@@ -1514,7 +1418,6 @@
 				570DF1921BDE86490028E25F /* IPMapFeatureData.mm in Sources */,
 				57FF26151C1FF60F009482B2 /* UploadCompleteDataVC.m in Sources */,
 				57672E2F1B55FFF900DAD219 /* FMDatabase.m in Sources */,
-				572407951BC9A8A10050BA41 /* TYGeometry.m in Sources */,
 				570ABA6D1BF9DD650006BC30 /* UploadRouteDataVC.m in Sources */,
 				57FF26511C1FF707009482B2 /* IPSyncDataManager.m in Sources */,
 				57FF264F1C1FF707009482B2 /* IPSyncMapDataRecord.m in Sources */,
@@ -1533,7 +1436,6 @@
 				576AEEAB1B61D97100D55CA4 /* MapDevVC.m in Sources */,
 				57D167941BBA4508004BE6B9 /* TYBuildingNode.m in Sources */,
 				57FF260F1C1FD216009482B2 /* SymbolRecord.m in Sources */,
-				572407A01BC9A8A10050BA41 /* TYSimpleLineSymbol.m in Sources */,
 				57EE3E911B7471CC00977049 /* CityBuildingTableVC.m in Sources */,
 				572407B71BC9A8A10050BA41 /* TYMapView.m in Sources */,
 				570DF1931BDE86490028E25F /* IPMapFileManager.mm in Sources */,
@@ -1544,7 +1446,6 @@
 				570ABA741BF9E3670006BC30 /* UploadCityBuildingVC.m in Sources */,
 				57672D081B55FF4A00DAD219 /* TYPoiDBAdapter.m in Sources */,
 				572407B81BC9A8A10050BA41 /* TYRenderingScheme.m in Sources */,
-				5724079B1BC9A8A10050BA41 /* TYPictureMarkerSymbol.m in Sources */,
 				57FF264D1C1FF707009482B2 /* IPSyncMapDBAdapter.mm in Sources */,
 				576C02621BC63D4700BCD87D /* SymbolGroup.m in Sources */,
 				57215D911C24119900B8B271 /* TYOfflineRouteManager.mm in Sources */,
@@ -1555,7 +1456,6 @@
 				573F900A1BC8E68F00F836B5 /* OfflineRouteManager.m in Sources */,
 				572407AD1BC9A8A10050BA41 /* IPLabelGroupLayer.m in Sources */,
 				57672E311B55FFF900DAD219 /* FMDatabasePool.m in Sources */,
-				5724079E1BC9A8A10050BA41 /* TYPolyline.m in Sources */,
 				572408EE1BC9B9800050BA41 /* CppOfflineMapRouteVC.m in Sources */,
 				572B98CC1BDA195500506A7E /* MapGeneratorDBAdapter.mm in Sources */,
 				57215D511C23ECD500B8B271 /* IPRouteDataDownloader.m in Sources */,
@@ -1576,7 +1476,6 @@
 				572407B01BC9A8A10050BA41 /* IPArcGISDrawer.m in Sources */,
 				57EB45761B73D2B50050956F /* RATreeNodeInfo.m in Sources */,
 				57EB457F1B73D3690050956F /* RADataObject.m in Sources */,
-				572407961BC9A8A10050BA41 /* TYGeometryEngine.m in Sources */,
 				5724071F1BC9A8520050BA41 /* IPLicenseValidation.mm in Sources */,
 				57215D901C24119900B8B271 /* IPRoutePointConverter.m in Sources */,
 				57215D961C24119900B8B271 /* TYRoutePart.m in Sources */,
@@ -1589,10 +1488,7 @@
 				572407A31BC9A8A10050BA41 /* IPAnimatedRouteArrowLayer.m in Sources */,
 				572407A61BC9A8A10050BA41 /* IPRouteHintLayer.m in Sources */,
 				57EB45751B73D2B50050956F /* RATreeNodeInfo+Private.m in Sources */,
-				5724079F1BC9A8A10050BA41 /* TYSimpleFillSymbol.m in Sources */,
 				5719D1DA1C22ABF20003AA18 /* FetchCompleteDataVC.m in Sources */,
-				572407A11BC9A8A10050BA41 /* TYSimpleMarkerSymbol.m in Sources */,
-				5724079A1BC9A8A10050BA41 /* TYMarkerSymbol.m in Sources */,
 				572407131BC9A84B0050BA41 /* IPXLicenseValidation.cpp in Sources */,
 				572407C31BC9A8A10050BA41 /* IPFloorLayer.m in Sources */,
 				572408F11BC9B9800050BA41 /* TestRouteNetworkVC.m in Sources */,
@@ -1625,7 +1521,6 @@
 				57F8DE5F1B74553100143739 /* OriginalMapVC.m in Sources */,
 				57012AAF1BFF02790014CCEF /* IPXGeosGeometryCaster.cpp in Sources */,
 				578771221BBB911400F90D7B /* RouteNetworkDBAdapter.mm in Sources */,
-				572407971BC9A8A10050BA41 /* TYGraphic.m in Sources */,
 				572407AB1BC9A8A10050BA41 /* IPLabelBorder.m in Sources */,
 				572B98C11BDA115A00506A7E /* GenerateMapDBVC.m in Sources */,
 				572407AC1BC9A8A10050BA41 /* IPLabelBorderCalculator.m in Sources */,
@@ -1636,14 +1531,10 @@
 				57F8F08F1BBA977200FE8637 /* Geos2AgsConverter.mm in Sources */,
 				572407A51BC9A8A10050BA41 /* IPRouteArrowLayer.m in Sources */,
 				57672EF51B56006700DAD219 /* main.m in Sources */,
-				572407981BC9A8A10050BA41 /* TYGraphicsLayer.m in Sources */,
 				57012A991BFED7740014CCEF /* IPAgsPathCalibration.mm in Sources */,
-				572407921BC9A8A10050BA41 /* TYCallout.m in Sources */,
 				57494DE31B61DB17000B6F2C /* OriginalCityVC.m in Sources */,
 				57012A931BFED73C0014CCEF /* IPXPathDBAdapter.cpp in Sources */,
 				5787712F1BBB916B00F90D7B /* TYNode.m in Sources */,
-				572407A21BC9A8A10050BA41 /* TYSpatialReference.m in Sources */,
-				5724079D1BC9A8A10050BA41 /* TYPolygon.m in Sources */,
 				57FF260E1C1FD216009482B2 /* OriginalSymbolDBAdapter.m in Sources */,
 				572407141BC9A84B0050BA41 /* IPXMemory.cpp in Sources */,
 				57FF26501C1FF707009482B2 /* IPSyncRouteRecord.m in Sources */,
@@ -1660,7 +1551,6 @@
 				57215D7E1C2406C900B8B271 /* IPRouteDataUploader.m in Sources */,
 				57F8F0881BBA939300FE8637 /* ShpRouteDataGroup.mm in Sources */,
 				572408CC1BC9AE190050BA41 /* IPXLink.cpp in Sources */,
-				572407931BC9A8A10050BA41 /* TYCredential.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

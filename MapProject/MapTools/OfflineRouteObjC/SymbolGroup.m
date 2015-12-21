@@ -18,10 +18,10 @@
         self.testSimpleMarkerSymbol = [AGSSimpleMarkerSymbol simpleMarkerSymbolWithColor:[UIColor yellowColor]];
         self.testSimpleMarkerSymbol.size = CGSizeMake(5, 5);
         
-        self.startSymbol = [TYPictureMarkerSymbol pictureMarkerSymbolWithImageNamed:@"start"];
+        self.startSymbol = [AGSPictureMarkerSymbol pictureMarkerSymbolWithImageNamed:@"start"];
         self.startSymbol.offset = CGPointMake(0, 22);
         
-        self.endSymbol = [TYPictureMarkerSymbol pictureMarkerSymbolWithImageNamed:@"end"];
+        self.endSymbol = [AGSPictureMarkerSymbol pictureMarkerSymbolWithImageNamed:@"end"];
         self.endSymbol.offset = CGPointMake(0, 22);
         
     }

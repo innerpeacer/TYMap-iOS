@@ -20,7 +20,7 @@
 
 CGSize facilitySize = { FACILITY_SIZE, FACILITY_SIZE };
 
-- (id)initWithCategoryID:(int)categoryID Position:(TYPoint *)pos
+- (id)initWithCategoryID:(int)categoryID Position:(AGSPoint *)pos
 {
     self = [super init];
     if (self) {

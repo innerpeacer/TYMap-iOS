@@ -8,11 +8,9 @@
 
 #import <ArcGIS/ArcGIS.h>
 
-#import "TYSpatialReference.h"
-
 @interface IPRouteHintLayer : AGSGraphicsLayer
 
-+ (IPRouteHintLayer *)routeHintLayerWithSpatialReference:(TYSpatialReference *)sr;
++ (IPRouteHintLayer *)routeHintLayerWithSpatialReference:(AGSSpatialReference *)sr;
 
 - (void)showRouteHint:(AGSPolyline *)line;
 

@@ -17,12 +17,12 @@
 
 @implementation TYPoi
 
-+ (TYPoi *)poiWithGeoID:(NSString *)gid PoiID:(NSString *)pid FloorID:(NSString *)fid  BuildingID:(NSString *)bid Name:(NSString *)pname Geometry:(TYGeometry *)geometry CategoryID:(int)cid Layer:(POI_LAYER)pLayer
++ (TYPoi *)poiWithGeoID:(NSString *)gid PoiID:(NSString *)pid FloorID:(NSString *)fid  BuildingID:(NSString *)bid Name:(NSString *)pname Geometry:(AGSGeometry *)geometry CategoryID:(int)cid Layer:(POI_LAYER)pLayer
 {
     return [[TYPoi alloc] initWithGeoID:gid PoiID:pid FloorID:fid BuildingID:bid Name:pname Geometry:geometry CategoryID:cid Layer:pLayer];
 }
 
-- (id)initWithGeoID:(NSString *)gid PoiID:(NSString *)pid FloorID:(NSString *)fid  BuildingID:(NSString *)bid Name:(NSString *)pname Geometry:(TYGeometry *)geometry CategoryID:(int)cid Layer:(POI_LAYER)pLayer
+- (id)initWithGeoID:(NSString *)gid PoiID:(NSString *)pid FloorID:(NSString *)fid  BuildingID:(NSString *)bid Name:(NSString *)pname Geometry:(AGSGeometry *)geometry CategoryID:(int)cid Layer:(POI_LAYER)pLayer
 {
     self = [super init];
     if (self) {

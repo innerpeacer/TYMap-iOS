@@ -19,12 +19,12 @@
 
 @implementation IPRouteHintLayer
 
-+ (IPRouteHintLayer *)routeHintLayerWithSpatialReference:(TYSpatialReference *)sr
++ (IPRouteHintLayer *)routeHintLayerWithSpatialReference:(AGSSpatialReference *)sr
 {
     return [[IPRouteHintLayer alloc] initRouteHintLayerWithSpatialReference:sr];
 }
 
-- (id)initRouteHintLayerWithSpatialReference:(TYSpatialReference *)sr
+- (id)initRouteHintLayerWithSpatialReference:(AGSSpatialReference *)sr
 {
     self = [super initWithSpatialReference:sr];
     if (self) {

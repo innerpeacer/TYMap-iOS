@@ -54,7 +54,6 @@
     [self notifyFinishFetchingData];
 }
 
-
 - (void)notifyFinishFetchingData
 {
     if (self.delegate && [self.delegate respondsToSelector:@selector(TYMapDataManagerDidFinishFetchingData:)]) {

@@ -10,13 +10,6 @@
 #import "TYMapInfo.h"
 #import "TYPoi.h"
 #import "TYRenderingScheme.h"
-#import "TYPoint.h"
-#import "TYCallout.h"
-#import "TYGraphic.h"
-#import "TYGraphicsLayer.h"
-#import "TYLocationDisplay.h"
-#import "TYMarkerSymbol.h"
-#import "TYPictureMarkerSymbol.h"
 #import "TYRouteResult.h"
 #import "TYDirectionalHint.h"
 
@@ -45,7 +38,7 @@ typedef enum {
  *  @param screen   点击事件的屏幕坐标
  *  @param mappoint 点击事件的地图坐标
  */
-- (void)TYMapView:(TYMapView *)mapView didClickAtPoint:(CGPoint)screen mapPoint:(TYPoint *)mappoint;
+- (void)TYMapView:(TYMapView *)mapView didClickAtPoint:(CGPoint)screen mapPoint:(AGSPoint *)mappoint;
 
 /**
  *  地图POI选中事件回调
@@ -84,7 +77,7 @@ typedef enum {
  *  @param mapView 地图视图
  *  @param callout 地图弹出框
  */
-- (void)TYMapView:(TYMapView *)mapView calloutDidDismiss:(TYCallout *)callout;
+- (void)TYMapView:(TYMapView *)mapView calloutDidDismiss:(AGSCallout *)callout;
 
 /**
  *  地图弹出框即将解除事件回调
@@ -92,7 +85,7 @@ typedef enum {
  *  @param mapView 地图视图
  *  @param callout 地图弹出框
  */
-- (void)TYMapView:(TYMapView *)mapView calloutWillDismiss:(TYCallout *)callout;
+- (void)TYMapView:(TYMapView *)mapView calloutWillDismiss:(AGSCallout *)callout;
 
 /**
  *  地图即将为要素显示弹出框事件回调
@@ -104,7 +97,7 @@ typedef enum {
  *
  *  @return 是否显示弹出框
  */
-- (BOOL)TYMapView:(TYMapView *)mapView willShowForGraphic:(TYGraphic *)graphic layer:(TYGraphicsLayer *)layer mapPoint:(TYPoint *)mappoint;
+- (BOOL)TYMapView:(TYMapView *)mapView willShowForGraphic:(AGSGraphic *)graphic layer:(AGSGraphicsLayer *)layer mapPoint:(AGSPoint *)mappoint;
 
 @end
 
@@ -153,7 +146,7 @@ typedef enum {
  *
  *  @param symbol 定位点符号
  */
-- (void)setLocationSymbol:(TYMarkerSymbol *)symbol;
+- (void)setLocationSymbol:(AGSMarkerSymbol *)symbol;
 
 /**
  *  在地图上显示定位结果
@@ -186,21 +179,21 @@ typedef enum {
  *
  *  @param symbol 起点标识符号
  */
-- (void)setRouteStartSymbol:(TYPictureMarkerSymbol *)symbol;
+- (void)setRouteStartSymbol:(AGSPictureMarkerSymbol *)symbol;
 
 /**
  *  设置导航线的终点符号
  *
  *  @param symbol 终点标识符号
  */
-- (void)setRouteEndSymbol:(TYPictureMarkerSymbol *)symbol;
+- (void)setRouteEndSymbol:(AGSPictureMarkerSymbol *)symbol;
 
 /**
  *  设置跨层导航切换点符号
  *
  *  @param symbol 切换点标识符号
  */
-- (void)setRouteSwitchSymbol:(TYPictureMarkerSymbol *)symbol;
+- (void)setRouteSwitchSymbol:(AGSPictureMarkerSymbol *)symbol;
 
 /**
  *  设置导航结果
@@ -308,7 +301,7 @@ typedef enum {
  *  @param range 目标屏幕范围
  *
  */
-- (void)restrictLocation:(TYPoint *)location toScreenRange:(CGRect)range;
+- (void)restrictLocation:(AGSPoint *)location toScreenRange:(CGRect)range;
 
 /**
  *  清除高亮显示的POI

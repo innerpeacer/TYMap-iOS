@@ -130,7 +130,7 @@
     
     NSArray *allGraphics = set.features;
     
-    TYSpatialReference *sr = [TYMapEnvironment defaultSpatialReference];
+    AGSSpatialReference *sr = [TYMapEnvironment defaultSpatialReference];
     TYMapLanguage language = [TYMapEnvironment getMapLanguage];
     
     for (AGSGraphic *graphic in allGraphics) {
@@ -146,7 +146,7 @@
         if (name != nil && name != (id)[NSNull null]) {
             double x = ((AGSPoint *)graphic.geometry).x;
             double y = ((AGSPoint *)graphic.geometry).y;
-            TYPoint *position = (TYPoint *)[AGSPoint pointWithX:x y:y spatialReference:sr];
+            AGSPoint *position = (AGSPoint *)[AGSPoint pointWithX:x y:y spatialReference:sr];
             IPTextLabel *textLabel = [[IPTextLabel alloc] initWithName:name Position:position];
             
             if (maxLevel != 0) {

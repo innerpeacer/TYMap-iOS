@@ -7,11 +7,10 @@
 //
 
 #import <ArcGIS/ArcGIS.h>
-#import "TYPoint.h"
 
 @interface IPFacilityLabel : NSObject
 
-@property (nonatomic, strong) TYPoint *position;
+@property (nonatomic, strong) AGSPoint *position;
 @property (nonatomic, readonly) int categoryID;
 
 @property (nonatomic, strong) AGSGraphic *facilityGraphic;
@@ -26,7 +25,7 @@
 - (void)setHighlighted:(BOOL)highlighted;
 - (BOOL)isHighlighted;
 
-- (id)initWithCategoryID:(int)categoryID Position:(TYPoint *)pos;
+- (id)initWithCategoryID:(int)categoryID Position:(AGSPoint *)pos;
 
 - (CGSize)getFacilityLabelSize;
 

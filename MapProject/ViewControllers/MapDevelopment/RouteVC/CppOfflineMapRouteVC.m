@@ -13,12 +13,6 @@
 #import "IPRouteLayer.h"
 #import "TYMapEnviroment.h"
 #import "IPRoutePointConverter.h"
-#import "TYGraphicsLayer.h"
-#import "TYPictureMarkerSymbol.h"
-#import "TYCredential.h"
-#import "TYGraphic.h"
-#import "TYSimpleMarkerSymbol.h"
-#import "TYPoint.h"
 #import "TYDirectionalHint.h"
 
 #import "TYRouteResult.h"
@@ -42,15 +36,15 @@
     TYRoutePart *currentRoutePart;
     NSArray *routeGuides;
     
-    TYGraphicsLayer *hintLayer;
+    AGSGraphicsLayer *hintLayer;
     AGSGraphicsLayer *testLayer;
     
     
     // 起点、终点、切换点标识符号
-    TYPictureMarkerSymbol *startSymbol;
-    TYPictureMarkerSymbol *endSymbol;
-    TYPictureMarkerSymbol *switchSymbol;
-    TYSimpleMarkerSymbol *markerSymbol;
+    AGSPictureMarkerSymbol *startSymbol;
+    AGSPictureMarkerSymbol *endSymbol;
+    AGSPictureMarkerSymbol *switchSymbol;
+    AGSSimpleMarkerSymbol *markerSymbol;
     
     
     NSDate *startDate;
@@ -71,7 +65,7 @@
     
     
     [self initSymbols];
-    hintLayer = [TYGraphicsLayer graphicsLayer];
+    hintLayer = [AGSGraphicsLayer graphicsLayer];
     [self.mapView addMapLayer:hintLayer];
     testLayer = [AGSGraphicsLayer graphicsLayer];
     [self.mapView addMapLayer:testLayer];
@@ -133,7 +127,7 @@
 }
 
 
-- (void)TYMapView:(TYMapView *)mapView didClickAtPoint:(CGPoint)screen mapPoint:(TYPoint *)mappoint
+- (void)TYMapView:(TYMapView *)mapView didClickAtPoint:(CGPoint)screen mapPoint:(AGSPoint *)mappoint
 {
     NSLog(@"(%f, %f) in floor %d", mappoint.x, mappoint.y, self.currentMapInfo.floorNumber);
 
@@ -196,15 +190,15 @@
 
 - (void)initSymbols
 {
-    startSymbol = [TYPictureMarkerSymbol pictureMarkerSymbolWithImageNamed:@"start"];
+    startSymbol = [AGSPictureMarkerSymbol pictureMarkerSymbolWithImageNamed:@"start"];
     startSymbol.offset = CGPointMake(0, 22);
     
-    endSymbol = [TYPictureMarkerSymbol pictureMarkerSymbolWithImageNamed:@"end"];
+    endSymbol = [AGSPictureMarkerSymbol pictureMarkerSymbolWithImageNamed:@"end"];
     endSymbol.offset = CGPointMake(0, 22);
     
-    switchSymbol = [TYPictureMarkerSymbol pictureMarkerSymbolWithImageNamed:@"nav_exit"];
+    switchSymbol = [AGSPictureMarkerSymbol pictureMarkerSymbolWithImageNamed:@"nav_exit"];
     
-    markerSymbol = [TYSimpleMarkerSymbol simpleMarkerSymbolWithColor:[UIColor greenColor]];
+    markerSymbol = [AGSSimpleMarkerSymbol simpleMarkerSymbolWithColor:[UIColor greenColor]];
     markerSymbol.size = CGSizeMake(5, 5);
     
     [self.mapView setRouteStartSymbol:startSymbol];

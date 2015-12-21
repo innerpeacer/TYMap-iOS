@@ -7,8 +7,6 @@
 //
 
 #import <ArcGIS/ArcGIS.h>
-#import "TYCredential.h"
-#import "TYSpatialReference.h"
 #import <TYMapData/TYMapData.h>
 
 /**
@@ -29,7 +27,7 @@ typedef enum {
  *
  *  @return WKID:3395
  */
-+ (TYSpatialReference *)defaultSpatialReference;
++ (AGSSpatialReference *)defaultSpatialReference;
 
 
 /**
@@ -37,7 +35,7 @@ typedef enum {
  *
  *  @return [user:password]
  */
-+ (TYCredential *)defaultCredential;
++ (AGSCredential *)defaultCredential;
 
 
 /**

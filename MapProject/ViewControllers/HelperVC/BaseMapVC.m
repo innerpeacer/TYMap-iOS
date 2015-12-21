@@ -10,8 +10,6 @@
 
 #import "TYUserDefaults.h"
 #import "TYRenderingScheme.h"
-#import "TYGeometryEngine.h"
-
 #import "MapLicenseGenerator.h"
 
 @interface BaseMapVC()

@@ -23,7 +23,6 @@
 @property (nonatomic, weak) id<TYMapDataManagerDelegate> delegate;
 
 - (id)initWithUserID:(NSString *)userID BuildingID:(NSString *)buildingID License:(NSString *)license;
-
 - (void)fetchMapData;
 
 @end

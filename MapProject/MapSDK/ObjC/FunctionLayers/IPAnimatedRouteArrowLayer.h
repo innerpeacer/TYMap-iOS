@@ -8,12 +8,9 @@
 
 #import <ArcGIS/ArcGIS.h>
 
-#import "TYPictureMarkerSymbol.h"
-#import "TYSpatialReference.h"
-
 @interface IPAnimatedRouteArrowLayer : AGSGraphicsLayer
 
-+ (IPAnimatedRouteArrowLayer *)animatedRouteArrowLayerWithSpatialReference:(TYSpatialReference *)sr;
++ (IPAnimatedRouteArrowLayer *)animatedRouteArrowLayerWithSpatialReference:(AGSSpatialReference *)sr;
 
 - (void)showRouteArrow:(NSArray *)array;
 

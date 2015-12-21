@@ -118,7 +118,7 @@ using namespace std;
     
 }
 
-- (void)TYMapView:(TYMapView *)mapView didClickAtPoint:(CGPoint)screen mapPoint:(TYPoint *)mappoint
+- (void)TYMapView:(TYMapView *)mapView didClickAtPoint:(CGPoint)screen mapPoint:(AGSPoint *)mappoint
 {
 //    NSLog(@"didClickAtPoint:%@", mappoint);
     

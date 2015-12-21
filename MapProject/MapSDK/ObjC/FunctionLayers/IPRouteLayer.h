@@ -8,8 +8,6 @@
 
 #import <ArcGIS/ArcGIS.h>
 
-#import "TYSpatialReference.h"
-#import "TYPictureMarkerSymbol.h"
 #import "TYRouteResult.h"
 
 @class TYMapView;
@@ -27,9 +25,9 @@
 @property (nonatomic, strong) TYLocalPoint *startPoint;
 @property (nonatomic, strong) TYLocalPoint *endPoint;
 
-@property (nonatomic, strong) TYPictureMarkerSymbol *startSymbol;
-@property (nonatomic, strong) TYPictureMarkerSymbol *endSymbol;
-@property (nonatomic, strong) TYPictureMarkerSymbol *switchSymbol;
+@property (nonatomic, strong) AGSPictureMarkerSymbol *startSymbol;
+@property (nonatomic, strong) AGSPictureMarkerSymbol *endSymbol;
+@property (nonatomic, strong) AGSPictureMarkerSymbol *switchSymbol;
 
 
 // *  路径导航层的静态实例化方法
@@ -38,7 +36,7 @@
 // *
 // *  @return 路径导航层
 
-+ (IPRouteLayer *)routeLayerWithSpatialReference:(TYSpatialReference *)sr;
++ (IPRouteLayer *)routeLayerWithSpatialReference:(AGSSpatialReference *)sr;
 
 - (NSArray *)showRouteResultOnFloor:(int)floor;
 - (NSArray *)showPassedAndRemainingRouteResultOnFloor:(int)floor WithLocation:(TYLocalPoint *)location;
