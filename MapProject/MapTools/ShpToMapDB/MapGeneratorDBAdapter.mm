@@ -10,12 +10,12 @@
 
 #import "FMDatabase.h"
 
-#import "TYMapDBConstants.h"
+#import "IPMapDBConstants.h"
 #import "TYMapInfo.h"
 #import "OriginalShpRecord.h"
 #import "TYMapEnviroment.h"
 
-#import "TYMapFileManager.h"
+#import "IPMapFileManager.h"
 #include "IPXEncryption.hpp"
 #import "SymbolRecord.h"
 
@@ -36,7 +36,7 @@ using namespace Innerpeacer::MapSDK;
     self = [super init];
     if (self) {
         building = b;
-        NSString *dbPath = [TYMapFileManager getMapDataDBPath:building];
+        NSString *dbPath = [IPMapFileManager getMapDataDBPath:building];
         db = [FMDatabase databaseWithPath:dbPath];
         [self checkDatabase];
     }

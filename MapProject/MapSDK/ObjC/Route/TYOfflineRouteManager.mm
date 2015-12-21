@@ -8,9 +8,9 @@
 
 #import "TYOfflineRouteManager.h"
 
-#import "TYRoutePointConverter.h"
+#import "IPRoutePointConverter.h"
 #import "TYMapEnviroment.h"
-#import "TYMapFileManager.h"
+#import "IPMapFileManager.h"
 #import "IPXRouteNetworkDataset.hpp"
 #import "IPXRouteNetworkDBAdapter.hpp"
 
@@ -29,7 +29,7 @@ typedef enum {
     IPXRouteNetworkDataset *networkDataset;
     
     NSArray *allMapInfos;
-    TYRoutePointConverter *routePointConverter;
+    IPRoutePointConverter *routePointConverter;
 }
 
 @end
@@ -49,9 +49,9 @@ typedef enum {
         allMapInfos = mapInfoArray;
         
         TYMapInfo *info = [allMapInfos objectAtIndex:0];
-        routePointConverter = [[TYRoutePointConverter alloc] initWithBaseMapExtent:info.mapExtent Offset:building.offset];
+        routePointConverter = [[IPRoutePointConverter alloc] initWithBaseMapExtent:info.mapExtent Offset:building.offset];
         
-        NSString *dbPath = [TYMapFileManager getMapDataDBPath:building];
+        NSString *dbPath = [IPMapFileManager getMapDataDBPath:building];
         IPXRouteNetworkDBAdapter *db = new IPXRouteNetworkDBAdapter([dbPath UTF8String]);
         db->open();
         networkDataset = db->readRouteNetworkDataset();

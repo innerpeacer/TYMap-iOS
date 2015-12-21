@@ -10,9 +10,9 @@
 
 #import "OfflineRouteManager.h"
 
-#import "TYRouteLayer.h"
+#import "IPRouteLayer.h"
 #import "TYMapEnviroment.h"
-#import "TYRoutePointConverter.h"
+#import "IPRoutePointConverter.h"
 #import "TYGraphicsLayer.h"
 #import "TYPictureMarkerSymbol.h"
 #import "TYCredential.h"

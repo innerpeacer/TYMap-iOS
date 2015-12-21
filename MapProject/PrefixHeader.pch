@@ -9,7 +9,7 @@
 #ifndef MapProject_PrefixHeader_pch
 #define MapProject_PrefixHeader_pch
 
-#import "TYApi.h"
+#import "IPApi.h"
 
 #define TRIAL_USER_ID @"ty4e13f85911a44a75"
 #define TRIAL_EXPRIED_DATE @"20160601"

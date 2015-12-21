@@ -8,7 +8,7 @@
 
 #import "OriginalSymbolDBAdapter.h"
 #import "FMDatabase.h"
-#import "TYMapDBConstants.h"
+#import "IPMapDBConstants.h"
 #import "SymbolRecord.h"
 
 @interface OriginalSymbolDBAdapter()

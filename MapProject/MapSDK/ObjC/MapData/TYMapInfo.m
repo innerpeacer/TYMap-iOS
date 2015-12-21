@@ -7,11 +7,11 @@
 //
 
 #import "TYMapInfo.h"
-#import "TYMapFileManager.h"
+#import "IPMapFileManager.h"
 #import <TYMapData/TYMapData.h>
 
-#import "TYMapInfoDBAdapter.h"
-#import "TYMapDBConstants.h"
+#import "IPMapInfoDBAdapter.h"
+#import "IPMapDBConstants.h"
 
 
 MapExtent TYMapExtentMake(double xmin, double ymin, double xmax, double ymax)
@@ -48,8 +48,8 @@ MapSize TYMapSizeMake(double x, double y)
 + (TYMapInfo *)parseMapInfo:(NSString *)floor ForBuilding:(TYBuilding *)building
 {
     TYMapInfo *info = nil;
-    NSString *dbPath = [TYMapFileManager getMapDataDBPath:building];
-    TYMapInfoDBAdapter *db = [[TYMapInfoDBAdapter alloc] initWithPath:dbPath];
+    NSString *dbPath = [IPMapFileManager getMapDataDBPath:building];
+    IPMapInfoDBAdapter *db = [[IPMapInfoDBAdapter alloc] initWithPath:dbPath];
     [db open];
     info = [db getMapInfoWithName:floor];
     [db close];
@@ -59,8 +59,8 @@ MapSize TYMapSizeMake(double x, double y)
 + (NSArray *)parseAllMapInfo:(TYBuilding *)building
 {
     NSArray *mapInfoArray = nil;
-    NSString *dbPath = [TYMapFileManager getMapDataDBPath:building];
-    TYMapInfoDBAdapter *db = [[TYMapInfoDBAdapter alloc] initWithPath:dbPath];
+    NSString *dbPath = [IPMapFileManager getMapDataDBPath:building];
+    IPMapInfoDBAdapter *db = [[IPMapInfoDBAdapter alloc] initWithPath:dbPath];
     [db open];
     mapInfoArray = [db getAllMapInfos];
     [db close];
@@ -70,7 +70,7 @@ MapSize TYMapSizeMake(double x, double y)
 + (NSArray *)parseAllMapInfoFromFile:(NSString *)path
 {
     NSArray *mapInfoArray = nil;
-    TYMapInfoDBAdapter *db = [[TYMapInfoDBAdapter alloc] initWithPath:path];
+    IPMapInfoDBAdapter *db = [[IPMapInfoDBAdapter alloc] initWithPath:path];
     [db open];
     mapInfoArray = [db getAllMapInfos];
     [db close];

@@ -8,7 +8,7 @@
 
 #import "TYRouteResult.h"
 #import "TYLandmarkManager.h"
-#import "Vector2.h"
+#import "IPVector2.h"
 #import "TYPolyline.h"
 #import "TYMapEnviroment.h"
 
@@ -191,7 +191,7 @@
             continue;
         }
         
-        Vector2 *v = [[Vector2 alloc] init];
+        IPVector2 *v = [[IPVector2 alloc] init];
         v.x = p1.x - p0.x;
         v.y = p1.y - p0.y;
         double angle = [v getAngle];

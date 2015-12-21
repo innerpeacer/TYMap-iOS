@@ -7,7 +7,7 @@
 //
 
 #import "TYRouteManager.h"
-#import "TYRoutePointConverter.h"
+#import "IPRoutePointConverter.h"
 #import <TYMapData/TYMapData.h>
 #import "TYRoutePart.h"
 
@@ -19,7 +19,7 @@
 
     NSArray *allMapInfos;
     
-    TYRoutePointConverter *routePointConverter;
+    IPRoutePointConverter *routePointConverter;
 }
 
 @end
@@ -40,7 +40,7 @@
         allMapInfos = mapInfoArray;
         
         TYMapInfo *info = [allMapInfos objectAtIndex:0];
-        routePointConverter = [[TYRoutePointConverter alloc] initWithBaseMapExtent:info.mapExtent Offset:building.offset];
+        routePointConverter = [[IPRoutePointConverter alloc] initWithBaseMapExtent:info.mapExtent Offset:building.offset];
         
         NSURL *url = [NSURL URLWithString:building.routeURL];
         routeTask = [AGSRouteTask routeTaskWithURL:url credential:cr];

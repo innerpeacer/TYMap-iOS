@@ -7,8 +7,8 @@
 //
 
 #import "MapLicenseGenerator.h"
-#import "TYEncryption.h"
-#import "MD5Utils.h"
+#import "IPEncryption.h"
+#import "IPMD5Utils.h"
 
 @implementation MapLicenseGenerator
 
@@ -34,13 +34,13 @@
     
     NSString *key1 = [userID substringWithRange:NSMakeRange(2, 8)];
     NSString *key2 = [userID substringWithRange:NSMakeRange(10, 8)];
-    NSString *encryptedBuildingID = [TYEncryption encryptString:[building substringWithRange:NSMakeRange(0, 8)] withKey:key1];
-    NSString *encryptedExpiredDate = [TYEncryption encryptString:expiredDate withKey:key2];
-    NSString *md5ForBuildingID = [MD5Utils md5:encryptedBuildingID];
+    NSString *encryptedBuildingID = [IPEncryption encryptString:[building substringWithRange:NSMakeRange(0, 8)] withKey:key1];
+    NSString *encryptedExpiredDate = [IPEncryption encryptString:expiredDate withKey:key2];
+    NSString *md5ForBuildingID = [IPMD5Utils md5:encryptedBuildingID];
     NSString *originalMD5 = [NSString stringWithFormat:@"MAP%@%@", encryptedBuildingID, encryptedExpiredDate];
     
-    NSString *md5String = [MD5Utils md5:originalMD5];
-    NSString *license = [NSString stringWithFormat:@"%@%@%@%@", [md5String substringWithRange:NSMakeRange(0, 8)], [TYEncryption encryptString:encryptedBuildingID withKey:md5ForBuildingID], [TYEncryption encryptString:encryptedExpiredDate withKey:md5ForBuildingID], [md5String substringWithRange:NSMakeRange(24, 8)]];
+    NSString *md5String = [IPMD5Utils md5:originalMD5];
+    NSString *license = [NSString stringWithFormat:@"%@%@%@%@", [md5String substringWithRange:NSMakeRange(0, 8)], [IPEncryption encryptString:encryptedBuildingID withKey:md5ForBuildingID], [IPEncryption encryptString:encryptedExpiredDate withKey:md5ForBuildingID], [md5String substringWithRange:NSMakeRange(24, 8)]];
     
 //    NSLog(@"Key1: %@", key1);
 //    NSLog(@"Key2: %@", key2);

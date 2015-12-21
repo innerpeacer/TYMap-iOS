@@ -7,8 +7,8 @@
 //
 
 #import "TYCityManager.h"
-#import "TYMapFileManager.h"
-#import "TYMapDBAdapter.h"
+#import "IPMapFileManager.h"
+#import "IPMapDBAdapter.h"
 
 
 
@@ -16,8 +16,8 @@
 
 + (NSArray *)parseAllCities
 {
-    NSString *dbPath = [TYMapFileManager getMapDBPath];
-    TYMapDBAdapter *db = [[TYMapDBAdapter alloc] initWithPath:dbPath];
+    NSString *dbPath = [IPMapFileManager getMapDBPath];
+    IPMapDBAdapter *db = [[IPMapDBAdapter alloc] initWithPath:dbPath];
     [db open];
     NSArray *resultArray = [db getAllCities];
     [db close];
@@ -26,8 +26,8 @@
 
 + (TYCity *)parseCity:(NSString *)cityID
 {
-    NSString *dbPath = [TYMapFileManager getMapDBPath];
-    TYMapDBAdapter *db = [[TYMapDBAdapter alloc] initWithPath:dbPath];
+    NSString *dbPath = [IPMapFileManager getMapDBPath];
+    IPMapDBAdapter *db = [[IPMapDBAdapter alloc] initWithPath:dbPath];
     [db open];
     TYCity *resultCity = [db getCity:cityID];
     [db close];

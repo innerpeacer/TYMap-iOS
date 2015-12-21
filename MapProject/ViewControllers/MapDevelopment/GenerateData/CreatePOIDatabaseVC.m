@@ -13,8 +13,8 @@
 #import <ArcGIS/ArcGIS.h>
 #import "TYPoi.h"
 #import <TYMapData/TYMapData.h>
-#import "TYMapFileManager.h"
-#import "TYMapFeatureData.h"
+#import "IPMapFileManager.h"
+#import "IPMapFeatureData.h"
 
 #import "TYCityManager.h"
 #import "TYBuildingManager.h"
@@ -54,7 +54,7 @@
 
 - (void)generatePOIDatabaseForBuilding:(TYBuilding *)building MapInfo:(NSArray *)mapInfoArray
 {
-    NSString *dbPath = [TYMapFileManager getPOIDBPath:building];
+    NSString *dbPath = [IPMapFileManager getPOIDBPath:building];
     CreatingPOIDBAdapter *db = [[CreatingPOIDBAdapter alloc] initWithDBPath:dbPath];
     [db open];
     [db erasePOITable];
@@ -143,7 +143,7 @@
 
 - (void)readMapDataFromDBForBuilding:(TYBuilding *)building WithInfo:(TYMapInfo *)info
 {
-    TYMapFeatureData *featureData = [[TYMapFeatureData alloc] initWithBuilding:building];
+    IPMapFeatureData *featureData = [[IPMapFeatureData alloc] initWithBuilding:building];
     allMapData = [featureData getAllMapDataOnFloor:info.floorNumber];
 }
 

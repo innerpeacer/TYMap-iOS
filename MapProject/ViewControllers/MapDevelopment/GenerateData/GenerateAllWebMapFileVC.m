@@ -11,10 +11,10 @@
 #import "TYUserDefaults.h"
 #import "TYMapInfo.h"
 
-#import "TYMapDBAdapter.h"
-#import "TYMapFileManager.h"
+#import "IPMapDBAdapter.h"
+#import "IPMapFileManager.h"
 #import "TYMapEnviroment.h"
-#import "TYMapFeatureData.h"
+#import "IPMapFeatureData.h"
 
 #define WEB_MAP_ROOT @"WebMap"
 
@@ -92,7 +92,7 @@
     [self checkWebMapRootDirectory];
     [self generateCityJson];
 
-    TYMapDBAdapter *db = [[TYMapDBAdapter alloc] initWithPath:[TYMapFileManager getMapDBPath]];
+    IPMapDBAdapter *db = [[IPMapDBAdapter alloc] initWithPath:[IPMapFileManager getMapDBPath]];
     [db open];
     NSArray *allCityArray = [db getAllCities];
     for (TYCity *city in allCityArray) {
@@ -128,7 +128,7 @@
     NSString *buildingDir = [cityDir stringByAppendingPathComponent:building.buildingID];
     
     NSMutableDictionary *mapDataJsonDict = [[NSMutableDictionary alloc] init];
-    TYMapFeatureData *featureData = [[TYMapFeatureData alloc] initWithBuilding:building];
+    IPMapFeatureData *featureData = [[IPMapFeatureData alloc] initWithBuilding:building];
     
     NSString *log;
     NSArray *allMapInfos = [TYMapInfo parseAllMapInfo:building];
@@ -244,7 +244,7 @@
 - (void)generateBuildingJson:(TYCity *)city
 {
     NSString *cityDir = [webMapFileDir stringByAppendingPathComponent:city.cityID];
-    TYMapDBAdapter *db = [[TYMapDBAdapter alloc] initWithPath:[TYMapFileManager getMapDBPath]];
+    IPMapDBAdapter *db = [[IPMapDBAdapter alloc] initWithPath:[IPMapFileManager getMapDBPath]];
     [db open];
     NSArray *allBuildingArray = [db getAllBuildings:city];
     
@@ -290,7 +290,7 @@
 #define KEY_CITY_STATUS @"status"
 - (void)generateCityJson
 {
-    TYMapDBAdapter *db = [[TYMapDBAdapter alloc] initWithPath:[TYMapFileManager getMapDBPath]];
+    IPMapDBAdapter *db = [[IPMapDBAdapter alloc] initWithPath:[IPMapFileManager getMapDBPath]];
     [db open];
     NSArray *allCityArray = [db getAllCities];
     

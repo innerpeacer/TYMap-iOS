@@ -15,8 +15,8 @@
 #import "FMResultSet.h"
 
 #import "TYMapEnviroment.h"
-#import "TYMapFileManager.h"
-#import "TYMapDBConstants.h"
+#import "IPMapFileManager.h"
+#import "IPMapDBConstants.h"
 
 @interface BuildingRouteDBAdapter()
 {
@@ -31,7 +31,7 @@
 {
     self = [super init];
     if (self) {
-        NSString *dbPath = [TYMapFileManager getMapDataDBPath:building];
+        NSString *dbPath = [IPMapFileManager getMapDataDBPath:building];
         _database = [FMDatabase databaseWithPath:dbPath];
         [self checkDatabase];
     }

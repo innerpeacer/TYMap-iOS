@@ -8,7 +8,7 @@
 
 #import "OfflineRouteManager.h"
 #import "RouteNetworkDataset.h"
-#import "TYRoutePointConverter.h"
+#import "IPRoutePointConverter.h"
 #import "RouteNetworkDBAdapter.h"
 #import "TYMapEnviroment.h"
 
@@ -22,7 +22,7 @@ typedef enum {
     RouteNetworkDataset *networkDataset;
     
     NSArray *allMapInfos;
-    TYRoutePointConverter *routePointConverter;
+    IPRoutePointConverter *routePointConverter;
 }
 
 @end
@@ -41,7 +41,7 @@ typedef enum {
         allMapInfos = mapInfoArray;
         
         TYMapInfo *info = [allMapInfos objectAtIndex:0];
-        routePointConverter = [[TYRoutePointConverter alloc] initWithBaseMapExtent:info.mapExtent Offset:building.offset];
+        routePointConverter = [[IPRoutePointConverter alloc] initWithBaseMapExtent:info.mapExtent Offset:building.offset];
         
         RouteNetworkDBAdapter *db = [[RouteNetworkDBAdapter alloc] initWithBuilding:building];
         [db open];

@@ -12,11 +12,11 @@
 #import "TYMapInfo.h"
 #import <MKNetworkKit/MKNetworkKit.h>
 #import "TYUserManager.h"
-#import "TYSyncMapDBAdapter.h"
-#import "TYCBMUploader.h"
-#import "TYCBMDownloader.h"
+#import "IPSyncMapDBAdapter.h"
+#import "IPCBMUploader.h"
+#import "IPCBMDownloader.h"
 
-@interface UploadAllCityBuildingVC() <TYCBMUploaderDelegate, TYCBMDownloaderDelegate>
+@interface UploadAllCityBuildingVC() <IPCBMUploaderDelegate, IPCBMDownloaderDelegate>
 {
     NSArray *allCities;
     NSArray *allBuildings;
@@ -24,8 +24,8 @@
     
     NSString *hostName;
     
-    TYCBMUploader *webUploader;
-    TYCBMDownloader *webDownloader;
+    IPCBMUploader *webUploader;
+    IPCBMDownloader *webDownloader;
 }
 
 - (IBAction)uploadCitiesAndBuildings:(id)sender;
@@ -41,10 +41,10 @@
     hostName = HOST_NAME;
     
     
-    webUploader = [[TYCBMUploader alloc] initWithUser:[TYUserManager createSuperUser:@"00000000"]];
+    webUploader = [[IPCBMUploader alloc] initWithUser:[TYUserManager createSuperUser:@"00000000"]];
     //    webUploader = [[TYCBMUploader alloc] initWithUser:[TYUserManager createTrialUser:@"00000000"]];
     webUploader.delegate = self;
-    webDownloader = [[TYCBMDownloader alloc] initWithUser:[TYUserManager createSuperUser:@"00000000"]];
+    webDownloader = [[IPCBMDownloader alloc] initWithUser:[TYUserManager createSuperUser:@"00000000"]];
     webDownloader.delegate = self;
     
     allCities = [TYCityManager parseAllCities];
@@ -63,18 +63,18 @@
     allMapInfos = mapInfoArray;
 }
 
-- (void)TYCBMUploader:(TYCBMUploader *)uploader DidFailedUploadingWithApi:(NSString *)api WithError:(NSError *)error
+- (void)TYCBMUploader:(IPCBMUploader *)uploader DidFailedUploadingWithApi:(NSString *)api WithError:(NSError *)error
 {
     NSLog(@"TYDataUploaderDidFailedUploading: %@", api);
     NSLog(@"Error: %@", [error localizedDescription]);
 }
 
-- (void)TYCBMUploader:(TYCBMUploader *)uploader DidFinishUploadingWithApi:(NSString *)api WithDescription:(NSString *)responseString
+- (void)TYCBMUploader:(IPCBMUploader *)uploader DidFinishUploadingWithApi:(NSString *)api WithDescription:(NSString *)responseString
 {
     [self addToLog:responseString];
 }
 
-- (void)TYCBMDownloader:(TYCBMDownloader *)downloader DidFinishDownloadingWithApi:(NSString *)api WithResult:(NSArray *)resultArray Records:(int)records
+- (void)TYCBMDownloader:(IPCBMDownloader *)downloader DidFinishDownloadingWithApi:(NSString *)api WithResult:(NSArray *)resultArray Records:(int)records
 {
     if ([api isEqualToString:TY_API_GET_ALL_CITIES]) {
         [self addToLog:[NSString stringWithFormat:@"Records: %d", records]];
@@ -111,7 +111,7 @@
     
 }
 
-- (void)TYCBMDownloader:(TYCBMDownloader *)downloader DidFailedDownloadingWithApi:(NSString *)api WithError:(NSError *)error
+- (void)TYCBMDownloader:(IPCBMDownloader *)downloader DidFailedDownloadingWithApi:(NSString *)api WithError:(NSError *)error
 {
     NSLog(@"TYDataDownloaderDidFailedDownloading: %@", api);
     NSLog(@"Error: %@", [error localizedDescription]);

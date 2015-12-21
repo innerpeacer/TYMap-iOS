@@ -11,24 +11,24 @@
 #import "TYMapInfo.h"
 #import "TYMapType.h"
 #import "TYMapEnviroment.h"
-#import "TYLocationLayer.h"
-#import "TYMapFileManager.h"
+#import "IPLocationLayer.h"
+#import "IPMapFileManager.h"
 
-#import "TYStructureGroupLayer.h"
-#import "TYLabelGroupLayer.h"
-#import "TYRouteLayer.h"
-#import "TYRouteArrowLayer.h"
-#import "TYAnimatedRouteArrowLayer.h"
+#import "IPStructureGroupLayer.h"
+#import "IPLabelGroupLayer.h"
+#import "IPRouteLayer.h"
+#import "IPRouteArrowLayer.h"
+#import "IPAnimatedRouteArrowLayer.h"
 
-#import "TYRouteHintLayer.h"
-#import "TYBrand.h"
+#import "IPRouteHintLayer.h"
+#import "IPBrand.h"
 
-#import "TYEncryption.h"
-#import "TYLicenseValidation.h"
+#import "IPEncryption.h"
+#import "IPLicenseValidation.h"
 
-#import "TYMapFeatureData.h"
-#import "TYPathCalibration.h"
-#import "TYParkingLayer.h"
+#import "IPMapFeatureData.h"
+#import "IPPathCalibration.h"
+#import "IPParkingLayer.h"
 #import "TYMapCredential.h"
 
 #define DEFAULT_BUFFER_WIDTH 2.0
@@ -37,15 +37,15 @@
 {
     TYRenderingScheme *renderingScheme;
     
-    TYStructureGroupLayer *structureGroupLayer;
-    TYParkingLayer *parkingLayer;
-    TYLabelGroupLayer *labelGroupLayer;
+    IPStructureGroupLayer *structureGroupLayer;
+    IPParkingLayer *parkingLayer;
+    IPLabelGroupLayer *labelGroupLayer;
     
-    TYLocationLayer *locationLayer;
-    TYRouteLayer *routeLayer;
+    IPLocationLayer *locationLayer;
+    IPRouteLayer *routeLayer;
 
-    TYAnimatedRouteArrowLayer *animatedRouteArrowLayer;
-    TYRouteHintLayer *routeHintLayer;
+    IPAnimatedRouteArrowLayer *animatedRouteArrowLayer;
+    IPRouteHintLayer *routeHintLayer;
     
     AGSEnvelope *initialEnvelope;
     TYMapViewMode mapViewMode;
@@ -67,7 +67,7 @@
     BOOL isPathCalibrationEnabled;
     BOOL isLabelOverlappingDetectingEnabled;
     double pathCalibrationBuffer;
-    TYPathCalibration *pathCalibration;
+    IPPathCalibration *pathCalibration;
 }
 
 @property (nonatomic, assign) BOOL autoCenterEnabled;
@@ -212,22 +212,22 @@
 
 - (void)readMapDataFromDBWithInfo:(TYMapInfo *)info
 {
-    TYMapFeatureData *featureData = [[TYMapFeatureData alloc] initWithBuilding:_building];
+    IPMapFeatureData *featureData = [[IPMapFeatureData alloc] initWithBuilding:_building];
     mapDataDict = [featureData getAllMapDataOnFloor:info.floorNumber];
 }
 
 - (void)setFloorWithInfo:(TYMapInfo *)info
 {
-//    BOOL licenseValidity = [TYLicenseValidation checkValidityWithUserID:userID License:mapLicense Building:_building];
-    BOOL licenseValidity = [TYLicenseValidation checkValidityWithUserID:mapCredential.userID License:mapCredential.license Building:_building];
+//    BOOL licenseValidity = [IPLicenseValidation checkValidityWithUserID:userID License:mapLicense Building:_building];
+    BOOL licenseValidity = [IPLicenseValidation checkValidityWithUserID:mapCredential.userID License:mapCredential.license Building:_building];
 
     if (!licenseValidity) {
         NSLog(@"Invalid License!");
         return;
     }
     
-//    NSDate *expiredDate = [TYLicenseValidation evaluateLicenseWithUserID:userID License:mapLicense Building:_building];
-    NSDate *expiredDate = [TYLicenseValidation evaluateLicenseWithUserID:mapCredential.userID License:mapCredential.license Building:_building];
+//    NSDate *expiredDate = [IPLicenseValidation evaluateLicenseWithUserID:userID License:mapLicense Building:_building];
+    NSDate *expiredDate = [IPLicenseValidation evaluateLicenseWithUserID:mapCredential.userID License:mapCredential.license Building:_building];
     if (expiredDate == nil) {
         NSLog(@"Invalid License for Current Building!");
         return;
@@ -261,7 +261,7 @@
     
     
     if (isPathCalibrationEnabled) {
-        pathCalibration = [[TYPathCalibration alloc] initWithMapInfo:_currentMapInfo];
+        pathCalibration = [[IPPathCalibration alloc] initWithMapInfo:_currentMapInfo];
         [pathCalibration setBufferWidth:pathCalibrationBuffer];
     } else {
         pathCalibration = nil;
@@ -289,12 +289,12 @@
 //    mapLicense = license;
     mapCredential = [TYMapCredential credentialWithUserID:uID BuildingID:_building.buildingID License:license];
     
-    NSString *symbolDBPath = [TYMapFileManager getSymbolDBPath:_building];
+    NSString *symbolDBPath = [IPMapFileManager getSymbolDBPath:_building];
     renderingScheme = [[TYRenderingScheme alloc] initWithPath:symbolDBPath];
 
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
-    NSArray *brandArray = [TYBrand parseAllBrands:b];
-    for (TYBrand *brand in brandArray) {
+    NSArray *brandArray = [IPBrand parseAllBrands:b];
+    for (IPBrand *brand in brandArray) {
         [dict setObject:brand forKey:brand.poiID];
     }
     allBrandDict = dict;
@@ -320,7 +320,7 @@
     
     scaleLevelDict = [NSMutableDictionary dictionary];
     
-    NSString *symbolDBPath = [TYMapFileManager getSymbolDBPath:_building];
+    NSString *symbolDBPath = [IPMapFileManager getSymbolDBPath:_building];
     renderingScheme = [[TYRenderingScheme alloc] initWithPath:symbolDBPath];
     
     self.touchDelegate = self;
@@ -338,45 +338,45 @@
     mapViewMode = TYMapViewModeDefault;
     
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
-    NSArray *brandArray = [TYBrand parseAllBrands:b];
-    for (TYBrand *brand in brandArray) {
+    NSArray *brandArray = [IPBrand parseAllBrands:b];
+    for (IPBrand *brand in brandArray) {
         [dict setObject:brand forKey:brand.poiID];
     }
     allBrandDict = dict;
     
     AGSSpatialReference *spatialReference = [TYMapEnvironment defaultSpatialReference];
     
-    structureGroupLayer = [TYStructureGroupLayer structureLayerWithRenderingScheme:renderingScheme SpatialReference:spatialReference];
+    structureGroupLayer = [IPStructureGroupLayer structureLayerWithRenderingScheme:renderingScheme SpatialReference:spatialReference];
     [self addMapLayer:structureGroupLayer.floorLayer withName:LAYER_NAME_FLOOR];
     [self addMapLayer:structureGroupLayer.roomLayer withName:LAYER_NAME_ROOM];
     
-    parkingLayer = [[TYParkingLayer alloc] initWithSpatialReference:spatialReference];
+    parkingLayer = [[IPParkingLayer alloc] initWithSpatialReference:spatialReference];
     [self addMapLayer:parkingLayer withName:LAYER_NAME_PARKING];
     
     [self addMapLayer:structureGroupLayer.assetLayer withName:LAYER_NAME_ASSET];
     
 
     
-    labelGroupLayer = [TYLabelGroupLayer labelGroupLayerWithRenderingScheme:renderingScheme SpatialReference:spatialReference];
+    labelGroupLayer = [IPLabelGroupLayer labelGroupLayerWithRenderingScheme:renderingScheme SpatialReference:spatialReference];
     labelGroupLayer.mapView = self;
     labelGroupLayer.labelLayer.brandDict = allBrandDict;
     [self addMapLayer:labelGroupLayer.facilityLayer withName:LAYER_NAME_FACILITY];
     [self addMapLayer:labelGroupLayer.labelLayer withName:LAYER_NAME_LABEL];
     
-    routeLayer = [TYRouteLayer routeLayerWithSpatialReference:[TYMapEnvironment defaultSpatialReference]];
+    routeLayer = [IPRouteLayer routeLayerWithSpatialReference:[TYMapEnvironment defaultSpatialReference]];
     routeLayer.mapView = self;
     [self addMapLayer:routeLayer];
     routeLayer.allowHitTest = NO;
     
-    routeHintLayer = [TYRouteHintLayer routeHintLayerWithSpatialReference:[TYMapEnvironment defaultSpatialReference]];
+    routeHintLayer = [IPRouteHintLayer routeHintLayerWithSpatialReference:[TYMapEnvironment defaultSpatialReference]];
     [self addMapLayer:routeHintLayer];
     routeHintLayer.allowHitTest = NO;
     
-    animatedRouteArrowLayer = [TYAnimatedRouteArrowLayer animatedRouteArrowLayerWithSpatialReference:[TYMapEnvironment defaultSpatialReference]];
+    animatedRouteArrowLayer = [IPAnimatedRouteArrowLayer animatedRouteArrowLayerWithSpatialReference:[TYMapEnvironment defaultSpatialReference]];
     [self addMapLayer:animatedRouteArrowLayer];
     animatedRouteArrowLayer.allowHitTest = NO;
     
-    locationLayer = [[TYLocationLayer alloc] initWithSpatialReference:spatialReference];
+    locationLayer = [[IPLocationLayer alloc] initWithSpatialReference:spatialReference];
     [self addMapLayer:locationLayer withName:LAYER_NAME_LOCATION];
     locationLayer.allowHitTest = NO;
 }

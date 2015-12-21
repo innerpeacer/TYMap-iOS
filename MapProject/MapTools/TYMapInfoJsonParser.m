@@ -7,7 +7,7 @@
 //
 
 #import "TYMapInfoJsonParser.h"
-#import "TYMapFileManager.h"
+#import "IPMapFileManager.h"
 
 #define KEY_MAPINFOS @"MapInfo"
 

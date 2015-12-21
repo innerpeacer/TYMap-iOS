@@ -13,15 +13,15 @@
 #import "TYPoi.h"
 
 #import "IPXEncryption.hpp"
-#import "TYEncryption.h"
+#import "IPEncryption.h"
 #import "IPXMemory.h"
-#import "MD5Utils.h"
+#import "IPMD5Utils.h"
 #import "IPXMD5.hpp"
 
 #import "MapLicenseGenerator.h"
-#import "TYLicenseValidation.h"
+#import "IPLicenseValidation.h"
 #import "LicenseManager.h"
-#import "TYMapDBAdapter.h"
+#import "IPMapDBAdapter.h"
 
 
 @implementation AppDelegate
@@ -84,7 +84,7 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *md5 = [defaults objectForKey:@"md5"];
     
-    NSString *currentMD5 = [MD5Utils md5ForDirectory:sourceRootDir];
+    NSString *currentMD5 = [IPMD5Utils md5ForDirectory:sourceRootDir];
     
 //    NSLog(@"MD5 Defaults: %@", md5);
 //    NSLog(@"MD5 Files: %@", currentMD5);

@@ -7,7 +7,7 @@
 //
 
 #import "TYRenderingScheme.h"
-#import "TYSymbolDBAdapter.h"
+#import "IPSymbolDBAdapter.h"
 
 @implementation TYRenderingScheme
 
@@ -26,7 +26,7 @@
 
 - (void)readRenderingSchemeFromDatabase:(NSString *)path
 {
-    TYSymbolDBAdapter *db = [[TYSymbolDBAdapter alloc] initWithPath:path];
+    IPSymbolDBAdapter *db = [[IPSymbolDBAdapter alloc] initWithPath:path];
     [db open];
     
     NSDictionary *fillDict = [db readFillSymbols];

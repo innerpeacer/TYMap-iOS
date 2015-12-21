@@ -7,7 +7,7 @@
 //
 
 #import "TYDirectionalHint.h"
-#import "Vector2.h"
+#import "IPVector2.h"
 
 #define DIRECTIONAL_STRING_STRAIGHT @"直行"
 #define DIRECTIONAL_STRING_BACKWARD @"向后方"
@@ -21,7 +21,7 @@
 
 @interface TYDirectionalHint()
 {
-    Vector2 *vector;
+    IPVector2 *vector;
 }
 
 @end
@@ -35,7 +35,7 @@
         _startPoint = start;
         _endPoint = end;
         
-        vector = [[Vector2 alloc] init];
+        vector = [[IPVector2 alloc] init];
         vector.x = _endPoint.x - _startPoint.x;
         vector.y = _endPoint.y - _startPoint.y;
         

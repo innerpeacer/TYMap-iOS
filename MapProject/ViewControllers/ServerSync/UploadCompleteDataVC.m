@@ -12,19 +12,19 @@
 #import "TYBuildingManager.h"
 #import "TYUserDefaults.h"
 #import "TYMapInfo.h"
-#import "TYWebObjectConverter.h"
+#import "IPWebObjectConverter.h"
 #import <MKNetworkKit/MKNetworkKit.h>
 #import "TYUserManager.h"
-#import "TYMapFileManager.h"
+#import "IPMapFileManager.h"
 
-#import "TYSyncMapDataDBAdapter.h"
-#import "TYSyncMapRouteDBAdapter.h"
-#import "TYSyncMapSymbolDBAdapter.h"
+#import "IPSyncMapDataDBAdapter.h"
+#import "IPSyncMapRouteDBAdapter.h"
+#import "IPSyncMapSymbolDBAdapter.h"
 
-#import "TYSyncUploadingTask.h"
-#import "TYSyncDownloadingTask.h"
+#import "IPSyncUploadingTask.h"
+#import "IPSyncDownloadingTask.h"
 
-@interface UploadCompleteDataVC() <TYSyncUploadingTaskDelegate, TySyncDownloadingTaskDelegate>
+@interface UploadCompleteDataVC() <IPSyncUploadingTaskDelegate, IPSyncDownloadingTaskDelegate>
 {
     TYCity *currentCity;
     TYBuilding *currentBuilding;
@@ -39,8 +39,8 @@
     
     NSString *hostName;
     
-    TYSyncUploadingTask *uploadingTask;
-    TYSyncDownloadingTask *downloadingTask;
+    IPSyncUploadingTask *uploadingTask;
+    IPSyncDownloadingTask *downloadingTask;
 }
 
 - (IBAction)uploadCompleteData:(id)sender;
@@ -57,10 +57,10 @@
     
     [self prepareData];
 
-    uploadingTask = [[TYSyncUploadingTask alloc] initWithUser:[TYUserManager createSuperUser:currentBuilding.buildingID]];
+    uploadingTask = [[IPSyncUploadingTask alloc] initWithUser:[TYUserManager createSuperUser:currentBuilding.buildingID]];
     uploadingTask.delegate = self;
     
-    downloadingTask = [[TYSyncDownloadingTask alloc] initWithUser:[TYUserManager createTrialUser:currentBuilding.buildingID]];
+    downloadingTask = [[IPSyncDownloadingTask alloc] initWithUser:[TYUserManager createTrialUser:currentBuilding.buildingID]];
     downloadingTask.delegate = self;
     
     NSLog(@"%@", currentCity);
@@ -68,33 +68,33 @@
     NSLog(@"%@", allMapInfos);
 }
 
-- (void)TYUploadingTaskDidFailedUploading:(TYSyncUploadingTask *)task InStep:(int)step WithError:(NSError *)error
+- (void)TYUploadingTaskDidFailedUploading:(IPSyncUploadingTask *)task InStep:(int)step WithError:(NSError *)error
 {
     
 }
 
-- (void)TYUploadingTaskDidFinished:(TYSyncUploadingTask *)task
+- (void)TYUploadingTaskDidFinished:(IPSyncUploadingTask *)task
 {
     [self addToLog:@"Finish Uploading"];
 }
 
-- (void)TYUploadingTaskDidUpdateUploadingProcess:(TYSyncUploadingTask *)task InStep:(int)step WithDescription:(NSString *)description
+- (void)TYUploadingTaskDidUpdateUploadingProcess:(IPSyncUploadingTask *)task InStep:(int)step WithDescription:(NSString *)description
 {
     [self addToLog:[NSString stringWithFormat:@"Step %d:", step]];
     [self addToLog:description];
 }
 
-- (void)TYDownloadingTaskDidFailedDownloading:(TYSyncDownloadingTask *)task InStep:(int)step WithError:(NSError *)error
+- (void)TYDownloadingTaskDidFailedDownloading:(IPSyncDownloadingTask *)task InStep:(int)step WithError:(NSError *)error
 {
     
 }
 
-- (void)TYDownloadingTaskDidFinished:(TYSyncDownloadingTask *)task WithCity:(TYCity *)city Building:(TYBuilding *)building MapInfos:(NSArray *)mapInfoArray FillSymbols:(NSArray *)fillArray IconSymbols:(NSArray *)iconArray MapData:(NSArray *)mapDataArray RouteLinkData:(NSArray *)linkArray RouteNodeData:(NSArray *)nodeArray
+- (void)TYDownloadingTaskDidFinished:(IPSyncDownloadingTask *)task WithCity:(TYCity *)city Building:(TYBuilding *)building MapInfos:(NSArray *)mapInfoArray FillSymbols:(NSArray *)fillArray IconSymbols:(NSArray *)iconArray MapData:(NSArray *)mapDataArray RouteLinkData:(NSArray *)linkArray RouteNodeData:(NSArray *)nodeArray
 {
     [self addToLog:@"Finish Downloading"];
 }
 
-- (void)TYDownloadingTaskDidUpdateDownloadingProcess:(TYSyncDownloadingTask *)task InStep:(int)step WithDescription:(NSString *)description
+- (void)TYDownloadingTaskDidUpdateDownloadingProcess:(IPSyncDownloadingTask *)task InStep:(int)step WithDescription:(NSString *)description
 {
     [self addToLog:[NSString stringWithFormat:@"Step %d:", step]];
     [self addToLog:description];
@@ -106,19 +106,19 @@
     currentBuilding = [TYUserDefaults getDefaultBuilding];
     allMapInfos = [TYMapInfo parseAllMapInfo:currentBuilding];
     
-    TYSyncMapDataDBAdapter *dataDB = [[TYSyncMapDataDBAdapter alloc] initWithPath:[TYMapFileManager getMapDataDBPath:currentBuilding]];
+    IPSyncMapDataDBAdapter *dataDB = [[IPSyncMapDataDBAdapter alloc] initWithPath:[IPMapFileManager getMapDataDBPath:currentBuilding]];
     [dataDB open];
     allMapDataRecords = [dataDB getAllRecords];
     [dataDB close];
     
     
-    TYSyncMapRouteDBAdapter *routeDB = [[TYSyncMapRouteDBAdapter alloc] initWithPath:[TYMapFileManager getMapDataDBPath:currentBuilding]];
+    IPSyncMapRouteDBAdapter *routeDB = [[IPSyncMapRouteDBAdapter alloc] initWithPath:[IPMapFileManager getMapDataDBPath:currentBuilding]];
     [routeDB open];
     allRouteLinkRecords = [routeDB getAllRouteLinkRecords];
     allRouteNodeRecords = [routeDB getAllRouteNodeRecords];
     [routeDB close];
 
-    TYSyncMapSymbolDBAdapter *symbolDB = [[TYSyncMapSymbolDBAdapter alloc] initWithPath:[TYMapFileManager getSymbolDBPath:currentBuilding]];
+    IPSyncMapSymbolDBAdapter *symbolDB = [[IPSyncMapSymbolDBAdapter alloc] initWithPath:[IPMapFileManager getSymbolDBPath:currentBuilding]];
     [symbolDB open];
     allFillSymbols = [symbolDB getAllFillSymbols];
     allIconSymbols = [symbolDB getAllIconSymbols];

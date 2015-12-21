@@ -7,15 +7,15 @@
 //
 
 #import "TYBuildingManager.h"
-#import "TYMapFileManager.h"
-#import "TYMapDBAdapter.h"
+#import "IPMapFileManager.h"
+#import "IPMapDBAdapter.h"
 
 @implementation TYBuildingManager
 
 + (NSArray *)parseAllBuildings:(TYCity *)city
 {
-    NSString *dbPath = [TYMapFileManager getMapDBPath];
-    TYMapDBAdapter *db = [[TYMapDBAdapter alloc] initWithPath:dbPath];
+    NSString *dbPath = [IPMapFileManager getMapDBPath];
+    IPMapDBAdapter *db = [[IPMapDBAdapter alloc] initWithPath:dbPath];
     [db open];
     NSArray *resultArray = [db getAllBuildings:city];
     [db close];
@@ -24,8 +24,8 @@
 
 + (TYBuilding *)parseBuilding:(NSString *)buildingID InCity:(TYCity *)city
 {
-    NSString *dbPath = [TYMapFileManager getMapDBPath];
-    TYMapDBAdapter *db = [[TYMapDBAdapter alloc] initWithPath:dbPath];
+    NSString *dbPath = [IPMapFileManager getMapDBPath];
+    IPMapDBAdapter *db = [[IPMapDBAdapter alloc] initWithPath:dbPath];
     [db open];
     TYBuilding *resultBuilding = [db getBuilding:buildingID inCity:city];
     [db close];

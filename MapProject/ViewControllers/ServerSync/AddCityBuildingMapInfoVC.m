@@ -16,15 +16,15 @@
 #import "MapLicenseGenerator.h"
 #import "TYUserManager.h"
 #import <MKNetworkKit/MKNetworkKit.h>
-#import "TYSyncMapDataDBAdapter.h"
-#import "TYSyncMapSymbolDBAdapter.h"
+#import "IPSyncMapDataDBAdapter.h"
+#import "IPSyncMapSymbolDBAdapter.h"
 
-#import "TYCBMUploader.h"
-#import "TYCBMDownloader.h"
+#import "IPCBMUploader.h"
+#import "IPCBMDownloader.h"
 
-#import "TYMapFileManager.h"
+#import "IPMapFileManager.h"
 
-@interface AddCityBuildingMapInfoVC() <TYCBMUploaderDelegate, TYCBMDownloaderDelegate>
+@interface AddCityBuildingMapInfoVC() <IPCBMUploaderDelegate, IPCBMDownloaderDelegate>
 {
     TYCity *currentCity;
     TYBuilding *currentBuilding;
@@ -35,8 +35,8 @@
     NSString *hostName;
     
     
-    TYCBMUploader *dataUploader;
-    TYCBMDownloader *dataDownloader;
+    IPCBMUploader *dataUploader;
+    IPCBMDownloader *dataDownloader;
 }
 
 - (IBAction)uploadCurrentBuildingData:(id)sender;
@@ -53,8 +53,8 @@
     currentBuilding = [TYUserDefaults getDefaultBuilding];
     allMapInfos = [TYMapInfo parseAllMapInfo:currentBuilding];
     
-    NSString *symbolPath = [TYMapFileManager getSymbolDBPath:currentBuilding];
-    TYSyncMapSymbolDBAdapter *symbolDB = [[TYSyncMapSymbolDBAdapter alloc] initWithPath:symbolPath];
+    NSString *symbolPath = [IPMapFileManager getSymbolDBPath:currentBuilding];
+    IPSyncMapSymbolDBAdapter *symbolDB = [[IPSyncMapSymbolDBAdapter alloc] initWithPath:symbolPath];
     [symbolDB open];
     allFillSymbols = [symbolDB getAllFillSymbols];
     allIconSymbols = [symbolDB getAllIconSymbols];
@@ -62,10 +62,10 @@
     
     hostName = HOST_NAME;
     
-    dataUploader = [[TYCBMUploader alloc] initWithUser:[TYUserManager createSuperUser:currentBuilding.buildingID]];
+    dataUploader = [[IPCBMUploader alloc] initWithUser:[TYUserManager createSuperUser:currentBuilding.buildingID]];
     dataUploader.delegate = self;
     
-    dataDownloader = [[TYCBMDownloader alloc] initWithUser:[TYUserManager createTrialUser:currentBuilding.buildingID]];
+    dataDownloader = [[IPCBMDownloader alloc] initWithUser:[TYUserManager createTrialUser:currentBuilding.buildingID]];
     dataDownloader.delegate = self;
     
     NSLog(@"%@", currentCity);
@@ -73,25 +73,25 @@
     NSLog(@"%@", allMapInfos);
 }
 
-- (void)TYCBMUploader:(TYCBMUploader *)uploader DidFinishUploadingWithApi:(NSString *)api WithDescription:(NSString *)description
+- (void)TYCBMUploader:(IPCBMUploader *)uploader DidFinishUploadingWithApi:(NSString *)api WithDescription:(NSString *)description
 {
     NSLog(@"%@", description);
     [self addToLog:description];
 }
 
-- (void)TYCBMUploader:(TYCBMUploader *)uploader DidFailedUploadingWithApi:(NSString *)api WithError:(NSError *)error
+- (void)TYCBMUploader:(IPCBMUploader *)uploader DidFailedUploadingWithApi:(NSString *)api WithError:(NSError *)error
 {
     NSLog(@"TYDataUploaderDidFailedUploading: %@", api);
     NSLog(@"Error: %@", [error localizedDescription]);
 }
 
-- (void)TYCBMDownloader:(TYCBMDownloader *)downloader DidFailedDownloadingWithApi:(NSString *)api WithError:(NSError *)error
+- (void)TYCBMDownloader:(IPCBMDownloader *)downloader DidFailedDownloadingWithApi:(NSString *)api WithError:(NSError *)error
 {
     NSLog(@"TYDataDownloaderDidFailedDownloading: %@", api);
     NSLog(@"Error: %@", [error localizedDescription]);
 }
 
-- (void)TYCBMDownloader:(TYCBMDownloader *)downloader DidFinishDownloadingWithApi:(NSString *)api WithResult:(NSArray *)resultArray Records:(int)records
+- (void)TYCBMDownloader:(IPCBMDownloader *)downloader DidFinishDownloadingWithApi:(NSString *)api WithResult:(NSArray *)resultArray Records:(int)records
 {
     if ([api isEqualToString:TY_API_GET_TARGET_CITY]) {
         [self addToLog:[NSString stringWithFormat:@"Records: %d", records]];
@@ -127,7 +127,7 @@
     }
 }
 
-- (void)TYCBMDownloader:(TYCBMDownloader *)downloader DidFinishDownloadingSymbolsWithApi:(NSString *)api WithFillSymbols:(NSArray *)fillArray WithIconSymbols:(NSArray *)iconArray
+- (void)TYCBMDownloader:(IPCBMDownloader *)downloader DidFinishDownloadingSymbolsWithApi:(NSString *)api WithFillSymbols:(NSArray *)fillArray WithIconSymbols:(NSArray *)iconArray
 {
     [self addToLog:[NSString stringWithFormat:@"Records: %d", (int)(fillArray.count + iconArray.count)]];
     [self addToLog:[NSString stringWithFormat:@"Get %d Symbols From Server", (int)(fillArray.count + iconArray.count)]];

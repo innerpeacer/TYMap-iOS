@@ -7,18 +7,18 @@
 //
 
 #import "PathCalibrationVC.h"
-#import "TYAreaAnalysis.h"
+#import "IPAreaAnalysis.h"
 #import "TYMapEnviroment.h"
-#import "TYBrand.h"
+#import "IPBrand.h"
 #import "TYUserDefaults.h"
-#import "TYPathCalibration.h"
+#import "IPPathCalibration.h"
 
 
 #define PIC_INITIAL 0
 #define PIC_LAST 7
 @interface PathCalibrationVC()
 {
-    TYAreaAnalysis *areaAnalysis;
+    IPAreaAnalysis *areaAnalysis;
     
     AGSGraphicsLayer *testLayer;
     NSTimer *testTimer;
@@ -30,7 +30,7 @@
     int currentRadius;
     int picIndex;
 
-    TYPathCalibration *pathCalibration;
+    IPPathCalibration *pathCalibration;
     
     AGSGraphicsLayer *pathLayer;
     AGSGraphicsLayer *hintLayer;
@@ -62,7 +62,7 @@
         [self.mapView addMapLayer:pathLayer];
     }
     
-    pathCalibration = [[TYPathCalibration alloc] initWithMapInfo:mapInfo];
+    pathCalibration = [[IPPathCalibration alloc] initWithMapInfo:mapInfo];
     
     [pathLayer removeAllGraphics];
     AGSSimpleFillSymbol *sfs = [AGSSimpleFillSymbol simpleFillSymbolWithColor:[UIColor colorWithRed:1 green:1 blue:0.0 alpha:1] outlineColor:[UIColor colorWithRed:1 green:1 blue:0.0 alpha:1]];

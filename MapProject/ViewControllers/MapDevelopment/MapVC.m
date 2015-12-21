@@ -7,17 +7,17 @@
 //
 
 #import "MapVC.h"
-#import "TYAreaAnalysis.h"
+#import "IPAreaAnalysis.h"
 #import "TYMapEnviroment.h"
-#import "TYBrand.h"
+#import "IPBrand.h"
 #import "TYUserDefaults.h"
-#import "TYPathCalibration.h"
+#import "IPPathCalibration.h"
 
 #define PIC_INITIAL 0
 #define PIC_LAST 7
 @interface MapVC()
 {
-    TYAreaAnalysis *areaAnalysis;
+    IPAreaAnalysis *areaAnalysis;
     
     AGSGraphicsLayer *testLayer;
     NSTimer *testTimer;

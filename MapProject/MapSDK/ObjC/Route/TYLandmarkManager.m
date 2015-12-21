@@ -7,7 +7,7 @@
 //
 
 #import "TYLandmarkManager.h"
-#import "TYMapFileManager.h"
+#import "IPMapFileManager.h"
 #import <ArcGIS/ArcGIS.h>
 
 @interface TYLandmarkManager()
@@ -45,7 +45,7 @@ static TYLandmarkManager *manager;
     [allLandmarks removeAllObjects];
     currentFloor = info.floorNumber;
     
-    NSString *path = [TYMapFileManager getLandmarkJsonPath:info];
+    NSString *path = [IPMapFileManager getLandmarkJsonPath:info];
     if ([[NSFileManager defaultManager] fileExistsAtPath:path isDirectory:nil]) {
 
         NSError *error = nil;
