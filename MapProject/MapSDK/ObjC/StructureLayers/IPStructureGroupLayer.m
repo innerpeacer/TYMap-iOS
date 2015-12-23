@@ -16,6 +16,25 @@
     return [[IPStructureGroupLayer alloc] initWithRenderingScheme:aRenderingScheme SpatialReference:sr];
 }
 
++ (IPStructureGroupLayer *)structureLayerWithSpatialReference:(AGSSpatialReference *)sr
+{
+    return [[IPStructureGroupLayer alloc] initWithSpatialReference:sr];
+}
+
+- (id)initWithSpatialReference:(AGSSpatialReference *)sr
+{
+    self = [super init];
+    if (self) {
+        _floorLayer = [IPFloorLayer floorLayerWithSpatialReference:sr];
+        _floorLayer.allowHitTest = NO;
+
+        _roomLayer = [IPRoomLayer roomLayerWithSpatialReference:sr];
+
+        _assetLayer = [IPAssetLayer assetLayerWithSpatialReference:sr];
+    }
+    return self;
+}
+
 - (id)initWithRenderingScheme:(TYRenderingScheme *)aRenderingScheme SpatialReference:(AGSSpatialReference *)sr
 {
     self = [super init];
@@ -36,19 +55,9 @@
 {
     [_floorLayer setRenderingScheme:rs];
     [_roomLayer setRenderingScheme:rs];
+    _roomLayer.selectionSymbol = rs.defaultHighlightFillSymbol;
     [_assetLayer setRenderingScheme:rs];
 }
-
-//- (void)loadContentsWithInfo:(TYMapInfo *)info
-//{
-//    [_floorLayer removeAllGraphics];
-//    [_roomLayer removeAllGraphics];
-//    [_asserLayer removeAllGraphics];
-//    
-//    [_floorLayer loadContentsWithInfo:info];
-//    [_roomLayer loadContentsWithInfo:info];
-//    [_asserLayer loadContentsWithInfo:info];
-//}
 
 - (void)loadContents:(NSDictionary *)mapData
 {

@@ -13,6 +13,7 @@
 @interface IPAssetLayer : AGSGraphicsLayer
 
 + (IPAssetLayer *)assetLayerWithRenderingScheme:(TYRenderingScheme *)aRenderingScheme SpatialReference:(AGSSpatialReference *)sr;
++ (IPAssetLayer *)assetLayerWithSpatialReference:(AGSSpatialReference *)sr;
 
 - (void)loadContents:(AGSFeatureSet *)set;
 - (void)setRenderingScheme:(TYRenderingScheme *)rs;

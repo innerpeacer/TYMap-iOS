@@ -12,7 +12,7 @@
 #import "TYRenderingScheme.h"
 #import "TYRouteResult.h"
 #import "TYDirectionalHint.h"
-
+#import "TYMapCredential.h"
 #import <TYMapData/TYMapData.h>
 
 /**
@@ -133,6 +133,9 @@ typedef enum {
  *  重新加载地图
  */
 - (void)reloadMapView;
+
+- (void)setMapCredential:(TYMapCredential *)credential;
+
 
 /**
  *  切换楼层方法
@@ -275,6 +278,9 @@ typedef enum {
  *  @param isCentered 是否移动地图将路径提示段居中
  */
 - (void)showRouteHintForDirectionHint:(TYDirectionalHint *)ds Centered:(BOOL)isCentered;
+
+- (void)initMapView;
+- (void)loadBuilding:(TYBuilding *)b UserID:(NSString *)uID License:(NSString *)license;
 
 /**
  *  地图初始化方法

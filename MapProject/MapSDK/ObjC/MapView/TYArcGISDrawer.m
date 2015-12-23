@@ -6,9 +6,9 @@
 //  Copyright (c) 2015年 innerpeacer. All rights reserved.
 //
 
-#import "IPArcGISDrawer.h"
+#import "TYArcGISDrawer.h"
 
-@implementation IPArcGISDrawer
+@implementation TYArcGISDrawer
 
 + (void)drawPoint:(AGSPoint *)p AtLayer:(AGSGraphicsLayer *)layer WithColor:(UIColor *)color
 {

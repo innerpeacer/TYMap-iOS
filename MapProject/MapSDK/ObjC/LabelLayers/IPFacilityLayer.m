@@ -37,6 +37,25 @@
     return [[IPFacilityLayer alloc] initFacilityLayerWithRenderingScheme:aRenderingScheme SpatialReference:sr];
 }
 
++ (IPFacilityLayer *)facilityLayerWithSpatialReference:(AGSSpatialReference *)sr
+{
+    return [[IPFacilityLayer alloc] initFacilityLayerWithSpatialReference:sr];
+}
+
+
+- (id)initFacilityLayerWithSpatialReference:(AGSSpatialReference *)sr
+{
+    self = [super initWithFullEnvelope:nil renderingMode:AGSGraphicsLayerRenderingModeDynamic];
+    if (self) {
+        allFacilitySymbols = [[NSMutableDictionary alloc] init];
+        allHighlightFacilitySymbols = [[NSMutableDictionary alloc] init];
+        
+        groupedFacilityLabelDict = [[NSMutableDictionary alloc] init];
+        facilityLabelDict = [[NSMutableDictionary alloc] init];
+    }
+    return self;
+}
+
 - (id)initFacilityLayerWithRenderingScheme:(TYRenderingScheme *)aRenderingScheme SpatialReference:(AGSSpatialReference *)sr
 {
     self = [super initWithFullEnvelope:nil renderingMode:AGSGraphicsLayerRenderingModeDynamic];

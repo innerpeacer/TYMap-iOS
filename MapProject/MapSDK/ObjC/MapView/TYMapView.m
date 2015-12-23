@@ -282,82 +282,39 @@
     }
 }
 
-- (void)switchBuilding:(TYBuilding *)b UserID:(NSString *)uID License:(NSString *)license
+- (void)setMapCredential:(TYMapCredential *)credential
 {
-    _building = b;
-//    userID = uID;
-//    mapLicense = license;
-    mapCredential = [TYMapCredential credentialWithUserID:uID BuildingID:_building.buildingID License:license];
-    
-    NSString *symbolDBPath = [IPMapFileManager getSymbolDBPath:_building];
-    renderingScheme = [[TYRenderingScheme alloc] initWithPath:symbolDBPath];
-
-    NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
-    NSArray *brandArray = [IPBrand parseAllBrands:b];
-    for (IPBrand *brand in brandArray) {
-        [dict setObject:brand forKey:brand.poiID];
-    }
-    allBrandDict = dict;
-    
-    [structureGroupLayer setRenderingScheme:renderingScheme];
-    [labelGroupLayer setRenderingScheme:renderingScheme];
+    mapCredential = credential;
 }
 
-
-
-- (void)initMapViewWithBuilding:(TYBuilding *)b UserID:(NSString *)uID License:(NSString *)license
+- (void)initMapView
 {
     _autoCenterEnabled = YES;
-    
-    _building = b;
-//    userID = uID;
-//    mapLicense = license;
-    mapCredential = [TYMapCredential credentialWithUserID:uID BuildingID:_building.buildingID License:license];
-
     isLabelOverlappingDetectingEnabled = YES;
     isPathCalibrationEnabled = NO;
     pathCalibrationBuffer = DEFAULT_BUFFER_WIDTH;
-    
     scaleLevelDict = [NSMutableDictionary dictionary];
+    mapViewMode = TYMapViewModeDefault;
     
-    NSString *symbolDBPath = [IPMapFileManager getSymbolDBPath:_building];
-    renderingScheme = [[TYRenderingScheme alloc] initWithPath:symbolDBPath];
+    [self setAllowRotationByPinching:YES];
+    self.backgroundColor = [UIColor whiteColor];
+    self.gridLineWidth = 0.0;
     
     self.touchDelegate = self;
     self.layerDelegate = self;
     self.callout.delegate = self;
-    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(respondToZooming:) name:@"AGSMapViewDidEndZoomingNotification" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(respondToPanning:) name:@"AGSMapViewDidEndPanningNotification" object:nil];
     
-    [self setAllowRotationByPinching:YES];
-    
-    self.backgroundColor = [UIColor whiteColor];
-    self.gridLineWidth = 0.0;
-    
-    mapViewMode = TYMapViewModeDefault;
-    
-    NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
-    NSArray *brandArray = [IPBrand parseAllBrands:b];
-    for (IPBrand *brand in brandArray) {
-        [dict setObject:brand forKey:brand.poiID];
-    }
-    allBrandDict = dict;
-    
     AGSSpatialReference *spatialReference = [TYMapEnvironment defaultSpatialReference];
-    
-    structureGroupLayer = [IPStructureGroupLayer structureLayerWithRenderingScheme:renderingScheme SpatialReference:spatialReference];
+    structureGroupLayer = [IPStructureGroupLayer structureLayerWithSpatialReference:spatialReference];
     [self addMapLayer:structureGroupLayer.floorLayer withName:LAYER_NAME_FLOOR];
     [self addMapLayer:structureGroupLayer.roomLayer withName:LAYER_NAME_ROOM];
-    
     parkingLayer = [[IPParkingLayer alloc] initWithSpatialReference:spatialReference];
     [self addMapLayer:parkingLayer withName:LAYER_NAME_PARKING];
-    
     [self addMapLayer:structureGroupLayer.assetLayer withName:LAYER_NAME_ASSET];
     
-
-    
-    labelGroupLayer = [IPLabelGroupLayer labelGroupLayerWithRenderingScheme:renderingScheme SpatialReference:spatialReference];
+    labelGroupLayer = [IPLabelGroupLayer labelGroupLayerWithSpatialReference:spatialReference];
     labelGroupLayer.mapView = self;
     labelGroupLayer.labelLayer.brandDict = allBrandDict;
     [self addMapLayer:labelGroupLayer.facilityLayer withName:LAYER_NAME_FACILITY];
@@ -379,6 +336,58 @@
     locationLayer = [[IPLocationLayer alloc] initWithSpatialReference:spatialReference];
     [self addMapLayer:locationLayer withName:LAYER_NAME_LOCATION];
     locationLayer.allowHitTest = NO;
+}
+
+- (void)loadBuilding:(TYBuilding *)b UserID:(NSString *)uID License:(NSString *)license
+{
+    _building = b;
+    mapCredential = [TYMapCredential credentialWithUserID:uID BuildingID:_building.buildingID License:license];
+    NSString *symbolDBPath = [IPMapFileManager getSymbolDBPath:_building];
+    renderingScheme = [[TYRenderingScheme alloc] initWithPath:symbolDBPath];
+
+    NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+    NSArray *brandArray = [IPBrand parseAllBrands:b];
+    for (IPBrand *brand in brandArray) {
+        [dict setObject:brand forKey:brand.poiID];
+    }
+    allBrandDict = dict;
+    
+    [structureGroupLayer setRenderingScheme:renderingScheme];
+    [labelGroupLayer setRenderingScheme:renderingScheme];
+}
+
+- (void)switchBuilding:(TYBuilding *)b UserID:(NSString *)uID License:(NSString *)license
+{
+    _currentMapInfo = nil;
+    _building = b;
+    mapCredential = [TYMapCredential credentialWithUserID:uID BuildingID:_building.buildingID License:license];
+    
+    [locationLayer removeAllGraphics];
+    [routeLayer removeAllGraphics];
+    [routeHintLayer removeAllGraphics];
+    [animatedRouteArrowLayer stopShowingArrow];
+    [parkingLayer removeAllGraphics];
+    [structureGroupLayer loadContents:nil];
+    [labelGroupLayer loadContents:nil];
+    
+    NSString *symbolDBPath = [IPMapFileManager getSymbolDBPath:_building];
+    renderingScheme = [[TYRenderingScheme alloc] initWithPath:symbolDBPath];
+    
+    NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+    NSArray *brandArray = [IPBrand parseAllBrands:b];
+    for (IPBrand *brand in brandArray) {
+        [dict setObject:brand forKey:brand.poiID];
+    }
+    allBrandDict = dict;
+    
+    [structureGroupLayer setRenderingScheme:renderingScheme];
+    [labelGroupLayer setRenderingScheme:renderingScheme];
+}
+
+- (void)initMapViewWithBuilding:(TYBuilding *)b UserID:(NSString *)uID License:(NSString *)license
+{
+    [self initMapView];
+    [self loadBuilding:b UserID:uID License:license];
 }
 
 /**

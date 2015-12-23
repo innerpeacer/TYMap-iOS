@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <ArcGIS/ArcGIS.h>
 
-@interface IPArcGISDrawer : NSObject
+@interface TYArcGISDrawer : NSObject
 
 + (void)drawPoint:(AGSPoint *)p AtLayer:(AGSGraphicsLayer *)layer WithColor:(UIColor *)color;
 

@@ -30,6 +30,7 @@
 #pragma mark User API
 #define TY_API_GET_ALL_CITIES @"/TYMapServerManager/user/GetAllCities"
 #define TY_API_GET_ALL_BUILDINGS @"/TYMapServerManager/user/GetAllBuildings"
+#define TY_API_GET_ALL_CITY_BUILDINGS @"/TYMapServerManager/user/GetAllCityBuildings"
 #define TY_API_GET_ALL_MAPINFOS @"/TYMapServerManager/user/GetAllMapInfos"
 
 #define TY_API_GET_TARGET_CITY @"/TYMapServerManager/user/GetCity"

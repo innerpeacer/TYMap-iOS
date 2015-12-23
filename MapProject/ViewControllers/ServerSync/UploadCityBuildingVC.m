@@ -84,7 +84,7 @@
             TYCity *c = obj;
             [cityString appendFormat:@"[%@] ", c.name];
         }];
-        [self addToLog:cityString];
+//        [self addToLog:cityString];
     }
     
     if ([api isEqualToString:TY_API_GET_ALL_BUILDINGS]) {
@@ -95,7 +95,7 @@
             TYBuilding *b = obj;
             [buildingString appendFormat:@"[%@] ", b.name];
         }];
-        [self addToLog:buildingString];
+//        [self addToLog:buildingString];
     }
     
     if ([api isEqualToString:TY_API_GET_ALL_MAPINFOS]) {
@@ -106,9 +106,15 @@
             TYMapInfo *m = obj;
             [mapInfoString appendFormat:@"[%@] ", m.mapID];
         }];
-        [self addToLog:mapInfoString];
+//        [self addToLog:mapInfoString];
     }
     
+}
+
+- (void)CBMDownlaoder:(IPCBMDownloader *)downloader DidFinishDownloadingCityBuildingsWithApi:(NSString *)api WithCities:(NSArray *)cityArray Buildings:(NSArray *)buildingArray
+{
+    [self addToLog:[NSString stringWithFormat:@"Records: %d", (int)(cityArray.count + buildingArray.count)]];
+    [self addToLog:[NSString stringWithFormat:@"Get %d Cities, %d Buildings From Server", (int)cityArray.count, (int)buildingArray.count]];
 }
 
 - (void)CBMDownloader:(IPCBMDownloader *)downloader DidFailedDownloadingWithApi:(NSString *)api WithError:(NSError *)error
@@ -154,6 +160,12 @@
     [webDownloader getAllMapInfos];
 }
 
+- (void)getAllCityBuildings
+{
+    [self addToLog:[NSString stringWithFormat:@"======= getAllCityBuildings:\n%@%@", hostName, TY_API_GET_ALL_CITY_BUILDINGS]];
+    [webDownloader getAllCityBuildings];
+}
+
 - (IBAction)uploadCitiesAndBuildings:(id)sender {
     NSLog(@"uploadCitiesAndBuildings");
     [self uploadAllCities];
@@ -166,6 +178,7 @@
     [self getAllCities];
     [self getAllBuildings];
     [self getAllMapInfos];
+    [self getAllCityBuildings];
 }
 
 

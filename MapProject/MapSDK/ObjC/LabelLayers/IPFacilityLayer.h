@@ -19,6 +19,7 @@
 @property (nonatomic, weak) IPLabelGroupLayer *groupLayer;
 
 + (IPFacilityLayer *)facilityLayerWithRenderingScheme:(TYRenderingScheme *)aRenderingScheme SpatialReference:(AGSSpatialReference *)sr;
++ (IPFacilityLayer *)facilityLayerWithSpatialReference:(AGSSpatialReference *)sr;
 
 - (void)loadContents:(AGSFeatureSet *)set;
 

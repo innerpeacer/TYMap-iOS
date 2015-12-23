@@ -25,6 +25,20 @@
     return [[IPFloorLayer alloc] initFloorLayerWithRenderingScheme:aRenderingScheme SpatialReference:sr];
 }
 
++ (IPFloorLayer *)floorLayerWithSpatialReference:(AGSSpatialReference *)sr
+{
+    return [[IPFloorLayer alloc] initWithSpatialReference:sr];
+}
+
+- (id)initFloorLayerWithSpatialReference:(AGSSpatialReference *)sr
+{
+    self = [super initWithSpatialReference:sr];
+    if (self) {
+        
+    }
+    return self;
+}
+
 - (id)initFloorLayerWithRenderingScheme:(TYRenderingScheme *)aRenderingScheme SpatialReference:(AGSSpatialReference *)sr
 {
     self = [super initWithSpatialReference:sr];

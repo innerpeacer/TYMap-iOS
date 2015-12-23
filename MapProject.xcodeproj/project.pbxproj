@@ -71,7 +71,7 @@
 		572407AD1BC9A8A10050BA41 /* IPLabelGroupLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5724075B1BC9A8A10050BA41 /* IPLabelGroupLayer.m */; };
 		572407AE1BC9A8A10050BA41 /* IPTextLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5724075D1BC9A8A10050BA41 /* IPTextLabel.m */; };
 		572407AF1BC9A8A10050BA41 /* IPTextLabelLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5724075F1BC9A8A10050BA41 /* IPTextLabelLayer.m */; };
-		572407B01BC9A8A10050BA41 /* IPArcGISDrawer.m in Sources */ = {isa = PBXBuildFile; fileRef = 572407621BC9A8A10050BA41 /* IPArcGISDrawer.m */; };
+		572407B01BC9A8A10050BA41 /* TYArcGISDrawer.m in Sources */ = {isa = PBXBuildFile; fileRef = 572407621BC9A8A10050BA41 /* TYArcGISDrawer.m */; };
 		572407B11BC9A8A10050BA41 /* IPAreaAnalysis.m in Sources */ = {isa = PBXBuildFile; fileRef = 572407641BC9A8A10050BA41 /* IPAreaAnalysis.m */; };
 		572407B41BC9A8A10050BA41 /* TYMapEnviroment.m in Sources */ = {isa = PBXBuildFile; fileRef = 5724076A1BC9A8A10050BA41 /* TYMapEnviroment.m */; };
 		572407B71BC9A8A10050BA41 /* TYMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 572407721BC9A8A10050BA41 /* TYMapView.m */; };
@@ -320,8 +320,8 @@
 		5724075D1BC9A8A10050BA41 /* IPTextLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPTextLabel.m; sourceTree = "<group>"; };
 		5724075E1BC9A8A10050BA41 /* IPTextLabelLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPTextLabelLayer.h; sourceTree = "<group>"; };
 		5724075F1BC9A8A10050BA41 /* IPTextLabelLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPTextLabelLayer.m; sourceTree = "<group>"; };
-		572407611BC9A8A10050BA41 /* IPArcGISDrawer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPArcGISDrawer.h; sourceTree = "<group>"; };
-		572407621BC9A8A10050BA41 /* IPArcGISDrawer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPArcGISDrawer.m; sourceTree = "<group>"; };
+		572407611BC9A8A10050BA41 /* TYArcGISDrawer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYArcGISDrawer.h; sourceTree = "<group>"; };
+		572407621BC9A8A10050BA41 /* TYArcGISDrawer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYArcGISDrawer.m; sourceTree = "<group>"; };
 		572407631BC9A8A10050BA41 /* IPAreaAnalysis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPAreaAnalysis.h; sourceTree = "<group>"; };
 		572407641BC9A8A10050BA41 /* IPAreaAnalysis.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPAreaAnalysis.m; sourceTree = "<group>"; };
 		572407691BC9A8A10050BA41 /* TYMapEnviroment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYMapEnviroment.h; sourceTree = "<group>"; };
@@ -810,8 +810,8 @@
 				57215D421C23DAA200B8B271 /* TYMapCredential_Private.h */,
 				57215D431C23DAA200B8B271 /* TYMapCredential.h */,
 				57215D441C23DAA200B8B271 /* TYMapCredential.m */,
-				572407611BC9A8A10050BA41 /* IPArcGISDrawer.h */,
-				572407621BC9A8A10050BA41 /* IPArcGISDrawer.m */,
+				572407611BC9A8A10050BA41 /* TYArcGISDrawer.h */,
+				572407621BC9A8A10050BA41 /* TYArcGISDrawer.m */,
 				572407631BC9A8A10050BA41 /* IPAreaAnalysis.h */,
 				572407641BC9A8A10050BA41 /* IPAreaAnalysis.m */,
 				572407691BC9A8A10050BA41 /* TYMapEnviroment.h */,
@@ -1473,7 +1473,7 @@
 				57012A921BFED73C0014CCEF /* IPXPathCalibration.cpp in Sources */,
 				572B98BD1BDA104200506A7E /* OriginalShpRecord.m in Sources */,
 				576AEEB21B61D9E400D55CA4 /* CustomCalloutVC.m in Sources */,
-				572407B01BC9A8A10050BA41 /* IPArcGISDrawer.m in Sources */,
+				572407B01BC9A8A10050BA41 /* TYArcGISDrawer.m in Sources */,
 				57EB45761B73D2B50050956F /* RATreeNodeInfo.m in Sources */,
 				57EB457F1B73D3690050956F /* RADataObject.m in Sources */,
 				5724071F1BC9A8520050BA41 /* IPLicenseValidation.mm in Sources */,

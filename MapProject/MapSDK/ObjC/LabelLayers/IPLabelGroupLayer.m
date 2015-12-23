@@ -22,6 +22,28 @@
     return [[IPLabelGroupLayer alloc] initWithRenderingScheme:aRenderingScheme SpatialReference:sr];
 }
 
++ (IPLabelGroupLayer *)labelGroupLayerWithSpatialReference:(AGSSpatialReference *)sr
+{
+    return [[IPLabelGroupLayer alloc] initWithSpatialReference:sr];
+}
+
+- (id)initWithSpatialReference:(AGSSpatialReference *)sr
+{
+    self = [super init];
+    if (self) {
+        visiableBorders = [[NSMutableArray alloc] init];
+
+        _labelLayer = [IPTextLabelLayer textLabelLayerWithSpatialReference:sr];
+        _labelLayer.allowHitTest = NO;
+        _labelLayer.groupLayer = self;
+        
+        _facilityLayer = [IPFacilityLayer facilityLayerWithSpatialReference:sr];
+        _facilityLayer.selectionColor = [UIColor cyanColor];
+        _facilityLayer.groupLayer = self;
+    }
+    return self;
+}
+
 - (id)initWithRenderingScheme:(TYRenderingScheme *)aRenderingScheme SpatialReference:(AGSSpatialReference *)sr
 {
     self = [super init];

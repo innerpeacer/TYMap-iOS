@@ -19,12 +19,10 @@
 @property (nonatomic, strong) IPAssetLayer *assetLayer;
 
 + (IPStructureGroupLayer *)structureLayerWithRenderingScheme:(TYRenderingScheme *)aRenderingScheme SpatialReference:(AGSSpatialReference *)sr;
++ (IPStructureGroupLayer *)structureLayerWithSpatialReference:(AGSSpatialReference *)sr;
 - (void)setRenderingScheme:(TYRenderingScheme *)rs;
 
-
-//- (void)loadContentsWithInfo:(TYMapInfo *)info;
 - (void)loadContents:(NSDictionary *)mapData;
-
 
 - (TYPoi *)getRoomPoiWithPoiID:(NSString *)pid;
 - (void)highlightRoomPoi:(NSString *)poiID;

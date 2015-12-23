@@ -14,6 +14,7 @@
 @interface IPRoomLayer : AGSGraphicsLayer
 
 + (IPRoomLayer *)roomLayerWithRenderingScheme:(TYRenderingScheme *)aRenderingScheme SpatialReference:(AGSSpatialReference *)sr;
++ (IPRoomLayer *)roomLayerWithSpatialReference:(AGSSpatialReference *)sr;
 
 - (void)loadContents:(AGSFeatureSet *)set;
 

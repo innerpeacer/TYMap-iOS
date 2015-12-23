@@ -53,6 +53,11 @@
     [downloader downloadWithApi:TY_API_GET_ALL_MAPINFOS Parameters:[user buildDictionary]];
 }
 
+- (void)getAllCityBuildings
+{
+    [downloader downloadWithApi:TY_API_GET_ALL_CITY_BUILDINGS Parameters:[user buildDictionary]];
+}
+
 - (void)getCBM
 {
     [downloader downloadWithApi:TY_API_GET_TARGET_CBM Parameters:[user buildDictionary]];
@@ -100,6 +105,12 @@
         if ([api isEqualToString:TY_API_GET_TARGET_BUILDING] || [api isEqualToString:TY_API_GET_ALL_BUILDINGS]) {
             NSArray *buildingArray = [IPWebObjectConverter parseBuildingArray:resultDict[@"buildings"]];
             [self notifyDownloadingWithApi:api WithResult:buildingArray Records:records];
+        }
+        
+        if ([api isEqualToString:TY_API_GET_ALL_CITY_BUILDINGS]) {
+            NSArray *cityArray = [IPWebObjectConverter parseCityArray:resultDict[@"cities"]];
+            NSArray *buildingArray = [IPWebObjectConverter parseBuildingArray:resultDict[@"buildings"]];
+            [self notifyDownloadingCityBuildingsWithApi:api WithCities:cityArray Buildings:buildingArray];
         }
         
         if ([api isEqualToString:TY_API_GET_TARGET_MAPINFO] || [api isEqualToString:TY_API_GET_ALL_MAPINFOS]) {
@@ -163,6 +174,13 @@
 {
     if (self.delegate && [self.delegate respondsToSelector:@selector(CBMDownloader:DidFinishDownloadingCBMWithApi:WithCity:Building:MapInfos:)]) {
         [self.delegate CBMDownloader:self DidFinishDownloadingCBMWithApi:api WithCity:city Building:building MapInfos:mapInfoArray];
+    }
+}
+
+- (void)notifyDownloadingCityBuildingsWithApi:(NSString *)api WithCities:(NSArray *)cityArray Buildings:(NSArray *)buildingArray
+{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(CBMDownlaoder:DidFinishDownloadingCityBuildingsWithApi:WithCities:Buildings:)]) {
+        [self.delegate CBMDownlaoder:self DidFinishDownloadingCityBuildingsWithApi:api WithCities:cityArray Buildings:buildingArray];
     }
 }
 

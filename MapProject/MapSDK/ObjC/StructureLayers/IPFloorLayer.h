@@ -13,6 +13,7 @@
 @interface IPFloorLayer : AGSGraphicsLayer
 
 + (IPFloorLayer *)floorLayerWithRenderingScheme:(TYRenderingScheme *)aRenderingScheme SpatialReference:(AGSSpatialReference *)sr;
++ (IPFloorLayer *)floorLayerWithSpatialReference:(AGSSpatialReference *)sr;
 
 - (void)loadContents:(AGSFeatureSet *)set;
 - (void)setRenderingScheme:(TYRenderingScheme *)rs;

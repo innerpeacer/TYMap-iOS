@@ -30,6 +30,20 @@
     return [[IPRoomLayer alloc] initRoomLayerWithRenderingScheme:aRenderingScheme SpatialReference:sr];
 }
 
++ (IPRoomLayer *)roomLayerWithSpatialReference:(AGSSpatialReference *)sr
+{
+    return [[IPRoomLayer alloc] initWithSpatialReference:sr];
+}
+
+- (id)initRoomLayerWithSpatialReference:(AGSSpatialReference *)sr
+{
+    self = [super initWithSpatialReference:sr];
+    if (self) {
+        roomDict = [[NSMutableDictionary alloc] init];
+    }
+    return self;
+}
+
 - (id)initRoomLayerWithRenderingScheme:(TYRenderingScheme *)aRenderingScheme SpatialReference:(AGSSpatialReference *)sr
 {
     self = [super initWithSpatialReference:sr];

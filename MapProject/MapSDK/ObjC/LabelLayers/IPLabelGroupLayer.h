@@ -21,8 +21,8 @@
 @property (nonatomic, strong) IPFacilityLayer *facilityLayer;
 
 + (IPLabelGroupLayer *)labelGroupLayerWithRenderingScheme:(TYRenderingScheme *)aRenderingScheme SpatialReference:(AGSSpatialReference *)sr;
++ (IPLabelGroupLayer *)labelGroupLayerWithSpatialReference:(AGSSpatialReference *)sr;
 
-//- (void)loadContentsWithInfo:(TYMapInfo *)info;
 - (void)loadContents:(NSDictionary *)mapData;
 
 - (void)setRenderingScheme:(TYRenderingScheme *)rs;

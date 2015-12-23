@@ -39,7 +39,7 @@
 
     [TYMapEnvironment setRootDirectoryForMapFiles:[documentDirectory stringByAppendingPathComponent:DEFAULT_MAP_ROOT]];
 
-//    [self copyMapFilesIfNeeded];
+    [self copyMapFilesIfNeeded];
     [self setDefaultPlaceIfNeeded];
     
     return YES;

@@ -26,6 +26,20 @@
     return [[IPAssetLayer alloc] initAssetLayerWithRenderingScheme:aRenderingScheme SpatialReference:sr];
 }
 
++ (IPAssetLayer *)assetLayerWithSpatialReference:(AGSSpatialReference *)sr
+{
+    return [[IPAssetLayer alloc] initWithSpatialReference:sr];
+}
+
+- (id)initAssetLayerWithSpatialReference:(AGSSpatialReference *)sr
+{
+    self = [super initWithSpatialReference:sr];
+    if (self) {
+        
+    }
+    return self;
+}
+
 - (id)initAssetLayerWithRenderingScheme:(TYRenderingScheme *)aRenderingScheme SpatialReference:(AGSSpatialReference *)sr
 {
     self = [super initWithSpatialReference:sr];

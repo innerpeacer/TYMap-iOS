@@ -13,6 +13,12 @@
   },
   {
   "UserID" : "ty4e13f85911a44a75",
+  "BuildingID" : "00100005",
+  "License" : "bc49b733ea7gd0g:b5gf6oe239cac532",
+  "Expiration Date" : "20160601"
+  },
+  {
+  "UserID" : "ty4e13f85911a44a75",
   "BuildingID" : "00200001",
   "License" : "31ea5d460lb6oig=7817=6e18c205b62",
   "Expiration Date" : "20160601"
@@ -21,6 +27,12 @@
   "UserID" : "ty4e13f85911a44a75",
   "BuildingID" : "00200002",
   "License" : "eeeb3145270e4?=o5ccdf`?`07df6c55",
+  "Expiration Date" : "20160601"
+  },
+  {
+  "UserID" : "ty4e13f85911a44a75",
+  "BuildingID" : "00200003",
+  "License" : "decc5bc0<ffb3;7<;25cad525f7ed5df",
   "Expiration Date" : "20160601"
   },
   {
@@ -73,12 +85,6 @@
   },
   {
   "UserID" : "ty4e13f85911a44a75",
-  "BuildingID" : "002199999",
-  "License" : "926b1040a137>941fe`7eo?5f97eb248",
-  "Expiration Date" : "20160601"
-  },
-  {
-  "UserID" : "ty4e13f85911a44a75",
   "BuildingID" : "00210001",
   "License" : "34baf6ac3050dj=04df065?<bc85eea8",
   "Expiration Date" : "20160601"
@@ -87,12 +93,6 @@
   "UserID" : "ty4e13f85911a44a75",
   "BuildingID" : "00210100",
   "License" : "7c979204a41gc858f`bg1f75228079b9",
-  "Expiration Date" : "20160601"
-  },
-  {
-  "UserID" : "ty4e13f85911a44a75",
-  "BuildingID" : "00218888",
-  "License" : "12d643994bf7of?g3657515b59a97ed0",
   "Expiration Date" : "20160601"
   },
   {
@@ -177,6 +177,12 @@
   "UserID" : "ty4e13f85911a44a75",
   "BuildingID" : "H8520001",
   "License" : "575d5f35\u001e8<e41ajadhffncf5ca492e2",
+  "Expiration Date" : "20160601"
+  },
+  {
+  "UserID" : "ty4e13f85911a44a75",
+  "BuildingID" : "00290001",
+  "License" : "237740c1ff1?ck4la2b7146`4f8b96e9",
   "Expiration Date" : "20160601"
   },
   {
