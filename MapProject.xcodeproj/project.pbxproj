@@ -140,6 +140,7 @@
 		578771291BBB914700F90D7B /* TYLink.m in Sources */ = {isa = PBXBuildFile; fileRef = 578771281BBB914700F90D7B /* TYLink.m */; };
 		5787712C1BBB915E00F90D7B /* RouteNetworkDataset.m in Sources */ = {isa = PBXBuildFile; fileRef = 5787712B1BBB915E00F90D7B /* RouteNetworkDataset.m */; };
 		5787712F1BBB916B00F90D7B /* TYNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 5787712E1BBB916B00F90D7B /* TYNode.m */; };
+		5798E2D11C2D1FE8002711D1 /* IPSyncPOIDBAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5798E2D01C2D1FE8002711D1 /* IPSyncPOIDBAdapter.m */; };
 		579B587B1B74F31B00F05206 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 579B587A1B74F31B00F05206 /* Images.xcassets */; };
 		579C2C611C200BDB00786AF2 /* IPSyncSymbolRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 579C2C601C200BDB00786AF2 /* IPSyncSymbolRecord.m */; };
 		57B953391BDDFB0700D9D318 /* GenerateAllMapDBVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 57B953381BDDFB0700D9D318 /* GenerateAllMapDBVC.m */; };
@@ -450,6 +451,8 @@
 		5787712D1BBB916B00F90D7B /* TYNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYNode.h; sourceTree = "<group>"; };
 		5787712E1BBB916B00F90D7B /* TYNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYNode.m; sourceTree = "<group>"; };
 		5794C0FA1B5613CC002DCE9F /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		5798E2CF1C2D1FE8002711D1 /* IPSyncPOIDBAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPSyncPOIDBAdapter.h; sourceTree = "<group>"; };
+		5798E2D01C2D1FE8002711D1 /* IPSyncPOIDBAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPSyncPOIDBAdapter.m; sourceTree = "<group>"; };
 		579B587A1B74F31B00F05206 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		579C2C5F1C200BDB00786AF2 /* IPSyncSymbolRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPSyncSymbolRecord.h; sourceTree = "<group>"; };
 		579C2C601C200BDB00786AF2 /* IPSyncSymbolRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPSyncSymbolRecord.m; sourceTree = "<group>"; };
@@ -1294,6 +1297,8 @@
 				57FF26441C1FF707009482B2 /* IPSyncMapRouteDBAdapter.mm */,
 				572C7A5A1C2115BB00AF14A7 /* IPSyncMapSymbolDBAdapter.h */,
 				572C7A5B1C2115BB00AF14A7 /* IPSyncMapSymbolDBAdapter.m */,
+				5798E2CF1C2D1FE8002711D1 /* IPSyncPOIDBAdapter.h */,
+				5798E2D01C2D1FE8002711D1 /* IPSyncPOIDBAdapter.m */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -1508,6 +1513,7 @@
 				57EB45791B73D2B50050956F /* RATreeView+TableViewDataSource.m in Sources */,
 				57215D971C24119900B8B271 /* TYRouteResult.m in Sources */,
 				572407AF1BC9A8A10050BA41 /* IPTextLabelLayer.m in Sources */,
+				5798E2D11C2D1FE8002711D1 /* IPSyncPOIDBAdapter.m in Sources */,
 				574F5E401BDAB2E5001967F6 /* IPXMapDataDBAdapter.cpp in Sources */,
 				579C2C611C200BDB00786AF2 /* IPSyncSymbolRecord.m in Sources */,
 				574F5E3D1BDAAE07001967F6 /* IPXFeatureRecord.cpp in Sources */,

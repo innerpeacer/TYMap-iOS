@@ -8,7 +8,7 @@
 
 #import "CreatingPOIDBAdapter.h"
 #import "FMDatabase.h"
-#import "TYPoi.h"
+#import "IPMapDBConstants.h"
 
 @interface CreatingPOIDBAdapter()
 {
@@ -17,35 +17,7 @@
 
 @end
 
-
-#define TABLE_POI @"POI"
-
-#define FIELD_GEO_ID @"GEO_ID"
-#define FIELD_POI_ID @"POI_ID"
-#define FIELD_BUILDING_ID @"BUILDING_ID"
-#define FIELD_FLOOR_ID @"FLOOR_ID"
-#define FIELD_NAME @"NAME"
-#define FIELD_CATEGORY_ID @"CATEGORY_ID"
-#define FIELD_COLOR @"COLOR"
-#define FIELD_FLOOR_INDEX @"FLOOR_INDEX"
-#define FIELD_FLOOR_NAME @"FLOOR_NAME"
-#define FIELD_LABEL_X @"LABEL_X"
-#define FIELD_LABEL_Y @"LABEL_Y"
-#define FIELD_POI_LAYER @"LAYER"
-
 @implementation CreatingPOIDBAdapter
-
-//static CreatingPOIDBAdapter *_sharedDBAdapter;
-//static NSString *_currentBuildingID;
-
-//+ (CreatingPOIDBAdapter *)sharedDBAdapter:(NSString *)buildingID
-//{
-//    if (_currentBuildingID == nil || ![_currentBuildingID isEqualToString:buildingID]) {
-//        _sharedDBAdapter = [[CreatingPOIDBAdapter alloc] initWithDBFile:buildingID];
-//        _currentBuildingID = buildingID;
-//    }
-//    return _sharedDBAdapter;
-//}
 
 - (id)initWithDBPath:(NSString *)path
 {
@@ -67,7 +39,21 @@
 
 - (BOOL)createPOITable
 {
-    NSString *sql = @"CREATE TABLE POI (_id integer PRIMARY KEY, GEO_ID text, POI_ID text, BUILDING_ID text, FLOOR_ID text,  NAME text, CATEGORY_ID integer, LABEL_X double, LABEL_Y double, COLOR integer, FLOOR_INDEX integer, FLOOR_NAME text, LAYER integer);";
+    NSString *sql = [NSString stringWithFormat:@"create table if not exists %@ (%@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@);", TABLE_POI,
+                            [NSString stringWithFormat:@"%@ integer primary key autoincrement", FIELD_POI_0_PRIMARY_KEY],
+                            [NSString stringWithFormat:@"%@ text not null", FIELD_POI_1_GEO_ID],
+                            [NSString stringWithFormat:@"%@ text not null", FIELD_POI_2_POI_ID],
+                            [NSString stringWithFormat:@"%@ text not null", FIELD_POI_3_BUILDING_ID],
+                            [NSString stringWithFormat:@"%@ text not null", FIELD_POI_4_FLOOR_ID],
+                            [NSString stringWithFormat:@"%@ text", FIELD_POI_5_NAME],
+                            [NSString stringWithFormat:@"%@ integer not null", FIELD_POI_6_CATEGORY_ID],
+                            [NSString stringWithFormat:@"%@ real not null", FIELD_POI_7_LABEL_X],
+                            [NSString stringWithFormat:@"%@ real not null", FIELD_POI_8_LABEL_Y],
+                            [NSString stringWithFormat:@"%@ integer not null", FIELD_POI_9_SYMBOL_ID],
+                            [NSString stringWithFormat:@"%@ integer not null", FIELD_POI_10_FLOOR_NUMBER],
+                            [NSString stringWithFormat:@"%@ text not null", FIELD_POI_11_FLOOR_NAME],
+                            [NSString stringWithFormat:@"%@ integer not null", FIELD_POI_12_LAYER]
+                            ];
     if ([database executeUpdate:sql]) {
         return YES;
     } else {
@@ -102,7 +88,7 @@
     NSMutableString *sql = [NSMutableString stringWithFormat:@"Insert into %@", TABLE_POI];
     
     NSMutableArray *arguments = [[NSMutableArray alloc] init];
-    NSString *fields = [NSString stringWithFormat:@" ( %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@) ", FIELD_GEO_ID, FIELD_POI_ID, FIELD_BUILDING_ID, FIELD_FLOOR_ID, FIELD_NAME, FIELD_CATEGORY_ID, FIELD_LABEL_X, FIELD_LABEL_Y, FIELD_COLOR, FIELD_FLOOR_INDEX, FIELD_FLOOR_NAME, FIELD_POI_LAYER];
+    NSString *fields = [NSString stringWithFormat:@" ( %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@) ", FIELD_POI_1_GEO_ID, FIELD_POI_2_POI_ID, FIELD_POI_3_BUILDING_ID, FIELD_POI_4_FLOOR_ID, FIELD_POI_5_NAME, FIELD_POI_6_CATEGORY_ID, FIELD_POI_7_LABEL_X, FIELD_POI_8_LABEL_Y, FIELD_POI_9_SYMBOL_ID, FIELD_POI_10_FLOOR_NUMBER, FIELD_POI_11_FLOOR_NAME, FIELD_POI_12_LAYER];
     NSString *values = @" ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ";
     
     [arguments addObject:gid];

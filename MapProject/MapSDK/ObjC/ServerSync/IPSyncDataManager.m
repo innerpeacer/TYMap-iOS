@@ -14,6 +14,8 @@
 #import "IPSyncMapSymbolDBAdapter.h"
 #import "IPSyncMapDBAdapter.h"
 #import "IPSyncMapRouteDBAdapter.h"
+#import "IPSyncPOIDBAdapter.h"
+#import "TYPoi.h"
 
 @interface IPSyncDataManager() <IPSyncDownloadingTaskDelegate>
 {
@@ -68,6 +70,11 @@
     return [rootDir stringByAppendingPathComponent:@"TYMap.db"];
 }
 
+- (NSString *)getPoiDBPath:(TYBuilding *)b
+{
+    return [[[rootDir stringByAppendingPathComponent:b.cityID] stringByAppendingPathComponent:b.buildingID] stringByAppendingPathComponent:[NSString stringWithFormat:@"%@_POI.db", b.buildingID]];
+}
+
 - (void)DownloadingTaskDidFailedDownloading:(IPSyncDownloadingTask *)task InStep:(int)step WithError:(NSError *)error
 {
     [self notifyFailedInStep:step WithError:error];
@@ -78,6 +85,8 @@
     NSLog(@"Finish Downloading");
     
     [self notifyFinishDownloadingSyncData];
+    
+    NSDate *now = [NSDate date];
     
     [self checkDir:b];
     
@@ -97,6 +106,23 @@
     [mapdataDB insertMapInfos:mapInfoArray];
     [mapdataDB close];
     
+    NSMutableArray *poiRecordArray = [NSMutableArray array];
+    for (IPSyncMapDataRecord *record in mapDataArray) {
+        if (record.name == nil || record.name.length == 0) {
+            continue;
+        }
+        
+        if (record.layer == 2 || record.layer == 3 || record.layer == 4) {
+            [poiRecordArray addObject:record];
+        }
+    }
+    
+    IPSyncPOIDBAdapter *poiDB = [[IPSyncPOIDBAdapter alloc] initWithPath:[self getPoiDBPath:b]];
+    [poiDB open];
+    [poiDB erasePOITable];
+    [poiDB insertPOIRecords:poiRecordArray];
+    [poiDB close];
+    
     IPSyncMapSymbolDBAdapter *symbolDB = [[IPSyncMapSymbolDBAdapter alloc] initWithPath:[self getMapDataDBPath:b]];
     [symbolDB open];
     [symbolDB eraseSymbolTable];
@@ -110,6 +136,8 @@
     [routeDB insertRouteLinkRecords:linkArray];
     [routeDB insertRouteNodeRecords:nodeArray];
     [routeDB close];
+    
+    NSLog(@"TimeInterval: %f", [[NSDate date] timeIntervalSinceDate:now]);
     
     [self notifyFinishSyncData];
 

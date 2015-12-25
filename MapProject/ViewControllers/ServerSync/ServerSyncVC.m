@@ -7,8 +7,12 @@
 //
 
 #import "ServerSyncVC.h"
+#import "TYBuildingManager.h"
+#import "TYCityManager.h"
+#import "SelectBuildingVC.h"
+#import "TYUserDefaults.h"
 
-@interface ServerSyncVC()
+@interface ServerSyncVC() <SelectBuildingVCDelegate>
 {
     
 }
@@ -47,7 +51,37 @@
         [self.controllerDict setObject:storyboardID forKey:name];
     }
     
-    [self tableView:self.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+//    [self tableView:self.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"设置" style:UIBarButtonItemStyleBordered target:self action:@selector(choosingPlace:)];
+
+}
+
+- (void)SelectBuildingVC:(SelectBuildingVC *)controller didSelectBuliding:(TYBuilding *)building City:(TYCity *)city
+{
+    NSLog(@"MapDevVC:didSelectBuilding: %@ - %@", building.name, city.name);
+    [TYUserDefaults setDefaultBuilding:building.buildingID];
+    [TYUserDefaults setDefaultCity:city.cityID];
+}
+
+- (IBAction)choosingPlace:(id)sender
+{
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    SelectBuildingVC *controller = [storyboard instantiateViewControllerWithIdentifier:@"selectBuildingController"];
+    
+    controller.cityArray = [TYCityManager parseAllCities];
+    NSMutableArray *array = [NSMutableArray array];
+    for (TYCity *city in controller.cityArray) {
+        NSArray *bArray = [TYBuildingManager parseAllBuildings:city];
+        [array addObject:bArray];
+    }
+    controller.buildingArray = [NSArray arrayWithArray:array];
+    controller.title = @"选择当前位置";
+    controller.selectDelegate = self;
+    
+    UINavigationController *naviController = [[UINavigationController alloc] initWithRootViewController:controller];
+    
+    [self presentViewController:naviController animated:YES completion:nil];
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
