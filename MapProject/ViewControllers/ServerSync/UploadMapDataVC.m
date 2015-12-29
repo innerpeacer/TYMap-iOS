@@ -11,7 +11,7 @@
 #import "TYUserDefaults.h"
 #import "IPMapFileManager.h"
 #import "IPSyncMapDataDBAdapter.h"
-#import "IPWebObjectConverter.h"
+#import "IPMapWebObjectConverter.h"
 #import "TYUserManager.h"
 #import <MKNetworkKit/MKNetworkKit.h>
 #import "IPSyncMapDataDBAdapter.h"

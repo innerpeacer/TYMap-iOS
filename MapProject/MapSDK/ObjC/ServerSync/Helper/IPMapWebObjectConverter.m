@@ -6,14 +6,14 @@
 //  Copyright © 2015年 innerpeacer. All rights reserved.
 //
 
-#import "IPWebObjectConverter.h"
+#import "IPMapWebObjectConverter.h"
 #import <TYMapData/TYMapData.h>
 #import "TYMapInfo.h"
 #import "IPSyncMapDataRecord.h"
 #import "IPSyncRouteRecord.h"
 #import "IPSyncSymbolRecord.h"
 
-@implementation IPWebObjectConverter
+@implementation IPMapWebObjectConverter
 
 + (NSString *)prepareJsonString:(id)jsonObject
 {

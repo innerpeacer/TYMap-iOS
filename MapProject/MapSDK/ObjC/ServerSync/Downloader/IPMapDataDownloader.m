@@ -8,15 +8,15 @@
 
 #import "IPMapDataDownloader.h"
 #import "TYMapEnviroment.h"
-#import "IPWebDownloader.h"
-#import "IPWebObjectConverter.h"
+#import "IPMapWebDownloader.h"
+#import "IPMapWebObjectConverter.h"
 #import "TYMapCredential_Private.h"
-#import "IPApi.h"
+#import "IPMapApi.h"
 
-@interface IPMapDataDownloader() <IPWebDownloaderDelegate>
+@interface IPMapDataDownloader() <IPMapWebDownloaderDelegate>
 {
     TYMapCredential *user;
-    IPWebDownloader *downloader;
+    IPMapWebDownloader *downloader;
 }
 
 @end
@@ -31,7 +31,7 @@
         
         NSString *hostName = [TYMapEnvironment getHostName];
         NSAssert(hostName != nil, @"Host Name must not be nil!");
-        downloader = [[IPWebDownloader alloc] initWithHostName:hostName];
+        downloader = [[IPMapWebDownloader alloc] initWithHostName:hostName];
         downloader.delegate = self;
     }
     return self;
@@ -44,7 +44,7 @@
     [downloader downloadWithApi:TY_API_GET_TARGET_MAPDATA Parameters:param];
 }
 
-- (void)WebDownloaderDidFinishDownloading:(IPWebDownloader *)dataDownloader WithApi:(NSString *)api WithResponseData:(NSData *)responseData ResponseString:(NSString *)responseString
+- (void)WebDownloaderDidFinishDownloading:(IPMapWebDownloader *)dataDownloader WithApi:(NSString *)api WithResponseData:(NSData *)responseData ResponseString:(NSString *)responseString
 {
     NSError *error = nil;
     NSDictionary *resultDict = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:&error];
@@ -59,7 +59,7 @@
     int records = [resultDict[TY_RESPONSE_RECORDS] intValue];
     
     if (success) {
-        NSArray *mapDataArray = [IPWebObjectConverter parseMapDataArray:resultDict[@"mapdatas"]];
+        NSArray *mapDataArray = [IPMapWebObjectConverter parseMapDataArray:resultDict[@"mapdatas"]];
         [self notifyDownloadingWithApi:api WithResult:mapDataArray Records:records];
     } else {
         NSDictionary *userInfo = [NSDictionary dictionaryWithObject:description                                                                     forKey:NSLocalizedDescriptionKey];
@@ -70,7 +70,7 @@
 
 }
 
-- (void)WebDownloaderDidFailedDownloading:(IPWebDownloader *)dataDownloader WithApi:(NSString *)api WithError:(NSError *)error
+- (void)WebDownloaderDidFailedDownloading:(IPMapWebDownloader *)dataDownloader WithApi:(NSString *)api WithError:(NSError *)error
 {
     [self notifyFailedDownloadingWithApi:api WithError:error];
 }

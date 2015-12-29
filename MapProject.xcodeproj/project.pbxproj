@@ -34,16 +34,16 @@
 		57215D4F1C23ECD500B8B271 /* IPCBMDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 57215D481C23ECD500B8B271 /* IPCBMDownloader.m */; };
 		57215D501C23ECD500B8B271 /* IPMapDataDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 57215D4A1C23ECD500B8B271 /* IPMapDataDownloader.m */; };
 		57215D511C23ECD500B8B271 /* IPRouteDataDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 57215D4C1C23ECD500B8B271 /* IPRouteDataDownloader.m */; };
-		57215D521C23ECD500B8B271 /* IPWebDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 57215D4E1C23ECD500B8B271 /* IPWebDownloader.m */; };
+		57215D521C23ECD500B8B271 /* IPMapWebDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 57215D4E1C23ECD500B8B271 /* IPMapWebDownloader.m */; };
 		57215D5D1C23FEC300B8B271 /* NSData+GZIP.m in Sources */ = {isa = PBXBuildFile; fileRef = 57215D571C23FEC300B8B271 /* NSData+GZIP.m */; };
 		57215D5E1C23FEC300B8B271 /* IPBase64Encoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 57215D591C23FEC300B8B271 /* IPBase64Encoding.m */; };
-		57215D5F1C23FEC300B8B271 /* IPWebObjectConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 57215D5B1C23FEC300B8B271 /* IPWebObjectConverter.m */; };
+		57215D5F1C23FEC300B8B271 /* IPMapWebObjectConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 57215D5B1C23FEC300B8B271 /* IPMapWebObjectConverter.m */; };
 		57215D621C2404A200B8B271 /* TYMapDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 57215D611C2404A200B8B271 /* TYMapDataManager.m */; };
 		57215D661C24067800B8B271 /* IPSyncUploadingTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 57215D651C24067800B8B271 /* IPSyncUploadingTask.m */; };
 		57215D7C1C2406C900B8B271 /* IPCBMUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = 57215D751C2406C900B8B271 /* IPCBMUploader.m */; };
 		57215D7D1C2406C900B8B271 /* IPMapDataUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = 57215D771C2406C900B8B271 /* IPMapDataUploader.m */; };
 		57215D7E1C2406C900B8B271 /* IPRouteDataUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = 57215D791C2406C900B8B271 /* IPRouteDataUploader.m */; };
-		57215D7F1C2406C900B8B271 /* IPWebUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = 57215D7B1C2406C900B8B271 /* IPWebUploader.m */; };
+		57215D7F1C2406C900B8B271 /* IPMapWebUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = 57215D7B1C2406C900B8B271 /* IPMapWebUploader.m */; };
 		57215D901C24119900B8B271 /* IPRoutePointConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 57215D811C24119900B8B271 /* IPRoutePointConverter.m */; };
 		57215D911C24119900B8B271 /* TYOfflineRouteManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 57215D821C24119900B8B271 /* TYOfflineRouteManager.mm */; };
 		57215D921C24119900B8B271 /* TYRouteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 57215D831C24119900B8B271 /* TYRouteManager.m */; };
@@ -237,7 +237,6 @@
 		5719D1D91C22ABF20003AA18 /* FetchCompleteDataVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FetchCompleteDataVC.m; sourceTree = "<group>"; };
 		571AC46F1B55FED900E9FF7D /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		571AC4701B55FED900E9FF7D /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
-		57215D401C23D92500B8B271 /* IPApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPApi.h; sourceTree = "<group>"; };
 		57215D421C23DAA200B8B271 /* TYMapCredential_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYMapCredential_Private.h; sourceTree = "<group>"; };
 		57215D431C23DAA200B8B271 /* TYMapCredential.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYMapCredential.h; sourceTree = "<group>"; };
 		57215D441C23DAA200B8B271 /* TYMapCredential.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYMapCredential.m; sourceTree = "<group>"; };
@@ -247,14 +246,14 @@
 		57215D4A1C23ECD500B8B271 /* IPMapDataDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPMapDataDownloader.m; sourceTree = "<group>"; };
 		57215D4B1C23ECD500B8B271 /* IPRouteDataDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPRouteDataDownloader.h; sourceTree = "<group>"; };
 		57215D4C1C23ECD500B8B271 /* IPRouteDataDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPRouteDataDownloader.m; sourceTree = "<group>"; };
-		57215D4D1C23ECD500B8B271 /* IPWebDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPWebDownloader.h; sourceTree = "<group>"; };
-		57215D4E1C23ECD500B8B271 /* IPWebDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPWebDownloader.m; sourceTree = "<group>"; };
+		57215D4D1C23ECD500B8B271 /* IPMapWebDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPMapWebDownloader.h; sourceTree = "<group>"; };
+		57215D4E1C23ECD500B8B271 /* IPMapWebDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPMapWebDownloader.m; sourceTree = "<group>"; };
 		57215D561C23FEC300B8B271 /* NSData+GZIP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+GZIP.h"; sourceTree = "<group>"; };
 		57215D571C23FEC300B8B271 /* NSData+GZIP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+GZIP.m"; sourceTree = "<group>"; };
 		57215D581C23FEC300B8B271 /* IPBase64Encoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPBase64Encoding.h; sourceTree = "<group>"; };
 		57215D591C23FEC300B8B271 /* IPBase64Encoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPBase64Encoding.m; sourceTree = "<group>"; };
-		57215D5A1C23FEC300B8B271 /* IPWebObjectConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPWebObjectConverter.h; sourceTree = "<group>"; };
-		57215D5B1C23FEC300B8B271 /* IPWebObjectConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPWebObjectConverter.m; sourceTree = "<group>"; };
+		57215D5A1C23FEC300B8B271 /* IPMapWebObjectConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPMapWebObjectConverter.h; sourceTree = "<group>"; };
+		57215D5B1C23FEC300B8B271 /* IPMapWebObjectConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPMapWebObjectConverter.m; sourceTree = "<group>"; };
 		57215D601C2404A200B8B271 /* TYMapDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYMapDataManager.h; sourceTree = "<group>"; };
 		57215D611C2404A200B8B271 /* TYMapDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYMapDataManager.m; sourceTree = "<group>"; };
 		57215D641C24067800B8B271 /* IPSyncUploadingTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPSyncUploadingTask.h; sourceTree = "<group>"; };
@@ -265,8 +264,8 @@
 		57215D771C2406C900B8B271 /* IPMapDataUploader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPMapDataUploader.m; sourceTree = "<group>"; };
 		57215D781C2406C900B8B271 /* IPRouteDataUploader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPRouteDataUploader.h; sourceTree = "<group>"; };
 		57215D791C2406C900B8B271 /* IPRouteDataUploader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPRouteDataUploader.m; sourceTree = "<group>"; };
-		57215D7A1C2406C900B8B271 /* IPWebUploader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPWebUploader.h; sourceTree = "<group>"; };
-		57215D7B1C2406C900B8B271 /* IPWebUploader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPWebUploader.m; sourceTree = "<group>"; };
+		57215D7A1C2406C900B8B271 /* IPMapWebUploader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPMapWebUploader.h; sourceTree = "<group>"; };
+		57215D7B1C2406C900B8B271 /* IPMapWebUploader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPMapWebUploader.m; sourceTree = "<group>"; };
 		57215D801C24119900B8B271 /* IPRoutePointConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPRoutePointConverter.h; sourceTree = "<group>"; };
 		57215D811C24119900B8B271 /* IPRoutePointConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPRoutePointConverter.m; sourceTree = "<group>"; };
 		57215D821C24119900B8B271 /* TYOfflineRouteManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TYOfflineRouteManager.mm; sourceTree = "<group>"; };
@@ -372,6 +371,8 @@
 		572408F41BC9B9D00050BA41 /* CreatePOIDatabaseVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreatePOIDatabaseVC.m; sourceTree = "<group>"; };
 		572408F71BC9B9D00050BA41 /* GenerateLicensesVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenerateLicensesVC.h; sourceTree = "<group>"; };
 		572408F81BC9B9D00050BA41 /* GenerateLicensesVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenerateLicensesVC.m; sourceTree = "<group>"; };
+		57261C291C3243250099D924 /* IPMapApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPMapApi.h; sourceTree = "<group>"; };
+		57261C2A1C3243730099D924 /* IPMapApi_Manager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IPMapApi_Manager.h; sourceTree = "<group>"; };
 		572B98BB1BDA104200506A7E /* OriginalShpRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OriginalShpRecord.h; sourceTree = "<group>"; };
 		572B98BC1BDA104200506A7E /* OriginalShpRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OriginalShpRecord.m; sourceTree = "<group>"; };
 		572B98BE1BDA108C00506A7E /* ShpToMapDBConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShpToMapDBConstants.h; sourceTree = "<group>"; };
@@ -604,6 +605,7 @@
 				570ABA671BF9DD650006BC30 /* UploadMapDataVC.m */,
 				570ABA681BF9DD650006BC30 /* UploadRouteDataVC.h */,
 				570ABA691BF9DD650006BC30 /* UploadRouteDataVC.m */,
+				57261C2A1C3243730099D924 /* IPMapApi_Manager.h */,
 			);
 			path = ServerSync;
 			sourceTree = "<group>";
@@ -663,8 +665,8 @@
 				57215D4A1C23ECD500B8B271 /* IPMapDataDownloader.m */,
 				57215D4B1C23ECD500B8B271 /* IPRouteDataDownloader.h */,
 				57215D4C1C23ECD500B8B271 /* IPRouteDataDownloader.m */,
-				57215D4D1C23ECD500B8B271 /* IPWebDownloader.h */,
-				57215D4E1C23ECD500B8B271 /* IPWebDownloader.m */,
+				57215D4D1C23ECD500B8B271 /* IPMapWebDownloader.h */,
+				57215D4E1C23ECD500B8B271 /* IPMapWebDownloader.m */,
 			);
 			path = Downloader;
 			sourceTree = "<group>";
@@ -676,8 +678,8 @@
 				57215D571C23FEC300B8B271 /* NSData+GZIP.m */,
 				57215D581C23FEC300B8B271 /* IPBase64Encoding.h */,
 				57215D591C23FEC300B8B271 /* IPBase64Encoding.m */,
-				57215D5A1C23FEC300B8B271 /* IPWebObjectConverter.h */,
-				57215D5B1C23FEC300B8B271 /* IPWebObjectConverter.m */,
+				57215D5A1C23FEC300B8B271 /* IPMapWebObjectConverter.h */,
+				57215D5B1C23FEC300B8B271 /* IPMapWebObjectConverter.m */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -701,8 +703,8 @@
 				57215D771C2406C900B8B271 /* IPMapDataUploader.m */,
 				57215D781C2406C900B8B271 /* IPRouteDataUploader.h */,
 				57215D791C2406C900B8B271 /* IPRouteDataUploader.m */,
-				57215D7A1C2406C900B8B271 /* IPWebUploader.h */,
-				57215D7B1C2406C900B8B271 /* IPWebUploader.m */,
+				57215D7A1C2406C900B8B271 /* IPMapWebUploader.h */,
+				57215D7B1C2406C900B8B271 /* IPMapWebUploader.m */,
 			);
 			path = Uploader;
 			sourceTree = "<group>";
@@ -1273,9 +1275,9 @@
 		57FF263D1C1FF707009482B2 /* ServerSync */ = {
 			isa = PBXGroup;
 			children = (
+				57261C291C3243250099D924 /* IPMapApi.h */,
 				57215D531C23FEC300B8B271 /* Helper */,
 				57215D461C23ECD500B8B271 /* Downloader */,
-				57215D401C23D92500B8B271 /* IPApi.h */,
 				57FF263E1C1FF707009482B2 /* Database */,
 				57FF26451C1FF707009482B2 /* Entity */,
 				57FF264A1C1FF707009482B2 /* IPSyncDataManager.h */,
@@ -1408,9 +1410,9 @@
 				572407B11BC9A8A10050BA41 /* IPAreaAnalysis.m in Sources */,
 				572C7A5C1C2115BB00AF14A7 /* IPSyncMapSymbolDBAdapter.m in Sources */,
 				57494DDB1B61DAE7000B6F2C /* BaseLogVC.m in Sources */,
-				57215D521C23ECD500B8B271 /* IPWebDownloader.m in Sources */,
+				57215D521C23ECD500B8B271 /* IPMapWebDownloader.m in Sources */,
 				57215D501C23ECD500B8B271 /* IPMapDataDownloader.m in Sources */,
-				57215D7F1C2406C900B8B271 /* IPWebUploader.m in Sources */,
+				57215D7F1C2406C900B8B271 /* IPMapWebUploader.m in Sources */,
 				572407A41BC9A8A10050BA41 /* IPLocationLayer.m in Sources */,
 				57FF26541C1FF71F009482B2 /* TYUserManager.m in Sources */,
 				57215D621C2404A200B8B271 /* TYMapDataManager.m in Sources */,
@@ -1433,7 +1435,7 @@
 				570DF1901BDE86490028E25F /* TYCityManager.m in Sources */,
 				57D167911BBA44FF004BE6B9 /* TYBuildingLink.m in Sources */,
 				570ABA701BF9DD910006BC30 /* ServerSyncVC.m in Sources */,
-				57215D5F1C23FEC300B8B271 /* IPWebObjectConverter.m in Sources */,
+				57215D5F1C23FEC300B8B271 /* IPMapWebObjectConverter.m in Sources */,
 				572407A71BC9A8A10050BA41 /* IPRouteLayer.m in Sources */,
 				574994431BEEF1140064F831 /* IPParkingLayer.m in Sources */,
 				57FF26121C1FD547009482B2 /* IPSymbolDBAdapter.m in Sources */,

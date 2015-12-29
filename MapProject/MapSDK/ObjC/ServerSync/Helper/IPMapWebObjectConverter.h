@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface IPWebObjectConverter : NSObject
+@interface IPMapWebObjectConverter : NSObject
 
 + (NSString *)prepareJsonString:(id)jsonObject;
 + (id)parseJsonOjbect:(NSData *)jsonData;

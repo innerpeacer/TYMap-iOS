@@ -7,17 +7,17 @@
 //
 
 #import "IPMapDataUploader.h"
-#import "IPWebUploader.h"
-#import "IPWebObjectConverter.h"
+#import "IPMapWebUploader.h"
+#import "IPMapWebObjectConverter.h"
 #import "TYMapEnviroment.h"
 #import "TYMapCredential_Private.h"
 
 #define DEFAULT_RECORD_LIMIT_PER_UPLOAD 1500
 
-@interface IPMapDataUploader() <IPWebUploaderDelegate>
+@interface IPMapDataUploader() <IPMapWebUploaderDelegate>
 {
     TYMapCredential *user;
-    IPWebUploader *uploader;
+    IPMapWebUploader *uploader;
     
     NSMutableArray *batchedMapDataRecords;
     int batchIndex;
@@ -39,7 +39,7 @@
         NSString *hostName = [TYMapEnvironment getHostName];
         NSAssert(hostName != nil, @"Host Name must not be nil!");
         
-        uploader = [[IPWebUploader alloc] initWithHostName:hostName];
+        uploader = [[IPMapWebUploader alloc] initWithHostName:hostName];
         uploader.delegate = self;
     }
     return self;
@@ -86,18 +86,18 @@
     param[@"first"] = (index == 0) ? @(YES) : @(NO);
     
     NSArray *dataArray = [batchedMapDataRecords objectAtIndex:index];
-    param[@"mapdatas"] = [IPWebObjectConverter prepareJsonString:[IPWebObjectConverter prepareMapDataObjectArray:dataArray]];
+    param[@"mapdatas"] = [IPMapWebObjectConverter prepareJsonString:[IPMapWebObjectConverter prepareMapDataObjectArray:dataArray]];
     NSData *data = [NSJSONSerialization dataWithJSONObject:param options:NSJSONWritingPrettyPrinted error:nil];
     NSLog(@"Data Length: %d", (int)data.length);
     [uploader uploadWithApi:TY_API_UPLOAD_MAP_DATA Parameters:param];
 }
 
-- (void)WebUploaderDidFailedUploading:(IPWebUploader *)uploader WithApi:(NSString *)api WithError:(NSError *)error
+- (void)WebUploaderDidFailedUploading:(IPMapWebUploader *)uploader WithApi:(NSString *)api WithError:(NSError *)error
 {
     [self notifyFailedUploadingWithApi:api WithError:error];
 }
 
-- (void)WebUploaderDidFinishUploading:(IPWebUploader *)uploader WithApi:(NSString *)api WithResponseData:(NSData *)responseData ResponseString:(NSString *)responseString
+- (void)WebUploaderDidFinishUploading:(IPMapWebUploader *)uploader WithApi:(NSString *)api WithResponseData:(NSData *)responseData ResponseString:(NSString *)responseString
 {
     NSError *error = nil;
     

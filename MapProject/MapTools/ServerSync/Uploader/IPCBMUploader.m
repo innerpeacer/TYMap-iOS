@@ -8,14 +8,14 @@
 
 #import "IPCBMUploader.h"
 #import "TYMapEnviroment.h"
-#import "IPWebUploader.h"
-#import "IPWebObjectConverter.h"
+#import "IPMapWebUploader.h"
+#import "IPMapWebObjectConverter.h"
 #import "TYMapCredential_Private.h"
 
-@interface IPCBMUploader() <IPWebUploaderDelegate>
+@interface IPCBMUploader() <IPMapWebUploaderDelegate>
 {
     TYMapCredential *user;
-    IPWebUploader *uploader;
+    IPMapWebUploader *uploader;
 }
 
 @end
@@ -31,7 +31,7 @@
         NSString *hostName = [TYMapEnvironment getHostName];
         NSAssert(hostName != nil, @"Host Name must not be nil!");
         
-        uploader = [[IPWebUploader alloc] initWithHostName:hostName];
+        uploader = [[IPMapWebUploader alloc] initWithHostName:hostName];
         uploader.delegate = self;
     }
     return self;
@@ -41,7 +41,7 @@
 {
     NSMutableDictionary *param = [[NSMutableDictionary alloc] init];
     param[@"userID"] = user.userID;
-    param[@"cities"] = [IPWebObjectConverter prepareJsonString:[IPWebObjectConverter prepareCityObjectArray:cities]];
+    param[@"cities"] = [IPMapWebObjectConverter prepareJsonString:[IPMapWebObjectConverter prepareCityObjectArray:cities]];
     [uploader uploadWithApi:TY_API_UPLOAD_ALL_CITIES Parameters:param];
 }
 
@@ -49,7 +49,7 @@
 {
     NSMutableDictionary *param = [[NSMutableDictionary alloc] init];
     param[@"userID"] = user.userID;
-    param[@"buildings"] = [IPWebObjectConverter prepareJsonString:[IPWebObjectConverter prepareBuildingObjectArray:buildings]];
+    param[@"buildings"] = [IPMapWebObjectConverter prepareJsonString:[IPMapWebObjectConverter prepareBuildingObjectArray:buildings]];
     [uploader uploadWithApi:TY_API_UPLOAD_ALL_BUILDINGS Parameters:param];
 }
 
@@ -57,7 +57,7 @@
 {
     NSMutableDictionary *param = [[NSMutableDictionary alloc] init];
     param[@"userID"] = user.userID;
-    param[@"mapinfos"] = [IPWebObjectConverter prepareJsonString:[IPWebObjectConverter prepareMapInfoObjectArray:mapInfos]];
+    param[@"mapinfos"] = [IPMapWebObjectConverter prepareJsonString:[IPMapWebObjectConverter prepareMapInfoObjectArray:mapInfos]];
     [uploader uploadWithApi:TY_API_UPLOAD_ALL_MAPINFOS Parameters:param];
 }
 
@@ -65,7 +65,7 @@
 {
     NSMutableDictionary *param = [[NSMutableDictionary alloc] init];
     param[@"userID"] = user.userID;
-    param[@"cities"] = [IPWebObjectConverter prepareJsonString:[IPWebObjectConverter prepareCityObjectArray:cities]];
+    param[@"cities"] = [IPMapWebObjectConverter prepareJsonString:[IPMapWebObjectConverter prepareCityObjectArray:cities]];
     [uploader uploadWithApi:TY_API_ADD_CITIES Parameters:param];
 }
 
@@ -73,7 +73,7 @@
 {
     NSMutableDictionary *param = [[NSMutableDictionary alloc] init];
     param[@"userID"] = user.userID;
-    param[@"buildings"] = [IPWebObjectConverter prepareJsonString:[IPWebObjectConverter prepareBuildingObjectArray:buildings]];
+    param[@"buildings"] = [IPMapWebObjectConverter prepareJsonString:[IPMapWebObjectConverter prepareBuildingObjectArray:buildings]];
     [uploader uploadWithApi:TY_API_ADD_BUILDINGS Parameters:param];
 
 }
@@ -82,7 +82,7 @@
 {
     NSMutableDictionary *param = [[NSMutableDictionary alloc] init];
     [param setValuesForKeysWithDictionary:[user buildDictionary]];
-    param[@"mapinfos"] = [IPWebObjectConverter prepareJsonString:[IPWebObjectConverter prepareMapInfoObjectArray:mapInfos]];
+    param[@"mapinfos"] = [IPMapWebObjectConverter prepareJsonString:[IPMapWebObjectConverter prepareMapInfoObjectArray:mapInfos]];
     [uploader uploadWithApi:TY_API_ADD_MAPINFOS Parameters:param];
 }
 
@@ -90,8 +90,8 @@
 {
     NSMutableDictionary *param = [[NSMutableDictionary alloc] init];
     [param setValuesForKeysWithDictionary:[user buildDictionary]];
-    param[@"fill"] = [IPWebObjectConverter prepareJsonString:[IPWebObjectConverter prepareFillSymbolObjectArray:fills]];
-    param[@"icon"] = [IPWebObjectConverter prepareJsonString:[IPWebObjectConverter prepareIconSymbolObjectArray:icons]];
+    param[@"fill"] = [IPMapWebObjectConverter prepareJsonString:[IPMapWebObjectConverter prepareFillSymbolObjectArray:fills]];
+    param[@"icon"] = [IPMapWebObjectConverter prepareJsonString:[IPMapWebObjectConverter prepareIconSymbolObjectArray:icons]];
     [uploader uploadWithApi:TY_API_UPLOAD_SYMBOLS Parameters:param];
 }
 
@@ -99,18 +99,18 @@
 {
     NSMutableDictionary *param = [[NSMutableDictionary alloc] init];
     [param setValuesForKeysWithDictionary:[user buildDictionary]];
-    param[@"cities"] = [IPWebObjectConverter prepareJsonString:[IPWebObjectConverter prepareCityObjectArray:@[city]]];
-    param[@"buildings"] = [IPWebObjectConverter prepareJsonString:[IPWebObjectConverter prepareBuildingObjectArray:@[builing]]];
-    param[@"mapinfos"] = [IPWebObjectConverter prepareJsonString:[IPWebObjectConverter prepareMapInfoObjectArray:mapInfos]];
+    param[@"cities"] = [IPMapWebObjectConverter prepareJsonString:[IPMapWebObjectConverter prepareCityObjectArray:@[city]]];
+    param[@"buildings"] = [IPMapWebObjectConverter prepareJsonString:[IPMapWebObjectConverter prepareBuildingObjectArray:@[builing]]];
+    param[@"mapinfos"] = [IPMapWebObjectConverter prepareJsonString:[IPMapWebObjectConverter prepareMapInfoObjectArray:mapInfos]];
     [uploader uploadWithApi:TY_API_ADD_CBM Parameters:param];
 }
 
-- (void)WebUploaderDidFailedUploading:(IPWebUploader *)uploader WithApi:(NSString *)api WithError:(NSError *)error
+- (void)WebUploaderDidFailedUploading:(IPMapWebUploader *)uploader WithApi:(NSString *)api WithError:(NSError *)error
 {
     [self notifyFailedUploadingWithApi:api WithError:error];
 }
 
-- (void)WebUploaderDidFinishUploading:(IPWebUploader *)uploader WithApi:(NSString *)api WithResponseData:(NSData *)responseData ResponseString:(NSString *)responseString
+- (void)WebUploaderDidFinishUploading:(IPMapWebUploader *)uploader WithApi:(NSString *)api WithResponseData:(NSData *)responseData ResponseString:(NSString *)responseString
 {
     NSError *error = nil;
     NSDictionary *resultDict = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:&error];

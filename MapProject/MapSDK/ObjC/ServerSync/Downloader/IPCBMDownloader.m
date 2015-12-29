@@ -8,15 +8,15 @@
 
 #import "IPCBMDownloader.h"
 #import "TYMapEnviroment.h"
-#import "IPWebDownloader.h"
-#import "IPWebObjectConverter.h"
+#import "IPMapWebDownloader.h"
+#import "IPMapWebObjectConverter.h"
 #import "TYMapCredential_Private.h"
-#import "IPApi.h"
+#import "IPMapApi.h"
 
-@interface IPCBMDownloader() <IPWebDownloaderDelegate>
+@interface IPCBMDownloader() <IPMapWebDownloaderDelegate>
 {
     TYMapCredential *user;
-    IPWebDownloader *downloader;
+    IPMapWebDownloader *downloader;
 }
 
 @end
@@ -32,7 +32,7 @@
         NSString *hostName = [TYMapEnvironment getHostName];
         NSAssert(hostName != nil, @"Host Name must not be nil!");
         
-        downloader = [[IPWebDownloader alloc] initWithHostName:hostName];
+        downloader = [[IPMapWebDownloader alloc] initWithHostName:hostName];
         downloader.delegate = self;
     }
     return self;
@@ -83,7 +83,7 @@
     [downloader downloadWithApi:TY_API_GET_TARGET_SYMBOLS Parameters:[user buildDictionary]];
 }
 
-- (void)WebDownloaderDidFinishDownloading:(IPWebDownloader *)dataDownloader WithApi:(NSString *)api WithResponseData:(NSData *)responseData ResponseString:(NSString *)responseString
+- (void)WebDownloaderDidFinishDownloading:(IPMapWebDownloader *)dataDownloader WithApi:(NSString *)api WithResponseData:(NSData *)responseData ResponseString:(NSString *)responseString
 {
     NSError *error = nil;
     NSDictionary *resultDict = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:&error];
@@ -98,36 +98,36 @@
     
     if (success) {
         if ([api isEqualToString:TY_API_GET_TARGET_CITY] || [api isEqualToString:TY_API_GET_ALL_CITIES]) {
-            NSArray *cityArray = [IPWebObjectConverter parseCityArray:resultDict[@"cities"]];
+            NSArray *cityArray = [IPMapWebObjectConverter parseCityArray:resultDict[@"cities"]];
             [self notifyDownloadingWithApi:api WithResult:cityArray Records:records];
         }
         
         if ([api isEqualToString:TY_API_GET_TARGET_BUILDING] || [api isEqualToString:TY_API_GET_ALL_BUILDINGS]) {
-            NSArray *buildingArray = [IPWebObjectConverter parseBuildingArray:resultDict[@"buildings"]];
+            NSArray *buildingArray = [IPMapWebObjectConverter parseBuildingArray:resultDict[@"buildings"]];
             [self notifyDownloadingWithApi:api WithResult:buildingArray Records:records];
         }
         
         if ([api isEqualToString:TY_API_GET_ALL_CITY_BUILDINGS]) {
-            NSArray *cityArray = [IPWebObjectConverter parseCityArray:resultDict[@"cities"]];
-            NSArray *buildingArray = [IPWebObjectConverter parseBuildingArray:resultDict[@"buildings"]];
+            NSArray *cityArray = [IPMapWebObjectConverter parseCityArray:resultDict[@"cities"]];
+            NSArray *buildingArray = [IPMapWebObjectConverter parseBuildingArray:resultDict[@"buildings"]];
             [self notifyDownloadingCityBuildingsWithApi:api WithCities:cityArray Buildings:buildingArray];
         }
         
         if ([api isEqualToString:TY_API_GET_TARGET_MAPINFO] || [api isEqualToString:TY_API_GET_ALL_MAPINFOS]) {
-            NSArray *mapInfoArray = [IPWebObjectConverter parseMapInfoArray:resultDict[@"mapinfos"]];
+            NSArray *mapInfoArray = [IPMapWebObjectConverter parseMapInfoArray:resultDict[@"mapinfos"]];
             [self notifyDownloadingWithApi:api WithResult:mapInfoArray Records:records];
         }
         
         if ([api isEqualToString:TY_API_GET_TARGET_SYMBOLS]) {
-            NSArray *fillArray = [IPWebObjectConverter parseFillSymbolArray:resultDict[@"fill"]];
-            NSArray *iconArray = [IPWebObjectConverter parseIconSymbolArray:resultDict[@"icon"]];
+            NSArray *fillArray = [IPMapWebObjectConverter parseFillSymbolArray:resultDict[@"fill"]];
+            NSArray *iconArray = [IPMapWebObjectConverter parseIconSymbolArray:resultDict[@"icon"]];
             [self notifyDownloadingSymbolsWithApi:api WithFillSymbols:fillArray WithIconSymbols:iconArray];
         }
         
         if ([api isEqualToString:TY_API_GET_TARGET_CBM]) {
-            NSArray *cityArray = [IPWebObjectConverter parseCityArray:resultDict[@"cities"]];
-            NSArray *buildingArray = [IPWebObjectConverter parseBuildingArray:resultDict[@"buildings"]];
-            NSArray *mapInfoArray = [IPWebObjectConverter parseMapInfoArray:resultDict[@"mapinfos"]];
+            NSArray *cityArray = [IPMapWebObjectConverter parseCityArray:resultDict[@"cities"]];
+            NSArray *buildingArray = [IPMapWebObjectConverter parseBuildingArray:resultDict[@"buildings"]];
+            NSArray *mapInfoArray = [IPMapWebObjectConverter parseMapInfoArray:resultDict[@"mapinfos"]];
             
             TYCity *city = nil;
             if (cityArray && cityArray.count > 0) {
@@ -151,7 +151,7 @@
 }
 
 
-- (void)WebDownloaderDidFailedDownloading:(IPWebDownloader *)dataDownloader WithApi:(NSString *)api WithError:(NSError *)error
+- (void)WebDownloaderDidFailedDownloading:(IPMapWebDownloader *)dataDownloader WithApi:(NSString *)api WithError:(NSError *)error
 {
     [self notifyFailedDownloadingWithApi:api WithError:error];
 }

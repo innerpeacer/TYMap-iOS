@@ -7,17 +7,17 @@
 //
 
 
-#import "IPWebDownloader.h"
+#import "IPMapWebDownloader.h"
 #import <MKNetworkKit/MKNetworkKit.h>
 
-@interface IPWebDownloader()
+@interface IPMapWebDownloader()
 {
     NSString *apiHostName;
 }
 
 @end
 
-@implementation IPWebDownloader
+@implementation IPMapWebDownloader
 
 - (id)initWithHostName:(NSString *)hostName
 {

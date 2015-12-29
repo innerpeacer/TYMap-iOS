@@ -6,17 +6,17 @@
 //  Copyright © 2015年 innerpeacer. All rights reserved.
 //
 
-#import "IPWebUploader.h"
+#import "IPMapWebUploader.h"
 #import <MKNetworkKit/MKNetworkKit.h>
 
-@interface IPWebUploader()
+@interface IPMapWebUploader()
 {
     NSString *apiHostName;
 }
 
 @end
 
-@implementation IPWebUploader
+@implementation IPMapWebUploader
 
 - (id)initWithHostName:(NSString *)hostName
 {

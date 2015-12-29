@@ -8,15 +8,15 @@
 
 #import "IPRouteDataDownloader.h"
 #import "TYMapEnviroment.h"
-#import "IPWebDownloader.h"
-#import "IPWebObjectConverter.h"
+#import "IPMapWebDownloader.h"
+#import "IPMapWebObjectConverter.h"
 #import "TYMapCredential_Private.h"
-#import "IPApi.h"
+#import "IPMapApi.h"
 
-@interface IPRouteDataDownloader() <IPWebDownloaderDelegate>
+@interface IPRouteDataDownloader() <IPMapWebDownloaderDelegate>
 {
     TYMapCredential *user;
-    IPWebDownloader *downloader;
+    IPMapWebDownloader *downloader;
 }
 
 @end
@@ -32,7 +32,7 @@
         NSString *hostName = [TYMapEnvironment getHostName];
         NSAssert(hostName != nil, @"Host Name must not be nil!");
         
-        downloader = [[IPWebDownloader alloc] initWithHostName:hostName];
+        downloader = [[IPMapWebDownloader alloc] initWithHostName:hostName];
         downloader.delegate = self;
     }
     return self;
@@ -45,16 +45,16 @@
     [downloader downloadWithApi:TY_API_GET_TARGET_ROUTE_DATA Parameters:param];
 }
 
-- (void)WebDownloaderDidFailedDownloading:(IPWebDownloader *)downloader WithApi:(NSString *)api WithError:(NSError *)error
+- (void)WebDownloaderDidFailedDownloading:(IPMapWebDownloader *)downloader WithApi:(NSString *)api WithError:(NSError *)error
 {
     [self notifyFailedDownloadingWithApi:api WithError:error];
 }
 
-- (void)WebDownloaderDidFinishDownloading:(IPWebDownloader *)downloader WithApi:(NSString *)api WithResponseData:(NSData *)responseData ResponseString:(NSString *)responseString
+- (void)WebDownloaderDidFinishDownloading:(IPMapWebDownloader *)downloader WithApi:(NSString *)api WithResponseData:(NSData *)responseData ResponseString:(NSString *)responseString
 {
     NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:nil];
-    NSArray *routeLinkArray = [IPWebObjectConverter parseRouteLinkArray:dict[@"routedatas"][@"links"]];
-    NSArray *routeNodeArray = [IPWebObjectConverter parseRouteNodeArray:dict[@"routedatas"][@"nodes"]];
+    NSArray *routeLinkArray = [IPMapWebObjectConverter parseRouteLinkArray:dict[@"routedatas"][@"links"]];
+    NSArray *routeNodeArray = [IPMapWebObjectConverter parseRouteNodeArray:dict[@"routedatas"][@"nodes"]];
     [self notifyDownloadingWithApi:api WithLinkResults:routeLinkArray WithNodeResults:routeNodeArray];
 }
 

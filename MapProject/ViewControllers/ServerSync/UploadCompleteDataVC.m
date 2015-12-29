@@ -12,7 +12,7 @@
 #import "TYBuildingManager.h"
 #import "TYUserDefaults.h"
 #import "TYMapInfo.h"
-#import "IPWebObjectConverter.h"
+#import "IPMapWebObjectConverter.h"
 #import <MKNetworkKit/MKNetworkKit.h>
 #import "TYUserManager.h"
 #import "IPMapFileManager.h"
