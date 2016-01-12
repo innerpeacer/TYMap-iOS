@@ -10,7 +10,6 @@
 #import "IPMapWebUploader.h"
 #import "IPMapWebObjectConverter.h"
 #import "TYMapEnviroment.h"
-#import "TYMapCredential_Private.h"
 
 #define DEFAULT_RECORD_LIMIT_PER_UPLOAD 1500
 

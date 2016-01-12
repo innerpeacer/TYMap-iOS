@@ -10,19 +10,19 @@
 #import "TYMapCredential.h"
 #import <TYMapData/TYMapData.h>
 
-@class IPSyncDataManager;
+@class IPMapSyncDataManager;
 
-@protocol IPSyncDataManagerDelegate <NSObject>
+@protocol IPMapSyncDataManagerDelegate <NSObject>
 
-- (void)SyncDataManagerDidFinishSyncData:(IPSyncDataManager *)manager;
-- (void)SyncDataManagerDidFinishDownloadingSyncData:(IPSyncDataManager *)manager;
-- (void)SyncDataManagerDidFailedSyncData:(IPSyncDataManager *)manager InStep:(int)step WithError:(NSError *)error;
+- (void)SyncDataManagerDidFinishSyncData:(IPMapSyncDataManager *)manager;
+- (void)SyncDataManagerDidFinishDownloadingSyncData:(IPMapSyncDataManager *)manager;
+- (void)SyncDataManagerDidFailedSyncData:(IPMapSyncDataManager *)manager InStep:(int)step WithError:(NSError *)error;
 
 @end
 
-@interface IPSyncDataManager : NSObject
+@interface IPMapSyncDataManager : NSObject
 
-@property (nonatomic, weak) id<IPSyncDataManagerDelegate> delegate;
+@property (nonatomic, weak) id<IPMapSyncDataManagerDelegate> delegate;
 
 - (id)initWithUser:(TYMapCredential *)user RootDirectory:(NSString *)root;
 - (void)fetchData;

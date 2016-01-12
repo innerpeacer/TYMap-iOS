@@ -27,7 +27,7 @@
 		570DF1931BDE86490028E25F /* IPMapFileManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 570DF1891BDE86490028E25F /* IPMapFileManager.mm */; };
 		570DF1941BDE86490028E25F /* TYMapInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 570DF18B1BDE86490028E25F /* TYMapInfo.m */; };
 		570DF1951BDE86490028E25F /* IPMapInfoDBAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 570DF18D1BDE86490028E25F /* IPMapInfoDBAdapter.m */; };
-		5719D1D71C2293580003AA18 /* IPSyncDownloadingTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 5719D1D61C2293580003AA18 /* IPSyncDownloadingTask.m */; };
+		5719D1D71C2293580003AA18 /* IPMapSyncDownloadingTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 5719D1D61C2293580003AA18 /* IPMapSyncDownloadingTask.m */; };
 		5719D1DA1C22ABF20003AA18 /* FetchCompleteDataVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5719D1D91C22ABF20003AA18 /* FetchCompleteDataVC.m */; };
 		571AC4711B55FED900E9FF7D /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 571AC4701B55FED900E9FF7D /* AppDelegate.mm */; };
 		57215D451C23DAA200B8B271 /* TYMapCredential.m in Sources */ = {isa = PBXBuildFile; fileRef = 57215D441C23DAA200B8B271 /* TYMapCredential.m */; };
@@ -185,7 +185,7 @@
 		57FF264E1C1FF707009482B2 /* IPSyncMapRouteDBAdapter.mm in Sources */ = {isa = PBXBuildFile; fileRef = 57FF26441C1FF707009482B2 /* IPSyncMapRouteDBAdapter.mm */; };
 		57FF264F1C1FF707009482B2 /* IPSyncMapDataRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 57FF26471C1FF707009482B2 /* IPSyncMapDataRecord.m */; };
 		57FF26501C1FF707009482B2 /* IPSyncRouteRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 57FF26491C1FF707009482B2 /* IPSyncRouteRecord.m */; };
-		57FF26511C1FF707009482B2 /* IPSyncDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 57FF264B1C1FF707009482B2 /* IPSyncDataManager.m */; };
+		57FF26511C1FF707009482B2 /* IPMapSyncDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 57FF264B1C1FF707009482B2 /* IPMapSyncDataManager.m */; };
 		57FF26541C1FF71F009482B2 /* TYUserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 57FF26531C1FF71F009482B2 /* TYUserManager.m */; };
 		57FF265A1C1FF78F009482B2 /* MapLicenseGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 57FF26591C1FF78F009482B2 /* MapLicenseGenerator.m */; };
 /* End PBXBuildFile section */
@@ -231,13 +231,12 @@
 		570DF18B1BDE86490028E25F /* TYMapInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYMapInfo.m; sourceTree = "<group>"; };
 		570DF18C1BDE86490028E25F /* IPMapInfoDBAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPMapInfoDBAdapter.h; sourceTree = "<group>"; };
 		570DF18D1BDE86490028E25F /* IPMapInfoDBAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPMapInfoDBAdapter.m; sourceTree = "<group>"; };
-		5719D1D51C2293580003AA18 /* IPSyncDownloadingTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPSyncDownloadingTask.h; sourceTree = "<group>"; };
-		5719D1D61C2293580003AA18 /* IPSyncDownloadingTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPSyncDownloadingTask.m; sourceTree = "<group>"; };
+		5719D1D51C2293580003AA18 /* IPMapSyncDownloadingTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPMapSyncDownloadingTask.h; sourceTree = "<group>"; };
+		5719D1D61C2293580003AA18 /* IPMapSyncDownloadingTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPMapSyncDownloadingTask.m; sourceTree = "<group>"; };
 		5719D1D81C22ABF20003AA18 /* FetchCompleteDataVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FetchCompleteDataVC.h; sourceTree = "<group>"; };
 		5719D1D91C22ABF20003AA18 /* FetchCompleteDataVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FetchCompleteDataVC.m; sourceTree = "<group>"; };
 		571AC46F1B55FED900E9FF7D /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		571AC4701B55FED900E9FF7D /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
-		57215D421C23DAA200B8B271 /* TYMapCredential_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYMapCredential_Private.h; sourceTree = "<group>"; };
 		57215D431C23DAA200B8B271 /* TYMapCredential.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYMapCredential.h; sourceTree = "<group>"; };
 		57215D441C23DAA200B8B271 /* TYMapCredential.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYMapCredential.m; sourceTree = "<group>"; };
 		57215D471C23ECD500B8B271 /* IPCBMDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPCBMDownloader.h; sourceTree = "<group>"; };
@@ -539,8 +538,8 @@
 		57FF26471C1FF707009482B2 /* IPSyncMapDataRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPSyncMapDataRecord.m; sourceTree = "<group>"; };
 		57FF26481C1FF707009482B2 /* IPSyncRouteRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPSyncRouteRecord.h; sourceTree = "<group>"; };
 		57FF26491C1FF707009482B2 /* IPSyncRouteRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPSyncRouteRecord.m; sourceTree = "<group>"; };
-		57FF264A1C1FF707009482B2 /* IPSyncDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPSyncDataManager.h; sourceTree = "<group>"; };
-		57FF264B1C1FF707009482B2 /* IPSyncDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPSyncDataManager.m; sourceTree = "<group>"; };
+		57FF264A1C1FF707009482B2 /* IPMapSyncDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPMapSyncDataManager.h; sourceTree = "<group>"; };
+		57FF264B1C1FF707009482B2 /* IPMapSyncDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPMapSyncDataManager.m; sourceTree = "<group>"; };
 		57FF26521C1FF71F009482B2 /* TYUserManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYUserManager.h; sourceTree = "<group>"; };
 		57FF26531C1FF71F009482B2 /* TYUserManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYUserManager.m; sourceTree = "<group>"; };
 		57FF26581C1FF78F009482B2 /* MapLicenseGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapLicenseGenerator.h; sourceTree = "<group>"; };
@@ -812,7 +811,6 @@
 		572407601BC9A8A10050BA41 /* MapView */ = {
 			isa = PBXGroup;
 			children = (
-				57215D421C23DAA200B8B271 /* TYMapCredential_Private.h */,
 				57215D431C23DAA200B8B271 /* TYMapCredential.h */,
 				57215D441C23DAA200B8B271 /* TYMapCredential.m */,
 				572407611BC9A8A10050BA41 /* TYArcGISDrawer.h */,
@@ -1280,10 +1278,10 @@
 				57215D461C23ECD500B8B271 /* Downloader */,
 				57FF263E1C1FF707009482B2 /* Database */,
 				57FF26451C1FF707009482B2 /* Entity */,
-				57FF264A1C1FF707009482B2 /* IPSyncDataManager.h */,
-				57FF264B1C1FF707009482B2 /* IPSyncDataManager.m */,
-				5719D1D51C2293580003AA18 /* IPSyncDownloadingTask.h */,
-				5719D1D61C2293580003AA18 /* IPSyncDownloadingTask.m */,
+				57FF264A1C1FF707009482B2 /* IPMapSyncDataManager.h */,
+				57FF264B1C1FF707009482B2 /* IPMapSyncDataManager.m */,
+				5719D1D51C2293580003AA18 /* IPMapSyncDownloadingTask.h */,
+				5719D1D61C2293580003AA18 /* IPMapSyncDownloadingTask.m */,
 			);
 			path = ServerSync;
 			sourceTree = "<group>";
@@ -1426,7 +1424,7 @@
 				57FF26151C1FF60F009482B2 /* UploadCompleteDataVC.m in Sources */,
 				57672E2F1B55FFF900DAD219 /* FMDatabase.m in Sources */,
 				570ABA6D1BF9DD650006BC30 /* UploadRouteDataVC.m in Sources */,
-				57FF26511C1FF707009482B2 /* IPSyncDataManager.m in Sources */,
+				57FF26511C1FF707009482B2 /* IPMapSyncDataManager.m in Sources */,
 				57FF264F1C1FF707009482B2 /* IPSyncMapDataRecord.m in Sources */,
 				571AC4711B55FED900E9FF7D /* AppDelegate.mm in Sources */,
 				57D711E91BBB12BD00975CE5 /* RouteNDBuildingTool.m in Sources */,
@@ -1501,7 +1499,7 @@
 				572408F11BC9B9800050BA41 /* TestRouteNetworkVC.m in Sources */,
 				57FF265A1C1FF78F009482B2 /* MapLicenseGenerator.m in Sources */,
 				5740772A1BDF781C008D05CD /* BuildAllRouteNetworkVC.m in Sources */,
-				5719D1D71C2293580003AA18 /* IPSyncDownloadingTask.m in Sources */,
+				5719D1D71C2293580003AA18 /* IPMapSyncDownloadingTask.m in Sources */,
 				572B98C41BDA172100506A7E /* OriginalShpDBAdapter.mm in Sources */,
 				5787712C1BBB915E00F90D7B /* RouteNetworkDataset.m in Sources */,
 				57215D661C24067800B8B271 /* IPSyncUploadingTask.m in Sources */,

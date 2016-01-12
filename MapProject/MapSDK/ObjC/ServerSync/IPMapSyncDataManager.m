@@ -6,9 +6,9 @@
 //  Copyright © 2015年 innerpeacer. All rights reserved.
 //
 
-#import "IPSyncDataManager.h"
+#import "IPMapSyncDataManager.h"
 #import <TYMapData/TYMapData.h>
-#import "IPSyncDownloadingTask.h"
+#import "IPMapSyncDownloadingTask.h"
 
 #import "IPSyncMapDataDBAdapter.h"
 #import "IPSyncMapSymbolDBAdapter.h"
@@ -17,17 +17,17 @@
 #import "IPSyncPOIDBAdapter.h"
 #import "TYPoi.h"
 
-@interface IPSyncDataManager() <IPSyncDownloadingTaskDelegate>
+@interface IPMapSyncDataManager() <IPMapSyncDownloadingTaskDelegate>
 {
     NSString *rootDir;
     TYMapCredential *mapUser;
     
-    IPSyncDownloadingTask *downloadingTask;
+    IPMapSyncDownloadingTask *downloadingTask;
 }
 
 @end
 
-@implementation IPSyncDataManager
+@implementation IPMapSyncDataManager
 
 - (id)initWithUser:(TYMapCredential *)user RootDirectory:(NSString *)root;
 {
@@ -36,7 +36,7 @@
         mapUser = user;
         rootDir = root;
         
-        downloadingTask = [[IPSyncDownloadingTask alloc] initWithUser:user];
+        downloadingTask = [[IPMapSyncDownloadingTask alloc] initWithUser:user];
         downloadingTask.delegate = self;
     }
     return self;
@@ -75,12 +75,12 @@
     return [[[rootDir stringByAppendingPathComponent:b.cityID] stringByAppendingPathComponent:b.buildingID] stringByAppendingPathComponent:[NSString stringWithFormat:@"%@_POI.db", b.buildingID]];
 }
 
-- (void)DownloadingTaskDidFailedDownloading:(IPSyncDownloadingTask *)task InStep:(int)step WithError:(NSError *)error
+- (void)DownloadingTaskDidFailedDownloading:(IPMapSyncDownloadingTask *)task InStep:(int)step WithError:(NSError *)error
 {
     [self notifyFailedInStep:step WithError:error];
 }
 
-- (void)DownloadingTaskDidFinished:(IPSyncDownloadingTask *)task WithCity:(TYCity *)city Building:(TYBuilding *)b MapInfos:(NSArray *)mapInfoArray FillSymbols:(NSArray *)fillArray IconSymbols:(NSArray *)iconArray MapData:(NSArray *)mapDataArray RouteLinkData:(NSArray *)linkArray RouteNodeData:(NSArray *)nodeArray
+- (void)DownloadingTaskDidFinished:(IPMapSyncDownloadingTask *)task WithCity:(TYCity *)city Building:(TYBuilding *)b MapInfos:(NSArray *)mapInfoArray FillSymbols:(NSArray *)fillArray IconSymbols:(NSArray *)iconArray MapData:(NSArray *)mapDataArray RouteLinkData:(NSArray *)linkArray RouteNodeData:(NSArray *)nodeArray
 {
     NSLog(@"Finish Downloading");
     
@@ -143,7 +143,7 @@
 
 }
 
-- (void)DownloadingTaskDidUpdateDownloadingProcess:(IPSyncDownloadingTask *)task InStep:(int)step WithDescription:(NSString *)description
+- (void)DownloadingTaskDidUpdateDownloadingProcess:(IPMapSyncDownloadingTask *)task InStep:(int)step WithDescription:(NSString *)description
 {
     NSLog(@"Step %d: %@", step, description);
 }

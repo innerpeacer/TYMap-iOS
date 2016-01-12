@@ -6,7 +6,7 @@
 //  Copyright © 2015年 innerpeacer. All rights reserved.
 //
 
-#import "IPSyncDownloadingTask.h"
+#import "IPMapSyncDownloadingTask.h"
 
 
 #define TY_SYNC_DOWNLOADING_STEP_UNKNOWN 0
@@ -20,7 +20,7 @@
 #import "IPMapDataDownloader.h"
 #import "IPRouteDataDownloader.h"
 
-@interface IPSyncDownloadingTask() <IPCBMDownloaderDelegate, IPMapDataDownloaderDelegate, IPRouteDataDownloaderDelegate>
+@interface IPMapSyncDownloadingTask() <IPCBMDownloaderDelegate, IPMapDataDownloaderDelegate, IPRouteDataDownloaderDelegate>
 {
     TYCity *currentCity;
     TYBuilding *currentBuilding;
@@ -41,7 +41,7 @@
 
 @end
 
-@implementation IPSyncDownloadingTask
+@implementation IPMapSyncDownloadingTask
 
 - (id)initWithUser:(TYMapCredential *)u
 {
@@ -116,21 +116,21 @@
     }
 }
 
-- (void)notifyFinished:(IPSyncDownloadingTask *)task WithCity:(TYCity *)city Building:(TYBuilding *)building MapInfos:(NSArray *)mapInfoArray FillSymbols:(NSArray *)fillArray IconSymbols:(NSArray *)iconArray MapData:(NSArray *)mapDataArray RouteLinkData:(NSArray *)linkArray RouteNodeData:(NSArray *)nodeArray
+- (void)notifyFinished:(IPMapSyncDownloadingTask *)task WithCity:(TYCity *)city Building:(TYBuilding *)building MapInfos:(NSArray *)mapInfoArray FillSymbols:(NSArray *)fillArray IconSymbols:(NSArray *)iconArray MapData:(NSArray *)mapDataArray RouteLinkData:(NSArray *)linkArray RouteNodeData:(NSArray *)nodeArray
 {
     if (self.delegate && [self.delegate respondsToSelector:@selector(DownloadingTaskDidFinished:WithCity:Building:MapInfos:FillSymbols:IconSymbols:MapData:RouteLinkData:RouteNodeData:)]) {
         [self.delegate DownloadingTaskDidFinished:self WithCity:city Building:building MapInfos:mapInfoArray FillSymbols:fillArray IconSymbols:iconArray MapData:mapDataArray RouteLinkData:linkArray RouteNodeData:nodeArray];
     }
 }
 
-- (void)notifyFailedDownloading:(IPSyncDownloadingTask *)task InStep:(int)step WithError:(NSError *)error
+- (void)notifyFailedDownloading:(IPMapSyncDownloadingTask *)task InStep:(int)step WithError:(NSError *)error
 {
     if (self.delegate && [self.delegate respondsToSelector:@selector(DownloadingTaskDidFailedDownloading:InStep:WithError:)]) {
         [self.delegate DownloadingTaskDidFailedDownloading:self InStep:step WithError:error];
     }
 }
 
-- (void)notifyDownloadingProcess:(IPSyncDownloadingTask *)task InStep:(int)step WithDescription:(NSString *)description
+- (void)notifyDownloadingProcess:(IPMapSyncDownloadingTask *)task InStep:(int)step WithDescription:(NSString *)description
 {
     if (self.delegate && [self.delegate respondsToSelector:@selector(DownloadingTaskDidUpdateDownloadingProcess:InStep:WithDescription:)]) {
         [self.delegate DownloadingTaskDidUpdateDownloadingProcess:self InStep:step WithDescription:description];

@@ -22,4 +22,5 @@
 + (TYMapCredential *)createSuperUser:(NSString *)buildingID;
 + (TYMapCredential *)createTrialUser:(NSString *)buildingID;
 + (TYMapCredential *)createWrongUser:(NSString *)buildingID;
+
 @end

@@ -1,0 +1,20 @@
+{
+    "MapInfo": [
+        
+        {
+            "cityID": "0579",
+            "buildingID": "05790001",
+            "mapID": "05790001F01",
+            "floorName": "F1",
+            "floorNumber": "1",
+            "size_x": "339",
+            "size_y": "110",
+            "xmax": "13367416",
+            "xmin": "13367077",
+            "ymax": "3394942",
+            "ymin": "3394832"
+        }
+
+    ]
+
+}

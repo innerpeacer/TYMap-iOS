@@ -7,12 +7,12 @@
 //
 
 #import "TYMapDataManager.h"
-#import "IPSyncDataManager.h"
+#import "IPMapSyncDataManager.h"
 #import "TYMapEnviroment.h"
 
-@interface TYMapDataManager() <IPSyncDataManagerDelegate>
+@interface TYMapDataManager() <IPMapSyncDataManagerDelegate>
 {
-    IPSyncDataManager *syncManager;
+    IPMapSyncDataManager *syncManager;
     TYMapCredential *mapCredential;
     
     TYBuilding *currentBuilding;
@@ -28,7 +28,7 @@
     self = [super init];
     if (self) {
         mapCredential = [TYMapCredential credentialWithUserID:userID BuildingID:buildingID License:license];
-        syncManager = [[IPSyncDataManager alloc] initWithUser:mapCredential RootDirectory:[TYMapEnvironment getRootDirectoryForMapFiles]];
+        syncManager = [[IPMapSyncDataManager alloc] initWithUser:mapCredential RootDirectory:[TYMapEnvironment getRootDirectoryForMapFiles]];
         syncManager.delegate = self;
     }
     return self;
@@ -39,17 +39,17 @@
     [syncManager fetchData];
 }
 
-- (void)SyncDataManagerDidFailedSyncData:(IPSyncDataManager *)manager InStep:(int)step WithError:(NSError *)error
+- (void)SyncDataManagerDidFailedSyncData:(IPMapSyncDataManager *)manager InStep:(int)step WithError:(NSError *)error
 {
     [self notifyFailedFetchingData:error];
 }
 
-- (void)SyncDataManagerDidFinishDownloadingSyncData:(IPSyncDataManager *)manager
+- (void)SyncDataManagerDidFinishDownloadingSyncData:(IPMapSyncDataManager *)manager
 {
     
 }
 
-- (void)SyncDataManagerDidFinishSyncData:(IPSyncDataManager *)manager
+- (void)SyncDataManagerDidFinishSyncData:(IPMapSyncDataManager *)manager
 {
     [self notifyFinishFetchingData];
 }

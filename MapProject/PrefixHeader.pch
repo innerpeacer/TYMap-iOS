@@ -17,7 +17,6 @@
 #define SUPER_USER_ID @"ty943b41bc48ed4aec"
 
 #define USE_REMOTE_HOST 0
-
 #if USE_REMOTE_HOST
 #define HOST_NAME @"123.56.41.94"
 #else

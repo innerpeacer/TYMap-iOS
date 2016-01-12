@@ -22,9 +22,9 @@
 #import "IPSyncMapSymbolDBAdapter.h"
 
 #import "IPSyncUploadingTask.h"
-#import "IPSyncDownloadingTask.h"
+#import "IPMapSyncDownloadingTask.h"
 
-@interface UploadCompleteDataVC() <IPSyncUploadingTaskDelegate, IPSyncDownloadingTaskDelegate>
+@interface UploadCompleteDataVC() <IPSyncUploadingTaskDelegate, IPMapSyncDownloadingTaskDelegate>
 {
     TYCity *currentCity;
     TYBuilding *currentBuilding;
@@ -40,7 +40,7 @@
     NSString *hostName;
     
     IPSyncUploadingTask *uploadingTask;
-    IPSyncDownloadingTask *downloadingTask;
+    IPMapSyncDownloadingTask *downloadingTask;
 }
 
 - (IBAction)uploadCompleteData:(id)sender;
@@ -60,7 +60,7 @@
     uploadingTask = [[IPSyncUploadingTask alloc] initWithUser:[TYUserManager createSuperUser:currentBuilding.buildingID]];
     uploadingTask.delegate = self;
     
-    downloadingTask = [[IPSyncDownloadingTask alloc] initWithUser:[TYUserManager createTrialUser:currentBuilding.buildingID]];
+    downloadingTask = [[IPMapSyncDownloadingTask alloc] initWithUser:[TYUserManager createTrialUser:currentBuilding.buildingID]];
     downloadingTask.delegate = self;
     
     NSLog(@"%@", currentCity);
@@ -84,17 +84,17 @@
     [self addToLog:description];
 }
 
-- (void)DownloadingTaskDidFailedDownloading:(IPSyncDownloadingTask *)task InStep:(int)step WithError:(NSError *)error
+- (void)DownloadingTaskDidFailedDownloading:(IPMapSyncDownloadingTask *)task InStep:(int)step WithError:(NSError *)error
 {
     
 }
 
-- (void)DownloadingTaskDidFinished:(IPSyncDownloadingTask *)task WithCity:(TYCity *)city Building:(TYBuilding *)building MapInfos:(NSArray *)mapInfoArray FillSymbols:(NSArray *)fillArray IconSymbols:(NSArray *)iconArray MapData:(NSArray *)mapDataArray RouteLinkData:(NSArray *)linkArray RouteNodeData:(NSArray *)nodeArray
+- (void)DownloadingTaskDidFinished:(IPMapSyncDownloadingTask *)task WithCity:(TYCity *)city Building:(TYBuilding *)building MapInfos:(NSArray *)mapInfoArray FillSymbols:(NSArray *)fillArray IconSymbols:(NSArray *)iconArray MapData:(NSArray *)mapDataArray RouteLinkData:(NSArray *)linkArray RouteNodeData:(NSArray *)nodeArray
 {
     [self addToLog:@"Finish Downloading"];
 }
 
-- (void)DownloadingTaskDidUpdateDownloadingProcess:(IPSyncDownloadingTask *)task InStep:(int)step WithDescription:(NSString *)description
+- (void)DownloadingTaskDidUpdateDownloadingProcess:(IPMapSyncDownloadingTask *)task InStep:(int)step WithDescription:(NSString *)description
 {
     [self addToLog:[NSString stringWithFormat:@"Step %d:", step]];
     [self addToLog:description];

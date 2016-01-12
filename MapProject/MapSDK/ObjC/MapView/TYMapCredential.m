@@ -7,7 +7,6 @@
 //
 
 #import "TYMapCredential.h"
-#import "TYMapCredential_Private.h"
 
 
 @implementation TYMapCredential

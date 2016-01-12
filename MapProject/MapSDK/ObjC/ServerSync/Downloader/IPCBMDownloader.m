@@ -10,7 +10,6 @@
 #import "TYMapEnviroment.h"
 #import "IPMapWebDownloader.h"
 #import "IPMapWebObjectConverter.h"
-#import "TYMapCredential_Private.h"
 #import "IPMapApi.h"
 
 @interface IPCBMDownloader() <IPMapWebDownloaderDelegate>

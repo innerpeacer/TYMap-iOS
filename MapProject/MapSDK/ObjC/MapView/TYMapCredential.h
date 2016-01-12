@@ -15,5 +15,6 @@
 @property (nonatomic, strong, readonly) NSString *license;
 
 + (TYMapCredential *)credentialWithUserID:(NSString *)uid BuildingID:(NSString *)bid License:(NSString *)l;
+- (NSDictionary *)buildDictionary;
 
 @end

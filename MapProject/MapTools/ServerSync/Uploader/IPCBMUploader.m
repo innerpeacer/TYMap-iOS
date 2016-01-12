@@ -10,7 +10,6 @@
 #import "TYMapEnviroment.h"
 #import "IPMapWebUploader.h"
 #import "IPMapWebObjectConverter.h"
-#import "TYMapCredential_Private.h"
 
 @interface IPCBMUploader() <IPMapWebUploaderDelegate>
 {
@@ -128,7 +127,7 @@
         NSLog(@"Upload: %d", records);
         [self notifyUploadingWithApi:api WithDescription:description];
     } else {
-        NSDictionary *userInfo = [NSDictionary dictionaryWithObject:description                                                                     forKey:NSLocalizedDescriptionKey];
+        NSDictionary *userInfo = [NSDictionary dictionaryWithObject:description forKey:NSLocalizedDescriptionKey];
         error = [NSError errorWithDomain:@"com.ty.mapsdk" code:0 userInfo:userInfo];
         [self notifyFailedUploadingWithApi:api WithError:error];
     }
