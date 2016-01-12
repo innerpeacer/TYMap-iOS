@@ -341,7 +341,7 @@ using namespace std;
 
 - (NSString *)getRouteDBPath:(TYBuilding *)building
 {
-    NSString *dbName = [NSString stringWithFormat:@"%@_Route.db", building.buildingID];
+    NSString *dbName = [NSString stringWithFormat:@"%@.tymap", building.buildingID];
     return [[TYMapEnvironment getBuildingDirectory:building] stringByAppendingPathComponent:dbName];
 }
 

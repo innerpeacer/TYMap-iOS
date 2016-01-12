@@ -22,9 +22,7 @@
 #import "TYNode.h"
 
 #import "RouteNetworkDBEntity.h"
-
-#define TABLE_ROUTE_NODE @"RouteNode"
-#define TABLE_ROUTE_LINK @"RouteLink"
+#import "IPMapDBConstants.h"
 
 using namespace std;
 
@@ -66,7 +64,7 @@ using namespace std;
 
 - (NSString *)getRouteDBPath:(TYBuilding *)building
 {
-    NSString *dbName = [NSString stringWithFormat:@"%@_Route.db", building.buildingID];
+    NSString *dbName = [NSString stringWithFormat:@"%@.tymap", building.buildingID];
     return [[TYMapEnvironment getBuildingDirectory:building] stringByAppendingPathComponent:dbName];
 }
 
@@ -77,21 +75,21 @@ using namespace std;
     stringstream s;
     WKBReader reader;
     
-    NSMutableString *sql = [NSMutableString stringWithFormat:@"select linkID, Geometry, length, headNode, endNode, virtual, oneWay from %@", TABLE_ROUTE_LINK];
+    NSMutableString *sql = [NSMutableString stringWithFormat:@"select LINK_ID, GEOMETRY, LENGTH, HEAD_NODE, END_NODE, VIRTUAL, ONE_WAY from %@", TABLE_ROUTE_LINK];
     FMResultSet *rs = [_database executeQuery:sql];
     while ([rs next]) {
         LinkRecord *record = [[LinkRecord alloc] init];
 
-        record.linkID = [rs intForColumn:@"linkID"];
-        record.geometryData = [rs dataForColumn:@"Geometry"];
+        record.linkID = [rs intForColumn:FIELD_ROUTE_LINK_1_LINK_ID];
+        record.geometryData = [rs dataForColumn:FIELD_ROUTE_LINK_2_GEOMETRY];
         s.clear();
         s.write((const char *)[record.geometryData bytes], [record.geometryData length]);
         record.line = (AGSPolyline *)[Geos2AgsConverter agsgeometryFromGeosGeometry:reader.read(s)];
-        record.length = [rs doubleForColumn:@"length"];
-        record.headNode = [rs intForColumn:@"headNode"];
-        record.endNode = [rs intForColumn:@"endNode"];
-        record.isVirtual = [rs boolForColumn:@"virtual"];
-        record.isOneWay = [rs boolForColumn:@"oneWay"];
+        record.length = [rs doubleForColumn:FIELD_ROUTE_LINK_3_LENGTH];
+        record.headNode = [rs intForColumn:FIELD_ROUTE_LINK_4_HEAD_NODE];
+        record.endNode = [rs intForColumn:FIELD_ROUTE_LINK_5_END_NODE];
+        record.isVirtual = [rs boolForColumn:FIELD_ROUTE_LINK_6_VIRTUAL];
+        record.isOneWay = [rs boolForColumn:FIELD_ROUTE_LINK_7_ONE_WAY];
         
         [resultArray addObject:record];
     }
@@ -106,17 +104,17 @@ using namespace std;
     stringstream s;
     WKBReader reader;
     
-    NSMutableString *sql = [NSMutableString stringWithFormat:@"select nodeID, Geometry, virtual from %@", TABLE_ROUTE_NODE];
+    NSMutableString *sql = [NSMutableString stringWithFormat:@"select NODE_ID, GEOMETRY, VIRTUAL from %@", TABLE_ROUTE_NODE];
     FMResultSet *rs = [_database executeQuery:sql];
     while ([rs next]) {
         NodeRecord *record = [[NodeRecord alloc] init];
         
-        record.nodeID = [rs intForColumn:@"nodeID"];
-        record.geometryData = [rs dataForColumn:@"Geometry"];
+        record.nodeID = [rs intForColumn:FIELD_ROUTE_NODE_1_NODE_ID];
+        record.geometryData = [rs dataForColumn:FIELD_ROUTE_NODE_2_GEOMETRY];
         s.clear();
         s.write((const char *)[record.geometryData bytes], [record.geometryData length]);
         record.pos = (AGSPoint *)[Geos2AgsConverter agsgeometryFromGeosGeometry:reader.read(s)];
-        record.isVirtual = [rs boolForColumn:@"virtual"];
+        record.isVirtual = [rs boolForColumn:FIELD_ROUTE_NODE_3_VIRTUAL];
         
         [resultArray addObject:record];
     }
