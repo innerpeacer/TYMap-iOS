@@ -206,6 +206,10 @@
     
     NSArray *cuttedLineArray = [engine cutGeometry:originalLine withCutter:cutLine];
     
+    if (cuttedLineArray.count == 0) {
+        return originalLine;
+    }
+    
     for (AGSPolyline *line in cuttedLineArray) {
         BOOL isLastHalf = [engine geometry:line touchesGeometry:lastPoint];
         if (isLastHalf) {
@@ -223,6 +227,7 @@
     
     AGSGeometryEngine *engine = [AGSGeometryEngine defaultGeometryEngine];
     AGSProximityResult *proximitResult = [engine nearestCoordinateInGeometry:originalLine toPoint:point];
+    
     AGSPoint *cutPoint = proximitResult.point;
     
     AGSMutablePolyline *cutLine = [[AGSMutablePolyline alloc] init];
@@ -231,6 +236,10 @@
     [cutLine addPointToPath:cutPoint];
     
     NSArray *cuttedLineArray = [engine cutGeometry:originalLine withCutter:cutLine];
+    
+    if (cuttedLineArray.count == 0) {
+        return nil;
+    }
     
     for (AGSPolyline *line in cuttedLineArray) {
         BOOL isLastHalf = [engine geometry:line touchesGeometry:lastPoint];
