@@ -28,7 +28,7 @@
 
 + (IPAssetLayer *)assetLayerWithSpatialReference:(AGSSpatialReference *)sr
 {
-    return [[IPAssetLayer alloc] initWithSpatialReference:sr];
+    return [[IPAssetLayer alloc] initAssetLayerWithSpatialReference:sr];
 }
 
 - (id)initAssetLayerWithSpatialReference:(AGSSpatialReference *)sr

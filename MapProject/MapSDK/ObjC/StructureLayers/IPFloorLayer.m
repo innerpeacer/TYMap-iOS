@@ -27,7 +27,7 @@
 
 + (IPFloorLayer *)floorLayerWithSpatialReference:(AGSSpatialReference *)sr
 {
-    return [[IPFloorLayer alloc] initWithSpatialReference:sr];
+    return [[IPFloorLayer alloc] initFloorLayerWithSpatialReference:sr];
 }
 
 - (id)initFloorLayerWithSpatialReference:(AGSSpatialReference *)sr

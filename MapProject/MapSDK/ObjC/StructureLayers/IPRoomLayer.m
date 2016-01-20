@@ -32,7 +32,7 @@
 
 + (IPRoomLayer *)roomLayerWithSpatialReference:(AGSSpatialReference *)sr
 {
-    return [[IPRoomLayer alloc] initWithSpatialReference:sr];
+    return [[IPRoomLayer alloc] initRoomLayerWithSpatialReference:sr];
 }
 
 - (id)initRoomLayerWithSpatialReference:(AGSSpatialReference *)sr

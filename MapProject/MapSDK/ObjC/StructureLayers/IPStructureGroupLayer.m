@@ -29,7 +29,6 @@
         _floorLayer.allowHitTest = NO;
 
         _roomLayer = [IPRoomLayer roomLayerWithSpatialReference:sr];
-
         _assetLayer = [IPAssetLayer assetLayerWithSpatialReference:sr];
     }
     return self;
