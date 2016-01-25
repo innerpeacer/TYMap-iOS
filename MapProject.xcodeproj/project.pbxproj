@@ -438,6 +438,7 @@
 		5771BEC21BE7051E00026873 /* GenerateWebMapFileVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenerateWebMapFileVC.m; sourceTree = "<group>"; };
 		5771BEC61BE75CE600026873 /* GenerateAllWebMapFileVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenerateAllWebMapFileVC.h; sourceTree = "<group>"; };
 		5771BEC71BE75CE600026873 /* GenerateAllWebMapFileVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenerateAllWebMapFileVC.m; sourceTree = "<group>"; };
+		577F95901C55EF7C00E4BA16 /* WebMapFields.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebMapFields.h; sourceTree = "<group>"; };
 		57852A701BF7AD8E00C65D89 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		57852A721BF7AD9400C65D89 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		57852A741BF7AD9D00C65D89 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -934,6 +935,7 @@
 				5771BEC21BE7051E00026873 /* GenerateWebMapFileVC.m */,
 				5771BEC61BE75CE600026873 /* GenerateAllWebMapFileVC.h */,
 				5771BEC71BE75CE600026873 /* GenerateAllWebMapFileVC.m */,
+				577F95901C55EF7C00E4BA16 /* WebMapFields.h */,
 			);
 			path = GenerateData;
 			sourceTree = "<group>";

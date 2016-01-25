@@ -98,11 +98,16 @@ using namespace std;
         delete (*iter);
     }
     
-    [resultDict setObject:[[AGSFeatureSet alloc] initWithFeatures:floorArray] forKey:@"floor"];
-    [resultDict setObject:[[AGSFeatureSet alloc] initWithFeatures:roomArray] forKey:@"room"];
-    [resultDict setObject:[[AGSFeatureSet alloc] initWithFeatures:assetArray] forKey:@"asset"];
-    [resultDict setObject:[[AGSFeatureSet alloc] initWithFeatures:facilityArray] forKey:@"facility"];
-    [resultDict setObject:[[AGSFeatureSet alloc] initWithFeatures:labelArray] forKey:@"label"];
+//    [resultDict setObject:[[AGSFeatureSet alloc] initWithFeatures:floorArray] forKey:@"floor"];
+//    [resultDict setObject:[[AGSFeatureSet alloc] initWithFeatures:roomArray] forKey:@"room"];
+//    [resultDict setObject:[[AGSFeatureSet alloc] initWithFeatures:assetArray] forKey:@"asset"];
+//    [resultDict setObject:[[AGSFeatureSet alloc] initWithFeatures:facilityArray] forKey:@"facility"];
+//    [resultDict setObject:[[AGSFeatureSet alloc] initWithFeatures:labelArray] forKey:@"label"];
+    [resultDict setObject:[[AGSFeatureSet alloc] initWithDisplayFieldName:nil features:floorArray fieldAliases:nil spatialReference:[TYMapEnvironment defaultSpatialReference] geometryType:AGSGeometryTypeUndefined] forKey:@"floor"];
+    [resultDict setObject:[[AGSFeatureSet alloc] initWithDisplayFieldName:nil features:roomArray fieldAliases:nil spatialReference:[TYMapEnvironment defaultSpatialReference] geometryType:AGSGeometryTypeUndefined] forKey:@"room"];
+    [resultDict setObject:[[AGSFeatureSet alloc] initWithDisplayFieldName:nil features:assetArray fieldAliases:nil spatialReference:[TYMapEnvironment defaultSpatialReference] geometryType:AGSGeometryTypeUndefined] forKey:@"asset"];
+    [resultDict setObject:[[AGSFeatureSet alloc] initWithDisplayFieldName:nil features:facilityArray fieldAliases:nil spatialReference:[TYMapEnvironment defaultSpatialReference] geometryType:AGSGeometryTypeUndefined] forKey:@"facility"];
+    [resultDict setObject:[[AGSFeatureSet alloc] initWithDisplayFieldName:nil features:labelArray fieldAliases:nil spatialReference:[TYMapEnvironment defaultSpatialReference] geometryType:AGSGeometryTypeUndefined] forKey:@"label"];
     return resultDict;
 }
 

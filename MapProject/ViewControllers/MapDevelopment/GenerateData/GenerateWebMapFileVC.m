@@ -16,6 +16,8 @@
 #import "TYMapEnviroment.h"
 #import "IPMapFeatureData.h"
 
+#import "WebMapFields.h"
+
 #define WEB_MAP_ROOT @"WebMap"
 
 @interface GenerateWebMapFileVC()
@@ -36,10 +38,8 @@
     
     
     fileManager = [NSFileManager defaultManager];
-    
     currentCity = [TYUserDefaults getDefaultCity];
     currentBuilding = [TYUserDefaults getDefaultBuilding];
-    
     NSThread *thread = [[NSThread alloc] initWithTarget:self selector:@selector(createWebMapFileForCurrentBuilding) object:nil];
     [thread start];
     
@@ -68,7 +68,6 @@
 }
 
 
-#define FILE_WEB_MAP_DATA @"%@.data"
 - (void)generateWebMapDataFile:(TYBuilding *)building
 {
     NSString *cityDir = [webMapFileDir stringByAppendingPathComponent:building.cityID];
@@ -101,7 +100,6 @@
     }
 }
 
-#define FILE_RENDERING_SCHEME @"%@_RenderingScheme.json"
 - (void)generateRenderingScheme:(TYBuilding *)building
 {
     NSError *error = nil;
@@ -128,18 +126,7 @@
 }
 
 
-#define KEY_MAPINFOS @"MapInfo"
-#define KEY_MAPINFO_CITYID @"cityID"
-#define KEY_MAPINFO_BUILDINGID @"buildingID"
-#define KEY_MAPINFO_MAPID @"mapID"
-#define KEY_MAPINFO_FLOOR @"floorName"
-#define KEY_MAPINFO_FLOOR_INDEX @"floorNumber"
-#define KEY_MAPINFO_SIZEX @"size_x"
-#define KEY_MAPINFO_SIZEY @"size_y"
-#define KEY_MAPINFO_XMIN @"xmin"
-#define KEY_MAPINFO_XMAX @"xmax"
-#define KEY_MAPINFO_YMIN @"ymin"
-#define KEY_MAPINFO_YMAX @"ymax"
+
 - (void)generateMapInfoJson:(TYBuilding *)building
 {
     NSString *cityDir = [webMapFileDir stringByAppendingPathComponent:building.cityID];
@@ -177,18 +164,7 @@
     [self performSelectorOnMainThread:@selector(updateUI:) withObject:log waitUntilDone:YES];
 }
 
-#define KEY_BUILDINGS @"Buildings"
-#define KEY_BUILDING_CITY_ID @"cityID"
-#define KEY_BUILDING_ID @"id"
-#define KEY_BUILDING_NAME @"name"
-#define KEY_BUILDING_LONGITUDE @"longitude"
-#define KEY_BUILDING_LATITUDE @"latitude"
-#define KEY_BUILDING_ADDRESS @"address"
-#define KEY_BUILDING_INIT_ANGLE @"initAngle"
-#define KEY_BUILDING_ROUTE_URL @"routeURL"
-#define KEY_BUILDING_OFFSET_X @"offsetX"
-#define KEY_BUILDING_OFFSET_Y @"offsetY"
-#define KEY_BUILDING_STATUS @"status"
+
 - (void)generateBuildingJson:(TYCity *)city
 {
     NSString *cityDir = [webMapFileDir stringByAppendingPathComponent:city.cityID];
@@ -229,13 +205,7 @@
     [self performSelectorOnMainThread:@selector(updateUI:) withObject:log waitUntilDone:YES];
 }
 
-#define KEY_CITIES @"Cities"
-#define KEY_CITY_ID @"id"
-#define KEY_CITY_NAME @"name"
-#define KEY_CITY_SHORT_NAME @"sname"
-#define KEY_CITY_LONGITUDE @"longitude"
-#define KEY_CITY_LATITUDE @"latitude"
-#define KEY_CITY_STATUS @"status"
+
 - (void)generateCityJson
 {
     IPMapDBAdapter *db = [[IPMapDBAdapter alloc] initWithPath:[IPMapFileManager getMapDBPath]];
