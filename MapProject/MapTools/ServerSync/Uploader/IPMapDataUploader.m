@@ -11,7 +11,7 @@
 #import "IPMapWebObjectConverter.h"
 #import "TYMapEnviroment.h"
 
-#define DEFAULT_RECORD_LIMIT_PER_UPLOAD 1500
+#define DEFAULT_RECORD_LIMIT_PER_UPLOAD 1000
 
 @interface IPMapDataUploader() <IPMapWebUploaderDelegate>
 {

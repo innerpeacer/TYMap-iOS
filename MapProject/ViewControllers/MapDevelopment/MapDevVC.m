@@ -60,7 +60,7 @@
         [self.controllerDict setObject:storyboardID forKey:name];
     }
     
-//    [self tableView:self.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+    [self tableView:self.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"设置" style:UIBarButtonItemStyleBordered target:self action:@selector(choosingPlace:)];
     
@@ -96,7 +96,12 @@
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     SelectBuildingVC *controller = [storyboard instantiateViewControllerWithIdentifier:@"selectBuildingController"];
     
-    controller.cityArray = [TYCityManager parseAllCities];
+    NSArray *cityArray = [TYCityManager parseAllCities];
+    controller.cityArray = [cityArray sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+        TYCity *city1 = obj1;
+        TYCity *city2 = obj2;
+        return [city1.cityID caseInsensitiveCompare:city2.cityID];
+    }];
     NSMutableArray *array = [NSMutableArray array];
     for (TYCity *city in controller.cityArray) {
         NSArray *bArray = [TYBuildingManager parseAllBuildings:city];

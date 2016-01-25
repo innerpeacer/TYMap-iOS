@@ -39,18 +39,7 @@
 }
 
 - (void)prepareTreeView
-{
-//    RATreeView *treeView = [[RATreeView alloc] initWithFrame:self.view.frame];
-//    treeView.delegate =self;
-//    treeView.dataSource = self;
-//    treeView.separatorStyle = RATreeViewCellSeparatorStyleSingleLine;
-//    [treeView reloadData];
-//    //    [treeView expandRowForItem:nil withRowAnimation:RATreeViewRowAnimationLeft];
-//    [treeView setBackgroundColor:UIColorFromRGB(0xF7F7F7)];
-//    
-//    self.treeView = treeView;
-//    [self.view addSubview:treeView];
-    
+{    
     self.treeView.delegate = self;
     self.treeView.dataSource = self;
     self.treeView.separatorStyle = RATreeViewCellSeparatorStyleSingleLine;

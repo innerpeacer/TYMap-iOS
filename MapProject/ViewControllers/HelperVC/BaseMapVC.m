@@ -38,15 +38,6 @@
         currentIndex = 0;
         _currentMapInfo = [_allMapInfos objectAtIndex:0];
         
-        for (int i = 0; i < _allMapInfos.count; ++i) {
-            TYMapInfo *info = [_allMapInfos objectAtIndex:i];
-            if (info.floorNumber == 7) {
-                currentIndex = i;
-                _currentMapInfo = info;
-                break;
-            }
-        }
-        
         [self initFloorSegment];
         [self initMap];
         self.title = _currentMapInfo.floorName;
