@@ -64,8 +64,8 @@
     webMapFileDir = [documentDirectory stringByAppendingPathComponent:WEB_MAP_ROOT];
     NSString *log = @"================================================";
     [self performSelectorOnMainThread:@selector(updateUI:) withObject:log waitUntilDone:YES];
-    [self checkWebMapRootDirectory];
-    [self checkCityDirectory:currentCity];
+//    [self checkWebMapRootDirectory];
+//    [self checkCityDirectory:currentCity];
     [self checkBuildingDirectory:currentBuilding];
 }
 
@@ -183,7 +183,6 @@
     [self performSelectorOnMainThread:@selector(updateUI:) withObject:log waitUntilDone:YES];
 }
 
-
 - (void)generateCityJson
 {
     IPMapDBAdapter *db = [[IPMapDBAdapter alloc] initWithPath:[IPMapFileManager getMapDBPath]];
@@ -210,41 +209,6 @@
     log = [NSString stringWithFormat:@"%@Create File: \t%@", log, cityJsonPath.lastPathComponent];
     [self performSelectorOnMainThread:@selector(updateUI:) withObject:log waitUntilDone:YES];
 
-}
-
-- (void)checkWebMapRootDirectory
-{
-    NSString *log;
-    NSError *error = nil;
-    if (![fileManager fileExistsAtPath:webMapFileDir]) {
-        [fileManager createDirectoryAtPath:webMapFileDir withIntermediateDirectories:YES attributes:nil error:&error];
-        if (error) {
-            NSLog(@"%@", [error localizedDescription]);
-        }
-        log = [NSString stringWithFormat:@"Create Directory: \t%@", webMapFileDir.lastPathComponent];
-        [self performSelectorOnMainThread:@selector(updateUI:) withObject:log waitUntilDone:YES];
-    } else {
-        log = [NSString stringWithFormat:@"Directory Exist: \t%@", webMapFileDir.lastPathComponent];
-        [self performSelectorOnMainThread:@selector(updateUI:) withObject:log waitUntilDone:YES];
-    }
-}
-
-- (void)checkCityDirectory:(TYCity *)city
-{
-    NSString *log;
-    NSError *error = nil;
-    NSString  *cityDir = [webMapFileDir stringByAppendingPathComponent:city.cityID];
-    if (![fileManager fileExistsAtPath:cityDir]) {
-        [fileManager createDirectoryAtPath:cityDir withIntermediateDirectories:YES attributes:nil error:&error];
-        if (error) {
-            NSLog(@"%@", [error localizedDescription]);
-        }
-        log = [NSString stringWithFormat:@"Create Directory: \t%@", cityDir.lastPathComponent];
-        [self performSelectorOnMainThread:@selector(updateUI:) withObject:log waitUntilDone:YES];
-    } else {
-        log = [NSString stringWithFormat:@"Directory Exist: \t%@", cityDir.lastPathComponent];
-        [self performSelectorOnMainThread:@selector(updateUI:) withObject:log waitUntilDone:YES];
-    }
 }
 
 - (void)checkBuildingDirectory:(TYBuilding *)building

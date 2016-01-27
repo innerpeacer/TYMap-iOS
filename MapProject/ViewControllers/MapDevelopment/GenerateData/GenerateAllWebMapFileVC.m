@@ -44,17 +44,6 @@
     [thread start];
 }
 
-//- (void)checkDirectory
-//{
-//    NSString *documentDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-//    webMapFileDir = [documentDirectory stringByAppendingPathComponent:WEB_MAP_ROOT];
-//    NSString *log = @"================================================";
-//    [self performSelectorOnMainThread:@selector(updateUI:) withObject:log waitUntilDone:YES];
-//    [self checkWebMapRootDirectory];
-//    [self checkCityDirectory:currentCity];
-//    [self checkBuildingDirectory:currentBuilding];
-//}
-
 - (NSString *)logTitleForCity:(TYCity *)city
 {
     NSString *title = @"================================================";
@@ -92,20 +81,12 @@
     NSLog(@"%@", webMapFileDir);
     NSString *log = @"================================================";
     [self performSelectorOnMainThread:@selector(updateUI:) withObject:log waitUntilDone:YES];
-    [self checkWebMapRootDirectory];
-    [self generateCityJson];
 
     IPMapDBAdapter *db = [[IPMapDBAdapter alloc] initWithPath:[IPMapFileManager getMapDBPath]];
     [db open];
     NSArray *allCityArray = [db getAllCities];
     for (TYCity *city in allCityArray) {
-//        log = @"================================================";
-//        [self performSelectorOnMainThread:@selector(updateUI:) withObject:log waitUntilDone:YES];
-//        [self performSelectorOnMainThread:@selector(updateUI:) withObject:[NSString stringWithFormat:@"\t%@", city.name] waitUntilDone:YES];
         [self performSelectorOnMainThread:@selector(updateUI:) withObject:[self logTitleForCity:city] waitUntilDone:YES];
-
-        [self checkCityDirectory:city];
-        [self generateBuildingJson:city];
         NSArray *allBuildings = [db getAllBuildings:city];
         for (TYBuilding *building in allBuildings) {
             log = @"================================================";
@@ -117,10 +98,10 @@
             [self generateRenderingScheme:building];
             [self generateWebMapDataFile:building];
         }
+        [self generateBuildingJson:city];
     }
-    
+    [self generateCityJson];
     [db close];
-
 }
 
 - (void)generateWebMapDataFile:(TYBuilding *)building
@@ -260,42 +241,6 @@
     log = [NSString stringWithFormat:@"Create File: \t%@", cityJsonPath.lastPathComponent];
     [self performSelectorOnMainThread:@selector(updateUI:) withObject:log waitUntilDone:YES];
     
-}
-
-- (void)checkWebMapRootDirectory
-{
-    NSString *log;
-    NSError *error = nil;
-    if (![fileManager fileExistsAtPath:webMapFileDir]) {
-        [fileManager createDirectoryAtPath:webMapFileDir withIntermediateDirectories:YES attributes:nil error:&error];
-        if (error) {
-            NSLog(@"%@", [error localizedDescription]);
-        }
-        log = [NSString stringWithFormat:@"Create Directory: \t%@", webMapFileDir.lastPathComponent];
-        [self performSelectorOnMainThread:@selector(updateUI:) withObject:log waitUntilDone:YES];
-    } else {
-        log = [NSString stringWithFormat:@"Directory Exist: \t%@", webMapFileDir.lastPathComponent];
-        [self performSelectorOnMainThread:@selector(updateUI:) withObject:log waitUntilDone:YES];
-    }
-}
-
-- (void)checkCityDirectory:(TYCity *)city
-{
-    NSString *log;
-    NSError *error = nil;
-    NSString  *cityDir = [webMapFileDir stringByAppendingPathComponent:city.cityID];
-    if (![fileManager fileExistsAtPath:cityDir]) {
-        [fileManager createDirectoryAtPath:cityDir withIntermediateDirectories:YES attributes:nil error:&error];
-        if (error) {
-            NSLog(@"%@", [error localizedDescription]);
-        }
-        
-        log = [NSString stringWithFormat:@"Create Directory: \t%@", cityDir.lastPathComponent];
-        [self performSelectorOnMainThread:@selector(updateUI:) withObject:log waitUntilDone:YES];
-    } else {
-        log = [NSString stringWithFormat:@"Directory Exist: \t%@", cityDir.lastPathComponent];
-        [self performSelectorOnMainThread:@selector(updateUI:) withObject:log waitUntilDone:YES];
-    }
 }
 
 - (void)checkBuildingDirectory:(TYBuilding *)building
