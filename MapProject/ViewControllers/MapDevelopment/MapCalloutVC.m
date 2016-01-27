@@ -13,7 +13,7 @@
 
 @interface MapCalloutVC() <AGSCalloutDelegate>
 {
-    
+
 }
 @property (nonatomic, strong) CustomCalloutVC *calloutViewController;
 

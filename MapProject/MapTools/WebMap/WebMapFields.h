@@ -10,7 +10,6 @@
 #define WebMapFields_h
 
 #define FILE_WEB_MAP_DATA @"%@.data"
-
 #define FILE_RENDERING_SCHEME @"%@_RenderingScheme.json"
 
 #define KEY_MAPINFOS @"MapInfo"
@@ -46,5 +45,21 @@
 #define KEY_CITY_LONGITUDE @"longitude"
 #define KEY_CITY_LATITUDE @"latitude"
 #define KEY_CITY_STATUS @"status"
+
+#define KEY_RENDERING_SCHEME @"RenderingScheme"
+#define KEY_DEFAULT_SYMBOL @"DefaultSymbol"
+#define KEY_DEFAULT_FILL_SYMBOL @"DefaultFillSymbol"
+#define KEY_DEFAULT_HIGHLIGHT_FILL_SYMBOL @"DefaultHighlightFillSymbol"
+#define KEY_DEFAULT_LINE_SYMBOL @"DefaultLineSymbol"
+#define KEY_DEFAULT_HIGHLIGHT_LINE_SYMBOL @"DefaultHighlightLineSymbol"
+#define KEY_FILL_SYMBOL @"FillSymbol"
+#define KEY_ICON_SYMBOL @"IconSymbol"
+#define KEY_SYMBOL_ID @"colorID"
+#define KEY_FILL_COLOR @"fillColor"
+#define KEY_OUTLINE_COLOR @"outlineColor"
+#define KEY_LINE_WIDTH @"lineWidth"
+#define KEY_ICON @"icon"
+
+
 
 #endif /* WebMapFields_h */

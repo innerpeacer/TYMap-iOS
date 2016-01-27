@@ -14,7 +14,7 @@
 @property (nonatomic, strong) NSString *fillColor;
 @property (nonatomic, strong) NSString *outlineColor;
 @property (nonatomic, assign) double lineWidth;
-
+- (id)buildWebFillObject;
 @end
 
 
@@ -22,5 +22,5 @@
 
 @property (nonatomic, assign) int symbolID;
 @property (nonatomic, strong) NSString *icon;
-
+- (id)buildWebIconObject;
 @end

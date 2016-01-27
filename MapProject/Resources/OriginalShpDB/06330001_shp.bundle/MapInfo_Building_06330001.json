@@ -1,0 +1,20 @@
+{
+    "MapInfo": [
+                
+                {
+                "cityID": "0633",
+                "buildingID": "06330001",
+                "mapID": "06330001F03",
+                "floorName": "F3",
+                "floorNumber": "3",
+                "size_x": "36",
+                "size_y": "54",
+                "xmax": "13298798",
+                "xmin": "13298762",
+                "ymax": "4200752",
+                "ymin": "4200698"
+                }
+                
+                ]
+    
+}

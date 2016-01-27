@@ -17,7 +17,8 @@
 #import "IPMapFeatureData.h"
 
 #import "WebMapFields.h"
-
+#import "WebMapObjectBuilder.h"
+#import "WebSymbolDBAdpater.h"
 #define WEB_MAP_ROOT @"WebMap"
 
 @interface GenerateAllWebMapFileVC()
@@ -142,7 +143,7 @@
             NSDictionary *setDict = [set encodeToJSON];
             [mapDataJsonDict setObject:setDict forKey:key];
         }
-        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:mapDataJsonDict options:NSJSONWritingPrettyPrinted error:&error];
+        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:mapDataJsonDict options:kNilOptions error:&error];
         if (error) {
             NSLog(@"%@", [error localizedDescription]);
         }
@@ -160,22 +161,24 @@
     NSString *cityDir = [webMapFileDir stringByAppendingPathComponent:building.cityID];
     NSString *buildingDir = [cityDir stringByAppendingPathComponent:building.buildingID];
     NSString *renderingSchemeFile = [NSString stringWithFormat:FILE_RENDERING_SCHEME, building.buildingID];
-    NSString *sourceBuildingDir = [TYMapEnvironment getBuildingDirectory:building];
-    NSString *sourceRenderSchemePath = [sourceBuildingDir stringByAppendingPathComponent:renderingSchemeFile];
-    
     NSString *renderingSchemeJsonPath = [buildingDir stringByAppendingPathComponent:renderingSchemeFile];
     NSString *log;
-    if (![fileManager fileExistsAtPath:renderingSchemeJsonPath isDirectory:nil]) {
-        [fileManager copyItemAtPath:sourceRenderSchemePath toPath:renderingSchemeJsonPath error:&error];
-        if (error) {
-            NSLog(@"%@", [error localizedDescription]);
-        }
-        log = [NSString stringWithFormat:@"Copy File: \t%@", renderingSchemeJsonPath.lastPathComponent];
-        [self performSelectorOnMainThread:@selector(updateUI:) withObject:log waitUntilDone:YES];
-    } else {
-        log = [NSString stringWithFormat:@"File Exist: \t%@", renderingSchemeJsonPath.lastPathComponent];
-        [self performSelectorOnMainThread:@selector(updateUI:) withObject:log waitUntilDone:YES];
+    NSString *symbolDBPath = [IPMapFileManager getSymbolDBPath:building];
+    WebSymbolDBAdpater *db = [[WebSymbolDBAdpater alloc] initWithPath:symbolDBPath];
+    [db open];
+    NSDictionary *fillDict = [db readFillSymbols];
+    NSDictionary *iconDict = [db readIconSymbols];
+    [db close];
+    
+    NSDictionary *renderingSchemeObject = [WebMapObjectBuilder generateWebRenderingSchemeObjectWithFill:fillDict Icon:iconDict];
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:renderingSchemeObject options:NSJSONWritingPrettyPrinted error:&error];
+    if (error) {
+        NSLog(@"%@", [error localizedDescription]);
     }
+    [jsonData writeToFile:renderingSchemeJsonPath atomically:YES];
+    
+    log = [NSString stringWithFormat:@"Create File: \t%@", renderingSchemeJsonPath.lastPathComponent];
+    [self performSelectorOnMainThread:@selector(updateUI:) withObject:log waitUntilDone:YES];
 }
 
 - (void)generateMapInfoJson:(TYBuilding *)building
@@ -186,19 +189,7 @@
     NSMutableArray *mapInfoJsonArray = [[NSMutableArray alloc] init];
     NSArray *allMapInfos = [TYMapInfo parseAllMapInfo:building];
     for (TYMapInfo *mapInfo in allMapInfos) {
-        NSMutableDictionary *mapInfoObject = [[NSMutableDictionary alloc] init];
-        [mapInfoObject setObject:mapInfo.cityID forKey:KEY_MAPINFO_CITYID];
-        [mapInfoObject setObject:mapInfo.buildingID forKey:KEY_MAPINFO_BUILDINGID];
-        [mapInfoObject setObject:mapInfo.mapID forKey:KEY_MAPINFO_MAPID];
-        [mapInfoObject setObject:mapInfo.floorName forKey:KEY_MAPINFO_FLOOR];
-        [mapInfoObject setObject:@(mapInfo.floorNumber) forKey:KEY_MAPINFO_FLOOR_INDEX];
-        [mapInfoObject setObject:@(mapInfo.mapSize.x) forKey:KEY_MAPINFO_SIZEX];
-        [mapInfoObject setObject:@(mapInfo.mapSize.y) forKey:KEY_MAPINFO_SIZEY];
-        [mapInfoObject setObject:@(mapInfo.mapExtent.xmin) forKey:KEY_MAPINFO_XMIN];
-        [mapInfoObject setObject:@(mapInfo.mapExtent.xmax) forKey:KEY_MAPINFO_XMAX];
-        [mapInfoObject setObject:@(mapInfo.mapExtent.ymin) forKey:KEY_MAPINFO_YMIN];
-        [mapInfoObject setObject:@(mapInfo.mapExtent.ymax) forKey:KEY_MAPINFO_YMAX];
-        [mapInfoJsonArray addObject:mapInfoObject];
+        [mapInfoJsonArray addObject:[WebMapObjectBuilder generateWebMapInfoObject:mapInfo]];
     }
     [mapInfoJsonDict setObject:mapInfoJsonArray forKey:KEY_MAPINFOS];
     
@@ -225,19 +216,7 @@
     NSMutableDictionary *buildingJsonDict = [[NSMutableDictionary alloc] init];
     NSMutableArray *buildingJsonArray = [[NSMutableArray alloc] init];
     for (TYBuilding *building in allBuildingArray) {
-        NSMutableDictionary *buildingObject = [[NSMutableDictionary alloc] init];
-        [buildingObject setObject:building.cityID forKey:KEY_BUILDING_CITY_ID];
-        [buildingObject setObject:building.buildingID forKey:KEY_BUILDING_ID];
-        [buildingObject setObject:building.name forKey:KEY_BUILDING_NAME];
-        [buildingObject setObject:@(building.longitude) forKey:KEY_BUILDING_LONGITUDE];
-        [buildingObject setObject:@(building.latitude) forKey:KEY_BUILDING_LATITUDE];
-        [buildingObject setObject:building.address forKey:KEY_BUILDING_ADDRESS];
-        [buildingObject setObject:@(building.initAngle) forKey:KEY_BUILDING_INIT_ANGLE];
-        [buildingObject setObject:building.routeURL forKey:KEY_BUILDING_ROUTE_URL];
-        [buildingObject setObject:@(building.offset.x) forKey:KEY_BUILDING_OFFSET_X];
-        [buildingObject setObject:@(building.offset.y) forKey:KEY_BUILDING_OFFSET_Y];
-        [buildingObject setObject:@(building.status) forKey:KEY_BUILDING_STATUS];
-        [buildingJsonArray addObject:buildingObject];
+        [buildingJsonArray addObject:[WebMapObjectBuilder generateWebBuildingObject:building]];
     }
     [buildingJsonDict setObject:buildingJsonArray forKey:KEY_BUILDINGS];
     [db close];
@@ -264,14 +243,7 @@
     NSMutableDictionary *cityJsonDict = [[NSMutableDictionary alloc] init];
     NSMutableArray *cityJsonArray = [[NSMutableArray alloc] init];
     for (TYCity *city in allCityArray) {
-        NSMutableDictionary *cityObject = [[NSMutableDictionary alloc] init];
-        [cityObject setObject:city.cityID forKey:KEY_CITY_ID];
-        [cityObject setObject:city.name forKey:KEY_CITY_NAME];
-        [cityObject setObject:city.sname forKey:KEY_CITY_SHORT_NAME];
-        [cityObject setObject:@(city.longitude) forKey:KEY_CITY_LONGITUDE];
-        [cityObject setObject:@(city.latitude) forKey:KEY_CITY_LATITUDE];
-        [cityObject setObject:@(city.status) forKey:KEY_CITY_STATUS];
-        [cityJsonArray addObject:cityObject];
+        [cityJsonArray addObject:[WebMapObjectBuilder generateWebCityObject:city]];
     }
     [cityJsonDict setObject:cityJsonArray forKey:KEY_CITIES];
     [db close];
