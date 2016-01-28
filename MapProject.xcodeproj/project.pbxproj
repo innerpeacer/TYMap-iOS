@@ -138,6 +138,7 @@
 		57852A771BF7ADA600C65D89 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57852A761BF7ADA600C65D89 /* CFNetwork.framework */; };
 		57858A941C58C7C6000A5D8A /* WebMapObjectBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 57858A911C58C7C6000A5D8A /* WebMapObjectBuilder.m */; };
 		57858A951C58C7C6000A5D8A /* WebSymbolDBAdpater.m in Sources */ = {isa = PBXBuildFile; fileRef = 57858A931C58C7C6000A5D8A /* WebSymbolDBAdpater.m */; };
+		57858A981C58CB6C000A5D8A /* WebMapBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 57858A971C58CB6C000A5D8A /* WebMapBuilder.m */; };
 		578771221BBB911400F90D7B /* RouteNetworkDBAdapter.mm in Sources */ = {isa = PBXBuildFile; fileRef = 578771211BBB911400F90D7B /* RouteNetworkDBAdapter.mm */; };
 		578771291BBB914700F90D7B /* TYLink.m in Sources */ = {isa = PBXBuildFile; fileRef = 578771281BBB914700F90D7B /* TYLink.m */; };
 		5787712C1BBB915E00F90D7B /* RouteNetworkDataset.m in Sources */ = {isa = PBXBuildFile; fileRef = 5787712B1BBB915E00F90D7B /* RouteNetworkDataset.m */; };
@@ -449,6 +450,8 @@
 		57858A911C58C7C6000A5D8A /* WebMapObjectBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebMapObjectBuilder.m; sourceTree = "<group>"; };
 		57858A921C58C7C6000A5D8A /* WebSymbolDBAdpater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebSymbolDBAdpater.h; sourceTree = "<group>"; };
 		57858A931C58C7C6000A5D8A /* WebSymbolDBAdpater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebSymbolDBAdpater.m; sourceTree = "<group>"; };
+		57858A961C58CB6C000A5D8A /* WebMapBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebMapBuilder.h; sourceTree = "<group>"; };
+		57858A971C58CB6C000A5D8A /* WebMapBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebMapBuilder.m; sourceTree = "<group>"; };
 		578771201BBB911400F90D7B /* RouteNetworkDBAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RouteNetworkDBAdapter.h; sourceTree = "<group>"; };
 		578771211BBB911400F90D7B /* RouteNetworkDBAdapter.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RouteNetworkDBAdapter.mm; sourceTree = "<group>"; };
 		578771271BBB914700F90D7B /* TYLink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYLink.h; sourceTree = "<group>"; };
@@ -1135,6 +1138,8 @@
 				57858A911C58C7C6000A5D8A /* WebMapObjectBuilder.m */,
 				57858A921C58C7C6000A5D8A /* WebSymbolDBAdpater.h */,
 				57858A931C58C7C6000A5D8A /* WebSymbolDBAdpater.m */,
+				57858A961C58CB6C000A5D8A /* WebMapBuilder.h */,
+				57858A971C58CB6C000A5D8A /* WebMapBuilder.m */,
 			);
 			path = WebMap;
 			sourceTree = "<group>";
@@ -1539,6 +1544,7 @@
 				574F5E401BDAB2E5001967F6 /* IPXMapDataDBAdapter.cpp in Sources */,
 				579C2C611C200BDB00786AF2 /* IPSyncSymbolRecord.m in Sources */,
 				574F5E3D1BDAAE07001967F6 /* IPXFeatureRecord.cpp in Sources */,
+				57858A981C58CB6C000A5D8A /* WebMapBuilder.m in Sources */,
 				57494DDA1B61DAE7000B6F2C /* BaseControllerTableVC.m in Sources */,
 				570DF18F1BDE86490028E25F /* TYBuildingManager.m in Sources */,
 				57B953391BDDFB0700D9D318 /* GenerateAllMapDBVC.m in Sources */,
