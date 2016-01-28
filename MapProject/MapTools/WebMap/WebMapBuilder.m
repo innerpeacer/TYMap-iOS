@@ -81,7 +81,7 @@
     for (TYCity *city in cityArray) {
         [cityJsonArray addObject:[WebMapObjectBuilder generateWebCityObject:city]];
     }
-    [cityJsonDict setObject:cityJsonArray forKey:KEY_CITIES];
+    [cityJsonDict setObject:cityJsonArray forKey:KEY_WEB_CITIES];
     
     NSString *cityJsonPath = [root stringByAppendingPathComponent:@"Cities.json"];
     NSError *error = nil;
@@ -109,7 +109,7 @@
     for (TYBuilding *building in buildingArray) {
         [buildingJsonArray addObject:[WebMapObjectBuilder generateWebBuildingObject:building]];
     }
-    [buildingJsonDict setObject:buildingJsonArray forKey:KEY_BUILDINGS];
+    [buildingJsonDict setObject:buildingJsonArray forKey:KEY_WEB_BUILDINGS];
     
     NSString *cityDir = [root stringByAppendingPathComponent:city.cityID];
     NSString *buildingJsonPath = [cityDir stringByAppendingPathComponent:[NSString stringWithFormat:@"Buildings_City_%@.json", city.cityID]];
@@ -123,22 +123,6 @@
 
 - (void)generateBuildingJsonWithCity:(TYCity *)city Buildings:(NSArray *)buildingArray
 {
-//    NSMutableDictionary *buildingJsonDict = [[NSMutableDictionary alloc] init];
-//    NSMutableArray *buildingJsonArray = [[NSMutableArray alloc] init];
-//    for (TYBuilding *building in buildingArray) {
-//        [buildingJsonArray addObject:[WebMapObjectBuilder generateWebBuildingObject:building]];
-//    }
-//    [buildingJsonDict setObject:buildingJsonArray forKey:KEY_BUILDINGS];
-//    
-//    NSString *cityDir = [webMapFileDir stringByAppendingPathComponent:city.cityID];
-//    NSString *buildingJsonPath = [cityDir stringByAppendingPathComponent:[NSString stringWithFormat:@"Buildings_City_%@.json", city.cityID]];
-//    NSError *error = nil;
-//    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:buildingJsonDict options:NSJSONWritingPrettyPrinted error:&error];
-//    if (error) {
-//        NSLog(@"%@", [error localizedDescription]);
-//    }
-//    [jsonData writeToFile:buildingJsonPath atomically:YES];
-    
     [WebMapBuilder generateBuildingJsonWithCity:city Buildings:buildingArray WithRoot:webMapFileDir];
     
     NSString *cityDir = [webMapFileDir stringByAppendingPathComponent:city.cityID];
@@ -158,7 +142,7 @@
     for (TYMapInfo *mapInfo in allMapInfos) {
         [mapInfoJsonArray addObject:[WebMapObjectBuilder generateWebMapInfoObject:mapInfo]];
     }
-    [mapInfoJsonDict setObject:mapInfoJsonArray forKey:KEY_MAPINFOS];
+    [mapInfoJsonDict setObject:mapInfoJsonArray forKey:KEY_WEB_MAPINFOS];
     
     NSString *mapInfoJsonPath = [buildingDir stringByAppendingPathComponent:[NSString stringWithFormat:@"MapInfo_Building_%@.json", building.buildingID]];
     NSError *error = nil;
@@ -179,7 +163,7 @@
     
     NSString *cityDir = [webMapFileDir stringByAppendingPathComponent:building.cityID];
     NSString *buildingDir = [cityDir stringByAppendingPathComponent:building.buildingID];
-    NSString *renderingSchemeFile = [NSString stringWithFormat:FILE_RENDERING_SCHEME, building.buildingID];
+    NSString *renderingSchemeFile = [NSString stringWithFormat:FILE_WEB_RENDERING_SCHEME, building.buildingID];
     NSString *renderingSchemeJsonPath = [buildingDir stringByAppendingPathComponent:renderingSchemeFile];
     NSString *symbolDBPath = [IPMapFileManager getSymbolDBPath:building];
     WebSymbolDBAdpater *db = [[WebSymbolDBAdpater alloc] initWithPath:symbolDBPath];

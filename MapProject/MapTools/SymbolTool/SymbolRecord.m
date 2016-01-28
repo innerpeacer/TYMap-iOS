@@ -14,10 +14,10 @@
 - (id)buildWebFillObject
 {
     NSMutableDictionary *fillObject = [[NSMutableDictionary alloc] init];
-    [fillObject setObject:@(_symbolID) forKey:KEY_SYMBOL_ID];
-    [fillObject setObject:_fillColor forKey:KEY_FILL_COLOR];
-    [fillObject setObject:_outlineColor forKey:KEY_OUTLINE_COLOR];
-    [fillObject setObject:@(_lineWidth) forKey:KEY_LINE_WIDTH];
+    [fillObject setObject:@(_symbolID) forKey:KEY_WEB_SYMBOL_ID];
+    [fillObject setObject:_fillColor forKey:KEY_WEB_FILL_COLOR];
+    [fillObject setObject:_outlineColor forKey:KEY_WEB_OUTLINE_COLOR];
+    [fillObject setObject:@(_lineWidth) forKey:KEY_WEB_LINE_WIDTH];
     return fillObject;
 }
 
@@ -29,8 +29,8 @@
 - (id)buildWebIconObject
 {
     NSMutableDictionary *iconObject = [[NSMutableDictionary alloc] init];
-    [iconObject setObject:@(_symbolID) forKey:KEY_SYMBOL_ID];
-    [iconObject setObject:_icon forKey:KEY_ICON];
+    [iconObject setObject:@(_symbolID) forKey:KEY_WEB_SYMBOL_ID];
+    [iconObject setObject:_icon forKey:KEY_WEB_ICON];
     return iconObject;
 }
 
