@@ -17,7 +17,7 @@
 #import "MapGeneratorDBAdapter.h"
 #import "OriginalShpDBAdapter.h"
 #import "OriginalSymbolDBAdapter.h"
-
+#import "TYMapEnviroment.h"
 @interface GenerateMapDBVC()
 {
     TYCity *currentCity;
@@ -49,12 +49,15 @@
     NSBundle *dbBundle = [[NSBundle alloc] initWithPath:bundlePath];
     NSString *mapInfoPath = [dbBundle pathForResource:[NSString stringWithFormat:@"MapInfo_Building_%@", currentBuilding.buildingID] ofType:@"json"];
     allMapInfos = [TYMapInfoJsonParser parseAllMapInfoFromFile:mapInfoPath];
-    //    NSLog(@"%@", allMapInfos);
     
-//    NSString *log = @"================================================\n";
     NSString *log = [self logTitleForBuilding:currentBuilding];
     log = [NSString stringWithFormat:@"%@\nGenerate Map Database for %@", log, currentBuilding.name];
     [self performSelectorOnMainThread:@selector(updateUI:) withObject:log waitUntilDone:YES];
+    
+    NSString *buildingDir = [TYMapEnvironment getBuildingDirectory:currentBuilding];
+    if (![[NSFileManager defaultManager] fileExistsAtPath:buildingDir isDirectory:nil]) {
+        [[NSFileManager defaultManager] createDirectoryAtPath:buildingDir withIntermediateDirectories:YES attributes:nil error:nil];
+    }
     
     MapGeneratorDBAdapter *mdb = [[MapGeneratorDBAdapter alloc] initWithBuilding:currentBuilding];
     [mdb open];
