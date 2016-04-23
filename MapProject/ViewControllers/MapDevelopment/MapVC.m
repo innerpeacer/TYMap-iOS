@@ -73,17 +73,17 @@
 
 - (void)TYMapView:(TYMapView *)mapView didFinishLoadingFloor:(TYMapInfo *)mapInfo
 {
+    NSLog(@"didFinishLoadingFloor");
+    NSLog(@"%@", mapInfo);
     [self.mapView showOccupiedParkingSpaces:occupiedParkingSpaces AvailableParkingSpaces:availableParkingSpaces];
 }
 
 - (void)TYMapView:(TYMapView *)mapView didClickAtPoint:(CGPoint)screen mapPoint:(AGSPoint *)mappoint
 {
     NSLog(@"didClickAtPoint: %f, %f", mappoint.x, mappoint.y);
-    
 //    NSLog(@"Resolution: %f", self.mapView.resolution);
-    NSLog(@"MapScale: %f", self.mapView.mapScale);
-    
-    NSLog(@"Current Level: %d", [self.mapView getCurrentLevel]);
+//    NSLog(@"MapScale: %f", self.mapView.mapScale);
+//    NSLog(@"Current Level: %d", [self.mapView getCurrentLevel]);
     
     [hintLayer removeAllGraphics];
     AGSSimpleMarkerSymbol *sms = [AGSSimpleMarkerSymbol simpleMarkerSymbolWithColor:[UIColor redColor]];
@@ -98,9 +98,37 @@
     picIndex = PIC_INITIAL;
     [testLayer removeAllGraphics];
     
-    TYPoi *poi = [self.mapView extractRoomPoiOnCurrentFloorWithX:mappoint.x Y:mappoint.y];
-    NSLog(@"%@", poi);
+//    TYPoi *poi = [self.mapView extractRoomPoiOnCurrentFloorWithX:mappoint.x Y:mappoint.y];
+//    NSLog(@"%@", poi);
     
+    static AGSPoint *lastPoint = nil;
+    static CGPoint lastScreenPoint;
+    if (lastPoint == nil) {
+        lastPoint = mappoint;
+        lastScreenPoint = screen;
+        return;
+    }
+    
+    double mapDis = [lastPoint distanceToPoint:mappoint];
+    double screenDis = sqrt(pow(lastScreenPoint.x - screen.x, 2) + pow(lastScreenPoint.y - screen.y, 2));
+    double ratio = mapDis / screenDis;
+    
+    NSLog(@"==================================");
+    NSLog(@"Delta Distance: %f", mapDis);
+    NSLog(@"Screen Distance: %f", screenDis);
+    NSLog(@"Ratio: %f", ratio);
+    NSLog(@"MapScale: %f", self.mapView.mapScale);
+    NSLog(@"MapResoluton: %f", self.mapView.resolution);
+    
+    
+    NSLog(@"Scale To Ratio: %f", self.mapView.mapScale / self.mapView.resolution);
+    
+    double lengthPerPixel = 0.109;
+    double length = lengthPerPixel * screenDis * self.mapView.mapScale / 1000;
+    NSLog(@"Dis VS Dis: %f -- %f", mapDis, length);
+    
+    lastPoint = mappoint;
+    lastScreenPoint = screen;
 }
 
 - (void)showTestLocation

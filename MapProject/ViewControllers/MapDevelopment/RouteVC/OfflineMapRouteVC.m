@@ -136,13 +136,15 @@
     if (routePartArray && routePartArray.count > 0) {
         currentRoutePart = [routePartArray objectAtIndex:0];
     }
-    
+
     if (currentRoutePart) {
         routeGuides = [routeResult getRouteDirectionalHint:currentRoutePart];
     }
     
 //    [testLayer addGraphic:[AGSGraphic graphicWithGeometry:line symbol:[AGSSimpleLineSymbol simpleLineSymbolWithColor:[UIColor magentaColor] width:3] attributes:nil]];
+
 }
+
 
 
 - (void)TYMapView:(TYMapView *)mapView didFinishLoadingFloor:(TYMapInfo *)mapInfo

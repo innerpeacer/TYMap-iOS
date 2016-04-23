@@ -70,6 +70,8 @@
     allRouteLinkRecords = linkArray;
     allRouteNodeRecords = nodeArray;
     
+    NSLog(@"Links: %d, Nodes: %d", (int)linkArray.count, (int)nodeArray.count);
+    
     uploadingStep = TY_SYNC_UPLOADING_STEP_CBM;
     [self performUploadingStep];
 }

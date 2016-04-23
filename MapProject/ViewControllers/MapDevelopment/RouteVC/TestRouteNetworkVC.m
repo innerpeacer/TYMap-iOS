@@ -82,8 +82,14 @@
     NSArray *nodeArray = routeNetwork.nodeArray;
     NSArray *virtualNodeArray = routeNetwork.virtualNodeArray;
     
+    AGSSimpleLineSymbol *errorLinkSymbol = [AGSSimpleLineSymbol simpleLineSymbolWithColor:[UIColor redColor] width:1];
+
     for (TYLink *link in linkArray) {
-        [layergroup.linkLayer addGraphic:[AGSGraphic graphicWithGeometry:link.line symbol:nil attributes:nil]];
+        if (link.currentNodeID == 0 || link.nextNodeID == 0) {
+            [layergroup.linkLayer addGraphic:[AGSGraphic graphicWithGeometry:link.line symbol:errorLinkSymbol attributes:nil]];
+        } else {
+            [layergroup.linkLayer addGraphic:[AGSGraphic graphicWithGeometry:link.line symbol:nil attributes:nil]];
+        }
     }
     
     for (TYLink *link in virtualLinkArray) {

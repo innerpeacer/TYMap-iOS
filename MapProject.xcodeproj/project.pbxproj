@@ -135,7 +135,6 @@
 		57852A711BF7AD8E00C65D89 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57852A701BF7AD8E00C65D89 /* ImageIO.framework */; };
 		57852A731BF7AD9400C65D89 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57852A721BF7AD9400C65D89 /* Security.framework */; };
 		57852A751BF7AD9D00C65D89 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57852A741BF7AD9D00C65D89 /* SystemConfiguration.framework */; };
-		57852A771BF7ADA600C65D89 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57852A761BF7ADA600C65D89 /* CFNetwork.framework */; };
 		57858A941C58C7C6000A5D8A /* WebMapObjectBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 57858A911C58C7C6000A5D8A /* WebMapObjectBuilder.m */; };
 		57858A951C58C7C6000A5D8A /* WebSymbolDBAdpater.m in Sources */ = {isa = PBXBuildFile; fileRef = 57858A931C58C7C6000A5D8A /* WebSymbolDBAdpater.m */; };
 		57858A981C58CB6C000A5D8A /* WebMapBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 57858A971C58CB6C000A5D8A /* WebMapBuilder.m */; };
@@ -444,7 +443,6 @@
 		57852A701BF7AD8E00C65D89 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		57852A721BF7AD9400C65D89 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		57852A741BF7AD9D00C65D89 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		57852A761BF7ADA600C65D89 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		57858A8F1C58C7C6000A5D8A /* WebMapFields.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebMapFields.h; sourceTree = "<group>"; };
 		57858A901C58C7C6000A5D8A /* WebMapObjectBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebMapObjectBuilder.h; sourceTree = "<group>"; };
 		57858A911C58C7C6000A5D8A /* WebMapObjectBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebMapObjectBuilder.m; sourceTree = "<group>"; };
@@ -561,7 +559,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				57852A771BF7ADA600C65D89 /* CFNetwork.framework in Frameworks */,
 				57852A751BF7AD9D00C65D89 /* SystemConfiguration.framework in Frameworks */,
 				57852A731BF7AD9400C65D89 /* Security.framework in Frameworks */,
 				57852A711BF7AD8E00C65D89 /* ImageIO.framework in Frameworks */,
@@ -1083,7 +1080,6 @@
 		57672EF71B56006E00DAD219 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				57852A761BF7ADA600C65D89 /* CFNetwork.framework */,
 				57852A741BF7AD9D00C65D89 /* SystemConfiguration.framework */,
 				57852A721BF7AD9400C65D89 /* Security.framework */,
 				57852A701BF7AD8E00C65D89 /* ImageIO.framework */,

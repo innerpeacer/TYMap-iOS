@@ -137,6 +137,7 @@
         return;
     }
     
+    NSLog(@"Route Response: %@", responseString);
     BOOL success = [resultDict[TY_RESPONSE_STATUS] boolValue];
     NSString *description = resultDict[TY_RESPONSE_DESCRIPTION];
     

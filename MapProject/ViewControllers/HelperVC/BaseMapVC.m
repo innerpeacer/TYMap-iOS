@@ -84,10 +84,7 @@
 //    [self.mapView initMapViewWithBuilding:_currentBuilding UserID:TRIAL_USER_ID License:[LicenseGenerator generateLicenseForUserID:TRIAL_USER_ID Building:@"00210100" ExpiredDate:TRIAL_EXPRIED_DATE]];
 
     self.mapView.mapDelegate = self;
-    
     [self.mapView setPathCalibrationEnabled:YES];
-
-    
     [self.mapView setFloorWithInfo:_currentMapInfo];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(respondToZooming:) name:@"AGSMapViewDidEndZoomingNotification" object:nil];
 }

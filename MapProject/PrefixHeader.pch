@@ -12,8 +12,13 @@
 #import "IPMapApi.h"
 #import "IPMapApi_Manager.h"
 
+//#define TRIAL_USER_ID @"tyxVHqqpr9u9LcS0SC"
+
 #define TRIAL_USER_ID @"ty4e13f85911a44a75"
-#define TRIAL_EXPRIED_DATE @"20160601"
+//#define TRIAL_USER_ID @"tyb9719d911017c592"
+//#define TRIAL_USER_ID @"tyff130c01c519037a"
+
+#define TRIAL_EXPRIED_DATE @"20160930"
 #define SUPER_USER_ID @"ty943b41bc48ed4aec"
 
 #define USE_REMOTE_HOST 1

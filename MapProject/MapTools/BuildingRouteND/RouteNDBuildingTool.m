@@ -114,6 +114,11 @@
             link.endNodeID = endNode.nodeID;
             [endNode addLink:link];
         }
+        
+        if (!headFound || !endFound) {
+            NSLog(@"%@", link);
+            NSLog(@"Error in route network");
+        }
     }
     
     [self notifyDelegate:@"\tWrite Route Network to Database"];

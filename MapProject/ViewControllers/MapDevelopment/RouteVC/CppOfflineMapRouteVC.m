@@ -32,20 +32,17 @@
     
     // 路径规划结果
     TYRouteResult *routeResult;
-    
     TYRoutePart *currentRoutePart;
     NSArray *routeGuides;
     
     AGSGraphicsLayer *hintLayer;
     AGSGraphicsLayer *testLayer;
     
-    
     // 起点、终点、切换点标识符号
     AGSPictureMarkerSymbol *startSymbol;
     AGSPictureMarkerSymbol *endSymbol;
     AGSPictureMarkerSymbol *switchSymbol;
     AGSSimpleMarkerSymbol *markerSymbol;
-    
     
     NSDate *startDate;
     NSDate *endDate;
@@ -63,18 +60,25 @@
     
     [super viewDidLoad];
     
-    
     [self initSymbols];
     hintLayer = [AGSGraphicsLayer graphicsLayer];
     [self.mapView addMapLayer:hintLayer];
     testLayer = [AGSGraphicsLayer graphicsLayer];
     [self.mapView addMapLayer:testLayer];
     
+    
+    AGSGraphicsLayer *poiLayer = [AGSGraphicsLayer graphicsLayer];
+    [self.mapView addMapLayer:poiLayer];
+    
+    AGSPictureMarkerSymbol *poiSymbol = [AGSPictureMarkerSymbol pictureMarkerSymbolWithImageNamed:@""];
+    AGSPoint *poiCoord = [AGSPoint pointWithX:0 y:0 spatialReference:self.mapView.spatialReference];
+    [poiLayer addGraphic:[AGSGraphic graphicWithGeometry:poiCoord symbol:poiSymbol attributes:nil]];
+    
+    
     NSDate *now = [NSDate date];
     cppOfflineRouteManager = [TYOfflineRouteManager routeManagerWithBuilding:self.currentBuilding MapInfos:self.allMapInfos];
     cppOfflineRouteManager.delegate = self;
     NSLog(@"加载用时：%f", [[NSDate date] timeIntervalSinceDate:now]);
-    
     
 //    [self test];
 }
@@ -109,8 +113,17 @@
     if (currentRoutePart) {
         routeGuides = [routeResult getRouteDirectionalHint:currentRoutePart];
     }
+//    [NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(rotateMap) userInfo:nil repeats:YES];
+//    [self.mapView setMapMode:TYMapViewModeFollowing];
 
 }
+
+//- (void)rotateMap
+//{
+//    NSLog(@"rotateMap");
+//    static int angle = 0;
+//    [self.mapView processDeviceRotation:angle++];
+//}
 
 - (void)TYMapView:(TYMapView *)mapView didFinishLoadingFloor:(TYMapInfo *)mapInfo
 {
@@ -131,14 +144,12 @@
 {
     NSLog(@"(%f, %f) in floor %d", mappoint.x, mappoint.y, self.currentMapInfo.floorNumber);
 
-    
     [hintLayer removeAllGraphics];
     [hintLayer addGraphic:[AGSGraphic graphicWithGeometry:mappoint symbol:markerSymbol attributes:nil]];
     
     startLocalPoint = endLocalPoint;
     endLocalPoint = [TYLocalPoint pointWithX:mappoint.x Y:mappoint.y Floor:self.mapView.currentMapInfo.floorNumber];;
     [self requestRoute];
-    
 }
 
 - (void)test
@@ -165,9 +176,7 @@
             endLocalPoint = [TYLocalPoint pointWithX:x Y:y Floor:floor];
         }
     }
-    
     [db close];
-    
     [self requestRoute];
 }
 
@@ -180,11 +189,8 @@
     isRouting = YES;
     
     startDate = [NSDate date];
-    
 //    startPoint = new TYLocalPoint(13275974.30287264, 2989071.967726886, 3);
 //    endPoint = new TYLocalPoint(13275987.1889, 2989087.670699999, 3);
-    
-    
     [cppOfflineRouteManager requestRouteWithStart:startLocalPoint End:endLocalPoint];
 }
 

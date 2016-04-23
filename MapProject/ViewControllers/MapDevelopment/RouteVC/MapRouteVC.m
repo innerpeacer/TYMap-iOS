@@ -153,7 +153,9 @@
 //    for (TYDirectionalHint *ds in routeGuides) {
 //        NSLog(@"%@", [ds getDirectionString]);
 //    }
+    
 }
+
 
 - (void)TYMapView:(TYMapView *)mapView didFinishLoadingFloor:(TYMapInfo *)mapInfo
 {

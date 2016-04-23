@@ -28,6 +28,11 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    NSString *str1 = @"224347e9\u001c<1f2k9dfg5i2?=5a9396386";
+    NSString *str2 = @"224347e9<1f2k9dfg5i2?=5a9396386";
+    NSLog(@"Str1: %@, %d", str1, (int)str1.length);
+    NSLog(@"Str2: %@, %d", str2, (int)str2.length);
+    
     NSString *bundleID = [[NSBundle mainBundle] bundleIdentifier];
     NSLog(@"bundleID: %@", bundleID);
     
