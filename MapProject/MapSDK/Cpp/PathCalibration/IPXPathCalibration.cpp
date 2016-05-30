@@ -57,6 +57,7 @@ IPXPathCalibration::IPXPathCalibration(const char *dbPath)
     db->readPathData();
     std::vector<geos::geom::LineString *> pathsFromDB = db->getAllPaths();
     db->close();
+    delete db;
     
     paths.insert(paths.end(), pathsFromDB.begin(), pathsFromDB.end());
     pathCount = (int)paths.size();

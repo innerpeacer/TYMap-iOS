@@ -45,6 +45,7 @@ using namespace std;
     db->open();
     vector<IPXFeatureRecord *> allRecords = db->getAllRecordsOnFloor(floor);
     db->close();
+    delete db;
     
     NSMutableArray *floorArray = [NSMutableArray array];
     NSMutableArray *roomArray = [NSMutableArray array];

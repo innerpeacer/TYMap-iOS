@@ -44,7 +44,7 @@
                                  //                                 @[@"测试Cpp网络数据集",@"TestCppRouteNetworkVC"],
                                  @[@"生成地图数据库",@"GenerateMapDBVC"],
                                  @[@"生成所有地图数据库",@"GenerateAllMapDBVC"],
-//                                 @[@"生成Web地图文件", @"GenerateWebMapFileVC"],
+                                 @[@"生成Web地图文件", @"GenerateWebMapFileVC"],
 //                                 @[@"生成所有Web地图文件", @"GenerateAllWebMapFileVC"],
                                  ];
     

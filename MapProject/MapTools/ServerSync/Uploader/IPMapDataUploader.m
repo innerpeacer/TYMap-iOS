@@ -131,6 +131,7 @@
 {
     if (self.delegate && [self.delegate respondsToSelector:@selector(MapDataUploader:DidUpdateUploadingProgress:WithApi:WithDescription:)]){
         [self.delegate MapDataUploader:self DidUpdateUploadingProgress:batchIndex WithApi:api WithDescription:responseString];
+        NSLog(@"%@", responseString);
     }
 }
 
