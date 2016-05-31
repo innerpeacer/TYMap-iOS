@@ -18,7 +18,6 @@ namespace Innerpeacer {
     namespace MapSDK {
         bool checkValidity(std::string userID, std::string license, std::string buildingID);
         std::string getExpiredDate(std::string userID, std::string license, std::string buildingID);
-
     }
 }
 

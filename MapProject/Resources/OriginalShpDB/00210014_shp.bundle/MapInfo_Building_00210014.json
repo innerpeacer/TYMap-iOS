@@ -1,0 +1,20 @@
+{
+    "MapInfo": [
+                
+                {
+                "cityID": "0021",
+                "buildingID": "00210014",
+                "mapID": "00210014B03",
+                "floorName": "B3",
+                "floorNumber": "-3",
+                "size_x": "176",
+                "size_y": "160",
+                "xmax": "13516839",
+                "xmin": "13516663",
+                "ymax": "3639982",
+                "ymin": "3639822"
+                }
+                
+                ]
+    
+}
