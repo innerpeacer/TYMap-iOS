@@ -12,6 +12,8 @@
 
 @interface TYUserManager : NSObject
 
++ (BOOL)useBase64License;
+
 + (NSString *)getTrialUserID;
 + (NSString *)getTrialUserLicense:(TYBuilding *)building;
 + (NSString *)getSuperUserID;

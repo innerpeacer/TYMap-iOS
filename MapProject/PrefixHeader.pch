@@ -28,6 +28,9 @@
 #define HOST_NAME @"localhost:8112"
 #endif
 
+
+#define USE_BASE64_LICENSE 1
+
 //#define SERVER_HOST_NAME @"123.56.41.94"
 //#define LOCAL_HOST_NAME @"localhost:8112"
 

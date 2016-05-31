@@ -145,6 +145,7 @@
 		5798E2D11C2D1FE8002711D1 /* IPSyncPOIDBAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5798E2D01C2D1FE8002711D1 /* IPSyncPOIDBAdapter.m */; };
 		579B587B1B74F31B00F05206 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 579B587A1B74F31B00F05206 /* Images.xcassets */; };
 		579C2C611C200BDB00786AF2 /* IPSyncSymbolRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 579C2C601C200BDB00786AF2 /* IPSyncSymbolRecord.m */; };
+		579FA83D1CFD40C60025F37A /* IPXBase64Encoding.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 579FA83B1CFD40C60025F37A /* IPXBase64Encoding.cpp */; };
 		57B953391BDDFB0700D9D318 /* GenerateAllMapDBVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 57B953381BDDFB0700D9D318 /* GenerateAllMapDBVC.m */; };
 		57B9533D1BDE031500D9D318 /* OriginalShpDB in Resources */ = {isa = PBXBuildFile; fileRef = 57B9533C1BDE031500D9D318 /* OriginalShpDB */; };
 		57C03F5A1B61E19800490179 /* BaseMapVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 57C03F591B61E19800490179 /* BaseMapVC.m */; };
@@ -464,6 +465,8 @@
 		579B587A1B74F31B00F05206 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		579C2C5F1C200BDB00786AF2 /* IPSyncSymbolRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPSyncSymbolRecord.h; sourceTree = "<group>"; };
 		579C2C601C200BDB00786AF2 /* IPSyncSymbolRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPSyncSymbolRecord.m; sourceTree = "<group>"; };
+		579FA83B1CFD40C60025F37A /* IPXBase64Encoding.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IPXBase64Encoding.cpp; sourceTree = "<group>"; };
+		579FA83C1CFD40C60025F37A /* IPXBase64Encoding.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = IPXBase64Encoding.hpp; sourceTree = "<group>"; };
 		57B953371BDDFB0700D9D318 /* GenerateAllMapDBVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenerateAllMapDBVC.h; sourceTree = "<group>"; };
 		57B953381BDDFB0700D9D318 /* GenerateAllMapDBVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenerateAllMapDBVC.m; sourceTree = "<group>"; };
 		57B9533C1BDE031500D9D318 /* OriginalShpDB */ = {isa = PBXFileReference; lastKnownFileType = folder; path = OriginalShpDB; sourceTree = "<group>"; };
@@ -729,6 +732,8 @@
 		572407091BC9A84B0050BA41 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				579FA83C1CFD40C60025F37A /* IPXBase64Encoding.hpp */,
+				579FA83B1CFD40C60025F37A /* IPXBase64Encoding.cpp */,
 				5724070B1BC9A84B0050BA41 /* IPXEncryption.hpp */,
 				5724070A1BC9A84B0050BA41 /* IPXEncryption.cpp */,
 				5724070D1BC9A84B0050BA41 /* IPXLicenseValidation.h */,
@@ -1497,6 +1502,7 @@
 				57672E301B55FFF900DAD219 /* FMDatabaseAdditions.m in Sources */,
 				57672D071B55FF4A00DAD219 /* CreatingPOIDBAdapter.m in Sources */,
 				57215D5D1C23FEC300B8B271 /* NSData+GZIP.m in Sources */,
+				579FA83D1CFD40C60025F37A /* IPXBase64Encoding.cpp in Sources */,
 				57012A921BFED73C0014CCEF /* IPXPathCalibration.cpp in Sources */,
 				572B98BD1BDA104200506A7E /* OriginalShpRecord.m in Sources */,
 				576AEEB21B61D9E400D55CA4 /* CustomCalloutVC.m in Sources */,

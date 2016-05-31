@@ -10,7 +10,7 @@
 #import "MapLicenseGenerator.h"
 #import "TYCityManager.h"
 #import "TYBuildingManager.h"
-
+#import "TYUserManager.h"
 @interface GenerateLicensesVC()
 {
     NSString *userID;
@@ -36,7 +36,12 @@
 
 - (void)generateLicenseForBuilding:(NSString *)buildingID
 {
-    NSString *license = [MapLicenseGenerator generateLicenseForUserID:userID Building:buildingID ExpiredDate:expiredDate];
+    NSString *license;
+    if ([TYUserManager useBase64License]) {
+        license = [MapLicenseGenerator generateBase64License40ForUserID:userID Building:buildingID ExpiredDate:expiredDate];
+    } else {
+        license = [MapLicenseGenerator generateLicense32ForUserID:userID Building:buildingID ExpiredDate:expiredDate];
+    }
     NSLog(@"%@", license);
 }
 
@@ -49,8 +54,13 @@
     for (TYCity *city in allCities) {
         NSArray *allBuildings = [TYBuildingManager parseAllBuildings:city];
         for (TYBuilding *building in allBuildings) {
-            NSString *license = [MapLicenseGenerator generateLicenseForUserID:userID Building:building.buildingID ExpiredDate:expiredDate];
-            
+            NSString *license;
+            if ([TYUserManager useBase64License]) {
+                license = [MapLicenseGenerator generateBase64License40ForUserID:userID Building:building.buildingID ExpiredDate:expiredDate];
+            } else {
+                license = [MapLicenseGenerator generateLicense32ForUserID:userID Building:building.buildingID ExpiredDate:expiredDate];
+            }
+
             NSMutableDictionary *dict = [NSMutableDictionary dictionary];
             [dict setObject:userID forKeyedSubscript:@"UserID"];
             [dict setObject:building.buildingID forKeyedSubscript:@"BuildingID"];

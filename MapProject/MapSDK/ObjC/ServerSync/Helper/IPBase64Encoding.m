@@ -20,4 +20,9 @@
     return [data base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithLineFeed];
 }
 
++ (NSString *)encodeStringForString:(NSString *)string
+{
+    return [[string dataUsingEncoding:NSUTF8StringEncoding] base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithLineFeed];
+}
+
 @end

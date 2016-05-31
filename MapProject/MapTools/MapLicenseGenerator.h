@@ -11,6 +11,7 @@
 
 @interface MapLicenseGenerator : NSObject
 
-+ (NSString *)generateLicenseForUserID:(NSString *)userID Building:(NSString *)building ExpiredDate:(NSString *)expiredDate;
++ (NSString *)generateBase64License40ForUserID:(NSString *)userID Building:(NSString *)building ExpiredDate:(NSString *)expiredDate;
++ (NSString *)generateLicense32ForUserID:(NSString *)userID Building:(NSString *)building ExpiredDate:(NSString *)expiredDate;
 
 @end

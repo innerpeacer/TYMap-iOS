@@ -11,6 +11,7 @@
 #import "TYUserDefaults.h"
 #import "TYRenderingScheme.h"
 #import "MapLicenseGenerator.h"
+#import "TYUserManager.h"
 
 @interface BaseMapVC()
 {
@@ -77,7 +78,12 @@
 
 - (void)initMap
 {
-    [self.mapView initMapViewWithBuilding:_currentBuilding UserID:TRIAL_USER_ID License:[MapLicenseGenerator generateLicenseForUserID:TRIAL_USER_ID Building:_currentBuilding.buildingID ExpiredDate:TRIAL_EXPRIED_DATE]];
+    if ([TYUserManager useBase64License]) {
+        [self.mapView initMapViewWithBuilding:_currentBuilding UserID:TRIAL_USER_ID License:[MapLicenseGenerator generateBase64License40ForUserID:TRIAL_USER_ID Building:_currentBuilding.buildingID ExpiredDate:TRIAL_EXPRIED_DATE]];
+    } else {
+        [self.mapView initMapViewWithBuilding:_currentBuilding UserID:TRIAL_USER_ID License:[MapLicenseGenerator generateLicense32ForUserID:TRIAL_USER_ID Building:_currentBuilding.buildingID ExpiredDate:TRIAL_EXPRIED_DATE]];
+    }
+    
 //    [self.mapView initMapView];
 //    [self.mapView loadBuilding:_currentBuilding UserID:TRIAL_USER_ID License:[MapLicenseGenerator generateLicenseForUserID:TRIAL_USER_ID Building:_currentBuilding.buildingID ExpiredDate:TRIAL_EXPRIED_DATE]];
     
