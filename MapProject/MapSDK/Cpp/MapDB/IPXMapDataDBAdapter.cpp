@@ -17,7 +17,7 @@ using namespace Innerpeacer::MapSDK;
 
 #include "IPXEncryption.hpp"
 
-typedef vector<IPXFeatureRecord *> FeatureVector;
+typedef std::vector<IPXFeatureRecord *> FeatureVector;
 
 IPXMapDataDBAdapter::IPXMapDataDBAdapter(const char *dbPath)
 {
@@ -31,7 +31,7 @@ IPXMapDataDBAdapter::IPXMapDataDBAdapter(const char *dbPath)
 //    return resultVector;
 //}
 
-vector<IPXFeatureRecord *> IPXMapDataDBAdapter::getAllRecordsOnFloor(int floor)
+std::vector<IPXFeatureRecord *> IPXMapDataDBAdapter::getAllRecordsOnFloor(int floor)
 {
     FeatureVector resultVector;
     

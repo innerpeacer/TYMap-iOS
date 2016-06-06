@@ -160,7 +160,6 @@ bool checkValidityForLicense32(std::string userID, std::string license, std::str
     std::string encryptedExpiredDate = decryptString(license.substr(16, 8), md5ForBuildingID);
     std::string originalExpiredDate = decryptString(encryptedExpiredDate, key2);
 
-
     std::string expectedOriginallMD5 = "MAP" + encryptedBuildingID + encryptedExpiredDate;
     md5.reset();
     md5.update(expectedOriginallMD5);

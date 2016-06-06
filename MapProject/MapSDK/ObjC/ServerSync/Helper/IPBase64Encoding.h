@@ -13,7 +13,6 @@
 + (NSData *)decodingString:(NSString *)string;
 + (NSString *)encodeingData:(NSData *)data;
 
-
 + (NSString *)encodeStringForString:(NSString *)string;
 
 @end
