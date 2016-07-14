@@ -50,10 +50,6 @@
     basedEncryptedExpiredDate = [basedEncryptedExpiredDate stringByReplacingOccurrencesOfString:@"=" withString:@"#"];
     
     NSString *license = [NSString stringWithFormat:@"%@%@%@%@", [md5String substringWithRange:NSMakeRange(0, 8)], basedEncryptedBuildingID, basedEncryptedExpiredDate, [md5String substringWithRange:NSMakeRange(24, 8)]];
-    
-//    NSLog(@"%@ %@", basedEncryptedBuildingID, basedEncryptedExpiredDate);
-//    NSLog(@"license: %d", (int)license.length);
-//    NSLog(@"license: %@", license);
     return license;
 }
 
@@ -86,15 +82,6 @@
     
     NSString *md5String = [IPMD5Utils md5:originalMD5];
     NSString *license = [NSString stringWithFormat:@"%@%@%@%@", [md5String substringWithRange:NSMakeRange(0, 8)], [IPEncryption encryptString:encryptedBuildingID withKey:md5ForBuildingID], [IPEncryption encryptString:encryptedExpiredDate withKey:md5ForBuildingID], [md5String substringWithRange:NSMakeRange(24, 8)]];
-    
-    //    NSLog(@"Key1: %@", key1);
-    //    NSLog(@"Key2: %@", key2);
-    //    NSLog(@"encryptedBuildingID: %@", encryptedBuildingID);
-    //    NSLog(@"encryptedExpiredDate: %@", encryptedExpiredDate);
-    //    NSLog(@"md5ForBuildingID: %@", md5ForBuildingID);
-    //    NSLog(@"originalMD5: %@", originalMD5);
-    //    NSLog(@"md5String: %@", md5String);
-    //    NSLog(@"license: %@", license);
     return license;
 }
 

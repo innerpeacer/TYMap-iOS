@@ -38,6 +38,7 @@
                                  //                                 @[@"加密地图文件",@"mapEncryptionController" ],
                                  //                                 @[@"生成加密地图资源",@"GenerateEncryptionSourceVC" ],
                                  @[@"生成License", @"GenerateLicensesVC"],
+                                 @[@"生成当前License", @"GenerateSingleLicenseVC"],
                                  @[@"构建网络数据集", @"BuildRouteNetworkDatasetVC"],
                                  @[@"构建所有网络数据集",@"BuildAllRouteNetworkVC"],
                                  @[@"测试网络数据集", @"TestRouteNetworkVC"],

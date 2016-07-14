@@ -12,7 +12,6 @@
 #import "TYRenderingScheme.h"
 #import "TYRouteResult.h"
 #import "TYDirectionalHint.h"
-#import "TYMapCredential.h"
 #import <TYMapData/TYMapData.h>
 
 /**
@@ -133,8 +132,6 @@ typedef enum {
  *  重新加载地图
  */
 - (void)reloadMapView;
-
-- (void)setMapCredential:(TYMapCredential *)credential;
 
 
 /**

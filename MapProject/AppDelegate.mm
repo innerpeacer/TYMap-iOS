@@ -28,8 +28,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    NSString *bundleID = [[NSBundle mainBundle] bundleIdentifier];
-    NSLog(@"bundleID: %@", bundleID);
+//    NSString *bundleID = [[NSBundle mainBundle] bundleIdentifier];
+//    NSLog(@"bundleID: %@", bundleID);
     
     NSString *documentDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     NSLog(@"%@", documentDirectory);

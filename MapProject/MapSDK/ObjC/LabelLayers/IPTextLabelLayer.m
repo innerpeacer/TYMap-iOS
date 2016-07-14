@@ -170,11 +170,13 @@
                 textLabel.labelSize = brand.logoSize;
                 
             } else {
-                AGSTextSymbol *ts = [AGSTextSymbol textSymbolWithText:name color:[UIColor blackColor]];
+//                AGSTextSymbol *ts = [AGSTextSymbol textSymbolWithText:name color:[UIColor blackColor]];
+                AGSTextSymbol *ts = [AGSTextSymbol textSymbolWithText:name color:[UIColor colorWithRed:112/255.0f green:112/255.0f blue:112/255.0f alpha:1.0f]];
                 ts.angleAlignment = AGSMarkerSymbolAngleAlignmentScreen;
                 ts.hAlignment = AGSTextSymbolHAlignmentCenter;
                 ts.vAlignment = AGSTextSymbolVAlignmentMiddle;
                 ts.fontSize = 10.0f;
+//                ts.color = [UIColor redColor];
                 ts.fontFamily = @"Heiti SC";
                 textLabel.textSymbol = ts;
             }

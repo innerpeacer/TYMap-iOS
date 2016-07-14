@@ -53,7 +53,7 @@ std::string Innerpeacer::MapSDK::getExpiredDate(std::string userID, std::string 
 
 bool checkValidityForBase64License40(std::string userID, std::string license, std::string buildingID)
 {
-    printf("Innerpeacer::MapSDK::checkValidity\n");
+//    printf("Innerpeacer::MapSDK::checkValidity\n");
     if (userID.length() < 18) {
         printf("Invalid UserID.\n");
         return false;
@@ -144,7 +144,7 @@ std::string getExpiredDateForBase64License40(std::string userID, std::string lic
 
 bool checkValidityForLicense32(std::string userID, std::string license, std::string buildingID)
 {
-    printf("Innerpeacer::MapSDK::checkValidity\n");
+//    printf("Innerpeacer::MapSDK::checkValidity\n");
     if (userID.length() < 18) {
         printf("Invalid UserID.\n");
         return false;

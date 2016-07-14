@@ -491,6 +491,7 @@
         }
         sqlite3_step(statement);
         sqlite3_finalize(statement);
+        NSLog(@"%@", mapInfoSql);
     }
     
     {
@@ -524,6 +525,7 @@
         }
         sqlite3_step(statement);
         sqlite3_finalize(statement);
+        NSLog(@"%@", mapDataSql);
     }
 }
 

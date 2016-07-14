@@ -12,6 +12,7 @@
 #import "IPBrand.h"
 #import "TYUserDefaults.h"
 #import "IPPathCalibration.h"
+#import "TYMapToFengMap.h"
 
 #define PIC_INITIAL 0
 #define PIC_LAST 7
@@ -81,9 +82,9 @@
 - (void)TYMapView:(TYMapView *)mapView didClickAtPoint:(CGPoint)screen mapPoint:(AGSPoint *)mappoint
 {
     NSLog(@"didClickAtPoint: %f, %f", mappoint.x, mappoint.y);
-    NSLog(@"Resolution: %f", self.mapView.resolution);
-    NSLog(@"MapScale: %f", self.mapView.mapScale);
-    NSLog(@"Current Level: %d", [self.mapView getCurrentLevel]);
+//    NSLog(@"Resolution: %f", self.mapView.resolution);
+//    NSLog(@"MapScale: %f", self.mapView.mapScale);
+//    NSLog(@"Current Level: %d", [self.mapView getCurrentLevel]);
 
     [hintLayer removeAllGraphics];
     AGSSimpleMarkerSymbol *sms = [AGSSimpleMarkerSymbol simpleMarkerSymbolWithColor:[UIColor redColor]];
@@ -127,6 +128,11 @@
 ////    
 ////    lastPoint = mappoint;
 ////    lastScreenPoint = screen;
+    
+    
+//    NSArray *fengMapArray = [TYMapToFengMap TYMapToFengMap:@[@(mappoint.x), @(mappoint.y)]];
+//    NSLog(@"TYMap: %f, %f", mappoint.x, mappoint.y);
+//    NSLog(@"FengMap: %f, %f", [fengMapArray[0] doubleValue], [fengMapArray[1] doubleValue]);
 }
 
 - (void)showTestLocation
@@ -139,6 +145,11 @@
     NSString *imageName = [NSString stringWithFormat:@"l%d", picIndex++];
     AGSPictureMarkerSymbol *pms = [AGSPictureMarkerSymbol pictureMarkerSymbolWithImageNamed:imageName];
     [testLayer addGraphic:[AGSGraphic graphicWithGeometry:testLocation symbol:pms attributes:nil]];
+}
+
+- (void)TYMapView:(TYMapView *)mapView PoiSelected:(NSArray *)array
+{
+    NSLog(@"%@", array);
 }
 
 @end

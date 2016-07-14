@@ -92,7 +92,7 @@
     return (sqlite3_close(_database) == SQLITE_OK);
 }
 
-/**
+/*
  *  从字符串中解析颜色值
  *
  *  @param colorString 颜色字符串，格式："#AARRGGBB"

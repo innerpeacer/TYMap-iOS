@@ -52,9 +52,7 @@
 - (void)showLocation:(AGSPoint *)location withDeviceHeading:(double)deviceHeading initAngle:(double)initAngle mapViewMode:(TYMapViewMode)mode
 {
     [self removeAllGraphics];
-
     [self addGraphic:[AGSGraphic graphicWithGeometry:location symbol:locationSymbol attributes:nil]];
-
 }
 
 - (void)removeLocation

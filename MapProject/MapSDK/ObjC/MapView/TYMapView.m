@@ -7,6 +7,7 @@
 //
 
 #import "TYMapView.h"
+#import "TYMapCredential.h"
 
 #import "TYMapInfo.h"
 #import "TYMapType.h"
@@ -71,6 +72,8 @@
 }
 
 @property (nonatomic, assign) BOOL autoCenterEnabled;
+
+- (void)setMapCredential:(TYMapCredential *)credential;
 
 @end
 

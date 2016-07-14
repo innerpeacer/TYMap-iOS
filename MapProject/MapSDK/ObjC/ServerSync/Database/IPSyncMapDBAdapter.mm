@@ -437,6 +437,7 @@
         }
         sqlite3_step(statement);
         sqlite3_finalize(statement);
+        NSLog(@"%@", citySql);
     }
 
     {
