@@ -34,9 +34,6 @@
                                  @[@"上传路网数据", @"UploadRouteDataVC"],
                                  @[@"上传当前建筑的完整数据", @"UploadCompleteDataVC"],
                                  @[@"获取当前建筑的完整数据", @"FetchCompleteDataVC"],
-
-
-                                 
                                  ];
     
     self.objects = [[NSMutableArray alloc] init];
