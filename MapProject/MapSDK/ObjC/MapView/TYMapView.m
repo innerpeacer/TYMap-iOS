@@ -118,6 +118,11 @@
     isLabelOverlappingDetectingEnabled = enabled;
 }
 
+- (void)setLabelColor:(UIColor *)color
+{
+    [labelGroupLayer.labelLayer setTextColor:color];
+}
+
 - (BOOL)isLabelOverlapDetectingEnabled
 {
     return  isLabelOverlappingDetectingEnabled;

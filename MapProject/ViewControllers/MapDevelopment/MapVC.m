@@ -70,6 +70,8 @@
     
     hintLayer = [AGSGraphicsLayer graphicsLayer];
     [self.mapView addMapLayer:hintLayer];
+    
+//    [self.mapView setLabelColor:[UIColor redColor]];
 }
 
 - (void)TYMapView:(TYMapView *)mapView didFinishLoadingFloor:(TYMapInfo *)mapInfo

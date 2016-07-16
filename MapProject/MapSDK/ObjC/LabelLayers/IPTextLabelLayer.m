@@ -20,6 +20,7 @@
 @interface IPTextLabelLayer()
 {
     NSMutableArray *allTextLabels;
+    UIColor *textColor;
 }
 @end
 
@@ -35,8 +36,18 @@
     self = [super initWithFullEnvelope:nil renderingMode:AGSGraphicsLayerRenderingModeDynamic];
     if (self) {
         allTextLabels = [[NSMutableArray alloc] init];
+        textColor = [UIColor colorWithRed:112/255.0f green:112/255.0f blue:112/255.0f alpha:1.0f];
     }
     return self;
+}
+
+- (void)setTextColor:(UIColor *)color
+{
+    textColor = color;
+    for (IPTextLabel *tl in allTextLabels) {
+        tl.textSymbol.color = textColor;
+    }
+        
 }
 
 - (void)displayLabels:(NSMutableArray *)array
@@ -127,7 +138,6 @@
     
     [allTextLabels removeAllObjects];
     
-    
     NSArray *allGraphics = set.features;
     
     AGSSpatialReference *sr = [TYMapEnvironment defaultSpatialReference];
@@ -141,8 +151,6 @@
         int minLevel = [[graphic attributeForKey:GRAPHIC_ATTRIBUTE_LEVEL_MIN] intValue];
         
 //        NSLog(@"Max-Min: %d-%d", maxLevel, minLevel);
-
-
         if (name != nil && name != (id)[NSNull null]) {
             double x = ((AGSPoint *)graphic.geometry).x;
             double y = ((AGSPoint *)graphic.geometry).y;
@@ -157,8 +165,6 @@
                 textLabel.minLevel = minLevel;
             }
             
-//            NSLog(@"Max-Min: %d-%d", textLabel.maxLevel, textLabel.minLevel);
-            
             NSString *poiID = [graphic attributeForKey:GRAPHIC_ATTRIBUTE_POI_ID];
             if ([self.brandDict.allKeys containsObject:poiID]) {
                 IPBrand *brand = [self.brandDict objectForKey:poiID];
@@ -170,13 +176,11 @@
                 textLabel.labelSize = brand.logoSize;
                 
             } else {
-//                AGSTextSymbol *ts = [AGSTextSymbol textSymbolWithText:name color:[UIColor blackColor]];
-                AGSTextSymbol *ts = [AGSTextSymbol textSymbolWithText:name color:[UIColor colorWithRed:112/255.0f green:112/255.0f blue:112/255.0f alpha:1.0f]];
+                AGSTextSymbol *ts = [AGSTextSymbol textSymbolWithText:name color:textColor];
                 ts.angleAlignment = AGSMarkerSymbolAngleAlignmentScreen;
                 ts.hAlignment = AGSTextSymbolHAlignmentCenter;
                 ts.vAlignment = AGSTextSymbolVAlignmentMiddle;
                 ts.fontSize = 10.0f;
-//                ts.color = [UIColor redColor];
                 ts.fontFamily = @"Heiti SC";
                 textLabel.textSymbol = ts;
             }
