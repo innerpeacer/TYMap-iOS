@@ -28,6 +28,7 @@
 #define TABLE_SHP_ASSET @"asset"
 #define TABLE_SHP_FACILITY @"facility"
 #define TABLE_SHP_LABEL @"label"
+#define TABLE_SHP_SHAPE @"shade"
 
 // ======================================
 #pragma mark Shp DB Field

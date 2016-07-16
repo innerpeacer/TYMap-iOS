@@ -14,6 +14,7 @@
 		57012AAF1BFF02790014CCEF /* IPXGeosGeometryCaster.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57012AAD1BFF02790014CCEF /* IPXGeosGeometryCaster.cpp */; };
 		57012AB21BFF1DA30014CCEF /* PathCalibrationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 57012AB11BFF1DA30014CCEF /* PathCalibrationVC.m */; };
 		5702D7891BB3A8E80098397D /* TYMapData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5702D7881BB3A8E80098397D /* TYMapData.framework */; };
+		5708964F1D3ABF65003D5494 /* IPShadeLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5708964E1D3ABF65003D5494 /* IPShadeLayer.m */; };
 		570ABA6C1BF9DD650006BC30 /* UploadMapDataVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 570ABA671BF9DD650006BC30 /* UploadMapDataVC.m */; };
 		570ABA6D1BF9DD650006BC30 /* UploadRouteDataVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 570ABA691BF9DD650006BC30 /* UploadRouteDataVC.m */; };
 		570ABA701BF9DD910006BC30 /* ServerSyncVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 570ABA6F1BF9DD910006BC30 /* ServerSyncVC.m */; };
@@ -209,6 +210,8 @@
 		57012AB01BFF1DA30014CCEF /* PathCalibrationVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PathCalibrationVC.h; sourceTree = "<group>"; };
 		57012AB11BFF1DA30014CCEF /* PathCalibrationVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PathCalibrationVC.m; sourceTree = "<group>"; };
 		5702D7881BB3A8E80098397D /* TYMapData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TYMapData.framework; path = ../../../../TYMapData.framework; sourceTree = "<group>"; };
+		5708964D1D3ABF65003D5494 /* IPShadeLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPShadeLayer.h; sourceTree = "<group>"; };
+		5708964E1D3ABF65003D5494 /* IPShadeLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPShadeLayer.m; sourceTree = "<group>"; };
 		570ABA661BF9DD650006BC30 /* UploadMapDataVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadMapDataVC.h; sourceTree = "<group>"; };
 		570ABA671BF9DD650006BC30 /* UploadMapDataVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadMapDataVC.m; sourceTree = "<group>"; };
 		570ABA681BF9DD650006BC30 /* UploadRouteDataVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadRouteDataVC.h; sourceTree = "<group>"; };
@@ -891,6 +894,8 @@
 				5724078B1BC9A8A10050BA41 /* IPAssetLayer.m */,
 				5724078C1BC9A8A10050BA41 /* IPFloorLayer.h */,
 				5724078D1BC9A8A10050BA41 /* IPFloorLayer.m */,
+				5708964D1D3ABF65003D5494 /* IPShadeLayer.h */,
+				5708964E1D3ABF65003D5494 /* IPShadeLayer.m */,
 				5724078E1BC9A8A10050BA41 /* IPRoomLayer.h */,
 				5724078F1BC9A8A10050BA41 /* IPRoomLayer.m */,
 				572407901BC9A8A10050BA41 /* IPStructureGroupLayer.h */,
@@ -1447,6 +1452,7 @@
 				57215D521C23ECD500B8B271 /* IPMapWebDownloader.m in Sources */,
 				57215D501C23ECD500B8B271 /* IPMapDataDownloader.m in Sources */,
 				57215D7F1C2406C900B8B271 /* IPMapWebUploader.m in Sources */,
+				5708964F1D3ABF65003D5494 /* IPShadeLayer.m in Sources */,
 				572407A41BC9A8A10050BA41 /* IPLocationLayer.m in Sources */,
 				57FF26541C1FF71F009482B2 /* TYUserManager.m in Sources */,
 				57215D621C2404A200B8B271 /* TYMapDataManager.m in Sources */,

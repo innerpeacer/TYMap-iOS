@@ -28,6 +28,7 @@
 
 // =========== Map Layer Name ===================
 #define LAYER_NAME_FLOOR @"FloorLayer"
+#define LAYER_NAME_SHADE @"ShadeLayer"
 #define LAYER_NAME_ROOM @"RoomLayer"
 #define LAYER_NAME_ASSET @"AssetLayer"
 #define LAYER_NAME_FACILITY @"FacilityLayer"

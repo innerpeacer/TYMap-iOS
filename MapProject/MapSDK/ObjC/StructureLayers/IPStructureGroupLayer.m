@@ -27,6 +27,9 @@
     if (self) {
         _floorLayer = [IPFloorLayer floorLayerWithSpatialReference:sr];
         _floorLayer.allowHitTest = NO;
+        
+        _shadeLayer = [IPShadeLayer shadeLayerWithSpatialReference:sr];
+        _shadeLayer.allowHitTest = NO;
 
         _roomLayer = [IPRoomLayer roomLayerWithSpatialReference:sr];
         _assetLayer = [IPAssetLayer assetLayerWithSpatialReference:sr];
@@ -41,6 +44,9 @@
         _floorLayer = [IPFloorLayer floorLayerWithRenderingScheme:aRenderingScheme SpatialReference:sr];
         _floorLayer.allowHitTest = NO;
         
+        _shadeLayer = [IPShadeLayer shadeLayerWithRenderingScheme:aRenderingScheme SpatialReference:sr];
+        _shadeLayer.allowHitTest = NO;
+        
         _roomLayer = [IPRoomLayer roomLayerWithRenderingScheme:aRenderingScheme SpatialReference:sr];
         _roomLayer.selectionSymbol = aRenderingScheme.defaultHighlightFillSymbol;
         
@@ -53,6 +59,7 @@
 - (void)setRenderingScheme:(TYRenderingScheme *)rs
 {
     [_floorLayer setRenderingScheme:rs];
+    [_shadeLayer setRenderingScheme:rs];
     [_roomLayer setRenderingScheme:rs];
     _roomLayer.selectionSymbol = rs.defaultHighlightFillSymbol;
     [_assetLayer setRenderingScheme:rs];
@@ -61,10 +68,12 @@
 - (void)loadContents:(NSDictionary *)mapData
 {
     [_floorLayer removeAllGraphics];
+    [_shadeLayer removeAllGraphics];
     [_roomLayer removeAllGraphics];
     [_assetLayer removeAllGraphics];
     
     [_floorLayer loadContents:mapData[@"floor"]];
+    [_shadeLayer loadContents:mapData[@"shade"]];
     [_roomLayer loadContents:mapData[@"room"]];
     [_assetLayer loadContents:mapData[@"asset"]];
 }

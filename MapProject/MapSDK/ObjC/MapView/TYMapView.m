@@ -317,6 +317,7 @@
     AGSSpatialReference *spatialReference = [TYMapEnvironment defaultSpatialReference];
     structureGroupLayer = [IPStructureGroupLayer structureLayerWithSpatialReference:spatialReference];
     [self addMapLayer:structureGroupLayer.floorLayer withName:LAYER_NAME_FLOOR];
+    [self addMapLayer:structureGroupLayer.shadeLayer withName:LAYER_NAME_SHADE];
     [self addMapLayer:structureGroupLayer.roomLayer withName:LAYER_NAME_ROOM];
     parkingLayer = [[IPParkingLayer alloc] initWithSpatialReference:spatialReference];
     [self addMapLayer:parkingLayer withName:LAYER_NAME_PARKING];

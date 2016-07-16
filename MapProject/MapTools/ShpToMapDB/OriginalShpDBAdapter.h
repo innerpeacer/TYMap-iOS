@@ -15,7 +15,8 @@ typedef enum {
     SHP_DB_ROOM = 2,
     SHP_DB_ASSET = 3,
     SHP_DB_FACILITY = 4,
-    SHP_DB_LABEL = 5
+    SHP_DB_LABEL = 5,
+    SHP_DB_SHADE = 6
 } ShpDBType;
 
 @interface OriginalShpDBAdapter : NSObject

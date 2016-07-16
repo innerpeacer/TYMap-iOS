@@ -48,6 +48,7 @@ using namespace std;
     delete db;
     
     NSMutableArray *floorArray = [NSMutableArray array];
+    NSMutableArray *shadeArray = [NSMutableArray array];
     NSMutableArray *roomArray = [NSMutableArray array];
     NSMutableArray *assetArray = [NSMutableArray array];
     NSMutableArray *facilityArray = [NSMutableArray array];
@@ -89,6 +90,10 @@ using namespace std;
                 [labelArray addObject:graphic];
                 break;
                 
+            case 6:
+                [shadeArray addObject:graphic];
+                break;
+                
             default:
                 break;
         }
@@ -105,6 +110,7 @@ using namespace std;
 //    [resultDict setObject:[[AGSFeatureSet alloc] initWithFeatures:facilityArray] forKey:@"facility"];
 //    [resultDict setObject:[[AGSFeatureSet alloc] initWithFeatures:labelArray] forKey:@"label"];
     [resultDict setObject:[[AGSFeatureSet alloc] initWithDisplayFieldName:nil features:floorArray fieldAliases:nil spatialReference:[TYMapEnvironment defaultSpatialReference] geometryType:AGSGeometryTypeUndefined] forKey:@"floor"];
+    [resultDict setObject:[[AGSFeatureSet alloc] initWithDisplayFieldName:nil features:shadeArray fieldAliases:nil spatialReference:[TYMapEnvironment defaultSpatialReference] geometryType:AGSGeometryTypeUndefined] forKey:@"shade"];
     [resultDict setObject:[[AGSFeatureSet alloc] initWithDisplayFieldName:nil features:roomArray fieldAliases:nil spatialReference:[TYMapEnvironment defaultSpatialReference] geometryType:AGSGeometryTypeUndefined] forKey:@"room"];
     [resultDict setObject:[[AGSFeatureSet alloc] initWithDisplayFieldName:nil features:assetArray fieldAliases:nil spatialReference:[TYMapEnvironment defaultSpatialReference] geometryType:AGSGeometryTypeUndefined] forKey:@"asset"];
     [resultDict setObject:[[AGSFeatureSet alloc] initWithDisplayFieldName:nil features:facilityArray fieldAliases:nil spatialReference:[TYMapEnvironment defaultSpatialReference] geometryType:AGSGeometryTypeUndefined] forKey:@"facility"];

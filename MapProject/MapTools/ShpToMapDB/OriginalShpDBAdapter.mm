@@ -157,6 +157,7 @@ using namespace geos::io;
         case SHP_DB_FLOOR:
         case SHP_DB_ROOM:
         case SHP_DB_ASSET:
+        case SHP_DB_SHADE:
             return [self readPolygonRecords];
             break;
             
@@ -195,6 +196,9 @@ using namespace geos::io;
             result = TABLE_SHP_LABEL;
             break;
             
+        case SHP_DB_SHADE:
+            result = TABLE_SHP_SHAPE;
+            break;
         default:
             break;
     }
@@ -210,6 +214,7 @@ using namespace geos::io;
         case SHP_DB_ASSET:
         case SHP_DB_FACILITY:
         case SHP_DB_LABEL:
+        case SHP_DB_SHADE:
             result = [NSString stringWithFormat:SHP_DB_FILE, mapID];
             break;
             

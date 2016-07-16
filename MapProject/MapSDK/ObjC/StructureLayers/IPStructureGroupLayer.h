@@ -9,12 +9,14 @@
 #import <ArcGIS/ArcGIS.h>
 #import "TYMapInfo.h"
 #import "IPFloorLayer.h"
+#import "IPShadeLayer.h"
 #import "IPRoomLayer.h"
 #import "IPAssetLayer.h"
 
 @interface IPStructureGroupLayer : NSObject
 
 @property (nonatomic, strong) IPFloorLayer *floorLayer;
+@property (nonatomic, strong) IPShadeLayer *shadeLayer;
 @property (nonatomic, strong) IPRoomLayer *roomLayer;
 @property (nonatomic, strong) IPAssetLayer *assetLayer;
 
