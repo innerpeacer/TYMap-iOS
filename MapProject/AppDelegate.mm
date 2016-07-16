@@ -23,7 +23,6 @@
 #import "LicenseManager.h"
 #import "IPMapDBAdapter.h"
 
-
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -41,7 +40,7 @@
 
     [self copyMapFilesIfNeeded];
     [self setDefaultPlaceIfNeeded];
-    
+        
     return YES;
 }
 

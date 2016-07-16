@@ -24,4 +24,6 @@
 #define TY_API_UPLOAD_MAP_DATA          @"/TYMapServerManager/manager/map/UploadMapData"
 #define TY_API_UPLOAD_SYMBOLS           @"/TYMapServerManager/manager/map/UploadSymbols"
 
+#define TY_API_MOBILE_GENERATE_MAP_ZIP @"/TYMapServerManager/manager/mobile/GenerateMobileData"
+
 #endif /* IPMapApi_Manager_h */

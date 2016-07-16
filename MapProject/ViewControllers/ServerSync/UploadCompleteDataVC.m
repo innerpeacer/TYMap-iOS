@@ -68,6 +68,28 @@
     NSLog(@"%@", allMapInfos);
 }
 
+- (void)requestGenerateMapDataZip
+{
+    [self addToLog:@"请求生成地图数据"];
+    NSLog(@"requestGenerateMapDataZip");
+    NSDictionary *params = @{@"buildingID": currentBuilding.buildingID};
+    
+    MKNetworkEngine *engine = [[MKNetworkEngine alloc] initWithHostName:hostName];
+    MKNetworkOperation *op = [engine operationWithPath:TY_API_MOBILE_GENERATE_MAP_ZIP params:params httpMethod:@"POST"];
+    
+    [op addCompletionHandler:^(MKNetworkOperation *operation) {
+        NSLog(@"completion");
+        NSLog(@"%@", operation.responseString);
+        [self addToLog:[NSString stringWithFormat:@"完成: %@", operation.responseString]];
+        
+    } errorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
+        NSLog(@"error");
+        NSLog(@"%@", completedOperation.responseString);
+        [self addToLog:[NSString stringWithFormat:@"错误: %@", completedOperation.responseString]];
+    }];
+    [engine enqueueOperation:op];
+}
+
 - (void)UploadingTaskDidFailedUploading:(IPSyncUploadingTask *)task InStep:(int)step WithError:(NSError *)error
 {
     
@@ -76,6 +98,7 @@
 - (void)UploadingTaskDidFinished:(IPSyncUploadingTask *)task
 {
     [self addToLog:@"Finish Uploading"];
+    [self requestGenerateMapDataZip];
 }
 
 - (void)UploadingTaskDidUpdateUploadingProcess:(IPSyncUploadingTask *)task InStep:(int)step WithDescription:(NSString *)description
