@@ -794,7 +794,10 @@ std::vector<IPXLink *> IPXRouteNetworkDataset::getTempLinks(geos::geom::Point po
 
 #pragma mark Public Method
 geos::geom::LineString *IPXRouteNetworkDataset::getShorestPath(geos::geom::Point *start, geos::geom::Point *end)
-{
+{    
+    if (m_linkArray.size()+m_virtualLinkArray.size() == 0 || m_nodeArray.size() + m_virtualLinkArray.size() == 0) {
+        return NULL;
+    }
     GeometryFactory factory;
     
     reset();
