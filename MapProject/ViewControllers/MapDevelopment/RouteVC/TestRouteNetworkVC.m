@@ -150,8 +150,6 @@ int TestIndex = 0;
         if (startPoint && endPoint) {
             NSDate *now = [NSDate date];
             
-            
-            
             [testLayer removeAllGraphics];
             [testLayer addGraphic:[AGSGraphic graphicWithGeometry:startPoint symbol:symbolgroup.testSimpleMarkerSymbol attributes:nil]];
             [testLayer addGraphic:[AGSGraphic graphicWithGeometry:endPoint symbol:symbolgroup.testSimpleMarkerSymbol attributes:nil]];

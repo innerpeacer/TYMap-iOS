@@ -48,6 +48,18 @@ IPXRouteNetworkDataset::IPXRouteNetworkDataset(std::vector<IPXNodeRecord> &nodes
     extractLinks(links);
     processNodesAndLinks();
     
+//    for (int i = 0; i < m_nodeArray.size(); ++i) {
+//        IPXNode *node = m_nodeArray.at(i);
+//        printf("Node: %d\t", node->getNodeID());
+//    }
+//    printf("\n");
+//    
+//    for (int i = 0; i < m_linkArray.size(); ++i) {
+//        IPXLink *link = m_linkArray.at(i);
+//        printf("Link: %d\t", link->getLinkID());
+//    }
+//    printf("\n");
+    
     vector<IPXLink *>::iterator iter;
     vector<Geometry *> linkLineVector;
     for (iter = m_linkArray.begin(); iter != m_linkArray.end(); ++iter) {
@@ -204,7 +216,7 @@ geos::geom::LineString *IPXRouteNetworkDataset::getShorestPathToNode(IPXNode *ta
         nodeArray.push_back(node);
     }
     reverse(nodeArray.begin(), nodeArray.end());
-    
+    printf("nodeArray.size(): %d\n", (int)nodeArray.size());
     stringstream ostr;
     CoordinateArraySequence sequence;
     
@@ -795,7 +807,7 @@ std::vector<IPXLink *> IPXRouteNetworkDataset::getTempLinks(geos::geom::Point po
 #pragma mark Public Method
 geos::geom::LineString *IPXRouteNetworkDataset::getShorestPath(geos::geom::Point *start, geos::geom::Point *end)
 {    
-    if (m_linkArray.size()+m_virtualLinkArray.size() == 0 || m_nodeArray.size() + m_virtualLinkArray.size() == 0) {
+    if (m_linkArray.size()+m_virtualLinkArray.size() == 0 || m_nodeArray.size() + m_virtualNodeArray.size() == 0) {
         return NULL;
     }
     GeometryFactory factory;
@@ -804,6 +816,9 @@ geos::geom::LineString *IPXRouteNetworkDataset::getShorestPath(geos::geom::Point
     
     IPXNode *startNode = processTempNodeForStart(start);
     IPXNode *endNode = processTempNodeForEnd(end);
+    
+//    printf("%d: %f, %f\n", startNode->getNodeID(), startNode->getPos()->getX(), startNode->getPos()->getY());
+//    printf("%d: %f, %f\n", endNode->getNodeID(), endNode->getPos()->getX(), endNode->getPos()->getY());
     
     computePaths(startNode);
     LineString *nodePath = getShorestPathToNode(endNode);

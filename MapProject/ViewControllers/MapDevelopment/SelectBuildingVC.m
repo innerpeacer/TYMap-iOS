@@ -20,7 +20,7 @@
 
     self.delegate = self;
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStyleBordered target:self action:@selector(cancelSelection:)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStylePlain target:self action:@selector(cancelSelection:)];
 }
 
 - (void)didSelectBuilding:(TYBuilding *)building City:(TYCity *)city

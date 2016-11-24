@@ -113,10 +113,13 @@ using namespace Innerpeacer::MapSDK;
     {
         int geometryByteLength = (int)record.geometryData.length;
         char originalBytes[geometryByteLength + 1];
-        [record.geometryData getBytes:originalBytes];
-        char encryptedBytes[geometryByteLength + 1];
+//        [record.geometryData getBytes:originalBytes];
+        [record.geometryData getBytes:originalBytes length:geometryByteLength];
+//        char encryptedBytes[geometryByteLength + 1];
+        char *encryptedBytes = new char[geometryByteLength + 1];
         encryptBytes(originalBytes, encryptedBytes, geometryByteLength);
         NSData *encryptedData = [NSData dataWithBytes:encryptedBytes length:geometryByteLength];
+        delete[] encryptedBytes;
         [arguments addObject:encryptedData];
     }
 //    [arguments addObject:record.geometryData];
@@ -126,6 +129,7 @@ using namespace Innerpeacer::MapSDK;
     [arguments addObject:record.poiID];
     [arguments addObject:record.floorID];
     [arguments addObject:record.buildingID];
+//    NSLog(@"%@", record.poiID);
     [arguments addObject:record.categoryID];
     [arguments addObject:record.name == nil ? [NSNull null] : record.name];
     [arguments addObject:record.symbolID];

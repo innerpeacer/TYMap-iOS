@@ -163,7 +163,6 @@ void Innerpeacer::MapSDK::encryptBytes(const char *originalBytes, char *encrypte
         }
     }
     encryptedByte[originalLength] = 0;
-
 }
 
 void Innerpeacer::MapSDK::decryptBytes(const char *encryptedBytes, char *originalBytes, int length)

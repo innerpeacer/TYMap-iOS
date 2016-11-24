@@ -49,5 +49,6 @@
 #define SHP_DB_FIELD_LEVEL_MAX @"level_max"
 #define SHP_DB_FIELD_LEVEL_MIN @"level_min"
 
+#define SHP_DB_FIELD_LEVEL_EXTENSION_1 @"extension1"
 
 #endif /* ShpToMapDBConstants_h */

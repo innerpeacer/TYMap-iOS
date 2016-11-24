@@ -122,7 +122,7 @@
     
     routeResult = rs;
     
-//    NSLog(@"route part: %d", (int)routeResult.allRoutePartArray.count);
+    NSLog(@"route part: %d", (int)routeResult.allRoutePartArray.count);
 //    TYRoutePart *rp = [routeResult.allRoutePartArray objectAtIndex:0];
 //    NSLog(@"point: %d", (int)rp.route.numPoints);
     
@@ -136,13 +136,13 @@
     if (routePartArray && routePartArray.count > 0) {
         currentRoutePart = [routePartArray objectAtIndex:0];
     }
-
+    
     if (currentRoutePart) {
-        routeGuides = [routeResult getRouteDirectionalHint:currentRoutePart];
+        [self.mapView zoomToGeometry:currentRoutePart.route withPadding:20.0f animated:YES];
+//        routeGuides = [routeResult getRouteDirectionalHint:currentRoutePart];
     }
     
 //    [testLayer addGraphic:[AGSGraphic graphicWithGeometry:line symbol:[AGSSimpleLineSymbol simpleLineSymbolWithColor:[UIColor magentaColor] width:3] attributes:nil]];
-
 }
 
 

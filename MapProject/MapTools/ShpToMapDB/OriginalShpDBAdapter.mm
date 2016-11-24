@@ -106,7 +106,7 @@ using namespace geos::io;
         return resultArray;
     }
     
-    NSMutableString *sql = [NSMutableString stringWithFormat:@"select distinct %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@ from %@", SHP_DB_FIELD_OBJECT_ID, SHP_DB_FIELD_GEOMETRY, SHP_DB_FIELD_GEO_ID, SHP_DB_FIELD_POI_ID, SHP_DB_FIELD_FLOOR_ID, SHP_DB_FIELD_BUILDING_ID, SHP_DB_FIELD_CATEGORY_ID, SHP_DB_FIELD_NAME, SHP_DB_FIELD_SYMBOL_ID, SHP_DB_FIELD_FLOOR_NUMBER, SHP_DB_FIELD_FLOOR_NAME, SHP_DB_FIELD_SHAPE_LENGTH, SHP_DB_FIELD_SHAPE_AREA, SHP_DB_FIELD_LEVEL_MAX, SHP_DB_FIELD_LEVEL_MIN, tableName];
+    NSMutableString *sql = [NSMutableString stringWithFormat:@"select distinct %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@, %@ from %@", SHP_DB_FIELD_OBJECT_ID, SHP_DB_FIELD_GEOMETRY, SHP_DB_FIELD_GEO_ID, SHP_DB_FIELD_POI_ID, SHP_DB_FIELD_FLOOR_ID, SHP_DB_FIELD_BUILDING_ID, SHP_DB_FIELD_CATEGORY_ID, SHP_DB_FIELD_NAME, SHP_DB_FIELD_SYMBOL_ID, SHP_DB_FIELD_FLOOR_NUMBER, SHP_DB_FIELD_FLOOR_NAME, SHP_DB_FIELD_SHAPE_LENGTH, SHP_DB_FIELD_SHAPE_AREA, SHP_DB_FIELD_LEVEL_MAX, SHP_DB_FIELD_LEVEL_MIN, SHP_DB_FIELD_LEVEL_EXTENSION_1, tableName];
     FMResultSet *rs = [db executeQuery:sql];
     
     WKBReader reader;
@@ -133,6 +133,17 @@ using namespace geos::io;
         record.layer = @(_dbType);
         record.levelMax = [NSNumber numberWithInt:[rs intForColumn:SHP_DB_FIELD_LEVEL_MAX]];
         record.levelMin = [NSNumber numberWithInt:[rs intForColumn:SHP_DB_FIELD_LEVEL_MIN]];
+        
+        
+#pragma mark Special Treamments
+        NSString *extension1 = [rs stringForColumn:SHP_DB_FIELD_LEVEL_EXTENSION_1];
+        if([extension1 isEqualToString:@"8"]){
+            record.layer = @8;
+            NSLog(@"%@: Layer %@", record.name, record.layer);
+        } else  if([extension1 isEqualToString:@"9"]){
+            record.layer = @9;
+            NSLog(@"%@: Layer %@", record.name, record.layer);
+        }
         
         s.clear();
         s.write((const char *)record.geometryData.bytes, record.geometryData.length);

@@ -62,6 +62,7 @@
     
     [super viewDidLoad];
     
+    self.mapView.highlightPOIOnSelection = YES;
 //    [self.mapView setLabelOverlapDetectingEnabled:NO];
     [self.mapView setScaleLevels:@{@(1): @(800)}];
 
@@ -77,16 +78,44 @@
 - (void)TYMapView:(TYMapView *)mapView didFinishLoadingFloor:(TYMapInfo *)mapInfo
 {
     NSLog(@"didFinishLoadingFloor");
-    NSLog(@"%@", mapInfo);
-    [self.mapView showOccupiedParkingSpaces:occupiedParkingSpaces AvailableParkingSpaces:availableParkingSpaces];
+    //    NSLog(@"%@", mapInfo);
+    //    [self.mapView showOccupiedParkingSpaces:occupiedParkingSpaces AvailableParkingSpaces:availableParkingSpaces];
+    
+    NSLog(@"%f", self.mapView.resolution);
+    NSLog(@"%f", self.mapView.mapScale);
+    //    [self.mapView zoomToResolution:0.15 animated:YES];
+    //
+    //
+    
+    
+    //    double x_start = 0.4; // 0~1
+    //    double x_end = 0.8; // 0~1 x_end > x_start
+    //
+    //    double y_start = 0.1; // 0~1
+    //    double y_end = 0.9; // 0~1 y_end > y_start
+    //    AGSEnvelope *subEnvelope = [AGSEnvelope envelopeWithXmin:mapInfo.mapExtent.xmin + mapInfo.mapSize.x * x_start ymin:mapInfo.mapExtent.ymin + mapInfo.mapSize.y * y_start  xmax:mapInfo.mapExtent.xmin + mapInfo.mapSize.x * x_end ymax:mapInfo.mapExtent.ymin + mapInfo.mapSize.y * y_end spatialReference:self.mapView.spatialReference];
+    //    [self.mapView zoomToEnvelope:subEnvelope animated:YES];
+
+//    [NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(doSomethingAfterLoading) userInfo:nil repeats:NO];
+}
+
+- (void)doSomethingAfterLoading
+{
+    [self.mapView zoomToResolution:0.15 animated:YES];
+    [self.mapView centerAtPoint:[AGSPoint pointWithX:12958080.157497 y:4826082.424206 spatialReference:self.mapView.spatialReference] animated:YES];
 }
 
 - (void)TYMapView:(TYMapView *)mapView didClickAtPoint:(CGPoint)screen mapPoint:(AGSPoint *)mappoint
 {
     NSLog(@"didClickAtPoint: %f, %f", mappoint.x, mappoint.y);
-//    NSLog(@"Resolution: %f", self.mapView.resolution);
-//    NSLog(@"MapScale: %f", self.mapView.mapScale);
-//    NSLog(@"Current Level: %d", [self.mapView getCurrentLevel]);
+    NSLog(@"Resolution: %f", self.mapView.resolution);
+    
+//    // 放缩至分辨率。经测试放大到3～4级，使用0.15
+//    [self.mapView zoomToResolution:0.15 animated:YES];
+//    
+    // 居中到某个点
+//    [self.mapView centerAtPoint:[AGSPoint pointWithX:mappoint.x y:mappoint.y spatialReference:self.mapView.spatialReference] animated:YES];
+//        [self.mapView centerAtPoint:[AGSPoint pointWithX:12958080.157497 y:4826082.424206 spatialReference:self.mapView.spatialReference] animated:YES];
 
     [hintLayer removeAllGraphics];
     AGSSimpleMarkerSymbol *sms = [AGSSimpleMarkerSymbol simpleMarkerSymbolWithColor:[UIColor redColor]];

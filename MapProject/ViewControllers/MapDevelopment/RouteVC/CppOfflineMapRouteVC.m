@@ -105,25 +105,27 @@
     [self.mapView setRouteEnd:endLocalPoint];
     [self.mapView showRouteResultOnCurrentFloor];
     
-    NSArray *routePartArray = [routeResult getRoutePartsOnFloor:self.currentMapInfo.floorNumber];
-    if (routePartArray && routePartArray.count > 0) {
-        currentRoutePart = [routePartArray objectAtIndex:0];
-    }
-    
-    if (currentRoutePart) {
-        routeGuides = [routeResult getRouteDirectionalHint:currentRoutePart];
-    }
-//    [NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(rotateMap) userInfo:nil repeats:YES];
-//    [self.mapView setMapMode:TYMapViewModeFollowing];
-
+//    // 当前路径结果的所有路段。我们现在只有一层，一般都只有一个路段
+//    NSArray *routePartArray = [routeResult getRoutePartsOnFloor:self.currentMapInfo.floorNumber];
+//    if (routePartArray && routePartArray.count > 0) {
+//        // 获取当前路段，默认为当前层的第一段
+//        currentRoutePart = [routePartArray objectAtIndex:0];
+//    }
+//    
+//    if (currentRoutePart) {
+////        将地图缩放至当前路段
+//        [self.mapView zoomToGeometry:currentRoutePart.route withPadding:100.0f animated:YES];
+////        routeGuides = [routeResult getRouteDirectionalHint:currentRoutePart];
+//    }
+//    
+//    TYLocalPoint *location = nil; // 这里使用定位结果
+//    
+//    // location：定位当前位置。WithThrehold：这里设置一个偏航距离，即偏离路线多少米认为是偏航
+//    BOOL isDeviatig = [routeResult isDeviatingFromRoute:location WithThrehold:5.0f];
+//    if (isDeviatig) {
+//        // 重新请求路径
+//    }
 }
-
-//- (void)rotateMap
-//{
-//    NSLog(@"rotateMap");
-//    static int angle = 0;
-//    [self.mapView processDeviceRotation:angle++];
-//}
 
 - (void)TYMapView:(TYMapView *)mapView didFinishLoadingFloor:(TYMapInfo *)mapInfo
 {
@@ -138,7 +140,6 @@
         [self.mapView showRouteResultOnCurrentFloor];
     }
 }
-
 
 - (void)TYMapView:(TYMapView *)mapView didClickAtPoint:(CGPoint)screen mapPoint:(AGSPoint *)mappoint
 {
@@ -180,6 +181,8 @@
     [self requestRoute];
 }
 
+static bool first = true;
+
 - (void)requestRoute
 {
     if (startLocalPoint == nil || endLocalPoint == nil) {
@@ -189,8 +192,16 @@
     isRouting = YES;
     
     startDate = [NSDate date];
-//    startPoint = new TYLocalPoint(13275974.30287264, 2989071.967726886, 3);
-//    endPoint = new TYLocalPoint(13275987.1889, 2989087.670699999, 3);
+    
+    if (first) {
+        startLocalPoint = [TYLocalPoint pointWithX:1.352708016280593E7 Y:3654224.4810018204 Floor:2];
+        endLocalPoint = [TYLocalPoint pointWithX:1.3527069115480548E7 Y:3654221.920966998 Floor:2];
+        first = false;
+    }
+
+    [self.mapView showRouteStartSymbolOnCurrentFloor:startLocalPoint];
+    [self.mapView showRouteEndSymbolOnCurrentFloor:endLocalPoint];
+    
     [cppOfflineRouteManager requestRouteWithStart:startLocalPoint End:endLocalPoint];
 }
 

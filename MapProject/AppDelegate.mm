@@ -23,12 +23,30 @@
 #import "LicenseManager.h"
 #import "IPMapDBAdapter.h"
 
+#import <MKNetworkKit/MKNetworkKit.h>
+
 @implementation AppDelegate
+
+- (void)testLicense
+{
+    NSString *buildingID = @"WD010012";
+    NSString *date = @"20170630";
+    NSString *userID = TRIAL_USER_ID;
+    NSString *license = [MapLicenseGenerator generateBase64License40ForUserID:userID Building:buildingID ExpiredDate:date];
+    NSLog(@"License: %@", license);
+    
+    TYBuilding *building = [[TYBuilding alloc] init];
+    building.buildingID = buildingID;
+    BOOL success = [IPLicenseValidation checkValidityWithUserID:userID License:license Building:building];
+    NSLog(@"Success: %d", success);
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
 //    NSString *bundleID = [[NSBundle mainBundle] bundleIdentifier];
 //    NSLog(@"bundleID: %@", bundleID);
+    [self testLicense];
+    
     
     NSString *documentDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     NSLog(@"%@", documentDirectory);
@@ -40,15 +58,34 @@
 
     [self copyMapFilesIfNeeded];
     [self setDefaultPlaceIfNeeded];
-        
+    
+    [self testPost];
+    
     return YES;
 }
+
+- (void)testPost
+{
+    NSLog(@"testPost");
+    MKNetworkEngine *engine = [[MKNetworkEngine alloc] initWithHostName:@"localhost:8112"];
+    MKNetworkOperation *op = [engine operationWithPath:@"/BrtBeaconLBSServer/testServlet" params:@{} httpMethod:@"POST"];
+    
+    [op addCompletionHandler:^(MKNetworkOperation *operation) {
+        NSLog(@"%@", operation.responseString);
+    } errorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
+        NSLog(@"%@", completedOperation.responseString);
+        NSLog(@"%@", [error localizedDescription]);
+        
+    }];
+    [engine enqueueOperation:op];
+}
+
 
 - (void)setDefaultPlaceIfNeeded
 {
     if ([TYUserDefaults getDefaultBuilding] == nil) {
-        [TYUserDefaults setDefaultCity:@"0010"];
-        [TYUserDefaults setDefaultBuilding:@"00100003"];
+        [TYUserDefaults setDefaultCity:@"0021"];
+        [TYUserDefaults setDefaultBuilding:@"00210025"];
     }
 }
 

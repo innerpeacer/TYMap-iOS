@@ -18,7 +18,7 @@
 //#define TRIAL_USER_ID @"tyb9719d911017c592"
 //#define TRIAL_USER_ID @"tyff130c01c519037a"
 
-#define TRIAL_EXPRIED_DATE @"20300101"
+#define TRIAL_EXPRIED_DATE @"20270601"
 //#define TRIAL_EXPRIED_DATE @"20160830"
 #define SUPER_USER_ID @"ty943b41bc48ed4aec"
 
@@ -26,6 +26,7 @@
 
 #if USE_REMOTE_HOST
 #define HOST_NAME @"123.56.41.94"
+//#define HOST_NAME @"180.167.72.234:8082"
 #else
 #define HOST_NAME @"localhost:8112"
 #endif
