@@ -47,6 +47,8 @@
 //                                 @[@"生成所有地图数据库",@"GenerateAllMapDBVC"],
 //                                 @[@"生成Web地图文件", @"GenerateWebMapFileVC"],
 //                                 @[@"生成所有Web地图文件", @"GenerateAllWebMapFileVC"],
+                                 @[@"轨迹层",@"traceController"],
+
                                  ];
     
     self.objects = [[NSMutableArray alloc] init];
@@ -61,7 +63,7 @@
         [self.controllerDict setObject:storyboardID forKey:name];
     }
     
-//    [self tableView:self.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+    [self tableView:self.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:10 inSection:0]];
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"设置" style:UIBarButtonItemStylePlain target:self action:@selector(choosingPlace:)];
     
