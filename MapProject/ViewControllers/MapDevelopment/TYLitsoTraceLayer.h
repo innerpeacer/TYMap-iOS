@@ -7,16 +7,17 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <TYMapData/TYMapData.h>
+#import "TYTraceLocalPoint.h"
+
 #import "TYSnappingManager.h"
 
-@interface TYTraceLayerV2 : AGSGraphicsLayer
+@interface TYLitsoTraceLayer : AGSGraphicsLayer
 
 - (void)setFloor:(int)floor;
-- (void)addTracePoint:(TYLocalPoint *)point;
-- (void)addTracePoints:(NSArray *)pointArray;
+//- (void)addTracePoint:(TYTraceLocalPoint *)point;
+- (void)addTracePoints:(NSArray *)pointArray WithThemes:(NSDictionary *)themes;
 - (void)reset;
-- (void)showTraces;
+//- (void)showTraces;
 - (void)showSnappedTraces:(TYSnappingManager *)snappingManager;
 
 @end

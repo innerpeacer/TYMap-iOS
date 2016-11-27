@@ -129,8 +129,9 @@
 		576AEEAC1B61D97100D55CA4 /* MapVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 576AEEA31B61D97100D55CA4 /* MapVC.m */; };
 		576AEEB21B61D9E400D55CA4 /* CustomCalloutVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 576AEEB01B61D9E400D55CA4 /* CustomCalloutVC.m */; };
 		576C02621BC63D4700BCD87D /* SymbolGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 576C02611BC63D4700BCD87D /* SymbolGroup.m */; };
-		576C8EC91DE8B5A900CAD229 /* TYTraceLayerV2.m in Sources */ = {isa = PBXBuildFile; fileRef = 576C8EC81DE8B5A900CAD229 /* TYTraceLayerV2.m */; };
+		576C8EC91DE8B5A900CAD229 /* TYLitsoTraceLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 576C8EC81DE8B5A900CAD229 /* TYLitsoTraceLayer.m */; };
 		576C8ECC1DE8CCC700CAD229 /* TYTraceLocalPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 576C8ECB1DE8CCC700CAD229 /* TYTraceLocalPoint.m */; };
+		576C8ECE1DEB2BE600CAD229 /* TraceData.json in Resources */ = {isa = PBXBuildFile; fileRef = 576C8ECD1DEB2BE600CAD229 /* TraceData.json */; };
 		5771BEC01BE7016E00026873 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5771BEBF1BE7016E00026873 /* libsqlite3.0.tbd */; };
 		5771BEC31BE7051E00026873 /* GenerateWebMapFileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5771BEC21BE7051E00026873 /* GenerateWebMapFileVC.m */; };
 		5771BEC81BE75CE600026873 /* GenerateAllWebMapFileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5771BEC71BE75CE600026873 /* GenerateAllWebMapFileVC.m */; };
@@ -447,10 +448,11 @@
 		576AEEB01B61D9E400D55CA4 /* CustomCalloutVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCalloutVC.m; sourceTree = "<group>"; };
 		576C02601BC63D4700BCD87D /* SymbolGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SymbolGroup.h; sourceTree = "<group>"; };
 		576C02611BC63D4700BCD87D /* SymbolGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SymbolGroup.m; sourceTree = "<group>"; };
-		576C8EC71DE8B5A900CAD229 /* TYTraceLayerV2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYTraceLayerV2.h; sourceTree = "<group>"; };
-		576C8EC81DE8B5A900CAD229 /* TYTraceLayerV2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYTraceLayerV2.m; sourceTree = "<group>"; };
+		576C8EC71DE8B5A900CAD229 /* TYLitsoTraceLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYLitsoTraceLayer.h; sourceTree = "<group>"; };
+		576C8EC81DE8B5A900CAD229 /* TYLitsoTraceLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYLitsoTraceLayer.m; sourceTree = "<group>"; };
 		576C8ECA1DE8CCC700CAD229 /* TYTraceLocalPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYTraceLocalPoint.h; sourceTree = "<group>"; };
 		576C8ECB1DE8CCC700CAD229 /* TYTraceLocalPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYTraceLocalPoint.m; sourceTree = "<group>"; };
+		576C8ECD1DEB2BE600CAD229 /* TraceData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TraceData.json; sourceTree = "<group>"; };
 		5771BEBF1BE7016E00026873 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		5771BEC11BE7051E00026873 /* GenerateWebMapFileVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenerateWebMapFileVC.h; sourceTree = "<group>"; };
 		5771BEC21BE7051E00026873 /* GenerateWebMapFileVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenerateWebMapFileVC.m; sourceTree = "<group>"; };
@@ -692,6 +694,7 @@
 				57672D6A1B55FFF900DAD219 /* Resources */,
 				57672EE81B56002900DAD219 /* Base.lproj */,
 				579B587A1B74F31B00F05206 /* Images.xcassets */,
+				576C8ECD1DEB2BE600CAD229 /* TraceData.json */,
 				57672EF71B56006E00DAD219 /* Supporting Files */,
 			);
 			path = MapProject;
@@ -1158,8 +1161,8 @@
 				57C22FD21DE6922800DBFB67 /* TraceLayerVC.m */,
 				57C22FD41DE699EC00DBFB67 /* TYTraceLayer.h */,
 				57C22FD51DE699EC00DBFB67 /* TYTraceLayer.m */,
-				576C8EC71DE8B5A900CAD229 /* TYTraceLayerV2.h */,
-				576C8EC81DE8B5A900CAD229 /* TYTraceLayerV2.m */,
+				576C8EC71DE8B5A900CAD229 /* TYLitsoTraceLayer.h */,
+				576C8EC81DE8B5A900CAD229 /* TYLitsoTraceLayer.m */,
 				576C8ECA1DE8CCC700CAD229 /* TYTraceLocalPoint.h */,
 				576C8ECB1DE8CCC700CAD229 /* TYTraceLocalPoint.m */,
 			);
@@ -1449,6 +1452,7 @@
 				57672EFD1B5600B900DAD219 /* Default-568h@2x.png in Resources */,
 				57672EEF1B56002900DAD219 /* Main.storyboard in Resources */,
 				57FC97A31BB125D6006D6D00 /* Licenses.json in Resources */,
+				576C8ECE1DEB2BE600CAD229 /* TraceData.json in Resources */,
 				57B9533D1BDE031500D9D318 /* OriginalShpDB in Resources */,
 				579B587B1B74F31B00F05206 /* Images.xcassets in Resources */,
 				574EE2C71B723C30005A6482 /* Launch Screen.xib in Resources */,
@@ -1477,7 +1481,7 @@
 				57D167971BBA47C1004BE6B9 /* ShpRouteDBRecord.mm in Sources */,
 				57672E321B55FFF900DAD219 /* FMDatabaseQueue.m in Sources */,
 				572407AA1BC9A8A10050BA41 /* IPFacilityLayer.m in Sources */,
-				576C8EC91DE8B5A900CAD229 /* TYTraceLayerV2.m in Sources */,
+				576C8EC91DE8B5A900CAD229 /* TYLitsoTraceLayer.m in Sources */,
 				572407B11BC9A8A10050BA41 /* IPAreaAnalysis.m in Sources */,
 				572C7A5C1C2115BB00AF14A7 /* IPSyncMapSymbolDBAdapter.m in Sources */,
 				57494DDB1B61DAE7000B6F2C /* BaseLogVC.m in Sources */,

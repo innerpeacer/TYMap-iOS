@@ -6,9 +6,9 @@
 //  Copyright © 2016年 innerpeacer. All rights reserved.
 //
 
-#import "TYTraceLayerV2.h"
+#import "TYLitsoTraceLayer.h"
 
-@interface TYTraceLayerV2()
+@interface TYLitsoTraceLayer()
 {
     int targetFloor;
     
@@ -24,16 +24,16 @@
     
     NSMutableArray<NSNumber *> *traceFloorArray;
     NSMutableArray<NSNumber *> *traceStartIndexArray;
-    NSMutableArray<NSMutableArray <TYLocalPoint *> *> *tracePointArray;
+    NSMutableArray<NSMutableArray <TYTraceLocalPoint *> *> *tracePointArray;
     NSMutableArray<NSMutableArray <NSNumber *> *> *traceCoordinateArray;
     NSMutableArray<AGSPolyline *> *traceLineArray;
     
-    
+    NSMutableDictionary <NSString *, TYLocalPoint *> *themeLocations;
 }
 
 @end
 
-@implementation TYTraceLayerV2
+@implementation TYLitsoTraceLayer
 
 
 - (id)initWithSpatialReference:(AGSSpatialReference *)sr
@@ -59,6 +59,7 @@
         traceCoordinateArray = [[NSMutableArray alloc] init];
         traceLineArray = [[NSMutableArray alloc] init];
         
+        themeLocations = [[NSMutableDictionary alloc] init];
     }
     return self;
 }
@@ -69,17 +70,27 @@
     targetFloor = floor;
 }
 
-- (void)addTracePoints:(NSArray *)pointArray
+- (void)addTracePoints:(NSArray *)pointArray WithThemes:(NSDictionary *)themes
 {
+    [themeLocations removeAllObjects];
+    [themeLocations addEntriesFromDictionary:themes];
+    
     for (int i = 0; i < pointArray.count; ++i) {
         [self addTracePoint:pointArray[i]];
     }
 }
 
-- (void)addTracePoint:(TYLocalPoint *)point
+//- (void)addTracePoints:(NSArray *)pointArray
+//{
+//    for (int i = 0; i < pointArray.count; ++i) {
+//        [self addTracePoint:pointArray[i]];
+//    }
+//}
+
+- (void)addTracePoint:(TYTraceLocalPoint *)point
 {
-    if (currentFloor != point.floor) {
-        currentFloor = point.floor;
+    if (currentFloor != point.location.floor) {
+        currentFloor = point.location.floor;
         
         [traceFloorArray addObject:@(currentFloor)];
         [traceStartIndexArray addObject:@(currentStartIndex)];
@@ -92,11 +103,9 @@
     
     NSMutableArray *tracePoints = tracePointArray[tracePointArray.count -1];
     [tracePoints addObject:point];
-
-//    [tracePoints addObject:[AGSPoint pointWithX:point.x y:point.y spatialReference:self.spatialReference]];
     
     NSMutableArray *traceCoordinates = traceCoordinateArray[traceCoordinateArray.count - 1];
-    [traceCoordinates addObject:@[@(point.x), @(point.y)]];
+    [traceCoordinates addObject:@[@(point.location.x), @(point.location.y)]];
     
     traceLineArray[traceLineArray.count - 1] = [self createLineFromCoordinates:traceCoordinates];
 }
@@ -118,11 +127,27 @@
             NSMutableArray *snappedTraceLineArray = [NSMutableArray array];
             NSMutableArray *snappedTracePointArray = [NSMutableArray array];
             
+            NSString *lastThemeID = nil;
+            
             for (int j = 0; j < tracePoints.count; ++j) {
-//                AGSPoint *originalTracePoint = tracePoints[j];
-//                AGSProximityResult *snappedObject = [snappingManager getSnappedResult:[TYLocalPoint pointWithX:originalTracePoint.x Y:originalTracePoint.y Floor:targetFloor]];
-                TYLocalPoint *originalTracePoint = tracePoints[j];
-                AGSProximityResult *snappedObject = [snappingManager getSnappedResult:originalTracePoint];
+                TYTraceLocalPoint *originalTracePoint = tracePoints[j];
+                
+                TYLocalPoint *themeLocation;
+                AGSProximityResult *snappedObject;
+                
+                if (originalTracePoint.inTheme) {
+                    if (lastThemeID != nil && [lastThemeID isEqualToString:originalTracePoint.themeID]) {
+                        continue;
+                    }
+                    lastThemeID = originalTracePoint.themeID;
+                    themeLocation = themeLocations[originalTracePoint.themeID];
+                    NSLog(@"%@", themeLocation);
+                    snappedObject = [snappingManager getSnappedResult:themeLocation];
+                } else {
+                    snappedObject = [snappingManager getSnappedResult:originalTracePoint.location];
+                }
+                
+//                AGSProximityResult *snappedObject = [snappingManager getSnappedResult:originalTracePoint];
                 AGSPoint *snappedPoint = snappedObject.point;
                 
                 if (lastSnappedTracePoint == nil) {
@@ -137,7 +162,7 @@
                     
                     cuttedLine = (AGSPolyline *) [[AGSGeometryEngine defaultGeometryEngine] simplifyGeometry:cuttedLine];
                     //                    NSLog(@"CuttedLine: %d", (int)[cuttedLine numPaths]);
-                     if (![self checkFakeSimpleForPolyline:cuttedLine]) {
+                    if (![self checkFakeSimpleForPolyline:cuttedLine]) {
                         //                        NSLog(@"Not Fake Simple");
                         cuttedLine = [self createLineFromCoordinates:@[@[@(lastSnappedTracePoint.x), @(lastSnappedTracePoint.y)], @[@(snappedPoint.x), @(snappedPoint.y)]]];
                         [snappedTraceLineArray addObject:cuttedLine];
@@ -156,6 +181,17 @@
                     AGSPoint *snappedTracePoint = [AGSPoint pointWithX:snappedPoint.x y:snappedPoint.y spatialReference:nil];
                     [snappedTracePointArray addObject:snappedTracePoint];
                 }
+                
+                
+                if (originalTracePoint.inTheme) {
+                    AGSPoint *themeLocationPoint = [AGSPoint pointWithX:themeLocation.x y:themeLocation.y spatialReference:nil];
+                    [snappedTracePointArray addObject:themeLocationPoint];
+                    
+                    [snappedTraceLineArray addObject:[self createLineFromCoordinates:@[@[@(lastSnappedTracePoint.x), @(lastSnappedTracePoint.y)], @[@(snappedPoint.x), @(snappedPoint.y)]]]];
+                      [snappedTraceLineArray addObject:[self createLineFromCoordinates:
+                        @[@[@(snappedPoint.x), @(snappedPoint.y)],
+                        @[@(themeLocation.x), @(themeLocation.y)]]]];
+                }
             }
             
             for (int k = 0; k < snappedTraceLineArray.count; ++k) {
@@ -171,6 +207,77 @@
         }
     }
 }
+
+//- (void)showSnappedTraces:(TYSnappingManager *)snappingManager
+//{
+//    NSLog(@"showSnappedTraces");
+//    [self removeAllGraphics];
+//    
+//    for (int i = 0; i < traceFloorArray.count; ++i) {
+//        int traceFloor = [traceFloorArray[i] intValue];
+//        if (targetFloor == traceFloor) {
+//            NSArray *tracePoints = tracePointArray[i];
+//            int traceIndex = [traceStartIndexArray[i] intValue];
+//            
+//            AGSPoint *lastSnappedTracePoint = nil;
+//            int lastSnappedVertexIndex = -1;
+//            
+//            NSMutableArray *snappedTraceLineArray = [NSMutableArray array];
+//            NSMutableArray *snappedTracePointArray = [NSMutableArray array];
+//            
+//            for (int j = 0; j < tracePoints.count; ++j) {
+////                AGSPoint *originalTracePoint = tracePoints[j];
+////                AGSProximityResult *snappedObject = [snappingManager getSnappedResult:[TYLocalPoint pointWithX:originalTracePoint.x Y:originalTracePoint.y Floor:targetFloor]];
+//                TYLocalPoint *originalTracePoint = tracePoints[j];
+//                AGSProximityResult *snappedObject = [snappingManager getSnappedResult:originalTracePoint];
+//                AGSPoint *snappedPoint = snappedObject.point;
+//                
+//                if (lastSnappedTracePoint == nil) {
+//                    lastSnappedTracePoint = snappedPoint;
+//                } else {
+//                    AGSEnvelope *envelope = [AGSEnvelope envelopeWithXmin:MIN(lastSnappedTracePoint.x, snappedPoint.x) ymin:MIN(lastSnappedTracePoint.y, snappedPoint.y) xmax:MAX(lastSnappedTracePoint.x, snappedPoint.x) ymax:MAX(lastSnappedTracePoint.y, snappedPoint.y) spatialReference:nil];
+//                    NSDictionary *geometries = [snappingManager getRouteGeometries];
+//                    AGSPolyline *cuttedLine = (AGSPolyline *) [[AGSGeometryEngine defaultGeometryEngine] clipGeometry:geometries[@(targetFloor)] withEnvelope:envelope];
+//                    if (cuttedLine == nil) {
+//                        cuttedLine = [self createLineFromCoordinates:@[@[@(lastSnappedTracePoint.x), @(lastSnappedTracePoint.y)], @[@(snappedPoint.x), @(snappedPoint.y)]]];
+//                    }
+//                    
+//                    cuttedLine = (AGSPolyline *) [[AGSGeometryEngine defaultGeometryEngine] simplifyGeometry:cuttedLine];
+//                    //                    NSLog(@"CuttedLine: %d", (int)[cuttedLine numPaths]);
+//                     if (![self checkFakeSimpleForPolyline:cuttedLine]) {
+//                        //                        NSLog(@"Not Fake Simple");
+//                        cuttedLine = [self createLineFromCoordinates:@[@[@(lastSnappedTracePoint.x), @(lastSnappedTracePoint.y)], @[@(snappedPoint.x), @(snappedPoint.y)]]];
+//                        [snappedTraceLineArray addObject:cuttedLine];
+//                    } else {
+//                        if (![[AGSGeometryEngine defaultGeometryEngine] geometry:cuttedLine touchesGeometry:lastSnappedTracePoint] || ![[AGSGeometryEngine defaultGeometryEngine] geometry:cuttedLine touchesGeometry:snappedPoint]) {
+//                            cuttedLine = [self createLineFromCoordinates:@[@[@(lastSnappedTracePoint.x), @(lastSnappedTracePoint.y)], @[@(snappedPoint.x), @(snappedPoint.y)]]];
+//                        }
+//                    }
+//                    
+//                    [snappedTraceLineArray addObject:cuttedLine];
+//                    lastSnappedTracePoint = snappedPoint;
+//                }
+//                
+//                if (snappedObject.pointIndex != lastSnappedVertexIndex || j == tracePoints.count -1) {
+//                    lastSnappedVertexIndex = (int)snappedObject.pointIndex;
+//                    AGSPoint *snappedTracePoint = [AGSPoint pointWithX:snappedPoint.x y:snappedPoint.y spatialReference:nil];
+//                    [snappedTracePointArray addObject:snappedTracePoint];
+//                }
+//            }
+//            
+//            for (int k = 0; k < snappedTraceLineArray.count; ++k) {
+//                [self addGraphic:[AGSGraphic graphicWithGeometry:snappedTraceLineArray[k] symbol:traceSymbol1 attributes:nil]];
+//                [self addGraphic:[AGSGraphic graphicWithGeometry:snappedTraceLineArray[k] symbol:traceSymbol2 attributes:nil]];
+//            }
+//            
+//            for (int k = 0; k < snappedTracePointArray.count; ++k) {
+//                [self addGraphic:[AGSGraphic graphicWithGeometry:snappedTracePointArray[k] symbol:pointSymbol attributes:nil]];
+//                AGSTextSymbol *ts = [AGSTextSymbol textSymbolWithText:[NSString stringWithFormat:@"%d", traceIndex + k + 1] color:[UIColor whiteColor]];
+//                [self addGraphic:[AGSGraphic graphicWithGeometry:snappedTracePointArray[k] symbol:ts attributes:nil]];
+//            }
+//        }
+//    }
+//}
 
 - (void)showTraces
 {
