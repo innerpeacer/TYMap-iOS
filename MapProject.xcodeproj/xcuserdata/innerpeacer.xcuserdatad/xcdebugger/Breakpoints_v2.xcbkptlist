@@ -10,13 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MapProject/MapSDK/ObjC/FunctionLayers/TYTraceLayer.m"
-            timestampString = "501790087.38348"
+            timestampString = "501946183.602571"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "138"
-            endingLineNumber = "138"
-            landmarkName = "-showSnappedTraces:"
-            landmarkType = "7">
+            startingLineNumber = "141"
+            endingLineNumber = "141">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

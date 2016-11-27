@@ -22,11 +22,11 @@
     AGSSimpleLineSymbol *lineSymbol;
     AGSSimpleMarkerSymbol *pointSymbol;
     
-    NSMutableArray *traceFloorArray;
-    NSMutableArray *traceStartIndexArray;
-    NSMutableArray *tracePointArray;
-    NSMutableArray *traceCoordinateArray;
-    NSMutableArray *traceLineArray;
+    NSMutableArray<NSNumber *> *traceFloorArray;
+    NSMutableArray<NSNumber *> *traceStartIndexArray;
+    NSMutableArray<NSMutableArray <TYLocalPoint *> *> *tracePointArray;
+    NSMutableArray<NSMutableArray <NSNumber *> *> *traceCoordinateArray;
+    NSMutableArray<AGSPolyline *> *traceLineArray;
     
     
 }
@@ -91,7 +91,9 @@
     currentStartIndex++;
     
     NSMutableArray *tracePoints = tracePointArray[tracePointArray.count -1];
-    [tracePoints addObject:[AGSPoint pointWithX:point.x y:point.y spatialReference:self.spatialReference]];
+    [tracePoints addObject:point];
+
+//    [tracePoints addObject:[AGSPoint pointWithX:point.x y:point.y spatialReference:self.spatialReference]];
     
     NSMutableArray *traceCoordinates = traceCoordinateArray[traceCoordinateArray.count - 1];
     [traceCoordinates addObject:@[@(point.x), @(point.y)]];
@@ -117,8 +119,10 @@
             NSMutableArray *snappedTracePointArray = [NSMutableArray array];
             
             for (int j = 0; j < tracePoints.count; ++j) {
-                AGSPoint *originalTracePoint = tracePoints[j];
-                AGSProximityResult *snappedObject = [snappingManager getSnappedResult:[TYLocalPoint pointWithX:originalTracePoint.x Y:originalTracePoint.y Floor:targetFloor]];
+//                AGSPoint *originalTracePoint = tracePoints[j];
+//                AGSProximityResult *snappedObject = [snappingManager getSnappedResult:[TYLocalPoint pointWithX:originalTracePoint.x Y:originalTracePoint.y Floor:targetFloor]];
+                TYLocalPoint *originalTracePoint = tracePoints[j];
+                AGSProximityResult *snappedObject = [snappingManager getSnappedResult:originalTracePoint];
                 AGSPoint *snappedPoint = snappedObject.point;
                 
                 if (lastSnappedTracePoint == nil) {
@@ -133,8 +137,7 @@
                     
                     cuttedLine = (AGSPolyline *) [[AGSGeometryEngine defaultGeometryEngine] simplifyGeometry:cuttedLine];
                     //                    NSLog(@"CuttedLine: %d", (int)[cuttedLine numPaths]);
-                    //                    if ([cuttedLine numPaths] > 1) {
-                    if (![self checkFakeSimpleForPolyline:cuttedLine]) {
+                     if (![self checkFakeSimpleForPolyline:cuttedLine]) {
                         //                        NSLog(@"Not Fake Simple");
                         cuttedLine = [self createLineFromCoordinates:@[@[@(lastSnappedTracePoint.x), @(lastSnappedTracePoint.y)], @[@(snappedPoint.x), @(snappedPoint.y)]]];
                         [snappedTraceLineArray addObject:cuttedLine];

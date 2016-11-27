@@ -90,7 +90,8 @@
 //    currentStartIndex++;
 //    
 //    NSMutableArray *tracePoints = tracePointArray[tracePointArray.count -1];
-//    [tracePoints addObject:[AGSPoint pointWithX:point.x y:point.y spatialReference:self.spatialReference]];
+////    [tracePoints addObject:[AGSPoint pointWithX:point.x y:point.y spatialReference:self.spatialReference]];
+//    [tracePoints addObject:point];
 //    
 //    NSMutableArray *traceCoordinates = traceCoordinateArray[traceCoordinateArray.count - 1];
 //    [traceCoordinates addObject:@[@(point.x), @(point.y)]];
@@ -116,8 +117,10 @@
 //            NSMutableArray *snappedTracePointArray = [NSMutableArray array];
 //            
 //            for (int j = 0; j < tracePoints.count; ++j) {
-//                AGSPoint *originalTracePoint = tracePoints[j];
-//                AGSProximityResult *snappedObject = [snappingManager getSnappedResult:[TYLocalPoint pointWithX:originalTracePoint.x Y:originalTracePoint.y Floor:targetFloor]];
+////                AGSPoint *originalTracePoint = tracePoints[j];
+////                AGSProximityResult *snappedObject = [snappingManager getSnappedResult:[TYLocalPoint pointWithX:originalTracePoint.x Y:originalTracePoint.y Floor:targetFloor]];
+//                TYLocalPoint *originalTracePoint = tracePoints[j];
+//                AGSProximityResult *snappedObject = [snappingManager getSnappedResult:originalTracePoint];
 //                AGSPoint *snappedPoint = snappedObject.point;
 //                
 //                if (lastSnappedTracePoint == nil) {
