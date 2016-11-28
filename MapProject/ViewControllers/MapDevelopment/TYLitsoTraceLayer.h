@@ -14,10 +14,8 @@
 @interface TYLitsoTraceLayer : AGSGraphicsLayer
 
 - (void)setFloor:(int)floor;
-//- (void)addTracePoint:(TYTraceLocalPoint *)point;
 - (void)addTracePoints:(NSArray *)pointArray WithThemes:(NSDictionary *)themes;
 - (void)reset;
-//- (void)showTraces;
 - (void)showSnappedTraces:(TYSnappingManager *)snappingManager;
 
 @end
