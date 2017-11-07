@@ -63,8 +63,7 @@
         [self.controllerDict setObject:storyboardID forKey:name];
     }
     
-    [self tableView:self.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:10 inSection:0]];
-    
+    [self tableView:self.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"设置" style:UIBarButtonItemStylePlain target:self action:@selector(choosingPlace:)];
     
     [self updateTitle];

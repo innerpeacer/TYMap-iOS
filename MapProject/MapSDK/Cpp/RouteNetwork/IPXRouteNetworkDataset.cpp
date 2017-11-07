@@ -825,6 +825,8 @@ geos::geom::LineString *IPXRouteNetworkDataset::getShorestPath(geos::geom::Point
     
     if (nodePath->getNumPoints() == 0) {
         delete nodePath;
+        resetTempNodeForEnd();
+        resetTempNodeForStart();
         return NULL;
     }
     

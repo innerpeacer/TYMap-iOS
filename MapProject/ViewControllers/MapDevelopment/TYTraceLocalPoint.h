@@ -10,7 +10,7 @@
 
 @interface TYTraceLocalPoint : NSObject
 
-@property (nonatomic, strong) NSString *themeID;
+@property (nonatomic, strong, nullable) NSString *themeID;
 @property (nonatomic, assign) BOOL inTheme;
 @property (nonnull, strong) TYLocalPoint *location;
 @end

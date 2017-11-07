@@ -14,6 +14,8 @@
 #import "IPPathCalibration.h"
 #import "TYMapToFengMap.h"
 
+#import "TYFanRange.h"
+
 #define PIC_INITIAL 0
 #define PIC_LAST 7
 @interface MapVC()
@@ -25,6 +27,8 @@
     AGSPoint *testLocation;
     AGSSimpleFillSymbol *testSimpleFillSymbol;
     AGSSimpleLineSymbol *testSimpleLineSymbol;
+    
+    AGSSimpleMarkerSymbol *sms;
     int currentRadius;
     int picIndex;
     int count;
@@ -35,6 +39,13 @@
     NSArray *targetParkingSpaces;
     NSMutableArray *occupiedParkingSpaces;
     NSMutableArray *availableParkingSpaces;
+    
+    TYFanRange *fanRange;
+    
+    
+    TYLocalPoint *startPoint;
+    TYLocalPoint *endPoint;
+    AGSGraphic *smoothGraphic;
 }
 
 
@@ -47,18 +58,6 @@
     self.currentCity = [TYUserDefaults getDefaultCity];
     self.currentBuilding = [TYUserDefaults getDefaultBuilding];
     self.allMapInfos = [TYMapInfo parseAllMapInfo:self.currentBuilding];
-    
-    targetParkingSpaces = @[@"00100003B0210266", @"00100003B0210281", @"00100003B0210258", @"00100003B0210262", @"00100003B0210279", @"00100003B0210265", @"00100003B0210263", @"00100003B0210280", @"00100003B0210260", @"00100003B0210275", @"00100003B0210286", @"00100003B0210274", @"00100003B0210273", @"00100003B0210285", @"00100003B0210271", @"00100003B0210268", @"00100003B0210290", @"00100003B0210269"];
-    occupiedParkingSpaces = [NSMutableArray array];
-    availableParkingSpaces = [NSMutableArray array];
-    for (NSString *poiID in targetParkingSpaces) {
-        int status = arc4random()%2;
-        if (status == 0) {
-            [occupiedParkingSpaces addObject:poiID];
-        } else {
-            [availableParkingSpaces addObject:poiID];
-        }
-    }
     
     [super viewDidLoad];
     
@@ -73,30 +72,86 @@
     [self.mapView addMapLayer:hintLayer];
     
 //    [self.mapView setLabelColor:[UIColor redColor]];
+    
+    sms = [AGSSimpleMarkerSymbol simpleMarkerSymbol];
+    sms.size = CGSizeMake(5, 5);
+    
+    fanRange = [[TYFanRange alloc] init];
+    [fanRange updateHeading:0.0];
+    
+}
+
+NSTimer *testTimer;
+
+- (void)testSmooth
+{
+    [hintLayer removeAllGraphics];
+    
+    startPoint = [TYLocalPoint pointWithX:13527084.716413 Y:3654220.881112];
+    endPoint = [TYLocalPoint pointWithX:13527109.687159 Y:3654211.517083];
+    AGSPictureMarkerSymbol *pms = [AGSPictureMarkerSymbol pictureMarkerSymbolWithImageNamed:@"l7"];
+    smoothGraphic = [AGSGraphic graphicWithGeometry:nil symbol:pms attributes:nil];
+    
+    testTimer = [NSTimer scheduledTimerWithTimeInterval:0.5/steps target:self selector:@selector(smooth) userInfo:nil repeats:YES];
+}
+
+int sIndex = 0;
+int steps = 10;
+- (void)smooth
+{
+//    NSLog(@"smooth");
+    sIndex++;
+    if (sIndex >= steps) {
+        [testTimer invalidate];
+        sIndex = 0;
+        return;
+    }
+    
+    float scale = [self easeFuntion:sIndex * 1.0/steps];
+    NSLog(@"%d: %f", sIndex, scale);
+    TYLocalPoint *point = [self interpolation:scale];
+    smoothGraphic.geometry = [AGSPoint pointWithX:point.x y:point.y spatialReference:nil];
+    
+    [hintLayer addGraphic:[AGSGraphic graphicWithGeometry:smoothGraphic.geometry symbol:sms attributes:nil]];
+
+    [hintLayer removeGraphic:smoothGraphic];
+    [hintLayer addGraphic:smoothGraphic];
+}
+
+- (double)easeFuntion:(double)t
+{
+//    return t;
+//    return t * t;
+//    return t * t * t;
+//    return 1 - (1 - t) * (1 - t);
+//    return sin(t * 3.1415926 / 2);
+//    return (t <= 0.5) ? t * t : 1 - (1 - t) * (1 - t);
+    
+    if (t < 0.5) {
+        return pow(t, 1.5);
+    } else if (t == 0.5) {
+        return 0.5;
+    } else {
+        return 1 - pow((1 - t), 1.5);
+    }
+    
+//    return (t <= 0.5) ? pow(t, 1.5) : 1 - pow((1 - t), 1.5);
+//    return (t <= 0.5) ? t * t * t : 1 - (1 - t) * (1 - t) * (1 - t);
+}
+
+- (TYLocalPoint *)interpolation:(double)scale
+{
+    double x = startPoint.x * (1 - scale) + endPoint.x * scale;
+    double y = startPoint.y * (1 - scale) + endPoint.y * scale;
+    return [TYLocalPoint pointWithX:x Y:y];
 }
 
 - (void)TYMapView:(TYMapView *)mapView didFinishLoadingFloor:(TYMapInfo *)mapInfo
 {
     NSLog(@"didFinishLoadingFloor");
     //    NSLog(@"%@", mapInfo);
-    //    [self.mapView showOccupiedParkingSpaces:occupiedParkingSpaces AvailableParkingSpaces:availableParkingSpaces];
-    
     NSLog(@"%f", self.mapView.resolution);
     NSLog(@"%f", self.mapView.mapScale);
-    //    [self.mapView zoomToResolution:0.15 animated:YES];
-    //
-    //
-    
-    
-    //    double x_start = 0.4; // 0~1
-    //    double x_end = 0.8; // 0~1 x_end > x_start
-    //
-    //    double y_start = 0.1; // 0~1
-    //    double y_end = 0.9; // 0~1 y_end > y_start
-    //    AGSEnvelope *subEnvelope = [AGSEnvelope envelopeWithXmin:mapInfo.mapExtent.xmin + mapInfo.mapSize.x * x_start ymin:mapInfo.mapExtent.ymin + mapInfo.mapSize.y * y_start  xmax:mapInfo.mapExtent.xmin + mapInfo.mapSize.x * x_end ymax:mapInfo.mapExtent.ymin + mapInfo.mapSize.y * y_end spatialReference:self.mapView.spatialReference];
-    //    [self.mapView zoomToEnvelope:subEnvelope animated:YES];
-
-//    [NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(doSomethingAfterLoading) userInfo:nil repeats:NO];
 }
 
 - (void)doSomethingAfterLoading
@@ -110,60 +165,35 @@
     NSLog(@"didClickAtPoint: %f, %f", mappoint.x, mappoint.y);
     NSLog(@"Resolution: %f", self.mapView.resolution);
     
-//    // 放缩至分辨率。经测试放大到3～4级，使用0.15
-//    [self.mapView zoomToResolution:0.15 animated:YES];
-//    
-    // 居中到某个点
-//    [self.mapView centerAtPoint:[AGSPoint pointWithX:mappoint.x y:mappoint.y spatialReference:self.mapView.spatialReference] animated:YES];
-//        [self.mapView centerAtPoint:[AGSPoint pointWithX:12958080.157497 y:4826082.424206 spatialReference:self.mapView.spatialReference] animated:YES];
-
-    [hintLayer removeAllGraphics];
-    AGSSimpleMarkerSymbol *sms = [AGSSimpleMarkerSymbol simpleMarkerSymbolWithColor:[UIColor redColor]];
-    sms.size = CGSizeMake(5, 5);
-    [hintLayer addGraphic:[AGSGraphic graphicWithGeometry:mappoint symbol:sms attributes:nil]];
+//    [hintLayer removeAllGraphics];
+//    AGSSimpleMarkerSymbol *sms = [AGSSimpleMarkerSymbol simpleMarkerSymbolWithColor:[UIColor redColor]];
+//    sms.size = CGSizeMake(5, 5);
+//    [hintLayer addGraphic:[AGSGraphic graphicWithGeometry:mappoint symbol:sms attributes:nil]];
     
-    testLocation = [self.mapView getCalibratedPoint:mappoint];
-    if (testTimer) {
-        [testTimer invalidate];
-    }
-    testTimer = [NSTimer scheduledTimerWithTimeInterval:0.15 target:self selector:@selector(showTestLocation) userInfo:nil repeats:YES];
-    picIndex = PIC_INITIAL;
-    [testLayer removeAllGraphics];
-    
-//    TYPoi *poi = [self.mapView extractRoomPoiOnCurrentFloorWithX:mappoint.x Y:mappoint.y];
-//    NSLog(@"%@", poi);
-//
-//    static AGSPoint *lastPoint = nil;
-//    static CGPoint lastScreenPoint;
-//    if (lastPoint == nil) {
-//        lastPoint = mappoint;
-//        lastScreenPoint = screen;
-//        return;
+//    testLocation = [self.mapView getCalibratedPoint:mappoint];
+//    if (testTimer) {
+//        [testTimer invalidate];
 //    }
+//    testTimer = [NSTimer scheduledTimerWithTimeInterval:0.15 target:self selector:@selector(showTestLocation) userInfo:nil repeats:YES];
+//    picIndex = PIC_INITIAL;
+//    [testLayer removeAllGraphics];
+    
+//    [fanRange updateCenter:[TYLocalPoint pointWithX:mappoint.x Y:mappoint.y Floor:self.currentMapInfo.floorNumber]];
+    
+//    AGSSimpleFillSymbol *sfs = [AGSSimpleFillSymbol simpleFillSymbolWithColor:[UIColor redColor] outlineColor:[UIColor whiteColor]];
+//    AGSGeometry *fanGeometery = [fanRange toFanGeometry];
+//    NSLog(@"%@", fanGeometery);
+//    [hintLayer addGraphic:[AGSGraphic graphicWithGeometry:[fanRange toFanGeometry] symbol:sfs attributes:nil]];
+    
+//    AGSSimpleLineSymbol *sls = [AGSSimpleLineSymbol simpleLineSymbolWithColor:[UIColor lightGrayColor] width:2];
+//    sls.style = AGSSimpleLineSymbolStyleDashDotDot;
+//    AGSGeometry *arcGeometry = [fanRange toArcGeometry1WithStartAngle:30 endAngle:240];
+//    [hintLayer addGraphic:[AGSGraphic graphicWithGeometry:arcGeometry symbol:sls attributes:nil]];
 //    
-////    double mapDis = [lastPoint distanceToPoint:mappoint];
-////    double screenDis = sqrt(pow(lastScreenPoint.x - screen.x, 2) + pow(lastScreenPoint.y - screen.y, 2));
-////    double ratio = mapDis / screenDis;
-////    
-////    NSLog(@"==================================");
-////    NSLog(@"Delta Distance: %f", mapDis);
-////    NSLog(@"Screen Distance: %f", screenDis);
-////    NSLog(@"Ratio: %f", ratio);
-////    NSLog(@"MapScale: %f", self.mapView.mapScale);
-////    NSLog(@"MapResoluton: %f", self.mapView.resolution);
-////    NSLog(@"Scale To Ratio: %f", self.mapView.mapScale / self.mapView.resolution);
-////    
-////    double lengthPerPixel = 0.109;
-////    double length = lengthPerPixel * screenDis * self.mapView.mapScale / 1000;
-////    NSLog(@"Dis VS Dis: %f -- %f", mapDis, length);
-////    
-////    lastPoint = mappoint;
-////    lastScreenPoint = screen;
+//    AGSSimpleLineSymbol *sls2 = [AGSSimpleLineSymbol simpleLineSymbolWithColor:[UIColor redColor] width:2];
     
-    
-//    NSArray *fengMapArray = [TYMapToFengMap TYMapToFengMap:@[@(mappoint.x), @(mappoint.y)]];
-//    NSLog(@"TYMap: %f, %f", mappoint.x, mappoint.y);
-//    NSLog(@"FengMap: %f, %f", [fengMapArray[0] doubleValue], [fengMapArray[1] doubleValue]);
+//    [self testSmooth];
+
 }
 
 - (void)showTestLocation
@@ -181,6 +211,10 @@
 - (void)TYMapView:(TYMapView *)mapView PoiSelected:(NSArray *)array
 {
     NSLog(@"%@", array);
+    for (TYPoi *poi in array) {
+        NSLog(@"%@", poi);
+        NSLog(@"CateogryID: %d", poi.categoryID);
+    }
 }
 
 @end

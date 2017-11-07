@@ -34,6 +34,7 @@ namespace Innerpeacer {
             geos::geom::LineString *getLine() const;
             void setLine(geos::geom::LineString *line);
             
+            std::string getKey() const;
             std::string toString() const;
             
         private:

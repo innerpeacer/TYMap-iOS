@@ -51,6 +51,14 @@ geos::geom::LineString *IPXLink::getLine() const
     return m_line;
 }
 
+std::string IPXLink::getKey() const
+{
+    stringstream ostr;
+    ostr.str("");
+    ostr << m_linkID << currentNodeID << nextNodeID;
+    return ostr.str();
+}
+
 std::string IPXLink::toString() const
 {
     ostringstream ostr;

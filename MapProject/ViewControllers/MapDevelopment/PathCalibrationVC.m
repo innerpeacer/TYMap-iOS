@@ -93,6 +93,7 @@
     
     TYPoi *poi = [self.mapView extractRoomPoiOnCurrentFloorWithX:mappoint.x Y:mappoint.y];
     NSLog(@"%@", poi);
+    NSLog(@"%d", poi.categoryID);
     
 }
 

@@ -36,4 +36,13 @@
 //#define SERVER_HOST_NAME @"123.56.41.94"
 //#define LOCAL_HOST_NAME @"localhost:8112"
 
+#define DEBUG_MAP
+#ifdef DEBUG_MAP
+#define DEFAULT_MAP_ROOT @"Debug"
+#else
+#define DEFAULT_MAP_ROOT @"MapResource"
+#endif
+
+#define DEFAULT_MAP_ENCRPTION_ROOT @"MapEncrypted"
+
 #endif

@@ -120,7 +120,7 @@
 
 - (TYRelativeDirection)calculateRelativeDirection:(double)angle previousAngle:(double)preAngle
 {
-    TYRelativeDirection direction;
+    TYRelativeDirection direction = TYStraight;
     
     double deltaAngle = angle - preAngle;
     

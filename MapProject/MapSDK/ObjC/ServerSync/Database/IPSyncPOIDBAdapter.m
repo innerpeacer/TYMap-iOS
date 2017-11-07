@@ -79,7 +79,7 @@
     sqlite3_bind_int(statement, 10, record.floorNumber);
     sqlite3_bind_text(statement, 11, [record.floorName UTF8String], -1, SQLITE_STATIC);
     
-    int layer;
+    int layer = POI_ROOM;
     // Room Layer
     if (record.layer == 2) {
         layer = POI_ROOM;
@@ -91,6 +91,8 @@
     // Facility Layer
     else if (record.layer == 4) {
         layer = POI_FACILITY;
+    } else {
+        
     }
     sqlite3_bind_int(statement, 12, layer);
     
@@ -137,7 +139,7 @@
         sqlite3_bind_text(statement, 11, [record.floorName UTF8String], -1, SQLITE_STATIC);
         
         
-        int layer;
+        int layer = POI_ROOM;
         // Room Layer
         if (record.layer == 2) {
             layer = POI_ROOM;

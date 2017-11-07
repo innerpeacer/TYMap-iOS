@@ -8,8 +8,9 @@
 
 #import "TYMapEnviroment.h"
 
-
+#ifndef DEFAULT_MAP_ROOT
 #define DEFAULT_MAP_ROOT @"Map"
+#endif
 
 @implementation TYMapEnvironment
 

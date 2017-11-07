@@ -226,29 +226,27 @@
 
 - (void)setFloorWithInfo:(TYMapInfo *)info
 {
-//    BOOL licenseValidity = [IPLicenseValidation checkValidityWithUserID:userID License:mapLicense Building:_building];
-    BOOL licenseValidity = [IPLicenseValidation checkValidityWithUserID:mapCredential.userID License:mapCredential.license Building:_building];
+//    BOOL licenseValidity = [IPLicenseValidation checkValidityWithUserID:mapCredential.userID License:mapCredential.license Building:_building];
 
-    if (!licenseValidity) {
-        NSLog(@"Invalid License!");
-        return;
-    }
+//    if (!licenseValidity) {
+//        NSLog(@"Invalid License!");
+//        return;
+//    }
     
-//    NSDate *expiredDate = [IPLicenseValidation evaluateLicenseWithUserID:userID License:mapLicense Building:_building];
-    NSDate *expiredDate = [IPLicenseValidation evaluateLicenseWithUserID:mapCredential.userID License:mapCredential.license Building:_building];
-    if (expiredDate == nil) {
-        NSLog(@"Invalid License for Current Building!");
-        return;
-    }
+//    NSDate *expiredDate = [IPLicenseValidation evaluateLicenseWithUserID:mapCredential.userID License:mapCredential.license Building:_building];
+//    if (expiredDate == nil) {
+//        NSLog(@"Invalid License for Current Building!");
+//        return;
+//    }
     
-    NSTimeInterval interval = [expiredDate timeIntervalSinceDate:[NSDate date]];
-    if (interval < 0) {
-        NSLog(@"License for Current Building is Expired!");
-        NSLog(@"Expired Date: %@", expiredDate);
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"错误！" message:@"抱歉，当前建筑的License已经过期！" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-        [alert show];
-        return;
-    }
+//    NSTimeInterval interval = [expiredDate timeIntervalSinceDate:[NSDate date]];
+//    if (interval < 0) {
+//        NSLog(@"License for Current Building is Expired!");
+//        NSLog(@"Expired Date: %@", expiredDate);
+//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"错误！" message:@"抱歉，当前建筑的License已经过期！" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+//        [alert show];
+//        return;
+//    }
     
     if ([info.mapID isEqualToString:_currentMapInfo.mapID]) {
         return;

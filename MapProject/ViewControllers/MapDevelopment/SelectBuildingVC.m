@@ -26,8 +26,8 @@
 - (void)didSelectBuilding:(TYBuilding *)building City:(TYCity *)city
 {
     NSLog(@"SelectBuildingVC:didSelectBuilding: %@ - %@", building.name, city.name);
-//    [TYUserDefaults setDefaultBuilding:building.buildingID];
-//    [TYUserDefaults setDefaultCity:city.cityID];
+    [TYUserDefaults setDefaultBuilding:building.buildingID];
+    [TYUserDefaults setDefaultCity:city.cityID];
 
     if (self.selectDelegate && [self.selectDelegate respondsToSelector:@selector(SelectBuildingVC:didSelectBuliding:City:)]) {
         [self.selectDelegate SelectBuildingVC:self didSelectBuliding:building City:city];

@@ -102,6 +102,7 @@
 		572B98CC1BDA195500506A7E /* MapGeneratorDBAdapter.mm in Sources */ = {isa = PBXBuildFile; fileRef = 572B98CB1BDA195500506A7E /* MapGeneratorDBAdapter.mm */; };
 		572C7A5C1C2115BB00AF14A7 /* IPSyncMapSymbolDBAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 572C7A5B1C2115BB00AF14A7 /* IPSyncMapSymbolDBAdapter.m */; };
 		573F900A1BC8E68F00F836B5 /* OfflineRouteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 573F90091BC8E68F00F836B5 /* OfflineRouteManager.m */; };
+		5740296A1E2F175B00DC5388 /* Debug in Resources */ = {isa = PBXBuildFile; fileRef = 574029691E2F175B00DC5388 /* Debug */; };
 		5740772A1BDF781C008D05CD /* BuildAllRouteNetworkVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 574077291BDF781C008D05CD /* BuildAllRouteNetworkVC.m */; };
 		57494DDA1B61DAE7000B6F2C /* BaseControllerTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 57494DD31B61DAE7000B6F2C /* BaseControllerTableVC.m */; };
 		57494DDB1B61DAE7000B6F2C /* BaseLogVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 57494DD51B61DAE7000B6F2C /* BaseLogVC.m */; };
@@ -152,6 +153,8 @@
 		579B587B1B74F31B00F05206 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 579B587A1B74F31B00F05206 /* Images.xcassets */; };
 		579C2C611C200BDB00786AF2 /* IPSyncSymbolRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 579C2C601C200BDB00786AF2 /* IPSyncSymbolRecord.m */; };
 		579FA83D1CFD40C60025F37A /* IPXBase64Encoding.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 579FA83B1CFD40C60025F37A /* IPXBase64Encoding.cpp */; };
+		57A5766C1EF12DA800AACC9A /* TYFanRange.m in Sources */ = {isa = PBXBuildFile; fileRef = 57A5766B1EF12DA800AACC9A /* TYFanRange.m */; };
+		57B4A3B11ED7EFD1003874D2 /* DebugHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57B4A3B01ED7EFD1003874D2 /* DebugHelper.cpp */; };
 		57B953391BDDFB0700D9D318 /* GenerateAllMapDBVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 57B953381BDDFB0700D9D318 /* GenerateAllMapDBVC.m */; };
 		57B9533D1BDE031500D9D318 /* OriginalShpDB in Resources */ = {isa = PBXBuildFile; fileRef = 57B9533C1BDE031500D9D318 /* OriginalShpDB */; };
 		57C03F5A1B61E19800490179 /* BaseMapVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 57C03F591B61E19800490179 /* BaseMapVC.m */; };
@@ -399,6 +402,7 @@
 		572C7A5B1C2115BB00AF14A7 /* IPSyncMapSymbolDBAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPSyncMapSymbolDBAdapter.m; sourceTree = "<group>"; };
 		573F90081BC8E68F00F836B5 /* OfflineRouteManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OfflineRouteManager.h; sourceTree = "<group>"; };
 		573F90091BC8E68F00F836B5 /* OfflineRouteManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OfflineRouteManager.m; sourceTree = "<group>"; };
+		574029691E2F175B00DC5388 /* Debug */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Debug; sourceTree = "<group>"; };
 		574077281BDF781C008D05CD /* BuildAllRouteNetworkVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BuildAllRouteNetworkVC.h; path = RouteVC/BuildAllRouteNetworkVC.h; sourceTree = "<group>"; };
 		574077291BDF781C008D05CD /* BuildAllRouteNetworkVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BuildAllRouteNetworkVC.m; path = RouteVC/BuildAllRouteNetworkVC.m; sourceTree = "<group>"; };
 		57494DD21B61DAE7000B6F2C /* BaseControllerTableVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseControllerTableVC.h; sourceTree = "<group>"; };
@@ -489,6 +493,10 @@
 		579C2C601C200BDB00786AF2 /* IPSyncSymbolRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPSyncSymbolRecord.m; sourceTree = "<group>"; };
 		579FA83B1CFD40C60025F37A /* IPXBase64Encoding.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IPXBase64Encoding.cpp; sourceTree = "<group>"; };
 		579FA83C1CFD40C60025F37A /* IPXBase64Encoding.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = IPXBase64Encoding.hpp; sourceTree = "<group>"; };
+		57A5766A1EF12DA800AACC9A /* TYFanRange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYFanRange.h; sourceTree = "<group>"; };
+		57A5766B1EF12DA800AACC9A /* TYFanRange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYFanRange.m; sourceTree = "<group>"; };
+		57B4A3AF1ED7EFD1003874D2 /* DebugHelper.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = DebugHelper.hpp; sourceTree = "<group>"; };
+		57B4A3B01ED7EFD1003874D2 /* DebugHelper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DebugHelper.cpp; sourceTree = "<group>"; };
 		57B953371BDDFB0700D9D318 /* GenerateAllMapDBVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenerateAllMapDBVC.h; sourceTree = "<group>"; };
 		57B953381BDDFB0700D9D318 /* GenerateAllMapDBVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenerateAllMapDBVC.m; sourceTree = "<group>"; };
 		57B9533C1BDE031500D9D318 /* OriginalShpDB */ = {isa = PBXFileReference; lastKnownFileType = folder; path = OriginalShpDB; sourceTree = "<group>"; };
@@ -679,10 +687,14 @@
 		571AC46E1B55FED900E9FF7D /* MapProject */ = {
 			isa = PBXGroup;
 			children = (
+				57A5766A1EF12DA800AACC9A /* TYFanRange.h */,
+				57A5766B1EF12DA800AACC9A /* TYFanRange.m */,
 				5795EEB91DAB725B00BAB48F /* TYMapCoordConverter.h */,
 				5795EEBA1DAB725B00BAB48F /* TYMapCoordConverter.m */,
 				575EE22F1D1260E600E90CA0 /* TYMapToFengMap.h */,
 				575EE2301D1260E600E90CA0 /* TYMapToFengMap.m */,
+				57B4A3AF1ED7EFD1003874D2 /* DebugHelper.hpp */,
+				57B4A3B01ED7EFD1003874D2 /* DebugHelper.cpp */,
 				571AC46F1B55FED900E9FF7D /* AppDelegate.h */,
 				571AC4701B55FED900E9FF7D /* AppDelegate.mm */,
 				57FC97A21BB125D6006D6D00 /* Licenses.json */,
@@ -1105,6 +1117,7 @@
 		57672D6A1B55FFF900DAD219 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				574029691E2F175B00DC5388 /* Debug */,
 				57B9533C1BDE031500D9D318 /* OriginalShpDB */,
 				57672EFE1B56046300DAD219 /* MapResource */,
 				57672D6B1B55FFF900DAD219 /* ArcGIS.bundle */,
@@ -1417,7 +1430,7 @@
 		57F06C151A87BC7500B9511F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = innerpeacer;
 				TargetAttributes = {
 					57F06C1C1A87BC7500B9511F = {
@@ -1449,6 +1462,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5740296A1E2F175B00DC5388 /* Debug in Resources */,
 				57672EFD1B5600B900DAD219 /* Default-568h@2x.png in Resources */,
 				57672EEF1B56002900DAD219 /* Main.storyboard in Resources */,
 				57FC97A31BB125D6006D6D00 /* Licenses.json in Resources */,
@@ -1574,6 +1588,7 @@
 				5795EEBB1DAB725B00BAB48F /* TYMapCoordConverter.m in Sources */,
 				572408ED1BC9B9800050BA41 /* BuildRouteNetworkDatasetVC.m in Sources */,
 				572407A81BC9A8A10050BA41 /* IPVector2.m in Sources */,
+				57B4A3B11ED7EFD1003874D2 /* DebugHelper.cpp in Sources */,
 				57215D4F1C23ECD500B8B271 /* IPCBMDownloader.m in Sources */,
 				572407A31BC9A8A10050BA41 /* IPAnimatedRouteArrowLayer.m in Sources */,
 				572407A61BC9A8A10050BA41 /* IPRouteHintLayer.m in Sources */,
@@ -1635,6 +1650,7 @@
 				57FF26501C1FF707009482B2 /* IPSyncRouteRecord.m in Sources */,
 				57215D941C24119900B8B271 /* TYLandmark.m in Sources */,
 				57EB45781B73D2B50050956F /* RATreeView+Private.m in Sources */,
+				57A5766C1EF12DA800AACC9A /* TYFanRange.m in Sources */,
 				572408EF1BC9B9800050BA41 /* MapRouteVC.m in Sources */,
 				572407BA1BC9A8A10050BA41 /* TYPoi.m in Sources */,
 				57F8F0941BBA9ADB00FE8637 /* BuildingRouteDBAdapter.mm in Sources */,
@@ -1687,14 +1703,20 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -1736,14 +1758,20 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -1778,7 +1806,6 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
-					"$(HOME)/Library/SDKs/ArcGIS/iOS/",
 					"/Users/innerpeacer/Desktop/TY-Framework",
 					"$(PROJECT_DIR)/MapProject",
 				);
@@ -1811,7 +1838,6 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
-					"$(HOME)/Library/SDKs/ArcGIS/iOS/",
 					"/Users/innerpeacer/Desktop/TY-Framework",
 					"$(PROJECT_DIR)/MapProject",
 				);

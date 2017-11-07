@@ -9,8 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <TYMapData/TYMapData.h>
 
-#define DEFAULT_MAP_ROOT @"MapResource"
-#define DEFAULT_MAP_ENCRPTION_ROOT @"MapEncrypted"
+
 
 
 @interface TYUserDefaults : NSObject
