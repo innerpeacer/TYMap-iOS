@@ -6,15 +6,33 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MapProject/MapSDK/ObjC/FunctionLayers/TYTraceLayer.m"
-            timestampString = "501946183.602571"
+            filePath = "MapProject/ViewControllers/MapDevelopment/MultiPointRoute/MRSuperRouteNetworkDataset.m"
+            timestampString = "531939570.940264"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "141"
-            endingLineNumber = "141">
+            startingLineNumber = "43"
+            endingLineNumber = "43"
+            landmarkName = "-computePaths:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MapProject/ViewControllers/MapDevelopment/MultiPointRoute/MRSuperRouteNetworkDataset.m"
+            timestampString = "531939570.940324"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
+            landmarkName = "-computePaths:"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

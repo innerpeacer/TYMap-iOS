@@ -18,40 +18,43 @@
         
         {
             self.linkLayer = [AGSGraphicsLayer graphicsLayer];
-            AGSSimpleLineSymbol *sls = [AGSSimpleLineSymbol simpleLineSymbolWithColor:[UIColor greenColor] width:1];
+            AGSSimpleLineSymbol *sls = [AGSSimpleLineSymbol simpleLineSymbolWithColor:[UIColor lightGrayColor] width:1];
             self.linkLayer.renderer = [AGSSimpleRenderer simpleRendererWithSymbol:sls];
         }
         
         {
             self.virtualLinkLayer = [AGSGraphicsLayer graphicsLayer];
-            AGSSimpleLineSymbol *virtualSls = [AGSSimpleLineSymbol simpleLineSymbolWithColor:[UIColor blueColor] width:1];
+            AGSSimpleLineSymbol *virtualSls = [AGSSimpleLineSymbol simpleLineSymbolWithColor:[UIColor grayColor] width:1];
             self.virtualLinkLayer.renderer = [AGSSimpleRenderer simpleRendererWithSymbol:virtualSls];
         }
         
         {
             self.unionLineLayer = [AGSGraphicsLayer graphicsLayer];
-            AGSSimpleLineSymbol *virtualSls = [AGSSimpleLineSymbol simpleLineSymbolWithColor:[UIColor yellowColor] width:0.5];
+            AGSSimpleLineSymbol *virtualSls = [AGSSimpleLineSymbol simpleLineSymbolWithColor:[UIColor lightGrayColor] width:0.5];
             self.unionLineLayer.renderer = [AGSSimpleRenderer simpleRendererWithSymbol:virtualSls];
         }
         
         {
             self.nodeLayer = [AGSGraphicsLayer graphicsLayer];
-            AGSSimpleMarkerSymbol *sms = [AGSSimpleMarkerSymbol simpleMarkerSymbolWithColor:[UIColor blueColor]];
+            AGSSimpleMarkerSymbol *sms = [AGSSimpleMarkerSymbol simpleMarkerSymbolWithColor:[UIColor whiteColor]];
             sms.size = CGSizeMake(2, 2);
+            sms.outline = nil;
             self.nodeLayer.renderer = [AGSSimpleRenderer simpleRendererWithSymbol:sms];
         }
         
         {
             self.virtualNodeLayer = [AGSGraphicsLayer graphicsLayer];
-            AGSSimpleMarkerSymbol *virtualSms = [AGSSimpleMarkerSymbol simpleMarkerSymbolWithColor:[UIColor redColor]];
+            AGSSimpleMarkerSymbol *virtualSms = [AGSSimpleMarkerSymbol simpleMarkerSymbolWithColor:[UIColor whiteColor]];
             virtualSms.size = CGSizeMake(2, 2);
+            virtualSms.outline = nil;
             self.virtualNodeLayer.renderer = [AGSSimpleRenderer simpleRendererWithSymbol:virtualSms];
         }
         
         {
             self.junctionNodeLayer = [AGSGraphicsLayer graphicsLayer];
-            AGSSimpleMarkerSymbol *junctionSms = [AGSSimpleMarkerSymbol simpleMarkerSymbolWithColor:[UIColor redColor]];
+            AGSSimpleMarkerSymbol *junctionSms = [AGSSimpleMarkerSymbol simpleMarkerSymbolWithColor:[UIColor whiteColor]];
             junctionSms.size = CGSizeMake(2, 2);
+            junctionSms.outline = nil;
             self.junctionNodeLayer.renderer = [AGSSimpleRenderer simpleRendererWithSymbol:junctionSms];
         }
     }

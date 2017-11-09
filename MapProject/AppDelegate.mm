@@ -84,8 +84,8 @@
 - (void)setDefaultPlaceIfNeeded
 {
     if ([TYUserDefaults getDefaultBuilding] == nil) {
-        [TYUserDefaults setDefaultCity:@"0021"];
-        [TYUserDefaults setDefaultBuilding:@"00210025"];
+        [TYUserDefaults setDefaultCity:@"0023"];
+        [TYUserDefaults setDefaultBuilding:@"00230021"];
     }
 }
 

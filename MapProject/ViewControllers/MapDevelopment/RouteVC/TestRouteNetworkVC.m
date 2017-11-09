@@ -239,8 +239,6 @@ int TestIndex = 0;
     [testLayer addGraphic:[AGSGraphic graphicWithGeometry:endPoint symbol:symbolgroup.endSymbol attributes:nil]];
     
     [testLayer addGraphic:[AGSGraphic graphicWithGeometry:line symbol:symbolgroup.testSimpleLineSymbol attributes:nil]];
-    
 }
-
 
 @end

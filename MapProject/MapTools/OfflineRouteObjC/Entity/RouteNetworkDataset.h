@@ -27,5 +27,4 @@
 - (id)initWithNodes:(NSArray *)nodes Links:(NSArray *)links;
 - (AGSPolyline *)getShorestPathFrom:(AGSPoint *)start To:(AGSPoint *)end;
 
-
 @end

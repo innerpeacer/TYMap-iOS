@@ -138,7 +138,7 @@
     }
     
     if (currentRoutePart) {
-        [self.mapView zoomToGeometry:currentRoutePart.route withPadding:20.0f animated:YES];
+//        [self.mapView zoomToGeometry:currentRoutePart.route withPadding:20.0f animated:YES];
 //        routeGuides = [routeResult getRouteDirectionalHint:currentRoutePart];
     }
     

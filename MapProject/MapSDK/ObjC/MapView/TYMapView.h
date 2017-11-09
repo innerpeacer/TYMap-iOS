@@ -453,5 +453,6 @@ typedef enum {
  */
 - (int)getCurrentLevel;
 
+- (void)disableAutoCenter;
 @end
 

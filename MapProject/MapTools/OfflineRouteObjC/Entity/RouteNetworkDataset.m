@@ -227,7 +227,7 @@
     AGSPoint *np = result.point;
     for (TYNode *node in _nodeArray) {
         if ([engine geometry:np withinGeometry:node.pos]) {
-            NSLog(@"Point Equal to One of the Nodes!");
+//            NSLog(@"Point Equal to One of the Nodes!");
             return node;
         }
     }
